@@ -5,7 +5,7 @@
     },
     "miniprogramRoot": "miniprogram/",
     "compileType": "miniprogram",
-    "projectname": "222222",
+    "projectname": "mini_app_ib",
     "setting": {
         "urlCheck": true,
         "es6": true,

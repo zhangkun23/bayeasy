@@ -1,12 +1,12 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
-    "custom-tab-bar/index",
-    "pages/invoice/invoiceIndex/index",
     "pages/enterprise/enterpriseIndex/index",
+    "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
-    "pages/tax/taxIndex/index"
+    "pages/tax/taxIndex/index",
+    "pages/logs/logs",
+    "custom-tab-bar/index"
   ],
   "tabBar": {
     "custom": true,

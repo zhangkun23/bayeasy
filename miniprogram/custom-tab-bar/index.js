@@ -1,15 +1,15 @@
 Component({
     data: {
-      selected: 2,
+      selected: 0,
       color: "#7A7E83",
       selectedColor: "#3cc51f",
       list: [{
-        pagePath: "pages/enterprise/enterpriseIndex/index",
+        pagePath: "/pages/enterprise/enterpriseIndex/index",
         text: "企业信息",
         iconPath:'/image/icon/declare.png',
         selectedIconPath:'/image/icon/declare_check.png',
       }, {
-        pagePath: "pages/invoice/invoiceIndex/index",
+        pagePath: "/pages/invoice/invoiceIndex/index",
         text: "收支票据",
         iconPath:'/image/icon/declare.png',
         selectedIconPath:'/image/icon/declare_check.png',
