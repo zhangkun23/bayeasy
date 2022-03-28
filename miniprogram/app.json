@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "custom-tab-bar/index",
+    "pages/invoice/invoiceIndex/index",
+    "pages/enterprise/enterpriseIndex/index",
+    "pages/personal/personalIndex/index",
+    "pages/tax/taxIndex/index"
+  ],
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+        {
+            "pagePath": "pages/index/index",
+            "text": "组件"
+        },
+        {
+            "pagePath": "pages/invoice/invoiceIndex/index",
+            "text": "接口"
+        }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin1",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {}
+}

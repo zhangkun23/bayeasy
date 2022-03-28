@@ -1,0 +1,5 @@
+<!--pages/invoice/invoiceIndex/index.wxml-->
+<text>pages/invoice/invoiceIndex/index.wxml</text>
+<view>
+收支票据
+</view>
