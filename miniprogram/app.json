@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
     "pages/tax/taxIndex/index",
-    "pages/logs/logs",
     "custom-tab-bar/index"
   ],
   "tabBar": {
@@ -15,14 +15,36 @@
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
-        {
-            "pagePath": "pages/index/index",
-            "text": "组件"
-        },
-        {
-            "pagePath": "pages/invoice/invoiceIndex/index",
-            "text": "接口"
-        }
+      {
+        "pagePath": "pages/enterprise/enterpriseIndex/index",
+        "text": "企业信息",
+        "iconPath":"/image/icon/declare.png",
+        "selectedIconPath":"/image/icon/declare_check.png"
+      },
+      {
+        "pagePath": "pages/invoice/invoiceIndex/index",
+        "text": "收支票据",
+        "iconPath":"/image/icon/declare.png",
+        "selectedIconPath":"/image/icon/declare_check.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"/image/icon/declare.png",
+        "selectedIconPath":"/image/icon/declare_check.png"
+      },
+      {
+        "pagePath": "pages/tax/taxIndex/index",
+        "text": "财税办理",
+        "iconPath":"/image/icon/declare.png",
+        "selectedIconPath":"/image/icon/declare_check.png"
+      },
+      {
+        "pagePath": "pages/personal/personalIndex/index",
+        "text": "个人中心",
+        "iconPath":"/image/icon/declare.png",
+        "selectedIconPath":"/image/icon/declare_check.png"
+      }
     ]
   },
   "window":{

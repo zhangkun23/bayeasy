@@ -15,22 +15,22 @@ Component({
         selectedIconPath:'/image/icon/declare_check.png',
       }
       ,{
-        pagePath: "pages/index/index",
+        pagePath: "/pages/index/index",
         text: "首页",
         iconPath:'/image/icon/declare.png',
         selectedIconPath:'/image/icon/declare_check.png',
       }
-      // , {
-      //   pagePath: "/pages/tax/taxIndex/index",
-      //   text: "财税办理",
-      //   iconPath:'/image/icon/declare.png',
-      //   selectedIconPath:'/image/icon/declare_check.png',
-      // },  {
-      //   pagePath: "/pages/personal/personalIndex/index",
-      //   text: "个人中心",
-      //   iconPath:'/image/icon/declare.png',
-      //   selectedIconPath:'/image/icon/declare_check.png',
-      // }
+      , {
+        pagePath: "/pages/tax/taxIndex/index",
+        text: "财税办理",
+        iconPath:'/image/icon/declare.png',
+        selectedIconPath:'/image/icon/declare_check.png',
+      },  {
+        pagePath: "/pages/personal/personalIndex/index",
+        text: "个人中心",
+        iconPath:'/image/icon/declare.png',
+        selectedIconPath:'/image/icon/declare_check.png',
+      }
     ]
     },
     attached() {
@@ -40,10 +40,19 @@ Component({
         const data = e.currentTarget.dataset
         const url = data.path
         console.log(data)
-        wx.switchTab({url})
         this.setData({
           selected: data.index
         })
+        wx.switchTab({url:url})
+        this.setData({
+          selected: data.index
+        })
+
+        setTimeout( item => {
+          this.setData({
+            selected: data.index
+          })
+        },1000)
       }
     }
   })
