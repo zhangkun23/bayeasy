@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "navigationStyle":"custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "login-btn": "/components/login-btn/login-btn",
+    "entrance-btn": "../components/gates-btn/gates-btn"
+  }
 }

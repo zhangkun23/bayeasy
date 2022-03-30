@@ -1,0 +1,31 @@
+/* pages/personal/components/gates-btn/gates-btn.wxss */
+
+.wrapper {
+  /* font-style: PingFangSC; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
+  color: white;
+  margin:auto;
+  /* background: -webkit-linear-gradient(left, #4D82EC 0%,#6EB8EF 100%); */
+}
+.icon{
+  /* display: inline; */
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  height: 70rpx;
+  width: 70rpx;
+}
+
+image {
+  width: 70rpx;
+}
+
+.title {
+  font-size: 24rpx;
+  text-align: center;
+  color: black;
+}

@@ -1,0 +1,10 @@
+<!--pages/personal/components/gates-btn/gates-btn.wxml-->
+<view class="wrapper">
+  <view class="container" >
+    <slot></slot>
+    <view class="icon">
+      <image src="{{iconUrl}}" mode="widthFix"></image>
+    </view>
+    <view class="title" style="font-size: {{fontSize}};">{{title}}</view>
+  </view>
+</view>

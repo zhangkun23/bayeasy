@@ -1,1 +1,152 @@
 /* pages/personal/personalIndex/index.wxss */
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-image: url('https://image.bayeasy.cn/images-data/personal/personal-bg.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.user-info-container {
+  display: flex;
+  position: relative;
+  height: 140rpx;
+  width: 100%;
+  margin: 208rpx 32rpx 32rpx 0;
+}
+
+.user-info-container .user-info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 0px 20px;
+  text-align: left;
+  float: left;
+
+}
+
+.user-info .user-name-container {
+  display: flex;
+  height: 68rpx;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.user-name-container .todo-btn {
+  margin-left: 24rpx;
+}
+
+.user-info .user-name {
+  font-size: 44rpx;
+  font-size: bolder;
+
+}
+
+.user-info .user-tel {
+  font-weight: lighter;
+}
+
+.user-info-container .user-avatar {
+  /* float:right; */
+  overflow: hidden;
+  width: 140rpx;
+  height: 140rpx;
+  /* margin: 0 32rpx 0 0; */
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+}
+
+.fn-gate-container {
+  /* background-color: blue; */
+  position: fixed;
+  top: 396rpx;
+  width: 100%;
+  /* height: 165rpx; */
+
+}
+
+.fn-gate-container .btn-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  position: relative;
+  height: 165rpx;
+  border-radius: 16rpx;
+  margin: 0 32rpx 100rpx 32rpx;
+  background-color: #FDFEFF;
+  box-shadow: 0px 18px 31px 0px rgba(110, 135, 162, 0.14);
+}
+
+.fn-gate-container .btn-container .btn {
+  width: 120px;
+  text-align: center;
+  align-items: center;
+  margin: 32rpx 0 31rpx 0;
+}
+
+.entrances-container {
+  position: absolute;
+  width: 100%;
+  margin-top: 609rpx;
+  /* background-color: green; */
+}
+
+.entrances {
+  display: flex;
+  flex-direction: column;
+  padding-left: 32rpx;
+  text-align: left;
+  padding-right: 32rpx;
+}
+
+.entrances .entrance {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  /* margin: 33rpx 0 31rpx 0; */
+}
+
+.entrances .entrance .icon {
+  display: flex;
+  align-items: center;
+}
+
+.entrances .entrance .icon image {
+  width: 44rpx;
+}
+
+.entrances .entrance .arrow {
+  position: absolute;
+  right: 32rpx;
+  width: 48rpx;
+}
+
+.entrances .entrance .arrow image {
+  float: right;
+  width: 48rpx;
+}
+
+.entrances .entrance .content {
+  position: relative;
+  left: 8rpx;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.login-btn {
+  align-items: center;
+  color: #ABBED2;
+  text-align: center;
+  text-decoration: underline;
+  position: fixed;
+  bottom: 253rpx;
+}
