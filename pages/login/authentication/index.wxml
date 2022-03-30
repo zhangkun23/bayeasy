@@ -1,0 +1,12 @@
+<!--pages/login/authentication/index.wxml-->
+<view class="authentication">
+  <view class="authentication_zw">
+    <view>
+      <image src=""></image>
+    </view>
+    <view>
+      <image src=""></image>
+    </view>
+
+  </view>
+</view>

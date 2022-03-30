@@ -10,6 +10,14 @@ Component({
           selected: 2
         })
       }
+    },
+    
+  },
+  methods:{
+    goToLogin(){
+      wx.navigateTo({
+        url: '../login/authentication/index',
+      })
     }
   }
 })

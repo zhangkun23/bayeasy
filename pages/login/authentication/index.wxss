@@ -1,0 +1,6 @@
+/* pages/login/authentication/index.wxss */
+
+.authentication_zw{
+  background-image: url('../../../image/icon/declare.png');
+  background-size: 100% 100%;
+}
