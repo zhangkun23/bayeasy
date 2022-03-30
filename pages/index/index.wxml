@@ -1,26 +1,58 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <cover-image src="{{imgpath}}"  />
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-    <view>首页</view>
-    <component-test inner-text="自定义组件"></component-test>
-  </view>
+
+<view class="infoTop">
+  <cover-image class="logo_byz"  src="{{logo_byz}}" />
+  <cover-view class="infoTitle">贝易资企业财税服务商</cover-view>
+  <cover-view class="infoButton" bindtap="handelClick">完善个人信息</cover-view>
+  <cover-image class="banner"  src="{{banner}}" />
 </view>
+
+<view class="count">
+  <view class="countTop">
+    <view class="countTop_left">
+      <cover-image class="zcjc"  src="{{zcjc}}" /> 
+      <cover-view class="countCenterTitle">注册进程</cover-view>
+    </view>
+    <view class="countTop_right">
+      <view class="top">
+        <cover-image class="srzdfp"  src="{{srzdfp}}" />
+        <cover-view class="title">注册进程</cover-view>
+      </view>
+      <view class="bottom">
+        <cover-image class="cbfy"  src="{{cbfy}}" /> 
+        <cover-view class="title">注册进程</cover-view>
+      </view>
+    </view>
+  </view>
+  <view class="countCenter">
+    <cover-view class="countCenterTitle">纳税申报</cover-view>
+    <cover-image class="nssb"  src="{{nssb}}" />
+  </view>
+  <view class="countBottom">
+    <view class="countBottom_info countLeft">
+      <view class="bottom_left_title">
+        <cover-view class="bottom_left_title_top">服务介绍</cover-view>
+        <cover-view class="bottom_left_title_bottom">我们为您提供专业的服务</cover-view>
+      </view>
+      <cover-image class="bottom_right"  src="{{faq}}" />
+    </view>
+    <view class="countBottom_info countRight">
+      <view class="bottom_left_title">
+        <cover-view class="bottom_left_title_top">常见问答</cover-view>
+        <cover-view class="bottom_left_title_bottom">您想问的这里有答案</cover-view>
+      </view>
+      <cover-image class="bottom_right"  src="{{faq}}" />
+    </view>
+  </view> 
+</view>
+
+    
+    
+    
+   
+    
+   
+
+
+ 
+
+  

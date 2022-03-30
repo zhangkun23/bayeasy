@@ -3,33 +3,35 @@ Component({
       selected: 0,
       color: "#ABBED2",
       selectedColor: "#1D83F0",
+      footerGg: getApp().globalData.imgPath +'footer/footerBg.png',
+      indexBg:getApp().globalData.imgPath +'footer/footer_index.png',
       list: [{
         pagePath: "/pages/enterprise/enterpriseIndex/index",
         text: "企业信息",
-        iconPath:'/image/icon/declare.png',
-        selectedIconPath:'/image/icon/declare_check.png',
+        iconPath:getApp().globalData.imgPath +'footer/footer1.png',
+        selectedIconPath:getApp().globalData.imgPath +'footer/footer1_click.png',
       }, {
         pagePath: "/pages/invoice/invoiceIndex/index",
         text: "收支票据",
-        iconPath:'/image/icon/declare.png',
-        selectedIconPath:'/image/icon/declare_check.png',
+        iconPath:getApp().globalData.imgPath +'footer/footer2.png',
+        selectedIconPath:getApp().globalData.imgPath +'footer/footer2_click.png',
       }
       ,{
         pagePath: "/pages/index/index",
-        text: "首页",
-        iconPath:'/image/icon/declare.png',
-        selectedIconPath:'/image/icon/declare_check.png',
+        text: "",
+        iconPath:'',
+        selectedIconPath:'',
       }
       , {
         pagePath: "/pages/tax/taxIndex/index",
         text: "财税办理",
-        iconPath:'/image/icon/declare.png',
-        selectedIconPath:'/image/icon/declare_check.png',
+        iconPath:getApp().globalData.imgPath +'footer/footer3.png',
+        selectedIconPath:getApp().globalData.imgPath +'footer/footer3_click.png',
       },  {
         pagePath: "/pages/personal/personalIndex/index",
         text: "个人中心",
-        iconPath:'/image/icon/declare.png',
-        selectedIconPath:'/image/icon/declare_check.png',
+        iconPath:getApp().globalData.imgPath +'footer/footer4.png',
+        selectedIconPath:getApp().globalData.imgPath +'footer/footer4_click.png',
       }
     ]
     },
