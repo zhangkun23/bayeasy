@@ -1,7 +1,12 @@
 // index.js
 // 获取应用实例
 
+const { login,logout} = require('../../http/api/api.js')
 Component({
+  data:{
+    imgpath:getApp().globalData.imgPath +'footer/null.png',
+  },
+  
   pageLifetimes: {
     show() {
       if (typeof this.getTabBar === 'function' &&
@@ -10,7 +15,44 @@ Component({
           selected: 2
         })
       }
-    }
+
+      let param = {
+        mobile:'18513136572',
+        captcha:'111111'
+      }
+
+      login(param).then((res)=>{
+        if(res.ret){
+          getApp().globalData.token = res.data.access_token;
+          // console.log(getApp().globalData.token)
+        }
+      })
+
+      // logout().then((res)=>{
+      //   console.log(res);
+      // })
+      
+
+    },
+
+    
+    
+
+  //   wx.request({
+  //     url: 'test.php', // 示例接口
+  //     data: {
+  //         x: '',
+  //         y: ''
+  //     },
+  //     header: {
+  //         'content-type': 'application/json' // 默认值
+  //     },
+  //     success(res) {
+  //         console.log(res.data)
+  //     }
+  // })
+
+
   }
 })
 

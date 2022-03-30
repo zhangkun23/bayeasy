@@ -8,6 +8,8 @@ Component({
             selected: 3
             })
         }
+        // 获取token
+        console.log(getApp().globalData.token)
         }
     }
 })

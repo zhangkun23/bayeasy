@@ -14,6 +14,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    imgPath:'https://image.bayeasy.cn/images-data/',
+    userInfo: null,
+    token:'',
   }
 })

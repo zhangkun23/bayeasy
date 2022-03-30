@@ -17,10 +17,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <cover-image src="{{imgpath}}"  />
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
     <view>首页</view>
-
     <component-test inner-text="自定义组件"></component-test>
   </view>
 </view>
