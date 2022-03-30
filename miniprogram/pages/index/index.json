@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "component-test": "../../component/test/test"
+  },
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "微信接口功能演示",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "dark"
 }

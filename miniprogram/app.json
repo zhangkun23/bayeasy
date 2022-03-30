@@ -10,10 +10,6 @@
   ],
   "tabBar": {
     "custom": true,
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/enterprise/enterpriseIndex/index",
@@ -29,7 +25,7 @@
       },
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "",
         "iconPath":"/image/icon/declare.png",
         "selectedIconPath":"/image/icon/declare_check.png"
       },

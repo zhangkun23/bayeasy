@@ -1,8 +1,8 @@
 Component({
     data: {
       selected: 0,
-      color: "#7A7E83",
-      selectedColor: "#3cc51f",
+      color: "#ABBED2",
+      selectedColor: "#1D83F0",
       list: [{
         pagePath: "/pages/enterprise/enterpriseIndex/index",
         text: "企业信息",
@@ -47,12 +47,6 @@ Component({
         this.setData({
           selected: data.index
         })
-
-        setTimeout( item => {
-          this.setData({
-            selected: data.index
-          })
-        },1000)
       }
     }
   })
