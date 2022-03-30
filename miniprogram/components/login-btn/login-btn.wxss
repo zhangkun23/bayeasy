@@ -1,0 +1,11 @@
+/* components/login-btn/login-btn.wxss */
+
+.login-wrapper{
+  /* font-style: PingFangSC; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25rpx;
+  color: white;
+  /* background: -webkit-linear-gradient(left, #4D82EC 0%,#6EB8EF 100%); */
+}
