@@ -39,7 +39,6 @@ Component({
       switchTab(e) {
         const data = e.currentTarget.dataset
         const url = data.path
-        console.log(data)
         this.setData({
           selected: data.index
         })

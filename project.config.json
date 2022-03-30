@@ -1,11 +1,13 @@
 {
     "description": "项目配置文件",
     "packOptions": {
-        "ignore": []
+        "ignore": [
+            {
+                "type": "file",
+                "value": ".eslintrc.js"
+            }
+        ]
     },
-    "miniprogramRoot": "miniprogram/",
-    "compileType": "miniprogram",
-    "projectname": "mini_app_ib",
     "setting": {
         "urlCheck": true,
         "es6": true,
@@ -21,7 +23,7 @@
         "scopeDataCheck": false,
         "uglifyFileName": false,
         "checkInvalidKey": true,
-        "checkSiteMap": true,
+        "checkSiteMap": false,
         "uploadWithSourceMap": true,
         "compileHotReLoad": true,
         "lazyloadPlaceholderEnable": false,
@@ -41,14 +43,40 @@
         "disableUseStrict": false,
         "minifyWXML": true,
         "showES6CompileOption": false,
-        "useCompilerPlugins": [
-            "typescript",
-            "less"
-        ],
+        "useCompilerPlugins": false,
         "ignoreUploadUnusedFiles": true
     },
-    "simulatorType": "wechat",
-    "simulatorPluginLibVersion": {},
+    "compileType": "miniprogram",
+    "libVersion": "2.19.4",
     "appid": "wxa1b7cb1cb7fad9da",
-    "condition": {}
+    "projectname": "%E8%B4%9D%E6%98%93%E8%B5%84",
+    "debugOptions": {
+        "hidedInDevtools": []
+    },
+    "scripts": {},
+    "staticServerOptions": {
+        "baseURL": "",
+        "servePath": ""
+    },
+    "isGameTourist": false,
+    "condition": {
+        "search": {
+            "list": []
+        },
+        "conversation": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "plugin": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": []
+        }
+    }
 }

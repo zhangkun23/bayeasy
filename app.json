@@ -6,7 +6,8 @@
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
     "pages/tax/taxIndex/index",
-    "custom-tab-bar/index"
+    "custom-tab-bar/index",
+    "component/test/test"
   ],
   "tabBar": {
     "custom": true,
