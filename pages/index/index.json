@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "component-test":"/component/test/test"
   },
   "navigationStyle":"custom",
   "navigationBarBackgroundColor": "#000000",

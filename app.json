@@ -3,16 +3,11 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
-
-
     "pages/login/authentication/index",
-
-
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
     "pages/tax/taxIndex/index",
-    "custom-tab-bar/index",
-    "component/test/test"
+    "custom-tab-bar/index"
   ],
   "tabBar": {
     "custom": true,
@@ -58,6 +53,6 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    
+
   }
 }

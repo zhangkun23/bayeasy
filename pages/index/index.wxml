@@ -24,9 +24,6 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
-    <view>首页</view>
-    <!-- <button bindtap="goToLogin">登录去验证身份</button> -->
-    <component-test inner-text="自定义组件"></component-test>
     <view class="countCenter">
       <cover-view class="countCenterTitle">纳税申报</cover-view>
       <cover-image class="nssb" src="{{nssb}}" />

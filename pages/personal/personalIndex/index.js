@@ -1,5 +1,5 @@
 // pages/personal/personalIndex/index.js
-import '../../../component/login-btn/login-btn'
+import '../components/gates-btn/gates-btn'
 
 Component({
   pageLifetimes: {

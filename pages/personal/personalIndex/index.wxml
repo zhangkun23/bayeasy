@@ -34,7 +34,7 @@
   </view>
   <view class="fn-gate-container">
     <view class="btn-container">
-      <view wx:for="{{gates_info}}" class="btn">
+      <view wx:for="{{gates_info}}" class="btn" wx:for-index="i" wx:key="i">
         <entrance-btn iconUrl="{{item.url}}" title="{{item.text}}" gateWidth="{{item.width}}"></entrance-btn>
       </view>
       <!-- <entrance-btn iconUrl="https://image.bayeasy.cn/images-data/personal/gates/person-info.png" title="个人信息" gateWidth="120rpx"></entrance-btn> -->
@@ -43,7 +43,7 @@
   </view>
   <view class="entrances-container">
     <view class="entrances">
-      <view wx:for="{{entrances_info}}" class="entrance">
+      <view wx:for="{{entrances_info}}" class="entrance" wx:for-index="i" wx:key="i">
         <view class="icon">
           <image src="{{item.icon}}" mode="widthFix"></image>
         </view>
