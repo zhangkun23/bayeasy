@@ -5,6 +5,10 @@ Component({
    */
   properties: {
     text: String,
+    border: {
+      type: String,
+      value: ''
+    },
     borderRadius: {
       type: String,
       value: '25rpx'

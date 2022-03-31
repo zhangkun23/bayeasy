@@ -6,5 +6,6 @@
   align-items: center;
   justify-content: center;
   color: white;
+  font-weight: 400;
   /* background: -webkit-linear-gradient(left, #4D82EC 0%,#6EB8EF 100%); */
 }

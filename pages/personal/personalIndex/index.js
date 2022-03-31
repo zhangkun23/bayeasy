@@ -34,7 +34,7 @@ Component({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    right_arrow:'https://image.bayeasy.cn/images-data/personal/btns/right-arrow.png',
+    right_arrow: 'https://image.bayeasy.cn/images-data/personal/btns/right-arrow.png',
     entrances_info: [{
         icon: 'https://image.bayeasy.cn/images-data/personal/icons/contact-service.png',
         url: '',
@@ -49,25 +49,44 @@ Component({
     gates_info: [{
       url: 'https://image.bayeasy.cn/images-data/personal/gates/person-info.png',
       text: '个人中心',
-      width: '120rpx'
+      width: '120rpx',
+      isExtraInfo: true,
+      extraInfo: {
+        left: '50%',
+        top: '4rpx',
+        type: 0,
+      }
     }, {
       url: 'https://image.bayeasy.cn/images-data/personal/gates/my-sign.png',
       text: '收入账单',
-      width: '120rpx'
+      width: '120rpx',
+      isExtraInfo: false,
+      extraInfo: null,
     }, {
       url: 'https://image.bayeasy.cn/images-data/personal/gates/check-ticket.png',
       text: '成本发票',
-      width: '120rpx'
+      width: '120rpx',
+      isExtraInfo: false,
+      extraInfo: null
     }, {
       url: 'https://image.bayeasy.cn/images-data/personal/gates/todo.png',
       text: '待办事项',
-      width: '120rpx'
+      width: '120rpx',
+      isExtraInfo: true,
+      extraInfo: {
+        left: '50%',
+        top: '4rpx',
+        type: 1,
+        count: 4
+      }
     }, ]
   },
   methods: {
-    login(e){
+    login(e) {
       console.debug("tap login")
-      this.setData({showModal:true})
+      this.setData({
+        showModal: true
+      })
     },
     getUserProfile(e) {
       // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

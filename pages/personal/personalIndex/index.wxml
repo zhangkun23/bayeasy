@@ -39,7 +39,15 @@
   <view class="fn-gate-container">
     <view class="btn-container">
       <view wx:for="{{gates_info}}" class="btn" wx:for-index="i" wx:key="i">
-        <entrance-btn iconUrl="{{item.url}}" title="{{item.text}}" gateWidth="{{item.width}}"></entrance-btn>
+        <entrance-btn iconUrl="{{item.url}}" title="{{item.text}}" gateWidth="{{item.width}}" isExtraInfo="{{item.isExtraInfo}}" extraInfo="{{item.extraInfo}}">
+        <view wx:if="{{item.extraInfo.type === 0}}">
+          <login-btn text="去确认" btnBgColor="#EE7D00" btnWidth="64rpx" btnHeight="30rpx" fontSize="16rpx" borderRadius="15rpx"></login-btn>
+        </view>
+        <view wx:if="{{item.extraInfo.type === 1}}">
+          <login-btn text="{{item.extraInfo.count}}" btnBgColor="#FF475A" btnWidth="28rpx" btnHeight="28rpx" fontSize="20rpx" borderRadius="50%" border="3rpx solid #FFFFFF">
+          </login-btn>
+        </view>
+        </entrance-btn>
       </view>
       <!-- <entrance-btn iconUrl="https://image.bayeasy.cn/images-data/personal/gates/person-info.png" title="个人信息" gateWidth="120rpx"></entrance-btn> -->
       <!-- wx:for 遍历-->
