@@ -3,6 +3,8 @@
   "disableScroll": true,
   "usingComponents": {
     "login-btn": "/components/login-btn/login-btn",
-    "entrance-btn": "../components/gates-btn/gates-btn"
+    "entrance-btn": "../components/gates-btn/gates-btn",
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "modal": "/components/modal/modal"
   }
 }

@@ -1,5 +1,4 @@
 // pages/personal/personalIndex/index.js
-import '../components/gates-btn/gates-btn'
 
 Component({
   pageLifetimes: {
@@ -25,6 +24,7 @@ Component({
   },
   properties: {},
   data: {
+    showModal: false,
     btn_text: '退出登录',
     nbTitle: '个人中心',
     user_name: '*鲸鱼',
@@ -52,11 +52,11 @@ Component({
       width: '120rpx'
     }, {
       url: 'https://image.bayeasy.cn/images-data/personal/gates/my-sign.png',
-      text: '我的签约',
+      text: '收入账单',
       width: '120rpx'
     }, {
       url: 'https://image.bayeasy.cn/images-data/personal/gates/check-ticket.png',
-      text: '开票查看',
+      text: '成本发票',
       width: '120rpx'
     }, {
       url: 'https://image.bayeasy.cn/images-data/personal/gates/todo.png',
@@ -65,12 +65,16 @@ Component({
     }, ]
   },
   methods: {
+    login(e){
+      console.debug("tap login")
+      this.setData({showModal:true})
+    },
     getUserProfile(e) {
       // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
       wx.getUserProfile({
         desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
-          console.log(res)
+          console.log("get user profile result", res)
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
