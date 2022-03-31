@@ -1,5 +1,60 @@
-<!--pages/personal/personalIndex/index.wxml-->
-<text>pages/personal/personalIndex/index.wxml</text>
-<view>
-个人中心
+<!-- pages/personal/personalIndex/index.wxml-->
+<view class="container">
+  <view class="user-info-container">
+    <view class="user-info">
+      <view class="user-name-container">
+        <view class="user-name">
+          {{user_name}}
+        </view>
+        <view class="todo-btn">
+          <login-btn text="未完善资料" btnBgColor="#1D83F0" btnWidth="170rpx" btnHeight="50rpx" fontSize="24rpx"></login-btn>
+        </view>
+      </view>
+      <view class="user-tel">
+        {{user_tel}}
+      </view>
+    </view>
+    <view class="user-avatar">
+      <block wx:if="{{canIUseOpenData}}">
+        <view class="userinfo-avatar" bindtap="bindViewTap">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <open-data type="userNickName"></open-data>
+      </block>
+      <block wx:elif="{{!hasUserInfo}}">
+        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+        <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+      </block>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="fn-gate-container">
+    <view class="btn-container">
+      <view wx:for="{{gates_info}}" class="btn">
+        <entrance-btn iconUrl="{{item.url}}" title="{{item.text}}" gateWidth="{{item.width}}"></entrance-btn>
+      </view>
+      <!-- <entrance-btn iconUrl="https://image.bayeasy.cn/images-data/personal/gates/person-info.png" title="个人信息" gateWidth="120rpx"></entrance-btn> -->
+      <!-- wx:for 遍历-->
+    </view>
+  </view>
+  <view class="entrances-container">
+    <view class="entrances">
+      <view wx:for="{{entrances_info}}" class="entrance">
+        <view class="icon">
+          <image src="{{item.icon}}" mode="widthFix"></image>
+        </view>
+        <view class="content">{{item.text}}</view>
+        <view class="arrow">
+          <image src="{{right_arrow}}" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="login-btn">
+    {{btn_text}}
+  </view>
 </view>
