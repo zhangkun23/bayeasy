@@ -1,12 +1,17 @@
 <!--pages/login/authentication/index.wxml-->
 <view class="authentication">
-  <view class="authentication_zw">
-    <view>
-      <image src=""></image>
+  <view class="authentication__zw">
+    <view class="authentication__zw-illustration">
+      <image src="https://image.bayeasy.cn/images-data/authentication/illustration.png"></image>
     </view>
-    <view>
-      <image src=""></image>
+    <view class="authentication__tips">
+      <view>贝易资的企业信息库</view>
+      <text>未检测到与您提交的手机号所关联的个人身份信息</text>
+      <text>请您完善个人信息提交给贝易资进行核实</text>
+      <text>如有异议可联系贝易资客服咨询</text>
     </view>
-
+    <view class="authentication__personalInformation">
+      <button>完善个人信息</button>
+    </view>
   </view>
 </view>

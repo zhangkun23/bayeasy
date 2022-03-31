@@ -1,6 +1,21 @@
 /* pages/login/authentication/index.wxss */
 
-.authentication_zw{
-  background-image: url('../../../image/icon/declare.png');
+.authentication__zw {
+  background-image: url('https://image.bayeasy.cn/images-data/authentication/back.png');
   background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 32rpx 61rpx 0 58rpx;
+
 }
+.authentication__tips {
+  text-align: center;
+  font-size: 28rpx;
+  color: #48617C;
+
+}
+
+.authentication__personalInformation{
+  
+}
+
+
