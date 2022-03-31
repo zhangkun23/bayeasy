@@ -4,7 +4,7 @@
   <cover-view class="infoButton" bindtap="handelClick">完善个人信息</cover-view>
   <cover-image class="banner" src="{{banner}}" />
 </view>
-
+ 
 <!-- 待办 -->
 <view class="daiban" wx:if="{{daibanShow}}">
   <view class="daibanLeft">
