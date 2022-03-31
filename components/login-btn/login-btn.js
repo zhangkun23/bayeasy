@@ -5,6 +5,14 @@ Component({
    */
   properties: {
     text: String,
+    borderRadius: {
+      type: String,
+      value: '25rpx'
+    },
+    boxShadow: {
+      type: String,
+      value: ''
+    },
     fontSize: {
       type: String,
       value: '34rpx;'
@@ -33,7 +41,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onClick(){
+    onClick() {
       console.log("click btn")
       this.triggerEvent('click', null, {})
     }

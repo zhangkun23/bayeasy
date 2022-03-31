@@ -1,0 +1,69 @@
+/* components/modal.wxss */
+.modal-wrapper {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 29, 48, 0.3);
+  /* opacity: 0.3 !important; */
+}
+
+.modal-wrapper .modal-area-container {
+  position: relative;
+  top: 30.4%;
+  width: 100%;
+}
+
+
+.modal-content{
+  position: relative;
+  top: -88rpx;
+}
+.modal-content .bg {
+  position: absolute;
+  /* width: 640rpx; */
+}
+
+.modal-content .text-area {
+  padding-top: 192rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.text-area .title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #283E56;
+  line-height: 50rpx;
+}
+
+.text-area .content-container {
+  padding-top: 16rpx;
+}
+
+.text-area .content-container .content {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #48617C;
+  line-height: 40rpx;
+}
+
+.text-area .btn {
+  padding-top: 24rpx;
+  margin:auto;
+}
+.modal-area {
+  margin: 0 55rpx 0 55rpx;
+  border-radius: 16rpx;
+}
+
+.modal-area-container .close-btn{
+  position: relative;
+  top: -20rpx;
+  text-align: center;
+}

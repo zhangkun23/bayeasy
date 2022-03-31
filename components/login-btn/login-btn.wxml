@@ -1,2 +1,2 @@
 <!--components/login-btn/login-btn.wxml-->
-<view bindtap="onClick" style="background:{{btnBgColor}};font-size:{{fontSize}};width:{{btnWidth}};height:{{btnHeight}}" class="login-wrapper">{{text}}</view>
+<view bindtap="onClick" style="background:{{btnBgColor}};font-size:{{fontSize}};width:{{btnWidth}};height:{{btnHeight}};border-radius: {{borderRadius}};box-shadow: {{boxShadow}};" class="login-wrapper">{{text}}</view>

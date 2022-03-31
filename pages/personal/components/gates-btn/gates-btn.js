@@ -5,11 +5,9 @@ Component({
   },
   lifetimes: {
     show: function() {
-      console.log("properties" ,this.properties)
+      console.debug("btn showed, properties" ,this.properties)
     },
     attached: function() {
-      console.log("properties" ,this.properties)
-
     }
 
   },

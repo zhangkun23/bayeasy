@@ -1,0 +1,29 @@
+<!--components/modal/modal.wxml-->
+<view class="modal-wrapper" wx:if="{{showModal}}">
+  <view class="modal-area-container">
+    <view class="modal-area">
+      <view class="modal-content">
+        <view class="bg">
+          <image src='/image/modal/modal.png' style="width:640rpx" mode="widthFix"></image>
+        </view>
+        <view class="text-area">
+          <view class="title">
+            {{title}}
+          </view>
+          <view class="content-container">
+            <view class="content" wx:for="{{contents}}" wx:key="index">
+              {{item}}
+            </view>
+          </view>
+          <view class="btn">
+            <slot></slot>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="close-btn" bindtap="closeModal">
+    <image src="/image/modal/close.png" mode="widthFix"></image>
+  </view>
+  </view>
+
+</view>
