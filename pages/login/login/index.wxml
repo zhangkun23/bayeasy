@@ -1,7 +1,5 @@
-<!--pages/login/login/index.wxml-->
 
-<!-- <view class="bgColog"></view> -->
-
+<view class="bgColog"></view>
 <view class="logo"> 
     <view>
         <image class="logo_byz" src="{{logo_byz}}" />
@@ -44,16 +42,12 @@
             </view>
             <image class="userPhoneStatus" src="{{logo}}"></image>
         </view>
-
         <view class="other">
             使用其他手机号码
         </view>
-
         <view class="button">
-            <button size=‘mini> 取消</button> 
+            <button > 取消</button> 
             <button  type='primary'> 允许</button>
         </view>
     </view>
-
-
 </page-container>
