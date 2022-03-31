@@ -15,3 +15,18 @@
   min-width: 120px;
   overflow: hidden;
 }
+
+.btn_back{
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.btn_style{
+  color: #ffffff;
+  font-size: 34rpx;
+  background: #1D83F0;
+  font-weight: 400;
+  box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
+  border-radius: 44px;
+  text-align: center;
+}

@@ -1,21 +1,41 @@
 /* pages/login/authentication/index.wxss */
 
+button{
+  margin: 0;
+  width: 0;
+}
 .authentication__zw {
   background-image: url('https://image.bayeasy.cn/images-data/authentication/back.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   padding: 32rpx 61rpx 0 58rpx;
-
 }
+.authentication__header{
+  width: 630rpx;
+  height: 500rpx;
+  margin-bottom: 64rpx;
+}
+
 .authentication__tips {
   text-align: center;
   font-size: 28rpx;
   color: #48617C;
-
+  line-height: 36rpx;
 }
 
-.authentication__personalInformation{
-  
+.authentication__personalInformation {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin: 200rpx auto;
 }
 
-
+.authentication__personalInformation-btn {
+  color: #ffffff;
+  font-size: 34rpx;
+  background: #1D83F0;
+  font-weight: 400;
+  box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
+  border-radius: 44px;
+  text-align: center;
+}

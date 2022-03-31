@@ -4,6 +4,7 @@
     "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
     "pages/login/authentication/index",
+    "pages/login/information/index",
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
     "pages/tax/taxIndex/index",
@@ -54,5 +55,9 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
 
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
   }
 }

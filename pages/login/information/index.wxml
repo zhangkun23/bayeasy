@@ -1,0 +1,28 @@
+<!--pages/login/information/index.wxml-->
+<view class="information">
+  <view class="information__back">
+    <mp-navigation-bar title="个人信息" bindback="backIndex"></mp-navigation-bar>
+    <view class="information__form">
+
+      <view class="information__img-group">
+        <view>
+          <image src="https://image.bayeasy.cn/images-data/authentication/idcard_ front.png"></image>
+        </view>
+        <view class="idcard__tips">拍摄身份证正面</view>
+      </view>
+      <view class="information__img-group">
+        <view>
+          <image src="https://image.bayeasy.cn/images-data/authentication/idcard_resever.png"></image>
+        </view>
+        <view class="idcard__tips">拍摄身份证反面</view>
+      </view>
+      <view>
+        <input type="text" name="" id=""/>
+      </view>
+      
+
+    </view>
+
+
+  </view>
+</view>

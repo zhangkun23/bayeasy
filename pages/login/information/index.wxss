@@ -1,0 +1,35 @@
+/* pages/login/information/index.wxss */
+
+.information__back {
+  background-image: url('https://image.bayeasy.cn/images-data/authentication/back.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 32rpx;
+}
+
+.information__form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.information__img-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.information__img-group image {
+  width: 323rpx;
+  height: 260rpx;
+}
+
+.idcard__tips {
+  height: 60rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #ffffff;
+  background-color: #1D83F0;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  margin-top: -15rpx;
+}
