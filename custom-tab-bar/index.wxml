@@ -4,9 +4,9 @@
     <cover-image class="itemImg" wx:if="{{index!=2}}" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
     <cover-view class="itemView" wx:if="{{index!=2}}" style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
 
-    <cover-image class="indexBg" src="../image/footer_index.png" wx:if="{{index==2}}" />
+    <cover-image class="indexBg" src="{{footerIndex}}" wx:if="{{index==2}}" />
   </cover-view>
-  <cover-image class="footerGg" src="{{footerGg}}" />
+  <cover-image class="footerGg" src="{{footerBg}}" />
 </cover-view>
 
 

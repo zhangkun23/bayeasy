@@ -1,0 +1,59 @@
+<!--pages/login/login/index.wxml-->
+
+<!-- <view class="bgColog"></view> -->
+
+<view class="logo"> 
+    <view>
+        <image class="logo_byz" src="{{logo_byz}}" />
+    </view>
+    <text class="logoTitle">企业财税服务商</text>
+</view>
+<view range="{{['1','2','3']}}" class="loginButton" bindtap="handelClick">
+    登录
+</view>
+
+<view class="loginText">
+    <image   class="loginText__img" src="{{loginSelect}}" />
+    <text>登录即表示您已经同意</text>
+    <text class="loginTextXy">《服务平台协议》、</text>
+    <text class="loginTextXy">《隐私政策协议》</text>
+</view>
+
+<page-container
+	show="{{show}}"
+	overlay="{{true}}"
+	close-on-slide-down
+    position="bottom"
+    round="true"
+>
+	<view class="userInfo">
+        <view class="userInfo__top">
+            <view class="topInfo">
+                <image class="topInfo__img" src="{{logo}}"></image>
+                <text class="topInfo__text">贝易资 申请</text>
+            </view>
+            <image class="topInfo__img" src="{{logo}}"></image>
+        </view>
+        <text class="userInfo__1">  获取你的手号码  </text>
+        <text class="userInfo__2">  获取手机号，用于匹配贝易资企业信息库个人身份信息、业务 信息等必要使用场景 </text>
+
+        <view class="phone">
+            <view class="userPhone">
+                <text class="userPhoneText">  173****121  </text>
+                <text class="userPhoneNum">  微信绑定号码  </text>
+            </view>
+            <image class="userPhoneStatus" src="{{logo}}"></image>
+        </view>
+
+        <view class="other">
+            使用其他手机号码
+        </view>
+
+        <view class="button">
+            <button size=‘mini> 取消</button> 
+            <button  type='primary'> 允许</button>
+        </view>
+    </view>
+
+
+</page-container>

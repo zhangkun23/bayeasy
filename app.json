@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/login/login/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
@@ -8,6 +9,9 @@
     "pages/personal/personalIndex/index",
     "pages/tax/taxIndex/index",
     "custom-tab-bar/index"
+
+
+   
   ],
   "tabBar": {
     "custom": true,

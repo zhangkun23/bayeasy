@@ -5,18 +5,33 @@
   <cover-image class="banner" src="{{banner}}" />
 </view>
 
+<!-- 待办 -->
+<view class="daiban" wx:if="{{daibanShow}}">
+  <view class="daibanLeft">
+    <cover-image class="daibanImg"  src="{{daiban}}"/>
+    <view class="daibanText">
+      <cover-view class="infoTitle">当前您有</cover-view>
+      <cover-view class="daibanTextCounter">{{dbNum}}</cover-view>
+      <cover-view class="infoTitle">项待办事项</cover-view>
+    </view>
+  </view>
+  <view class="daibanButton" bindtap="handelClickQqr">
+    去确认
+  </view>
+</view>
+
 <view class="count">
   <view class="countTop">
-    <view class="countTop_left">
+    <view class="countTop_left" bindtap="handelClickLogin">
       <cover-image class="zcjc" src="{{zcjc}}" />
-      <cover-view class="countCenterTitle">注册进程</cover-view>
+      <cover-view class="countCenterTitle" >注册进程</cover-view>
     </view>
     <view class="countTop_right">
-      <view class="top">
+      <view class="top" bindtap="handelClickSrzdfp">
         <cover-image class="srzdfp" src="{{srzdfp}}" />
-        <cover-view class="title">注册进程</cover-view>
+        <cover-view class="title">收入账单发票</cover-view>
       </view>
-      <view class="bottom">
+      <view class="bottom" bindtap="handelClickZcjc">
         <cover-image class="cbfy" src="{{cbfy}}" />
         <cover-view class="title">注册进程</cover-view>
       </view>
@@ -24,19 +39,19 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
-    <view class="countCenter">
+    <view class="countCenter" bindtap="handelClickNssb">
       <cover-view class="countCenterTitle">纳税申报</cover-view>
       <cover-image class="nssb" src="{{nssb}}" />
     </view>
     <view class="countBottom">
-      <view class="countBottom_info countLeft">
+      <view class="countBottom_info countLeft" bindtap="handelClickFwjs">
         <view class="bottom_left_title">
           <cover-view class="bottom_left_title_top">服务介绍</cover-view>
           <cover-view class="bottom_left_title_bottom">我们为您提供专业的服务</cover-view>
         </view>
-        <cover-image class="bottom_right" src="{{faq}}" />
+        <cover-image class="bottom_right" src="{{fwjs}}" />
       </view>
-      <view class="countBottom_info countRight">
+      <view class="countBottom_info countRight" bindtap="handelClickCjwd">
         <view class="bottom_left_title">
           <cover-view class="bottom_left_title_top">常见问答</cover-view>
           <cover-view class="bottom_left_title_bottom">您想问的这里有答案</cover-view>
