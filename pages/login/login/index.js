@@ -11,13 +11,18 @@ Page({
         loginUnSelect: tempPath + 'login/loginUnSelect.png',
         logo: tempPath + 'public/logo.png',
         show:false,
+        serve:tempPath + 'public/serve.png',
     },
 
     handelClick(){
-        console.log('登录')
         this.setData({
             show: true,
           })
+    },
+    handeClickOpenServe(){
+        wx.makePhoneCall({
+            phoneNumber: getApp().globalData.phoneNumber
+        })
     },
 
     /**

@@ -19,5 +19,6 @@ App({
     imgPath:'https://image.bayeasy.cn/images-data/',
     userInfo: null,
     token:'',
+    phoneNumber:'400-090-6628', //客服电话
   }
 })
