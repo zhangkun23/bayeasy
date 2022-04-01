@@ -7,7 +7,7 @@
   padding: 32rpx;
 }
 
-.information__form {
+.information__form{
   display: flex;
   justify-content: space-between;
 }

@@ -16,13 +16,13 @@
         </view>
         <view class="idcard__tips">拍摄身份证反面</view>
       </view>
-      <view>
-        <input type="text" name="" id=""/>
-      </view>
-      
-
     </view>
-
+    <view class="information__form">
+      <view>
+        <text>姓名：</text>
+        <input type="text" name="" id="" />
+      </view>
+    </view>
 
   </view>
 </view>
