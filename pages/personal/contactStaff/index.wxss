@@ -1,0 +1,61 @@
+/* pages/personal/contactStaff/index.wxss */
+.bgColog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url('https://image.bayeasy.cn/images-data/public/backGround.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.staff-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 17.4%;
+  align-items: center;
+  text-align: center;
+}
+
+.staff-info-container .qrcode-container {
+  display: flex;
+  position: relative;
+  background: rgba(194, 223, 255, 0.3);
+  border-radius: 16rpx;
+  width: 400rpx;
+  /* height: 400rpx; */
+}
+
+
+.staff-info-container .qrcode-container .qrcode {
+  margin: 18rpx;
+  width: 362rpx;
+}
+
+.staff-info-container .content {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #283E56;
+  line-height: 53rpx;
+}
+
+.staff-info-container .tel-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 199rpx;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: #283E56;
+  line-height: 63rpx;
+}
+
+.staff-info-container .tel-container>.icon {
+  width: 45rpx;
+  margin-right: 8rpx;
+}
