@@ -1,10 +1,12 @@
 <!--pages/personal/components/gates-btn/gates-btn.wxml-->
 <view class="wrapper">
-  <view class="container" >
-    <slot></slot>
+  <!-- <view class="container"> -->
+    <view wx:if="{{isExtraInfo}}" class="extra-info" style="top: {{extraInfo.top}}; left: {{extraInfo.left}};">
+      <slot></slot>
+    </view>
     <view class="icon">
       <image src="{{iconUrl}}" mode="widthFix"></image>
     </view>
     <view class="title" style="font-size: {{fontSize}};">{{title}}</view>
-  </view>
+  <!-- </view> -->
 </view>

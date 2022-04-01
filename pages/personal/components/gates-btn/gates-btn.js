@@ -4,10 +4,8 @@ Component({
     styleIsolation: 'isolated'
   },
   lifetimes: {
-    show: function() {
-      console.debug("btn showed, properties" ,this.properties)
-    },
-    attached: function() {
+    attached: function () {
+      console.debug("btn showed, properties", this.properties)
     }
 
   },
@@ -28,6 +26,14 @@ Component({
     fontSize: {
       type: String,
       value: '24rpx'
+    },
+    isExtraInfo: {
+      type: Boolean,
+      value: false
+    },
+    extraInfo: {
+      type: Object,
+      value: {}
     }
   },
 

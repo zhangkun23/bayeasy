@@ -3,8 +3,8 @@ Component({
       selected: 0,
       color: "#ABBED2",
       selectedColor: "#1D83F0",
-      footerGg: getApp().globalData.imgPath +'footer/footerBg.png',
-      indexBg:getApp().globalData.imgPath +'footer/footer_index.png',
+      footerBg: getApp().globalData.imgPath +'footer/footerBg.png',
+      footerIndex:getApp().globalData.imgPath +'footer/footer_index1.png',
       list: [{
         pagePath: "/pages/enterprise/enterpriseIndex/index",
         text: "企业信息",

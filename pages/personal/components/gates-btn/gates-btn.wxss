@@ -5,13 +5,19 @@
   height: 100%;
   width: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
   /* position: relative; */
   color: white;
-  margin:auto;
+  margin: auto;
   /* background: -webkit-linear-gradient(left, #4D82EC 0%,#6EB8EF 100%); */
 }
-.icon{
+
+.extra-info {
+  position: absolute;
+}
+
+.icon {
   /* display: inline; */
   text-align: center;
   align-items: center;
