@@ -1,0 +1,13 @@
+<!--pages/login/loginPrimary/index.wxml-->
+
+
+
+
+<view class="bgColog">
+
+
+
+
+    <agreement />
+    <service class="servicePosition"></service>
+</view>

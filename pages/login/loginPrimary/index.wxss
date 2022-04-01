@@ -1,0 +1,7 @@
+/* pages/login/loginPrimary/index.wxss */
+.servicePosition{
+    position: absolute;
+    bottom: 78rpx;
+    left: 50%;
+    margin-left: -125rpx;
+}

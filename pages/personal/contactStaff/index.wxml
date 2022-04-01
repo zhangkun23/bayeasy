@@ -1,0 +1,15 @@
+<!--pages/personal/contactStaff/index.wxml-->
+<view class="bgColog"></view>
+<mp-navigation-bar title="联系运营专员"></mp-navigation-bar>
+<view class="staff-info-container">
+  <view class="qrcode-container">
+    <image class="qrcode" data-src="{{qrcode_url}}" src="{{qrcode_url}}" mode="widthFix" show-menu-by-longpress="{{true}}" bindtap="previewQR"></image>
+  </view>
+  <view class="content">
+    扫码关注企业微信联系您的运营专员
+  </view>
+  <view class="tel-container" bindtap="telContact">
+    <image class="icon" src="{{tel_icon}}" mode="widthFix"></image>
+    <text> {{tel_num}}</text>
+  </view>
+</view>

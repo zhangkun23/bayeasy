@@ -1,0 +1,42 @@
+/* pages/personal/aboutBayeasy/index.wxss */
+
+.entrance-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 12.8%;
+  margin: 0 32rpx;
+}
+
+.entrance-container .entrance {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1px solid #E6EEF7;
+  /* margin: 33rpx 0 31rpx 0; */
+}
+
+.entrance-container .content {
+  font-size: 28rpx;
+  font-weight: 400;
+  font-weight: 400;
+  color: #283E56;
+  margin: 28rpx 0 28rpx 24rpx;
+}
+
+
+.entrance-container .content {
+  margin: 28rpx 0 28rpx 24rpx;
+}
+
+.entrance-container .arrow {
+  position: relative;
+  flex: 1;
+  text-align: right;
+}
+
+
+.entrance-container .arrow .image {
+  float: right;
+  width: 48rpx;
+}

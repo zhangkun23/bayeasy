@@ -38,7 +38,7 @@ page {
   display: flex;
   height: 68rpx;
   align-items: center;
-  margin-bottom: 16rpx;
+  /* margin-bottom: 16rpx; */
 }
 
 .user-name-container .todo-btn {
@@ -50,8 +50,15 @@ page {
   font-size: bolder;
 
 }
+.user-info .user-need-login {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  font-weight: lighter;
+}
 
 .user-info .user-tel {
+  margin-top: 16rpx;
+  font-size: 28rpx;
   font-weight: lighter;
 }
 
@@ -87,7 +94,7 @@ page {
   box-shadow: 0px 18px 31px 0px rgba(110, 135, 162, 0.14);
 }
 
-.fn-gate-container .btn-container .btn {
+.fn-gate-container .btn-container .gate-btn {
   text-align: center;
   align-items: center;
   margin: 32rpx 0 31rpx 0;

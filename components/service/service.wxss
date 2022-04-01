@@ -1,0 +1,15 @@
+
+.openServe{
+    width: 250rpx;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.serveImg{
+    height: 40rpx;
+    width: 40rpx;
+}
+.serveText{
+    padding-left: 6rpx;
+}
