@@ -1,52 +1,108 @@
-// index.js
-// 获取应用实例
-
+// pages/publicPage/test/test.js
 const {
   login,
-  logout
+  todolist
 } = require('../../http/api/api.js')
 const tempPath = getApp().globalData.imgPath;
-Component({
-  data: {
-    imgpath:tempPath + 'footer/null.png',
-    banner: tempPath + 'index/banner.png',
-    logo_byz: tempPath + 'public/logo_byz.png',
-    cbfy: tempPath + 'index/cbfy.png',
-    faq: tempPath + 'index/faq.png',
-    nssb: tempPath + 'index/nssb.png',
-    srzdfp: tempPath + 'index/srzdfp.png',
-    zcjc: tempPath + 'index/zcjc.png',
-    fwjs: tempPath + 'index/fwjs.png',
-    daiban: tempPath +'index/daiban.png',
-    dbNum:'11', //待办数量
-    daibanShow:true,
-  },
+Page({
 
-  methods: {
-    handelClick() {
-      wx.navigateTo({
-        url: '../login/authentication/index',
-      })
+    /**
+     * 页面的初始数据
+     */
+    data: {
+      imgpath:tempPath + 'footer/null.png',
+      banner: tempPath + 'index/banner.png',
+      logo_byz: tempPath + 'public/logo_byz.png',
+      cbfy: tempPath + 'index/cbfy.png',
+      faq: tempPath + 'index/faq.png',
+      nssb: tempPath + 'index/nssb.png',
+      srzdfp: tempPath + 'index/srzdfp.png',
+      zcjc: tempPath + 'index/zcjc.png',
+      fwjs: tempPath + 'index/fwjs.png',
+      daiban: tempPath +'index/daiban.png',
+      dbNum:'0', //待办数量
+      daibanShow:true
     },
-    handelClickLogin(){
-      wx.navigateTo({
-        url: '../login/login/index',
-      })
+      handelClick() {
+        wx.navigateTo({
+          url: '../login/authentication/index',
+        })
+      },
+      handelClickLogin(){
+        wx.navigateTo({
+          url: '../login/login/index',
+        })
+      },
+      // 待办跳转
+      handelClickQqr(){
+          console.log('跳转待办')
+      },
+      // 本地调试 默认登录
+      login(){
+        let param = {
+          mobile:'18513136572',
+          captcha:'111111'
+        }
+        login(param).then( res=> {
+          if(res.ret){
+            wx.setStorageSync('token', res.data.access_token)
+            getApp().globalData.mobile =  res.data.mobile;
+          }
+        })
+      },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+
     },
-    handelClickQqr(){
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+      this.login();
+    },
+
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
+
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+
+    },
+
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
 
     }
-  },
-
-  pageLifetimes: {
-    show() {
-      if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 2
-        })
-      }
-    },
-
-  },
 })

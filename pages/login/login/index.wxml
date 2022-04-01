@@ -7,21 +7,20 @@
         </view>
         <text class="logoTitle">企业财税服务商</text>
     </view>
-    <view range="{{['1','2','3']}}" class="loginButton" bindtap="handelClick">
+    <view  class="loginButton" bindtap="handelClick">
         登录
     </view>
 
-    <view class="loginText">
+    <!-- <view class="loginText">
         <image class="loginText__img" src="{{loginSelect}}" />
         <text>登录即表示您已经同意</text>
         <text class="loginTextXy">《服务平台协议》、</text>
         <text class="loginTextXy">《隐私政策协议》</text>
-    </view>
+    </view> -->
 
-    <view class="openServe" bindtap="handeClickOpenServe">
-        <image class="serveImg" src="{{logo}}"/> 
-        <text class="serveText"> 联系客服 </text>
-    </view>
+    <agreement />
+
+    <service class="servicePosition"></service>
 </view>
 <page-container
 	show="{{show}}"
@@ -53,7 +52,7 @@
         </view>
         <view class="button">
             <button class="btn"> 取消</button> 
-            <button  type='primary'> 允许</button>
+            <button  type='primary' bindtap="handelClickLogin"> 允许</button>
         </view>
     </view>
 </page-container>

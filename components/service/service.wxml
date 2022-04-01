@@ -1,0 +1,6 @@
+
+<!-- 联系客服 -->
+<view class="openServe" bindtap="handeClickOpenServe">
+    <image class="serveImg" src="{{logo}}"/> 
+    <text class="serveText"> 联系客服</text>
+</view>
