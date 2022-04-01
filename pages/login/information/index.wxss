@@ -33,9 +33,13 @@
   border-bottom-right-radius: 10rpx;
   margin-top: -15rpx;
 }
+.idcard__upload{
+  background-color: #FFA42E;
+}
 
 .information__form-item {
   display: flex;
+  justify-content: space-around;
   width: 686rpx;
   height: 88rpx;
   line-height: 88rpx;
@@ -48,11 +52,17 @@
 .information__form-item text {
   font-size: 28rpx;
   color: #48617C;
-  margin-right: 40rpx;
+  /* margin-right: 40rpx; */
 }
 
 .information__form-item input {
   margin-top: 23rpx;
+  font-size: 28rpx;
+}
+.information__form-item icon {
+  margin-top: 23rpx;
+  /* display: none; */
+  /* visibility: hidden; */
 }
 
 input::placeholder {
@@ -87,4 +97,10 @@ input::placeholder {
   border-radius: 44px;
   text-align: center;
   margin: 80rpx auto 0;
+}
+
+.placeholderStyle{
+  color: #ABBED2;
+  font-size: 28rpx;
+
 }

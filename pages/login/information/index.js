@@ -1,11 +1,45 @@
 // pages/login/information/index.js
-Page({
+Component({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isShowModal: false,
+    form: {
+      usernam: "哈哈哈",
+      telephone: "19067896789",
+      idcard: "234567199001010987",
+    },
+    showIdcardFront: true,
+    showIdcardResever: true,
+    showClose: false, 
+    buttons:[
+      {text:'我知道了'}
+    ],
+    front: "拍摄身份证正面",
+    resever: "拍摄身份证反面",
+  },
 
+  methods: {
+    confirmSubmit() {
+      this.setData({
+        isShowModal:true
+      })
+    },
+    uploadIdcard(e) {
+      const params = e.currentTarget.dataset;
+      console.log("ddd")
+    },
+    tapDialogButton(e) {
+      console.log(e.detail)
+      this.setData({
+        isShowModal: false
+      })
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
   },
 
   /**
