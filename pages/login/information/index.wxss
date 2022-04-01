@@ -7,7 +7,7 @@
   padding: 32rpx;
 }
 
-.information__form{
+.information__idcard {
   display: flex;
   justify-content: space-between;
 }
@@ -19,7 +19,7 @@
 
 .information__img-group image {
   width: 323rpx;
-  height: 260rpx;
+  height: 200rpx;
 }
 
 .idcard__tips {
@@ -32,4 +32,59 @@
   border-bottom-left-radius: 10rpx;
   border-bottom-right-radius: 10rpx;
   margin-top: -15rpx;
+}
+
+.information__form-item {
+  display: flex;
+  width: 686rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 28rpx;
+  background: #fff;
+  margin-top: 32rpx;
+  box-shadow: 0px 5px 30px 0px rgba(201, 209, 228, 0.38);
+}
+
+.information__form-item text {
+  font-size: 28rpx;
+  color: #48617C;
+  margin-right: 40rpx;
+}
+
+.information__form-item input {
+  margin-top: 23rpx;
+}
+
+input::placeholder {
+  color: green;
+}
+
+.mg-lt-48 {
+  margin-left: 48rpx;
+}
+
+.mg-lt-76 {
+  margin-left: 76rpx;
+}
+
+.mg-lt-101 {
+  margin-left: 101rpx;
+}
+
+input::placeholder {
+  color: #1D83F0;
+}
+
+.information__confirm {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #ffffff;
+  font-size: 34rpx;
+  background: #1D83F0;
+  font-weight: 400;
+  box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
+  border-radius: 44px;
+  text-align: center;
+  margin: 80rpx auto 0;
 }

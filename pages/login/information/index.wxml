@@ -2,7 +2,7 @@
 <view class="information">
   <view class="information__back">
     <mp-navigation-bar title="个人信息" bindback="backIndex"></mp-navigation-bar>
-    <view class="information__form">
+    <view class="information__idcard">
 
       <view class="information__img-group">
         <view>
@@ -18,11 +18,29 @@
       </view>
     </view>
     <view class="information__form">
-      <view>
-        <text>姓名：</text>
-        <input type="text" name="" id="" />
+      <view class="information__form-item">
+        <text class="mg-lt-101">姓名</text>
+        <input type="text" placeholder="请输入姓名" name="" id="" />
+        <icon type="close"></icon>
+      </view>
+      <view class="information__form-item">
+        <text class="mg-lt-76">手机号</text>
+        <input type="text" placeholder="请输入手机号" name="" id="" />
+        <icon type="close"></icon>
+      </view>
+      <view class="information__form-item">
+        <text class="mg-lt-48">身份证号</text>
+        <input type="text" placeholder="请输入身份证号" name="" id="" />
+        <icon type="close"></icon>
+      </view>
+      <view class="information__form-item">
+        <text class="mg-lt-48">有效期至</text>
+        <input type="text" placeholder="请输入身份证有效期" name="" id="" />
+        <icon type="close"></icon>
       </view>
     </view>
-
+    <view class="information__confirm">
+      <view>确认提交</view>
+    </view>
   </view>
 </view>
