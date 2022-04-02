@@ -14,7 +14,8 @@ Component({
      */
     data: {
         loginSelect: tempPath + 'login/loginSelect.png',
-        loginUnSelect: tempPath + 'login/loginUnSelect.png'
+        loginUnSelect: tempPath + 'login/loginUnSelect.png',
+        status:false,
     },
 
     /**
@@ -24,7 +25,23 @@ Component({
         handelClick(event){
             const type = event.currentTarget.dataset.type;
             utils.openPdf(type)
+        },
+        handelClickImg(){
+            if(this.data.status){
+                this.setData({
+                    status:false
+                })
+            }else{
+                this.setData({
+                    status:true
+                })
+            }
+            this.collectClick();
+        },
+        collectClick() {
+            console.log('111')
+            this.triggerEvent("collectFun", this.data.status)
         }
 
-    }
+    },
 })

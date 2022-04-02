@@ -20,6 +20,29 @@ Page({
             show: true,
         })
     },
+    getPhoneNumber (e) {
+        console.log(e.detail)
+    },
+
+    // 
+    getUserProfile(){
+        console.log(111)
+        wx.getUserProfile({
+            desc: "获取你的昵称、头像、地区及性别",
+            success: res => {
+              console.log(res)
+              let wxUserInfo = res.userInfo;
+              if(res.errMsg == 'getUserProfile:ok'){
+                getApp().globalData.logoImg = wxUserInfo.avatarUrl
+              }
+            },
+            fail: res => {
+                 //拒绝授权
+              return;
+            }
+          })
+    },
+      
  
     handelClickLogin(){
         utils.navigateTo('../loginPrimary/index')

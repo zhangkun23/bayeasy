@@ -12,7 +12,7 @@ Component({
      * 组件的初始数据
      */
     data: {
-        logo: getApp().globalData.imgPath + 'public/logo.png',
+        logo: getApp().globalData.imgPath + 'public/service.png',
     },
 
     /**
