@@ -10,9 +10,9 @@
     <view  class="loginButton" bindtap="handelClick">
         登录
     </view>
-    <agreement />
+    <agreement bind:collectFun="collectFun" />
     <service class="servicePosition"></service>
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">123123123123123123</button>
+    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">123123123123123123</button> -->
     <button bindtap="getUserProfile">用户信息授权</button>
 </view>
 <page-container

@@ -13,12 +13,14 @@ Page({
         logo: tempPath + 'public/logo.png',
         show:false,
         serve:tempPath + 'public/serve.png',
+        agreementStatus:false
     },
 
     handelClick(){
-        this.setData({
-            show: true,
-        })
+        console.log(this.data.agreementStatus)
+        // this.setData({
+        //     show: true,
+        // })
     },
     getPhoneNumber (e) {
         console.log(e.detail)
@@ -42,7 +44,12 @@ Page({
             }
           })
     },
-      
+    // 是否勾选协议
+    collectFun(value){
+        this.setData({
+            agreementStatus:value.detail
+        })
+    },
  
     handelClickLogin(){
         utils.navigateTo('../loginPrimary/index')
@@ -66,7 +73,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        console.log(111)
+        this.getUserProfile();
     },
 
     /**

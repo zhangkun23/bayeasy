@@ -39,9 +39,9 @@ Component({
             this.collectClick();
         },
         collectClick() {
-            console.log('111')
             this.triggerEvent("collectFun", this.data.status)
         }
+        
 
     },
 })
