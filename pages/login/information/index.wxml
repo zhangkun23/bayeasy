@@ -12,7 +12,10 @@
           <view class="idcard__tips">{{front}}</view>
         </block>
         <block wx:else>
-        <view class="idcard__tips idcard__upload">上传中</view>
+          <view class="idcard__tips idcard__upload">
+            <text>loading</text>
+            上传中
+          </view>
         </block>
       </view>
       <view class="information__img-group" data-resever="resever" bindtap="uploadIdcard">
@@ -23,31 +26,34 @@
           <view class="idcard__tips">{{resever}}</view>
         </block>
         <block wx:else>
-        <view class="idcard__tips idcard__upload">上传中</view>
+          <view class="idcard__tips idcard__upload">
+            <text>loading</text>
+            上传中
+          </view>
         </block>
       </view>
     </view>
     <view class="information__form">
       <view class="information__form-item">
         <text class="mg-lt-101">姓名</text>
-        <input type="text" placeholder="请输入姓名" placeholder-class="placeholderStyle" value="{{usernam}}" />
+        <input type="text" placeholder="请输入姓名" placeholder-class="placeholderStyle" value="{{form.username}}" />
         <!-- <block wx:if="{{showClose}}"> -->
         <icon type="clear" size="15"></icon>
         <!-- </block> -->
       </view>
       <view class="information__form-item">
         <text class="mg-lt-76">手机号</text>
-        <input type="text" placeholder="请输入手机号" placeholder-class="placeholderStyle" value="{{telephone}}" />
+        <input type="text" placeholder="请输入手机号" placeholder-class="placeholderStyle" value="{{form.telephone}}" />
         <icon type="clear" size="15"></icon>
       </view>
       <view class="information__form-item">
         <text class="mg-lt-48">身份证号</text>
-        <input type="idcard" placeholder="请输入身份证号" placeholder-class="placeholderStyle" value="{{idcard}}" />
+        <input type="idcard" placeholder="请输入身份证号" placeholder-class="placeholderStyle" value="{{form.idcard}}" />
         <icon type="clear" size="15"></icon>
       </view>
       <view class="information__form-item">
         <text class="mg-lt-48">有效期至</text>
-        <input type="text" placeholder="请输入身份证有效期" placeholder-class="placeholderStyle" name="" id="" />
+        <input type="text" placeholder="请输入身份证有效期" placeholder-class="placeholderStyle" value="{{form.validUntil}}"/>
         <icon type="clear" size="15"></icon>
       </view>
     </view>
@@ -57,11 +63,6 @@
   </view>
 
   <block wx:if="{{isShowModal}}">
-    <mp-dialog 
-    show="isShowModal" 
-    buttons="{{buttons}}" 
-    bindbuttontap="tapDialogButton"
-    title="您的个人信息已经完善贝易资核实完成后将与您联系" 
-    ></mp-dialog>
+    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您的个人信息已经完善贝易资核实完成后将与您联系"></mp-dialog>
   </block>
 </view>

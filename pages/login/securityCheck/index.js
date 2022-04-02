@@ -10,7 +10,8 @@ Component({
     isShowModal: false,
     buttons: [{
       text: '我知道了'
-    }]
+    }],
+    securityCheckText: false
   },
   methods: {
     doConfirm() {
@@ -22,6 +23,9 @@ Component({
       this.setData({
         isShowModal: false
       })
+    },
+    contactCustomerService() {
+      console.log(213)
     }
   },
 
