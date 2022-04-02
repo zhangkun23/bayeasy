@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    count: 3,
+    count:3,
     empty_bg_url: 'https://image.bayeasy.cn/images-data/public/emptyBackGround.png',
     config: {
       canvasSize: {
@@ -106,6 +106,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    console.debug('onPullDownRefresh')
+    this.setData({count:0})
+    wx.stopPullDownRefresh();
 
   },
 
