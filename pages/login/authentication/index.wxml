@@ -15,6 +15,7 @@
       <view class="authentication__personalInformation" bindtap="handelClick">
         <view class="authentication__personalInformation-btn">完善个人信息</view>
       </view>
+      <view class="authentication__personalInformation-btn" bindtap="handelClick1">身份验证</view>
     </view>
   </view>
 </view>

@@ -1,4 +1,7 @@
 // pages/login/information/index.js
+const {
+  IdCardOCR
+} = require('../../../http/api/api');
 Component({
 
   /**
@@ -7,16 +10,17 @@ Component({
   data: {
     isShowModal: false,
     form: {
-      usernam: "哈哈哈",
-      telephone: "19067896789",
-      idcard: "234567199001010987",
+      username: "",
+      telephone: "",
+      idcard: "",
+      validUntil: ''
     },
     showIdcardFront: true,
     showIdcardResever: true,
-    showClose: false, 
-    buttons:[
-      {text:'我知道了'}
-    ],
+    showClose: false,
+    buttons: [{
+      text: '我知道了'
+    }],
     front: "拍摄身份证正面",
     resever: "拍摄身份证反面",
   },
@@ -24,21 +28,59 @@ Component({
   methods: {
     confirmSubmit() {
       this.setData({
-        isShowModal:true
+        isShowModal: true
       })
     },
     uploadIdcard(e) {
       const params = e.currentTarget.dataset;
-      console.log("ddd")
+      console.log(params)
+      let that = this;
+      wx.showActionSheet({
+        itemList: ["从相册中选择", "拍照"],
+        success: function (e) {
+          console.log(e)
+          //album:相册 返回0  //camera拍照   返回1  
+          e.cancel || (0 == e.tapIndex ? that.chooseWxImageShop("album") : 1 == e.tapIndex && that.chooseWxImageShop("camera"));
+        },
+        fail: function (res) {
+          console.log(res.errMsg)
+        }
+      });
+    },
+    chooseWxImageShop: function (a) {
+      console.log(a)
+      var e = this;
+      console.log(a)
+      wx.chooseMedia({
+        count: 1,
+        mediaType: ['image'],
+        sourceType: [a],
+        success: function (res) {
+          console.log(res.tempFiles)
+          let ImgArr = res.tempFiles;
+          ImgArr.forEach(item => {
+            if (item.size > 2097152) {
+              wx.showModal({
+                title: "提示",
+                content: "选择的图片过大，请上传不超过2M的图片",
+                showCancel: !1,
+                success: function (a) {
+                  a.confirm;
+                }
+              })
+            }
+          })
+        }
+      })
     },
     tapDialogButton(e) {
       console.log(e.detail)
       this.setData({
         isShowModal: false
       })
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
+      // wx.switchTab({
+      //   url: '/pages/index/index',
+      // })
     }
   },
 
