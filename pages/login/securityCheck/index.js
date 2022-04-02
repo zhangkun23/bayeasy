@@ -1,27 +1,26 @@
-// pages/login/authentication/index.js
+// pages/login/securityCheck/index.js
 Component({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    idDard: '362098198009229862',
+    disabled: false,
+    isShowModal: false,
+    buttons: [{
+      text: '我知道了'
+    }]
   },
-
-  methods:{
-    handelClick() {
-      wx.navigateTo({
-        url: '../information/index',
+  methods: {
+    doConfirm() {
+      this.setData({
+        isShowModal: true
       })
     },
-    backIndex(){
-      wx.navigateTo({
-        url: '../../index/index',
-      })
-    },
-    handelClick1() {
-      wx.navigateTo({
-        url: '../securityCheck/index',
+    tapDialogButton() {
+      this.setData({
+        isShowModal: false
       })
     }
   },

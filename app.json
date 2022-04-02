@@ -3,13 +3,14 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
+    "pages/login/login/index",
     "pages/login/authentication/index",
     "pages/login/information/index",
+    "pages/login/securityCheck/index",
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
     "pages/tax/taxIndex/index",
-    "custom-tab-bar/index",
-    "pages/login/login/index"
+    "custom-tab-bar/index"
   ],
   "tabBar": {
     "custom": true,

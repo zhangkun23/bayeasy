@@ -1,29 +1,11 @@
-// pages/login/authentication/index.js
-Component({
+// pages/login/topTips/index.js
+Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
-  },
 
-  methods:{
-    handelClick() {
-      wx.navigateTo({
-        url: '../information/index',
-      })
-    },
-    backIndex(){
-      wx.navigateTo({
-        url: '../../index/index',
-      })
-    },
-    handelClick1() {
-      wx.navigateTo({
-        url: '../securityCheck/index',
-      })
-    }
   },
 
   /**
