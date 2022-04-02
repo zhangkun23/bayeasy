@@ -22,8 +22,8 @@
       </view>
     </view>
     <view class="close-btn" bindtap="closeModal">
-    <image src="/image/modal/close.png" mode="widthFix"></image>
-  </view>
+      <image class="icon" src="{{closeBtn}}" mode="widthFix"></image>
+    </view>
   </view>
 
 </view>

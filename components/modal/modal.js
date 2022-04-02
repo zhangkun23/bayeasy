@@ -25,7 +25,9 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: {},
+  data: {
+    closeBtn: "https://image.bayeasy.cn/images-data/public/close-icon.png"
+  },
 
   /**
    * 组件的方法列表
@@ -33,7 +35,9 @@ Component({
   methods: {
     closeModal() {
       console.debug("modal close btn tap");
-      this.setData({ showModal: false })
+      this.setData({
+        showModal: false
+      })
       this.triggerEvent('closeBtn')
     }
   }

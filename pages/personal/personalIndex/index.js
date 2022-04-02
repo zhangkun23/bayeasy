@@ -31,7 +31,7 @@ Component({
 
   },
   data: {
-    login_status: 0 , // app.globalData.???
+    login_status: 0, // app.globalData.???
     isFileComplete: true,
     hasUserInfo: false,
     userInfo: {},
@@ -56,7 +56,7 @@ Component({
       }
     ],
     gates_info: [{
-      url: btns_url.personal,
+      icon: btns_url.personal,
       text: '个人中心',
       width: '120rpx',
       isExtraInfo: true,
@@ -66,19 +66,20 @@ Component({
         type: 0,
       }
     }, {
-      url: btns_url.incomeList,
+      icon: btns_url.incomeList,
       text: '收入账单',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null,
     }, {
-      url: btns_url.costBill,
+      icon: btns_url.costBill,
       text: '成本发票',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null
     }, {
-      url: btns_url.todoList,
+      url: '../../todo/todo',
+      icon: btns_url.todoList,
       text: '待办事项',
       width: '120rpx',
       isExtraInfo: true,
@@ -103,6 +104,13 @@ Component({
         }
       })
 
+    },
+    goGate(e) {
+      const _url = e.currentTarget.dataset.url
+      console.debug("go gate", _url)
+      wx.navigateTo({
+        url: _url 
+      })
     },
     goLogin(e) {
       console.debug("go login")
@@ -131,7 +139,9 @@ Component({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
+    },
+    getPhoneNumber(e) {
+      console.log(e.detail.code)
     }
   }
-
 })

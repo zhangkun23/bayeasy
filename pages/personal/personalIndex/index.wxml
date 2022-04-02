@@ -45,7 +45,7 @@
   <view class="fn-gate-container">
     <view class="btn-container">
       <view wx:for="{{gates_info}}" class="gate-btn" wx:for-index="i" wx:key="i">
-        <entrance-btn iconUrl="{{item.url}}" title="{{item.text}}" gateWidth="{{item.width}}" isExtraInfo="{{item.isExtraInfo}}" extraInfo="{{item.extraInfo}}">
+        <entrance-btn bindtap="goGate" data-url="{{item.url}}" iconUrl="{{item.icon}}" title="{{item.text}}" gateWidth="{{item.width}}" isExtraInfo="{{item.isExtraInfo}}" extraInfo="{{item.extraInfo}}">
           <view wx:if="{{item.extraInfo.type === 0}}">
             <login-btn text="去确认" btnBgColor="#EE7D00" btnWidth="64rpx" btnHeight="30rpx" fontSize="16rpx" borderRadius="15rpx"></login-btn>
           </view>
@@ -59,6 +59,9 @@
       <!-- wx:for 遍历-->
     </view>
   </view>
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="width: 100rpx; height: 300rpx;"></button>
+  ====
+  <button bindtap="getUserProfile" style="width: 100rpx; height: 300rpx;"></button> -->
   <view class="entrances-container">
     <view class="entrances">
       <view wx:for="{{entrances_info}}" class="entrance" wx:for-index="i" wx:key="i">
