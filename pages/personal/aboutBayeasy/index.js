@@ -1,5 +1,6 @@
 // pages/personal/aboutBayeasy/index.js
 const {icons_url} = require('../config/config')
+const utils = require('../../../utils/util')
 Page({
 
   /**
@@ -21,9 +22,13 @@ Page({
         title: '营业执照',
         url: '',
       },
-    ]
+    ],
+     pdf_list: {
+       platform:'service_agreement',
+      privact: 'privacy_policy',
+      intro: 'manual'
+     }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

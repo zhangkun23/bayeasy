@@ -58,7 +58,7 @@
   margin:auto;
 }
 .modal-area {
-  margin: 0 55rpx 0 55rpx;
+  margin: 0 55rpx 0rpx 55rpx;
   border-radius: 16rpx;
 }
 
@@ -66,4 +66,9 @@
   position: relative;
   top: -20rpx;
   text-align: center;
+  /* width: 60rpx; */
+}
+
+.modal-area-container .close-btn .icon{
+  width: 60rpx;
 }
