@@ -1,5 +1,10 @@
 // pages/personal/personalIndex/index.js
+const {
+  icons_url,
+  btns_url
+} = require('../config/config')
 
+const app = getApp()
 Component({
   pageLifetimes: {
     show() {
@@ -22,32 +27,36 @@ Component({
       console.debug("personal index hide")
     },
   },
-  properties: {},
+  properties: {
+
+  },
   data: {
-    showModal: false,
-    btn_text: '退出登录',
-    nbTitle: '个人中心',
-    user_name: '*鲸鱼',
-    user_tel: '134***8052',
+    login_status: 0 , // app.globalData.???
+    isFileComplete: true,
     hasUserInfo: false,
     userInfo: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    right_arrow: 'https://image.bayeasy.cn/images-data/personal/btns/right-arrow.png',
+    showModal: false,
+    btn_text: '退出登录',
+    nbTitle: '个人中心',
+    user_name: '', // name 和 tel 都应该存储在全局的info里
+    user_tel: '',
+    right_arrow: icons_url.right_arrow,
     entrances_info: [{
-        icon: 'https://image.bayeasy.cn/images-data/personal/icons/contact-service.png',
-        url: '',
+        icon: icons_url.contact_operate,
+        url: '/pages/personal/contactStaff/index',
         text: '联系运营专员'
       },
       {
-        icon: 'https://image.bayeasy.cn/images-data/personal/icons/about-bayeasy.png',
-        url: '',
+        icon: icons_url.about_bayeasy,
+        url: '/pages/personal/aboutBayeasy/index',
         text: '关于贝易资'
       }
     ],
     gates_info: [{
-      url: 'https://image.bayeasy.cn/images-data/personal/gates/person-info.png',
+      url: btns_url.personal,
       text: '个人中心',
       width: '120rpx',
       isExtraInfo: true,
@@ -57,19 +66,19 @@ Component({
         type: 0,
       }
     }, {
-      url: 'https://image.bayeasy.cn/images-data/personal/gates/my-sign.png',
+      url: btns_url.incomeList,
       text: '收入账单',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null,
     }, {
-      url: 'https://image.bayeasy.cn/images-data/personal/gates/check-ticket.png',
+      url: btns_url.costBill,
       text: '成本发票',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null
     }, {
-      url: 'https://image.bayeasy.cn/images-data/personal/gates/todo.png',
+      url: btns_url.todoList,
       text: '待办事项',
       width: '120rpx',
       isExtraInfo: true,
@@ -82,10 +91,23 @@ Component({
     }, ]
   },
   methods: {
-    login(e) {
-      console.debug("tap login")
-      this.setData({
-        showModal: true
+    goEntrance(e) {
+      console.debug("wx navi to ", e.currentTarget.dataset.url)
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url,
+        events: {},
+        success: function (res) {
+          res.eventChannel.emit('acceptDataFromOpenerPage', {
+            data: 'test'
+          })
+        }
+      })
+
+    },
+    goLogin(e) {
+      console.debug("go login")
+      wx.navigateTo({
+        url: '/pages/login/login/index',
       })
     },
     getUserProfile(e) {

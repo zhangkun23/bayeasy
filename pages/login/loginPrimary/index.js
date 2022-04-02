@@ -1,28 +1,12 @@
-// pages/login/login/index.js
+// pages/login/loginPrimary/index.js
 const tempPath = getApp().globalData.imgPath;
-const utils = require('../../../utils/util.js')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        logo_byz: tempPath + 'public/logo_byz.png',
-        loginSelect: tempPath + 'login/loginSelect.png',
-        loginUnSelect: tempPath + 'login/loginUnSelect.png',
-        logo: tempPath + 'public/logo.png',
-        show:false,
-        serve:tempPath + 'public/serve.png',
-    },
 
-    handelClick(){
-        this.setData({
-            show: true,
-        })
-    },
- 
-    handelClickLogin(){
-        utils.navigateTo('../loginPrimary/index')
     },
 
     /**
