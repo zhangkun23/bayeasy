@@ -9,6 +9,7 @@ const config = {
     incomeList:  'https://image.bayeasy.cn/images-data/personal/gates/my-sign.png',
     costBill:  'https://image.bayeasy.cn/images-data/personal/gates/check-ticket.png',
     todoList: 'https://image.bayeasy.cn/images-data/personal/gates/todo.png',
-  }
+  },
+  defaultAvatar: 'https://image.bayeasy.cn/images-data/personal/default-avatar.png'
 }
 module.exports = config

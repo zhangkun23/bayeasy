@@ -1,7 +1,8 @@
 // pages/personal/personalIndex/index.js
 const {
   icons_url,
-  btns_url
+  btns_url,
+  defaultAvatar
 } = require('../config/config')
 const {
   logout
@@ -36,20 +37,48 @@ Component({
           entrances_info: _entrances_info
         })
       }
-
-      const token = app.globalData.token // 可能从getStorage取
-      const userStatus = app.globalData.tokuserStatusen
+      // 决定个人中心调准
+      const token = wx.getStorageSync('token') || '' // 可能从getStorage取
+      const userStatus = app.globalData.userStatus
       if (token) {
+        const _gate_info = this.data.gates_info
         if (userStatus === 0) {
-          console.error("有token但是userstatus为0")
+          console.debug("有token但是userstatus为0 跳转完善个人信息")
+          _gate_info[0].url = '../../login/information/index?' + 'userType=' + userStatus
+          this.setData({
+            login_status: 0,
+            isCheckRequired: true,
+            isFileComplete: false,
+            gates_info: _gate_info,
+          })
         } else if (userStatus === 1) {
           this.setData({
+            login_status: 1,
             isCheckRequired: true,
-
+            gates_info: _gate_info
           })
         } else if (userStatus === 2) {
+          this.setData({
+            login_status: 2,
+            isCheckRequired: true,
+            gates_info: _gate_info
+          })
+        } else {
+          this.setData({
+            login_status: 0,
+            isCheckRequired: false
+          })
 
         }
+      }
+
+      // 决定待办事项
+      const todoCount = app.globalData.todolistNum
+      if (todoCount > 0 && token) {
+        this.setData({
+          isNewTodo: true,
+          todoCount: todoCount
+        })
       }
     },
     hide() {
@@ -64,6 +93,7 @@ Component({
     isFileComplete: true,
     isOperate: false,
     isNewTodo: false,
+    defaultAvatar: defaultAvatar,
     todoCount: 0,
     isCheckRequired: false,
     hasUserInfo: false,
@@ -91,6 +121,7 @@ Component({
       }
     ],
     gates_info: [{
+      id: 1,
       icon: btns_url.personal,
       text: '个人中心',
       width: '120rpx',
@@ -101,18 +132,21 @@ Component({
         type: 0,
       }
     }, {
+      id: 2,
       icon: btns_url.incomeList,
       text: '收入账单',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null,
     }, {
+      id: 3,
       icon: btns_url.costBill,
       text: '成本发票',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null
     }, {
+      id: 4,
       url: '../../todo/todo',
       icon: btns_url.todoList,
       text: '待办事项',

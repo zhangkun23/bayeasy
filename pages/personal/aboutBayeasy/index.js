@@ -1,6 +1,10 @@
 // pages/personal/aboutBayeasy/index.js
-const {icons_url} = require('../config/config')
-const utils = require('../../../utils/util')
+const {
+  icons_url
+} = require('../config/config')
+const {
+  openPdf
+} = require('../../../utils/util')
 Page({
 
   /**
@@ -8,26 +12,20 @@ Page({
    */
   data: {
     right_arrow: icons_url.right_arrow,
-    entrances:[
-      {
-        title: '服务介绍',
-        url: '',
-      },{
-        title: '服务协议',
-        url: '',
-      },{
-        title: '隐私协议',
-        url: '',
-      },{
-        title: '营业执照',
-        url: '',
-      },
-    ],
-     pdf_list: {
-       platform:'service_agreement',
-      privact: 'privacy_policy',
-      intro: 'manual'
-     }
+    entrances: [{
+      title: '服务介绍',
+      url: 'manual'
+    }, {
+      title: '服务协议',
+      url: 'service_agreement',
+    }, {
+      title: '隐私协议',
+      url: 'privacy_policy',
+    }, {
+      title: '营业执照',
+      url: '',
+    }, ],
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -84,7 +82,8 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goEntrance(){
+  goEntrance(e) {
     console.log("go ! ")
+    openPdf(e.currentTarget.dataset.url)
   }
 })

@@ -18,12 +18,12 @@
     </view>
   </view>
 </view>
-<view wx:if="{{!todo_lists}}" class="default-menu">
+<view wx:if="{{count === 0}}" class="default-menu">
   <image class="bg" src="{{empty_bg_url}}" mode="widthFix"></image>
 </view>
 <view wx:else>
   <view wx:for="{{todo_lists}}" wx:key="i">
-    <view class="todo-container">
+    <view wx:if="{{item.isShow}}" class="todo-container">
       <view class="title-container">
         <view wx:if="{{item.titleYellow}}" class="title yellow">{{item.title}}</view>
         <view wx:else class="title blue">{{item.title}}</view>

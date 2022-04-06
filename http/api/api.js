@@ -44,7 +44,7 @@ module.exports={
 	},
 	/* 获取客服专员二维码 */
 	getOperateQR: ()=>{
-		return request(api+'/personal_nformation/operate_wx','GET',{});
+		return api+'/personal_nformation/operate_wx';
 	},
 	
 }
