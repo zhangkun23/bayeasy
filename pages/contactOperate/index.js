@@ -1,5 +1,13 @@
 // pages/personal/contactStaff/index.js
-const {getOperateQR} = require('../../http/api/api')
+const {
+  getOperateQR
+} = require('../../http/api/api')
+const {
+  baseUrl
+} = require('../../http/env.js').dev;
+const {
+  btoa
+} = require('../../utils/base64')
 const app = getApp()
 Page({
 
@@ -8,7 +16,7 @@ Page({
    */
   data: {
     tel_num: app.globalData.phoneNumber,
-    qrcode_url: 'https://image.bayeasy.cn/images-data/personal/testQR.JPG',
+    qrcode_url: '',
     tel_icon: 'https://image.bayeasy.cn/images-data/personal/icons/tel.png'
   },
 
@@ -16,10 +24,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getOperateQR().then(res=>{
-      console.log("QR request res: ", res)
+    const that = this
+    const token = wx.getStorageSync('token')
+    const getQR = new Promise((resolve, reject) => {
+      wx.request({
+        url: baseUrl + getOperateQR(),
+        method: 'get',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Bearer ' + token,
+        },
+        responseType: 'arraybuffer',
+        success: res => {
+          const str = that.arrayBufferToBase64Img(res.data)
+          resolve(str)
+        },
+        fail: e => {
+          reject(e)
+        }
+      })
+    })
+    getQR.then(res => {
+       this.setData({qrcode_url: 'data:image/jpeg;base64,'+ res})
     }).catch(e=>{
-      console.error("QR request errror: ", e)
+      console.log("Failde to get qr code from buffer: ", e)
     })
   },
 
@@ -75,5 +103,15 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.tel_num //仅为示例，并非真实的电话号码
     })
+  },
+  arrayBufferToBase64Img: function (buffer) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return btoa(binary)
   }
+
 })

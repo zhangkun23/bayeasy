@@ -8,7 +8,7 @@ Component({
             selected: 0
             })
         }
-        }
+            }
     }
 })
   
