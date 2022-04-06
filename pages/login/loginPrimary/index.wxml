@@ -17,6 +17,6 @@
         </view>
         <view class="login" bindtap='handelClickLogin'>登录</view>
     </view>
-    <agreement bind:collectFun="collectFun" />
+    <!-- <agreement bind:collectFun="collectFun" /> -->
     <service class="servicePosition"></service>
 </view>

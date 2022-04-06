@@ -4,13 +4,14 @@
     <view class="InfoTop__top">
       <image class="logo_byz" src="{{logo_byz}}" />
       <text class="infoTitle">贝易资企业财税服务商</text>
-      <text class="infoButton" bindtap="handelClick">完善个人信息</text>
+      <text class="infoButton" bindtap="handelClick" wx:if="{{token}}">完善个人信息</text>
+      <text class="infoButton" bindtap="handelClickLogin" wx:if="{{token}}">登录/注册</text>
     </view>
     <image class="banner" src="{{banner}}" />
   </view>
   
   <!-- 待办 -->
-  <view class="daiban" wx:if="{{daibanShow}}">
+  <view class="daiban" wx:if="{{daiban!=0}}">
     <view class="daibanLeft">
       <image class="daibanImg"  src="{{daiban}}"/>
       <view class="daibanText">
