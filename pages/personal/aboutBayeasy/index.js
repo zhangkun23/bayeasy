@@ -84,6 +84,15 @@ Page({
   },
   goEntrance(e) {
     console.log("go ! ")
+    wx.showLoading({
+      title: '加载中',
+    })
+    setInterval(() => {
+      wx.hideLoading({
+        success: (res) => {},
+      })
+    }, 1000);
+
     openPdf(e.currentTarget.dataset.url)
   }
 })

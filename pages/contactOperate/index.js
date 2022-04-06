@@ -6,8 +6,8 @@ const {
   baseUrl
 } = require('../../http/env.js').dev;
 const {
-  btoa
-} = require('../../utils/base64')
+  arrayBufferToBase64Img
+} = require('../../utils/util')
 const app = getApp()
 Page({
 
@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const that = this
+    // const that = this
     const token = wx.getStorageSync('token')
     const getQR = new Promise((resolve, reject) => {
       wx.request({
@@ -36,7 +36,7 @@ Page({
         },
         responseType: 'arraybuffer',
         success: res => {
-          const str = that.arrayBufferToBase64Img(res.data)
+          const str = arrayBufferToBase64Img(res.data)
           resolve(str)
         },
         fail: e => {
@@ -103,15 +103,6 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.tel_num //仅为示例，并非真实的电话号码
     })
-  },
-  arrayBufferToBase64Img: function (buffer) {
-    var binary = '';
-    var bytes = new Uint8Array( buffer );
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-        binary += String.fromCharCode( bytes[ i ] );
-    }
-    return btoa(binary)
   }
 
 })
