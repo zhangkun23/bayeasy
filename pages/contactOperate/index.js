@@ -1,4 +1,5 @@
 // pages/personal/contactStaff/index.js
+const {getOperateQR} = require('../../http/api')
 const app = getApp()
 Page({
 
@@ -15,7 +16,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getOperateQR().then(res=>{
+      console.log("QR request res: ", res)
+    }).catch(e=>{
+      console.error("QR request errror: ", e)
+    })
   },
 
   /**
