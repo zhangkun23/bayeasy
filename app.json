@@ -12,8 +12,9 @@
 
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
-    "pages/personal/contactStaff/index",
     "pages/personal/aboutBayeasy/index",
+    "pages/contactOperate/index",
+
     "pages/tax/taxIndex/index",
     "custom-tab-bar/index",
     "pages/todo/todo"
