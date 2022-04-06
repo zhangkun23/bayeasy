@@ -1,5 +1,5 @@
 // pages/personal/contactStaff/index.js
-const {getOperateQR} = require('../../http/api')
+const {getOperateQR} = require('../../http/api/api')
 const app = getApp()
 Page({
 
