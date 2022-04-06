@@ -42,11 +42,10 @@ module.exports={
 	IdCardOCR:()=>{
 		return request(api+'/personal_nformation/ocr_idcard','POST',{});
 	},
-
-
-
-
-	
+	/* 获取客服专员二维码 */
+	getOperateQR: ()=>{
+		return request(api+'/personal_nformation/operate_wx','GET',{});
+	},
 	
 }
 
