@@ -51,5 +51,6 @@
         "ignoreUploadUnusedFiles": true,
         "minifyWXML": true
     },
+    "appid": "wx8c15bc82c287b2b7",
     "condition": {}
 }

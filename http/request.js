@@ -31,8 +31,15 @@ module.exports = {
                     let { code } = res.data;
 					if(code===200) {
 						resolve(res.data);
-						wx.hideLoading();
-					}else {
+                        wx.hideLoading();
+					}else if(code===401){
+                        wx.showToast({
+							title: '登录过期，清重新登录',
+                        })
+                        wx.navigateTo({
+                            url: '/pages/login/login/index',
+                        })
+                    }else {
 						wx.showToast({
 							title: '数据请求错误',
 						})

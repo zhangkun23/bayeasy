@@ -1,13 +1,19 @@
 // pages/login/loginPrimary/index.js
 const tempPath = getApp().globalData.imgPath;
+const {
+    login,
+    todolist,
+    getUserStatus,
+    myOperate
+  } =  require('../../../http/api/api.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        phone:'',
-        code:'',
+        phone:'18513136572',
+        code:'111111',
         inputClose:tempPath+'public/inputClose.png',
         codeMessage:'发送验证码',
         codeMessageStats:true,
@@ -19,6 +25,44 @@ Page({
     },
     handelClickLogin(){
         console.log(this.data.phone)
+        let param = {
+            mobile:this.data.phone,
+            captcha:this.data.code
+          }
+          login(param).then( res=> {
+            if(res.ret){
+              wx.setStorageSync('token', res.data.access_token)
+              getApp().globalData.mobile =  res.data.mobile;
+              this.getInfo();
+             
+            }
+          })
+    },
+    getInfo(){
+        // 查询待办
+        todolist().then(res => {
+            if(res.ret){
+                getApp().globalData.todolistNum = 1//res.data.nums;
+                wx.switchTab({url:'../../index/index'})
+            }
+        })
+        /**
+         * 查询用户关联状态 /决定路由跳转地址
+         *  0 不为贝易资用户
+         *  1 为贝易资用户未关联信息
+         *  2 已关联
+         */
+        getUserStatus().then(res => {
+            if(res.ret){
+            getApp().globalData.userStatus =  res.data.status;
+            }
+        })
+        // 是否有运营人员
+        myOperate().then(res => {
+            if(res.ret){
+            getApp().globalData.operate = true;
+            }
+        })
     },
     bindinputCode(e){
         this.setData({
@@ -96,7 +140,6 @@ Page({
                 clearInterval(setMessage);
             }
         }, 1000);
-
     },
     collectFun(val){
         console.log(val)

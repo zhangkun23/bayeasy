@@ -20,36 +20,30 @@ Page({
       zcjc: tempPath + 'index/zcjc.png',
       fwjs: tempPath + 'index/fwjs.png',
       daiban: tempPath +'index/daiban.png',
-      dbNum:'0', //待办数量
-      daibanShow:true
+      dbNum:0, //待办数量
+      daibanShow:true,
+      token:wx.getStorageSync('token')
     },
-      handelClick() {
+    handelClickLogin(){
+      wx.navigateTo({
+        url: '../login/login/index',
+      })
+    },
+    handelClick() {
+      wx.navigateTo({
+        url: '../login/authentication/index',
+      })
+    },
+    // 待办跳转
+    handelClickQqr(){
         wx.navigateTo({
-          url: '../login/authentication/index',
+          url: '../todo/todo',
         })
-      },
-      handelClickLogin(){
-        wx.navigateTo({
-          url: '../login/login/index',
-        })
-      },
-      // 待办跳转
-      handelClickQqr(){
-          console.log('跳转待办')
-      },
-      // 本地调试 默认登录
-      login(){
-        let param = {
-          mobile:'18513136572',
-          captcha:'111111'
-        }
-        login(param).then( res=> {
-          if(res.ret){
-            wx.setStorageSync('token', res.data.access_token)
-            getApp().globalData.mobile =  res.data.mobile;
-          }
-        })
-      },
+    },
+    // 本地调试 默认登录
+    login(){
+      
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -69,6 +63,10 @@ Page({
      */
     onShow: function () {
       this.login();
+      console.log(getApp().globalData.todolistNum)
+      this.setData({
+        dbNum:getApp().globalData.todolistNum
+      }) 
     },
 
     /**

@@ -1,5 +1,3 @@
-/* pages/login/login/index.wxss */
-
 
 .logo{
     text-align: center;
@@ -22,84 +20,6 @@
     border-radius: 44rpx;
     color: #FFFFFF;
     margin-top: 100rpx;
-}
-
-
-.userInfo{
-    height: 500rpx;
-    margin: 44rpx 34rpx;
-    /* border: 1px solid red; */
-    /* position: relative; */
-}
-.userInfo__top{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 25rpx;
-}
-.topInfo__img{
-    height: 40rpx;
-    width: 40rpx;
-}
-.topInfo__text{
-    padding-left: 20rpx;
-}
-.topInfo{
-    display: flex;
-    align-items: center;
-}
-.userInfo__1{
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #0B1D30;
-}
-.userInfo__2{
-    margin-top: 20rpx;
-    display: block;
-    font-size: 24rpx;
-    font-weight: 400;
-    color: #666666;
-    padding-bottom: 15rpx;
-}
-.phone{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid red;
-    border-top: 1px solid red;
-}
-.userPhone{
-    display: flex;
-}
-.userPhoneText{
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #0B1D30;
-}
-.userPhoneNum{
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #0B1D30;
-    margin-left: 20rpx;
-}
-.userPhoneStatus{
-    height: 80rpx;
-    width: 80rpx;
-}
-.pageInfo{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.other{
-    padding-top: 15rpx;
-}
-.button{
-    margin-top: 20rpx;
-    display: flex;
-    margin-right: 20rpx;
 }
 
 .servicePosition{

@@ -11,19 +11,28 @@ Page({
         loginSelect: tempPath + 'login/loginSelect.png',
         loginUnSelect: tempPath + 'login/loginUnSelect.png',
         logo: tempPath + 'public/logo.png',
-        show:false,
         serve:tempPath + 'public/serve.png',
         agreementStatus:false
     },
 
     handelClick(){
-        console.log(this.data.agreementStatus)
-        // this.setData({
-        //     show: true,
-        // })
+        wx.showToast({
+            title: '请勾查看并勾选协议',
+            icon:'none'
+        })
+        if(this.data.agreementStatus){
+            utils.navigateTo('../loginPrimary/index')
+        }
     },
     getPhoneNumber (e) {
         console.log(e.detail)
+        // wx.authorize({
+        //     scope: 'scope.record',
+        //     success () {
+        //       // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+        //     //   wx.startRecord()
+        //     }
+        //   })
     },
 
     // 
