@@ -1,4 +1,3 @@
-// pages/publicPage/test/test.js
 const {
   login,
   todolist
@@ -22,7 +21,13 @@ Page({
       daiban: tempPath +'index/daiban.png',
       dbNum:0, //待办数量
       daibanShow:true,
-      token:wx.getStorageSync('token')
+      token:'',
+      showModal:true
+    },
+    goLogin(){
+      wx.navigateTo({
+        url: '/pages/login/login/index',
+      })
     },
     handelClickLogin(){
       wx.navigateTo({
@@ -40,15 +45,22 @@ Page({
           url: '../todo/todo',
         })
     },
-    // 本地调试 默认登录
-    login(){
-      
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+      this.setData({
+        dbNum:getApp().globalData.todolistNum,
+        token:wx.getStorageSync('token')
+      }) 
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+     
     },
 
     /**
@@ -56,17 +68,6 @@ Page({
      */
     onReady: function () {
 
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-      this.login();
-      console.log(getApp().globalData.todolistNum)
-      this.setData({
-        dbNum:getApp().globalData.todolistNum
-      }) 
     },
 
     /**

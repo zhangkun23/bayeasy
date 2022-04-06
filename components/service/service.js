@@ -20,9 +20,17 @@ Component({
      */
     methods: {
         handeClickOpenServe(){
-            wx.makePhoneCall({
-                phoneNumber: getApp().globalData.phoneNumber
-            })
+            const operate = getApp().globalData.operate;
+            if(operate){
+                wx.navigateTo({
+                    url: '/pages/contactOperate/index',
+                  })
+            }else{
+                wx.makePhoneCall({
+                    phoneNumber: getApp().globalData.phoneNumber
+                })
+            }
+            
         },
     }
 })

@@ -35,7 +35,7 @@
             "disablePlugins": [],
             "outputPath": ""
         },
-        "useIsolateContext": false,
+        "useIsolateContext": true,
         "userConfirmedBundleSwitch": false,
         "packNpmManually": true,
         "packNpmRelationList": [
@@ -46,10 +46,10 @@
         ],
         "minifyWXSS": true,
         "disableUseStrict": false,
+        "minifyWXML": true,
         "showES6CompileOption": false,
         "useCompilerPlugins": false,
-        "ignoreUploadUnusedFiles": true,
-        "minifyWXML": true
+        "ignoreUploadUnusedFiles": true
     },
     "appid": "wx8c15bc82c287b2b7",
     "condition": {}

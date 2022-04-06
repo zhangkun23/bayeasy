@@ -6,11 +6,10 @@
         </view>
         <text class="logoTitle">企业财税服务商</text>
     </view>
-    <view  class="loginButton" bindtap="handelClick">
-        登录
+    <view wx:if="{{!agreementStatus}}" class="loginButton" bindtap="handelClick"> 登录</view>
+    <view wx:if="{{agreementStatus}}" class="loginButtonWx_box">
+        <button class="loginButtonWx" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
     </view>
     <agreement bind:collectFun="collectFun" />
     <service class="servicePosition"></service>
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信授权手机号</button>
-    <!-- <button bindtap="getUserProfile">用户信息授权</button> -->
 </view>

@@ -21,8 +21,8 @@
     margin-left: 24%;
   }
   .indexBg{
-    /* height: 140rpx;
-    width: 140rpx; */
+    height: 140rpx;
+    width: 140rpx;
   }
   .footerGg{
     position: absolute;

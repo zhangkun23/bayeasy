@@ -1,4 +1,8 @@
 
+<modal showModal="{{showModal}}">
+    <login-btn bind:click="goLogin" text="登陆/注册" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
+  </modal>
+  
 <view class="waper">
   <view class="infoTop">
     <view class="InfoTop__top">

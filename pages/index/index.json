@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "login-btn": "/components/login-btn/login-btn",
+    "modal": "/components/modal/modal"
   },
   "navigationStyle":"custom",
   "navigationBarBackgroundColor": "#000000",
