@@ -20,9 +20,17 @@ Component({
      */
     methods: {
         handeClickOpenServe(){
-            wx.makePhoneCall({
-                phoneNumber: getApp().globalData.phoneNumber
-            })
+            console.log(111)
+            console.log()
+            const operate = getApp().globalData.operate;
+            if(operate){
+
+            }else{
+                wx.makePhoneCall({
+                    phoneNumber: getApp().globalData.phoneNumber
+                })
+            }
+            
         },
     }
 })

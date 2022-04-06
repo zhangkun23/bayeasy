@@ -26,6 +26,17 @@ Page({
     },
     getPhoneNumber (e) {
         console.log(e.detail)
+        wx.checkSession({
+            success (res) {
+              console.log(res,'登录状态')
+                  console.log(e,'1111')
+              //session_key 未过期，并且在本生命周期一直有效
+            },
+            fail (err) {
+            console.log(err)
+            }
+          })
+          
         // wx.authorize({
         //     scope: 'scope.record',
         //     success () {
