@@ -23,6 +23,8 @@ Component({
     }],
     front: "拍摄身份证正面",
     resever: "拍摄身份证反面",
+    frontImg: "https://image.bayeasy.cn/images-data/authentication/idcard_ front.png",
+    reseverImg: "https://image.bayeasy.cn/images-data/authentication/idcard_ front.png"
   },
 
   methods: {
@@ -31,6 +33,7 @@ Component({
         isShowModal: true
       })
     },
+    // 上传图片
     uploadIdcard(e) {
       const params = e.currentTarget.dataset;
       console.log(params)
@@ -57,6 +60,24 @@ Component({
         sourceType: [a],
         success: function (res) {
           console.log(res.tempFiles)
+          if (res.tempFiles[0]) {
+            const imgPath = res.tempFiles[0].tempFilePath
+            wx.uploadFile({
+              url: 'http://gsh.dev.corp.bayeasy.cn:11880/gshApi/personal_nformation/ocr_idcard',
+              header: {
+                'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0LmdzaC5jb21cL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDkyMTU5NzAsImV4cCI6MTY1NTIxNTk3MCwibmJmIjoxNjQ5MjE1OTcwLCJqdGkiOiJZcjFTcmdlUmFwYXlSV3VzIiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.RTNVccoegm36Owl5SJOBftLppecOwDVdM2YS-K9wSmw',
+              },
+              filePath: imgPath,
+              name: 'name',
+              success: function (res) {
+                console.log(res, '成功')
+                // const data = Json.parse(res.data)
+              },
+              fail: function (res) {
+                console.log(res, '失败')
+              }
+            })
+          }
           let ImgArr = res.tempFiles;
           ImgArr.forEach(item => {
             if (item.size > 2097152) {

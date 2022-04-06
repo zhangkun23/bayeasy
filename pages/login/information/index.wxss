@@ -59,8 +59,10 @@
   margin-top: 23rpx;
   font-size: 28rpx;
 }
-.information__form-item icon {
-  margin-top: 23rpx;
+.information__form-item image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 29rpx;
   /* display: none; */
   /* visibility: hidden; */
 }
