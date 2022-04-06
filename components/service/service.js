@@ -20,11 +20,11 @@ Component({
      */
     methods: {
         handeClickOpenServe(){
-            console.log(111)
-            console.log()
             const operate = getApp().globalData.operate;
             if(operate){
-
+                wx.navigateTo({
+                    url: '/pages/contactOperate/index',
+                  })
             }else{
                 wx.makePhoneCall({
                     phoneNumber: getApp().globalData.phoneNumber

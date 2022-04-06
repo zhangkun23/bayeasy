@@ -46,6 +46,16 @@ module.exports={
 	getOperateQR: ()=>{
 		return request(api+'/personal_nformation/operate_wx','GET',{});
 	},
+
+	/* code查询微信手机号码 */
+	getWxPhone: (code)=>{
+		return request(api+'/getwxuserphone?code='+code,'GET',{});
+	},
+
+	/* 微信登录 */
+	wxlogin:(param)=>{
+		return request(api+'/auth/wxlogin','POST',param);
+	},
 	
 }
 
