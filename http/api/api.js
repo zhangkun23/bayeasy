@@ -21,7 +21,7 @@ module.exports={
 
 	/* 退出登录 */
 	logout:()=>{
-		return request(api+'/auth/logout','GET',{},true);
+		return request(api+'/auth/logout','post',{});
 	},
 
 	/* 查询代办事项 */

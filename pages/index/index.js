@@ -1,5 +1,6 @@
 const tempPath = getApp().globalData.imgPath;
 const utils = require('../../utils/util.js')
+const {todolist,getUserStatus,myOperate} = require('../../http/api/api.js');
 Page({
 
     /**
@@ -71,7 +72,35 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      getApp().watch(this.watchBack)
+      // getApp().watch(this.watchBack)
+      todolist().then(res => {
+        if(res.ret){
+          getApp().globalData.todolistNum = res.data.nums;
+          this.setData({
+            dbNum:res.data.nums,
+            token:wx.getStorageSync('token')
+          }) 
+        }
+      })
+      if(wx.getStorageSync('token')){
+          /**
+           * 查询用户关联状态 /决定路由跳转地址
+           *  0 不为贝易资用户
+           *  1 为贝易资用户未关联信息
+           *  2 已关联
+           */
+          getUserStatus().then(res => {
+            if(res.ret){
+              getApp().globalData.userStatus =  res.data.status;
+            }
+        })
+        // 是否有运营人员
+        myOperate().then(res => {
+            if(res.ret){
+                getApp().globalData.operate = true;
+            }
+        })
+      }
     },
 
     /**
