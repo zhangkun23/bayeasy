@@ -1,0 +1,26 @@
+/* pages/login/association/index.wxss */
+
+.association {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.association__success {}
+
+.association__success-img image {
+  width: 83rpx;
+  height: 83rpx;
+}
+
+.association__success-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #0B1D30;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+}
