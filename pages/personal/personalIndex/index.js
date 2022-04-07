@@ -37,7 +37,12 @@ Component({
           entrances_info: _entrances_info
         })
       }
-      // 决定个人中心调准
+      // 获取姓名 手机号 进行展示
+      const _phone = app.globalData.mobile;
+      if (_phone) this.setData({
+        user_tel: _phone
+      });
+      // 决定个人中心跳转
       const token = wx.getStorageSync('token') || '' // 可能从getStorage取
       const userStatus = app.globalData.userStatus
       if (token) {
@@ -46,6 +51,7 @@ Component({
           console.debug("有token但是userstatus为0 跳转完善个人信息")
           _gate_info[0].url = '../../login/information/index?' + 'userType=' + userStatus
           this.setData({
+            token: token,
             login_status: 0,
             isCheckRequired: true,
             isFileComplete: false,
@@ -53,18 +59,21 @@ Component({
           })
         } else if (userStatus === 1) {
           this.setData({
+            token: token,
             login_status: 1,
             isCheckRequired: true,
             gates_info: _gate_info
           })
         } else if (userStatus === 2) {
           this.setData({
+            token: token,
             login_status: 2,
             isCheckRequired: true,
             gates_info: _gate_info
           })
         } else {
           this.setData({
+            token: token,
             login_status: 0,
             isCheckRequired: false
           })
@@ -89,6 +98,7 @@ Component({
 
   },
   data: {
+    token: '',
     login_status: 0, // app.globalData.???
     isFileComplete: true,
     isOperate: false,
@@ -183,7 +193,7 @@ Component({
       }
     },
     goGate(e) {
-      if (this.data.login_status === 0) {
+      if (!this.data.token) {
         this.setData({
           showModal: true
         })
@@ -208,6 +218,7 @@ Component({
           this.setData({
             login_status: 0
           })
+          wx.setStorage({key: 'token', data:''}) // 清理缓存中token
         } else {
           console.warning("logout token expired")
           //todo: token过期之后的逻辑

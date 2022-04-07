@@ -16,7 +16,7 @@ Page({
    */
   data: {
     tel_num: app.globalData.phoneNumber,
-    qrcode_url: '',
+    qrcode_url:'',
     tel_icon: 'https://image.bayeasy.cn/images-data/personal/icons/tel.png'
   },
 
@@ -26,6 +26,7 @@ Page({
   onLoad: function (options) {
     // const that = this
     const token = wx.getStorageSync('token')
+    
     const getQR = new Promise((resolve, reject) => {
       wx.request({
         url: baseUrl + getOperateQR(),

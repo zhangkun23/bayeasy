@@ -1,6 +1,6 @@
 <!--pages/enterprise/enterpriseIndex/index.wxml-->
 <view class="bgColog"></view>
-<view class="title-container">
+<view class="title-container" style="margin-top: {{statusBarHeight}}px;">
     <view class="page-title">
         企业信息
     </view>
@@ -11,6 +11,46 @@
 </view>
 <view class="content-frame">
     <view class="content-bg">
-        <view class="content-container"></view>
+        <view class="content-container">
+            <view class="horizon-border"></view>
+            <view class="vertical-border"></view>
+            <view class="row">
+                <view class="gate-area-1">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/regProcess.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        注册进程
+                    </view>
+                </view>
+                <view class="gate-area-1">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/businessInfo.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        工商信息
+                    </view>
+                </view>
+            </view>
+            <view class="row">
+                <view class="gate-area-2">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/bankAccount.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        银行账户
+                    </view>
+                </view>
+                <view class="gate-area-2">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/taxReg.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        税务登记
+                    </view>
+                </view>
+            </view>
+
+        </view>
     </view>
 </view>

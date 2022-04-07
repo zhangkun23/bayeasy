@@ -1,5 +1,56 @@
 <!--pages/tax/taxIndex/index.wxml-->
-<text>pages/tax/taxIndex/index.wxml</text>
-<view>
-办理
+<view class="bgColog"></view>
+<view class="title-container" style="margin-top: {{statusBarHeight}}px;">
+    <view class="page-title">
+        财税办理
+    </view>
+    <view class="page-subtitle">
+        为您提供最专业的服务
+    </view>
+    <view class="split"></view>
+</view>
+<view class="content-frame">
+    <view class="content-bg">
+        <view class="content-container">
+            <view class="horizon-border"></view>
+            <view class="vertical-border"></view>
+            <view class="row">
+                <view class="gate-area-1">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/taxReturn.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        纳税申报
+                    </view>
+                </view>
+                <view class="gate-area-1">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/financialStatements.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        财务报表
+                    </view>
+                </view>
+            </view>
+            <view class="row">
+                <view class="gate-area-2">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/annualReport.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        工商年报
+                    </view>
+                </view>
+                <view class="gate-area-2">
+                    <view>
+                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/annuelVersement.png" mode="widthFix"></image>
+                    </view>
+                    <view class="name">
+                        年度汇算清缴
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>
 </view>

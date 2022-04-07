@@ -1,6 +1,8 @@
 {
   "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
   "navigationStyle": "custom",
+
   "usingComponents": {
     "my-progress": "./components/progress/progress",
     "login-btn": "/components/login-btn/login-btn",
