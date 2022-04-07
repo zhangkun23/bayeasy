@@ -75,8 +75,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border-top: 1rpx dashed #D2E0EF;
     opacity: 0.5;
+    
 }
 
 .content-frame .content-bg .content-container .vertical-border {
@@ -85,12 +85,10 @@
     margin-top:76rpx;
     margin-bottom: 84rpx;
     width: 1rpx;
-    /* height: 100%; */
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    border-right: 1rpx dashed #D2E0EF;
     opacity: 0.5;
 }
 
