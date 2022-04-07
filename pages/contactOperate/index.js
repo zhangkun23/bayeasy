@@ -1,7 +1,10 @@
 // pages/personal/contactStaff/index.js
+// const {
+//   getOperateQR
+// } = require('../../http/api/api')
 const {
-  getOperateQR
-} = require('../../http/api/api')
+  get_operate
+} = require('../../http/api/api_grzx')
 const {
   baseUrl
 } = require('../../http/env.js').dev;
@@ -16,7 +19,7 @@ Page({
    */
   data: {
     tel_num: app.globalData.phoneNumber,
-    qrcode_url:'',
+    qrcode_url: '',
     tel_icon: 'https://image.bayeasy.cn/images-data/personal/icons/tel.png'
   },
 
@@ -26,28 +29,31 @@ Page({
   onLoad: function (options) {
     // const that = this
     const token = wx.getStorageSync('token')
-    
-    const getQR = new Promise((resolve, reject) => {
-      wx.request({
-        url: baseUrl + getOperateQR(),
-        method: 'get',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Bearer ' + token,
-        },
-        responseType: 'arraybuffer',
-        success: res => {
-          const str = arrayBufferToBase64Img(res.data)
-          resolve(str)
-        },
-        fail: e => {
-          reject(e)
-        }
+
+    // const getQR = new Promise((resolve, reject) => {
+    //   wx.request({
+    //     url: baseUrl + getOperateQR(),
+    //     method: 'get',
+    //     header: {
+    //       'content-type': 'application/x-www-form-urlencoded',
+    //       'Authorization': 'Bearer ' + token,
+    //     },
+    //     responseType: 'arraybuffer',
+    //     success: res => {
+    //       const str = arrayBufferToBase64Img(res.data)
+    //       resolve(str)
+    //     },
+    //     fail: e => {
+    //       reject(e)
+    //     }
+    //   })
+    // })
+    get_operate.then(res => {
+      const str = arrayBufferToBase64Img(res.data)
+      this.setData({
+        qrcode_url: 'data:image/jpeg;base64,' + res
       })
-    })
-    getQR.then(res => {
-       this.setData({qrcode_url: 'data:image/jpeg;base64,'+ res})
-    }).catch(e=>{
+    }).catch(e => {
       console.log("Failde to get qr code from buffer: ", e)
     })
   },
