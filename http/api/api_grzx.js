@@ -11,9 +11,9 @@ module.exports={
 		return request('/gshApi/personal_nformation/my_operate','GET',{},true);
 	},
 
-	/* 退出登录 */
+	/* 获取二维码 */
 	get_operate:()=>{
-		return request('/gshApi/personal_nformation/operate_wx','GET',{},true);
+		return request('/gshApi/personal_nformation/operate_wx','GET',{},'arrayBuffer');
 	},
 
 

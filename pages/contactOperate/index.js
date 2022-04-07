@@ -5,12 +5,12 @@
 const {
   get_operate
 } = require('../../http/api/api_grzx')
-const {
-  baseUrl
-} = require('../../http/env.js').dev;
-const {
-  arrayBufferToBase64Img
-} = require('../../utils/util')
+// const {
+//   baseUrl
+// } = require('../../http/env.js').dev;
+// const {
+//   arrayBufferToBase64Img
+// } = require('../../utils/util')
 const app = getApp()
 Page({
 
@@ -28,8 +28,7 @@ Page({
    */
   onLoad: function (options) {
     // const that = this
-    const token = wx.getStorageSync('token')
-
+    // const token = wx.getStorageSync('token')
     // const getQR = new Promise((resolve, reject) => {
     //   wx.request({
     //     url: baseUrl + getOperateQR(),
@@ -48,13 +47,14 @@ Page({
     //     }
     //   })
     // })
-    get_operate.then(res => {
-      const str = arrayBufferToBase64Img(res.data)
+    getQR.then(res => {
+      // const str = arrayBufferToBase64Img(res.data)
+      const str = res.data
       this.setData({
         qrcode_url: 'data:image/jpeg;base64,' + str
       })
     }).catch(e => {
-      console.log("Failde to get qr code from buffer: ", e)
+      console.log("Failed to get qr code from buffer: ", e)
     })
   },
 
