@@ -1,5 +1,7 @@
 // 引入env中的url
-const { baseUrl } = require('./env.js').dev; 
+const {
+    baseUrl
+} = require('./env.js').dev;
 //在这里添加我们的专业域名
 const subDomain = 'xxx';
 
@@ -13,26 +15,28 @@ module.exports = {
      */
     request: (url, method, data, isSubDomain) => {
         let _url = `${baseUrl}${url}`;
-        let token = wx.getStorageSync('token') 
+        let token = wx.getStorageSync('token')
         return new Promise((resolve, reject) => {
-			wx.showLoading({
-				title: '正在加载',
-			});
+            wx.showLoading({
+                title: '正在加载',
+            });
             wx.request({
                 url: _url,
                 data: data,
                 method: method,
                 header: {
                     'content-type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Bearer '+token,
+                    'Authorization': 'Bearer ' + token,
                 },
                 success: (res) => {
                     // console.log('从接口获取到的数据', res);
-                    let { code } = res.data;
-					if(code===200) {
-						resolve(res.data);
+                    let {
+                        code
+                    } = res.data;
+                    if (code === 200) {
+                        resolve(res.data);
                         wx.hideLoading();
-					}else if(code===401){
+                    } else if (code === 401) {
                         wx.showToast({
                             title: '登录过期，清重新登录',
                             icon: 'none'
@@ -41,18 +45,18 @@ module.exports = {
                             url: '/pages/login/login/index',
                         })
                     } else {
-						wx.showToast({
-                            title: res.message,
+                        wx.showToast({
+                            title: '登录成功',
                             icon: 'none'
-						})
-					}
+                        })
+                    }
                 },
-				fail() {
-					reject('接口有误，请检查')
-				}
+                fail() {
+
+                    reject('接口有误，请检查')
+                }
             });
-			
+
         });
     },
 }
-

@@ -38,18 +38,22 @@ module.exports={
 	myOperate:()=>{
 		return request(api+'/personal_nformation/my_operate','GET',{});
 	},
+
 	/* 个人身份信息_身份证照片提交ocr识别 */
 	IdCardOCR:()=>{
 		return request(api+'/personal_nformation/ocr_idcard','POST',{});
 	},
+
 	/* 个人身份信息_身份证信息提交 */
 	IDcardSubmit:(param)=>{
 		return request(api+'/personal_nformation/submit','POST',param);
 	},
+
 	/* 个人身份信息_身份证信息提交 */
 	IdcardAuthentication:(param)=>{
 		return request(api+'/personal_nformation/authentication','POST',param);
 	},
+
 	/* 获取客服专员二维码 */
 	getOperateQR: ()=>{
 		return api+'/personal_nformation/operate_wx';
@@ -63,6 +67,22 @@ module.exports={
 	/* 微信登录 */
 	wxlogin:(param)=>{
 		return request(api+'/auth/wxlogin','POST',param);
+	},
+
+	/*信息确认关联*/
+	relation:(param)=>{
+		return request(api+'/personal_nformation/relation','POST',param);
+	},
+
+	/*获取身份证信息*/
+	getUserMeg:()=>{
+		return request(api + '/personal_nformation/get','GET',{});
+	},
+
+	
+	/*获取身份证照片*/
+	getUserIdCard:(param)=>{
+		return request(api + '/personal_nformation/get_idcard?type=' + param, "GET", {}) ;
 	},
 	
 }

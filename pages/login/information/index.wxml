@@ -2,8 +2,13 @@
 <view class="information">
   <view class="information__back">
     <mp-navigation-bar title="个人信息" bindback="backIndex"></mp-navigation-bar>
+    <view class="securityCheck__topTips" wx:if="{{status == 1}}">
+      <view class="securityCheck__topTips-icon">
+        <image src="https://image.bayeasy.cn/images-data/public/info_max.png"></image>
+      </view>
+      <text>贝易资的企业信息库，检测到您的手机号有关联的身份信息 ，为保证您的账户安全，需请您填写完整的身份证号，校验一致则为你调取完整的个人信息进行确认</text>
+    </view>
     <view class="information__idcard">
-
       <view class="information__img-group" data-Idcadrparams="front" bindtap="uploadIdcard">
         <view>
           <image src="{{IdcardFront}}"></image>
@@ -57,17 +62,19 @@
         <image src="https://image.bayeasy.cn/images-data/public/inputClose.png"></image>
       </view>
     </view>
-    <view class="information__confirm" bindtap="confirmSubmit">
-      <view>确认提交</view>
-    </view>
+    <block  wx:if="{{status == 0 || status == 2}}">
+      <view class="information__confirm" bindtap="confirmSubmit">
+        <view>确认提交</view>
+      </view>
+    </block>
+    <block  wx:if="{{status == 1}}">
+      <view class="information__confirm" bindtap="confirmAssociation">
+        <view>确认关联</view>
+      </view>
+    </block>
   </view>
 
   <block wx:if="{{isShowModal}}">
-    <mp-dialog 
-    show="isShowModal" 
-    buttons="{{buttons}}" 
-    bindbuttontap="tapDialogButton" 
-    title="您的个人信息已经完善贝易资核实完成后将与您联系"
-    ></mp-dialog>
+    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您的个人信息已经完善贝易资核实完成后将与您联系"></mp-dialog>
   </block>
 </view>

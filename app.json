@@ -3,21 +3,20 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
-
     "pages/login/login/index",
     "pages/login/authentication/index",
     "pages/login/information/index",
     "pages/login/securityCheck/index",
     "pages/login/loginPrimary/index",
-
+    "pages/login/association/index",
     "pages/invoice/invoiceIndex/index",
     "pages/personal/personalIndex/index",
     "pages/personal/aboutBayeasy/index",
     "pages/contactOperate/index",
-
     "pages/tax/taxIndex/index",
     "custom-tab-bar/index",
-    "pages/todo/todo"
+    "pages/todo/todo",
+    "pages/login/information/loading/loading"
   ],
   "tabBar": {
     "custom": true,

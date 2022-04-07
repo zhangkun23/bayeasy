@@ -1,36 +1,18 @@
-// pages/login/authentication/index.js
-Component({
+// pages/login/information/loading/loading.js
+Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
-  },
 
-  methods:{
-    handelClick() {
-      wx.navigateTo({
-        url: '../information/index',
-      })
-    },
-    backIndex(){
-      wx.navigateTo({
-        url: '../../index/index',
-      })
-    },
-    handelClick1() {
-      wx.navigateTo({
-        url: '../securityCheck/index',
-      })
-    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

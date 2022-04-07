@@ -49,7 +49,7 @@
     <view class="usermotto">
       <text class="user-motto">{{motto}}</text>
       <view class="countCenter" bindtap="handelClickNssb">
-        <cover-view class="countCenterTitle">纳税申报</cover-view>
+        <view class="countCenterTitle">纳税申报</view>
         <cover-image class="nssb" src="{{nssb}}" />
       </view>
       <view class="countBottom">

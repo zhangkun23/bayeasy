@@ -1,0 +1,15 @@
+<!--pages/login/association/index.wxml-->
+<view class="association">
+  <view class="association__success">
+    <view class="association__success-img"> 
+      <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
+    </view>
+    <view class="association__success-text">个人信息关联</view>
+  </view>
+  <view>
+    <view>您当前有待办事项处理请关注！</view>
+    <view>
+      <button>去处理</button>
+    </view>
+  </view>
+</view>

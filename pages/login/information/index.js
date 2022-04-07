@@ -1,11 +1,14 @@
 // pages/login/information/index.js
 const {
   IDcardSubmit,
-  IdcardAuthentication
+  relation,
+  getUserMeg,
+  getUserIdCard,
 } = require('../../../http/api/api');
-
+const {
+  baseUrl
+} = require('../../../http/env').dev;
 Component({
-
   /**
    * 页面的初始数据
    */
@@ -27,17 +30,70 @@ Component({
     front: "拍摄身份证正面",
     resever: "拍摄身份证反面",
     IdcardFront: "https://image.bayeasy.cn/images-data/authentication/idcard_ front.png",
-    IdcardResever: "https://image.bayeasy.cn/images-data/authentication/idcard_resever.png"
+    IdcardResever: "https://image.bayeasy.cn/images-data/authentication/idcard_resever.png",
+    status: getApp().globalData.userStatus || 1
   },
-
+  lifetimes: {
+    attached() {
+      console.log(this.data.status)
+      this.initialization();
+    },
+    moved() {
+      console.log('moved')
+    },
+    detached() {
+      console.log('detacged')
+    }
+  },
   methods: {
+    // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
+    initialization() {
+      console.log(this)
+      let that = this;
+      if (that.data.status == 0) {
+        console.log('上传，此时贝易资库里没有信息')
+        that.data.form = {
+          username: "",
+          telephone: "",
+          idcard: "",
+          validUntil: "",
+        }
+      } else if (that.data.status == 1) {
+        console.log('需要关联')
+        that._getUserIdCards()
+      } else if (that.data.status == 2) {
+        console.log('已关联，查看详情')
+      }
+    },
+    // 获取身份证信息
+    _getUserIdCards: function () {
+      getUserMeg().then(res => {
+        console.log(res, '个人信息')
+        if (res.ret) {
+          const dataInfo = res.data
+          this.setData({
+            form: {
+              username: dataInfo.name,
+              telephone: dataInfo.mobile,
+              idcard: dataInfo.id_card,
+              validUntil: dataInfo.identity_card_expire,
+              validityPeriod: ''
+            }
+          })
+        }
+      })
+      const res1 = getUserIdCard('front');
+      const res2 = getUserIdCard('back');
+      this.setData({
+        IdcardFront: baseUrl + res1,
+        IdcardResever: baseUrl + res2,
+      })
+    },
 
     // 上传图片
     uploadIdcard(e) {
-      console.log(this.data.a)
-      const params = e.currentTarget.dataset; // 传入的参数
-      console.log(params)
       let that = this;
+      const params = e.currentTarget.dataset; // 传入的参数
       wx.showActionSheet({
         itemList: ["从相册中选择", "拍照"],
         success: function (e) {
@@ -135,7 +191,6 @@ Component({
       })
     },
     tapDialogButton(e) {
-      console.log(e.detail)
       this.setData({
         isShowModal: false
       })
@@ -145,29 +200,41 @@ Component({
     },
 
     confirmSubmit(e) {
-      if (this.data.form.username == '' || this.data.form.telephone == '' || this.data.form.idcard == '' || this.data.form.validityPeriod == ''){
+      let query = this.getUrlOption();
+      console.log(query)
+      if (this.data.form.username == '') {
         wx.showToast({
-          title: '请输入内容',
+          title: '请输入姓名',
+          icon: "error"
+        })
+        return
+      } else if (this.data.form.telephone == '') {
+        wx.showToast({
+          title: '请输入手机号',
+          icon: "error"
+        })
+        return
+      } else if (this.data.form.idcard == '') {
+        wx.showToast({
+          title: '请输入身份证号',
+          icon: "error"
+        })
+        return
+      } else if (this.data.form.validityPeriod == '') {
+        wx.showToast({
+          title: '请输入身份证有效期',
           icon: "error"
         })
         return
       }
-        let params = {
-          name: this.data.form.username,
-          mobile: this.data.form.telephone,
-          id_card: this.data.form.idcard,
-          expire_date: this.data.form.validityPeriod
-        }
+
+      let params = {
+        name: this.data.form.username,
+        mobile: this.data.form.telephone,
+        id_card: this.data.form.idcard,
+        expire_date: this.data.form.validityPeriod
+      }
       console.log(params)
-      // 先去验证  验证成功之后去提交
-      // IdcardAuthentication({
-      //   id_card: this.data.form.idcard
-      // }).then(res => {
-      //   if (res.ret) {
-      //     console.log(1)
-      //     wx.showToast({
-      //       title: res.success,
-      //     })
       IDcardSubmit(params).then(res => {
         console.log(res)
         if (res.ret) {
@@ -183,81 +250,19 @@ Component({
           })
         }
       })
-
-      //   } else {
-      //     console.log(2)
-      //     if (res.data.error_nums < '5') {
-      //       // wx.showToast({
-      //       //   title: res.message,
-      // icon: 'none'
-      //       // })
-      //       this.setData({
-      //         isShowModal: true,
-      //         errmsg: res.msg
-      //       })
-      //     } else if (res.data.error_nums == '5')
-      //       this.setData({
-      //         isShowModal: true,
-      //         errmsg: res.msg
-      //       })
-      //   }
-      // })
     },
-  },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    // 确认关联 
+    confirmAssociation() {
+      // relation({}).then(res => {
+      //   console.log(res)
+      // } )
+      wx.navigateTo({
+        url: '../association/index',
+      })
+    },
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
