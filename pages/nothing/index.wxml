@@ -1,0 +1,7 @@
+<!-- 暂无功能 -->
+<view class="bgColog">
+    <mp-navigation-bar />
+    <text class="count">
+        敬请期待...
+    </text>
+</view>

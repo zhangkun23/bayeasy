@@ -19,15 +19,13 @@ Component({
         })
       }
       // 获取头像相关权限
-      console.debug("prepare to get avatar")
-      if (wx.getUserProfile) {
-        this.setData({
-          canIUseGetUserProfile: true
-        })
-      }
+      // console.debug("prepare to get avatar")
+      // if (wx.getUserProfile) {
+      //   this.setData({
+      //     canIUseGetUserProfile: true
+      //   })
+      // }
       // 获取运营
-
-      // 展示接口
       if (app.globalData.operate) {
         console.debug("已有客服专员")
         const _entrances_info = this.data.entrances_info
@@ -49,7 +47,7 @@ Component({
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
           console.debug("有token但是userstatus为0 跳转完善个人信息")
-          _gate_info[0].url = '../../login/information/index?' + 'userType=' + userStatus
+          _gate_info[0].url = '../../login/information/index'
           this.setData({
             token: token,
             login_status: 0,
@@ -211,14 +209,14 @@ Component({
         url: '/pages/login/login/index',
       })
     },
-    logout() {
+    userLogout() {
       logout().then(res => {
         if (res.ret) {
           console.log("logout success")
-          this.setData({
+          that.setData({
             login_status: 0
           })
-          wx.setStorage({key: 'token', data:''}) // 清理缓存中token
+          wx.setStorageSync('token', '') // 清理缓存中token
         } else {
           console.warning("logout token expired")
           //todo: token过期之后的逻辑

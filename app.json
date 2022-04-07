@@ -18,7 +18,8 @@
     "pages/tax/taxIndex/index",
     "custom-tab-bar/index",
     "pages/todo/todo",
-    "pages/login/information/loading/loading"
+    "pages/login/information/loading/loading",
+    "pages/nothing/index"
   ],
   "tabBar": {
     "custom": true,
