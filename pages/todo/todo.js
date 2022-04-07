@@ -1,4 +1,5 @@
 // pages/todo/todo.js
+const app = getApp()
 const {
   todolist
 } = require('../../http/api/api.js')
@@ -120,6 +121,7 @@ Page({
             todo_lists: _new_todo_lists,
             count: _data.nums
           })
+          app.globalData.todolistNum = _data.nums
         }
       }
     })
@@ -148,25 +150,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.debug('onPullDownRefresh')
-    this.setData({
-      count: 0
-    })
+    console.debug('更新待办事项')
+    this.onShow();
     wx.stopPullDownRefresh();
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

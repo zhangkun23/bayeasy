@@ -85,7 +85,7 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{login_status === 0}}" class="login-btn" bindtap="goLogin">
+  <view wx:if="{{!token}}" class="login-btn" bindtap="goLogin">
     登录/注册
   </view>
   <view wx:else class="login-btn" bindtap="logout">
