@@ -28,7 +28,7 @@ module.exports = {
                 },
                 responseType,
                 success: (res) => {
-                    // console.log('从接口获取到的数据', res);
+                    console.log('从接口获取到的数据', res);
                     let { code } = res.data;
 					if(code===200) {
 						resolve(res.data);
@@ -43,7 +43,7 @@ module.exports = {
                         })
                     }else {
 						wx.showToast({
-                            title: '数据请求错误',
+                            title: res.message,
                             icon: 'none',
 						})
 					}

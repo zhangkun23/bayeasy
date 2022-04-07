@@ -212,6 +212,7 @@ Component({
       })
     },
     logout() {
+      console.log('11')
       logout().then(res => {
         if (res.ret) {
           console.log("logout success")
