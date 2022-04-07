@@ -4,11 +4,11 @@
     <mp-navigation-bar title="个人信息" bindback="backIndex"></mp-navigation-bar>
     <view class="information__idcard">
 
-      <view class="information__img-group" data-front="front" bindtap="uploadIdcard">
+      <view class="information__img-group" data-Idcadrparams="front" bindtap="uploadIdcard">
         <view>
-          <image src="{{frontImg}}"></image>
+          <image src="{{IdcardFront}}"></image>
         </view>
-        <block wx:if="{{showIdcardResever}}">
+        <block wx:if="{{!showIdcardFront}}">
           <view class="idcard__tips">{{front}}</view>
         </block>
         <block wx:else>
@@ -18,11 +18,11 @@
           </view>
         </block>
       </view>
-      <view class="information__img-group" data-resever="resever" bindtap="uploadIdcard">
+      <view class="information__img-group" data-Idcadrparams="back" bindtap="uploadIdcard">
         <view>
-          <image src="{{reseverImg}}"></image>
+          <image src="{{IdcardResever}}"></image>
         </view>
-        <block wx:if="{{showIdcardResever}}">
+        <block wx:if="{{!showIdcardResever}}">
           <view class="idcard__tips">{{resever}}</view>
         </block>
         <block wx:else>
@@ -38,7 +38,7 @@
         <text class="mg-lt-101">姓名</text>
         <input type="text" placeholder="请输入姓名" placeholder-class="placeholderStyle" value="{{form.username}}" />
         <!-- <block wx:if="{{showClose}}"> -->
-          <image src="https://image.bayeasy.cn/images-data/public/inputClose.png"></image>
+        <image src="https://image.bayeasy.cn/images-data/public/inputClose.png"></image>
         <!-- </block> -->
       </view>
       <view class="information__form-item">
@@ -53,7 +53,7 @@
       </view>
       <view class="information__form-item">
         <text class="mg-lt-48">有效期至</text>
-        <input type="text" placeholder="请输入身份证有效期" placeholder-class="placeholderStyle" value="{{form.validUntil}}"/>
+        <input type="text" placeholder="请输入身份证有效期" placeholder-class="placeholderStyle" value="{{form.validUntil}}" />
         <image src="https://image.bayeasy.cn/images-data/public/inputClose.png"></image>
       </view>
     </view>
@@ -63,6 +63,11 @@
   </view>
 
   <block wx:if="{{isShowModal}}">
-    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您的个人信息已经完善贝易资核实完成后将与您联系"></mp-dialog>
+    <mp-dialog 
+    show="isShowModal" 
+    buttons="{{buttons}}" 
+    bindbuttontap="tapDialogButton" 
+    title="您的个人信息已经完善贝易资核实完成后将与您联系"
+    ></mp-dialog>
   </block>
 </view>

@@ -42,6 +42,14 @@ module.exports={
 	IdCardOCR:()=>{
 		return request(api+'/personal_nformation/ocr_idcard','POST',{});
 	},
+	/* 个人身份信息_身份证信息提交 */
+	IDcardSubmit:(param)=>{
+		return request(api+'/personal_nformation/submit','POST',param);
+	},
+	/* 个人身份信息_身份证信息提交 */
+	IdcardAuthentication:(param)=>{
+		return request(api+'/personal_nformation/authentication','POST',param);
+	},
 
 
 

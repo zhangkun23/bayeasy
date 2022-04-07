@@ -34,14 +34,16 @@ module.exports = {
                         wx.hideLoading();
 					}else if(code===401){
                         wx.showToast({
-							title: '登录过期，清重新登录',
+                            title: '登录过期，清重新登录',
+                            icon: 'none'
                         })
                         wx.navigateTo({
                             url: '/pages/login/login/index',
                         })
-                    }else {
+                    } else {
 						wx.showToast({
-							title: '数据请求错误',
+                            title: res.message,
+                            icon: 'none'
 						})
 					}
                 },
