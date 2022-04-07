@@ -1,0 +1,36 @@
+
+.wapper{
+    margin: 0 35rpx;
+}
+.address{
+    background: #EAF5FF;
+    border-radius: 12rpx;
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #1D83F0;
+    padding: 24rpx;
+}
+.addresLink{
+    color: #FFA42E;
+    text-decoration-line: underline;
+}
+.imgBox{
+    border:  1px solid red;
+}
+.imgBox>view{
+    height: 320rpx;
+}
+.top{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-top: 104rpx;
+    margin-left: 48rpx;
+}
+.bottom{
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-top: 162rpx;
+    margin-left: 48rpx;
+}

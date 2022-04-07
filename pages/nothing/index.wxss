@@ -1,0 +1,7 @@
+/* pages/nothing/index.wxss */
+.count{
+    display: flex;
+    justify-content: center;
+    margin-top: 30%;
+    color: rgb(10, 9, 9);
+}

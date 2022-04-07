@@ -2,11 +2,21 @@
 
 <view class="bgColog">
     <mp-navigation-bar title="采集成本发票"  />
-
-    <view>  
-        <view>
+    <view class="wapper">  
+        <view class="address">
             请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！
-            <text>邮寄地址</text>
+            <text class="addresLink">邮寄地址</text>
+        </view>
+
+        <view class="imgBox">
+            <view>
+                <view class="top">图片上传发票</view>
+                <view class="bottom">点击即可图片上传发票</view>
+            </view>
+            <view>
+                <view class="top">手动添加增值税发票</view>
+                <view class="bottom">点击即可手动添加发票</view>
+            </view>
         </view>
     </view>
 </view>

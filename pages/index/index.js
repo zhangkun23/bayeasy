@@ -38,6 +38,14 @@ Page({
     // 登录与完善个人信息按钮直接跳
     handelClick(e){
       const url = e.currentTarget.dataset.url;
+      if(url == "info"){
+        if(getApp().globalData.userStatus == 0){
+          utils.navigateTo('/pages/login/authentication/index')
+        }else if(getApp().globalData.userStatus == 1){
+          utils.navigateTo('/pages/login/securityCheck/index')
+        }
+        return;
+      }
       utils.navigateTo(url)
     },
     /**
