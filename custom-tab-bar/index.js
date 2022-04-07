@@ -1,6 +1,6 @@
 Component({
     data: {
-      selected: 0,
+      selected: 2,
       color: "#ABBED2",
       selectedColor: "#1D83F0",
       footerBg: getApp().globalData.imgPath +'footer/footerBg.png',

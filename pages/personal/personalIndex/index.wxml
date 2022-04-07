@@ -1,14 +1,19 @@
 <!-- pages/personal/personalIndex/index.wxml-->
+<modal showModal="{{showModal}}">
+  <login-btn bind:click="goLogin" text="登陆/注册" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
+</modal>
+
 <view class="container">
   <mp-navigation-bar title="个人中心" back="{{false}}"></mp-navigation-bar>
-  <modal showModal="{{showModal}}">
-    <login-btn text="登陆/注册" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
-  </modal>
+
   <view class="user-info-container">
     <view class="user-info">
       <view class="user-name-container">
-        <view wx:if="{{user_name}}" class="user-name">
+        <view wx:if="{{login_status !== 0 && user_name}}" class="user-name">
           {{user_name}}
+        </view>
+        <view wx:if="{{login_status !== 0 && !user_name}}" class="user-name">
+          欢迎你
         </view>
         <view wx:else class="user-name">
           游客登录
@@ -17,21 +22,24 @@
           <login-btn bindclick="goLogin" text="未完善资料" btnBgColor="#1D83F0" btnWidth="170rpx" btnHeight="50rpx" fontSize="24rpx"></login-btn>
         </view>
       </view>
-      <view wx:if="{{user_tel}}" class="user-tel">
+      <view wx:if="{{login_status !== 0 && user_tel}}" class="user-tel">
         {{user_tel}}
+      </view>
+      <view wx:if="{{login_status !== 0 && !user_tel}}" class="user-tel">
+        
       </view>
       <view wx:else class="user-need-login">
         登录账号可以使用更多功能
       </view>
     </view>
-    <view class="user-avatar">
-      <block wx:if="{{canIUseOpenData}}">
+    <view wx:if="{{userInfo.avatarUrl}}" class="user-avatar">
+      <!-- <block wx:if="{{canIUseOpenData}}">
         <view class="userinfo-avatar" bindtap="bindViewTap">
           <open-data type="userAvatarUrl"></open-data>
         </view>
         <open-data type="userNickName"></open-data>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
+      </block> -->
+      <!-- <block wx:if="{{!hasUserInfo}}">
         <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
         <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
         <view wx:else> 请使用1.4.4及以上版本基础库 </view>
@@ -39,29 +47,28 @@
       <block wx:else>
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+      </block> -->
+      <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </view>
+    <view wx:else class="user-avatar">
+      <image src="{{defaultAvatar}}" mode="widthFix"></image>
     </view>
   </view>
   <view class="fn-gate-container">
     <view class="btn-container">
       <view wx:for="{{gates_info}}" class="gate-btn" wx:for-index="i" wx:key="i">
         <entrance-btn bindtap="goGate" data-url="{{item.url}}" iconUrl="{{item.icon}}" title="{{item.text}}" gateWidth="{{item.width}}" isExtraInfo="{{item.isExtraInfo}}" extraInfo="{{item.extraInfo}}">
-          <view wx:if="{{item.extraInfo.type === 0}}">
+          <view wx:if="{{item.extraInfo.type === 0 && isCheckRequired}}">
             <login-btn text="去确认" btnBgColor="#EE7D00" btnWidth="64rpx" btnHeight="30rpx" fontSize="16rpx" borderRadius="15rpx"></login-btn>
           </view>
-          <view wx:if="{{item.extraInfo.type === 1}}">
-            <login-btn text="{{item.extraInfo.count}}" btnBgColor="#FF475A" btnWidth="28rpx" btnHeight="28rpx" fontSize="20rpx" borderRadius="50%" border="3rpx solid #FFFFFF">
+          <view wx:if="{{item.extraInfo.type === 1 && isNewTodo && todoCount > 0}}">
+            <login-btn text="{{todoCount}}" btnBgColor="#FF475A" btnWidth="28rpx" btnHeight="28rpx" fontSize="20rpx" borderRadius="50%" border="3rpx solid #FFFFFF">
             </login-btn>
           </view>
         </entrance-btn>
       </view>
-      <!-- <entrance-btn iconUrl="https://image.bayeasy.cn/images-data/personal/gates/person-info.png" title="个人信息" gateWidth="120rpx"></entrance-btn> -->
-      <!-- wx:for 遍历-->
     </view>
   </view>
-  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="width: 100rpx; height: 300rpx;"></button>
-  ====
-  <button bindtap="getUserProfile" style="width: 100rpx; height: 300rpx;"></button> -->
   <view class="entrances-container">
     <view class="entrances">
       <view wx:for="{{entrances_info}}" class="entrance" wx:for-index="i" wx:key="i">
@@ -69,16 +76,19 @@
           <image src="{{item.icon}}" mode="widthFix"></image>
         </view>
         <view class="content">{{item.text}}</view>
-        <view class="arrow" bindtap="goEntrance" data-url="{{item.url}}">
+        <view wx:if="{{item.id === 1 && !isOperate}}" class="arrow" bindtap="contactOperate">
+          <image src="{{right_arrow}}" mode="widthFix"></image>
+        </view>
+        <view wx:else class="arrow" bindtap="goEntrance" data-url="{{item.url}}">
           <image src="{{right_arrow}}" mode="widthFix"></image>
         </view>
       </view>
     </view>
   </view>
-  <view wx:if="{{login_status === 0}}" class="login-btn" bindtap="goLogin" >
+  <view wx:if="{{login_status === 0}}" class="login-btn" bindtap="goLogin">
     登录/注册
   </view>
-  <view wx:else class="login-btn" bindtap="login">
+  <view wx:else class="login-btn" bindtap="logout">
     退出登录
   </view>
 </view>

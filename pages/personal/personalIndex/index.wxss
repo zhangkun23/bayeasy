@@ -73,6 +73,10 @@ page {
   right: 32rpx;
 }
 
+.user-info-container .user-avatar image{
+  width: 100%;
+}
+
 .fn-gate-container {
   /* background-color: blue; */
   position: fixed;

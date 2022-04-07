@@ -1,9 +1,12 @@
 // pages/personal/personalIndex/index.js
 const {
   icons_url,
-  btns_url
+  btns_url,
+  defaultAvatar
 } = require('../config/config')
-
+const {
+  logout
+} = require('../../../http/api/api')
 const app = getApp()
 Component({
   pageLifetimes: {
@@ -22,6 +25,61 @@ Component({
           canIUseGetUserProfile: true
         })
       }
+      // 获取运营
+
+      // 展示接口
+      if (app.globalData.operate) {
+        console.debug("已有客服专员")
+        const _entrances_info = this.data.entrances_info
+        _entrances_info[0].text = "联系运营专员"
+        this.setData({
+          isOperate: app.globalData.operate,
+          entrances_info: _entrances_info
+        })
+      }
+      // 决定个人中心调准
+      const token = wx.getStorageSync('token') || '' // 可能从getStorage取
+      const userStatus = app.globalData.userStatus
+      if (token) {
+        const _gate_info = this.data.gates_info
+        if (userStatus === 0) {
+          console.debug("有token但是userstatus为0 跳转完善个人信息")
+          _gate_info[0].url = '../../login/information/index?' + 'userType=' + userStatus
+          this.setData({
+            login_status: 0,
+            isCheckRequired: true,
+            isFileComplete: false,
+            gates_info: _gate_info,
+          })
+        } else if (userStatus === 1) {
+          this.setData({
+            login_status: 1,
+            isCheckRequired: true,
+            gates_info: _gate_info
+          })
+        } else if (userStatus === 2) {
+          this.setData({
+            login_status: 2,
+            isCheckRequired: true,
+            gates_info: _gate_info
+          })
+        } else {
+          this.setData({
+            login_status: 0,
+            isCheckRequired: false
+          })
+
+        }
+      }
+
+      // 决定待办事项
+      const todoCount = app.globalData.todolistNum
+      if (todoCount > 0 && token) {
+        this.setData({
+          isNewTodo: true,
+          todoCount: todoCount
+        })
+      }
     },
     hide() {
       console.debug("personal index hide")
@@ -33,6 +91,11 @@ Component({
   data: {
     login_status: 0, // app.globalData.???
     isFileComplete: true,
+    isOperate: false,
+    isNewTodo: false,
+    defaultAvatar: defaultAvatar,
+    todoCount: 0,
+    isCheckRequired: false,
     hasUserInfo: false,
     userInfo: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -45,17 +108,20 @@ Component({
     user_tel: '',
     right_arrow: icons_url.right_arrow,
     entrances_info: [{
+        id: 1,
         icon: icons_url.contact_operate,
-        url: '/pages/personal/contactStaff/index',
-        text: '联系运营专员'
+        url: '/pages/contactOperate/index',
+        text: '联系客服'
       },
       {
+        id: 2,
         icon: icons_url.about_bayeasy,
         url: '/pages/personal/aboutBayeasy/index',
         text: '关于贝易资'
       }
     ],
     gates_info: [{
+      id: 1,
       icon: btns_url.personal,
       text: '个人中心',
       width: '120rpx',
@@ -66,18 +132,21 @@ Component({
         type: 0,
       }
     }, {
+      id: 2,
       icon: btns_url.incomeList,
       text: '收入账单',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null,
     }, {
+      id: 3,
       icon: btns_url.costBill,
       text: '成本发票',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null
     }, {
+      id: 4,
       url: '../../todo/todo',
       icon: btns_url.todoList,
       text: '待办事项',
@@ -103,19 +172,48 @@ Component({
           })
         }
       })
-
+    },
+    contactOperate(e) {
+      if (this.data.isOperate) {
+        console.error("客户已有运营专员仍旧触发联系客服 ")
+      } else {
+        wx.makePhoneCall({
+          phoneNumber: app.globalData.phoneNumber
+        })
+      }
     },
     goGate(e) {
+      if (this.data.login_status === 0) {
+        this.setData({
+          showModal: true
+        })
+        return
+      }
       const _url = e.currentTarget.dataset.url
       console.debug("go gate", _url)
       wx.navigateTo({
-        url: _url 
+        url: _url
       })
     },
     goLogin(e) {
       console.debug("go login")
       wx.navigateTo({
         url: '/pages/login/login/index',
+      })
+    },
+    logout() {
+      logout().then(res => {
+        if (res.ret) {
+          console.log("logout success")
+          this.setData({
+            login_status: 0
+          })
+        } else {
+          console.warning("logout token expired")
+          //todo: token过期之后的逻辑
+        }
+      }).catch(e => {
+        console.error("logout request error", e)
       })
     },
     getUserProfile(e) {

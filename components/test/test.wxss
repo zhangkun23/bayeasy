@@ -1,8 +1,0 @@
-/* component/test/test.wxss */
-
-
-.inner {
-  height: 100rpx;
-  background-color: red;
-    color: red;
-  }

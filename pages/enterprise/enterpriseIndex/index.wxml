@@ -1,6 +1,16 @@
 <!--pages/enterprise/enterpriseIndex/index.wxml-->
-<text>pages/enterprise/enterpriseIndex/index.wxml</text>
-
-<view>
-企业信息
+<view class="bgColog"></view>
+<view class="title-container">
+    <view class="page-title">
+        企业信息
+    </view>
+    <view class="page-subtitle">
+        为您提供最专业的服务
+    </view>
+    <view class="split"></view>
+</view>
+<view class="content-frame">
+    <view class="content-bg">
+        <view class="content-container"></view>
+    </view>
 </view>

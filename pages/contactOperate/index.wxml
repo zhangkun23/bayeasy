@@ -1,4 +1,4 @@
-<!--pages/personal/contactStaff/index.wxml-->
+<!--pages/contactStaff/index.wxml-->
 <view class="bgColog"></view>
 <mp-navigation-bar title="联系运营专员"></mp-navigation-bar>
 <view class="staff-info-container">

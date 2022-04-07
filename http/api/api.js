@@ -50,11 +50,20 @@ module.exports={
 	IdcardAuthentication:(param)=>{
 		return request(api+'/personal_nformation/authentication','POST',param);
 	},
+	/* 获取客服专员二维码 */
+	getOperateQR: ()=>{
+		return api+'/personal_nformation/operate_wx';
+	},
 
+	/* code查询微信手机号码 */
+	getWxPhone: (code)=>{
+		return request(api+'/getwxuserphone?code='+code,'GET',{});
+	},
 
-
-
-	
+	/* 微信登录 */
+	wxlogin:(param)=>{
+		return request(api+'/auth/wxlogin','POST',param);
+	},
 	
 }
 

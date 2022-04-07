@@ -5,7 +5,7 @@ Component({
   },
   lifetimes: {
     attached: function () {
-      console.debug("btn showed, properties", this.properties)
+      // console.debug("btn showed, properties", this.properties)
     }
 
   },
