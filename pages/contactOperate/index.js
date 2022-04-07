@@ -51,7 +51,7 @@ Page({
     get_operate.then(res => {
       const str = arrayBufferToBase64Img(res.data)
       this.setData({
-        qrcode_url: 'data:image/jpeg;base64,' + res
+        qrcode_url: 'data:image/jpeg;base64,' + str
       })
     }).catch(e => {
       console.log("Failde to get qr code from buffer: ", e)
