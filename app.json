@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/logs/logs",
     "pages/enterprise/enterpriseIndex/index",
@@ -11,6 +12,7 @@
     "pages/login/loginPrimary/index",
 
     "pages/invoice/invoiceIndex/index",
+    "pages/invoice/invoiceUpload/index",
     "pages/personal/personalIndex/index",
     "pages/personal/aboutBayeasy/index",
     "pages/contactOperate/index",

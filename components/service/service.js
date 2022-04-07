@@ -7,6 +7,10 @@ Component({
     properties: {
 
     },
+    pageLifetimes: {
+        show() {
+        }
+    },
 
     /**
      * 组件的初始数据
@@ -14,7 +18,6 @@ Component({
     data: {
         logo: getApp().globalData.imgPath + 'public/service.png',
     },
-
     /**
      * 组件的方法列表
      */
@@ -30,7 +33,6 @@ Component({
                     phoneNumber: getApp().globalData.phoneNumber
                 })
             }
-            
         },
     }
 })

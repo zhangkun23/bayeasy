@@ -56,6 +56,6 @@ module.exports={
 	wxlogin:(param)=>{
 		return request(api+'/auth/wxlogin','POST',param);
 	},
-	
+	  
 }
 
