@@ -55,9 +55,9 @@ module.exports={
 	},
 
 	/* 获取客服专员二维码 */
-	getOperateQR: ()=>{
-		return api+'/personal_nformation/operate_wx';
-	},
+	// getOperateQR: ()=>{
+	// 	return api+'/personal_nformation/operate_wx';
+	// },
 
 	/* code查询微信手机号码 */
 	getWxPhone: (code)=>{

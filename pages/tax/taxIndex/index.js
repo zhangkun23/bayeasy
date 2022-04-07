@@ -2,15 +2,21 @@
 Component({
     pageLifetimes: {
         show() {
-        if (typeof this.getTabBar === 'function' &&
-            this.getTabBar()) {
-            this.getTabBar().setData({
-            selected: 3
+            if (typeof this.getTabBar === 'function' &&
+                this.getTabBar()) {
+                this.getTabBar().setData({
+                    selected: 3
+                })
+            }
+            const barTitileStatus = wx.getMenuButtonBoundingClientRect()
+            this.setData({
+                statusBarHeight: barTitileStatus.bottom + 32
             })
+
         }
-        // 获取token
-        console.log(getApp().globalData.token)
-        }
+    },
+    data: {
+        statusBarHeight: 30,
     }
+    
 })
-  

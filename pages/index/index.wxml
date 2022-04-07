@@ -1,71 +1,71 @@
 
-<modal showModal="{{showModal}}">
-    <login-btn bind:click="goLogin" text="登陆/注册" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
+<modal showModal="{{showModal}}" class="modal">
+    <login-btn bind:click="goLogin" text="{{textInfo}}" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
   </modal>
-  
+
 <view class="waper">
   <view class="infoTop">
     <view class="InfoTop__top">
       <image class="logo_byz" src="{{logo_byz}}" />
       <text class="infoTitle">贝易资企业财税服务商</text>
-      <text class="infoButton" bindtap="handelClick" wx:if="{{token}}">完善个人信息</text>
-      <text class="infoButton" bindtap="handelClickLogin" wx:if="{{token}}">登录/注册</text>
+      <text class="infoButton" bindtap="handelClick" data-url='/pages/login/information/index' wx:if="{{token}}">完善个人信息</text>
+      <text class="infoButton" bindtap="handelClick" data-url='/pages/login/login/index' wx:if="{{token}}" >登录/注册</text>
     </view>
     <image class="banner" src="{{banner}}" />
   </view>
   
   <!-- 待办 -->
-  <view class="daiban" wx:if="{{daiban!=0}}">
+  <view class="daiban" wx:if="{{dbNum!=0}}">
     <view class="daibanLeft">
       <image class="daibanImg"  src="{{daiban}}"/>
       <view class="daibanText">
-        <cover-view class="infoTitle">当前您有</cover-view>
-        <cover-view class="daibanTextCounter">{{dbNum}}</cover-view>
-        <cover-view class="infoTitle">项待办事项</cover-view>
+        <view class="infoTitle">当前您有</view>
+        <view class="daibanTextCounter">{{dbNum}}</view>
+        <view class="infoTitle">项待办事项</view>
       </view>
     </view>
-    <view class="daibanButton" bindtap="handelClickQqr">
+    <view class="daibanButton" bindtap="handelClickUrl" data-url="/pages/todo/todo">
       去确认
     </view>
   </view>
 
   <view class="count">
     <view class="countTop">
-      <view class="countTop_left" bindtap="handelClickLogin">
-        <cover-image class="zcjc" src="{{zcjc}}" />
-        <cover-view class="countCenterTitle" >注册进程</cover-view>
+      <view class="countTop_left" data-url='/pages/login/login/index' bindtap="handelClickUrl">
+        <image class="zcjc" src="{{zcjc}}" />
+        <view class="countCenterTitle" >注册进程</view>
       </view>
       <view class="countTop_right">
-        <view class="top" bindtap="handelClickSrzdfp">
-          <cover-image class="srzdfp" src="{{srzdfp}}" />
-          <cover-view class="title">收入账单发票</cover-view>
+        <view class="top" bindtap="handelClickUrl" data-url='/pages/login/login/index'>
+          <image class="srzdfp" src="{{srzdfp}}" />
+          <view class="title">收入账单发票</view>
         </view>
-        <view class="bottom" bindtap="handelClickZcjc">
-          <cover-image class="cbfy" src="{{cbfy}}" />
-          <cover-view class="title">注册进程</cover-view>
+        <view class="bottom" bindtap="handelClickUrl" data-url='/pages/login/login/index'>
+          <image class="cbfy" src="{{cbfy}}" />
+          <view class="title">注册进程</view>
         </view>
       </view>
     </view>
     <view class="usermotto">
       <text class="user-motto">{{motto}}</text>
-      <view class="countCenter" bindtap="handelClickNssb">
-        <view class="countCenterTitle">纳税申报</view>
-        <cover-image class="nssb" src="{{nssb}}" />
+      <view class="countCenter" bindtap="handelClickUrl">
+        <text class="countCenterTitle">纳税申报</text>
+        <image class="nssb" src="{{nssb}}" />
       </view>
       <view class="countBottom">
-        <view class="countBottom_info countLeft" bindtap="handelClickFwjs">
+        <view class="countBottom_info countLeft" data-url='/pages/login/login/index' bindtap="handelClickUrl">
           <view class="bottom_left_title">
-            <cover-view class="bottom_left_title_top">服务介绍</cover-view>
-            <cover-view class="bottom_left_title_bottom">我们为您提供专业的服务</cover-view>
+            <view class="bottom_left_title_top">服务介绍</view>
+            <view class="bottom_left_title_bottom">我们为您提供专业的服务</view>
           </view>
-          <cover-image class="bottom_right" src="{{fwjs}}" />
+          <image class="bottom_right" src="{{fwjs}}" />
         </view>
-        <view class="countBottom_info countRight" bindtap="handelClickCjwd">
+        <view class="countBottom_info countRight" data-url='/pages/login/login/index' bindtap="handelClickUrl">
           <view class="bottom_left_title">
-            <cover-view class="bottom_left_title_top">常见问答</cover-view>
-            <cover-view class="bottom_left_title_bottom">您想问的这里有答案</cover-view>
+            <view class="bottom_left_title_top">常见问答</view>
+            <view class="bottom_left_title_bottom">您想问的这里有答案</view>
           </view>
-          <cover-image class="bottom_right" src="{{faq}}" />
+          <image class="bottom_right" src="{{faq}}" />
         </view>
       </view>
     </view>

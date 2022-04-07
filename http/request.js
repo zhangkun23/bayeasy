@@ -13,7 +13,7 @@ module.exports = {
      *  data:要传递的参数
      *isSubDomain:表示是否添加二级子域名 true代表添加, false代表不添加
      */
-    request: (url, method, data, isSubDomain) => {
+    request: (url, method, data,  responseType) => {
         let _url = `${baseUrl}${url}`;
         let token = wx.getStorageSync('token')
         return new Promise((resolve, reject) => {
@@ -28,6 +28,7 @@ module.exports = {
                     'content-type': 'application/x-www-form-urlencoded',
                     'Authorization': 'Bearer ' + token,
                 },
+                responseType,
                 success: (res) => {
                     // console.log('从接口获取到的数据', res);
                     let {
@@ -39,17 +40,17 @@ module.exports = {
                     } else if (code === 401) {
                         wx.showToast({
                             title: '登录过期，清重新登录',
-                            icon: 'none'
+                            icon: 'none',
                         })
                         wx.navigateTo({
                             url: '/pages/login/login/index',
                         })
-                    } else {
-                        wx.showToast({
-                            title: '登录成功',
-                            icon: 'none'
-                        })
-                    }
+                    }else {
+						wx.showToast({
+                            title: '数据请求错误',
+                            icon: 'none',
+						})
+					}
                 },
                 fail() {
 

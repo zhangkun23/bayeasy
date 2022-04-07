@@ -1,8 +1,5 @@
-const {
-  login,
-  todolist
-} = require('../../http/api/api.js')
 const tempPath = getApp().globalData.imgPath;
+const utils = require('../../utils/util.js')
 Page({
 
     /**
@@ -22,38 +19,59 @@ Page({
       dbNum:0, //待办数量
       daibanShow:true,
       token:'',
-      showModal:true
+      showModal:false,
+      textInfo:'登录/注册',
     },
     goLogin(){
-      wx.navigateTo({
-        url: '/pages/login/login/index',
-      })
+      let userStatus = getApp().globalData.userStatus;  //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联
+      if(this.data.textInfo == '登录/注册'){
+        utils.navigateTo('/pages/login/login/index')
+      }else{
+        if(userStatus == 1){
+          utils.navigateTo('/pages/login/securityCheck/index')
+        }else if(userStatus!=1){
+          utils.navigateTo('/pages/login/information/index')
+        }
+      }
     },
-    handelClickLogin(){
-      wx.navigateTo({
-        url: '../login/login/index',
-      })
+    // 登录与完善个人信息按钮直接跳
+    handelClick(e){
+      const url = e.currentTarget.dataset.url;
+      utils.navigateTo(url)
     },
-    handelClick() {
-      wx.navigateTo({
-        url: '../login/authentication/index',
-      })
-    },
-    // 待办跳转
-    handelClickQqr(){
-        wx.navigateTo({
-          url: '../todo/todo',
-        })
-    },
-
     /**
-     * 生命周期函数--监听页面显示
+     * 统一跳转拦截
      */
-    onShow: function () {
+    handelClickUrl(e) {
+      const url = e.currentTarget.dataset.url;
+      if(!wx.getStorageSync('token')){
+        this.setData({
+          showModal:true,
+          textInfo:'登录/注册'
+        })
+        return;
+      }
+      if(getApp().globalData.userStatus != 2){
+        this.setData({
+          showModal:true,
+          textInfo:'完善个人信息'
+        })
+        return;
+      }
+      utils.navigateTo(url)
+    },
+    // 待办接口回掉 
+    watchBack (name){
       this.setData({
         dbNum:getApp().globalData.todolistNum,
         token:wx.getStorageSync('token')
       }) 
+    },
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+      getApp().watch(this.watchBack)
     },
 
     /**

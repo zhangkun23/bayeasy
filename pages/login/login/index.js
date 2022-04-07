@@ -50,8 +50,8 @@ Page({
         wxlogin(param).then( res => {
             if(res.ret){
                 wx.setStorageSync('token', res.data.access_token)
-                getApp().globalData.mobile =  res.data.mobile;
-                getApp().globalData.idCard =  res.data.identity_card;
+                wx.setStorageSync('mobile', res.data.mobile)
+                wx.setStorageSync('idCard', res.data.identity_card)
                 this.getInfo();
             }
         })
@@ -72,7 +72,6 @@ Page({
         getUserStatus().then(res => {
             if(res.ret){
                 getApp().globalData.userStatus =  res.data.status;
-                console.log(getApp().globalData.userStatus )
                 switch (getApp().globalData.userStatus ){
                     case 0:
                         wx.navigateTo({
