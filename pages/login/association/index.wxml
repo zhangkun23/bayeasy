@@ -1,15 +1,17 @@
 <!--pages/login/association/index.wxml-->
-<view class="association">
-  <view class="association__success">
-    <view class="association__success-img"> 
-      <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
+<view>
+  <view class="association">
+    <view class="association__success">
+      <view class="association__success-img mg-tp-25">
+        <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
+      </view>
+      <view class="association__success-text">个人信息关联</view>
     </view>
-    <view class="association__success-text">个人信息关联</view>
-  </view>
-  <view>
-    <view>您当前有待办事项处理请关注！</view>
-    <view>
-      <button>去处理</button>
+    <view class="association__agency" wx:if="{{agency}}">
+      <view class="association__agency-text mg-tp-25">您当前有待办事项处理请关注！</view>
+      <view class="association__agency-button" bindtap="todoList">
+        <view>去处理</view>
+      </view>
     </view>
   </view>
 </view>

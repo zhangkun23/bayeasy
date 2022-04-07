@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    agency: true
+  },
+  methods: {
+    todoList(){
+      wx.navigateTo({
+        url: 'pages/todo/todo',
+      })
+    }
   },
 
   /**

@@ -30,7 +30,7 @@ module.exports = {
                 },
                 responseType,
                 success: (res) => {
-                    // console.log('从接口获取到的数据', res);
+                    // console.log('从接口获取到的数据', res.data);
                     let {
                         code
                     } = res.data;

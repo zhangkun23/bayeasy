@@ -8,12 +8,16 @@ const {
 const {
   baseUrl
 } = require('../../../http/env').dev;
+const {
+  arrayBufferToBase64Img
+} = require('../../../utils/util')
 Component({
   /**
    * 页面的初始数据
    */
   data: {
     isShowModal: false,
+    disable: true,
     form: {
       username: "",
       telephone: "",
@@ -31,44 +35,33 @@ Component({
     resever: "拍摄身份证反面",
     IdcardFront: "https://image.bayeasy.cn/images-data/authentication/idcard_ front.png",
     IdcardResever: "https://image.bayeasy.cn/images-data/authentication/idcard_resever.png",
-    status: getApp().globalData.userStatus || 1
+    status: 0
+    // status: getApp().globalData.userStatus 
   },
   lifetimes: {
     attached() {
-      console.log(this.data.status)
       this.initialization();
     },
-    moved() {
-      console.log('moved')
-    },
-    detached() {
-      console.log('detacged')
-    }
   },
   methods: {
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
     initialization() {
-      console.log(this)
       let that = this;
       if (that.data.status == 0) {
-        console.log('上传，此时贝易资库里没有信息')
         that.data.form = {
           username: "",
           telephone: "",
           idcard: "",
           validUntil: "",
         }
-      } else if (that.data.status == 1) {
-        console.log('需要关联')
-        that._getUserIdCards()
-      } else if (that.data.status == 2) {
-        console.log('已关联，查看详情')
-      }
+      } else if (that.data.status == 1 || that.data.status == 2) {
+        that._getUserIdCards();
+      } 
     },
     // 获取身份证信息
     _getUserIdCards: function () {
       getUserMeg().then(res => {
-        console.log(res, '个人信息')
+        // console.log(res, '个人信息')
         if (res.ret) {
           const dataInfo = res.data
           this.setData({
@@ -82,11 +75,25 @@ Component({
           })
         }
       })
-      const res1 = getUserIdCard('front');
-      const res2 = getUserIdCard('back');
-      this.setData({
-        IdcardFront: baseUrl + res1,
-        IdcardResever: baseUrl + res2,
+      getUserIdCard('front').then(res => {
+        let that = this;
+        if(res.ret) {
+          const image = res.data.image.replace(/[\r\n]/g, '');
+          that.setData({
+            IdcardFront: image,
+            front: '身份证正面'
+          })
+        } 
+      })
+      getUserIdCard('back').then(res => {
+        let that = this;
+        if(res.ret) {
+          const image = res.data.image.replace(/[\r\n]/g, '');
+          that.setData({
+            IdcardResever: image,
+            resever: "身份证反面",
+          })
+        }
       })
     },
 
@@ -161,7 +168,6 @@ Component({
                       validityPeriod: dataInfo.expire_date
                     }
                   })
-                  console.log(getApp().globalData)
                 } else {
                   wx.showToast({
                     title: res.message,
@@ -198,58 +204,50 @@ Component({
         url: '/pages/index/index',
       })
     },
-
+    // 提交
     confirmSubmit(e) {
-      let query = this.getUrlOption();
-      console.log(query)
       if (this.data.form.username == '') {
         wx.showToast({
           title: '请输入姓名',
           icon: "error"
         })
-        return
       } else if (this.data.form.telephone == '') {
         wx.showToast({
           title: '请输入手机号',
           icon: "error"
         })
-        return
       } else if (this.data.form.idcard == '') {
         wx.showToast({
           title: '请输入身份证号',
           icon: "error"
         })
-        return
       } else if (this.data.form.validityPeriod == '') {
         wx.showToast({
           title: '请输入身份证有效期',
           icon: "error"
         })
-        return
+      } else {
+        let params = {
+          name: this.data.form.username,
+          mobile: this.data.form.telephone,
+          id_card: this.data.form.idcard,
+          expire_date: this.data.form.validityPeriod
+        }
+        IDcardSubmit(params).then(res => {
+          console.log(res)
+          if (res.ret) {
+            this.setData({
+              isShowModal: true
+            })
+          } else {
+            wx.showToast({
+              title: res.message,
+              icon: 'none'
+            })
+          }
+        })
       }
 
-      let params = {
-        name: this.data.form.username,
-        mobile: this.data.form.telephone,
-        id_card: this.data.form.idcard,
-        expire_date: this.data.form.validityPeriod
-      }
-      console.log(params)
-      IDcardSubmit(params).then(res => {
-        console.log(res)
-        if (res.ret) {
-          console.log(3)
-          this.setData({
-            isShowModal: true
-          })
-        } else {
-          console.log(4)
-          wx.showToast({
-            title: res.message,
-            icon: 'none'
-          })
-        }
-      })
     },
 
     // 确认关联 

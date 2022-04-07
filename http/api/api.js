@@ -82,7 +82,7 @@ module.exports={
 	
 	/*获取身份证照片*/
 	getUserIdCard:(param)=>{
-		return request(api + '/personal_nformation/get_idcard?type=' + param, "GET", {}) ;
+		return request(api + '/personal_nformation/idcard_image?type=' + param, "GET", {}) ;
 	},
 	
 }
