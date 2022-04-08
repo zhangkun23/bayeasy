@@ -47,15 +47,26 @@ Page({
     //     }
     //   })
     // })
-    getQR.then(res => {
+    get_operate.then(res => {
       // const str = arrayBufferToBase64Img(res.data)
-      const str = res.data
       console.debug("qr code res", res)
-      this.setData({
-        qrcode_url:  str
-      })
+      if (res.ret) {
+        if (res.data instanceof Object && res.data.hasOwnProperty('image')) {
+          this.setData({
+            qrcode_url: res.data.image
+          })
+        } else {
+          wx.showToast({
+            title: '无法获取二维码',
+            icon: 'none'
+          })
+        }
+      }else{
+        console.error("Failed to get QR ", res.message)
+      }
+
     }).catch(e => {
-      console.log("Failed to get qr code from buffer: ", e)
+      console.log("Failed to get qr code from request: ", e)
     })
   },
 
