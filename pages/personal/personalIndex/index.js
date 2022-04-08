@@ -47,33 +47,38 @@ Component({
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
           console.debug("有token但是userstatus为0 跳转完善个人信息")
-          _gate_info[0].url = '../../login/information/index'
+          _gate_info[0].url = '../../login/securityCheck/index'
           this.setData({
             token: token,
             login_status: 0,
             isCheckRequired: true,
-            isFileComplete: false,
+            showCompleteInfo: false,
             gates_info: _gate_info,
           })
         } else if (userStatus === 1) {
+          _gate_info[0].url = '../../login/information/index'
           this.setData({
             token: token,
             login_status: 1,
             isCheckRequired: true,
-            gates_info: _gate_info
+            showCompleteInfo: true,
+            gates_info: _gate_info,
           })
         } else if (userStatus === 2) {
+          _gate_info[0].url = '../../login/securityCheck/index'
           this.setData({
             token: token,
             login_status: 2,
             isCheckRequired: true,
-            gates_info: _gate_info
+            showCompleteInfo: false,
+            gates_info: _gate_info,
           })
         } else {
           this.setData({
             token: token,
             login_status: 0,
-            isCheckRequired: false
+            isCheckRequired: false,
+            showCompleteInfo: false
           })
 
         }
@@ -98,7 +103,7 @@ Component({
   data: {
     token: '',
     login_status: 0, // app.globalData.???
-    isFileComplete: true,
+    showCompleteInfo: null,
     isOperate: false,
     isNewTodo: false,
     defaultAvatar: defaultAvatar,
@@ -112,6 +117,7 @@ Component({
     showModal: false,
     btn_text: '退出登录',
     nbTitle: '个人中心',
+    btnUrl:'../../login/information/index',
     user_name: '', // name 和 tel 都应该存储在全局的info里
     user_tel: '',
     right_arrow: icons_url.right_arrow,
@@ -213,16 +219,26 @@ Component({
       logout().then(res => {
         if (res.ret) {
           console.log("logout success")
-          that.setData({
-            login_status: 0
-          })
-          wx.setStorageSync('token', '') // 清理缓存中token
         } else {
           console.warning("logout token expired")
           //todo: token过期之后的逻辑
         }
       }).catch(e => {
         console.error("logout request error", e)
+      })
+      wx.setStorageSync('token', '') // 清理缓存中token
+      wx.clearStorage({
+        success: (res) => {
+          console.log("清理缓存成功")
+        },
+      })
+      app.globalData.userStatus = ''
+      app.globalData.todolistNum = 0
+      app.globalData.operate = false
+      this.setData({
+        token: '',
+        isOperate: false,
+        showCompleteInfo: null
       })
     },
     getUserProfile(e) {
