@@ -26,8 +26,14 @@ Page({
             utils.navigateTo('../loginPrimary/index')
         }
     },
+    backIndex(){
+        wx.navigateTo({
+            url: '/page/index/index',
+        })
+    },
     // 微信手机号授权弹框 只能在手机调试
     getPhoneNumber (e) {
+        console.log(e.detail.code)
         getWxPhone(e.detail.code).then(res => {
             if(res.ret){
                 const phone = res.data.purePhoneNumber;

@@ -54,9 +54,23 @@ const arrayBufferToBase64Img = function (buffer) {
   }
   return btoa(binary)
 }
+/**
+ * 设置低栏
+ * @param {*} that 上下文
+ * @param {*} index 低栏索引
+ */
+const getTabBarIndex = function(that,index){
+  if (typeof that.getTabBar === 'function' &&
+    that.getTabBar()) {
+      that.getTabBar().setData({
+        selected: index
+      })
+  }
+}
 module.exports = {
   arrayBufferToBase64Img,
   formatTime,
   navigateTo,
-  openPdf
+  openPdf,
+  getTabBarIndex
 }
