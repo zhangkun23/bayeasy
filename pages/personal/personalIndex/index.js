@@ -11,6 +11,7 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
+      
       // 设定tabbar
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
@@ -43,6 +44,7 @@ Component({
       // 决定个人中心跳转
       const token = wx.getStorageSync('token') || '' // 可能从getStorage取
       const userStatus = app.globalData.userStatus
+
       if (token) {
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
@@ -69,7 +71,7 @@ Component({
           this.setData({
             token: token,
             login_status: 2,
-            isCheckRequired: true,
+            isCheckRequired: false,
             showCompleteInfo: false,
             gates_info: _gate_info,
           })
@@ -238,7 +240,8 @@ Component({
       this.setData({
         token: '',
         isOperate: false,
-        showCompleteInfo: null
+        showCompleteInfo: null,
+        isCheckRequired: false
       })
     },
     getUserProfile(e) {
