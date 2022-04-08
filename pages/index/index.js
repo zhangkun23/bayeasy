@@ -22,11 +22,15 @@ Page({
       token:'',
       showModal:false,
       textInfo:'登录/注册',
+      userStatus:2
     },
     goLogin(){
       let userStatus = getApp().globalData.userStatus;  //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联
       if(this.data.textInfo == '登录/注册'){
         utils.navigateTo('/pages/login/login/index')
+        this.setData({
+          showModal:false,
+        })
       }else{
         if(userStatus == 1){
           utils.navigateTo('/pages/login/securityCheck/index')
@@ -39,10 +43,11 @@ Page({
     handelClick(e){
       const url = e.currentTarget.dataset.url;
       if(url == "info"){
-        getApp().globalData.userStatus = 0
-        if(getApp().globalData.userStatus == 0){
+        let userStatus = getApp().globalData.userStatus;
+        userStatus = 0
+        if(userStatus == 0 ){
           utils.navigateTo('/pages/login/authentication/index')
-        }else if(getApp().globalData.userStatus == 1){
+        }else if(userStatus == 1){
           utils.navigateTo('/pages/login/securityCheck/index')
         }
         return;
@@ -68,6 +73,7 @@ Page({
         })
         return;
       }
+      
       utils.navigateTo(url)
     },
     // 待办接口回掉 
@@ -81,27 +87,33 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      // getApp().watch(this.watchBack)
-      todolist().then(res => {
-        if(res.ret){
-          getApp().globalData.todolistNum = res.data.nums;
-          this.setData({
-            dbNum:res.data.nums,
-            token:wx.getStorageSync('token')
-          }) 
-        }
-      })
-      if(wx.getStorageSync('token')){
-          /**
-           * 查询用户关联状态 /决定路由跳转地址
-           *  0 不为贝易资用户
-           *  1 为贝易资用户未关联信息
-           *  2 已关联
-           */
-          getUserStatus().then(res => {
-            if(res.ret){
-              getApp().globalData.userStatus =  res.data.status;
-            }
+      utils.getTabBarIndex(this,2);
+      if(wx.getStorageSync('token')!=undefined && wx.getStorageSync('token')!=""  ){
+        todolist().then(res => {
+          if(res.ret){
+            getApp().globalData.todolistNum = res.data.nums;
+            this.setData({
+              dbNum:res.data.nums
+            }) 
+            // this.setData({
+            //   dbNum:res.data.nums,
+            //   token:wx.getStorageSync('token')
+            // }) 
+          }
+        })
+        /**
+         * 查询用户关联状态 /决定路由跳转地址
+         *  0 不为贝易资用户
+         *  1 为贝易资用户未关联信息
+         *  2 已关联
+         */
+        getUserStatus().then(res => {
+          if(res.ret){
+            getApp().globalData.userStatus =  res.data.status;
+            this.setData({
+              userStatus:res.data.status
+            })
+          }
         })
         // 是否有运营人员
         myOperate().then(res => {

@@ -45,7 +45,7 @@ module.exports = {
                         })
                     }else {
 						wx.showToast({
-                            title: res.message,
+                            title: res.message || '',
                             icon: 'none',
 						})
 					}

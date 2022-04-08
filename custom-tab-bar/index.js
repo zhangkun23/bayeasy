@@ -37,6 +37,13 @@ Component({
     },
     attached() {
     },
+    onShow: function () {
+      if (typeof this.getTabBar === 'function' &&  this.getTabBar()) {
+        this.getTabBar().setData({
+          activeIdx: 0
+        })
+      }
+    },
     methods: {
       switchTab(e) {
         const data = e.currentTarget.dataset

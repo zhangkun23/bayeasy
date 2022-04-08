@@ -3,13 +3,13 @@
     <login-btn bind:click="goLogin" text="{{textInfo}}" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
   </modal>
 
-<view class="waper" wx:if="{{token}}">
+<view class="waper" >
   <view class="infoTop">
     <view class="InfoTop__top">
       <image class="logo_byz" src="{{logo_byz}}" />
       <text class="infoTitle">贝易资企业财税服务商</text>
-      <text class="infoButton" bindtap="handelClick" data-url='info' wx:if="{{token}}">完善个人信息</text>
-      <text class="infoButton" bindtap="handelClick" data-url='/pages/login/login/index' wx:if="{{token}}" >登录/注册</text>
+      <text class="infoButton" bindtap="handelClick" data-url='info' wx:if="{{userStatus<2}}">完善个人信息{{userStatus}}</text>
+      <text class="infoButton" bindtap="handelClick" data-url='/pages/login/login/index' wx:if="{{!token}}" >登录/注册</text>
     </view>
     <image class="banner" src="{{banner}}" />
   </view>
@@ -60,7 +60,7 @@
           </view>
           <image class="bottom_right" src="{{fwjs}}" />
         </view>
-        <view class="countBottom_info countRight" data-url='/pages/invoice/invoiceUpload/index' bindtap="handelClickUrl">
+        <view class="countBottom_info countRight" data-url='/pages/nothing/index' bindtap="handelClickUrl">
           <view class="bottom_left_title">
             <view class="bottom_left_title_top">常见问答</view>
             <view class="bottom_left_title_bottom">您想问的这里有答案</view>

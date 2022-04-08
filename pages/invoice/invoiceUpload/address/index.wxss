@@ -1,0 +1,8 @@
+/* pages/invoice/invoiceUpload/address.wxss */
+
+.count{
+    height: 372rpx;
+    background: #FFFFFF;
+    border-radius: 32rpx;
+    margin: 0 35rpx;
+}

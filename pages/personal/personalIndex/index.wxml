@@ -18,8 +18,8 @@
         <view wx:else class="user-name">
           游客登录
         </view>
-        <view wx:if="{{!isFileComplete}}" class="todo-btn">
-          <login-btn bindclick="goGate" data-url="../../login/information/index" text="未完善资料" btnBgColor="#1D83F0" btnWidth="170rpx" btnHeight="50rpx" fontSize="24rpx"></login-btn>
+        <view wx:if="{{token && showCompleteInfo}}" class="todo-btn">
+          <login-btn bindclick="goGate" data-url="{{btnUrl}}" text="未完善资料" btnBgColor="#1D83F0" btnWidth="170rpx" btnHeight="50rpx" fontSize="24rpx"></login-btn>
         </view>
       </view>
       <view wx:if="{{token && user_tel}}" class="user-tel">
@@ -70,7 +70,7 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{token}}" class="login-btn" bindtap="goLogin">
+  <view wx:if="{{ !token }}" class="login-btn" bindtap="goLogin">
     登录/注册
   </view>
   <view wx:else class="login-btn" bindtap="userLogout">

@@ -12,10 +12,12 @@ module.exports={
 	},
 
 	/* 获取二维码 */
+	// get_operate:()=>{
+	// 	return request('/gshApi/personal_nformation/operate_wx','GET',{},'arrayBuffer');
+	// },
 	get_operate:()=>{
-		return request('/gshApi/personal_nformation/operate_wx','GET',{},'arrayBuffer');
+		return request('/gshApi/personal_nformation/operate_wx_qrcode','GET',{});
 	},
-
 
 	
 	

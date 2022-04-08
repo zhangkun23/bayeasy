@@ -7,12 +7,20 @@
     font-weight: 400;
     margin: 0 30rpx;
     margin-top: 48rpx;
+    align-items: center;
 }
 .loginText__img{
     height: 30rpx;
     width: 30rpx;
     padding-right: 10rpx;
+    padding-top: 2rpx;
 }
 .loginTextXy{
     color: #1D83F0;
+}
+.loginSelect{
+    /* border: 1px solid red; */
+    /* padding-top: 5rpx; */
+    height: 40rpx;
+    width: 40rpx;
 }
