@@ -47,7 +47,7 @@ Component({
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
           console.debug("有token但是userstatus为0 跳转完善个人信息")
-          _gate_info[0].url = '../../login/securityCheck/index'
+          _gate_info[0].url = '/pages/login/authentication/index'
           this.setData({
             token: token,
             login_status: 0,
@@ -56,7 +56,7 @@ Component({
             gates_info: _gate_info,
           })
         } else if (userStatus === 1) {
-          _gate_info[0].url = '../../login/information/index'
+          _gate_info[0].url = '../../login/securityCheck/index'
           this.setData({
             token: token,
             login_status: 1,
@@ -65,7 +65,7 @@ Component({
             gates_info: _gate_info,
           })
         } else if (userStatus === 2) {
-          _gate_info[0].url = '../../login/securityCheck/index'
+          _gate_info[0].url = '../../login/information/index'
           this.setData({
             token: token,
             login_status: 2,

@@ -44,6 +44,7 @@ Page({
       const url = e.currentTarget.dataset.url;
       if(url == "info"){
         let userStatus = getApp().globalData.userStatus;
+        userStatus = 0
         if(userStatus == 0 ){
           utils.navigateTo('/pages/login/authentication/index')
         }else if(userStatus == 1){
@@ -92,9 +93,12 @@ Page({
           if(res.ret){
             getApp().globalData.todolistNum = res.data.nums;
             this.setData({
-              dbNum:res.data.nums,
-              token:wx.getStorageSync('token')
+              dbNum:res.data.nums
             }) 
+            // this.setData({
+            //   dbNum:res.data.nums,
+            //   token:wx.getStorageSync('token')
+            // }) 
           }
         })
         /**

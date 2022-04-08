@@ -17,7 +17,7 @@
             <view class="row">
                 <view class="gate-area-1">
                     <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/invoice/gates/incomeInvoice.png" mode="widthFix"></image>
+                        <image class="gate-icon" src="{{zdfp}}" mode="widthFix"></image>
                     </view>
                     <view class="name">
                         收入账单发票
@@ -25,7 +25,7 @@
                 </view>
                 <view class="gate-area-1">
                     <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/invoice/gates/incomeDetails.png" mode="widthFix"></image>
+                        <image class="gate-icon" src="{{zdmx}}" mode="widthFix"></image>
                     </view>
                     <view class="name">
                         收入账单明细
@@ -33,9 +33,9 @@
                 </view>
             </view>
             <view class="row">
-                <view class="gate-area-2">
+                <view class="gate-area-2" data-url="/pages/invoice/invoiceUpload/index/index" bindtap="handelClickUrl">
                     <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/invoice/gates/acquisitionCost.png" mode="widthFix"></image>
+                        <image class="gate-icon" src="{{cbfp}}" mode="widthFix"></image>
                     </view>
                     <view class="name">
                         采集成本发票
@@ -43,7 +43,7 @@
                 </view>
                 <view class="gate-area-2">
                     <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/invoice/gates/acquisitionDetails.png" mode="widthFix"></image>
+                        <image class="gate-icon" src="{{fpmx}}" mode="widthFix"></image>
                     </view>
                     <view class="name">
                         成本发票明细

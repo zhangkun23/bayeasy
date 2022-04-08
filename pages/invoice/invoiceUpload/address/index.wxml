@@ -1,0 +1,21 @@
+
+<view class="bgColog">
+    <mp-navigation-bar title="邮寄地址"/>
+    <view class="count">
+        <view>
+            <text>收货人</text>
+        </view>
+
+        <view>
+            <text>收货人</text>
+        </view>
+
+        <view>
+            <text>收货人</text>
+        </view>
+
+        <view>
+            <text>收货人</text>
+        </view>
+    </view>
+</view>

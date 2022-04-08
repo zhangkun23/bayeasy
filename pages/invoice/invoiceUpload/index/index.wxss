@@ -15,22 +15,33 @@
     text-decoration-line: underline;
 }
 .imgBox{
-    border:  1px solid red;
+    margin-top: 38rpx;
 }
 .imgBox>view{
     height: 320rpx;
+    position: relative;
+    margin-bottom: 38rpx;
+}
+.updateImg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
 }
 .top{
     font-size: 36rpx;
     font-weight: 600;
     color: #FFFFFF;
-    margin-top: 104rpx;
-    margin-left: 48rpx;
+    position: absolute;
+    top: 104rpx;
+    left: 48rpx;
 }
 .bottom{
     font-size: 24rpx;
     font-weight: 400;
     color: #FFFFFF;
-    margin-top: 162rpx;
-    margin-left: 48rpx;
+    position: absolute;
+    top: 162rpx;
+    left: 48rpx;
+    opacity: .4;
 }
