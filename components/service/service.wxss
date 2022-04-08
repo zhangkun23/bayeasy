@@ -12,4 +12,5 @@
 }
 .serveText{
     padding-left: 6rpx;
+    color: #283E56;
 }

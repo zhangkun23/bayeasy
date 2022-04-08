@@ -5,12 +5,6 @@ const {
   getUserMeg,
   getUserIdCard,
 } = require('../../../http/api/api');
-const {
-  baseUrl
-} = require('../../../http/env').dev;
-const {
-  arrayBufferToBase64Img
-} = require('../../../utils/util')
 Component({
   /**
    * 页面的初始数据
@@ -27,7 +21,10 @@ Component({
     },
     showIdcardFront: false,
     showIdcardResever: false,
-    showClose: false,
+    showClose1: false,
+    showClose2: false,
+    showClose3: false,
+    showClose4: false,
     buttons: [{
       text: '我知道了'
     }],
@@ -35,8 +32,8 @@ Component({
     resever: "拍摄身份证反面",
     IdcardFront: "https://image.bayeasy.cn/images-data/authentication/idcard_ front.png",
     IdcardResever: "https://image.bayeasy.cn/images-data/authentication/idcard_resever.png",
-    status: 0
-    // status: getApp().globalData.userStatus 
+    // status: 2
+    status: getApp().globalData.userStatus 
   },
   lifetimes: {
     attached() {
@@ -56,7 +53,7 @@ Component({
         }
       } else if (that.data.status == 1 || that.data.status == 2) {
         that._getUserIdCards();
-      } 
+      }
     },
     // 获取身份证信息
     _getUserIdCards: function () {
@@ -77,17 +74,17 @@ Component({
       })
       getUserIdCard('front').then(res => {
         let that = this;
-        if(res.ret) {
+        if (res.ret) {
           const image = res.data.image.replace(/[\r\n]/g, '');
           that.setData({
             IdcardFront: image,
             front: '身份证正面'
           })
-        } 
+        }
       })
       getUserIdCard('back').then(res => {
         let that = this;
-        if(res.ret) {
+        if (res.ret) {
           const image = res.data.image.replace(/[\r\n]/g, '');
           that.setData({
             IdcardResever: image,
@@ -163,7 +160,7 @@ Component({
                     form: {
                       username: dataInfo.name ? dataInfo.name : that.data.form.username,
                       idcard: dataInfo.id_card ? dataInfo.id_card : that.data.form.idcard,
-                      telephone: getApp().globalData.mobile ? getApp().globalData.mobile : that.data.form.telephone,
+                      telephone: wx.getStorage('mobile') ? wx.getStorage('mobile') : that.data.form.telephone,
                       validUntil: dataInfo.start_date ? dataInfo.start_date + '-' + dataInfo.expire_date : that.data.form.validUntil,
                       validityPeriod: dataInfo.expire_date
                     }
@@ -206,57 +203,207 @@ Component({
     },
     // 提交
     confirmSubmit(e) {
+      console.log(e,this.data)
+
+      // return;
       if (this.data.form.username == '') {
+      console.log(2)
         wx.showToast({
           title: '请输入姓名',
           icon: "error"
         })
       } else if (this.data.form.telephone == '') {
-        wx.showToast({
+      console.log(3)
+      wx.showToast({
           title: '请输入手机号',
           icon: "error"
         })
       } else if (this.data.form.idcard == '') {
+      console.log(4)
         wx.showToast({
           title: '请输入身份证号',
           icon: "error"
         })
       } else if (this.data.form.validityPeriod == '') {
+      console.log(5)
         wx.showToast({
           title: '请输入身份证有效期',
           icon: "error"
         })
       } else {
+      console.log(6)
         let params = {
           name: this.data.form.username,
           mobile: this.data.form.telephone,
           id_card: this.data.form.idcard,
           expire_date: this.data.form.validityPeriod
         }
-        IDcardSubmit(params).then(res => {
-          console.log(res)
-          if (res.ret) {
-            this.setData({
-              isShowModal: true
-            })
-          } else {
-            wx.showToast({
-              title: res.message,
-              icon: 'none'
-            })
-          }
+        console.log(params)
+        // IDcardSubmit(params).then(res => {
+        //   if (res.ret) {
+        //     this.setData({
+        //       isShowModal: true
+        //     })
+        //   } else {
+        //     wx.showToast({
+        //       title: res.message,
+        //       icon: 'none'
+        //     })
+        //   }
+        // })
+      }
+    },
+    clearValue(e) {
+      console.log(999)
+      let params = e.currentTarget.dataset.params;
+      console.log(e)
+      if (params == "name") {
+        if (this.data.form.username !== '') {
+          this.setData({
+            showClose1: true
+          })
+        }
+        this.setData({
+          form: {
+            username: "",
+          },
+          showClose1: false,
+        })
+      } else if (params == "telephone") {
+        if (this.data.form.telephone !== '') {
+          this.setData({
+            showClose2: true
+          })
+        }
+        this.setData({
+          form: {
+            telephone: "",
+          },
+          showClose2: false,
+        })
+      } else if (params == "idcard") {
+        if (this.data.form.idcard !== '') {
+          this.setData({
+            showClose3: true
+          })
+        }
+        this.setData({
+          form: {
+            idcard: "",
+          },
+          showClose3: false,
+        })
+      } else if (params == "validityPeriod") {
+        if (this.data.form.validUntil !== '') {
+          this.setData({
+            showClose4: true
+          })
+        }
+        this.setData({
+          form: {
+            validUntil: "",
+          },
+          showClose4: false,
         })
       }
-
     },
+    onInput(event) {
+      let that = this;
+      let params = event.currentTarget.dataset.params;
+      let value = event.detail.value;
+      console.log(value,event.detail)
+      if (params == "name") {
+        if (value !== '') {
+          this.setData({
+            form: {
+              username: value,
+            },
+          })
+        }
+      } else if (params == "telephone") {
+        if (value !== '') {
+          this.setData({
+            form: {
+              username: that.data.form.username,
+              telephone: value,
+            },
+          })
+        }
+      } else if (params == "idcard") {
+        if (value !== '') {
+          this.setData({
+            form: {
+              username: that.data.form.username,
+              telephone: that.data.form.value,
+              idcard: value,
+            },
+          })
+        }
+      } else if (params == "validityPeriod") {
+        if (value !== '') {
+          this.setData({
+            form: {
+              username: that.data.form.username,
+              telephone: that.data.form.value,
+              idcard: that.data.form.idcard,
+              validUntil: value,
+            },
+          })
+        }
+      }
+    },
+    onFocus(e) {
+      let params = e.currentTarget.dataset.params;
+      console.log(params, 'onfocus')
+      if (params == "name") {
+        this.setData({
+          showClose1: true
+        })
+      } else if (params == "telephone") {
+        this.setData({
+          showClose2: true
+        })
+      } else if (params == "idcard") {
+        this.setData({
+          showClose3: true
+        })
+      } else if (params == "validityPeriod") {
+        this.setData({
+          showClose4: true
+        })
+      }
+    },
+    onBlur(e) {
+      let params = e.currentTarget.dataset.params;
+      if (params == "name") {
+        this.setData({
+          showClose1: false
+        })
+      } else if (params == "telephone") {
+        this.setData({
+          showClose2: false
+        })
+      } else if (params == "idcard") {
+        this.setData({
+          showClose3: false
+        })
+      } else if (params == "validityPeriod") {
+        this.setData({
+          showClose4: false
+        })
+      }
+    },
+
 
     // 确认关联 
     confirmAssociation() {
-      // relation({}).then(res => {
-      //   console.log(res)
-      // } )
-      wx.navigateTo({
-        url: '../association/index',
+      relation({}).then(res => {
+        console.log(res)
+        if(res.ret) {
+          wx.navigateTo({
+            url: '../association/index',
+          })
+        }
       })
     },
 

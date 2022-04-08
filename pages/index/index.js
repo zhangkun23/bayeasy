@@ -39,6 +39,7 @@ Page({
     handelClick(e){
       const url = e.currentTarget.dataset.url;
       if(url == "info"){
+        getApp().globalData.userStatus = 0
         if(getApp().globalData.userStatus == 0){
           utils.navigateTo('/pages/login/authentication/index')
         }else if(getApp().globalData.userStatus == 1){

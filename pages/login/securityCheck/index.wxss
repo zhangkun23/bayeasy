@@ -1,5 +1,8 @@
 /* pages/login/securityCheck/index.wxss */
 
+.mg-tp-20{
+   margin-top: 20rpx;
+}
 
 
 .securityCheck__back {
@@ -41,7 +44,7 @@
 }
 
 .securityCheck__content {
-  height: 358rpx;
+  /* height: 358rpx; */
   background: #FDFEFF;
   box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(201, 209, 228, 0.38);
   border-radius: 32rpx;
@@ -60,7 +63,7 @@
   display: flex;
   padding: 23rpx 1rpx;
   border-bottom: 1px solid #E6EEF7;
-  margin-bottom: 47rpx;
+  /* margin-bottom: 47rpx; */
 }
 .addborderClass {
   border-bottom: 1px solid #FF475A !important;
@@ -69,6 +72,7 @@
   color: #FF475A;
   font-size: 24rpx;
   margin-bottom: 32rpx;
+  margin-top: 15rpx;
 }
 .securityCheck__content-close {
   position: absolute;

@@ -60,7 +60,8 @@
 
 .information__form-item {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  align-items: baseline;
   width: 686rpx;
   height: 88rpx;
   line-height: 88rpx;
@@ -68,26 +69,27 @@
   background: #fff;
   margin-top: 32rpx;
   box-shadow: 0rpx 5rpx 30rpx 0rpx rgba(201, 209, 228, 0.38);
+  position: relative;
 }
 
 .information__form-item text {
   font-size: 28rpx;
   color: #48617C;
-  /* margin-right: 40rpx; */
 }
 
 .information__form-item input {
   margin-top: 23rpx;
   font-size: 28rpx;
+  margin-left: 40rpx;
+  width: 410rpx;
 }
 
 .information__form-item image {
   width: 30rpx;
   height: 30rpx;
-  margin-top: 29rpx;
-  position: relative;
-  /* display: none; */
-  /* visibility: hidden; */
+  position: absolute;
+  right: 38rpx;
+  top: 30rpx;
 }
 
 .mg-lt-48 {

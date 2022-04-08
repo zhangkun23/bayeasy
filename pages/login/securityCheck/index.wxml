@@ -3,7 +3,7 @@
   <view class="securityCheck__back">
     <mp-navigation-bar title="身份信息安全校验" bindback="backIndex"></mp-navigation-bar>
     <view class="securityCheck__topTips">
-    <view class="securityCheck__topTips-icon">
+      <view class="securityCheck__topTips-icon">
         <image src="https://image.bayeasy.cn/images-data/public/info_max.png"></image>
       </view>
       <text>贝易资的企业信息库，检测到您的手机号有关联的身份信息 ，为保证您的账户安全，需请您填写完整的身份证号，校验一致则为你调取完整的个人信息进行确认</text>
@@ -15,28 +15,27 @@
     <view class="securityCheck__content">
       <view class="securityCheck__content-tips">请输入您完整的身份证号</view>
       <view class="securityCheck__content-input">
-        <input placeholder-class="placeholderStyle" type="idcard" class="weui-input" placeholder="请填写完整的身份证号" />
+        <!-- type="text"  -->
+        <input type="idcard" class="weui-input" model:value="{{idcardValue}}" placeholder-class="placeholderStyle" placeholder="请填写完整的身份证号" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" />
+        <view class="securityCheck__content-close" wx:if="{{isShowCloseBtn}}" bindtap="closeValue">
+          <image src="https://image.bayeasy.cn/images-data/public/inputClose.png"></image>
+        </view>
       </view>
-      <view class="securityCheck__content-close">
-        <image src="https://image.bayeasy.cn/images-data/public/service.png"></image>
-      </view>
-      <view wx:if="{{securityCheckText}}" class="securityCheck__content-text">校验不一致，请核实后重新填写</view>
-      <view bindtap="doConfirm">
-        <button class="securityCheck__content-btn" :disabled="disabled">提交</button>
+      <view wx:if="{{securityCheckText}}" class="securityCheck__content-text">{{errorTips}}</view>
+      <view class="mg-tp-20">
+        <button class="securityCheck__content-btn" :disabled="disabled" bindtap="doConfirm">提交</button>
       </view>
     </view>
     <view class="securityCheck__footer">
-      <view class="securityCheck__bottom" bindtap="contactCustomerService">
-        <view class="securityCheck__footer-image">
-          <image src="https://image.bayeasy.cn/images-data/public/service.png"></image>
-        </view>
-        <text class="securityCheck__footer-service">联系客服</text>
+      <view class="securityCheck__bottom">
+      <service class="securityCheck__footer-image"></service>
       </view>
+
     </view>
   </view>
-  <!-- <service class="servicePosition"></service> -->
 
   <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您今日输入错误的次数已达5次，您的账号已经被保护如有疑问请联系贝易资客服协助"></mp-dialog>
   </block>
 </view>
+<!-- <service></service> -->

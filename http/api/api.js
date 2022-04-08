@@ -49,7 +49,7 @@ module.exports={
 		return request(api+'/personal_nformation/submit','POST',param);
 	},
 
-	/* 个人身份信息_身份证信息提交 */
+	/* 个人身份信息_身份证信息验证 */
 	IdcardAuthentication:(param)=>{
 		return request(api+'/personal_nformation/authentication','POST',param);
 	},
@@ -78,7 +78,6 @@ module.exports={
 	getUserMeg:()=>{
 		return request(api + '/personal_nformation/get','GET',{});
 	},
-
 	
 	/*获取身份证照片*/
 	getUserIdCard:(param)=>{
