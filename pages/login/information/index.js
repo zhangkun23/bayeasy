@@ -203,28 +203,28 @@ Component({
     },
     // 提交
     confirmSubmit(e) {
-      console.log(e,this.data)
-
+      let that = this;
+      console.log(e,that.data)
       // return;
-      if (this.data.form.username == '') {
+      if (that.data.form.username == '') {
       console.log(2)
         wx.showToast({
           title: '请输入姓名',
           icon: "error"
         })
-      } else if (this.data.form.telephone == '') {
+      } else if (that.data.form.telephone == '') {
       console.log(3)
       wx.showToast({
           title: '请输入手机号',
           icon: "error"
         })
-      } else if (this.data.form.idcard == '') {
+      } else if (that.data.form.idcard == '') {
       console.log(4)
         wx.showToast({
           title: '请输入身份证号',
           icon: "error"
         })
-      } else if (this.data.form.validityPeriod == '') {
+      } else if (that.data.form.validityPeriod == '') {
       console.log(5)
         wx.showToast({
           title: '请输入身份证有效期',
@@ -233,10 +233,10 @@ Component({
       } else {
       console.log(6)
         let params = {
-          name: this.data.form.username,
-          mobile: this.data.form.telephone,
-          id_card: this.data.form.idcard,
-          expire_date: this.data.form.validityPeriod
+          name: that.data.form.username,
+          mobile: that.data.form.telephone,
+          id_card: that.data.form.idcard,
+          expire_date: that.data.form.validityPeriod
         }
         console.log(params)
         // IDcardSubmit(params).then(res => {
