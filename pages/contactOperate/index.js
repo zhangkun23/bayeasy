@@ -47,7 +47,7 @@ Page({
     //     }
     //   })
     // })
-    get_operate.then(res => {
+    get_operate().then(res => {
       // const str = arrayBufferToBase64Img(res.data)
       console.debug("qr code res", res)
       if (res.ret) {

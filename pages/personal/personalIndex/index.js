@@ -11,6 +11,7 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
+
       // 设定tabbar
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
@@ -43,11 +44,12 @@ Component({
       // 决定个人中心跳转
       const token = wx.getStorageSync('token') || '' // 可能从getStorage取
       const userStatus = app.globalData.userStatus
+
       if (token) {
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
           console.debug("有token但是userstatus为0 跳转完善个人信息")
-          _gate_info[0].url = '/pages/login/authentication/index'
+          _gate_info[0].url = '../../login/authentication/index'
           this.setData({
             token: token,
             login_status: 0,
@@ -69,7 +71,7 @@ Component({
           this.setData({
             token: token,
             login_status: 2,
-            isCheckRequired: true,
+            isCheckRequired: false,
             showCompleteInfo: false,
             gates_info: _gate_info,
           })
@@ -117,7 +119,7 @@ Component({
     showModal: false,
     btn_text: '退出登录',
     nbTitle: '个人中心',
-    btnUrl:'../../login/information/index',
+    btnUrl: '../../login/information/index',
     user_name: '', // name 和 tel 都应该存储在全局的info里
     user_tel: '',
     right_arrow: icons_url.right_arrow,
@@ -238,7 +240,9 @@ Component({
       this.setData({
         token: '',
         isOperate: false,
-        showCompleteInfo: null
+        todoCount: 0,
+        showCompleteInfo: null,
+        isCheckRequired: false
       })
     },
     getUserProfile(e) {

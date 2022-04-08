@@ -7,7 +7,18 @@ Component({
       type: String,
       value: '5'
     },
-    count: String,
+    count: { //百分比 通过此值转换成step
+      type: String,
+      value: '5',
+      observer: function(c){
+        console.log("~!!!!!!!!!!!!!")
+        this.setData({
+          per: c/this.properties.max,
+          count: c
+        })
+        this.drawAll()
+      }
+    },
     size: {
       type: String,
       value: '196'
@@ -17,11 +28,28 @@ Component({
   data: {
     /*  私有数据，可用于模版渲染 */
     xs: 0,
-    per: 0,
+    per: 0.5,
     w: 35, //圆的宽度 
     r: 108 //圆的半径
   },
   methods: {
+    drawAll: function(){
+      this.createSelectorQuery()
+      .select('#ctxbg')
+      .fields({
+        node: true,
+        size: true,
+      }).exec(this.drawCircleBg.bind(this))
+
+    if (this.data.per !== '0') {
+      this.createSelectorQuery()
+        .select('#ctx')
+        .fields({
+          node: true,
+          size: true,
+        }).exec(this.drawCircle.bind(this))
+    }
+    },
 
     /**
      * el:画圆的元素
@@ -82,6 +110,7 @@ Component({
   pageLifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     show: function () {
+      console.error(this.properties)
       const _this = this;
       //获取屏幕宽度
       wx.getSystemInfo({
@@ -96,26 +125,38 @@ Component({
         },
       });
       // 计算进度
-      _this.setData({
+      console.debug(this.properties.count)
+      console.debug(this.properties.max)
+
+      console.debug("per is ", this.properties.count / this.properties.max)
+      this.setData({
         per: this.properties.count / this.properties.max
       })
-      // 选择context
+      this.drawAll()
+      
+      // this.createSelectorQuery()
+      //   .select('#ctxbg')
+      //   .fields({
+      //     node: true,
+      //     size: true,
+      //   }).exec(this.drawCircleBg.bind(this))
 
-      this.createSelectorQuery()
-        .select('#ctxbg')
-        .fields({
-          node: true,
-          size: true,
-        }).exec(this.drawCircleBg.bind(this))
-
-      if (this.data.count !== '0') {
-        this.createSelectorQuery()
-          .select('#ctx')
-          .fields({
-            node: true,
-            size: true,
-          }).exec(this.drawCircle.bind(this))
-      }
+      // if (this.data.per !== '0') {
+      //   this.createSelectorQuery()
+      //     .select('#ctx')
+      //     .fields({
+      //       node: true,
+      //       size: true,
+      //     }).exec(this.drawCircle.bind(this))
+      // }
     }
-  }
+  },
+  //  observers: {
+  //    'count': function(c){
+  //      this.setData({
+  //        per: c/this.properties.max,
+  //        count: c
+  //      })
+  //    }
+  //  }
 })

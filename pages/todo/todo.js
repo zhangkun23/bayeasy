@@ -54,7 +54,7 @@ Page({
         isShow: false,
         titleYellow: true,
         count: 0,
-        title: "您有3条申报欠款记录需要处理",
+        title: "您有 {0} 条申报欠款记录需要处理",
         subTitle: "为了不影响公司信誉，请尽快结清欠款",
         btnText: "去查看"
       },
@@ -71,7 +71,7 @@ Page({
         isShow: false,
         titleYellow: false,
         count: 0,
-        title: "您有3条申报欠款已结清",
+        title: "您有 {0} 条申报欠款已结清",
         subTitle: "请尽快查看核实信息是否有误",
         btnText: "去查看"
       }
@@ -94,12 +94,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (!String.prototype.format) {
+      String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) { 
+          return typeof args[number] != 'undefined'
+            ? args[number]
+            : match
+          ;
+        });
+      };
+    }    
+    var that = this 
     todolist().then(res => {
       if (res.ret) {
         if (res.data instanceof Object) {
           const _data = res.data
           const _todo_keys = Object.keys(_data)
-          const _new_todo_lists = this.data.todo_lists
+          const _new_todo_lists = that.data.todo_lists
           if (_todo_keys.includes("invoice") && _data.invoice.length > 0) {
             _new_todo_lists[3].isShow = true
           }
@@ -112,12 +124,14 @@ Page({
           if (_todo_keys.includes("loan") && _data.loan.length > 0) {
             _new_todo_lists[2].isShow = true
             _new_todo_lists[2].count = _data.loadn_nums
+            _new_todo_lists[2].title = _new_todo_lists[2].title.format(_data.loan_nums)
           }
           if (_todo_keys.includes("repayment") && _data.repayment.length > 0) {
             _new_todo_lists[4].isShow = true
             _new_todo_lists[4].count = _data.repayment_nums
+            _new_todo_lists[4].title = _new_todo_lists[4].title.format(_data.repayment_nums)
           }
-          this.setData({
+          that.setData({
             todo_lists: _new_todo_lists,
             count: _data.nums
           })
