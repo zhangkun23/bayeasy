@@ -11,7 +11,7 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
-      
+
       // 设定tabbar
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
@@ -49,7 +49,8 @@ Component({
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
           console.debug("有token但是userstatus为0 跳转完善个人信息")
-          _gate_info[0].url = '../../login/securityCheck/index'
+          // _gate_info[0].url = '../../login/securityCheck/index'
+          _gate_info[0].url = '../../login/authentication/index'
           this.setData({
             token: token,
             login_status: 0,
@@ -58,7 +59,7 @@ Component({
             gates_info: _gate_info,
           })
         } else if (userStatus === 1) {
-          _gate_info[0].url = '../../login/information/index'
+          _gate_info[0].url = '../../login/securityCheck/index'
           this.setData({
             token: token,
             login_status: 1,
@@ -67,7 +68,7 @@ Component({
             gates_info: _gate_info,
           })
         } else if (userStatus === 2) {
-          _gate_info[0].url = '../../login/securityCheck/index'
+          _gate_info[0].url = '../../login/information/index'
           this.setData({
             token: token,
             login_status: 2,
@@ -119,7 +120,7 @@ Component({
     showModal: false,
     btn_text: '退出登录',
     nbTitle: '个人中心',
-    btnUrl:'../../login/information/index',
+    btnUrl: '../../login/information/index',
     user_name: '', // name 和 tel 都应该存储在全局的info里
     user_tel: '',
     right_arrow: icons_url.right_arrow,
@@ -240,6 +241,7 @@ Component({
       this.setData({
         token: '',
         isOperate: false,
+        todoCount: 0,
         showCompleteInfo: null,
         isCheckRequired: false
       })
