@@ -45,13 +45,16 @@ module.exports = {
                         })
                     }else {
 						wx.showToast({
-                            title: res.message || '',
+                            title: res.data.message || '网络有问题哦！请稍后再试试！',
                             icon: 'none',
 						})
 					}
                 },
                 fail() {
-
+                    wx.showToast({
+                        title: '网络有问题哦！请稍后再试试！',
+                        icon: 'none',
+                    })
                     reject('接口有误，请检查')
                 }
             });

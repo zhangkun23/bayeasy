@@ -4,7 +4,7 @@
     <mp-navigation-bar title="身份信息安全校验" bindback="backIndex"></mp-navigation-bar>
     <view class="securityCheck__topTips">
       <view class="securityCheck__topTips-icon">
-        <image src="https://image.bayeasy.cn/images-data/public/info_max.png"></image>
+        <image src="{{info_max}}"></image>
       </view>
       <text>贝易资的企业信息库，检测到您的手机号有关联的身份信息 ，为保证您的账户安全，需请您填写完整的身份证号，校验一致则为你调取完整的个人信息进行确认</text>
     </view>
@@ -16,14 +16,15 @@
       <view class="securityCheck__content-tips">请输入您完整的身份证号</view>
       <view class="securityCheck__content-input">
         <!-- type="text"  -->
-        <input type="idcard" class="weui-input" model:value="{{idcardValue}}" placeholder-class="placeholderStyle" placeholder="请填写完整的身份证号" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" />
+        <input type="idcard" class="weui-input" model:value="{{idcardValue}}" placeholder-class="placeholderStyle" placeholder="请填写完整的身份证号" maxlength="22" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" />
         <view class="securityCheck__content-close" wx:if="{{isShowCloseBtn}}" bindtap="closeValue">
-          <image src="https://image.bayeasy.cn/images-data/public/inputClose.png"></image>
+          <image src="{{inputClose}}"></image>
         </view>
       </view>
       <view wx:if="{{securityCheckText}}" class="securityCheck__content-text">{{errorTips}}</view>
       <view class="mg-tp-20">
-        <button class="securityCheck__content-btn" :disabled="disabled" bindtap="doConfirm">提交</button>
+        <button class="securityCheck__content-btn" wx:if="{{!disabled}}" >提交</button>
+        <button class="securityCheck__content-btn buttonBg" wx:if="{{disabled}}" bindtap="doConfirm">提交</button>
       </view>
     </view>
     <view class="securityCheck__footer">

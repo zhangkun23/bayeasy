@@ -1,4 +1,5 @@
 // components/modal/modal.js
+const tempPath = getApp().globalData.imgPath;
 Component({
   /**
    * 组件的属性列表
@@ -26,7 +27,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    closeBtn: "https://image.bayeasy.cn/images-data/public/close-icon.png"
+    closeBtn: tempPath+"public/close-icon.png"
   },
 
   /**

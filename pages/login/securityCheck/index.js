@@ -3,16 +3,17 @@
 const {
   getUserMeg,
   IdcardAuthentication,
-  IDcardSubmit,
 } = require('../../../http/api/api');
-
+const tempPath = getApp().globalData.imgPath;
 Component({
 
   /**
    * 页面的初始数据
    */
   data: {
-    idDard: '362098198009229862',
+    inputClose:tempPath+"public/inputClose.png",
+    info_max:tempPath+"public/info_max.png",
+    idDard: '',
     disabled: false,
     isShowModal: false,
     buttons: [{
@@ -21,17 +22,20 @@ Component({
     securityCheckText: true,
     idcardValue: "",
     isShowCloseBtn: true,
-    errorTips: "校验不一致，请核实后重新填写"
+    errorTips: ""
+  },
+  pageLifetimes: {
+    show() {
+      this._getUserIdCards()
+    }
   },
   lifetimes: {
     attached() {
-      this._getUserIdCards()
     }
   },
   methods: {
     _getUserIdCards: function () {
       getUserMeg().then(res => {
-        console.log(res, '个人信息')
         if (res.ret) {
           const dataInfo = res.data
           this.setData({
@@ -41,11 +45,19 @@ Component({
       })
     },
     onInput: function (event) {
-      console.log(event.detail.value)
       event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
       this.setData({
         idcardValue: event.detail.value
       })
+      if(event.detail.value.length == 22){
+        this.setData({
+          disabled: true
+        })
+      }else{
+        this.setData({
+          disabled: false
+        })
+      }
     },
     onFocus: function () {
       this.setData({
@@ -64,38 +76,28 @@ Component({
         isShowCloseBtn: false
       })
     },
-
-    doConfirm(e) {
-      console.log(e, 'weq', this.data.idcardValue)
-      IdcardAuthentication({
-        id_card: '142219199511105922'
-        // id_card: this.data.idcardValue
-      }).then(res => {
-        let errorNum = res.data.error_nums;
+    // 提交身份证校验
+    doConfirm() {
+      let param = {
+        id_card: this.data.idcardValue
+      }
+      IdcardAuthentication(param).then(res => {
         if (res.ret) {
-
           wx.navigateTo({
             url: '../information',
           })
         } else {
-          if (errorNum < 5) {
             this.setData({
-              securityCheckText: true,
-              errorTips: res.data.message
+              errorTips: res.message
             })
-          } else if (errorNum == 5) {
+          if (res.data.error_nums == 5) {
             this.setData({
               isShowModal: true
             })
           }
         }
-        console.log(res)
       })
-
-
-
     },
-
     tapDialogButton() {
       this.setData({
         isShowModal: false

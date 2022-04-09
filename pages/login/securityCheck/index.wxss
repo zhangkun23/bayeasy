@@ -101,7 +101,10 @@
   padding: 15rpx 0;
   margin: 0 auto;
 }
-
+.buttonBg{
+  background: #1D83F0;
+  color: white;
+}
 .addClass {
   color: #FFFFFF;
   background: #1D83F0 !important;

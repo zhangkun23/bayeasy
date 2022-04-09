@@ -7,18 +7,12 @@ const {
 const {
   logout
 } = require('../../../http/api/api')
+const utils = require('../../../utils/util.js')
 const app = getApp()
 Component({
   pageLifetimes: {
     show() {
-
-      // 设定tabbar
-      if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 4
-        })
-      }
+      utils.getTabBarIndex(this,4);
       // 获取头像相关权限
       // console.debug("prepare to get avatar")
       // if (wx.getUserProfile) {

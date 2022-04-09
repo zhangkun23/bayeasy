@@ -1,0 +1,46 @@
+
+.content {
+    display: flex;
+    width: 686rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-radius: 28rpx;
+    background: #fff;
+    margin-top: 32rpx;
+    box-shadow: 0rpx 5rpx 30rpx 0rpx rgba(201, 209, 228, 0.38);
+    position: relative;
+  }
+  
+  .content .title {
+    font-size: 28rpx;
+    color: #48617C;
+    width: 165rpx;
+    text-align: right;
+  }
+
+  .content input {
+    margin-top: 23rpx;
+    font-size: 28rpx;
+    margin-left: 38rpx;
+    width: 405rpx;
+  }
+  .closeView{
+    height: 100%;
+    width: 88rpx;
+    position: absolute;
+    top: 0;
+    right: 0rpx;
+    z-index: 11;
+  }
+  .closeView image {
+    height: 30rpx;
+    width: 30rpx;
+    position: absolute;
+    top: 30rpx;
+    left: 50%;
+    margin-left: -20rpx;
+  }
+  .placeholderStyle {
+    color: #ABBED2;
+    font-size: 28rpx;
+  }

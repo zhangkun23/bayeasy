@@ -57,53 +57,18 @@
 .idcard__upload {
   background-color: #FFA42E;
 }
-
-.information__form-item {
-  display: flex;
-  /* justify-content: space-around; */
-  align-items: baseline;
-  width: 686rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  border-radius: 28rpx;
-  background: #fff;
-  margin-top: 32rpx;
-  box-shadow: 0rpx 5rpx 30rpx 0rpx rgba(201, 209, 228, 0.38);
+.information__form{
   position: relative;
 }
-
-.information__form-item text {
-  font-size: 28rpx;
-  color: #48617C;
-}
-
-.information__form-item input {
-  margin-top: 23rpx;
-  font-size: 28rpx;
-  margin-left: 40rpx;
-  width: 410rpx;
-}
-
-.information__form-item image {
-  width: 30rpx;
-  height: 30rpx;
+.tostTop{
+  height: 500rpx;
+  width: 100%;
+  background-color: white;
   position: absolute;
-  right: 38rpx;
-  top: 30rpx;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
 }
-
-.mg-lt-48 {
-  margin-left: 48rpx;
-}
-
-.mg-lt-76 {
-  margin-left: 76rpx;
-}
-
-.mg-lt-101 {
-  margin-left: 101rpx;
-}
-
 .information__confirm {
   width: 500rpx;
   height: 88rpx;
