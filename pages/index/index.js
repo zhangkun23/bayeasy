@@ -111,6 +111,10 @@ Page({
             this.setData({
               userStatus:res.data.status
             })
+            // getApp().globalData.userStatus = 0 
+            // this.setData({
+            //   userStatus:0
+            // })
           }
         })
         // 是否有运营人员

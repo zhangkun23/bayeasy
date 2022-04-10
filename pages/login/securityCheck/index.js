@@ -3,6 +3,7 @@
 const {
   getUserMeg,
   IdcardAuthentication,
+  getUserStatus
 } = require('../../../http/api/api');
 const tempPath = getApp().globalData.imgPath;
 Component({
@@ -11,8 +12,8 @@ Component({
    * 页面的初始数据
    */
   data: {
-    inputClose:tempPath+"public/inputClose.png",
-    info_max:tempPath+"public/info_max.png",
+    inputClose: tempPath + "public/inputClose.png",
+    info_max: tempPath + "public/info_max.png",
     idDard: '',
     disabled: false,
     isShowModal: false,
@@ -22,7 +23,8 @@ Component({
     securityCheckText: true,
     idcardValue: "",
     isShowCloseBtn: true,
-    errorTips: ""
+    errorTips: "",
+    userStatus: 0
   },
   pageLifetimes: {
     show() {
@@ -30,8 +32,7 @@ Component({
     }
   },
   lifetimes: {
-    attached() {
-    }
+    attached() {}
   },
   methods: {
     _getUserIdCards: function () {
@@ -49,24 +50,35 @@ Component({
       this.setData({
         idcardValue: event.detail.value
       })
-      if(event.detail.value.length == 22){
+      this.setCloseIcon(event);
+      if (event.detail.value.length == 22) {
         this.setData({
           disabled: true
         })
-      }else{
+      } else {
         this.setData({
           disabled: false
         })
       }
+
     },
-    onFocus: function () {
-      this.setData({
-        isShowCloseBtn: true
-      })
+    setCloseIcon: function (val) {
+      if (!val.detail.value) {
+        this.setData({
+          isShowCloseBtn: true
+        })
+      } else {
+        this.setData({
+          isShowCloseBtn: false
+        })
+      }
+    },
+    onFocus: function (event) {
+      this.setCloseIcon(event);
     },
     onBlur: function () {
       this.setData({
-        isShowCloseBtn: false
+        isShowCloseBtn: true
       })
     },
     closeValue: function () {
@@ -83,18 +95,29 @@ Component({
       }
       IdcardAuthentication(param).then(res => {
         if (res.ret) {
+          this.getStatus();
           wx.navigateTo({
             url: '../information',
           })
         } else {
-            this.setData({
-              errorTips: res.message
-            })
+          this.setData({
+            errorTips: res.message
+          })
           if (res.data.error_nums == 5) {
             this.setData({
               isShowModal: true
             })
           }
+        }
+      })
+    },
+    getStatus() {
+      getUserStatus().then(res => {
+        if(res.ret) {
+          getApp().globalData.userStatus =  res.data.status;
+          this.setData({
+            userStatus: res.data.status
+          })
         }
       })
     },

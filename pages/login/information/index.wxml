@@ -40,9 +40,11 @@
     </view>
     <view class="information__form">
       <input-com title="姓名"  placeholder="请输入姓名" inputValue="{{form.username}}"  key="username" clearShow="{{clearShow}}"  bind:setInputValue="setInputValue"/>
-      <input-com title="手机号"  placeholder="请输入手机号" inputValue="{{form.telephone}}"  key="telephone"  clearShow="{{clearShow}}" bind:setInputValue="setInputValue"/>
+      <input-com title="手机号" disabled="{{disabled}}"  placeholder="请输入手机号" inputValue="{{form.telephone}}"  key="telephone"  clearShow="{{clearShow}}" bind:setInputValue="setInputValue"/>
       <input-com title="身份证号"  placeholder="请输入身份证号" inputValue="{{form.idcard}}"  key="idcard" clearShow="{{clearShow}}" bind:setInputValue="setInputValue"/>
-      <input-com title="有效期至"  placeholder="请输入身份证有效期" inputValue="{{form.validUntil}}" key="validUntil" clearShow="{{clearShow}}" bind:setInputValue="setInputValue"/>
+      <picker  mode="date" value="{{dateTime}}"  start="2010-01-01" end="2029-01-01" bindcancel="bindcancel">
+        <input-com title="有效期至"  disabled="{{disabled}}"  placeholder="请输入身份证有效期" inputValue="{{form.validUntil}}" key="validUntil" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" bind:inputShowClick="inputShowClick"/>
+      </picker>
       <view wx:if="{{tostTop}}" class="tostTop"></view>
     </view>
     <block wx:if="{{userStatus == 0}}">
@@ -60,4 +62,6 @@
   <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您的个人信息已经完善贝易资核实完成后将与您联系"></mp-dialog>
   </block>
+
 </view>
+  

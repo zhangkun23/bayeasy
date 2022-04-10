@@ -17,19 +17,19 @@
       <view class="securityCheck__content-input">
         <!-- type="text"  -->
         <input type="idcard" class="weui-input" model:value="{{idcardValue}}" placeholder-class="placeholderStyle" placeholder="请填写完整的身份证号" maxlength="22" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" />
-        <view class="securityCheck__content-close" wx:if="{{isShowCloseBtn}}" bindtap="closeValue">
-          <image src="{{inputClose}}"></image>
-        </view>
+      </view>
+      <view class="securityCheck__content-close" hidden="{{isShowCloseBtn}}" bindtap="closeValue">
+        <image src="{{inputClose}}"></image>
       </view>
       <view wx:if="{{securityCheckText}}" class="securityCheck__content-text">{{errorTips}}</view>
       <view class="mg-tp-20">
-        <button class="securityCheck__content-btn" wx:if="{{!disabled}}" >提交</button>
+        <button class="securityCheck__content-btn" wx:if="{{!disabled}}">提交</button>
         <button class="securityCheck__content-btn buttonBg" wx:if="{{disabled}}" bindtap="doConfirm">提交</button>
       </view>
     </view>
     <view class="securityCheck__footer">
       <view class="securityCheck__bottom">
-      <service class="securityCheck__footer-image"></service>
+        <service class="securityCheck__footer-image"></service>
       </view>
 
     </view>

@@ -4,6 +4,7 @@ const {
   relation,
   getUserMeg,
   getUserIdCard,
+  getUserStatus
 } = require('../../../http/api/api');
 const tempPath = getApp().globalData.imgPath;
 const {
@@ -34,45 +35,46 @@ Component({
     }],
     front: "拍摄身份证正面",
     resever: "拍摄身份证反面",
-    IdcardFront: tempPath+"authentication/idcard_ front.png",
-    IdcardResever: tempPath+"authentication/idcard_resever.png",
-    inputClose:tempPath+"public/inputClose.png",
+    IdcardFront: tempPath + "authentication/idcard_ front.png",
+    IdcardResever: tempPath + "authentication/idcard_resever.png",
+    inputClose: tempPath + "public/inputClose.png",
     userStatus: 0,
-    clearShow:true,
-    tostTop:true
+    clearShow: true,
+    tostTop: true,
+    disabled: true,
+    pickerShow:true,
+    dateTime:''
   },
   pageLifetimes: {
     show() {
       const userStatus = getApp().globalData.userStatus;
       this.setData({
-        userStatus:userStatus
+        userStatus: userStatus
       })
       this.initialization(userStatus);
 
       // 如果是查看状态不需要清除图表
-      if(userStatus == 2){
+      if (userStatus == 2) {
         this.setData({
-          clearShow:false
+          clearShow: false
         })
-      }else{
+      } else {
         this.setData({
-          tostTop:false
+          tostTop: false
         })
       }
       this.setData({
-        ['form.telephone']:wx.getStorageSync('mobile')
+        ['form.telephone']: wx.getStorageSync('mobile')
       })
-
     }
   },
   lifetimes: {
-    attached() {
-    },
+    attached() {},
   },
   methods: {
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
     initialization(userStatus) {
-      if(userStatus == 1 || userStatus == 2) {
+      if (userStatus == 1 || userStatus == 2) {
         this._getUserIdCards();
       }
     },
@@ -138,7 +140,7 @@ Component({
         success: function (res) {
           if (res.tempFiles[0]) {
             const imgPath = res?.tempFiles[0].tempFilePath;
-            const uploadUrl = baseUrl+'/gshApi/personal_nformation/ocr_idcard'
+            const uploadUrl = baseUrl + '/gshApi/personal_nformation/ocr_idcard'
             const type = params.idcadrparams; //正反面类型
             if (type == 'front') {
               that.setData({
@@ -167,14 +169,14 @@ Component({
                 const dataInfo = data.data;
                 if (data.ret) {
                   that.clearLoaddiing(type);
-                  if(type == 'front'){
+                  if (type == 'front') {
                     that.setData({
-                      ['form.username']:dataInfo.name,
-                      ['form.idcard']:dataInfo.id_card,
+                      ['form.username']: dataInfo.name,
+                      ['form.idcard']: dataInfo.id_card,
                     })
-                  }else{
+                  } else {
                     that.setData({
-                      ['form.validUntil']:dataInfo.expire_date
+                      ['form.validUntil']: dataInfo.expire_date
                     })
                   }
                 } else {
@@ -207,7 +209,7 @@ Component({
       })
     },
     // 隐藏上传loadding
-    clearLoaddiing(type){
+    clearLoaddiing(type) {
       if (type == 'front') {
         this.setData({
           showIdcardFront: false
@@ -226,32 +228,34 @@ Component({
       wx.switchTab({
         url: '/pages/index/index',
       })
+
+
     },
     // 子组建数据同步
-    setInputValue(e){
+    setInputValue(e) {
       let temp = `form.${e.detail.key}`
       this.setData({
-        [temp]: e.detail.value	//使用子组件的值
+        [temp]: e.detail.value //使用子组件的值
       })
     },
-    toast(str){
+    toast(str) {
       wx.showToast({
         title: str,
         icon: 'none',
       })
       return true;
     },
-    checkform(form){
-      if (!form.username && this.toast('请输入姓名') ) return false;
-      if (!form.telephone && this.toast('请输入手机号') ) return false;
-      if (!form.idcard && this.toast('请输入身份证号') ) return false;
-      if (!form.validUntil && this.toast('请输入身份证有效期') ) return false;
+    checkform(form) {
+      if (!form.username && this.toast('请输入姓名')) return false;
+      if (!form.telephone && this.toast('请输入手机号')) return false;
+      if (!form.idcard && this.toast('请输入身份证号')) return false;
+      if (!form.validUntil && this.toast('请输入身份证有效期')) return false;
       return true;
     },
     // 提交
     confirmSubmit() {
       let form = this.data.form;
-      if(this.checkform(form)){
+      if (this.checkform(form)) {
         let params = {
           name: form.username,
           mobile: form.telephone,
@@ -260,6 +264,7 @@ Component({
         }
         IDcardSubmit(params).then(res => {
           if (res.ret) {
+            this.seStatus();
             this.setData({
               isShowModal: true
             })
@@ -272,19 +277,40 @@ Component({
         })
       }
     },
+    seStatus() {
+      getUserStatus().then(res => {
+        if (res.ret) {
+          getApp().globalData.userStatus = res.data.status;
+          this.setData({
+            userStatus: res.data.status
+          })
+        }
+      })
+    },
 
     // 确认关联 
     confirmAssociation() {
       relation({}).then(res => {
-        console.log(res)
-        if(res.ret) {
+        if (res.ret) {
           wx.navigateTo({
             url: '../association/index',
           })
         }
       })
     },
+    // 是否绑定input日期事件
+    inputShowClick(e) {
+      if(e.detail.key == 'validUntil') {
+        console.log('11111')
+        this.setData({
+          pickerShow:true
+        })
+      }
+    },
+    // 日期插件取消
+    bindcancel(){
 
+    }
   },
 
 

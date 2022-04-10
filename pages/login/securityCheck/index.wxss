@@ -78,6 +78,9 @@
   position: absolute;
   right: 24rpx;
   top: 120rpx;
+  width: 100rpx;
+  text-align: center;
+  z-index: 2;
 }
 .securityCheck__content-close image{
   width: 30rpx;
