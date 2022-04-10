@@ -111,9 +111,9 @@ Page({
             this.setData({
               userStatus:res.data.status
             })
-            // getApp().globalData.userStatus = 0 
+            // getApp().globalData.userStatus = 0
             // this.setData({
-            //   userStatus:0
+            //   userStatus: 0
             // })
           }
         })

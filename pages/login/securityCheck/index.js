@@ -82,7 +82,6 @@ Component({
       })
     },
     closeValue: function () {
-      console.log(123)
       this.setData({
         idcardValue: '',
         isShowCloseBtn: false
@@ -103,7 +102,7 @@ Component({
           this.setData({
             errorTips: res.message
           })
-          if (res.data.error_nums == 5) {
+          if (res.data.error_nums >= 5) {
             this.setData({
               isShowModal: true
             })
@@ -111,6 +110,7 @@ Component({
         }
       })
     },
+    // 修改全局状态
     getStatus() {
       getUserStatus().then(res => {
         if(res.ret) {

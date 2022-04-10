@@ -43,7 +43,8 @@ Component({
     tostTop: true,
     disabled: true,
     pickerShow:true,
-    dateTime:''
+    dateTime: '',
+    loading: tempPath + "public/loading.png",
   },
   pageLifetimes: {
     show() {
@@ -252,6 +253,11 @@ Component({
       if (!form.validUntil && this.toast('请输入身份证有效期')) return false;
       return true;
     },
+    bindDateChange(event) {
+      this.setData({
+        ['form.validUntil']: event.detail.value
+      })
+    },
     // 提交
     confirmSubmit() {
       let form = this.data.form;
@@ -262,6 +268,7 @@ Component({
           id_card: form.idcard,
           expire_date: form.validUntil
         }
+        console.log(params);
         IDcardSubmit(params).then(res => {
           if (res.ret) {
             this.seStatus();
