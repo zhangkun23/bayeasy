@@ -8,7 +8,6 @@
     "pages/login/authentication/index",
     "pages/login/information/index",
     "pages/login/securityCheck/index",
-    "pages/login/loginPrimary/index",
     "pages/login/association/index",
     "pages/invoice/invoiceIndex/index",
     "pages/invoice/incomeInvoice/index/index",
@@ -16,13 +15,14 @@
     "pages/invoice/incomeInvoice/details/eInvoice/index",
     "pages/invoice/invoiceUpload/index/index",
     "pages/invoice/invoiceUpload/address/index",
+    "pages/invoice/invoiceUpload/updateImg/index",
+    "pages/invoice/invoiceUpload/updateHandel/index",
     "pages/personal/personalIndex/index",
     "pages/personal/aboutBayeasy/index",
     "pages/contactOperate/index",
     "pages/tax/taxIndex/index",
     "custom-tab-bar/index",
     "pages/todo/todo",
-    "pages/login/information/loading/loading",
     "pages/nothing/index"
   ],
   "tabBar": {

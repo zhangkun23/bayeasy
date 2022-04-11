@@ -1,4 +1,5 @@
 {
+    "setting": {},
     "condition": {
         "plugin": {
             "list": []
@@ -14,6 +15,27 @@
                 {
                     "name": "采集成本发票",
                     "pathName": "pages/invoice/invoiceUpload/index/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "个人信息",
+                    "pathName": "pages/login/information/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "身份证校验",
+                    "pathName": "pages/login/securityCheck/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "手动上传",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"

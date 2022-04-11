@@ -4,7 +4,12 @@ const {
   relation,
   getUserMeg,
   getUserIdCard,
+  getUserStatus
 } = require('../../../http/api/api');
+const tempPath = getApp().globalData.imgPath;
+const {
+  baseUrl
+} = require('../../../http/env.js').dev;
 Component({
   /**
    * 页面的初始数据
@@ -16,7 +21,7 @@ Component({
       username: "",
       telephone: "",
       idcard: "",
-      validUntil: '',
+      validUntil: "",
       validityPeriod: ''
     },
     showIdcardFront: false,
@@ -30,29 +35,48 @@ Component({
     }],
     front: "拍摄身份证正面",
     resever: "拍摄身份证反面",
-    IdcardFront: "https://image.bayeasy.cn/images-data/authentication/idcard_ front.png",
-    IdcardResever: "https://image.bayeasy.cn/images-data/authentication/idcard_resever.png",
-    // status: 2
-    status: getApp().globalData.userStatus 
+    IdcardFront: tempPath + "authentication/idcard_ front.png",
+    IdcardResever: tempPath + "authentication/idcard_resever.png",
+    inputClose: tempPath + "public/inputClose.png",
+    userStatus: 0,
+    clearShow: true,
+    tostTop: true,
+    disabled: true,
+    pickerShow:true,
+    dateTime: '',
+    loading: tempPath + "public/loading.png",
+  },
+  pageLifetimes: {
+    show() {
+      const userStatus = getApp().globalData.userStatus;
+      this.setData({
+        userStatus: userStatus
+      })
+      this.initialization(userStatus);
+
+      // 如果是查看状态不需要清除图表
+      if (userStatus == 2) {
+        this.setData({
+          clearShow: false
+        })
+      } else {
+        this.setData({
+          tostTop: false
+        })
+      }
+      this.setData({
+        ['form.telephone']: wx.getStorageSync('mobile')
+      })
+    }
   },
   lifetimes: {
-    attached() {
-      this.initialization();
-    },
+    attached() {},
   },
   methods: {
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
-    initialization() {
-      let that = this;
-      if (that.data.status == 0) {
-        that.data.form = {
-          username: "",
-          telephone: "",
-          idcard: "",
-          validUntil: "",
-        }
-      } else if (that.data.status == 1 || that.data.status == 2) {
-        that._getUserIdCards();
+    initialization(userStatus) {
+      if (userStatus == 1 || userStatus == 2) {
+        this._getUserIdCards();
       }
     },
     // 获取身份证信息
@@ -83,10 +107,9 @@ Component({
         }
       })
       getUserIdCard('back').then(res => {
-        let that = this;
         if (res.ret) {
           const image = res.data.image.replace(/[\r\n]/g, '');
-          that.setData({
+          this.setData({
             IdcardResever: image,
             resever: "身份证反面",
           })
@@ -118,14 +141,15 @@ Component({
         success: function (res) {
           if (res.tempFiles[0]) {
             const imgPath = res?.tempFiles[0].tempFilePath;
-            const uploadUrl = 'http://gsh.dev.corp.bayeasy.cn:11880/gshApi/personal_nformation/ocr_idcard'
-            if (params.idcadrparams == 'front') {
+            const uploadUrl = baseUrl + '/gshApi/personal_nformation/ocr_idcard'
+            const type = params.idcadrparams; //正反面类型
+            if (type == 'front') {
               that.setData({
                 IdcardFront: imgPath,
                 showIdcardFront: true
               })
             }
-            if (params.idcadrparams == 'back') {
+            if (type == 'back') {
               that.setData({
                 IdcardResever: imgPath,
                 showIdcardResever: true
@@ -144,30 +168,22 @@ Component({
               success: function (res) {
                 const data = JSON.parse(res.data);
                 const dataInfo = data.data;
-                console.log(data, '成功')
                 if (data.ret) {
-                  if (params.idcadrparams == 'front') {
+                  that.clearLoaddiing(type);
+                  if (type == 'front') {
                     that.setData({
-                      showIdcardFront: false
+                      ['form.username']: dataInfo.name,
+                      ['form.idcard']: dataInfo.id_card,
+                    })
+                  } else {
+                    that.setData({
+                      ['form.validUntil']: dataInfo.expire_date
                     })
                   }
-                  if (params.idcadrparams == 'back') {
-                    that.setData({
-                      showIdcardResever: false
-                    })
-                  }
-                  that.setData({
-                    form: {
-                      username: dataInfo.name ? dataInfo.name : that.data.form.username,
-                      idcard: dataInfo.id_card ? dataInfo.id_card : that.data.form.idcard,
-                      telephone: wx.getStorage('mobile') ? wx.getStorage('mobile') : that.data.form.telephone,
-                      validUntil: dataInfo.start_date ? dataInfo.start_date + '-' + dataInfo.expire_date : that.data.form.validUntil,
-                      validityPeriod: dataInfo.expire_date
-                    }
-                  })
                 } else {
+                  that.clearLoaddiing(type);
                   wx.showToast({
-                    title: res.message,
+                    title: data.message,
                     icon: 'none'
                   })
                 }
@@ -193,6 +209,19 @@ Component({
         }
       })
     },
+    // 隐藏上传loadding
+    clearLoaddiing(type) {
+      if (type == 'front') {
+        this.setData({
+          showIdcardFront: false
+        })
+      }
+      if (type == 'back') {
+        this.setData({
+          showIdcardResever: false
+        })
+      }
+    },
     tapDialogButton(e) {
       this.setData({
         isShowModal: false
@@ -200,213 +229,93 @@ Component({
       wx.switchTab({
         url: '/pages/index/index',
       })
+
+
+    },
+    // 子组建数据同步
+    setInputValue(e) {
+      let temp = `form.${e.detail.key}`
+      this.setData({
+        [temp]: e.detail.value //使用子组件的值
+      })
+    },
+    toast(str) {
+      wx.showToast({
+        title: str,
+        icon: 'none',
+      })
+      return true;
+    },
+    checkform(form) {
+      if (!form.username && this.toast('请输入姓名')) return false;
+      if (!form.telephone && this.toast('请输入手机号')) return false;
+      if (!form.idcard && this.toast('请输入身份证号')) return false;
+      if (!form.validUntil && this.toast('请输入身份证有效期')) return false;
+      return true;
+    },
+    bindDateChange(event) {
+      this.setData({
+        ['form.validUntil']: event.detail.value
+      })
     },
     // 提交
-    confirmSubmit(e) {
-      let that = this;
-      console.log(e,that.data)
-      // return;
-      if (that.data.form.username == '') {
-      console.log(2)
-        wx.showToast({
-          title: '请输入姓名',
-          icon: "error"
-        })
-      } else if (that.data.form.telephone == '') {
-      console.log(3)
-      wx.showToast({
-          title: '请输入手机号',
-          icon: "error"
-        })
-      } else if (that.data.form.idcard == '') {
-      console.log(4)
-        wx.showToast({
-          title: '请输入身份证号',
-          icon: "error"
-        })
-      } else if (that.data.form.validityPeriod == '') {
-      console.log(5)
-        wx.showToast({
-          title: '请输入身份证有效期',
-          icon: "error"
-        })
-      } else {
-      console.log(6)
+    confirmSubmit() {
+      let form = this.data.form;
+      if (this.checkform(form)) {
         let params = {
-          name: that.data.form.username,
-          mobile: that.data.form.telephone,
-          id_card: that.data.form.idcard,
-          expire_date: that.data.form.validityPeriod
+          name: form.username,
+          mobile: form.telephone,
+          id_card: form.idcard,
+          expire_date: form.validUntil
         }
-        console.log(params)
-        // IDcardSubmit(params).then(res => {
-        //   if (res.ret) {
-        //     this.setData({
-        //       isShowModal: true
-        //     })
-        //   } else {
-        //     wx.showToast({
-        //       title: res.message,
-        //       icon: 'none'
-        //     })
-        //   }
-        // })
-      }
-    },
-    clearValue(e) {
-      console.log(999)
-      let params = e.currentTarget.dataset.params;
-      console.log(e)
-      if (params == "name") {
-        if (this.data.form.username !== '') {
-          this.setData({
-            showClose1: true
-          })
-        }
-        this.setData({
-          form: {
-            username: "",
-          },
-          showClose1: false,
-        })
-      } else if (params == "telephone") {
-        if (this.data.form.telephone !== '') {
-          this.setData({
-            showClose2: true
-          })
-        }
-        this.setData({
-          form: {
-            telephone: "",
-          },
-          showClose2: false,
-        })
-      } else if (params == "idcard") {
-        if (this.data.form.idcard !== '') {
-          this.setData({
-            showClose3: true
-          })
-        }
-        this.setData({
-          form: {
-            idcard: "",
-          },
-          showClose3: false,
-        })
-      } else if (params == "validityPeriod") {
-        if (this.data.form.validUntil !== '') {
-          this.setData({
-            showClose4: true
-          })
-        }
-        this.setData({
-          form: {
-            validUntil: "",
-          },
-          showClose4: false,
+        IDcardSubmit(params).then(res => {
+          if (res.ret) {
+            this.seStatus();
+            this.setData({
+              isShowModal: true
+            })
+          } else {
+            wx.showToast({
+              title: res.message,
+              icon: 'none'
+            })
+          }
         })
       }
     },
-    onInput(event) {
-      let that = this;
-      let params = event.currentTarget.dataset.params;
-      let value = event.detail.value;
-      console.log(value,event.detail)
-      if (params == "name") {
-        if (value !== '') {
+    seStatus() {
+      getUserStatus().then(res => {
+        if (res.ret) {
+          getApp().globalData.userStatus = res.data.status;
           this.setData({
-            form: {
-              username: value,
-            },
+            userStatus: res.data.status
           })
         }
-      } else if (params == "telephone") {
-        if (value !== '') {
-          this.setData({
-            form: {
-              username: that.data.form.username,
-              telephone: value,
-            },
-          })
-        }
-      } else if (params == "idcard") {
-        if (value !== '') {
-          this.setData({
-            form: {
-              username: that.data.form.username,
-              telephone: that.data.form.value,
-              idcard: value,
-            },
-          })
-        }
-      } else if (params == "validityPeriod") {
-        if (value !== '') {
-          this.setData({
-            form: {
-              username: that.data.form.username,
-              telephone: that.data.form.value,
-              idcard: that.data.form.idcard,
-              validUntil: value,
-            },
-          })
-        }
-      }
+      })
     },
-    onFocus(e) {
-      let params = e.currentTarget.dataset.params;
-      console.log(params, 'onfocus')
-      if (params == "name") {
-        this.setData({
-          showClose1: true
-        })
-      } else if (params == "telephone") {
-        this.setData({
-          showClose2: true
-        })
-      } else if (params == "idcard") {
-        this.setData({
-          showClose3: true
-        })
-      } else if (params == "validityPeriod") {
-        this.setData({
-          showClose4: true
-        })
-      }
-    },
-    onBlur(e) {
-      let params = e.currentTarget.dataset.params;
-      if (params == "name") {
-        this.setData({
-          showClose1: false
-        })
-      } else if (params == "telephone") {
-        this.setData({
-          showClose2: false
-        })
-      } else if (params == "idcard") {
-        this.setData({
-          showClose3: false
-        })
-      } else if (params == "validityPeriod") {
-        this.setData({
-          showClose4: false
-        })
-      }
-    },
-
 
     // 确认关联 
     confirmAssociation() {
       relation({}).then(res => {
-        console.log(res)
-        if(res.ret) {
+        if (res.ret) {
           wx.navigateTo({
             url: '../association/index',
           })
         }
       })
     },
+    // 是否绑定input日期事件
+    inputShowClick(e) {
+      if(e.detail.key == 'validUntil') {
+        this.setData({
+          pickerShow:true
+        })
+      }
+    },
+    // 日期插件取消
+    bindcancel(){
 
+    }
   },
 
 

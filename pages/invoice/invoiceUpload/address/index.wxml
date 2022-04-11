@@ -2,20 +2,24 @@
 <view class="bgColog">
     <mp-navigation-bar title="邮寄地址"/>
     <view class="count">
-        <view>
-            <text>收货人</text>
+        <view class="count__top">
+            <view class="count__top__left">
+                <image src="{{logo}}" />
+                <view>邮寄地址</view>
+            </view>
+            <view class="code" bindtap="copywxtap" >复制地址</view>
         </view>
-
-        <view>
-            <text>收货人</text>
+        <view class="title">
+            <text class="title__left" >收货人</text>
+            <text class="title__info">{{form.name}}</text>
         </view>
-
-        <view>
-            <text>收货人</text>
+        <view class="title">
+            <text class="title__left" >电话号码</text>
+            <text class="title__info">{{form.phone}}</text>
         </view>
-
-        <view>
-            <text>收货人</text>
+        <view class="title">
+            <text class="title__left" >收获地址</text>
+            <text class="title__info">{{form.address}}</text>
         </view>
     </view>
 </view>

@@ -22,9 +22,6 @@ Page({
             title: '请勾查看并勾选协议',
             icon:'none'
         })
-        if(this.data.agreementStatus){
-            utils.navigateTo('../loginPrimary/index')
-        }
     },
     backIndex(){
         wx.navigateTo({
@@ -33,7 +30,7 @@ Page({
     },
     // 微信手机号授权弹框 只能在手机调试
     getPhoneNumber (e) {
-        console.log(e.detail.code)
+        // console.log(e.detail.code)
         getWxPhone(e.detail.code).then(res => {
             if(res.ret){
                 const phone = res.data.purePhoneNumber;
@@ -127,16 +124,11 @@ Page({
             agreementStatus:value.detail
         })
     },
- 
-    handelClickLogin(){
-        utils.navigateTo('../loginPrimary/index')
-    },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        console.log(111)
         this.getUserProfile();
     },
 
