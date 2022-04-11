@@ -18,7 +18,7 @@
         </block>
         <block wx:else>
           <view class="idcard__tips idcard__upload">
-            <image class="loading" src="{{inputClose}}"></image>
+            <image class="loading" src="{{loading}}"></image>
             上传中
           </view>
         </block>
@@ -32,7 +32,7 @@
         </block>
         <block wx:else>
           <view class="idcard__tips idcard__upload">
-            <image class="loading" src="{{inputClose}}"></image>
+            <image class="loading" src="{{loading}}"></image>
             上传中
           </view>
         </block>
