@@ -14,8 +14,13 @@
   .content .title {
     font-size: 28rpx;
     color: #48617C;
-    width: 165rpx;
+    width: 175rpx;
     text-align: right;
+  }
+  .title>h1{
+    color: red;
+    font-size: 28rpx;
+    margin-top: 15rpx;
   }
 
   .content input {
@@ -44,3 +49,4 @@
     color: #ABBED2;
     font-size: 28rpx;
   }
+  

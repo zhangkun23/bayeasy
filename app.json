@@ -12,6 +12,8 @@
     "pages/invoice/invoiceIndex/index",
     "pages/invoice/invoiceUpload/index/index",
     "pages/invoice/invoiceUpload/address/index",
+    "pages/invoice/invoiceUpload/updateImg/index",
+    "pages/invoice/invoiceUpload/updateHandel/index",
     "pages/personal/personalIndex/index",
     "pages/personal/aboutBayeasy/index",
     "pages/contactOperate/index",

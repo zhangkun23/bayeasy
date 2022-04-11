@@ -8,12 +8,12 @@
             <text bindtap="handelClickUrl" data-url="/pages/invoice/invoiceUpload/address/index" class="addresLink">邮寄地址</text>
         </view>
         <view class="imgBox"> 
-            <view bindtap="handelClickUrl">
+            <view data-url="/pages/invoice/invoiceUpload/updateImg/index" bindtap="handelClickUrl">
                 <image class="updateImg" src="{{imageUpdate}}" />
                 <view class="top">图片上传发票</view>
                 <view class="bottom">点击即可图片上传发票</view>
             </view>
-            <view bindtap="handelClickUrl">
+            <view data-url="/pages/invoice/invoiceUpload/updateHandel/index" bindtap="handelClickUrl">
                 <image class="updateImg" src="{{handelUpdate}}" />
                 <view class="top">手动添加增值税发票</view>
                 <view class="bottom">点击即可手动添加发票</view>

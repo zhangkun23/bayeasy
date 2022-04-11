@@ -1,8 +1,48 @@
 /* pages/invoice/invoiceUpload/address.wxss */
 
 .count{
-    height: 372rpx;
     background: #FFFFFF;
     border-radius: 32rpx;
     margin: 0 35rpx;
+    padding: 48rpx 32rpx;
+}
+.count__top{
+    display: flex;
+    justify-content: space-between;
+}
+.count__top__left{
+    display: flex;
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #283E56;
+}
+.count__top__left > image{
+    height: 48rpx;
+    width:48rpx;
+}
+.count__top__left > text{
+    margin-left: 16rpx;
+}
+.code{
+    width: 156rpx;
+    height: 46rpx;
+    line-height: 46rpx;
+    background: #FFAB3F;
+    border-radius: 30rpx;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 24rpx;
+}
+.title{
+    margin-top: 34rpx;
+    display: flex;
+    font-size: 28rpx;
+    font-weight: 400;
+}
+.title__left{
+    color: #6E87A2;
+    width: 136rpx;
+}
+.title__info{
+    color: #283E56;
 }
