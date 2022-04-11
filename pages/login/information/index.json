@@ -2,7 +2,6 @@
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
-    "loading": "./loading/loading",
     "input-com":"/components/input-com/input-com"
   },
   "navigationStyle":"custom",
