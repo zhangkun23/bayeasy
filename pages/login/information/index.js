@@ -268,7 +268,6 @@ Component({
           id_card: form.idcard,
           expire_date: form.validUntil
         }
-        console.log(params);
         IDcardSubmit(params).then(res => {
           if (res.ret) {
             this.seStatus();
@@ -308,7 +307,6 @@ Component({
     // 是否绑定input日期事件
     inputShowClick(e) {
       if(e.detail.key == 'validUntil') {
-        console.log('11111')
         this.setData({
           pickerShow:true
         })
