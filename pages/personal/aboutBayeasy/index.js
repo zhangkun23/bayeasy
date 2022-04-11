@@ -83,7 +83,7 @@ Page({
 
   },
   goEntrance(e) {
-    console.log("go ! ")
+    // console.log("go ! ")
     wx.showLoading({
       title: '加载中',
     })

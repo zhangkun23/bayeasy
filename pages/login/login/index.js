@@ -30,7 +30,7 @@ Page({
     },
     // 微信手机号授权弹框 只能在手机调试
     getPhoneNumber (e) {
-        console.log(e.detail.code)
+        // console.log(e.detail.code)
         getWxPhone(e.detail.code).then(res => {
             if(res.ret){
                 const phone = res.data.purePhoneNumber;
@@ -129,7 +129,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        console.log(111)
         this.getUserProfile();
     },
 

@@ -46,7 +46,7 @@ Component({
    */
   methods: {
     onClick() {
-      console.log("click btn")
+      // console.log("click btn")
       this.triggerEvent('click', null, {})
     }
   }

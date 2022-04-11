@@ -11,7 +11,6 @@ Component({
       type: String,
       value: '5',
       observer: function(c){
-        console.log("~!!!!!!!!!!!!!")
         this.setData({
           per: c/this.properties.max,
           count: c

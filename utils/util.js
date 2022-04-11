@@ -24,11 +24,11 @@ const navigateTo = (path) => {
 const openPdf = (url) => {
   if (url == '') return;
   url = getApp().globalData.pafPath + url + '.pdf'
-  console.log(url)
+  // console.log(url)
   wx.downloadFile({
     url: url,
     success: function (res) {
-      console.log(res);
+      // console.log(res);
       if (res.statusCode === 200) { //成功
         var Path = res.tempFilePath //返回的文件临时地址，用于后面打开本地预览所用
         wx.openDocument({

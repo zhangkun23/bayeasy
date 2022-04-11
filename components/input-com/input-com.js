@@ -71,7 +71,6 @@ Component({
         },
         // 清空input
         clearInput() {
-            console.log(111)
             this.setData({
                 inputValue: ''
             })
