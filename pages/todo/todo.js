@@ -10,7 +10,7 @@ Page({
    */
   data: {
     count: 0,
-    empty_bg_url: 'https://image.bayeasy.cn/images-data/public/emptyBackGround.png',
+    empty_bg_url: app.globalData.emptyPic,
     config: {
       canvasSize: {
         width: 196 * 2,

@@ -8,7 +8,6 @@ Component({
                     selected: 0
                 })
             }
-            let that = this;
             const barTitileStatus = wx.getMenuButtonBoundingClientRect()
             this.setData({statusBarHeight: barTitileStatus.bottom + 32})
 
