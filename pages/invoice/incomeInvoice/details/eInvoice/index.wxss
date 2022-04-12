@@ -1,0 +1,43 @@
+/* pages/invoice/incomeInvoice/details/eInvoice/index.wxss */
+
+
+.bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18.01%;
+    position: absolute;
+    width: 100%;
+}
+
+.bg .card {
+    margin-left: 32rpx;
+    margin-right: 32rpx;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px 0px rgba(201, 209, 228, 0.38);
+    border-radius: 32px;
+}
+
+.bg .card .content {
+    margin: 36rpx 47rpx 36rpx 47rpx;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px 0px rgba(201, 209, 228, 0.38);
+    border-radius: 32px;
+}
+
+.download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34rpx;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 48rpx;
+    margin-top: 48rpx;
+    width: 500rpx;
+    height: 88rpx;
+    background: #1D83F0;
+    box-shadow: 0px 29px 47px 0px rgba(29, 131, 240, 0.2);
+    border-radius: 44px;
+}

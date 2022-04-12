@@ -1,0 +1,28 @@
+
+
+<view class="bgColog">
+    <mp-navigation-bar title="手动添加增值税发票" />
+    <view class="count">
+        <input-com title="发票类型" must="true"  placeholder="请选择发票类型" inputValue="{{form.invoice_type}}" disabled="true" icon_down='true'  key="invoice_type"  bind:inputShowClick="getInvoice"/>
+
+        <input-com title="发票代码" must="true" placeholder="请输入发票代码" inputValue="{{form.invoice_dm}}"    key="invoice_dm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+
+        <input-com title="发票号码" must="true" placeholder="请输入发票号码" inputValue="{{form.invoice_hm}}"    key="invoice_hm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+
+        <input-com title="价税合计" must="true" placeholder="请输入价税合计" inputValue="{{form.total_amount}}"    key="total_amount" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+
+        <input-com title="发票校验码" must="true" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}"    key="invoice_check_code" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+
+        <input-com title="开票日期" must="true" placeholder="请选择开票日期" inputValue="{{form.invoice_date}}" icon_rl='true'   key="invoice_date" clearShow="{{false}}"  bind:setInputValue="setInputValue"/>
+
+        <view class="updateInfo">
+            <view class="updateInfo_name">上传图片凭证</view>
+            <view class="updateInfo_box">
+                <image src="{{close}}" class="close" />
+                <image src="11" class="invoiceImg" />
+            </view>
+        </view>
+
+        <view class="submit">提交查验</view>
+    </view>
+</view>

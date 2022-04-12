@@ -1,0 +1,58 @@
+<!--pages/invoice/incomeInvoice/details/index.wxml-->
+<mp-navigation-bar animated="true" show="{{showNav}}" title="账单发票详情"></mp-navigation-bar>
+<view class="bgColog"></view>
+<view wx:if="{{isEmpty}}" class="tip-container flex_center_column">
+    <image src="{{emptyPic}}" class="emptyBg" mode="widthFix"></image>
+    <text user-select="true" class="subscribe">暂无数据</text>
+</view>
+<view wx:else class="inv-container flex_center_column"  >
+        <view id="card" class="card" bindtouchmove="handletouchmove">
+            <view class="content">
+                <view class="topbar">
+                    <view>账单发票详情</view>
+                    <view wx:if="{{myStatus === 0}}" class="status yellow">待确认</view>
+                    <view wx:elif="{{myStatus === 1}}" class="status blue">开票中</view>
+                    <view wx:elif="{{myStatus === 2}}" class="status grey">已开票</view>
+                </view>
+                <view class="split" style="border-top: 1px dashed #E6EEF7"></view>
+                <view class="main-info">
+                    <text user-select="true" class="info">账期时间：{{time}}</text>
+                    <text user-select="true" class="info">账单ID： {{settlement_id}}</text>
+                    <text user-select="true" class="info">账单金额： <text user-select="true" class="yellow">¥ {{bill_amount}}</text></text>
+                </view>
+                <view class="split" style="border-top: 1px dashed #E9ECF3"></view>
+                <view class="sub-info">
+                    <text user-select="true" class="info">发票类型： {{type}}</text>
+                    <text user-select="true" class="info">购买方名称： {{buyer_name}}</text>
+                    <text user-select="true" class="info">纳税人识别号： {{buyer_tax_no}}</text>
+                    <text user-select="true" class="info">增值税税目： {{vat_item}}</text>
+                    <text user-select="true" class="info">发票金额： ¥ {{sales}}</text>
+                    <text user-select="true" class="info">增值税税率： {{tax_rate}}</text>
+                    <text user-select="true" class="info">增值税税额： ¥ {{tax}}</text>
+                    <text user-select="true" class="info">销售方名称： {{business_name}}</text>
+                    <text user-select="true" class="info">纳税人识别号： {{business_tax_no}}</text>
+                    <text user-select="true" class="info">销售方地址： {{regist_address}}</text>
+                    <text user-select="true" class="info">销售方电话： {{phone}}</text>
+                    <text user-select="true" class="info">开户行： {{bank}}</text>
+                    <text user-select="true" class="info">银行账号： {{account}}</text>
+                </view>
+                <view class="split" style="border-top: 1px dashed #D2E0EF"></view>
+                <view wx:if="{{myStatus === 0}}" data-iid="{{id}}" bindtap="confirmInvoice" class="operateBtn flex_center_column blueBg">
+                    确认开票
+                </view>
+                <view wx:elif="{{myStatus === 2}}" data-iid="{{id}}" bindtap="checkEInvoice" class="operateBtn flex_center_column blueBg">
+                    查看电子发票
+                </view>
+            </view>
+        </view>
+        <view class="report" bindtap="contactOperate">
+            <image class="bg" src='https://image.bayeasy.cn/images-data/invoice/incomeInvoice/barBg.png' mode="widthFix"></image>
+            <view class="content">
+                <view class="text">
+                    <view>如账单金额及发票内容有异议</view>
+                    <view>请联系您的运营专员</view>
+                </view>
+                <image class="btn" src="/image/icon/contactIcon.png" mode="widthFix"></image>
+            </view>
+        </view>
+</view>

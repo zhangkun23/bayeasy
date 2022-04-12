@@ -25,7 +25,19 @@ Component({
             type: String,
             value: ''
         },
-        disabled: {
+        disabled: { //disabled
+            type: Boolean,
+            value: false
+        },
+        must:{ //是否必填
+            type: Boolean,
+            value: false
+        },
+        icon_rl:{
+            type: Boolean,
+            value: false
+        },
+        icon_down:{
             type: Boolean,
             value: false
         }
@@ -36,6 +48,8 @@ Component({
      */
     data: {
         inputClose: tempPath + "public/inputClose.png",
+        rl: tempPath + "invoice/invoiceUpdate/rl.png",
+        down: tempPath + "invoice/invoiceUpdate/down.png",
         clearHidden: true,
         inputValue: '',
         title: '手机号',

@@ -1,0 +1,11 @@
+<!--pages/invoice/incomeInvoice/details/eInvoice/index.wxml-->
+<mp-navigation-bar title="电子发票"></mp-navigation-bar>
+<view class="bgColog"></view>
+<view class="bg">
+    <view class="card">
+        <view class="content">
+            <image></image>
+        </view>
+    </view>
+    <view class="download">下载发票</view>
+</view>

@@ -2,15 +2,15 @@
     module.exports={
         //开发环境的url
         dev:{
-            baseUrl:"http://gsh.dev.corp.bayeasy.cn:11880"
-        },
+            baseUrl:"http://gsh.dev.corp.bayeasy.cn:11880/gshApi"
+        }, 
         //测试环境url
         test:{
             baseUrl:"http://www.test.com"
         },
         //线上环境url
         prod:{
-            baseUrl:'https://api.it120.cc'
+            baseUrl:'https://cs.bayeasy.cn/api'
         }
     }
     

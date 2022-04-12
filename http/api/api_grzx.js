@@ -16,9 +16,13 @@ module.exports={
 	// 	return request('/gshApi/personal_nformation/operate_wx','GET',{},'arrayBuffer');
 	// },
 	get_operate:()=>{
-		return request('/gshApi/personal_nformation/operate_wx_qrcode','GET',{});
+		return request('/personal_nformation/operate_wx_qrcode','GET',{});
 	},
 
+	/* 获取用户姓名 */
+	get_user_info: ()=>{
+		return request('/personal_nformation/get','GET', {} )
+	}
 	
 	
 }

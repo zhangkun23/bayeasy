@@ -1,9 +1,9 @@
 <!--pages/personal/aboutBayeasy/index.wxml-->
 <mp-navigation-bar title="关于贝易资"></mp-navigation-bar>
 <view class="entrance-container">
-  <view class="entrance" wx:for="{{entrances}}" wx:key="i">
+  <view class="entrance" wx:for="{{entrances}}" wx:key="i"  bindtap="goEntrance" data-url="{{item.url}}">
     <view class="content">{{item.title}}</view>
-    <view class="arrow" bindtap="goEntrance" data-url="{{item.url}}">
+    <view class="arrow">
       <image class="image" src="{{right_arrow}}" mode="widthFix"></image>
     </view>
   </view>

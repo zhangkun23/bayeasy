@@ -22,9 +22,6 @@ Page({
             title: '请勾查看并勾选协议',
             icon:'none'
         })
-        if(this.data.agreementStatus){
-            utils.navigateTo('../loginPrimary/index')
-        }
     },
     backIndex(){
         wx.navigateTo({
@@ -126,10 +123,6 @@ Page({
         this.setData({
             agreementStatus:value.detail
         })
-    },
- 
-    handelClickLogin(){
-        utils.navigateTo('../loginPrimary/index')
     },
 
     /**

@@ -1,7 +1,7 @@
 //通用接口
 const { request } = require('../request.js')
 //基于业务封装的接口
-const api = '/gshApi';
+const api = '';
 module.exports={
 	/**
 	 * 登录

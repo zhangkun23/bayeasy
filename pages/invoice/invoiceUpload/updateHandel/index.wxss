@@ -1,0 +1,44 @@
+/* pages/invoice/invoiceUpload/updateHandel/index.wxss */
+.count{
+    margin: 0 35rpx;
+}
+.updateInfo{
+    margin-top: 54rpx;
+    display: flex;
+}
+.updateInfo_name{
+    width: 200rpx;
+    font-size: 28rpx;
+    font-weight: 400;
+    color: #48617C;
+}
+.updateInfo_box{
+    width: 360rpx;
+    height: 260rpx;
+    background: #F3F8FC;
+    border-radius: 16rpx;
+    padding: 31rpx 38rpx 32rpx 30rpx;
+    position: relative;
+    background: #F3F8FC;
+}
+.updateInfo_box> .close{ 
+    position: absolute;
+    right: -25rpx;
+    top: -25rpx;
+    height: 44rpx;
+    width: 44rpx;
+}
+.updateInfo_box> .invoiceImg{
+    height: 100%;
+    width: 100%;
+}
+.submit{  
+    margin: 64rpx 125rpx;
+    height: 88rpx;
+    background: #1D83F0;
+    box-shadow: rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
+    border-radius: 44rpx;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 88rpx;
+}
