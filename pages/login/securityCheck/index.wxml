@@ -16,7 +16,7 @@
       <view class="securityCheck__content-tips">请输入您完整的身份证号</view>
       <view class="securityCheck__content-input">
         <!-- type="text"  -->
-        <input type="idcard" class="weui-input" model:value="{{idcardValue}}" placeholder-class="placeholderStyle" placeholder="请填写完整的身份证号" maxlength="22" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" />
+        <input class="inputs weui-input" model:value="{{idcardValue}}" placeholder-class="placeholderStyle" placeholder="请填写完整的身份证号" maxlength="22" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" />
       </view>
       <view class="securityCheck__content-close" hidden="{{isShowCloseBtn}}" bindtap="closeValue">
         <image src="{{inputClose}}"></image>

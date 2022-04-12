@@ -70,7 +70,7 @@ Component({
             this.setShow(true)
         },
         // 清空input
-        clearInput() {
+        clearInput() {  
             this.setData({
                 inputValue: ''
             })

@@ -35,6 +35,11 @@ Component({
     attached() {}
   },
   methods: {
+    backIndex(){
+      wx.switchTab({
+        url: '../../index/index',
+      })
+    },
     _getUserIdCards: function () {
       getUserMeg().then(res => {
         if (res.ret) {
@@ -46,9 +51,19 @@ Component({
       })
     },
     onInput: function (event) {
-      event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
+      // event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
+      let cartId = [...event.detail.value.replace(/\s/g, "")];
+      let newArr = [];
+      for (var i = 0; i < cartId.length; i++) {
+        if (i != 0 && i % 4 === 0) {
+          newArr.push(" " + cartId[i]);
+        } else {
+          newArr.push(cartId[i]);
+        }
+      }
+      cartId = newArr.join("");
       this.setData({
-        idcardValue: event.detail.value
+        idcardValue: cartId
       })
       this.setCloseIcon(event);
       if (event.detail.value.length == 22) {
@@ -60,7 +75,6 @@ Component({
           disabled: false
         })
       }
-
     },
     setCloseIcon: function (val) {
       if (!val.detail.value) {
@@ -82,6 +96,7 @@ Component({
       })
     },
     closeValue: function () {
+      console.log(1212)
       this.setData({
         idcardValue: '',
         isShowCloseBtn: false
@@ -90,11 +105,12 @@ Component({
     // 提交身份证校验
     doConfirm() {
       let param = {
-        id_card: this.data.idcardValue
+        id_card: this.data.idcardValue.replace(/\s/g, "")
       }
+      console.log(param)
       IdcardAuthentication(param).then(res => {
         if (res.ret) {
-          this.getStatus();
+          this.getStatus();ƒ
           wx.navigateTo({
             url: '../information',
           })
