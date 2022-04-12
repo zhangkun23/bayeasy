@@ -54,7 +54,6 @@ Page({
         // ]
     },
     onShow: function (options) {
-        wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guZGV2LmNvcnAuYmF5ZWFzeS5jbjoxMTg4MFwvZ3NoQXBpXC9hdXRoXC93eGxvZ2luIiwiaWF0IjoxNjQ5NjQ5NDU4LCJleHAiOjE3MDk2NDk0NTgsIm5iZiI6MTY0OTY0OTQ1OCwianRpIjoiRUlZSmg2M2VmMnFzdWI5RCIsInN1YiI6MTIsInBydiI6IjA1ZDkyNDFlNjMyM2NlM2UwOWVjNjAxZThjYzVhMDc4ZTQ4NGY0NTIifQ.d7PccIis4sQQZOh47kPhm_qnLjOIcBeyLKWPdq_GbwI')
         var that = this
         get_all_invoices().then(res => {
             if (res.ret) {
