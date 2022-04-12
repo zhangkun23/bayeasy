@@ -1,1 +1,19 @@
-/* pages/invoice/invoiceUpload/updateImg/index.wxss */
+
+
+.count{
+    margin: 35rpx;
+}
+.count > view{
+    width: 100%;
+    height: 240rpx;
+    background: linear-gradient(131deg, #1D83F0 0%, #1DD0F0 100%);
+    border-radius: 28rpx;
+    margin-bottom: 32rpx;
+    position: relative;
+    color: #FFFFFF;
+}
+.count > view >text{
+    position: absolute;
+    top: 95rpx;
+    left: 48rpx;
+}

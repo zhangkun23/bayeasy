@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
+  },
+  "navigationBarBackgroundColor": "#1D83F0",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "增值税发票查验",
+  "backgroundColor": "#1D83F0"
+}

@@ -1,2 +1,15 @@
 
-<mp-navigation-bar title="增值税发票查验" />
+
+
+<view class="bgColog">
+    <mp-navigation-bar title="增值税发票查验" />
+
+    <view class="count">
+        <view bindtap="updateInvoce">
+            <text>上传增值税发票</text>
+        </view>
+        <view>
+            <text>上传其他成本发票</text>
+        </view>
+    </view>
+</view>

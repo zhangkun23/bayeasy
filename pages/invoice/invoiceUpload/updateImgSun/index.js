@@ -1,17 +1,12 @@
-// pages/invoice/invoiceUpload/updateImg/index.js
+// pages/invoice/invoiceUpload/updateImgSun/index.js
+const tempPath = getApp().globalData.imgPath;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
-    },
-    // 跳转上传页面
-    updateInvoce(){
-        wx.navigateTo({
-            url: '/pages/invoice/invoiceUpload/updateImgSun/index',
-        })
+        info_max: tempPath + "public/info_max.png",
     },
 
     /**

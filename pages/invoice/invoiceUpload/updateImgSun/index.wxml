@@ -1,0 +1,61 @@
+
+
+
+<view class="bgCount">
+
+   
+    <view class="titleTop">
+        <view class="errInfo">
+            <image src="{{info_max}}" />
+            <text>存在异常数据，请优先处理</text>
+        </view>
+        <view class="invoice__status">
+            
+            <view class="invoice__status__active">
+                <text>上传发票</text>
+                <text>查验发票</text>
+                <text>提交完成</text>
+            </view>
+        </view>
+    </view>
+    <view class="invoice">
+        
+       
+
+        <view class="item">
+            <view class="item__top">
+                <image class="item__top__invoice" src="{{info_max}}" />
+            </view>
+            <view class="item__bottom">
+                <view class="item__bottom__title">北京贝易资有限责任公司</view>
+                <view class="item__bottom__text">增值税专用发票</view>
+                <view class="item__bottom__text">098093808543</view>
+                <view class="item__bottom__info">
+                    <view>
+                        <image  src="{{info_max}}" />
+                        <text class="item__info_right">查验通过</text>
+                    </view>
+                    <image  src="{{info_max}}" />
+                </view>
+            </view>
+        </view>
+
+        <view class="item">
+            <view class="item__top">
+                <image class="item__top__invoice" src="{{info_max}}" />
+            </view>
+            <view class="item__bottom">
+                <view class="item__bottom__title">北京贝易资有限责任公司</view>
+                <view class="item__bottom__text">增值税专用发票</view>
+                <view class="item__bottom__text">098093808543</view>
+                <view class="item__bottom__info">
+                    <view>
+                        <image  src="{{info_max}}" />
+                        <text class="item__info_error">查验失败</text>
+                    </view>
+                    <image  src="{{info_max}}" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
