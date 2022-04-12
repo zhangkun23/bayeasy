@@ -32,6 +32,15 @@
     height: 100%;
     width: 100%;
 }
+.addImg{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25rpx;
+    margin-top: -25rpx;
+}
 .submit{  
     margin: 64rpx 125rpx;
     height: 88rpx;

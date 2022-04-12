@@ -141,7 +141,7 @@ Component({
         success: function (res) {
           if (res.tempFiles[0]) {
             const imgPath = res?.tempFiles[0].tempFilePath;
-            const uploadUrl = baseUrl + '/gshApi/personal_nformation/ocr_idcard'
+            const uploadUrl = baseUrl + '/personal_nformation/ocr_idcard'
             const type = params.idcadrparams; //正反面类型
             if (type == 'front') {
               that.setData({

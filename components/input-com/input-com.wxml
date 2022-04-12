@@ -9,7 +9,7 @@
     <view class="title">{{title}}
         <h1 wx:if="{{must}}">*</h1>
     </view>
-    <input type="number" disabled="{{disabled}}" placeholder="{{placeholder}}" placeholder-class="placeholderStyle" model:value="{{inputValue}}" 
+    <input type="{{type}}" disabled="{{disabled}}" placeholder="{{placeholder}}" maxlength="{{maxlength}}" placeholder-class="placeholderStyle" model:value="{{inputValue}}" 
         data-key="{{key}}" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" bindtap="onShowDate" />
     <view hidden="{{clearHidden}}" wx:if="{{clearShow}}" class="closeView"  bindtap="clearInput">
         <image  data-params="telephone" src="{{inputClose}}"></image>

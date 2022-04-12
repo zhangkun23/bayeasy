@@ -120,6 +120,7 @@ Page({
     },
     // 是否勾选协议
     collectFun(value){
+        console.log(value)
         this.setData({
             agreementStatus:value.detail
         })

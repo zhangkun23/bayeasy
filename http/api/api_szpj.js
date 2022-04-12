@@ -11,18 +11,17 @@ module.exports = {
      * 获取收入账单发票列表
      */
     get_all_invoices: (param) => {
-        return request('/gshApi/invoice/list', 'GET', {});
+        return request(api+'/invoice/list', 'GET', {});
     },
 
     get_invoice_detail: (iid) => {
-        return request('/gshApi/invoice/info?id=' + iid, 'GET', {});
+        return request(api+'/invoice/info?id=' + iid, 'GET', {});
     },
     /**
      * 申请开电子票
      * @param {*} params 
      */
     apply_invoice: (params) => {
-
         return request('/gshAdmin/se_invoice/apply', 'POST', params);
     },
     /*查询收货地址*/
@@ -32,7 +31,11 @@ module.exports = {
 
     //手动踢啊家增值发票
     updateHandlInvoice: (param) => {
-        return request(api + '/auth/deduct_invoice/submit_deduct_invoice', 'POST', param);
+        return request(api + '/deduct_invoice/submit_deduct_invoice', 'POST', param);
+    },
+    /*发票类型*/
+    getInvoiceType: () => {
+        return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
     },
 
 

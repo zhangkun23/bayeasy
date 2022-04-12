@@ -40,6 +40,14 @@ Component({
         icon_down:{
             type: Boolean,
             value: false
+        },
+        type :{
+            type: String,
+            value: 'text'
+        },
+        maxlength:{
+            type:Number,
+            value:200
         }
     },
 

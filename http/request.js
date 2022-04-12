@@ -43,6 +43,7 @@ module.exports = {
                         wx.navigateTo({
                             url: '/pages/login/login/index',
                         })
+                        wx.setStorageSync('token', '') // 清理缓存中token
                     }else {
 						wx.showToast({
                             title: res.data.message || '网络有问题哦！请稍后再试试！',
