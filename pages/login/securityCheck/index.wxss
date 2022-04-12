@@ -58,7 +58,9 @@
   font-weight: 600;
   color: #283E56;
 }
-
+.inputs {
+  width: 500rpx;
+}
 .securityCheck__content-input {
   display: flex;
   padding: 23rpx 1rpx;

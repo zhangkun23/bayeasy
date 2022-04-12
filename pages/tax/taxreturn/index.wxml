@@ -1,0 +1,26 @@
+<!--pages/tax/taxreturn/index.wxml-->
+<view class="bgColog">
+  <mp-navigation-bar title="纳税申报" bindback="backIndex"></mp-navigation-bar>
+  <view class="taxReturn">
+    <view class="taxReturn__container">
+      <view class="taxReturn__content back1" bindtap="taxConfirmation">
+        <view class="taxReturn__content-text">申报税款确认</view>
+        <view class="taxReturn__content-image">
+          <image class="icon" src="{{icon1}}"></image>
+        </view>
+      </view>
+      <view class="taxReturn__content back2" bindtap="paymentRecord">
+        <view class="taxReturn__content-text">申报缴纳记录</view>
+        <view class="taxReturn__content-image">
+          <image class="icon" src="{{icon2}}"></image>
+        </view>
+      </view>
+      <view class="taxReturn__content back3" bindtap="delinquentBill">
+        <view class="taxReturn__content-text">申报欠款账单</view>
+        <view class="taxReturn__content-image">
+          <image class="icon" src="{{icon3}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

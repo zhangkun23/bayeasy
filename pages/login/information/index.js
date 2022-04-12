@@ -38,13 +38,13 @@ Component({
     IdcardFront: tempPath + "authentication/idcard_ front.png",
     IdcardResever: tempPath + "authentication/idcard_resever.png",
     inputClose: tempPath + "public/inputClose.png",
+    loading: tempPath + "public/loading.png",
     userStatus: 0,
     clearShow: true,
     tostTop: true,
     disabled: true,
     pickerShow:true,
     dateTime: '',
-    loading: tempPath + "public/loading.png",
   },
   pageLifetimes: {
     show() {

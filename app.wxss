@@ -9,7 +9,7 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
 
 .bgColog {
   position: absolute;
@@ -22,4 +22,24 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.orangeTips {
+  color: #FFA42E;
+}
+
+.orangeBack {
+  background: #FEF8E5;
+}
+
+.greennTips {
+  color: #46CF84;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.font-size-24 {
+  font-size: 24rpx;
 }

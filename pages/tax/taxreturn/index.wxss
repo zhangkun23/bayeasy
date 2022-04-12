@@ -1,0 +1,42 @@
+/* pages/tax/taxreturn/index.wxss */
+
+
+.taxReturn__container {
+  margin: 32rpx;
+}
+
+.taxReturn__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 260rpx;
+  padding: 30rpx 48rpx;
+  border-radius: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.taxReturn__content-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #48617C;
+  opacity: 1;
+
+}
+
+.icon {
+  width: 200rpx;
+  height: 200rpx;
+  opacity: 1;
+}
+
+.back1 {
+  background: #FFF6E9;
+}
+
+.back2 {
+  background: #EAF5FF;
+}
+
+.back3 {
+  background: rgba(70,252,132,0.12);
+}

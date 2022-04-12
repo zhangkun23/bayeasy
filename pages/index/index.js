@@ -111,14 +111,14 @@ Page({
          */
         getUserStatus().then(res => {
           if(res.ret){
-            getApp().globalData.userStatus =  res.data.status;
-            this.setData({
-              userStatus:res.data.status
-            })
-            // getApp().globalData.userStatus = 0
+            // getApp().globalData.userStatus =  res.data.status;
             // this.setData({
-            //   userStatus: 0
+            //   userStatus:res.data.status
             // })
+            getApp().globalData.userStatus = 0
+            this.setData({
+              userStatus: 0
+            })
           }
         })
         // 是否有运营人员
