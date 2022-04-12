@@ -1,0 +1,46 @@
+<view class="taxConfirmation bgColog">
+  <mp-navigation-bar title="申报税款确认" bindback="backIndex"></mp-navigation-bar>
+  <view class="taxConfirmation__container">
+    <view class="taxConfirmation__btn font-size-24">
+      <text class="taxConfirmation__button">确认记录</text>
+    </view>
+    <view class="taxConfirmation__list" wx:if="{{!isShowList}}">
+      <view class="taxConfirmation__list-item" wx:for="{{allDeclareList}}" wx:for-item="list" wx:key="id">
+        <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
+          <view class="item__header">
+            <view class="item__header-date">
+              <image class="item__header-image" src="{{listIcon}}"></image>
+              <text class="item__header-text">申报月份：{{list.declare_month}}</text>
+            </view>
+            <text class="item__header-tips orangeTips font-size-24" wx:if="{{list.status==1}}">待确认</text>
+            <text class="item__header-tips orangeTips font-size-24" wx:if="{{list.status==2}}">已确认</text>
+          </view>
+          <view class="item__center font-size-24">
+            <view class="item__text">
+              <text class="item__center-title">应补税额合计：</text>
+              <text class="orangeTips font-600">{{list.should_pay_tax}}</text>
+            </view>
+            <view class="item__text">
+              <text class="item__center-title">应退税额合计：</text>
+              <text class="greennTips font-600">{{list.should_refund_tax}}</text>
+            </view>
+            <view class="item__text">
+              <text class="item__center-title">确认时间：</text>
+              <text class="item__center-title">{{list.confirm_date}}</text>
+            </view>
+            <view class="securityCheck__topTips orangeTips orangeBack font-size-24">
+              <view class="securityCheck__topTips-icon">
+                <image src="{{info_max}}"></image>
+              </view>
+              <text wx:if="{{list.overdue_status == 0}}">请尽快确认税额，申报征期已过纳税信誉产生影响！</text>
+              <text wx:if="{{list.overdue_status == 1}}">请您尽快确认税额，以免影响申报进度</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="taxConfirmation__nodata" wx:else>
+      <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+    </view>
+  </view>
+</view>

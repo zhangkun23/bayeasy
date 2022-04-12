@@ -13,6 +13,13 @@ Component({
     },
     data: {
         statusBarHeight: 30,
+    },
+    methods: {
+        gotoList: function () {
+            wx.navigateTo({
+              url: '../taxreturn/index',
+            })
+        }
     }
     
 })
