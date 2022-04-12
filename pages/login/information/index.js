@@ -38,13 +38,13 @@ Component({
     IdcardFront: tempPath + "authentication/idcard_ front.png",
     IdcardResever: tempPath + "authentication/idcard_resever.png",
     inputClose: tempPath + "public/inputClose.png",
+    loading: tempPath + "public/loading.png",
     userStatus: 0,
     clearShow: true,
     tostTop: true,
     disabled: true,
     pickerShow:true,
     dateTime: '',
-    loading: tempPath + "public/loading.png",
   },
   pageLifetimes: {
     show() {
@@ -268,7 +268,6 @@ Component({
           id_card: form.idcard,
           expire_date: form.validUntil
         }
-        console.log(params);
         IDcardSubmit(params).then(res => {
           if (res.ret) {
             this.seStatus();
@@ -308,7 +307,6 @@ Component({
     // 是否绑定input日期事件
     inputShowClick(e) {
       if(e.detail.key == 'validUntil') {
-        console.log('11111')
         this.setData({
           pickerShow:true
         })
