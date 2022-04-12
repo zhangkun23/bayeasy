@@ -7,19 +7,17 @@ const {
 const {
   logout
 } = require('../../../http/api/api')
+const {
+  get_user_info
+} = require('../../../http/api/api_grzx')
 const utils = require('../../../utils/util.js')
 const app = getApp()
 Component({
   pageLifetimes: {
     show() {
-      utils.getTabBarIndex(this,4);
-      // 获取头像相关权限
-      // console.debug("prepare to get avatar")
-      // if (wx.getUserProfile) {
-      //   this.setData({
-      //     canIUseGetUserProfile: true
-      //   })
-      // }
+      var that = this;
+      utils.getTabBarIndex(this, 4);
+
       // 获取运营
       if (app.globalData.operate) {
         console.debug("已有客服专员")
@@ -31,7 +29,7 @@ Component({
         })
       }
       // 获取姓名 手机号 进行展示
-      const _phone = app.globalData.mobile;
+      const _phone = wx.getStorageSync('mobile') || ''
       if (_phone) this.setData({
         user_tel: _phone
       });
@@ -76,7 +74,18 @@ Component({
             isCheckRequired: false,
             showCompleteInfo: false
           })
-
+          get_user_info().then(res => {
+            if (res.data instanceof Object && 'name' in res.data) {
+              that.setData({
+                user_name: res.data.name || ''
+              })
+            } else {
+              console.log("无法获取姓名")
+              that.setData({
+                user_name: ''
+              })
+            }
+          })
         }
       }
 

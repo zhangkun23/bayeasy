@@ -4,7 +4,7 @@
 </modal>
 
 <view class="container">
-  <mp-navigation-bar title="个人中心" back="{{false}}"></mp-navigation-bar>
+  <mp-navigation-bar title="个人信息" back="{{false}}"></mp-navigation-bar>
 
   <view class="user-info-container">
     <view class="user-info">
@@ -12,21 +12,21 @@
         <view wx:if="{{token && user_name}}" class="user-name">
           {{user_name}}
         </view>
-        <view wx:if="{{token && !user_name}}" class="user-name">
-          欢迎你
+        <view wx:elif="{{token && !user_name}}" class="user-name">
+          游客登录
         </view>
         <view wx:else class="user-name">
-          游客登录
+          未登录
         </view>
         <view wx:if="{{token && showCompleteInfo}}" class="todo-btn">
           <login-btn bindclick="goGate" data-url="{{btnUrl}}" text="未完善资料" btnBgColor="#1D83F0" btnWidth="170rpx" btnHeight="50rpx" fontSize="24rpx"></login-btn>
         </view>
       </view>
-      <view wx:if="{{token && user_tel}}" class="user-tel">
+      <view wx:if="{{token && user_tel !== ''}}" class="user-tel">
         {{user_tel}}
       </view>
-      <view wx:if="{{token && !user_tel}}" class="user-tel">
-
+      <view wx:elif="{{token && !user_tel}}" class="user-tel">
+        
       </view>
       <view wx:else class="user-need-login">
         登录账号可以使用更多功能
@@ -44,7 +44,7 @@
       <view wx:for="{{gates_info}}" class="gate-btn" wx:for-index="i" wx:key="i">
         <entrance-btn bindtap="goGate" data-url="{{item.url}}" iconUrl="{{item.icon}}" title="{{item.text}}" gateWidth="{{item.width}}" isExtraInfo="{{item.isExtraInfo}}" extraInfo="{{item.extraInfo}}">
           <view wx:if="{{item.extraInfo.type === 0 && isCheckRequired}}">
-            <login-btn text="去确认" btnBgColor="#EE7D00" btnWidth="64rpx" btnHeight="30rpx" fontSize="16rpx" borderRadius="15rpx"></login-btn>
+            <login-btn text="去完善" btnBgColor="#EE7D00" btnWidth="64rpx" btnHeight="30rpx" fontSize="16rpx" borderRadius="15rpx"></login-btn>
           </view>
           <view wx:if="{{item.extraInfo.type === 1 && isNewTodo && todoCount > 0}}">
             <login-btn text="{{todoCount}}" btnBgColor="#FF475A" btnWidth="28rpx" btnHeight="28rpx" fontSize="20rpx" borderRadius="50%" border="3rpx solid #FFFFFF">
@@ -56,16 +56,24 @@
   </view>
   <view class="entrances-container">
     <view class="entrances">
-      <view wx:for="{{entrances_info}}" class="entrance" wx:for-index="i" wx:key="i">
-        <view class="icon">
-          <image src="{{item.icon}}" mode="widthFix"></image>
+      <view wx:for="{{entrances_info}}" wx:for-index="i" wx:key="i">
+        <view class="entrance"  wx:if="{{item.id === 1 && !isOperate}}" bindtap="contactOperate">
+          <view class="icon">
+            <image src="{{item.icon}}" mode="widthFix"></image>
+          </view>
+          <view class="content">{{item.text}}</view>
+          <view class="arrow">
+            <image src="{{right_arrow}}" mode="widthFix"></image>
+          </view>
         </view>
-        <view class="content">{{item.text}}</view>
-        <view wx:if="{{item.id === 1 && !isOperate}}" class="arrow" bindtap="contactOperate">
-          <image src="{{right_arrow}}" mode="widthFix"></image>
-        </view>
-        <view wx:else class="arrow" bindtap="goEntrance" data-url="{{item.url}}">
-          <image src="{{right_arrow}}" mode="widthFix"></image>
+        <view wx:else class="entrance"  bindtap="goEntrance" data-url="{{item.url}}">
+          <view class="icon">
+            <image src="{{item.icon}}" mode="widthFix"></image>
+          </view>
+          <view class="content">{{item.text}}</view>
+          <view class="arrow">
+            <image src="{{right_arrow}}" mode="widthFix"></image>
+          </view>
         </view>
       </view>
     </view>
