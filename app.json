@@ -17,6 +17,11 @@
     "pages/personal/aboutBayeasy/index",
     "pages/contactOperate/index",
     "pages/tax/taxIndex/index",
+    "pages/tax/taxreturn/index",
+    "pages/tax/taxConfirmation/index",
+    "pages/tax/paymentRecord/index",
+    "pages/tax/delinquentBill/index",
+    "pages/tax/deatil/deatil",
     "custom-tab-bar/index",
     "pages/todo/todo",
     "pages/nothing/index"

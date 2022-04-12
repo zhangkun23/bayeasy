@@ -19,15 +19,15 @@ module.exports={
 		return request(api+'/auth/login/captcha','POST',param);
 	},
 
-	/* 退出登录 */
-	logout:()=>{
-		return request(api+'/auth/logout','post',{});
-	},
+		/* 退出登录 */
+		logout:()=>{
+			return request(api+'/auth/logout','post',{});
+		},
 
-	/* 查询代办事项 */
-	todolist:()=>{
-		return request(api+'/personal_nformation/todolist','GET',{});
-	},
+		/* 查询代办事项 */
+		todolist:()=>{
+			return request(api+'/personal_nformation/todolist','GET',{});
+		},
 
 	/* 用户关联状态 */
 	getUserStatus:()=>{

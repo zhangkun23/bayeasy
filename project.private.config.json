@@ -1,39 +1,53 @@
 {
-    "setting": {},
-    "condition": {
-        "plugin": {
-            "list": []
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "个人信息",
+          "pathName": "pages/login/information/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
-        "game": {
-            "list": []
+        {
+          "name": "身份证校验",
+          "pathName": "pages/login/securityCheck/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
-        "gamePlugin": {
-            "list": []
+        {
+          "name": "纳税申报",
+          "pathName": "pages/tax/taxreturn/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
-        "miniprogram": {
-            "list": [
-                {
-                    "name": "采集成本发票",
-                    "pathName": "pages/invoice/invoiceUpload/index/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "个人信息",
-                    "pathName": "pages/login/information/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "身份证校验",
-                    "pathName": "pages/login/securityCheck/index",
-                    "query": "",
-                    "scene": null,
-                    "launchMode": "default"
-                }
-            ]
+        {
+          "name": "确认申报税款",
+          "pathName": "pages/tax/deatil/deatil",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "申报税款确认",
+          "pathName": "pages/tax/taxConfirmation/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
         }
+      ]
     }
+  }
 }

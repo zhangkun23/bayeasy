@@ -15,7 +15,7 @@
             <view class="horizon-border" style="border-top: 1px dashed #D2E0EF"></view>
             <view class="vertical-border" style=" border-left: 1px dashed #D2E0EF"></view>
             <view class="row">
-                <view class="gate-area-1">
+                <view class="gate-area-1 taxReturn" bindtap="gotoList">
                     <view>
                         <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/taxReturn.png" mode="widthFix"></image>
                     </view>
