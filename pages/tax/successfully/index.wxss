@@ -1,4 +1,4 @@
-/* pages/tax/Successfully/index.wxss */
+pages/tax/Successfully/index.wxss
 
 .successfully {
   padding: 32rpx;
@@ -22,13 +22,9 @@
 }
 
 .successfully__icon {
-  margin-bottom: 360rpx;
-}
-
-.successfully__success {
   text-align: center;
   margin-top: 156rpx;
-  margin-bottom: 680rpx;
+  margin-bottom: 360rpx;
 }
 
 .successfully__success-img image {
@@ -49,6 +45,7 @@
 }
 
 .backIndex {
-  background: #1D83F0;
-  box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
+  margin-top: 32rpx;
+  background: #FFA42E;
+  box-shadow: 0px 30px 50px 0px rgba(255, 164, 46, 0.2);
 }

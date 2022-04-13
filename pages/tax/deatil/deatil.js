@@ -12,14 +12,14 @@ Page({
     listIcon: tempPath + 'tax/taxreturn/list.png',
     info_max: tempPath + "public/info_max.png",
     deatilObj: {},
-    detailId: 0,
+    detailId: 0 || wx.getStorageSync('detailId'),
     timeOut: {}, // 倒计时
     taxList: [], // 明细列表
     isShowModal: false,
     buttons: [{
-      text: '取消'
-    },
-    {
+        text: '取消'
+      },
+      {
         text: '确认'
       }
     ],
@@ -34,7 +34,7 @@ Page({
   },
   tapDialogButton(e) {
     console.log(e)
-    if(e.detail.item.text == '取消') {
+    if (e.detail.item.text == '取消') {
       this.setData({
         isShowModal: false
       })
@@ -53,11 +53,12 @@ Page({
         let time = res.data.overdue_time
         let time1 = this.getDuration(time)
         let arr = []
-        if (res.data.list.length > 0) {
-          arr = res.data.list[0].list
-        } else {
-          arr = res.data.list
-        }
+        if (res.data)
+          if (res.data.list.length > 0) {
+            arr = res.data.list[0].list
+          } else {
+            arr = res.data.list
+          }
         console.log(arr)
         this.setData({
           deatilObj: res.data,
@@ -88,8 +89,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let id = undefined;
+    if (options.id) {
+      id = options.id;
+      wx.setStorageSync('detailId', options.id);
+      wx.setStorageSync('showBtn', false);
+    } else {
+      id = wx.getStorageSync('detailId');
+      wx.setStorageSync('showBtn', true);
+    }
+    // wx.setStorageSync('detailId', options.id);
+    console.log(id)
+
     this.setData({
-      detailId: options.id
+      detailId: id
     })
   },
 

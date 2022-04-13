@@ -11,7 +11,16 @@ Page({
     info_max: tempPath + "public/info_max.png",
 
   },
-
+  backTaxIndex() {
+    wx.navigateTo({
+      url: '../taxreturn/index',
+    })
+  },
+  gotoReult() {
+    wx.navigateTo({
+      url: '../deatil/deatil',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

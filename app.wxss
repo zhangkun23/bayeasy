@@ -54,4 +54,5 @@
   font-size: 34rpx;
   color: #FFFFFF;
   text-align: center;
+  margin: 0 auto;
 }
