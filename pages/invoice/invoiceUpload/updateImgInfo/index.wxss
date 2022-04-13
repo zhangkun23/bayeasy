@@ -7,6 +7,14 @@
     width: 100%;
     background: #1D83F0;
     border: 1px solid #1D83F0;
+    position: relative;
+}
+.titleTop__bg{
+    height: 182rpx;
+    width: 182rpx;
+    position: absolute;
+    right: 23rpx;
+    bottom: 23rpx;
 }
 .errInfo{
     margin: 0 32rpx;
@@ -37,15 +45,20 @@
     align-content: flex-start;
 }
 .invoice__status{
-    margin: 64rpx 110rpx;
-    height: 150rpx;
-    border: 1px solid red;
+    margin: 84rpx 110rpx 64rpx ;
+    /* border: 1px solid red; */
 }
-.invoice__status__active{
+.status__active{
+    height: 30rpx;
+    width: 86%;
+    padding-left: 7%;
+}
+.invoice__status__active>view{
     display: flex;
+    justify-content: space-between;
+    margin-top: 14rpx;
 }
-.invoice__status__active>text{
-    flex: 1;
+.invoice__status__active>view>text{
     text-align: center;
     color: #FFFFFF;
     font-size: 24rpx;

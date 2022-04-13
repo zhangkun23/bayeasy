@@ -1,4 +1,4 @@
-// pages/invoice/invoiceUpload/updateImg/index.js
+// pages/invoice/invoiceUpload/updateHandelSu/index.js
 const tempPath = getApp().globalData.imgPath;
 Page({
 
@@ -6,13 +6,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-        other_invoice:tempPath+'invoice/invoiceUpdate/other_invoice.png',
-        image_invoice:tempPath+"invoice/invoiceUpdate/image_invoice.png"
+        updateHandel_right: tempPath + "invoice/incomeInvoice/updateHandel_rigth.png",
     },
-    // 跳转上传页面
-    updateInvoce(){
+    handelClick(){
         wx.navigateTo({
-            url: '/pages/invoice/invoiceUpload/updateImgInfo/index',
+            url: '../updateHandel/index',
         })
     },
 

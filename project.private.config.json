@@ -49,7 +49,35 @@
                 },
                 {
                     "name": "图片上传发票查验",
-                    "pathName": "pages/invoice/invoiceUpload/updateImgSun/index",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "123123123",
+                    "pathName": "pages/invoice/invoiceUpload/updateImg/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "手动添加发票",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "手动添加成功页面",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandelSuccess/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "1123123",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandelError/index",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"

@@ -141,7 +141,7 @@ Component({
         success: function (res) {
           if (res.tempFiles[0]) {
             const imgPath = res?.tempFiles[0].tempFilePath;
-            const uploadUrl = baseUrl + '/personal_nformation/ocr_idcard'
+            const uploadUrl = baseUrl + '/personal_nformation/ocr_idcard?token='+ wx.getStorageSync('token')
             const type = params.idcadrparams; //正反面类型
             if (type == 'front') {
               that.setData({
@@ -157,9 +157,9 @@ Component({
             }
             wx.uploadFile({
               url: uploadUrl,
-              header: {
-                'Authorization': 'Bearer ' + wx.getStorageSync('token'),
-              },
+              // header: {
+              //   'Authorization': 'Bearer ' + wx.getStorageSync('token'),
+              // },
               filePath: imgPath,
               name: 'link',
               formData: {

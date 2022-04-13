@@ -2,6 +2,10 @@
 const tempPath = getApp().globalData.imgPath;
 const {updateHandlInvoice} = require('../../../../http/api/api_szpj.js')
 const {getInvoiceType} = require('../../../../http/api/api_szpj')
+const util = require('../../../../utils/util')
+const {
+    baseUrl
+  } = require('../../../../http/env.js').dev; 
 Page({
 
     /**
@@ -19,26 +23,60 @@ Page({
             total_amount:'',
             invoice_check_code:'',
             invoice_date:'',
-            link:'',
+            file_url:''
         },
         activityArr:[],
+        submit:false,
+        buttons: [{
+            text: '取消'
+        },{
+            text: '确定'
+        }],
+        isShowModal:false
     },
- 
+    jump(){
+        wx.navigateTo({
+            url: '/pages/invoice/invoiceUpload/updateHandelSuccess/index',
+        })
+    },
+    jump2(){
+        wx.navigateTo({
+            url: '/pages/invoice/invoiceUpload/updateHandelError/index',
+        })
+    },
     // 手动上传提交
     subbmint(){
-
         let param = this.data.form;
         updateHandlInvoice(param).then(res => {
             if(res.ret){
-              
+                wx.navigateTo({
+                    url: '/pages/invoice/invoiceUpload/updateHandelSuccess/index',
+                })
+            }else{
+                wx.navigateTo({
+                    url: '/pages/invoice/invoiceUpload/updateHandelError/index',
+                })
             }
         })
-        let imgPath = this.data.invoiceImage
     },
-    clearImg(){
+    // 确认删除/取消
+    tapDialogButton(e){
         this.setData({
-            ['form.link']:""
+            isShowModal:false
         })
+        if(e.detail.item.text == '确定'){
+            this.setData({
+                ['form.file_url']:""
+            })
+        }
+    },
+    // 现实删除弹框
+    clearImg(){
+        if(this.data.form.link){
+            this.setData({
+                isShowModal:true
+            })
+        }
     },
     // 子组建数据同步
     setInputValue(e) {
@@ -49,9 +87,19 @@ Page({
         if(e.detail.key == 'total_amount'){
             this.priceEvent(e)
         }
+        this.checkSubmit();
+    },
+    // 交验是否可以提交
+    checkSubmit(){
         let form = this.data.form;
         if (form.invoice_type && form.invoice_dm && form.invoice_hm && form.total_amount && form.invoice_check_code && form.invoice_date ) {
-            console.log('1111')
+            this.setData({
+                submit:true
+            })
+        }else{
+            this.setData({
+                submit:false
+            })
         }
     },
     // 价格限制小数点后两位
@@ -71,8 +119,10 @@ Page({
     bindPickerChange(e){
         let category = this.data.activityArr[e.detail.value];
         this.setData({
-            ['form.invoice_type']: category.type
+            ['form.invoice_type']: category.id,
+            ['form.invoice_show']: category.type
         });
+        this.checkSubmit();
     },
     // 拍照/相册
     updateImage(){
@@ -116,8 +166,22 @@ Page({
                     const imgPath = res?.tempFiles[0].tempFilePath;
                     console.log(imgPath)
                     that.setData({
-                        ['form.link']:imgPath
+                        ['form.file_url']:imgPath
                     })
+
+                    wx.uploadFile({
+                        url: baseUrl + '/upload/file?token='+ wx.getStorageSync('token'),
+                        filePath:  imgPath,
+                        name: 'link',
+                        formData: {},
+                        success: function (info) {
+                            console.log(info)
+                        },
+                        fail: function (res) {
+                          console.log(res, '失败')
+                        }
+                      })
+
                 }
             }
         })
@@ -127,6 +191,7 @@ Page({
         this.setData({
           ['form.invoice_date']: event.detail.value
         })
+        this.checkSubmit();
       },
     /**
      * 生命周期函数--监听页面加载

@@ -51,3 +51,13 @@
     color: #FFFFFF;
     line-height: 88rpx;
 }
+.submitDiesable{
+    background: #E6EEF7;
+    margin: 64rpx 125rpx;
+    height: 88rpx;
+    box-shadow: rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
+    border-radius: 44rpx;
+    text-align: center;
+    line-height: 88rpx;
+    color: #ABBED2;
+}
