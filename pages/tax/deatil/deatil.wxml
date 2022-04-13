@@ -83,7 +83,7 @@
         </view>
       </view>
 
-      <view bindtap="confirmTax" class="detail__button bluebtn">税金确认无误</view>
+      <view wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn">税金确认无误</view>
     </view>
   </view>
 

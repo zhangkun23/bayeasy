@@ -26,6 +26,11 @@ Component({
     }
   },
   methods: {
+    sureRecord() {
+      wx.navigateTo({
+        url: '../taxRecord/index',
+      })
+    },
     getTaxList() {
       let params = {
         status: 3,

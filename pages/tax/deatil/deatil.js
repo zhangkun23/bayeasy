@@ -16,6 +16,7 @@ Page({
     timeOut: {}, // 倒计时
     taxList: [], // 明细列表
     isShowModal: false,
+    showBtn: false,
     buttons: [{
         text: '取消'
       },
@@ -25,15 +26,29 @@ Page({
     ],
   },
 
+  // 返回
+  backIndex() {
+    // 去确认为true  查看结果为false
+    if (this.data.showBtn) {
+      wx.navigateTo({
+        url: '../taxRecord/index',
+      })
+    } else {
+      wx.navigateTo({
+        url: '../taxConfirmation/index',
+      })
+    }
+  },
+
   //overdue_status 0 逾期 1 未逾期
   confirmTax() {
-    console.log(2131)
+    // console.log(2131)
     this.setData({
       isShowModal: true
     })
   },
   tapDialogButton(e) {
-    console.log(e)
+    // console.log(e)
     if (e.detail.item.text == '取消') {
       this.setData({
         isShowModal: false
@@ -59,13 +74,13 @@ Page({
           } else {
             arr = res.data.list
           }
-        console.log(arr)
+        // console.log(arr)
         this.setData({
           deatilObj: res.data,
           timeOut: time1,
           taxList: arr
         })
-        console.log(this.data.timeOut)
+        // console.log(this.data.timeOut)
       }
     })
   },
@@ -91,15 +106,16 @@ Page({
   onLoad: function (options) {
     let id = undefined;
     if (options.id) {
+      console.log(132)
       id = options.id;
       wx.setStorageSync('detailId', options.id);
-      wx.setStorageSync('showBtn', false);
     } else {
+      console.log(987)
       id = wx.getStorageSync('detailId');
-      wx.setStorageSync('showBtn', true);
+      this.setData({
+        showBtn: true
+      })
     }
-    // wx.setStorageSync('detailId', options.id);
-    console.log(id)
 
     this.setData({
       detailId: id
