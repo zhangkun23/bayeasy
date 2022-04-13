@@ -38,7 +38,7 @@ Component({
   methods: {
     backIndex(){
       wx.switchTab({
-        url: '../../index/index',
+        url: '/pages/index/index',
       })
     },
     _getUserIdCards: function () {

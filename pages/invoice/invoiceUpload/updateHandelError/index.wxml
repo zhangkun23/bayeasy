@@ -1,0 +1,13 @@
+
+<view>
+    <mp-navigation-bar title="手动添加增值税发票" />
+
+    <view class="ss">
+        <image class="ss_image" src="{{updateHandel_err}}" />
+        <view class="ss_text">提交失败</view>
+        <view class="ss_message">
+            提交失败原因: {{errinfo}}
+        </view>
+        <view class="ss_button" bindtap="jumpReact">重新提交</view>
+    </view>
+</view>

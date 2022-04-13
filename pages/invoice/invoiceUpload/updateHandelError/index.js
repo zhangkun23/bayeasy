@@ -1,4 +1,4 @@
-// pages/invoice/invoiceUpload/updateImgSun/index.js
+// pages/invoice/invoiceUpload/updateHandelSu/index.js
 const tempPath = getApp().globalData.imgPath;
 Page({
 
@@ -6,8 +6,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-        info_max: tempPath + "public/info_max.png",
+        close: tempPath + "invoice/invoiceUpdate/close.png",
+        updateHandel_err: tempPath + "invoice/incomeInvoice/updateHandel_err.png",
+        errinfo:''
     },
+
+    jumpReact(){
+        wx.navigateTo({
+            url: '../updateHandel/index',
+        })
+    },
+
 
     /**
      * 生命周期函数--监听页面加载

@@ -2,26 +2,25 @@
 
 
 <view class="bgCount">
-
-   
     <view class="titleTop">
-        <view class="errInfo">
+        <view class="errInfo" wx:if="{{errinfo}}">
             <image src="{{info_max}}" />
             <text>存在异常数据，请优先处理</text>
         </view>
         <view class="invoice__status">
-            
             <view class="invoice__status__active">
-                <text>上传发票</text>
-                <text>查验发票</text>
-                <text>提交完成</text>
+                <image class="status__active" src="{{update_status_0}}" />
+                <view>
+                    <text>上传发票</text>
+                    <text>查验发票</text>
+                    <text>提交完成</text>
+                </view>
             </view>
         </view>
+        <image class="titleTop__bg" src="{{update_status_bg}}" />
     </view>
-    <view class="invoice">
-        
-       
 
+    <view class="invoice">
         <view class="item">
             <view class="item__top">
                 <image class="item__top__invoice" src="{{info_max}}" />
@@ -32,10 +31,10 @@
                 <view class="item__bottom__text">098093808543</view>
                 <view class="item__bottom__info">
                     <view>
-                        <image  src="{{info_max}}" />
+                        <image  src="{{updateHandel_rigth}}" />
                         <text class="item__info_right">查验通过</text>
                     </view>
-                    <image  src="{{info_max}}" />
+                    <image  src="{{close_null}}" />
                 </view>
             </view>
         </view>
@@ -50,10 +49,10 @@
                 <view class="item__bottom__text">098093808543</view>
                 <view class="item__bottom__info">
                     <view>
-                        <image  src="{{info_max}}" />
+                        <image  src="{{updateHandel_err}}" />
                         <text class="item__info_error">查验失败</text>
                     </view>
-                    <image  src="{{info_max}}" />
+                    <image  src="{{close_info}}" />
                 </view>
             </view>
         </view>

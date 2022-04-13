@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-    "input-com":"/components/input-com/input-com"
+    "input-com":"/components/input-com/input-com",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   },
   "navigationStyle":"custom"
 }
