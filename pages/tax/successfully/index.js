@@ -1,13 +1,26 @@
-// pages/login/information/loading/loading.js
+// pages/tax/Successfully/index.js
+
+const tempPath = getApp().globalData.imgPath;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    info_max: tempPath + "public/info_max.png",
 
   },
-
+  backTaxIndex() {
+    wx.navigateTo({
+      url: '../taxreturn/index',
+    })
+  },
+  gotoReult() {
+    wx.navigateTo({
+      url: '../deatil/deatil',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

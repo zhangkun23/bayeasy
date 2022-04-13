@@ -17,7 +17,7 @@ Component({
     supplemented: '￥234.00',
     withdrawn: '￥234.00',
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
-    allDeclareList: []
+    allDeclareList: [],
   },
 
   lifetimes: {

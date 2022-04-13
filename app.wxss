@@ -43,3 +43,16 @@
 .font-size-24 {
   font-size: 24rpx;
 }
+
+.bluebtn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #1D83F0;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
+  border-radius: 44px;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0 auto;
+}

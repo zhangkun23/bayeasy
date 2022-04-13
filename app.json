@@ -30,6 +30,7 @@
     "pages/tax/paymentRecord/index",
     "pages/tax/delinquentBill/index",
     "pages/tax/deatil/deatil",
+    "pages/tax/successfully/index",
     "custom-tab-bar/index",
     "pages/todo/todo",
     "pages/nothing/index"

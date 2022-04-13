@@ -38,6 +38,26 @@ Component({
       const userStatus = app.globalData.userStatus
 
       if (token) {
+        get_user_info().then(res => {
+          console.log("个人信息返回: ",res)
+          if (res.data instanceof Object && 'name' in res.data) {
+            that.setData({
+              user_name: res.data.name || ''
+            })
+          } else {
+            console.log("无法获取姓名")
+            that.setData({
+              user_name: ''
+            })
+          }
+          if(!that.data.user_tel && res.data.mobile){
+            console.log("从接口设定用户手机号")
+            that.setData({
+              user_tel: res.data.mobile
+            })
+          }
+        })
+
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
           console.debug("有token但是userstatus为0 跳转完善个人信息")
@@ -74,29 +94,21 @@ Component({
             isCheckRequired: false,
             showCompleteInfo: false
           })
-          get_user_info().then(res => {
-            if (res.data instanceof Object && 'name' in res.data) {
-              that.setData({
-                user_name: res.data.name || ''
-              })
-            } else {
-              console.log("无法获取姓名")
-              that.setData({
-                user_name: ''
-              })
-            }
-          })
         }
       }
 
       // 决定待办事项
-      const todoCount = app.globalData.todolistNum
-      if (todoCount > 0 && token) {
-        this.setData({
-          isNewTodo: true,
-          todoCount: todoCount
-        })
+      const todoCount = app.globalData.todolistNum;
+      let isNewTodo;
+      if(token && todoCount > 0){ // 登录且数量>0
+        isNewTodo = true 
+      }else{
+        isNewTodo = false
       }
+      this.setData({
+        isNewTodo: isNewTodo,
+        todoCount: todoCount
+      })
     },
     hide() {
       console.debug("personal index hide")

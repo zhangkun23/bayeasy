@@ -16,7 +16,7 @@
         </view>
       </view>
       <view class="taxReturn__content back3" bindtap="delinquentBill">
-        <view class="taxReturn__content-text">申报欠款账单</view>
+        <view class="taxReturn__content-text" >申报欠款账单</view>
         <view class="taxReturn__content-image">
           <image class="icon" src="{{icon3}}"></image>
         </view>
