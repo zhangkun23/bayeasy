@@ -59,7 +59,6 @@
 }
 
 .detail__date {
-  margin-bottom: 32rpx;
   text-align: center;
 }
 
@@ -70,6 +69,8 @@
   border-radius: 32rpx;
   padding: 48rpx 32rpx;
   margin-bottom: 32rpx;
+  margin-top: 32rpx;
+
 }
 
 .item__header {
@@ -159,14 +160,5 @@
 }
 
 .detail__button {
-  width: 500rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  background: #1D83F0;
-  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
-  border-radius: 44px;
-  font-size: 34rpx;
-  color: #FFFFFF;
-  text-align: center;
   margin: 0 auto 86rpx;
 }
