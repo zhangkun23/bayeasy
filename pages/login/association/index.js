@@ -1,5 +1,5 @@
 // pages/login/association/index.js
-Component({
+Page({
 
   /**
    * 页面的初始数据
@@ -7,20 +7,27 @@ Component({
   data: {
     agency: false
   },
-  methods: {
-    todoList() {
-      wx.navigateTo({
-        url: '../../todo/todo',
-      })
-    }
+  todoList() {
+    wx.navigateTo({
+      url: '../../todo/todo',
+    })
   },
-  lifetimes: {
-    attached() {
-      if (getApp().globalData.todolistNum > 0) {
-        this.setData({
-          agency: true
+  onUnload: function () {
+    wx.switchTab({
+      url: '../../index/index',
+    })
+  },
+  onLoad: function (options) {
+    if (getApp().globalData.todolistNum > 0) {
+      this.setData({
+        agency: true
+      })
+    } else {
+      setTimeout(() => {
+        wx.switchTab({
+          url: '../../index/index',
         })
-      }
+      }, 3000)
     }
   },
 })

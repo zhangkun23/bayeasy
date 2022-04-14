@@ -115,9 +115,9 @@ Page({
             this.setData({
               userStatus:res.data.status
             })
-            // getApp().globalData.userStatus = 1
+            // getApp().globalData.userStatus = 0
             // this.setData({
-            //   userStatus: 1
+            //   userStatus: 0
             // })
           }
         })
@@ -127,7 +127,7 @@ Page({
                 getApp().globalData.operate = true;
             }
         })
-      }else{
+      } else {
         this.setData({
           token:''
         })
