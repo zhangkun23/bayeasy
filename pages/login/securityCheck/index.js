@@ -24,7 +24,8 @@ Component({
     idcardValue: "",
     isShowCloseBtn: true,
     errorTips: "",
-    userStatus: 0
+    userStatus: 0,
+    cursor: 0
   },
   pageLifetimes: {
     show() {
@@ -37,7 +38,7 @@ Component({
   methods: {
     backIndex(){
       wx.switchTab({
-        url: '../../index/index',
+        url: '/pages/index/index',
       })
     },
     _getUserIdCards: function () {
@@ -52,6 +53,7 @@ Component({
     },
     onInput: function (event) {
       // event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
+      console.log(event.detail)
       let cartId = [...event.detail.value.replace(/\s/g, "")];
       let newArr = [];
       for (var i = 0; i < cartId.length; i++) {
@@ -63,7 +65,8 @@ Component({
       }
       cartId = newArr.join("");
       this.setData({
-        idcardValue: cartId
+        idcardValue: cartId,
+        // cursor: event.detail.cursor
       })
       this.setCloseIcon(event);
       if (event.detail.value.length == 22) {
@@ -110,9 +113,8 @@ Component({
       console.log(param)
       IdcardAuthentication(param).then(res => {
         if (res.ret) {
-          this.getStatus();ƒ
           wx.navigateTo({
-            url: '../information',
+            url: '../information/index',
           })
         } else {
           this.setData({

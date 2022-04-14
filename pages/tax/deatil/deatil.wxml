@@ -1,5 +1,5 @@
 <view class="detail bgColog">
-  <mp-navigation-bar title="本期申报税款确认" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar  ext-class="navigationBar" title="本期申报税款确认" bindback="backIndex"></mp-navigation-bar>
   <view class="detail__container">
     <view class="detail__topTips orangeTips orangeBack font-size-24">
       <view class="detail__topTips-icon">
@@ -83,7 +83,7 @@
         </view>
       </view>
 
-      <view bindtap="confirmTax" class="detail__button bluebtn">税金确认无误</view>
+      <view wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn">税金确认无误</view>
     </view>
   </view>
 

@@ -1,19 +1,11 @@
-// pages/invoice/invoiceUpload/updateImg/index.js
-const tempPath = getApp().globalData.imgPath;
+// pages/invoice/invoiceUpload/updateImgSuccess/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        other_invoice:tempPath+'invoice/invoiceUpdate/other_invoice.png',
-        image_invoice:tempPath+"invoice/invoiceUpdate/image_invoice.png"
-    },
-    // 跳转上传页面
-    updateInvoce(){
-        wx.navigateTo({
-            url: '/pages/invoice/invoiceUpload/updateImgInfo/index',
-        })
+
     },
 
     /**

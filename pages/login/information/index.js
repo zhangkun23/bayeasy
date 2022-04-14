@@ -43,11 +43,12 @@ Component({
     clearShow: true,
     tostTop: true,
     disabled: true,
-    pickerShow:true,
+    pickerShow: true,
     dateTime: '',
   },
   pageLifetimes: {
     show() {
+      console.log(this.data.userStatus)
       const userStatus = getApp().globalData.userStatus;
       this.setData({
         userStatus: userStatus
@@ -70,9 +71,21 @@ Component({
     }
   },
   lifetimes: {
-    attached() {},
+    detached() {
+      console.log(213)
+      wx.reLaunch({
+        url: '../../index/index',
+      })
+    },
   },
   methods: {
+    backIndex() {
+      // if (this.data.userStatus == 1) {
+        wx.switchTab({
+          url: '../../index/index',
+        })
+      // }
+    },
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
     initialization(userStatus) {
       if (userStatus == 1 || userStatus == 2) {
@@ -141,7 +154,7 @@ Component({
         success: function (res) {
           if (res.tempFiles[0]) {
             const imgPath = res?.tempFiles[0].tempFilePath;
-            const uploadUrl = baseUrl + '/personal_nformation/ocr_idcard'
+            const uploadUrl = baseUrl + '/personal_nformation/ocr_idcard?token=' + wx.getStorageSync('token')
             const type = params.idcadrparams; //正反面类型
             if (type == 'front') {
               that.setData({
@@ -157,9 +170,9 @@ Component({
             }
             wx.uploadFile({
               url: uploadUrl,
-              header: {
-                'Authorization': 'Bearer ' + wx.getStorageSync('token'),
-              },
+              // header: {
+              //   'Authorization': 'Bearer ' + wx.getStorageSync('token'),
+              // },
               filePath: imgPath,
               name: 'link',
               formData: {
@@ -298,6 +311,7 @@ Component({
     confirmAssociation() {
       relation({}).then(res => {
         if (res.ret) {
+          this.seStatus();
           wx.navigateTo({
             url: '../association/index',
           })
@@ -306,14 +320,14 @@ Component({
     },
     // 是否绑定input日期事件
     inputShowClick(e) {
-      if(e.detail.key == 'validUntil') {
+      if (e.detail.key == 'validUntil') {
         this.setData({
-          pickerShow:true
+          pickerShow: true
         })
       }
     },
     // 日期插件取消
-    bindcancel(){
+    bindcancel() {
 
     }
   },

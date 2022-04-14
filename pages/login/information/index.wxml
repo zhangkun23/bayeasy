@@ -2,11 +2,11 @@
 <view class="information">
   <view class="information__back">
     <mp-navigation-bar title="个人信息" bindback="backIndex"></mp-navigation-bar>
-    <view class="securityCheck__topTips" wx:if="{{status == 1}}">
+    <view class="securityCheck__topTips" wx:if="{{userStatus == 1}}">
       <view class="securityCheck__topTips-icon">
         <image src="https://image.bayeasy.cn/images-data/public/info_max.png"></image>
       </view>
-      <text>贝易资的企业信息库，检测到您的手机号有关联的身份信息 ，为保证您的账户安全，需请您填写完整的身份证号，校验一致则为你调取完整的个人信息进行确认</text>
+      <text>以下信息为贝易资企业信息库中您的个人身份信息，如无误，请您确认关联，以便贝易资为您提供完整的服务。如有疑问可联系贝易资客服咨询</text>
     </view>
     <view class="information__idcard">
       <view class="information__img-group" data-Idcadrparams="front" bindtap="uploadIdcard">
@@ -39,10 +39,10 @@
       </view>
     </view>
     <view class="information__form">
-      <input-com title="姓名" type="text" placeholder="请输入姓名" inputValue="{{form.username}}" key="username" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" />
+      <input-com title="姓名" type="text" disabled="{{userStatus == 1}}" placeholder="请输入姓名" inputValue="{{form.username}}" key="username" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" />
       <input-com title="手机号" type="number" disabled="{{disabled}}" placeholder="请输入手机号" inputValue="{{form.telephone}}" key="telephone" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" />
-      <input-com title="身份证号" type="idcard" placeholder="请输入身份证号" inputValue="{{form.idcard}}" key="idcard" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" />
-      <picker mode="date" value="{{dateTime}}" start="2010-01-01" end="2050-01-01" bindcancel="bindcancel" bindchange="bindDateChange">
+      <input-com title="身份证号" disabled="{{userStatus == 1}}" type="idcard" placeholder="请输入身份证号" inputValue="{{form.idcard}}" key="idcard" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" />
+      <picker mode="date" disabled="{{userStatus == 1}}" value="{{dateTime}}" start="2010-01-01" end="2050-01-01" bindcancel="bindcancel" bindchange="bindDateChange">
         <input-com title="有效期至" type="text" disabled="{{disabled}}" placeholder="请输入身份证有效期" inputValue="{{form.validUntil}}" key="validUntil" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" bind:inputShowClick="inputShowClick" />
       </picker>
       <view wx:if="{{tostTop}}" class="tostTop"></view>

@@ -19,7 +19,7 @@ Component({
      * 组件的初始数据
      */
     data: {
-        logo: tempPath + 'public/logo.png',
+        logo: tempPath + 'invoice/invoiceUpdate/address.png',
         form:{
             name:'',
             phone:'',

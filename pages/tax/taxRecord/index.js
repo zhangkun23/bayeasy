@@ -1,4 +1,4 @@
-// pages/login/information/loading/loading.js
+// pages/tax/taxRecord/index.js
 Page({
 
   /**

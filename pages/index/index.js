@@ -127,7 +127,7 @@ Page({
                 getApp().globalData.operate = true;
             }
         })
-      }else{
+      } else {
         this.setData({
           token:''
         })

@@ -20,8 +20,8 @@
     height: 48rpx;
     width:48rpx;
 }
-.count__top__left > text{
-    margin-left: 16rpx;
+.count__top__left > view{
+    padding-left: 16rpx;
 }
 .code{
     width: 156rpx;

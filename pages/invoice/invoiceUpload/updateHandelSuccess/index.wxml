@@ -1,0 +1,14 @@
+
+<view>
+    <mp-navigation-bar title="手动添加增值税发票" />
+
+    <view class="ss">
+        <image class="ss_image" src="{{updateHandel_right}}" />
+        <view class="ss_text">提交成功</view>
+        <view class="ss_message">
+            请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！
+            <text class="addressLink" bindtap="handelClickLink">邮寄地址</text>
+        </view>
+        <view class="ss_button" bindtap="handelClick">查看发票信息</view>
+    </view>
+</view>

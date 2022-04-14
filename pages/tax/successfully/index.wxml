@@ -8,24 +8,22 @@
       <text>申报征期已过纳税信誉产生影响！请联系运营人员</text>
     </view>
     <view class="successfully__icon">
-      <view class="successfully__success">
-        <view class="successfully__success-img mg-tp-25">
-          <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
-        </view>
-        <view class="successfully__success-text">提交成功，税额确认无误</view>
+      <view class="successfully__success-img mg-tp-25">
+        <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
+      </view>
+      <view class="successfully__success-text">提交成功，税额确认无误</view>
 
-        <view class="successfully__success_tips">
-          <view>本征期将在您的银行账户扣除"
-            <text class="orangeTips">800</text>
-            "
-          </view>
-          <view>为了避免延误您的申报，请检查银行账户余额是否充哦！</view>
+      <view class="successfully__success_tips">
+        <view>本征期将在您的银行账户扣除"
+          <text class="orangeTips">800</text>
+          "
         </view>
+        <view>为了避免延误您的申报，请检查银行账户余额是否充哦！</view>
       </view>
     </view>
-    <view>
-      <view class="bluebtn">查看确认结果</view>
-      <view class="bluebtn backIndex">返回主页</view>
+    <view class="successfully__btnGroup">
+      <view class="bluebtn" bindtap="gotoReult">查看确认结果</view>
+      <view class="bluebtn backIndex" bindtap="backTaxIndex">返回主页</view>
     </view>
   </view>
 </view>
