@@ -22,23 +22,25 @@ Page({
         update_status_bg:tempPath + "invoice/incomeInvoice/update_status_bg.png",
         close_info:tempPath + "invoice/incomeInvoice/close_info.png",
         close_null:tempPath + "invoice/incomeInvoice/close_null.png",
-
+        loadding:tempPath + "public/loadding.png",
         errinfo:false,
         updateImgOrPdfArr:[
-            // {
-            //     link:'',
-            //     linkInfo:null
-            // },
-            // {
-            //     link:'',
-            //     linkInfo:{
-            //         seller_name:'北京贝易资有限责任公司',
-            //         invoice_type:'增值税专用发票',
-            //         invoice_dm:'098093808543'
-            //     }
-            // }
+            {
+                link:'',
+                linkInfo:null
+            },
+            {
+                link:'',
+                linkInfo:{
+                    seller_name:'北京贝易资有限责任公司',
+                    invoice_type:'增值税专用发票',
+                    invoice_dm:'098093808543'
+                }
+            }
         ],
         updateImgOrPdfArrNum:0,
+        active:false,
+        loaddingActive:false
     },
 
     // 选择拍照上传照片
@@ -92,31 +94,32 @@ Page({
         }
         return false;
     },
-    // 选择pdf
+    // 展示pdf
     updatePdf(lastNum){
+        console.log('剩余上传数量'+lastNum)
+        const that = this;
         wx.chooseMessageFile({
             count: lastNum,
             type:'file',
             success(res){
                 console.log('选择',res)
-                let padpath = res.tempFiles[0].path;
-                console.log(padpath)
-                //打开pdf文件
-
-                that.setData({
-                    'updateImgOrPdfArr':[
-                        {
-                            link:res.tempFiles[0].path
-                        }
-                    ]
+                let tempArr = that.data.updateImgOrPdfArr
+                res.tempFiles.forEach(item => {
+                    tempArr.push({link:item.tempFilePath})
                 })
-
+                that.setData({
+                    'updateImgOrPdfArr':tempArr,
+                    'updateImgOrPdfArrNum':that.data.updateImgOrPdfArrNum+res.tempFiles.length
+                })
                 console.log(that.data.updateImgOrPdfArr)
+                console.log('上传数量'+that.data.updateImgOrPdfArrNum)
+                that.setButtonActice();
             }
         })
     },
-    // 上传Image
+    // 展示Image
     updateImage(lastNum,type){
+        console.log('剩余上传数量'+lastNum)
         const that = this;
         wx.chooseMedia({
             count: lastNum,
@@ -137,32 +140,48 @@ Page({
                         tempArr.push({link:item.tempFilePath})
                     })
                     that.setData({
-                        'updateImgOrPdfArr':tempArr
-                    })
-                    that.setData({
-                        updateImgOrPdfArrNum:that.data.updateImgOrPdfArrNum+res.tempFiles.length
+                        'updateImgOrPdfArr':tempArr,
+                        'updateImgOrPdfArrNum':that.data.updateImgOrPdfArrNum+res.tempFiles.length
                     })
                     console.log(that.data.updateImgOrPdfArr)
+                    console.log('上传数量'+that.data.updateImgOrPdfArrNum)
+                    that.setButtonActice();
                 }
             }
         })
     },
+    // 更新提交按钮状态
+    setButtonActice(){
+        if(this.data.updateImgOrPdfArrNum!=0){
+            this.setData({
+                active:true
+            })
+        }else{
+            this.setData({
+                active:false
+            })
+        }
+    },
 
     // 上传dpf/img
-    updatePdfOrImg(imageOrPdfPath){
-        wx.uploadFile({
-            url: baseUrl + '/deduct_invoice/ocr_deduct_invoice?token='+ wx.getStorageSync('token'),
-            filePath:  imageOrPdfPath,
-            name: 'link',
-            formData: {},
-            success: function (info) {
-                wx.hideLoading();
-                console.log(info)
-            },
-            fail: function (res) {
-                wx.hideLoading();
-              console.log(res, '失败')
-            }
+    addPdfOrImg(imageOrPdfPath){
+        const arrInfo = this.data.updateImgOrPdfArr;
+        arrInfo.forEach(item => {
+            const {link} = item;
+            wx.uploadFile({
+                url: baseUrl + '/deduct_invoice/ocr_deduct_invoice?token='+ wx.getStorageSync('token'),
+                filePath:  link,
+                name: 'link',
+                formData: {},
+                success: function (info) {
+                    wx.hideLoading();
+                    console.log(info)
+                },
+                fail: function (res) {
+                    wx.hideLoading();
+                  console.log(res, '失败')
+                }
+            })
         })
     },
     ocrDeductInvoice(){

@@ -86,6 +86,13 @@
                     "name": "增值税发票查验",
                     "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "登录页面",
+                    "pathName": "pages/login/login/index",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

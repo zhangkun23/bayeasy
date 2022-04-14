@@ -40,10 +40,13 @@
                     <image src="{{close_null}}" />
                 </view>
             </view>
+            <view wx:if="{{loaddingActive}}" class="itemLoadding">
+                <image src="{{loadding}}" />
+            </view>
         </view>
 
         <!-- 上传 -->
-        <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<=4}}">
+        <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<9}}">
             <view class="item__top addImage__felx">
                 <image class="addImage" src="{{add_invoice}}" />
             </view>
@@ -54,7 +57,10 @@
                 </view>
             </view>
         </view>
-
-
+    </view>
+    <view class="btn">
+        <view class="btn__text">一次性最多仅支持上传9张发票图片</view>
+        <view wx:if="{{active}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
+        <view wx:if="{{!active}}"class="btn__button btn__active_un">下一步</view>
     </view>
 </view>
