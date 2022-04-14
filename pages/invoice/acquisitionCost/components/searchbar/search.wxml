@@ -1,0 +1,25 @@
+<!--pages/invoice/acquisitionCost/components/searchbar/search.wxml-->
+<view class="search-container flex_center">
+    <block wx:if="{{isActive}}">
+        <view class="bgColog"></view>
+        <view class="search-bar flex_center " style="border: 1px solid #1D83F0;">
+            <image class="icon" src="{{searchIcon}}" mode="aspectFill"></image>
+            <view class="search-content flex_center">
+                <view class="hint">
+                    增值税发票
+                </view>
+                <view class="keyword blue">
+                    <input class="myinput" focus="true" bind:input="setKey"></input>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="search-bar flex_center">
+            <image class="icon" src="{{searchIcon}}" mode="widthFix"></image>
+            <view class="placeholder">
+                搜索发票代码/发票号码/销方名称
+            </view>
+        </view>
+    </block>
+</view>

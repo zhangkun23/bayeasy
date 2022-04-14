@@ -1,0 +1,6 @@
+<!--pages/invoice/acquisitionCost/searchPage/index.wxml-->
+<mp-navigation-bar title="成本发票明细"></mp-navigation-bar>
+<view class="search-container">
+    <my-search-bar isActive="true" bind:inputkey="handleSearchKey"></my-search-bar>
+    <view class="text" bindtap="goSearch" >搜索</view>
+</view>

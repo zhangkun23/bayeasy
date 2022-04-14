@@ -51,6 +51,20 @@
                     "name": "图片上传发票查验",
                     "pathName": "pages/invoice/invoiceUpload/updateImgSun/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "成本发票明细",
+                    "pathName": "pages/invoice/acquisitionCost/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "搜索框",
+                    "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }
