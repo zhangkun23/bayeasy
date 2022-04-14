@@ -79,6 +79,13 @@
                     "name": "1123123",
                     "pathName": "pages/invoice/invoiceUpload/updateHandelError/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "增值税发票查验",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

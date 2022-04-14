@@ -33,3 +33,9 @@
     color: #1D83F0;
     margin: 0 auto;
 }
+.addressLink{
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #FFA42E;
+    text-decoration:underline;
+}

@@ -1,8 +1,6 @@
 // pages/invoice/invoiceUpload/updateHandel/index.js
 const tempPath = getApp().globalData.imgPath;
-const {updateHandlInvoice} = require('../../../../http/api/api_szpj.js')
-const {getInvoiceType} = require('../../../../http/api/api_szpj')
-const util = require('../../../../utils/util')
+const {updateHandlInvoice,getInvoiceType} = require('../../../../http/api/api_szpj.js')
 const {
     baseUrl
   } = require('../../../../http/env.js').dev; 
@@ -54,7 +52,7 @@ Page({
                 })
             }else{
                 wx.navigateTo({
-                    url: '/pages/invoice/invoiceUpload/updateHandelError/index',
+                    url: '/pages/invoice/invoiceUpload/updateHandelError/index?errInfo='+res.message
                 })
             }
         })
@@ -139,6 +137,20 @@ Page({
             }
         });
     },
+    setImgSize(ImgArr){
+        if (ImgArr[0].size > 2097152) {
+            wx.showModal({
+                title: "提示",
+                content: "选择的图片过大，请上传不超过2M的图片",
+                showCancel: !1,
+                success: function (e) {
+                    e.confirm;
+                }
+            })
+            return true
+        }
+        return false;
+    },
     chooseWxImageShop(type){
         var that = this;
         wx.chooseMedia({
@@ -148,21 +160,8 @@ Page({
             success: function (res) {
                 console.log(res)
                 let ImgArr = res.tempFiles;
-                let tempStatus = true;
-                ImgArr.forEach(item => {
-                    if (item.size > 2097152) {
-                        wx.showModal({
-                            title: "提示",
-                            content: "选择的图片过大，请上传不超过2M的图片",
-                            showCancel: !1,
-                            success: function (e) {
-                            e.confirm;
-                            }
-                        })
-                        tempStatus = false
-                    }
-                })
-                if (res.tempFiles[0] && tempStatus) {
+                if (that.setImgSize(ImgArr)) return;
+                if (res.tempFiles[0]) {
                     const imgPath = res?.tempFiles[0].tempFilePath;
                     console.log(imgPath)
                     that.setData({

@@ -1,4 +1,4 @@
-//企业信息
+//收支票据
 const {
     request
 } = require('../request.js')
@@ -38,7 +38,8 @@ module.exports = {
         return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
     },
 
-
-
-
+    // ocr识别pdf与图片
+    ocrDeductInvoice: () => {
+        return request(api + '/deduct_invoice/ocr_deduct_invoice', 'GET', {});
+    },
 }

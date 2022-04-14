@@ -107,7 +107,15 @@
     display: flex;
     justify-content: space-between;    
     align-items: center;
-    border: 1px solid red;
+}
+.addImage__felx{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addImage{
+    height: 50rpx;
+    width: 50rpx;
 }
 .item__bottom__info>image{
     height: 44rpx;
@@ -117,8 +125,6 @@
     display: flex;
     font-size: 24rpx;
     font-weight: 400;
-    margin-left: 8rpx;
-    
 }
 .item__bottom__info>view>image{
     height: 32rpx;
