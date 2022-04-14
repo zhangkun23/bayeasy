@@ -113,7 +113,6 @@ Component({
       console.log(param)
       IdcardAuthentication(param).then(res => {
         if (res.ret) {
-          this.getStatus();
           wx.navigateTo({
             url: '../information/index',
           })
