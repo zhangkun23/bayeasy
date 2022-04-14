@@ -14,6 +14,8 @@
     "pages/invoice/incomeInvoice/details/index",
     "pages/invoice/incomeInvoice/details/eInvoice/index",
     "pages/invoice/acquisitionCost/index",
+    "pages/invoice/acquisitionCost/searchPage/index",
+
 
     "pages/invoice/invoiceUpload/index/index",
     "pages/invoice/invoiceUpload/address/index",
