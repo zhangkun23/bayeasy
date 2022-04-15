@@ -107,7 +107,7 @@ Page({
             success: function (res) {
                 if (res.confirm) {
                     apply_invoice({
-                        apply_ids: that.data.id
+                        id: that.data.id
                     }).then(res => {
                         if (res.ret) {
                             wx.showModal({

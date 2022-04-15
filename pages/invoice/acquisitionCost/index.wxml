@@ -1,0 +1,62 @@
+<!--pages/invoice/acquisitionCost/index.wxml-->
+<block wx:if="{{isSearchActive || showFilter}}">
+    <mp-navigation-bar animated="true" show="{{showNav}}" bindback="handleBackArrow" title="成本发票明细"></mp-navigation-bar>
+</block>
+<block wx:else>
+    <mp-navigation-bar animated="true" show="{{showNav}}" title="成本发票明细"></mp-navigation-bar>
+</block>
+
+<view wx:if="{{showFilter || isSearchActive}}" class="activeBg"></view>
+<view wx:else class="bgColog"></view>
+
+<view id="search" class="search-container">
+    <view class="searchbar">
+        <my-search-bar isActive="{{isSearchActive}}" bindtap="showSearch"></my-search-bar>
+    </view>
+    <block wx:if="{{isSearchActive}}">
+        <view class="searchtext blue" bindtap="goSearch">搜索</view>
+    </block>
+    <block wx:elif="{{showFilter}}">
+        <view class="filter flex_center" bindtap="toggleFilter">
+            <image class="icon" src="{{filterIconActive}}" mode="widthFix"></image>
+            <view class="text orange">筛选</view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="filter flex_center" bindtap="toggleFilter">
+            <image class="icon" src="{{filterIcon}}" mode="widthFix"></image>
+            <view class="text blue">筛选</view>
+        </view>
+    </block>
+</view>
+<view class="filter-box">
+    <filter-board top="{{filterTop}}" showFilter="{{showFilter}}" bind:filterres="handleFilterRes"></filter-board>
+</view>
+<view wx:if="{{showRes}}" class="res-container">
+    <view wx:for="{{searchResult}}" wx:key="i" class="card">
+        <view class="content-container">
+            <view class="title-container">
+                <view class="title">
+                    <image class="icon" src="{{invoiceIcon}}" mode="aspectFill"></image>
+                    <text class="flex_center">增值税发票</text>
+                </view>
+                <view wx:if="{{item.status === 0}}" class="voice-status orange">审核中</view>
+                <view wx:if="{{item.status === 1}}" class="voice-status green">审核通过</view>
+                <view wx:if="{{item.status === 2}}" class="voice-status red">审核失败</view>
+            </view>
+            <view class="split" style="border-top: 1px dashed #E6EEF7"></view>
+            <view class="info-container">
+                <text class="text">发票类型： <text user-select="true">{{item.invoice_type}}</text> </text>
+                <text class="text">发票代码： <text user-select="true">{{item.invoice_dm}}</text></text>
+                <text class="text">发票号码： <text user-select="true">{{item.invoice_hm}}</text></text>
+                <text class="text">价税合计： <text user-select="true" class="orange">¥{{item.total_amount}}</text></text>
+            </view>
+            <view class="bottom-container">
+                <view class="company-name">{{item.seller_name}}</view>
+                <view wx:if="{{item.status !== 0}}" class="details-btn blueBg" bindtap="goDetail">查看详情</view>
+                <view wx:else class="details-btn orangeBg" bindtap="goDetail">查看详情</view>
+
+            </view>
+        </view>
+    </view>
+</view>

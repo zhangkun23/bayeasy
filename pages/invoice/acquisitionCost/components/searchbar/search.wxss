@@ -1,0 +1,96 @@
+/* pages/invoice/acquisitionCost/components/searchbar/search.wxss */
+.bgColog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    /* background-color: #F3F8FC; */
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue {
+    color: #1D83F0;
+}
+
+.orange {
+    color: #FFA42E;
+}
+
+.search-container {
+    min-width: 580rpx;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.search-bar {
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 624rpx;
+    background: #FDFEFF;
+    border-radius: 35rpx;
+}
+
+.search-container .search-bar .icon {
+    margin-left: 32rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.search-container .filter {
+    padding-left: 8rpx;
+}
+
+
+
+.search-container .filter .text {
+    font-size: 24rpx;
+    font-weight: 400;
+    line-height: 33rpx;
+}
+
+.search-bar .placeholder {
+    margin-left: 8rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #ABBED2;
+    line-height: 36rpx;
+    padding-top: 17rpx;
+    padding-bottom: 17rpx;
+}
+
+
+
+/* .search-bar .search-content {} */
+
+.search-bar .hint {
+    padding-left: 8rpx;
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #1C83F0;
+    line-height: 36rpx;
+}
+
+
+
+.search-bar .search-content .keyword {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    line-height: 36rpx;
+    padding-left: 10rpx;
+}
+
+.search-bar .search-content .keyword .myinput {
+    width: 320rpx;
+}

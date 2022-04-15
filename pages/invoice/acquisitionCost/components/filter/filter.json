@@ -1,0 +1,8 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "calendar": "../calendar/index",
+        "mp-icon": "weui-miniprogram/icon/icon",
+        "my-service": "/components/service/service"
+    }
+}

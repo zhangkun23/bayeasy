@@ -1,0 +1,285 @@
+/* pages/invoice/acquisitionCost/components/filter/filter.wxss */
+/* common */
+
+.white {
+    color: #FFFFFF;
+}
+
+.blue {
+    color: #1D83F0;
+}
+
+.orange {
+    color: #FFA42E;
+}
+
+.grey {
+    color: #ABBED2
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* components */
+
+
+.icon {
+    margin-left: 33rpx;
+    margin-right: 13rpx;
+    width: 50rpx;
+}
+
+.text {
+    width: 100%;
+    font-size: 24rpx;
+    font-weight: 400;
+    line-height: 33rpx;
+    text-align: center;
+}
+
+.filter-container {
+    /* height: 80%; */
+
+    overflow: hidden;
+}
+
+.bgColor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: #F3F8FC;
+}
+
+.bg {
+    position: relative;
+    background: #FFFFFF;
+    /* box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6); */
+    margin-left: 32rpx;
+    margin-right: 32rpx;
+    border-radius: 28rpx;
+    width: 686rpx;
+    margin-bottom: 32rpx;
+}
+
+.content {
+    padding: 32rpx;
+}
+
+.title {
+    font-size: 28rpx;
+    font-weight: 600;
+    color: #283E56;
+    line-height: 36rpx;
+}
+
+.option-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24rpx;
+
+}
+
+.selected {
+    background-color: #1D83F0 !important;
+    color: #FFFFFF !important;
+}
+
+.long {
+    flex: 1 !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.option {
+    flex: 0 1 300rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60rpx;
+    background: #F3F8FC;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    line-height: 33rpx;
+    color: #6E87A2;
+}
+
+.datetime-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-top: 24rpx;
+    height: 60rpx;
+    background: #F3F8FC;
+    border-radius: 14px;
+}
+
+.datetime-container .datetime-picker {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 24rpx 1fr;
+    justify-items: center;
+    align-items: center;
+    /* justify-content: stretch; */
+
+}
+
+.datetime-container .datetime-picker .text {
+    font-size: 24rpx;
+    font-weight: 400;
+    /* line-height: 33rpx; */
+}
+
+.datetime-container .datetime-picker .join {
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #6E87A2;
+    /* line-height: 33rpx; */
+}
+
+.calendar-bg {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.calendar {
+    z-index: 99;
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
+    position: fixed;
+    bottom: 0;
+    min-height: 50%;
+    background-color: #FFFFFF;
+    /* top: 0rpx; */
+    padding-top: 30rpx;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* .calendar .top {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+}
+.calendar .top .title {
+   
+} */
+
+/* 
+.calendar .top .close-btn {
+    margin-left: auto;
+    order: 2;
+} */
+
+.open {
+    animation: slideContentUp 0.5s ease-in both;
+    /* animation-fill-mode: both 动画将会执行 forwards 和 backwards 执行的动作。 */
+}
+
+.topOpen {
+    animation: slideContentUpReverse 0.5s ease-in both;
+}
+
+.close {
+    animation: slideContentDown 0.5s ease-in both;
+    /* animation-fill-mode: both 动画将会执行 forwards 和 backwards 执行的动作。 */
+}
+
+@keyframes slideContentUpReverse {
+    from {
+        transform: translateY(-100%);
+        /*设置为正数则底部弹出来，负数则相反*/
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideContentUp {
+    from {
+        transform: translateY(100%);
+        /*设置为正数则底部弹出来，负数则相反*/
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideContentDown {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.operate-container {
+    height: 124rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    /* background-color: #F3F8FC; */
+    /* padding: 32rpx 0 32rpx 0; */
+    box-shadow: 0px -10px 30px 0px rgba(201, 209, 228, 0.38);
+
+}
+
+.operate-container .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 28rpx;
+    font-weight: 400;
+    line-height: 40rpx;
+    width: 240rpx;
+    height: 60rpx;
+    border-radius: 35rpx;
+
+}
+
+.operate-container .reset {
+    margin-right: 40rpx;
+    background: #D2E0EF;
+}
+
+.operate-container .finish {
+    margin-right: 30rpx;
+    background: #1D83F0;
+}
+
+.forbidden-scroll {
+    overflow: hidden;
+}
+
+.modal {
+    /* z-index: -1; */
+    position: relative;
+    bottom: 0;
+    height: 261rpx;
+    background-color: rgba(11, 29, 48, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}

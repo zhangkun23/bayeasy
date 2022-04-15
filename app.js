@@ -16,6 +16,7 @@ App({
     })
   },
   onLaunch() {
+
     const barTitileStatus = wx.getMenuButtonBoundingClientRect()
     this.globalData.barTitileStatus = barTitileStatus
 

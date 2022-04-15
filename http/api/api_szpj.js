@@ -1,4 +1,4 @@
-//企业信息
+//收支票据
 const {
     request
 } = require('../request.js')
@@ -22,7 +22,8 @@ module.exports = {
      * @param {*} params 
      */
     apply_invoice: (params) => {
-        return request('/gshAdmin/se_invoice/apply', 'POST', params);
+        return request('/gshApi/invoice/confirm_invoice', 'POST', params);
+
     },
     /*查询收货地址*/
     getUserMeg: () => {
@@ -38,7 +39,14 @@ module.exports = {
         return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
     },
 
+    /*  搜索成本发票 */
+    searchBill: (param) => {
+        return request(api + '/deduct_invoice/list', 'POST', param);
+    },
 
 
-
+    // ocr识别pdf与图片
+    ocrDeductInvoice: () => {
+        return request(api + '/deduct_invoice/ocr_deduct_invoice', 'GET', {});
+    },
 }

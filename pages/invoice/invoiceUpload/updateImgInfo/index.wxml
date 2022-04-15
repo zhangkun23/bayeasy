@@ -1,6 +1,3 @@
-
-
-
 <view class="bgCount">
     <view class="titleTop">
         <view class="errInfo" wx:if="{{errinfo}}">
@@ -21,40 +18,49 @@
     </view>
 
     <view class="invoice">
-        <view class="item">
+        <view class="item" wx:for="{{updateImgOrPdfArr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
             <view class="item__top">
-                <image class="item__top__invoice" src="{{info_max}}" />
+                <image class="item__top__invoice" src="{{item.link}}" />
             </view>
-            <view class="item__bottom">
-                <view class="item__bottom__title">北京贝易资有限责任公司</view>
-                <view class="item__bottom__text">增值税专用发票</view>
-                <view class="item__bottom__text">098093808543</view>
+            <view class="item__bottom" wx:if="{{item.linkInfo}}">
+                <view class="item__bottom__title">{{item.linkInfo.seller_name}}</view>
+                <view class="item__bottom__text">{{item.linkInfo.invoice_type}}</view>
+                <view class="item__bottom__text">{{item.linkInfo.invoice_dm}}</view>
                 <view class="item__bottom__info">
                     <view>
-                        <image  src="{{updateHandel_rigth}}" />
+                        <image src="{{updateHandel_rigth}}" />
                         <text class="item__info_right">查验通过</text>
                     </view>
-                    <image  src="{{close_null}}" />
+                    <image src="{{close_null}}" />
                 </view>
+            </view>
+            <view class="item__bottom" wx:else>
+                <view class="item__bottom__info">
+                    <view></view>
+                    <image src="{{close_null}}" />
+                </view>
+            </view>
+            <view wx:if="{{loaddingActive}}" class="itemLoadding">
+                <image src="{{loadding}}" />
             </view>
         </view>
 
-        <view class="item">
-            <view class="item__top">
-                <image class="item__top__invoice" src="{{info_max}}" />
+        <!-- 上传 -->
+        <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<9}}">
+            <view class="item__top addImage__felx">
+                <image class="addImage" src="{{add_invoice}}" />
             </view>
             <view class="item__bottom">
-                <view class="item__bottom__title">北京贝易资有限责任公司</view>
-                <view class="item__bottom__text">增值税专用发票</view>
-                <view class="item__bottom__text">098093808543</view>
                 <view class="item__bottom__info">
-                    <view>
-                        <image  src="{{updateHandel_err}}" />
-                        <text class="item__info_error">查验失败</text>
-                    </view>
-                    <image  src="{{close_info}}" />
+                    <view></view>
+                    <image />
                 </view>
             </view>
         </view>
+    </view>
+    <view class="btn">
+        <view class="btn__text">一次性最多仅支持上传9张发票图片</view>
+        <view wx:if="{{active}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
+        <view wx:if="{{!active}}"class="btn__button btn__active_un">下一步</view>
     </view>
 </view>

@@ -154,7 +154,7 @@ Component({
     gates_info: [{
       id: 1,
       icon: btns_url.personal,
-      text: '个人中心',
+      text: '个人信息',
       width: '120rpx',
       isExtraInfo: true,
       extraInfo: {

@@ -1,0 +1,80 @@
+<!--pages/invoice/acquisitionCost/components/filter/filter.wxml-->
+<block id="createDate" wx:if="{{showCreateCal}}">
+    <view class="calendar-bg" bindtap="toggleCreateCal"></view>
+    <view class="calendar open">
+        <calendar id="ccd" config="{{calendar_config_cd}}" bind:afterTapDate="afterTapDate" />
+    </view>
+</block>
+<block id="invioceDate" wx:if="{{showInvoiceDate}}">
+    <view class="calendar-bg" bindtap="toggleInvoiceDate"></view>
+    <view class="calendar open">
+        <calendar id="cid" config="{{calendar_config_id}}" bind:afterTapDate="afterTapDate" />
+    </view>
+</block>
+<view wx:if="{{showFilter}}" class="filter-container topOpen">
+    <scroll-view scroll-y="true" show-scrollbar="true" style="height:{{scrollViewHeight}}px">
+        <view class="bgColor"></view>
+        <view class="bg">
+            <view class="content">
+                <view class="title">增值税发票类型</view>
+                <view class="option-line" wx:for="{{invoice_type_list}}" wx:key="index" wx:for-item="i" wx:for-index="k">
+                    <block wx:for="{{i}}" wx:key="i" wx:for-item="j" wx:for-index="l">
+                        <view wx:if="{{j.isSelect && j.widthType === 1}}" class="selected long option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                        <view wx:elif="{{!j.isSelect && j.widthType === 1}}" class="long option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                        <view wx:elif="{{j.isSelect && j.widthType === 0}}" class="selected option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                        <view wx:else class="option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="bg">
+            <view class="content">
+                <view class="title">发票状态</view>
+                <view class="option-line" wx:for="{{invoice_status_list}}" wx:key="index" wx:for-item="i" wx:for-index="k">
+                    <block wx:for="{{i}}" wx:key="i" wx:for-item="j" wx:for-index="l">
+                        <view wx:if="{{j.isSelect}}" class="selected option " bindtap="selectStatOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                        <view wx:elif="{{j.widthType === 1}}" class="long option" bindtap="selectStatOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                        <view wx:else class="option" bindtap="selectStatOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="bg">
+            <view class="content">
+                <view class="title">开票日期</view>
+                <view class="datetime-container">
+                    <image class="icon" src="{{calendarIcon}}" mode="widthFix"></image>
+                    <view class="datetime-picker">
+                        <view wx:if="{{iStartDate === '开始日期'}}" class="text grey" bindtap="toggleInvoiceDate" data-tar="iStartDate">{{iStartDate}}</view>
+                        <view wx:else class="text blue" bindtap="toggleInvoiceDate" data-tar="iStartDate">{{iStartDate}}</view>
+                        <view class="join">至</view>
+                        <view wx:if="{{iEndDate === '结束日期'}}" class="text grey" bindtap="toggleInvoiceDate" data-tar="iEndDate">{{iEndDate}}</view>
+                        <view wx:else class="text blue" bindtap="toggleInvoiceDate" data-tar="iEndDate">{{iEndDate}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="bg">
+            <view class="content">
+                <view class="title">创建日期</view>
+                <view class="datetime-container">
+                    <image class="icon" src="{{calendarIcon}}" mode="widthFix"></image>
+                    <view class="datetime-picker">
+                        <view wx:if="{{cStartDate === '开始日期'}}" class="text grey" bindtap="toggleCreateCal" data-tar="cStartDate">{{cStartDate}}</view>
+                        <view wx:else class="text blue" bindtap="toggleCreateCal" data-tar="cStartDate">{{cStartDate}}</view>
+                        <view class="join">至</view>
+                        <view wx:if="{{cEndDate === '结束日期'}}" class="text grey" bindtap="toggleCreateCal" data-tar="cEndDate">{{cEndDate}}</view>
+                        <view wx:else class="text blue" bindtap="toggleCreateCal" data-tar="cEndDate">{{cEndDate}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="operate-container" style="height: 68px;">
+        <view class="btn reset blue" bindtap="initData">重置</view>
+        <view class="btn finish white" bindtap="getAllOptions">完成</view>
+    </view>
+    <view class="modal" style="height: 130px;">
+        <my-service class="service-postion"></my-service>
+    </view>
+</view>

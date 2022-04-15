@@ -79,6 +79,34 @@
                     "name": "1123123",
                     "pathName": "pages/invoice/invoiceUpload/updateHandelError/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "增值税发票查验",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "登录页面",
+                    "pathName": "pages/login/login/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "成本发票明细",
+                    "pathName": "pages/invoice/acquisitionCost/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "搜索框",
+                    "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

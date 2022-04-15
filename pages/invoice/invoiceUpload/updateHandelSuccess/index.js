@@ -13,6 +13,11 @@ Page({
             url: '../updateHandel/index',
         })
     },
+    handelClickLink(){
+        wx.navigateTo({
+            url: '/pages/invoice/invoiceUpload/address/index',
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载
