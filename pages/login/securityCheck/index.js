@@ -33,11 +33,11 @@ Component({
     }
   },
   lifetimes: {
-    attached() {}
+    detached() {}
   },
   methods: {
     backIndex(){
-      wx.switchTab({
+      wx.reLaunch({
         url: '/pages/index/index',
       })
     },
