@@ -7,9 +7,13 @@ Component({
             utils.getTabBarIndex(this,1);
             const barTitileStatus = wx.getMenuButtonBoundingClientRect()
             this.setData({statusBarHeight: barTitileStatus.bottom + 32})
+            this.setData({
+                pageShow:true
+            })
         }
     },
     data: {
+        pageShow:false,
         statusBarHeight: 30,
         zdfp:tempPath + 'incomeInvoice.png', 
         zdmx:tempPath + 'srzdmx.png', 

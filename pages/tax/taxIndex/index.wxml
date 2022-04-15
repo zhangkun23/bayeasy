@@ -1,56 +1,57 @@
 <!--pages/tax/taxIndex/index.wxml-->
-<view class="bgColog"></view>
-<view class="title-container" style="margin-top: {{statusBarHeight}}px;">
-    <view class="page-title">
-        财税办理
+<view class="bgColog" hidden="{{!pageShow}}"> 
+    <view class="title-container" style="margin-top: {{statusBarHeight}}px;">
+        <view class="page-title">
+            财税办理
+        </view>
+        <view class="page-subtitle">
+            为您提供最专业的服务
+        </view>
+        <view class="split"></view>
     </view>
-    <view class="page-subtitle">
-        为您提供最专业的服务
-    </view>
-    <view class="split"></view>
-</view>
-<view class="content-frame">
-    <view class="content-bg">
-        <view class="content-container">
-            <view class="horizon-border" style="border-top: 1px dashed #D2E0EF"></view>
-            <view class="vertical-border" style=" border-left: 1px dashed #D2E0EF"></view>
-            <view class="row">
-                <view class="gate-area-1 taxReturn" bindtap="gotoList">
-                    <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/taxReturn.png" mode="widthFix"></image>
+    <view class="content-frame">
+        <view class="content-bg">
+            <view class="content-container">
+                <view class="horizon-border" style="border-top: 1px dashed #D2E0EF"></view>
+                <view class="vertical-border" style=" border-left: 1px dashed #D2E0EF"></view>
+                <view class="row">
+                    <view class="gate-area-1 taxReturn" bindtap="gotoList">
+                        <view>
+                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/taxReturn.png" mode="widthFix"></image>
+                        </view>
+                        <view class="name">
+                            纳税申报
+                        </view>
                     </view>
-                    <view class="name">
-                        纳税申报
-                    </view>
-                </view>
-                <view class="gate-area-1">
-                    <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/financialStatements.png" mode="widthFix"></image>
-                    </view>
-                    <view class="name">
-                        财务报表
+                    <view class="gate-area-1">
+                        <view>
+                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/financialStatements.png" mode="widthFix"></image>
+                        </view>
+                        <view class="name">
+                            财务报表
+                        </view>
                     </view>
                 </view>
-            </view>
-            <view class="row">
-                <view class="gate-area-2">
-                    <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/annualReport.png" mode="widthFix"></image>
+                <view class="row">
+                    <view class="gate-area-2">
+                        <view>
+                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/annualReport.png" mode="widthFix"></image>
+                        </view>
+                        <view class="name">
+                            工商年报
+                        </view>
                     </view>
-                    <view class="name">
-                        工商年报
+                    <view class="gate-area-2">
+                        <view>
+                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/annuelVersement.png" mode="widthFix"></image>
+                        </view>
+                        <view class="name">
+                            年度汇算清缴
+                        </view>
                     </view>
                 </view>
-                <view class="gate-area-2">
-                    <view>
-                        <image class="gate-icon" src="https://image.bayeasy.cn/images-data/tax/gates/annuelVersement.png" mode="widthFix"></image>
-                    </view>
-                    <view class="name">
-                        年度汇算清缴
-                    </view>
-                </view>
-            </view>
 
+            </view>
         </view>
     </view>
 </view>

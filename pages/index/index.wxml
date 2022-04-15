@@ -4,7 +4,7 @@
     borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
   </modal>
 
-<view class="waper" >
+<view class="waper" hidden="{{!pageShow}}" >
   <view class="infoTop">
     <view class="InfoTop__top">
       <image class="logo_byz" src="{{logo_byz}}" />

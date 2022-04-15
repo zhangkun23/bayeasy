@@ -26,15 +26,21 @@
     padding-left: 24rpx;
     margin-top: 28rpx;
 }
+.errInfo__text{
+    color: #FF475A;
+    text-decoration: underline;
+    padding-left: 20rpx;
+    font-size: 24rpx;
+}
 .errInfo>image{
     height: 25rpx;
     width: 25rpx;
 }
-.errInfo>text{
+.errInfo>view{
     font-size: 24rpx;
     font-weight: 400;
     color: #FFA42E;
-    padding-left: 4rpx;
+    padding-left: 10rpx;
 }
 .invoice{
     margin: 32rpx 35rpx;
@@ -194,4 +200,50 @@
 .btn__active_un{
     background: #E6EEF7;
     color: #ABBED2;
+}
+.textColor{
+    color: #C2DFFF !important;
+}
+.statusSusses{
+    margin: 168rpx 64rpx;
+    text-align: center;
+}
+.statusSusses>image{
+    height: 63rpx;
+    width: 63rpx;
+    text-align: center;
+}
+.statusSusses__tj{
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #0B1D30;
+}
+.statusSusses__info{
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #283E56;
+    margin-top: 24rpx;
+    margin-bottom: 64rpx;
+}
+.statusSusses__info>text{
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #FFA42E;
+    text-decoration:underline;
+}
+.statusSusses__select{
+    margin: 0 60rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-radius: 44rpx;
+    border: 1px solid #1D83F0;
+    font-size: 34rpx;
+    font-weight: 400;
+    color: #1D83F0;
+}
+.servicePosition{
+    position: absolute;
+    bottom: 78rpx;
+    left: 50%;
+    margin-left: -125rpx;
 }

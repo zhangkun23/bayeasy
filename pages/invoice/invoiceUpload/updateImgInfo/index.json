@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "service":"/components/service/service",
+    "updateImageInfo_errInfo":"../components/updateImageInfo_errInfo/index"
   },
   "navigationBarBackgroundColor": "#1D83F0",
   "navigationBarTextStyle": "white",
