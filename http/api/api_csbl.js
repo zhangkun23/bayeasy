@@ -16,5 +16,10 @@ module.exports = {
     return request(api + '/declare/declare_info?id=' + param, 'GET', {});
   },
 
+  /* 确认纳税申报 */
+  confirmdeclare: (param) => {
+    return request(api + '/declare/confirm_declare' , 'POST', param);
+  },
+
 
 }

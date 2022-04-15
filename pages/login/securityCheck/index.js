@@ -1,7 +1,7 @@
 // pages/login/securityCheck/index.js
 
 const {
-  getUserMeg,
+  // getUserMeg,
   IdcardAuthentication,
   getUserStatus
 } = require('../../../http/api/api');
@@ -14,7 +14,7 @@ Component({
   data: {
     inputClose: tempPath + "public/inputClose.png",
     info_max: tempPath + "public/info_max.png",
-    idDard: '',
+    idCard: '',
     disabled: false,
     isShowModal: false,
     buttons: [{
@@ -33,23 +33,29 @@ Component({
     }
   },
   lifetimes: {
-    attached() {}
+    detached() {
+      wx.reLaunch({
+        url: '../../pages/index/index',
+      })
+    }
   },
   methods: {
     backIndex(){
-      wx.switchTab({
-        url: '/pages/index/index',
+      wx.reLaunch({
+        url: '../../pages/index/index',
       })
     },
     _getUserIdCards: function () {
-      getUserMeg().then(res => {
-        if (res.ret) {
-          const dataInfo = res.data
+     
+      // getUserMeg().then(res => {
+      //   if (res.ret) {
+      //     const dataInfo = res.data
           this.setData({
-            idDard: dataInfo.id_card,
+            idCard: wx.getStorageSync('idCard'),
+            // idCard: dataInfo.id_card,
           })
-        }
-      })
+      //   }
+      // })
     },
     onInput: function (event) {
       // event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')

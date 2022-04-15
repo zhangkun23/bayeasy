@@ -10,7 +10,7 @@
     </view>
     <view class="securityCheck__header">
       <text>检测到您关联的身份证号</text>
-      <text>{{idDard}}</text>
+      <text>{{idCard}}</text>
     </view>
     <view class="securityCheck__content">
       <view class="securityCheck__content-tips">请输入您完整的身份证号</view>
