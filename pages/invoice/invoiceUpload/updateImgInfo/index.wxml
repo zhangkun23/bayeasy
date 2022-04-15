@@ -1,52 +1,69 @@
 <view class="bgCount">
     <view class="titleTop">
-        <view class="errInfo" wx:if="{{errinfo}}">
+        <view class="errInfo" wx:if="{{errInfoNum!=0}}">
             <image src="{{info_max}}" />
             <text>存在异常数据，请优先处理</text>
         </view>
+        <view class="errInfo" >
+            <image src="{{info_max}}" />
+            <view>
+                本次 6 张发票提交成功,存在 3 张提交失败的发票 
+            </view>
+            <text class="errInfo__text">查看</text>
+        </view>
         <view class="invoice__status">
             <view class="invoice__status__active">
-                <image class="status__active" src="{{update_status_0}}" />
+                <image  class="status__active" src="{{status==0?update_status_0:status==1?update_status_1:update_status_2}}" />
                 <view>
-                    <text>上传发票</text>
-                    <text>查验发票</text>
-                    <text>提交完成</text>
+                    <text >上传发票</text>
+                    <text class="{{status==0?'textColor':''}}">查验发票</text>
+                    <text class="{{status!=2?'textColor':''}}">提交完成</text>
                 </view>
             </view>
         </view>
         <image class="titleTop__bg" src="{{update_status_bg}}" />
     </view>
 
-    <view class="invoice">
+    <view class="invoice" wx:if="{{status!=2}}">
         <view class="item" wx:for="{{updateImgOrPdfArr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
             <view class="item__top">
                 <image class="item__top__invoice" src="{{item.link}}" />
             </view>
             <view class="item__bottom" wx:if="{{item.linkInfo}}">
-                <view class="item__bottom__title">{{item.linkInfo.seller_name}}</view>
-                <view class="item__bottom__text">{{item.linkInfo.invoice_type}}</view>
-                <view class="item__bottom__text">{{item.linkInfo.invoice_dm}}</view>
-                <view class="item__bottom__info">
+                <view class="item__bottom__title">{{item.requestStatus?item.linkInfo.seller_name:'----'}}</view>
+                <view class="item__bottom__text">{{item.requestStatus?item.linkInfo.invoice_type:'----'}}</view>
+                <view class="item__bottom__text">{{item.requestStatus?item.linkInfo.invoice_dm:'----'}}</view>
+                <!-- 成功状态 -->
+                <view class="item__bottom__info" wx:if="{{item.requestStatus}}">
                     <view>
                         <image src="{{updateHandel_rigth}}" />
                         <text class="item__info_right">查验通过</text>
                     </view>
-                    <image src="{{close_null}}" />
+                    <image src="{{close_null}}" data-index="{{index}}" bindtap="removeItem" />
+                </view>
+                <!-- 失败状态 -->
+                <view class="item__bottom__info" wx:if="{{!item.requestStatus}}">
+                    <view>
+                        <image src="{{updateHandel_err}}" />
+                        <text class="item__info_error">查验失败</text>
+                    </view>
+                    <image src="{{close_info}}" data-index="{{index}}" bindtap="removeItem" />
                 </view>
             </view>
+            <!-- 默认状态 -->
             <view class="item__bottom" wx:else>
                 <view class="item__bottom__info">
-                    <view></view>
-                    <image src="{{close_null}}" />
+                    <view>{{index}}</view>
+                    <image src="{{close_null}}" data-index="{{index}}" bindtap="removeItem" />
                 </view>
             </view>
-            <view wx:if="{{loaddingActive}}" class="itemLoadding">
+            <view wx:if="{{item.loaddingActive}}" class="itemLoadding">
                 <image src="{{loadding}}" />
             </view>
         </view>
 
         <!-- 上传 -->
-        <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<9}}">
+        <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<9 && status==0}}">
             <view class="item__top addImage__felx">
                 <image class="addImage" src="{{add_invoice}}" />
             </view>
@@ -58,9 +75,21 @@
             </view>
         </view>
     </view>
-    <view class="btn">
-        <view class="btn__text">一次性最多仅支持上传9张发票图片</view>
+    <view class="btn" wx:if="{{status!=2}}">
+        <view class="btn__text" wx:if="{{status==0}}">一次性最多仅支持上传9张发票图片</view>
         <view wx:if="{{active}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
         <view wx:if="{{!active}}"class="btn__button btn__active_un">下一步</view>
     </view>
+
+
+    <view class="statusSusses" wx:if="{{status==2}}">
+        <image src="{{updateHandel_rigth}}" />
+        <view class="statusSusses__tj">提交成功</view>
+        <view class="statusSusses__info">请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！<text bindtap="jumpAddress">邮寄地址</text></view>
+        <view class="statusSusses__select" bindtap="handelClick">查看发票信息</view>
+    </view>
+
 </view>
+<!-- 提交错误提示 -->
+<updateImageInfo_errInfo>123123</updateImageInfo_errInfo>
+<service class="servicePosition"></service>

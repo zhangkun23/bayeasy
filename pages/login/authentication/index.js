@@ -5,32 +5,32 @@ Component({
    * 页面的初始数据
    */
   data: {
-    
+
   },
 
   methods:{
-    handelClick() {
-      wx.navigateTo({
-        url: '../information/index',
-      })
-    },
-    backIndex(){
-      wx.navigateTo({
-        url: '../../index/index',
-      })
-    },
-    handelClick1() {
-      wx.navigateTo({
-        url: '../securityCheck/index',
-      })
-    }
+  handelClick() {
+    wx.navigateTo({
+      url: '../information/index',
+    })
+  },
+  backIndex() {
+    wx.reLaunch({
+      url: '../../index/index',
+    })
+  },
+  handelClick1() {
+    wx.navigateTo({
+      url: '../securityCheck/index',
+    })
+  },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

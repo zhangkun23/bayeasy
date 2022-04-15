@@ -1,7 +1,7 @@
 // pages/login/securityCheck/index.js
 
 const {
-  getUserMeg,
+  // getUserMeg,
   IdcardAuthentication,
   getUserStatus
 } = require('../../../http/api/api');
@@ -14,7 +14,7 @@ Component({
   data: {
     inputClose: tempPath + "public/inputClose.png",
     info_max: tempPath + "public/info_max.png",
-    idDard: '',
+    idCard: '',
     disabled: false,
     isShowModal: false,
     buttons: [{
@@ -33,27 +33,20 @@ Component({
     }
   },
   lifetimes: {
-    attached() {}
+    detached() {}
   },
   methods: {
     backIndex(){
-      wx.switchTab({
+      wx.reLaunch({
         url: '/pages/index/index',
       })
     },
     _getUserIdCards: function () {
-      getUserMeg().then(res => {
-        if (res.ret) {
-          const dataInfo = res.data
-          this.setData({
-            idDard: dataInfo.id_card,
-          })
-        }
+      this.setData({
+        idCard: wx.getStorageSync('idCard'),
       })
     },
     onInput: function (event) {
-      // event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
-      console.log(event.detail)
       let cartId = [...event.detail.value.replace(/\s/g, "")];
       let newArr = [];
       for (var i = 0; i < cartId.length; i++) {
@@ -66,7 +59,6 @@ Component({
       cartId = newArr.join("");
       this.setData({
         idcardValue: cartId,
-        // cursor: event.detail.cursor
       })
       this.setCloseIcon(event);
       if (event.detail.value.length == 22) {

@@ -1,7 +1,7 @@
 <!--pages/login/information/index.wxml-->
 <view class="information">
   <view class="information__back">
-    <mp-navigation-bar title="个人信息" bindback="backIndex"></mp-navigation-bar>
+    <mp-navigation-bar title="{{title}}" bindback="backIndex"></mp-navigation-bar>
     <view class="securityCheck__topTips" wx:if="{{userStatus == 1}}">
       <view class="securityCheck__topTips-icon">
         <image src="https://image.bayeasy.cn/images-data/public/info_max.png"></image>

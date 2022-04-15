@@ -6,13 +6,22 @@ Component({
             utils.getTabBarIndex(this,3);
             const barTitileStatus = wx.getMenuButtonBoundingClientRect()
             this.setData({
-                statusBarHeight: barTitileStatus.bottom + 32
+                statusBarHeight: barTitileStatus.bottom + 32,
             })
-
         }
+    },
+    lifetimes: {
+        ready() {
+            setTimeout( ()=> {
+                this.setData({
+                    pageShow:true
+                })
+            },30)
+        },
     },
     data: {
         statusBarHeight: 30,
+        pageShow:false,
     },
     methods: {
         gotoList: function () {

@@ -24,8 +24,8 @@ Page({
         })
     },
     backIndex(){
-        wx.navigateTo({
-            url: '/page/index/index',
+        wx.reLaunch({
+            url: '/pages/index/index',
         })
     },
     // 微信手机号授权弹框 只能在手机调试

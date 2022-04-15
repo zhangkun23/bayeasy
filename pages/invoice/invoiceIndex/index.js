@@ -9,7 +9,17 @@ Component({
             this.setData({statusBarHeight: barTitileStatus.bottom + 32})
         }
     },
+    lifetimes: {
+        ready() {
+            setTimeout( ()=> {
+                this.setData({
+                    pageShow:true
+                })
+            },30)
+        },
+    },
     data: {
+        pageShow:false,
         statusBarHeight: 30,
         zdfp:tempPath + 'incomeInvoice.png', 
         zdmx:tempPath + 'srzdmx.png', 

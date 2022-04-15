@@ -4,6 +4,7 @@ const util = require('../../../../utils/util')
 const {
     baseUrl
   } = require('../../../../http/env.js').dev; 
+const {submitOcrDeductInvoice} = require('../../../../http/api/api_szpj')
 Page({
 
     /**
@@ -13,34 +14,36 @@ Page({
         add_invoice:tempPath + "invoice/incomeInvoice/add_invoice.png",
         updateHandel_err: tempPath + "invoice/incomeInvoice/updateHandel_err.png",
         update_status_0: tempPath + "invoice/incomeInvoice/update_status_0.png",
+        update_status_1: tempPath + "invoice/incomeInvoice/update_status_1.png",
+        update_status_2: tempPath + "invoice/incomeInvoice/update_status_2.png",
 
         updateHandel_err:tempPath + "invoice/incomeInvoice/updateHandel_err.png",
         updateHandel_rigth:tempPath + "invoice/incomeInvoice/updateHandel_rigth.png",
-
+        info_max: tempPath + "public/info_max.png",
         whith_close:tempPath + "invoice/incomeInvoice/whith_close.png",
         whith_right:tempPath + "invoice/incomeInvoice/whith_right.png",
         update_status_bg:tempPath + "invoice/incomeInvoice/update_status_bg.png",
         close_info:tempPath + "invoice/incomeInvoice/close_info.png",
         close_null:tempPath + "invoice/incomeInvoice/close_null.png",
         loadding:tempPath + "public/loadding.png",
-        errinfo:false,
         updateImgOrPdfArr:[
-            {
-                link:'',
-                linkInfo:null
-            },
-            {
-                link:'',
-                linkInfo:{
-                    seller_name:'北京贝易资有限责任公司',
-                    invoice_type:'增值税专用发票',
-                    invoice_dm:'098093808543'
-                }
-            }
+            // {
+            //     link:'',
+            // },
+            // {
+            //     link:'',
+            //     linkInfo:{
+            //         seller_name:'北京贝易资有限责任公司',
+            //         invoice_type:'增值税专用发票',
+            //         invoice_dm:'098093808543'
+            //     }
+            // }
         ],
         updateImgOrPdfArrNum:0,
-        active:false,
-        loaddingActive:false
+        errInfoNum:0, //错误数量
+        active:false, //提交按钮状态
+        loaddingActive:false, //每张发票loadding
+        status:0, //上传发票 查验发票 提交完成
     },
 
     // 选择拍照上传照片
@@ -102,18 +105,10 @@ Page({
             count: lastNum,
             type:'file',
             success(res){
-                console.log('选择',res)
-                let tempArr = that.data.updateImgOrPdfArr
-                res.tempFiles.forEach(item => {
-                    tempArr.push({link:item.tempFilePath})
-                })
-                that.setData({
-                    'updateImgOrPdfArr':tempArr,
-                    'updateImgOrPdfArrNum':that.data.updateImgOrPdfArrNum+res.tempFiles.length
-                })
-                console.log(that.data.updateImgOrPdfArr)
-                console.log('上传数量'+that.data.updateImgOrPdfArrNum)
-                that.setButtonActice();
+                console.log('选择pdf',res)
+                if (res.tempFiles ) {
+                    that.setLink(res.tempFiles,'pdf');
+                }
             }
         })
     },
@@ -126,29 +121,31 @@ Page({
             mediaType: ['image'],
             sourceType: [type],
             success: function (res) {
-                console.log(res)
+                console.log('选择img',res)
                 let ImgArr = res.tempFiles;
                 if (that.setImgSize(ImgArr)) return;
                 
                 if (res.tempFiles ) {
-                    // wx.showLoading({
-                    //     title: '正在加载',
-                    // });
-                    let tempArr = that.data.updateImgOrPdfArr
-
-                    res.tempFiles.forEach(item => {
-                        tempArr.push({link:item.tempFilePath})
-                    })
-                    that.setData({
-                        'updateImgOrPdfArr':tempArr,
-                        'updateImgOrPdfArrNum':that.data.updateImgOrPdfArrNum+res.tempFiles.length
-                    })
-                    console.log(that.data.updateImgOrPdfArr)
-                    console.log('上传数量'+that.data.updateImgOrPdfArrNum)
-                    that.setButtonActice();
+                    that.setLink(res.tempFiles,'img');
                 }
             }
         })
+    },
+    setLink(info,type){
+        let tempArr = this.data.updateImgOrPdfArr
+        info.forEach(item => {
+            tempArr.push({
+                'link':type == 'img'?item.tempFilePath:item.path,
+                'loaddingActive':false
+            })
+        })
+        this.setData({
+            'updateImgOrPdfArr':tempArr,
+            'updateImgOrPdfArrNum':this.data.updateImgOrPdfArrNum+info.length,
+        })
+        // console.log(this.data.updateImgOrPdfArr)
+        // console.log('上传数量'+this.data.updateImgOrPdfArrNum)
+        this.setButtonActice();
     },
     // 更新提交按钮状态
     setButtonActice(){
@@ -162,20 +159,63 @@ Page({
             })
         }
     },
+    // 删除已经上传的文件
+    removeItem(e){
+        const index = e.currentTarget.dataset.index;
+        let tempArr = this.data.updateImgOrPdfArr;
+        tempArr.splice(index,1)
+        this.setData({
+            'updateImgOrPdfArr':tempArr,
+            'updateImgOrPdfArrNum':tempArr.length,
+            'errInfoNum':this.data.errInfoNum-1
+        })
+        if(this.data.updateImgOrPdfArrNum == 0){
+            this.setData({
+                active:false
+            })
+        }
+    },
 
     // 上传dpf/img
     addPdfOrImg(imageOrPdfPath){
-        const arrInfo = this.data.updateImgOrPdfArr;
-        arrInfo.forEach(item => {
+        this.submitOcrDeductInvoice();
+        return;
+        const temp = this.data.updateImgOrPdfArr;
+        this.setData({
+            'updateImgOrPdfArr':temp.map(item => {
+                item.loaddingActive = true
+                return item;
+            }),
+            status:1
+        })
+        let that = this;
+        this.data.updateImgOrPdfArr.forEach((item,index)=> {
             const {link} = item;
             wx.uploadFile({
-                url: baseUrl + '/deduct_invoice/ocr_deduct_invoice?token='+ wx.getStorageSync('token'),
+                url: baseUrl + `/deduct_invoice/ocr_deduct_invoice?index=${index}&token=${wx.getStorageSync('token')}`,
                 filePath:  link,
                 name: 'link',
                 formData: {},
                 success: function (info) {
-                    wx.hideLoading();
-                    console.log(info)
+                    const res = JSON.parse(info.data);
+                    console.log(res)
+                    console.log('index=='+index)
+                    let temp = that.data.updateImgOrPdfArr;
+                    temp[index].loaddingActive = false
+                    if(res.ret){
+                        temp[index].linkInfo = res.data;
+                        temp[index].requestStatus = res.ret
+                    }else{
+                        temp[index].linkInfo = {};
+                        temp[index].requestStatus = res.ret
+                        that.setData({
+                            errInfoNum:that.data.errInfoNum+1
+                        })
+                    }
+                    that.setData({
+                        'updateImgOrPdfArr':temp
+                    })
+                    console.log(that.data.updateImgOrPdfArr)
                 },
                 fail: function (res) {
                     wx.hideLoading();
@@ -183,6 +223,18 @@ Page({
                 }
             })
         })
+    },
+    submitOcrDeductInvoice(){
+        let tempArr = [1,2,3,4,5]
+        submitOcrDeductInvoice({ids:tempArr}).then( res => {
+            console.log(res)
+        })
+    },
+    jumpAddress(){
+        util.navigateTo('/pages/invoice/invoiceUpload/address/index')
+    },
+    handelClick(){
+        util.navigateTo('/pages/invoice/acquisitionCost/index')
     },
     ocrDeductInvoice(){
         

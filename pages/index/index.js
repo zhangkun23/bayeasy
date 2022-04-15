@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+      pageShow:false,
       imgpath:tempPath + 'footer/null.png',
       banner: tempPath + 'index/banner.png',
       logo_byz: tempPath + 'public/logo_byz.png',
@@ -91,6 +92,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+      this.setData({
+        pageShow:true
+      })
       utils.getTabBarIndex(this,2);
       if(wx.getStorageSync('token')){
         todolist().then(res => {
