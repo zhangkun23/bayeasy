@@ -4,6 +4,7 @@ const util = require('../../../../utils/util')
 const {
     baseUrl
   } = require('../../../../http/env.js').dev; 
+const {submitOcrDeductInvoice} = require('../../../../http/api/api_szpj')
 Page({
 
     /**
@@ -42,7 +43,7 @@ Page({
         errInfoNum:0, //错误数量
         active:false, //提交按钮状态
         loaddingActive:false, //每张发票loadding
-        status:2, //上传发票 查验发票 提交完成
+        status:0, //上传发票 查验发票 提交完成
     },
 
     // 选择拍照上传照片
@@ -177,6 +178,8 @@ Page({
 
     // 上传dpf/img
     addPdfOrImg(imageOrPdfPath){
+        this.submitOcrDeductInvoice();
+        return;
         const temp = this.data.updateImgOrPdfArr;
         this.setData({
             'updateImgOrPdfArr':temp.map(item => {
@@ -219,6 +222,12 @@ Page({
                   console.log(res, '失败')
                 }
             })
+        })
+    },
+    submitOcrDeductInvoice(){
+        let tempArr = [1,2,3,4,5]
+        submitOcrDeductInvoice({ids:tempArr}).then( res => {
+            console.log(res)
         })
     },
     jumpAddress(){

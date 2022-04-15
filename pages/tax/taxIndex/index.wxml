@@ -1,5 +1,5 @@
 <!--pages/tax/taxIndex/index.wxml-->
-<view class="bgColog" hidden="{{!pageShow}}"> 
+<view class="{{!pageShow?'bgColog opction':'bgColog' }}"  >
     <view class="title-container" style="margin-top: {{statusBarHeight}}px;">
         <view class="page-title">
             财税办理

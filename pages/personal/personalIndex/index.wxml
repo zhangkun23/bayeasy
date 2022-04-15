@@ -3,7 +3,7 @@
   <login-btn bind:click="goLogin" text="登录/注册" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
 </modal>
 
-<view class="container" hidden="{{!pageShow}}">
+<view class="{{!pageShow?'container opction':'container' }}"  >
   <mp-navigation-bar title="个人中心" back="{{false}}"></mp-navigation-bar>
 
   <view class="user-info-container">

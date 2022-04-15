@@ -17,9 +17,6 @@ Component({
     show() {
       var that = this;
       utils.getTabBarIndex(this, 4);
-      this.setData({
-        pageShow:true
-      })
       // 获取运营
       if (app.globalData.operate) {
         console.debug("已有客服专员")
@@ -114,6 +111,15 @@ Component({
     },
     hide() {
       console.debug("personal index hide")
+    },
+  },
+  lifetimes: {
+    ready() {
+      setTimeout( ()=> {
+        this.setData({
+            pageShow:true
+        })
+      },30)
     },
   },
   properties: {

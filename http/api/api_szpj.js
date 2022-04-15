@@ -49,4 +49,14 @@ module.exports = {
     ocrDeductInvoice: () => {
         return request(api + '/deduct_invoice/ocr_deduct_invoice', 'GET', {});
     },
+
+    // ocr最终提交 返回错误信息
+    submitOcrDeductInvoice: (param) => {
+        return request(api + '/deduct_invoice/submit_ocr_deduct_invoice', 'POST', param);
+    },
+
+    // 删除已ocr识别过的发票文件
+    ocrDeductInvoice: (id) => {
+        return request(api + '/deduct_invoice/del_deduct_invoice_file?id='+id, 'GET', {});
+    },
 }

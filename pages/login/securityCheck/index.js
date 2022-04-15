@@ -33,33 +33,20 @@ Component({
     }
   },
   lifetimes: {
-    detached() {
-      wx.reLaunch({
-        url: '../../pages/index/index',
-      })
-    }
+    detached() {}
   },
   methods: {
     backIndex(){
       wx.reLaunch({
-        url: '../../pages/index/index',
+        url: '/pages/index/index',
       })
     },
     _getUserIdCards: function () {
-     
-      // getUserMeg().then(res => {
-      //   if (res.ret) {
-      //     const dataInfo = res.data
-          this.setData({
-            idCard: wx.getStorageSync('idCard'),
-            // idCard: dataInfo.id_card,
-          })
-      //   }
-      // })
+      this.setData({
+        idCard: wx.getStorageSync('idCard'),
+      })
     },
     onInput: function (event) {
-      // event.detail.value = event.detail.value.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
-      console.log(event.detail)
       let cartId = [...event.detail.value.replace(/\s/g, "")];
       let newArr = [];
       for (var i = 0; i < cartId.length; i++) {
@@ -72,7 +59,6 @@ Component({
       cartId = newArr.join("");
       this.setData({
         idcardValue: cartId,
-        // cursor: event.detail.cursor
       })
       this.setCloseIcon(event);
       if (event.detail.value.length == 22) {

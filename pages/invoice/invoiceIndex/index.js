@@ -7,10 +7,16 @@ Component({
             utils.getTabBarIndex(this,1);
             const barTitileStatus = wx.getMenuButtonBoundingClientRect()
             this.setData({statusBarHeight: barTitileStatus.bottom + 32})
-            this.setData({
-                pageShow:true
-            })
         }
+    },
+    lifetimes: {
+        ready() {
+            setTimeout( ()=> {
+                this.setData({
+                    pageShow:true
+                })
+            },30)
+        },
     },
     data: {
         pageShow:false,
