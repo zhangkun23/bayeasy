@@ -86,15 +86,14 @@ Component({
     },
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
     initialization(userStatus) {
-
       if (userStatus == 1) {
+        this._getUserIdCards();
+      }
+      if (userStatus == 2) {
         this._getUserIdCards();
         this.setData({
           title: '个人身份信息'
         })
-      }
-      if (userStatus == 2) {
-        this._getUserIdCards();
       }
     },
     // 获取身份证信息
