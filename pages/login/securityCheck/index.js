@@ -33,9 +33,12 @@ Component({
     }
   },
   lifetimes: {
-    detached() {
+    detached() {}
+  },
+  methods: {
+    backIndex(){
       wx.reLaunch({
-        url: '../../index/index',
+        url: '/pages/index/index',
       })
     },
   },

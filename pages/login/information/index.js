@@ -45,6 +45,7 @@ Component({
     disabled: true,
     pickerShow: true,
     dateTime: '',
+    title: "个人信息"
   },
   pageLifetimes: {
     show() {
@@ -72,7 +73,6 @@ Component({
   },
   lifetimes: {
     detached() {
-      console.log(213)
       wx.reLaunch({
         url: '../../index/index',
       })
@@ -80,16 +80,20 @@ Component({
   },
   methods: {
     backIndex() {
-      // if (this.data.userStatus == 1) {
-        wx.switchTab({
-          url: '../../index/index',
-        })
-      // }
+      wx.reLaunch({
+        url: '../../index/index',
+      })
     },
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
     initialization(userStatus) {
-      if (userStatus == 1 || userStatus == 2) {
+      if (userStatus == 1) {
         this._getUserIdCards();
+      }
+      if (userStatus == 2) {
+        this._getUserIdCards();
+        this.setData({
+          title: '个人身份信息'
+        })
       }
     },
     // 获取身份证信息
