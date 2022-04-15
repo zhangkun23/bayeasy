@@ -33,21 +33,18 @@ Component({
     }
   },
   lifetimes: {
-    detached() {}
+    detached() {
+      wx.reLaunch({
+        url: '../../pages/index/index',
+      })
+    }
   },
   methods: {
     backIndex(){
       wx.reLaunch({
-        url: '/pages/index/index',
+        url: '../../pages/index/index',
       })
     },
-  },
-  methods: {
-    // backIndex() {
-    //   wx.switchTab({
-    //     url: '../../index/index',
-    //   })
-    // },
     _getUserIdCards: function () {
      
       // getUserMeg().then(res => {

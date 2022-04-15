@@ -72,16 +72,12 @@ Component({
     }
   },
   lifetimes: {
-    detached() {
-      wx.reLaunch({
-        url: '../../index/index',
-      })
-    },
+    detached() {},
   },
   methods: {
     backIndex() {
       wx.reLaunch({
-        url: '../../index/index',
+        url: '/pages/index/index',
       })
     },
     // 初始化判断全局状态 0  需要上传，此时贝易资库里没有信息  1 需要关联  2 已关联，查看详情
