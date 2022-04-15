@@ -1,6 +1,21 @@
 <!--pages/invoice/acquisitionCost/searchPage/index.wxml-->
 <mp-navigation-bar title="成本发票明细"></mp-navigation-bar>
+<view class="bg"></view>
 <view class="search-container">
-    <my-search-bar isActive="true" bind:inputkey="handleSearchKey"></my-search-bar>
-    <view class="text" bindtap="goSearch" >搜索</view>
+    <view class="search">
+        <my-search-bar id="searchbar" isActive="true" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" searchKey="{{searchKey}}"></my-search-bar>
+    </view>
+
+    <view class="text" bindtap="btnGoSearch">搜索</view>
+</view>
+<view class="history-container">
+    <view>搜索历史：</view>
+    <block wx:if="{{history === []}}">
+        <view class="res">空</view>
+    </block>
+    <block wx:else>
+        <view wx:for="{{history}}" wx:key="i">
+            {{item}}
+        </view>
+    </block>
 </view>

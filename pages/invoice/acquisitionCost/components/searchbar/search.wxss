@@ -1,4 +1,5 @@
 /* pages/invoice/acquisitionCost/components/searchbar/search.wxss */
+
 .bgColog {
     position: absolute;
     top: 0;
@@ -24,10 +25,13 @@
 }
 
 .search-container {
-    min-width: 580rpx;
-    width: 100%;
+    /* min-width: 580rpx; */
+    /* width: 100%; */
+    /* width: calc(100% - 126px); */
+    display: flex;
     justify-content: flex-start;
     flex-direction: row;
+    box-sizing: border-box;
 }
 
 .search-bar {
@@ -71,7 +75,10 @@
 
 
 
-/* .search-bar .search-content {} */
+.search-bar .search-content {
+    width: calc(100% - 152rpx);
+    
+}
 
 .search-bar .hint {
     padding-left: 8rpx;
@@ -84,6 +91,7 @@
 
 
 .search-bar .search-content .keyword {
+    width: 100%;
     font-size: 24rpx;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
@@ -92,5 +100,5 @@
 }
 
 .search-bar .search-content .keyword .myinput {
-    width: 320rpx;
+    width: 100%;
 }

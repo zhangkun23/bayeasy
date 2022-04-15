@@ -2,8 +2,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-    "my-search-bar": "./components/searchbar/search",
-    "filter-board": "./components/filter/filter",
+    "my-search-bar": "../components/searchbar/search",
     "my-service": "/components/service/service"
   }
 }

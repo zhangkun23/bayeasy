@@ -2,10 +2,8 @@
 const app = getApp()
 const {
     searchBill
-} = require('../../../http/api/api_szpj')
-const {
-    test
-} = require('../../../http/env')
+} = require('../../../http/api/api_szpj.js')
+
 Page({
 
     /**
@@ -26,20 +24,19 @@ Page({
         searchResult: null,
         isScroll: false,
         filterTop: 0,
+        enableService: true
     },
     onLoad: function () {
- 
+        wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0LmdzaC5jb21cL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDkyMTU5NzAsImV4cCI6MTY1NTIxNTk3MCwibmJmIjoxNjQ5MjE1OTcwLCJqdGkiOiJZcjFTcmdlUmFwYXlSV3VzIiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.RTNVccoegm36Owl5SJOBftLppecOwDVdM2YS-K9wSmw')
         var that = this;
         let query = wx.createSelectorQuery().in(this);
         query.select('#search').boundingClientRect();
         query.exec(function (res) {
             if (res.length > 0) {
-                console
                 that.setData({
                     filterTop: res[0].bottom
                 })
             }
-            console.log(res)
         })
         const onloadParams = {
             page: 0,
@@ -47,7 +44,6 @@ Page({
         }
         return
         searchBill(onloadParams).then(res => {
-            console.log(res)
             if (res.ret) {
                 res.data.list.forEach(e => {
                     Object.keys(e).forEach(function (key) {
@@ -74,24 +70,25 @@ Page({
 
     toggleFilter: function () {
 
-
+        wx.getSystemInfoSync()
         const __show = this.data.showFilter
         if (__show) { // 设为隐藏
             this.setData({
                 showFilter: false,
-                showRes: true
+                showRes: true,
+                enableService: true
                 // showNav: true
             })
         } else { //设为显示
             this.setData({
                 showFilter: true,
-                showRes: false
+                showRes: false,
+                enableService: false
                 // showNav: false
             })
         }
     },
     handleFilterRes: function (d) {
-        console.log("res ", d.detail)
         const raw_filter = d.detail
         let params = {}
 
@@ -117,13 +114,20 @@ Page({
             showFilter: false,
             showRes: true,
             showNav: true,
+            enableService: true,
             billFilter: params
         })
+        // wx.navigateTo({
+        //   url: 'url',
+        // })
     },
     showSearch: function () {
         this.setData({
             isSearchActive: true,
             showFilter: false
+        })
+        wx.navigateTo({
+            url: './searchPage/index',
         })
         // searchBill(this.billFilter).then(res => {
         //     if (res.ret) {
@@ -186,9 +190,11 @@ Page({
             showFilter: false
         })
     },
-    goDetail: function () {
-        // wx.navigateTo({
-        //   url: 'url',
-        // })
-    }
+    goDetail: function (e) {
+        const vid = e.currentTarget.dataset.vid
+        wx.navigateTo({
+            url: './invoiceDetails/index?vid=' + vid,
+        })
+    },
+    
 })

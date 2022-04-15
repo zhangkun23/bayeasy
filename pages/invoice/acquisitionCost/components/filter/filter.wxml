@@ -11,9 +11,10 @@
         <calendar id="cid" config="{{calendar_config_id}}" bind:afterTapDate="afterTapDate" />
     </view>
 </block>
-<view wx:if="{{showFilter}}" class="filter-container topOpen">
-    <scroll-view scroll-y="true" show-scrollbar="true" style="height:{{scrollViewHeight}}px">
-        <view class="bgColor"></view>
+<view class="bgColor"></view>
+<view class="container">
+    <view class="filter-container topOpen" style="max-height: {{maxHeight}}px;">
+        <!-- <scroll-view scroll-y="true" show-scrollbar="true" style="height:500px"> -->
         <view class="bg">
             <view class="content">
                 <view class="title">增值税发票类型</view>
@@ -69,12 +70,11 @@
                 </view>
             </view>
         </view>
-    </scroll-view>
-    <view class="operate-container" style="height: 68px;">
-        <view class="btn reset blue" bindtap="initData">重置</view>
-        <view class="btn finish white" bindtap="getAllOptions">完成</view>
+        <!-- </scroll-view> -->
+
     </view>
-    <view class="modal" style="height: 130px;">
-        <my-service class="service-postion"></my-service>
-    </view>
+</view>
+<view class="operate-container" >
+    <view class="btn reset blue" bindtap="initData">重置</view>
+    <view class="btn finish white" bindtap="getAllOptions">完成</view>
 </view>
