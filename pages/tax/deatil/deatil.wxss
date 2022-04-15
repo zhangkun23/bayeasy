@@ -162,3 +162,46 @@
 .detail__button {
   margin: 0 auto 86rpx;
 }
+
+.gray {
+  background: #E5EEF7;
+  box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1);
+}
+
+.blue {
+  background: #1D83F0;
+}
+
+.bubble {
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 16px 50px 14px rgba(0, 0, 0, 0.05), 0px 11px 29px 0px rgba(0, 0, 0, 0.08), 0px 5px 11px -7px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  color: #fff;
+  padding: 20rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  position: relative;
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  left: 136rpx;
+  bottom: -36rpx;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border: 18rpx solid;
+  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+}
+
+.triangle {
+  position: relative;
+}
+
+.position {
+  width: 343rpx;
+  position: absolute;
+  bottom: 57rpx;
+  left: 8rpx;
+}

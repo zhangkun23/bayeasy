@@ -1,5 +1,5 @@
 <view class="detail bgColog">
-  <mp-navigation-bar  ext-class="navigationBar" title="本期申报税款确认" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar" title="本期申报税款确认" bindback="backIndex"></mp-navigation-bar>
   <view class="detail__container">
     <view class="detail__topTips orangeTips orangeBack font-size-24">
       <view class="detail__topTips-icon">
@@ -35,10 +35,13 @@
             <view class="item__center-title">应补税额合计</view>
             <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
           </view>
-          <view class="item__text space-between">
+          <view class="item__text space-between triangle">
+          <view class="position">
+            <view class="bubble" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+          </view>
             <view class="item__center-title">
               应退税额合计
-              <image class="item__center-image" src="{{info_max}}"></image>
+              <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
             </view>
             <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
           </view>
@@ -82,8 +85,7 @@
           </view>
         </view>
       </view>
-
-      <view wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn">税金确认无误</view>
+      <view disabled="{{didClick}}" wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn" style="background:{{backgroundColor}};box-shadow:{{boxShadow}}">税金确认无误{{splicingStr}}</view>
     </view>
   </view>
 
