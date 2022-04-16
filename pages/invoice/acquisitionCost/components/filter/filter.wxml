@@ -14,7 +14,6 @@
 <view class="bgColor"></view>
 <view class="container">
     <view class="filter-container topOpen" style="max-height: {{maxHeight}}px;">
-        <!-- <scroll-view scroll-y="true" show-scrollbar="true" style="height:500px"> -->
         <view class="bg">
             <view class="content">
                 <view class="title">增值税发票类型</view>
@@ -70,8 +69,6 @@
                 </view>
             </view>
         </view>
-        <!-- </scroll-view> -->
-
     </view>
 </view>
 <view class="operate-container" >

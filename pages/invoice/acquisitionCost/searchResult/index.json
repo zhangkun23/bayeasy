@@ -4,5 +4,6 @@
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "my-search-bar": "../components/searchbar/search",
     "my-service": "/components/service/service"
-  }
+  },
+  "disableScroll": true
 }

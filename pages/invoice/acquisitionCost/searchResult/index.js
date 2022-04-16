@@ -1,4 +1,5 @@
 // pages/invoice/acquisitionCost/searchResult/index.js
+const app = getApp()
 const {
     searchBill
 } = require('../../../../http/api/api_szpj')
@@ -8,12 +9,16 @@ Page({
      * 页面的初始数据
      */
     data: {
+        emptyPic: app.globalData.emptyPic,
         showNav: true,
         searchKey: '',
         page: 0,
         pageSize: 10,
         searchResult: null,
-        enablePullDown: true
+        enablePullDown: true,
+        enableShowToast: true,
+        searchFocus: false,
+        showEmpty: false
     },
 
     /**
@@ -41,14 +46,18 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onScrollVReachBottom: function () {
         if (this.data.enablePullDown) {
             this.requestSearch()
         } else {
-            wx.showToast({
-                title: '没有更多数据啦',
-                icon: 'none'
-            })
+            if(this.data.enableShowToast){
+                wx.showToast({
+                    title: '没有更多数据啦',
+                    icon: 'none'
+                })
+                this.setData({enableShowToast:false})
+            }
+            
         }
     },
 
@@ -59,24 +68,29 @@ Page({
         })
     },
     handleBackArrow: function () {
-        wx.navigateTo({
-            url: '../index',
-        })
+        setTimeout(() => {
+            wx.redirectTo({
+                url: '/pages/invoice/acquisitionCost/index',
+                success: () => {
+                    console.log("success")
+                },
+                fail: (e) => {
+                    console.log("faile", e)
+                },
+                complete: () => {
+                    console.log("com")
+                },
+            })
+        }, 0);
+
     },
     goSearch: function () {
         // 不返回搜索页直接返回初始页
         var that = this;
-        wx.navigateTo({
-            url: '../searchPage/index',
-            success: function (res) {
-                res.eventChannel.emit('passSearchParams', {
-                    key: that.data.searchKey
-                })
-            }
+        wx.redirectTo({
+            url: '../searchPage/index'
         })
-        // wx.navigateTo({
-        //   url: '../index',
-        // })
+
     },
     requestSearch: function () {
         var that = this;
@@ -84,15 +98,21 @@ Page({
             page: this.data.page + 1,
             page_size: this.data.pageSize,
             search_key: this.data.searchKey,
-
         }
         searchBill(onloadParams).then(res => {
             if (res.ret) {
+                if (this.data.page === 0) {
+                    if(res.data.total===0){
+                        this.setData({
+                            showEmpty: true
+                        })
+                        return
+                    }
+                }
                 if (!res.data.list.length) {
                     that.setData({
-                        enablePullDown: false
+                        enablePullDown: false,
                     })
-
                 } else {
                     res.data.list.forEach(e => {
                         Object.keys(e).forEach(function (key) {

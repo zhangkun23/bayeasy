@@ -11,53 +11,34 @@ Page({
         eventChannel: null,
         // billFilter: null,
         searchKey: '',
+        lastSearchKey: '',
+        searchFocus: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this
-        const eventChannel = this.getOpenerEventChannel()
-        eventChannel.on('passSearchParams', function (data) {
-            if (data instanceof Object && 'key' in data) {
-                that.setData({
-                    searchKey: data.key
-                })
-            }
-            // if (data instanceof Object && 'billFilter' in data) {
-            //     this.setData({
-            //         billFilter: data.billFilter
-            //     })
-            // }
-            // if (data instanceof Object && 'page' in data) {
-            //     this.setData({
-            //         page: data.page
-            //     })
-            // }
-            // if (data instanceof Object && 'pageSize' in data) {
-            //     this.setData({
-            //         pageSize: data.pageSize
-            //     })
-            // }
-        })
+        let history = this.getHistory()
+        const searchKey = history[0]
         this.setData({
-            eventChannel: eventChannel
+            searchFocus: true,
+            lastSearchKey: searchKey
         })
-        this.setHistory()
     },
-    setHistory: function () {
+    getHistory: function () {
         let history = wx.getStorageSync('invoiceSearchHistory') || []
         this.setData({
             history: history
         })
+        return history
     },
     handleSearchKey: function (event) {
         this.setData({
             searchKey: event.detail
         })
     },
-    handleHistory(k) {
+   setHistory(k) {
         // 顺序为先进先出 index越小越新
         let history = wx.getStorageSync('invoiceSearchHistory') || []
         let _history = history.slice(0, 9)
@@ -70,25 +51,38 @@ Page({
     btnGoSearch: function () {
         this.goSearch()
     },
+    handleBackArrow: function(){
+        wx.redirectTo({
+          url: '../index',
+        })
+    },
     goSearch: function (event) {
         var that = this;
         let key;
         if (event && event.type === 'gosearch' && event.detail) {
-
             this.setData({
                 searchKey: event.detail
             })
             key = event.detail
-        }else{
+        } else {
             key = this.data.searchKey
-
         }
-        if (!key) {
-            wx.navigateTo({
+        if (!key && !this.data.lastSearchKey) {
+            wx.redirectTo({
                 url: '../index',
             })
-        } else {
-            this.handleHistory(key)
+        } else if(!key && this.data.lastSearchKey){
+            wx.navigateTo({
+                url: '../searchResult/index',
+                success: function (res) {
+                    res.eventChannel.emit('passSearchKey', {
+                        key: that.data.lastSearchKey
+                    })
+                }
+            })
+        }
+        else {
+            this.setHistory(key)
             wx.navigateTo({
                 url: '../searchResult/index',
                 success: function (res) {

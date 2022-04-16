@@ -6,12 +6,11 @@
             <image class="icon" src="{{searchIcon}}" mode="aspectFill"></image>
             <view class="search-content flex_center">
                 <view class="keyword blue">
-                    <block wx:if="{{isActive}}">
-                        <input class="myinput" focus="true" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
+                    <block wx:if="{{autoFocus}}">
+                        <input class="myinput" placeholder="{{lastSearchKey}}" focus="{{autoFocus}}" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
                     </block>
                     <block wx:else>
-                        <input class="myinput" focus="false" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
-
+                        <input class="myinput" placeholder="{{lastSearchKey}}" focus="{{autoFocus}}" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
                     </block>
                 </view>
             </view>

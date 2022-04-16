@@ -1,23 +1,50 @@
 /* pages/invoice/acquisitionCost/index.wxss */
 page {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: max(constant(safe-area-inset-bottom), 50rpx);
+    /* 兼容 iOS < 11.2 */
+    padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
 }
 
 .mycontainer {
+    flex: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
+}
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 1px;
+}
+
+.mytest {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .activeBg {
+    background-color: #F3F8FC;
     position: absolute;
+    /* height: 100%; */
+    top: -50rpx;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+
+    /* position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: -1;
-    background-color: #F3F8FC;
+    background-color: #F3F8FC; */
 }
 
 .bgColog {
@@ -59,11 +86,27 @@ page {
 .search-container {
     /* margin-top: 2.7%; */
     margin-top: 32rpx;
+    position: relative;
+
+}
+
+.search-container .search-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background-color: #F3F8FC;
+}
+
+.search-container .search-content {
     margin-left: 32rpx;
     margin-right: 32rpx;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
 }
 
 .search-container .searchbar {
@@ -103,16 +146,29 @@ page {
     margin-bottom: 50rpx;
 }
 
-.filter-box .modal {
-    height: calc(100% + 100rpx + 44px);
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 0.5);
+
+.empty-res-contain {
+    position: relative;
+    top: 200rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50vh;
 }
 
-.empty-res-contain{
-    height: 80%;
+.empty-res-contain .emptyPic {
+    width: 370rpx;
+    height: 300rpx;
+}
+
+
+.empty-res-contain .text {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #48617C;
+    line-height: 33rpx;
 }
 
 .res-container {
@@ -177,7 +233,6 @@ page {
 }
 
 .info-container {
-    margin-top: 23rpx;
     display: flex;
     flex-direction: column;
     font-size: 24rpx;
@@ -241,6 +296,7 @@ page {
     background-color: #979797;
     position: absolute;
     opacity: 0.5;
+    flex: 1;
     /* height: 100%; */
     top: -50rpx;
     left: 0;
@@ -250,14 +306,16 @@ page {
 }
 
 .footer {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end; */
+    align-self: flex-end;
     position: relative;
     flex: 1;
-    padding-bottom: 50PX;
-    padding-bottom: max(constant(safe-area-inset-bottom) ,50rpx);
+    flex-grow: 10;
+    /* padding-bottom: 50PX; */
+    padding-bottom: max(constant(safe-area-inset-bottom), 50px);
     /* 兼容 iOS < 11.2 */
-    padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
+    padding-bottom: max(env(safe-area-inset-bottom), 50px);
     /* 兼容 iOS >= 11.2 */
 }
