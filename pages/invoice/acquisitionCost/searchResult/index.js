@@ -27,12 +27,6 @@ Page({
     onLoad: function (option) {
         var that = this;
         const eventChannel = this.getOpenerEventChannel()
-        eventChannel.emit('acceptKeyFromOpenedPage', {
-            data: 'test'
-        });
-        eventChannel.emit('passSearchKeyBack', {
-            data: 'test'
-        });
         // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
         eventChannel.on('passSearchKey', function (data) {
             that.setData({
@@ -40,6 +34,7 @@ Page({
             })
             that.requestSearch()
         })
+        this.setData({eventChannel: eventChannel})
     },
 
 
@@ -47,7 +42,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onScrollVReachBottom: function () {
-        if (this.data.enablePullDown) {
+        if (this.data.enablePullDown && !this.data.showEmpty) {
             this.requestSearch()
         } else {
             if(this.data.enableShowToast){
@@ -60,7 +55,6 @@ Page({
             
         }
     },
-
     handleSearchKey: function (event) {
         console.log("input handler event")
         this.setData({

@@ -22,11 +22,12 @@ page {
     height: 1px;
 }
 
-.mytest {
+.wrapper .inner-container {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
+
 
 .activeBg {
     background-color: #F3F8FC;
@@ -143,7 +144,7 @@ page {
 .filter-box {
     position: relative;
     height: max-content;
-    margin-bottom: 50rpx;
+    /* margin-bottom: 50rpx; */
 }
 
 
@@ -154,7 +155,7 @@ page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50vh;
+    /* margin-bottom: 50vh; */
 }
 
 .empty-res-contain .emptyPic {
@@ -282,23 +283,13 @@ page {
     line-height: 32rpx;
 }
 
-
-.contactPos {
-    /* height: 100%; */
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    /* padding-bottom: 50rpx; */
-
-}
-
 .modal {
     background-color: #979797;
     position: absolute;
     opacity: 0.5;
     flex: 1;
     /* height: 100%; */
-    top: -50rpx;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -306,16 +297,20 @@ page {
 }
 
 .footer {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-end; */
-    align-self: flex-end;
     position: relative;
     flex: 1;
     flex-grow: 10;
-    /* padding-bottom: 50PX; */
     padding-bottom: max(constant(safe-area-inset-bottom), 50px);
     /* 兼容 iOS < 11.2 */
     padding-bottom: max(env(safe-area-inset-bottom), 50px);
     /* 兼容 iOS >= 11.2 */
+}
+
+.footer .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    justify-content: flex-end;
 }
