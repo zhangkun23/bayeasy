@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "service":"/components/service/service",
     "updateImageInfo_errInfo":"../components/updateImageInfo_errInfo/index"
   },

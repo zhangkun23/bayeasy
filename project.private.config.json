@@ -107,6 +107,13 @@
                     "name": "搜索框",
                     "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "详情",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }
