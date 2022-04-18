@@ -20,8 +20,7 @@ Page({
         updateHandel_err:tempPath + "invoice/incomeInvoice/updateHandel_err.png",
         updateHandel_rigth:tempPath + "invoice/incomeInvoice/updateHandel_rigth.png",
         info_max: tempPath + "public/info_max.png",
-        whith_close:tempPath + "invoice/incomeInvoice/whith_close.png",
-        whith_right:tempPath + "invoice/incomeInvoice/whith_right.png",
+        
         update_status_bg:tempPath + "invoice/incomeInvoice/update_status_bg.png",
         close_info:tempPath + "invoice/incomeInvoice/close_info.png",
         close_null:tempPath + "invoice/incomeInvoice/close_null.png",
@@ -44,8 +43,13 @@ Page({
         active:false, //提交按钮状态
         loaddingActive:false, //每张发票loadding
         status:0, //上传发票 查验发票 提交完成
+        errInfoShow:false
     },
-
+    errInfoCloseOrShow(){
+        this.setData({
+            errInfoShow:!this.data.errInfoShow
+        })
+    },
     // 选择拍照上传照片
     updateImgOrPdf(){
         let that = this;
@@ -133,17 +137,29 @@ Page({
     },
     setLink(info,type){
         let tempArr = this.data.updateImgOrPdfArr
-        info.forEach(item => {
-            tempArr.push({
-                'link':type == 'img'?item.tempFilePath:item.path,
-                'loaddingActive':false
+        if(type == 'img'){
+            info.forEach(item => {
+                tempArr.push({
+                    'link':item.tempFilePath,
+                    'loaddingActive':false,
+                    'type':type,
+                })
             })
-        })
+        }else{
+            info.forEach(item => {
+                tempArr.push({
+                    'link':item.path,
+                    'linkPdf':tempPath + "invoice/incomeInvoice/add_invoice.png",
+                    'loaddingActive':false,
+                    'type':type,
+                })
+            })
+        }
         this.setData({
             'updateImgOrPdfArr':tempArr,
             'updateImgOrPdfArrNum':this.data.updateImgOrPdfArrNum+info.length,
         })
-        // console.log(this.data.updateImgOrPdfArr)
+        console.log(this.data.updateImgOrPdfArr)
         // console.log('上传数量'+this.data.updateImgOrPdfArrNum)
         this.setButtonActice();
     },
@@ -167,19 +183,21 @@ Page({
         this.setData({
             'updateImgOrPdfArr':tempArr,
             'updateImgOrPdfArrNum':tempArr.length,
-            'errInfoNum':this.data.errInfoNum-1
+            'errInfoNum':this.data.errInfoNum-1<0?0:this.data.errInfoNum-1
         })
         if(this.data.updateImgOrPdfArrNum == 0){
             this.setData({
-                active:false
+                active:false,
+                status:0
             })
         }
+        console.log(this.data.updateImgOrPdfArrNum)
     },
 
     // 上传dpf/img
     addPdfOrImg(imageOrPdfPath){
-        this.submitOcrDeductInvoice();
-        return;
+        // this.submitOcrDeductInvoice();
+        // return;
         const temp = this.data.updateImgOrPdfArr;
         this.setData({
             'updateImgOrPdfArr':temp.map(item => {

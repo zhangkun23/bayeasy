@@ -23,9 +23,17 @@ Component({
             type: Boolean,
             value: false
         },
+        lastSearchKey:{
+            type: String,
+            value: ''
+        },
         searchKey: {
-            type:String,
-            value:''
+            type: String,
+            value: ''
+        },
+        autoFocus: {
+            type: Boolean,
+            value: false
         }
 
     },
@@ -49,7 +57,7 @@ Component({
             })
             this.triggerEvent("inputkey", key)
         },
-        goSearch: function(event){
+        goSearch: function (event) {
             console.log("!", event)
             this.triggerEvent("gosearch", event.detail.value)
         }

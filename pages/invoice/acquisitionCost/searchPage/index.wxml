@@ -1,9 +1,9 @@
 <!--pages/invoice/acquisitionCost/searchPage/index.wxml-->
-<mp-navigation-bar title="成本发票明细"></mp-navigation-bar>
+<mp-navigation-bar bindback="handleBackArrow" title="成本发票明细"></mp-navigation-bar>
 <view class="bg"></view>
 <view class="search-container">
     <view class="search">
-        <my-search-bar id="searchbar" isActive="true" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" searchKey="{{searchKey}}"></my-search-bar>
+        <my-search-bar id="searchbar" autoFocus="{{searchFocus}}" isActive="true" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" lastSearchKey="{{lastSearchKey}}" searchKey="{{searchKey}}"></my-search-bar>
     </view>
 
     <view class="text" bindtap="btnGoSearch">搜索</view>
