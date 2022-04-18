@@ -81,9 +81,12 @@ Page({
     goSearch: function () {
         // 不返回搜索页直接返回初始页
         var that = this;
-        wx.redirectTo({
-            url: '../searchPage/index'
+        wx.navigateBack({
+          delta: 1,
         })
+        // wx.redirectTo({
+        //     url: '../searchPage/index'
+        // })
 
     },
     requestSearch: function () {

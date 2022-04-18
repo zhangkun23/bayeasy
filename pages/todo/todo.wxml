@@ -1,6 +1,6 @@
 <!--pages/todo/todo.wxml-->
 <view class="bgColog"></view>
-<mp-navigation-bar title="待办事项"></mp-navigation-bar>
+<mp-navigation-bar title="待办事项" delta="0" bindback="handleBackArrow"></mp-navigation-bar>
 <view class="sum-info-container">
   <view class="progress-container">
     <!-- <mpProgress config="{{config}}" percentage="{{percentage}}"></mpProgress> -->

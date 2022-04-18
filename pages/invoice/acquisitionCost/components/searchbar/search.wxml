@@ -10,7 +10,7 @@
                         <input class="myinput" placeholder="{{lastSearchKey}}" focus="{{autoFocus}}" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
                     </block>
                     <block wx:else>
-                        <input class="myinput" placeholder="{{lastSearchKey}}" focus="{{autoFocus}}" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
+                        <input class="myinput" disabled="true" placeholder="{{lastSearchKey}}" focus="{{autoFocus}}" bindinput="setKey" bindconfirm="goSearch" value="{{searchKey}}"></input>
                     </block>
                 </view>
             </view>
