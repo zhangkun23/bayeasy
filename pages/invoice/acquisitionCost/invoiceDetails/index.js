@@ -1,34 +1,70 @@
 // pages/invoice/acquisitionCost/invoiceDetails/index.js
 const app = getApp()
+const {
+    getAcquisitionDetails
+} = require('../../../../http/api/api_szpj')
+const { prod }= require('../../../../http/env')
+const { openPdf, nullToEmptyString } = require('../../../../utils/util')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        invoiceUrl: null,
+        hasFile: null,
+        pdfImg:app.globalData.imgPath + "invoice/incomeInvoice/pdfImg.png",
+        emptyPic: app.globalData.emptyPic,
+        passIcon: app.globalData.imgPath + 'invoice/acquisitionCost/passIcon.png',
+        failIcon: app.globalData.imgPath + 'invoice/acquisitionCost/failIcon.png',
         invoiceIcon: app.globalData.imgPath + 'invoice/acquisitionCost/invoiceIcon.png',
+        invoicePdfUrl: '',
+        invoiceImgUrl: '',
+        failReson: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this;
-        const eventChannel = this.getOpenerEventChannel()
-        eventChannel.emit('acceptDataFromOpenedPage', {
-            data: 'test'
-        });
-        eventChannel.emit('someEvent', {
-            data: 'test'
-        });
-        // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-        eventChannel.on('getInfo', function (data) {
-            console.log(data)
+        console.log("options ", options)
+        const aid = options.aid;
+        this.getInfo(aid)
+    },
+    getInfo(aid) {
+        var that = this
+        getAcquisitionDetails(aid).then(res => {
+            if (res.ret) {
+                let info = nullToEmptyString(res.data)
+                that.handleInfo(info)
+            } else {
+                console.log("无法获取详情:", res)
+                wx.showToast({
+                    title: '获取详情失败， 请稍后再试',
+                    icon: ''
+                })
+            }
+        }).catch(e => {
+            console.error("网络出错,请检查网络连接 :", e)
         })
-
     },
     handleInfo: function (info) {
+        if (! info instanceof Object) {
+            return
+        }
+        if ('pdf_url' in info && info['pdf_url']) {
+            this.setData({
+                pdfUrl: info['pdf_url']
+            })
+        } else if ('file_image' in info && info['file_image']) {
+            this.setData({
+                pdfUrl: info['file_image']
+            })
+        }
+        if(info.status === 2){
+            const __fail_reason = info.failure_reason
+            console.log("审核失败原因: ", __fail_reason)
+            // todo: get fail reason and 
+        }
         this.setData({
             status: info.status,
             invoice_type: info.invoice_type,
@@ -36,6 +72,11 @@ Page({
             invoice_hm: info.invoice_hm,
             total_amount: info.total_amount,
             seller_name: info.seller_name,
+            invoice_date: info.invoice_date,
+            create_time: info.time
         })
+    },
+    goPdf() {
+        openPdf(this.data.pdfUrl)
     }
 })

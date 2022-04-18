@@ -41,7 +41,7 @@
                             采集成本发票
                         </view>
                     </view>
-                    <view class="gate-area-2">
+                    <view class="gate-area-2" data-url="/pages/invoice/acquisitionCost/index" bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{fpmx}}" mode="widthFix"></image>
                         </view>
