@@ -1,6 +1,6 @@
 const tempPath = getApp().globalData.imgPath;
 const {
-  declareInfo,
+  declareLoanInfo,
   confirmdeclare
 } = require('../../../http/api/api_csbl');
 Page({
@@ -11,19 +11,25 @@ Page({
   data: {
     listIcon: tempPath + 'tax/taxreturn/list.png',
     info_max: tempPath + "public/info_max.png",
-    deatilObj: {},
-    detailId: 0 || wx.getStorageSync('detailId'),
-    timeOut: {}, // 倒计时
+    // deatilObj: {},
+    billingDetailId: 0,
+    // timeOut: {}, // 倒计时
     taxList: [], // 明细列表
-    // showBtn: false,
+    showList: false,
     // didClick: true,
-    time: '',
-    backgroundColor: '#E5EEF7',
-    boxShadow: '0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1)',
+    // time: '',
+    // backgroundColor: '#E5EEF7',
+    // boxShadow: '0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1)',
     // splicingStr: '(5s)',
-    timestamp: '',
+    // timestamp: '',
+    showOpen: "展开",
     title: "",
     returnType: '',
+    repaymentInfo: {}, //还款详情
+    loanInfo: {}, // 欠款详情
+    billingDetail: [], // 欠款或还款税种明细
+    declare_month: ''
+
   },
 
   // 返回
@@ -46,39 +52,57 @@ Page({
     }
   },
   goToCertificate() {
-    wx.navigateTo({
-      url: '../certificate/certificate',
+    if (this.data.returnType == 'delinquentBill') {
+      wx.navigateTo({
+        url: '../certificate/certificate?id=' + this.data.billingDetailId + '&type=delinquentBill',
+      })
+    } else if (this.data.returnType == 'repaymentBill') {
+      wx.navigateTo({
+        url: '../certificate/certificate?id=' + this.data.billingDetailId + '&type=repaymentBill',
+      })
+    }
+
+  },
+  // 展开
+  showList(event) {
+    this.showOrHide(event, false)
+  },
+
+  // 收起
+  hideList(event) {
+    this.showOrHide(event, true)
+  },
+  showOrHide(event, type) {
+    let row = event.currentTarget.dataset.row;
+    this.data.billingDetail.map(item => {
+      if (item.index == row.index) {
+        item.showChildList = type
+      }
+    })
+    this.setData({
+      billingDetail: this.data.billingDetail
     })
   },
 
-  showToast() {
-    this.setData({
-      showTips: true
-    })
-  },
   // 获取详情
   getdeclareInfo() {
-    declareInfo(this.data.detailId).then(res => {
+    declareLoanInfo(this.data.billingDetailId).then(res => {
       console.log(res, '详情')
       if (res.ret) {
-        let arr = []
-        if (res.data) {
-          wx.setStorageSync('overdueStatus', res.data.overdue_status)
-          var time = res.data.overdue_time;
-          if (res.data.list.length > 0) {
-            arr = res.data.list[0].list
-          } else {
-            arr = res.data.list
-          }
-          this.setData({
-            deatilObj: res.data,
-            taxList: arr
-          })
-        }
+        res.data.detail.map((item, i) => {
+          item.showChildList = true,
+            item.index = i + 1
+        })
+        this.setData({
+          declare_month: res.data.declare_month,
+          loanInfo: res.data.loan_info,
+          repaymentInfo: res.data.repayment_info,
+          billingDetail: res.data.detail
+        })
       }
     })
   },
-  
+
   getUserId(value) {
     let id = undefined;
     if (value) {
@@ -91,18 +115,19 @@ Page({
       })
     }
     this.setData({
-      detailId: id
+      billingDetailId: id
     })
   },
+  // 设置type区分欠款还款页面
   renderPage(value) {
-    if (value == 'list') {
+    if (value == 'delinquentBill') {
       this.setData({
-        title: '本期申报税款确认',
+        title: '欠款详情',
         returnType: value
       })
-    } else if (value == 'result') {
+    } else if (value == 'repaymentBill') {
       this.setData({
-        title: '申报税款确认记录',
+        title: '还款详情',
         returnType: value
       })
     }
@@ -114,7 +139,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options, '获取跳转页面的参数')
-    this.getUserId(options.id)
+    this.setData({
+      billingDetailId: options.id
+    })
     this.renderPage(options.type)
   },
 

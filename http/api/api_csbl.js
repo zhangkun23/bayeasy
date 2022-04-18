@@ -30,12 +30,12 @@ module.exports = {
     return request(api + '/declare_loan/repayment_list', 'POST', param);
   },
   /* 欠款还款详情 */
-  declareLoanInfo: ({}) => {
-    return request(api + '/declare_loan/info', 'GET', {});
+  declareLoanInfo: (param) => {
+    return request(api + '/declare_loan/info?id=' + param, 'GET', {});
   },
   /* 获取欠款还款凭证 */
-  declareLoanInfo: ({}) => {
-    return request(api + '/declare_loan/get_voucher', 'GET', {});
+  getVoucher: (param) => {
+    return request(api + '/declare_loan/get_voucher?id=' + param, 'GET', {});
   },
 
 

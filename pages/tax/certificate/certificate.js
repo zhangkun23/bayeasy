@@ -1,6 +1,8 @@
 // pages/tax/certificate/certificate.js
 const tempPath = getApp().globalData.imgPath;
-
+const {
+  getVoucher
+} = require('../../../http/api/api_csbl')
 Page({
 
   /**
@@ -8,20 +10,56 @@ Page({
    */
   data: {
     info_max: tempPath + "public/info_max.png",
-
+    ids: 0,
+    title: '',
+    returnType: '',
+    imgArr: []
   },
 
   // 返回欠款详情页
-  backIndex(){
-    wx.reLaunch({
-      url: '../billingDetail/billingDetail',
+  backIndex() {
+    if(this.data.returnType == 'delinquentBill') {
+      wx.reLaunch({
+        url: '../billingDetail/billingDetail&type=delinquentBill',
+      })
+    } else if(this.data.returnType == 'repaymentBill') {
+      wx.reLaunch({
+        url: '../billingDetail/billingDetail&typs=repaymentBill',
+      })
+    }
+    
+  },
+  // 获取凭证记录
+  getVoucherImg() {
+    getVoucher(this.data.ids).then(res => {
+      if (res.ret) {
+        this.setData({
+          imgArr: res.data
+        })
+      }
     })
-  },  
+  },
+  renderPage(value) {
+    if(value == 'delinquentBill') {
+      this.setData({
+        title: '欠款凭证'
+      })
+    } else if(value == 'repaymentBill') {
+      this.setData({
+        title: '还款凭证'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      ids: options.id,
+      returnType: options.type
+    })
+    this.renderPage(options.type);
+    this.getVoucherImg();
   },
 
   /**

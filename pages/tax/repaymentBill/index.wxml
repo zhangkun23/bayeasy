@@ -1,0 +1,31 @@
+<!--pages/tax/repaymentBill/index.wxml-->
+<view class="repaymentBill bgColog">
+  <mp-navigation-bar title="还款账单" bindback="backIndex"></mp-navigation-bar>
+  <view class="repaymentBill__back taxConfirmation__list">
+    <view class="taxConfirmation__list-item" wx:for="{{allRepaymentList}}" wx:for-item="list" wx:key="id">
+    <!-- <view class="taxConfirmation__list-item"> -->
+      <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
+        <view class="item__header">
+          <view class="item__header-date">
+            <image class="item__header-image" src="{{listIcon}}"></image>
+            <text class="item__header-text">申报月份：{{list.declare_date}}</text>
+          </view>
+        </view>
+        <view class="item__center font-size-24">
+          <view class="item__text">
+            <text class="item__center-title">还款额度合计：</text>
+            <text class="orangeTips font-600">{{list.loan_amount}}</text>
+          </view>
+          <view class="item__text">
+            <text class="item__center-title">支付方式：</text>
+            <text class="item__center-title">{{list.loan_mode}}</text>
+          </view>
+          <view class="item__text">
+            <text class="item__center-title">还款时间：</text>
+            <text class="item__center-title">{{list.created_at}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

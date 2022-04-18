@@ -114,6 +114,13 @@
           "name": "申报欠款账单",
           "pathName": "pages/tax/delinquentBill/index",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "9999",
+          "pathName": "pages/tax/billingDetail/billingDetail",
+          "query": "id=36&type=delinquentBill",
           "scene": null,
           "launchMode": "default"
         }

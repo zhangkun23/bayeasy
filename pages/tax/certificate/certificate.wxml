@@ -1,15 +1,15 @@
 <!--pages/tax/certificate/certificate.wxml-->
 <view class="certificate bgColog">
-  <mp-navigation-bar ext-class="navigationBar" title="欠款凭证" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
   <view class="detail__container">
-    <view class="detail__topTips orangeTips orangeBack font-size-24">
+    <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}">
       <view class="detail__topTips-icon">
         <image src="{{info_max}}"></image>
       </view>
       <text>对账单有疑问，请联系客服全程为您协调</text>
     </view>
-    <view class="detail__image">
-      <image class="images" src=""></image>
+    <view class="detail__image" wx:for="{{imgArr}}" wx:key="item" wx:for-item="item"> 
+      <image class="images" src="{{item}}"></image>
     </view>
   </view>
 </view>

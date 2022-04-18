@@ -1,8 +1,7 @@
 <!--pages/tax/delinquentBill/index.wxml-->
 <view class="delinquentBill">
-  <mp-navigation-bar ext-class="navigationBar" color="#1D83F0" title="申报欠款账单" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar"color="#ffffff" title="申报欠款账单" bindback="backIndex"></mp-navigation-bar>
   <view class="taxConfirmation__container">
-    <image src="../../../image/modal/arrearsBack.png"></image>
     <view class="taxConfirmation__btn font-size-24" bindtap="sureRecord">
       <text class="taxConfirmation__tips">还款账单</text>
     </view>

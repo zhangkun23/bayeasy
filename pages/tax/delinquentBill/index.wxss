@@ -1,15 +1,14 @@
 /* pages/tax/delinquentBill/index.wxss */
 
 .delinquentBill {
-  padding: 32rpx;
+  background: url('https://image.bayeasy.cn/images-data/tax/taxreturn/arrearsBack.png') no-repeat;
+  background-size: contain;
 }
-
 .taxConfirmation__container {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: url('../../../image/modal/arrearsBack.png') no-repeat;
-  background-size: 100% 100%;
+  padding: 32rpx;
 }
 
 .taxConfirmation__btn {
@@ -19,7 +18,7 @@
   text-align: center;
   font-weight: 400;
   color: #FFFFFF;
-  margin-bottom: 34rpx;
+  /* margin-bottom: 34rpx; */
   align-self: flex-end;
 }
 
@@ -122,7 +121,10 @@
 }
 
 .taxConfirmation__nodata {
-  margin: 240rpx auto;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6);
+  padding: 166rpx 160rpx 224rpx;
 }
 
 .taxConfirmation__image {

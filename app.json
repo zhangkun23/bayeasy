@@ -37,6 +37,7 @@
     "pages/tax/paymentRecord/index",
     "pages/tax/payRecordDetail/payRecordDetail",
     "pages/tax/delinquentBill/index",
+    "pages/tax/repaymentBill/index",
     "pages/tax/billingDetail/billingDetail",
     "pages/tax/certificate/certificate",
     "pages/tax/deatil/deatil",

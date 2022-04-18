@@ -1,8 +1,7 @@
 
 const tempPath = getApp().globalData.imgPath;
 const {
-  declareInfo,
-  confirmdeclare
+  declareLoanInfo
 } = require('../../../http/api/api_csbl');
 Page({
 
@@ -13,7 +12,7 @@ Page({
     listIcon: tempPath + 'tax/taxreturn/list.png',
     info_max: tempPath + "public/info_max.png",
     deatilObj: {},
-    payRowId: 0 || wx.getStorageSync('payRowId'),
+    repaymentBillId: 0 ,
     taxList: [], // 明细列表
     isShowModal: false,
     showBtn: false,
@@ -78,7 +77,7 @@ Page({
     }
   },
   addTaxItem() {
-    
+
   },
   showToast() {
     this.setData({
@@ -87,39 +86,23 @@ Page({
   },
   // 获取详情
   getdeclareInfo() {
-    declareInfo(this.data.payRowId).then(res => {
+    declareLoanInfo({ id: this.data.repaymentBillId }).then(res => {
       console.log(res, '详情')
-      if (res.ret) {
-        let arr = []
-        if (res.data) {
-          wx.setStorageSync('overdueStatus', res.data.overdue_status)
-          if (res.data.list.length > 0) {
-            arr = res.data.list[0].list
-          } else {
-            arr = res.data.list
-          }
-          this.setData({
-            deatilObj: res.data,
-            taxList: arr
-          })
-        }
-      }
-    })
-  },
-
-  getUserId(value) {
-    let id = undefined;
-    if (value) {
-      id = value;
-      wx.setStorageSync('payRowId', value);
-    } else {
-      id = wx.getStorageSync('payRowId');
-      this.setData({
-        showBtn: true
-      })
-    }
-    this.setData({
-      payRowId: id
+      // if (res.ret) {
+      //   let arr = []
+      //   if (res.data) {
+      //     wx.setStorageSync('overdueStatus', res.data.overdue_status)
+      //     if (res.data.list.length > 0) {
+      //       arr = res.data.list[0].list
+      //     } else {
+      //       arr = res.data.list
+      //     }
+      //     this.setData({
+      //       deatilObj: res.data,
+      //       taxList: arr
+      //     })
+      //   }
+      // }
     })
   },
   renderPage(value) {
@@ -142,7 +125,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options, '获取跳转页面的参数')
-    this.getUserId(options.id)
+    this.setData({
+      repaymentBillId: options.id
+    })
     this.renderPage(options.type)
   },
 
@@ -172,7 +157,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    // wx.clearStorageSync('payRowId');
+
   },
 
   /**
