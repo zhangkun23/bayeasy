@@ -25,15 +25,17 @@
 }
 
 .orangeTips {
-  color: #FFA42E;
+  color: #FFA42E !important;
 }
 
 .orangeBack {
-  background: #FEF8E5;
+  background: #FEF8E5 !important;
 }
-
+.buleTips {
+  color: #1D83F0 !important;
+}
 .greennTips {
-  color: #46CF84;
+  color: #46CF84 !important;
 }
 
 .font-600 {

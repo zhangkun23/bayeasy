@@ -1,10 +1,17 @@
 <view class="taxConfirmation bgColog">
-  <mp-navigation-bar ext-class="navigationBar" title="申报税款确认记录" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
   <scroll-view scroll-y="true">
     <view class="taxConfirmation__container">
-      <view class="taxConfirmation__btn font-size-24">
-        <text class="taxConfirmation__button">确认记录</text>
-      </view>
+      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-01-01" bindchange="bindDateChange" fields="year">
+        <view class="taxConfirmation__header">
+          <view>
+            <text class="year">记录年度</text>
+            <text class="years">{{date}}</text>
+          </view>
+          <image class="taxConfirmation__header-icon" src="{{dateIcon}}"></image>
+        </view>
+      </picker>
+
       <view class="taxConfirmation__list" wx:if="{{!isShowList}}">
         <view class="taxConfirmation__list-item" wx:for="{{allDeclareList}}" wx:for-item="list" wx:key="id">
           <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
@@ -13,8 +20,6 @@
                 <image class="item__header-image" src="{{listIcon}}"></image>
                 <text class="item__header-text">申报月份：{{list.declare_month}}</text>
               </view>
-              <text class="item__header-tips orangeTips font-size-24" wx:if="{{list.status==1}}">待确认</text>
-              <text class="item__header-tips orangeTips font-size-24" wx:if="{{list.status==2}}">已确认</text>
             </view>
             <view class="item__center font-size-24">
               <view class="item__text">
@@ -28,13 +33,6 @@
               <view class="item__text">
                 <text class="item__center-title">确认时间：</text>
                 <text class="item__center-title">{{list.confirm_date}}</text>
-              </view>
-              <view class="securityCheck__topTips orangeTips orangeBack font-size-24">
-                <view class="securityCheck__topTips-icon">
-                  <image src="{{info_max}}"></image>
-                </view>
-                <text wx:if="{{list.overdue_status == 0}}">请尽快确认税额，申报征期已过纳税信誉产生影响！</text>
-                <text wx:if="{{list.overdue_status == 1}}">请您尽快确认税额，以免影响申报进度</text>
               </view>
             </view>
           </view>
