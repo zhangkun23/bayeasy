@@ -176,8 +176,8 @@
     padding-left: 6rpx;
 }
 .btn{
-    margin: 0 125rpx;
-    margin-top: 100rpx;
+    margin: 100rpx 125rpx;
+
 }
 .btn__text{
     font-size: 24rpx;

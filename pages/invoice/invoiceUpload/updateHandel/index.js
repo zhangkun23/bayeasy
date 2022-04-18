@@ -70,7 +70,7 @@ Page({
     },
     // 现实删除弹框
     clearImg(){
-        if(this.data.form.link){
+        if(this.data.form.file_url){
             this.setData({
                 isShowModal:true
             })

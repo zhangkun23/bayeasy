@@ -6,10 +6,10 @@
             <view >存在异常数据，请优先处理</view>
         </view>
         <!-- 提交完成阶段 错误提示 -->
-        <view class="errInfo" >
+        <view class="errInfo" wx:if="{{returnErrInfoShow}}">
             <image src="{{info_max}}" />
             <view>
-                本次 6 张发票提交成功,存在 3 张提交失败的发票 
+                本次 {{invoiceRightNum}} 张发票提交成功,存在 {{invoiceErrNum}} 张提交失败的发票 
             </view>
             <text class="errInfo__text" bindtap="errInfoCloseOrShow">查看</text>
         </view>
@@ -27,43 +27,45 @@
     </view>
 
     <view class="invoice" wx:if="{{status!=2}}">
-        <view class="item" wx:for="{{updateImgOrPdfArr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-            <view class="item__top">
-                <image class="item__top__invoice" src="{{item.type=='img'?item.link:item.linkPdf}}" />
-            </view>
-            <view class="item__bottom" wx:if="{{item.linkInfo}}">
-                <view class="item__bottom__title">{{item.requestStatus?item.linkInfo.seller_name:'----'}}</view>
-                <view class="item__bottom__text">{{item.requestStatus?item.linkInfo.invoice_type:'----'}}</view>
-                <view class="item__bottom__text">{{item.requestStatus?item.linkInfo.invoice_dm:'----'}}</view>
-                <!-- 成功状态 -->
-                <view class="item__bottom__info" wx:if="{{item.requestStatus}}">
-                    <view>
-                        <image src="{{updateHandel_rigth}}" />
-                        <text class="item__info_right">查验通过</text>
+        <block wx:for="{{updateImgOrPdfArr}}" wx:for-item="item" wx:for-index="index" wx:key="index" >
+            <view class="item" data-index="{{index}}" data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail">
+                <view class="item__top">
+                    <image class="item__top__invoice" src="{{item.type=='img'?item.link:item.linkPdf}}" />
+                </view>
+                <view class="item__bottom" wx:if="{{item.linkInfo}}">
+                    <view class="item__bottom__title">{{item.requestStatus?item.linkInfo.seller_name:'----'}}</view>
+                    <view class="item__bottom__text">{{item.requestStatus?item.linkInfo.invoice_type:'----'}}</view>
+                    <view class="item__bottom__text">{{item.requestStatus?item.linkInfo.invoice_dm:'----'}}</view>
+                    <!-- 成功状态 -->
+                    <view class="item__bottom__info" wx:if="{{item.requestStatus}}">
+                        <view>
+                            <image src="{{updateHandel_rigth}}" />
+                            <text class="item__info_right">查验通过</text>
+                        </view>
+                        <image src="{{close_null}}" data-index="{{index}}" data-id="{{item.linkInfo.id}}" catchtap="removeItem" />
                     </view>
-                    <image src="{{close_null}}" data-index="{{index}}" bindtap="removeItem" />
-                </view>
-                <!-- 失败状态 -->
-                <view class="item__bottom__info" wx:if="{{!item.requestStatus}}">
-                    <view>
-                        <image src="{{updateHandel_err}}" />
-                        <text class="item__info_error">查验失败</text>
+                    <!-- 失败状态 -->
+                    <view class="item__bottom__info" wx:if="{{!item.requestStatus}}">
+                        <view>
+                            <image src="{{updateHandel_err}}" />
+                            <text class="item__info_error">{{item.message}}</text>
+                        </view>
+                        <image src="{{close_info}}" data-index="{{index}}" catchtap="removeItem" />
                     </view>
-                    <image src="{{close_info}}" data-index="{{index}}" bindtap="removeItem" />
+                </view>
+                <!-- 默认状态 -->
+                <view class="item__bottom" wx:else>
+                    <view class="item__bottom__info">
+                        <view>{{index}}</view>
+                        <image src="{{close_null}}" data-index="{{index}}" catchtap="removeItem" />
+                    </view>
+                </view>
+                <view wx:if="{{item.loaddingActive}}" class="itemLoadding">
+                    <image src="{{loadding}}" />
                 </view>
             </view>
-            <!-- 默认状态 -->
-            <view class="item__bottom" wx:else>
-                <view class="item__bottom__info">
-                    <view>{{index}}</view>
-                    <image src="{{close_null}}" data-index="{{index}}" bindtap="removeItem" />
-                </view>
-            </view>
-            <view wx:if="{{item.loaddingActive}}" class="itemLoadding">
-                <image src="{{loadding}}" />
-            </view>
-        </view>
 
+        </block>
         <!-- 上传 -->
         <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<9 && status==0}}">
             <view class="item__top addImage__felx">
@@ -77,10 +79,12 @@
             </view>
         </view>
     </view>
+
+
     <view class="btn" wx:if="{{status!=2}}">
         <view class="btn__text" wx:if="{{status==0}}">一次性最多仅支持上传9张发票图片</view>
-        <view wx:if="{{active}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
-        <view wx:if="{{!active}}"class="btn__button btn__active_un">下一步</view>
+        <view wx:if="{{active && errInfoNum==0}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
+        <view wx:else class="btn__button btn__active_un">下一步</view>
     </view>
 
 
@@ -93,5 +97,5 @@
 
 </view>
 <!-- 提交错误提示 -->
-<updateImageInfo_errInfo errInfoShow="{{errInfoShow}}" bind:errInfoCloseOrShow="errInfoCloseOrShow" />
+<updateImageInfo_errInfo errInfoShow="{{errInfoShow}}" errInfo="{{errInfo}}" bind:errInfoCloseOrShow="errInfoCloseOrShow" />
 <!-- <service class="servicePosition"></service> -->

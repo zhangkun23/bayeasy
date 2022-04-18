@@ -23,7 +23,6 @@
     "pages/invoice/invoiceUpload/address/index",
     "pages/invoice/invoiceUpload/updateImg/index",
     "pages/invoice/invoiceUpload/updateImgDetail/index",
-    "pages/invoice/invoiceUpload/updateImgSuccess/index",
     "pages/invoice/invoiceUpload/updateImgInfo/index",
     "pages/invoice/invoiceUpload/updateHandel/index",
     "pages/invoice/invoiceUpload/updateHandelSuccess/index",
