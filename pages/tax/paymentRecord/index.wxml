@@ -1,2 +1,47 @@
 <!--pages/tax/paymentRecord/index.wxml-->
-<text>pages/tax/paymentRecord/index.wxml</text>
+<view class="taxConfirmation bgColog">
+  <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
+  <scroll-view scroll-y="true">
+    <view class="taxConfirmation__container">
+      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-01-01" bindchange="bindDateChange" fields="year">
+        <view class="taxConfirmation__header">
+          <view>
+            <text class="year">记录年度</text>
+            <text class="years">{{date}}</text>
+          </view>
+          <image class="taxConfirmation__header-icon" src="{{dateIcon}}"></image>
+        </view>
+      </picker>
+
+      <view class="taxConfirmation__list" wx:if="{{!isShowList}}">
+        <view class="taxConfirmation__list-item" wx:for="{{allDeclareList}}" wx:for-item="list" wx:key="id">
+          <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
+            <view class="item__header">
+              <view class="item__header-date">
+                <image class="item__header-image" src="{{listIcon}}"></image>
+                <text class="item__header-text">申报月份：{{list.declare_month}}</text>
+              </view>
+            </view>
+            <view class="item__center font-size-24">
+              <view class="item__text">
+                <text class="item__center-title">应补税额合计：</text>
+                <text class="orangeTips font-600">{{list.should_pay_tax}}</text>
+              </view>
+              <view class="item__text">
+                <text class="item__center-title">应退税额合计：</text>
+                <text class="greennTips font-600">{{list.should_refund_tax}}</text>
+              </view>
+              <view class="item__text">
+                <text class="item__center-title">缴纳税款合计：</text>
+                <text class="item__center-title">{{list.already_pay_tax}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="taxConfirmation__nodata" wx:else>
+        <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+      </view>
+    </view>
+  </scroll-view>
+</view>

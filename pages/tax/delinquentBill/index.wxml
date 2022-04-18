@@ -1,2 +1,43 @@
 <!--pages/tax/delinquentBill/index.wxml-->
-<text>pages/tax/delinquentBill/index.wxml</text>
+<view class="delinquentBill">
+  <mp-navigation-bar ext-class="navigationBar" color="#1D83F0" title="申报欠款账单" bindback="backIndex"></mp-navigation-bar>
+  <view class="taxConfirmation__container">
+    <image src="../../../image/modal/arrearsBack.png"></image>
+    <view class="taxConfirmation__btn font-size-24" bindtap="sureRecord">
+      <text class="taxConfirmation__tips">还款账单</text>
+    </view>
+    <view class="delinquentBill__account">
+      <view class="delinquentBill__account-title font-600">申报欠款总额</view>
+      <view class="delinquentBill__account-money font-600">￥{{totalLoanAmount}}</view>
+    </view>
+    <view class="taxConfirmation__list" wx:if="{{!isShowList}}">
+      <view class="taxConfirmation__list-item" wx:for="{{allLoanList}}" wx:for-item="list" wx:key="id">
+        <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
+          <view class="item__header">
+            <view class="item__header-date">
+              <image class="item__header-image" src="{{listIcon}}"></image>
+              <text class="item__header-text">申报月份：{{list.declare_date}}</text>
+            </view>
+          </view>
+          <view class="item__center font-size-24">
+            <view class="item__text">
+              <text class="item__center-title">欠款金额合计：</text>
+              <text class="orangeTips font-600 orangeTips">{{list.loan_amount}}</text>
+            </view>
+            <view class="item__text">
+              <text class="item__center-title">支付方式：</text>
+              <text class="item__center-title">{{list.loan_mode}}</text>
+            </view>
+            <view class="item__text">
+              <text class="item__center-title">欠款时间：</text>
+              <text class="item__center-title">{{list.created_at}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="taxConfirmation__nodata" wx:else>
+      <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+    </view>
+  </view>
+</view>

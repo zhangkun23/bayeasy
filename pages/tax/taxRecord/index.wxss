@@ -11,6 +11,32 @@
   align-items: flex-end;
 }
 
+.taxConfirmation__header {
+  display: flex;
+  justify-content: space-between;
+  width: 686rpx;
+  /* height: 88rpx; */
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  font-size: 28rpx;
+  padding: 23rpx 0;
+  margin-bottom: 32rpx;
+}
+
+.year {
+  margin-left: 61rpx;
+  margin-right: 40rpx;
+}
+.years{ 
+  color: #1D83F0;
+}
+
+.taxConfirmation__header-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 45rpx;
+}
+
 .taxConfirmation__btn {
   width: 146rpx;
   height: 50rpx;
@@ -105,10 +131,12 @@
   width: 24rpx;
   height: 24rpx;
 }
+
 .taxConfirmation__nodata {
   margin: 240rpx auto;
 }
+
 .taxConfirmation__image {
   width: 370rpx;
-    height: 300rpx;
+  height: 300rpx;
 }

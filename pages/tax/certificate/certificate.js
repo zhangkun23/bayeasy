@@ -1,5 +1,4 @@
-// pages/tax/Successfully/index.js
-
+// pages/tax/certificate/certificate.js
 const tempPath = getApp().globalData.imgPath;
 
 Page({
@@ -9,33 +8,20 @@ Page({
    */
   data: {
     info_max: tempPath + "public/info_max.png",
-    showTips: false,
-    tax: 800
+
   },
-  backTaxIndex() {
-    wx.navigateTo({
-      url: '../taxreturn/index',
+
+  // 返回欠款详情页
+  backIndex(){
+    wx.reLaunch({
+      url: '../billingDetail/billingDetail',
     })
-  },
-  gotoReult() {
-    wx.navigateTo({
-      url: '../deatil/deatil?type=result',
-    })
-  },
+  },  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let key = wx.getStorageSync('overdueStatus');
-    if (key == 0) {
-      this.setData({
-        showTips: true
-      })
-    } else if (key == 1) {
-      this.setData({
-        showTips: false
-      })
-    }
+
   },
 
   /**

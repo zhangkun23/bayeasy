@@ -1,7 +1,20 @@
+<!--pages/tax/billingDetail/billingDetail.wxml-->
+
 <view class="detail bgColog">
-  <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar" title="欠款详情" bindback="backIndex"></mp-navigation-bar>
   <view class="detail__container">
-    {{returnType}} -- {{deatilObj.overdue_status}}
+    <view class="detail__topTips orangeTips orangeBack font-size-24">
+      <view class="detail__topTips-icon">
+        <image src="{{info_max}}"></image>
+      </view>
+      <text>对账单有疑问，请联系客服全程为您协调</text>
+    </view>
+   <view class="detail__information">
+     <view class="info1 font-600">欠款信息</view>
+     <view class="info2 font-size-24" bindtap="goToCertificate">
+       <text class="text">查看凭证</text>
+     </view>
+   </view>
     <view wx:if="{{returnType == 'list'}}" class="detail__topTips orangeTips orangeBack font-size-24">
       <view class="detail__topTips-icon">
         <image src="{{info_max}}"></image>
@@ -86,11 +99,8 @@
           </view>
         </view>
       </view>
-      <view disabled="{{didClick}}" wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn" style="background:{{backgroundColor}};box-shadow:{{boxShadow}}">税金确认无误{{splicingStr}}</view>
+      <!-- <view disabled="{{didClick}}" wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn" style="background:{{backgroundColor}};box-shadow:{{boxShadow}}">税金确认无误{{splicingStr}}</view> -->
     </view>
   </view>
 
-  <block wx:if="{{isShowModal}}">
-    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
-  </block>
 </view>
