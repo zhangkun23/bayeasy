@@ -1,6 +1,9 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
-  }
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "my-service": "/components/service/service"
+  },
+  "disableScroll": true
+
 }

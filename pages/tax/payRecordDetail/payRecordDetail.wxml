@@ -1,103 +1,103 @@
 <!--pages/tax/payRecordDetail/payRecordDetail.wxml-->
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="申报缴纳明细" bindback="backIndex"></mp-navigation-bar>
-  <view class="detail__container">
-    <view class="detail__time">
-      <view class="item__container">
-        <view class="item__header">
-          <view class="item__header-date">
-            <image class="item__header-image" src="{{listIcon}}"></image>
+  <scroll-view scroll-y="true" class="wrapper">
+    <view class="detail__container">
+      <view class="detail__time">
+        <view class="item__container">
+          <view class="item__header">
+            <view class="item__header-date">
+              <image class="item__header-image" src="{{listIcon}}"></image>
+            </view>
+            <text class="item__header-text">申报月份</text>
           </view>
-          <text class="item__header-text">申报月份</text>
-        </view>
-        <view class="item__center-tips font-600">{{ deatilObj.declare_month }}</view>
-        <view class="item__center font-size-24">
-          <view class="item__text space-between">
-            <view class="item__center-title">应补税额合计</view>
-            <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
+          <view class="item__center-tips font-600">{{ deatilObj.declare_month }}</view>
+          <view class="item__center font-size-24">
+            <view class="item__text space-between">
+              <view class="item__center-title">应补税额合计</view>
+              <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
+            </view>
+            <view class="item__text space-between triangle">
+              <view class="position">
+                <view class="bubble" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+              </view>
+              <view class="item__center-title">
+                应退税额合计
+                <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
+              </view>
+              <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
+            </view>
+            <view class="item__text space-between">
+              <view class="item__center-title">缴纳税额合计</view>
+              <view class="item__center-title">{{deatilObj.already_pay_tax}}</view>
+            </view>
           </view>
-          <view class="item__text space-between triangle">
-            <view class="position">
-              <view class="bubble" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
-            </view>
-            <view class="item__center-title">
-              应退税额合计
-              <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
-            </view>
-            <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
+        </view>
+        {{taxList}} -- taxList
+        <!-- <view class="detail__tax">纳税明细</view> -->
+        <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
+        <view class="display-flex list__one">
+          <view class="list__one-center display-flex">
+            <view class="btns default" wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category">{{item.tax_category}}</view>
+            <view class="btns default">22adj</view>
+            <view class="btns default">22adj</view>
           </view>
-          <view class="item__text space-between">
-            <view class="item__center-title">缴纳税额合计</view>
-            <view class="item__center-title">{{deatilObj.already_pay_tax}}</view>
+          <view class="list__one-plus" bindtap="addTaxItem">
+            <text style="color:#1d83ef;">+</text>
           </view>
         </view>
-      </view>
-
-      <!-- <view class="detail__tax">纳税明细</view> -->
-      <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
-      <view class="display-flex list__one">
-        <view class="list__one-center display-flex">
-          <view class="btn bluebtn">22adj</view>
-          <view class="btn bluebtn">22adj</view>
-          <view class="btn bluebtn">22adj</view>
-        </view>
-        <view class="list__one-plus" bindtap="addTaxItem">
-          <text style="color:#1d83ef;">+</text>
-        </view>
-      </view>
-      <!-- 明细内容 -->
-      <view class="detail__taxDetail" wx:if="{{taxList.length > 0}}">
-        <view class="detail__list" wx:for="{{taxList}}" wx:for-item="item" wx:key="id">
-          <view class="detail__list-title font-600">{{item.tax_item}}</view>
-          <view class="font-size-24 detail__taxDetail-content">
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">征收品目</text>
-              <text class="detail__content-text">{{item.tax_item}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">税（费）款所属期起止</text>
-              <text class="detail__content-text">{{item.tax_time}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">纳税期限</text>
-              <text class="detail__content-text">{{item.declare_period}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">申报期限</text>
-              <text class="detail__content-text">{{item.declare_limit}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">申报日期</text>
-              <text class="detail__content-text">{{item.declare_date}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">申报状态</text>
-              <text class="detail__content-text">{{item.status}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">缴款日期</text>
-              <text class="detail__content-text">{{item.pay_date}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">缴款状态</text>
-              <text class="detail__content-text">{{item.pay_status}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title font-600 orangeTips">应补税额</text>
-              <text class="orangeTips">{{item.should_pay_tax}}</text>
+        <!-- 明细内容 -->
+        <view class="detail__taxDetail" wx:if="{{detailList.length > 0}}">
+          <view class="detail__list" wx:for="{{detailList}}" wx:for-item="item" wx:key="id">
+            <view class="detail__list-title font-600">{{item.tax_item}}</view>
+            <view class="font-size-24 detail__taxDetail-content">
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">征收品目</text>
+                <text class="detail__content-text">{{item.tax_item}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">税（费）款所属期起止</text>
+                <text class="detail__content-text">{{item.tax_time}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">纳税期限</text>
+                <text class="detail__content-text">{{item.declare_period}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">申报期限</text>
+                <text class="detail__content-text">{{item.declare_limit}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">申报日期</text>
+                <text class="detail__content-text">{{item.declare_date}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">申报状态</text>
+                <text class="detail__content-text">{{item.status}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">缴款日期</text>
+                <text class="detail__content-text">{{item.pay_date}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">缴款状态</text>
+                <text class="detail__content-text">{{item.pay_status}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title font-600 orangeTips">应补税额</text>
+                <text class="orangeTips">{{item.should_pay_tax}}</text>
+              </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
+  </scroll-view>
 
-  <block wx:if="{{isShowModal}}">
+  <!-- <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
-  </block>
-  <block>
-    <view>
-      
-    </view>
-  </block>
+  </block> -->
+  <!-- wx:if="{{showTaxList}}" -->
+  <list></list>
+
 </view>

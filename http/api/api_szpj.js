@@ -11,11 +11,11 @@ module.exports = {
      * 获取收入账单发票列表
      */
     get_all_invoices: (param) => {
-        return request(api+'/invoice/list', 'GET', {});
+        return request(api + '/invoice/list', 'GET', {});
     },
 
     get_invoice_detail: (iid) => {
-        return request(api+'/invoice/info?id=' + iid, 'GET', {});
+        return request(api + '/invoice/info?id=' + iid, 'GET', {});
     },
     /**
      * 申请开电子票
@@ -59,4 +59,9 @@ module.exports = {
     delDeductInvoiceFile: (id) => {
         return request(api + '/deduct_invoice/del_deduct_invoice_file?id='+id, 'GET', {});
     },
+
+    // 获取成本发票详情
+    getAcquisitionDetails: (id) => {
+        return request(api + '/deduct_invoice/info?id=' + id, 'GET', {});
+    }
 }

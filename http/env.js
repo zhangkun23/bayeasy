@@ -27,5 +27,8 @@
         //线上环境url
         prod:{
             baseUrl
+        },
+        prod_host: {
+            baseUrl
         }
     }

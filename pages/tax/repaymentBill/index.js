@@ -12,6 +12,11 @@ Page({
     listIcon: tempPath + 'tax/taxreturn/list.png',
     allRepaymentList: []
   },
+  backIndex() {
+    wx.navigateTo({
+      url: 'pages/tax/taxreturn/index',
+    })
+  },
   getrepaymentList() {
     repaymentList({page_size: 10}).then(res => {
       console.log(res)

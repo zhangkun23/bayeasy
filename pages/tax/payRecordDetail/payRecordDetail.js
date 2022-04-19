@@ -1,7 +1,6 @@
-
 const tempPath = getApp().globalData.imgPath;
 const {
-  declareLoanInfo
+  declareInfo
 } = require('../../../http/api/api_csbl');
 Page({
 
@@ -12,11 +11,13 @@ Page({
     listIcon: tempPath + 'tax/taxreturn/list.png',
     info_max: tempPath + "public/info_max.png",
     deatilObj: {},
-    repaymentBillId: 0 ,
-    taxList: [], // 明细列表
+    repaymentBillId: 0,
+    detailList: [], // 明细列表
+    taxList: [], // 税种列表
     isShowModal: false,
     showBtn: false,
     didClick: true,
+    showTaxList: false,
     returnType: '',
   },
 
@@ -65,20 +66,24 @@ Page({
         id: wx.getStorageSync('payRowId')
       }
       if (this.data.time == 1) {
-        // confirmdeclare(params).then(res => {
-        //   console.log(res)
-        //   if (res.ret) {
-        wx.navigateTo({
-          url: '../successfully/index?typs=list',
+        confirmdeclare(params).then(res => {
+          console.log(res)
+          if (res.ret) {
+            wx.navigateTo({
+              url: '../successfully/index?typs=list',
+            })
+          }
         })
-        //   }
-        // })
       }
     }
   },
   addTaxItem() {
-
+    // console.log()
+    this.setData({
+      showTaxList: true
+    })
   },
+
   showToast() {
     this.setData({
       showTips: true
@@ -86,23 +91,25 @@ Page({
   },
   // 获取详情
   getdeclareInfo() {
-    declareLoanInfo({ id: this.data.repaymentBillId }).then(res => {
+    declareInfo(this.data.repaymentBillId).then(res => {
       console.log(res, '详情')
-      // if (res.ret) {
-      //   let arr = []
-      //   if (res.data) {
-      //     wx.setStorageSync('overdueStatus', res.data.overdue_status)
-      //     if (res.data.list.length > 0) {
-      //       arr = res.data.list[0].list
-      //     } else {
-      //       arr = res.data.list
-      //     }
-      //     this.setData({
-      //       deatilObj: res.data,
-      //       taxList: arr
-      //     })
-      //   }
-      // }
+      if (res.ret) {
+        let arr = []
+        if (res.data.list.length > 0) {
+          arr = res.data.list[0].list
+        } else {
+          arr = res.data.list
+        }
+        this.setData({
+          deatilObj: res.data,
+          detailList: arr,
+          taxList: res.data.category
+        })
+      } else {
+        wx.showToast({
+          title: '接口请求失败',
+        })
+      }
     })
   },
   renderPage(value) {

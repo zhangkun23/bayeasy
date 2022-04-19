@@ -30,7 +30,6 @@ Page({
         showEmtpy: false
     },
     onLoad: function () {
-        // wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0LmdzaC5jb21cL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NDkyMTU5NzAsImV4cCI6MTY1NTIxNTk3MCwibmJmIjoxNjQ5MjE1OTcwLCJqdGkiOiJZcjFTcmdlUmFwYXlSV3VzIiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.RTNVccoegm36Owl5SJOBftLppecOwDVdM2YS-K9wSmw')
         var that = this;
         let query = wx.createSelectorQuery().in(this);
         query.select('#search').boundingClientRect();
@@ -47,7 +46,7 @@ Page({
         }
         searchBill(onloadParams).then(res => {
             if (res.ret) {
-                if (res.data.list.length > 0) {
+                if (res.data.list.length === 0) {
                     that.setData({
                         showEmpty: true
                     })
@@ -147,7 +146,7 @@ Page({
     goDetail: function (e) {
         const vid = e.currentTarget.dataset.vid
         wx.navigateTo({
-            url: './invoiceDetails/index?vid=' + vid,
+            url: './invoiceDetails/index?aid=' + vid,
         })
     }
 
