@@ -22,6 +22,7 @@ Component({
     paymentRecord() {
       wx.navigateTo({
         url: '../paymentRecord/index',
+
       })
     },
     delinquentBill() {

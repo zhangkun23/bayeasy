@@ -4,7 +4,7 @@ const util = require('../../../../utils/util')
 const {
     baseUrl
   } = require('../../../../http/env.js').dev; 
-const {submitOcrDeductInvoice} = require('../../../../http/api/api_szpj')
+const {submitOcrDeductInvoice,ocrDeductInvoice} = require('../../../../http/api/api_szpj')
 Page({
 
     /**
@@ -12,6 +12,7 @@ Page({
      */
     data: {
         add_invoice:tempPath + "invoice/incomeInvoice/add_invoice.png",
+        pdfImg:tempPath + "invoice/incomeInvoice/pdfImg.png",
         updateHandel_err: tempPath + "invoice/incomeInvoice/updateHandel_err.png",
         update_status_0: tempPath + "invoice/incomeInvoice/update_status_0.png",
         update_status_1: tempPath + "invoice/incomeInvoice/update_status_1.png",
@@ -25,30 +26,38 @@ Page({
         close_info:tempPath + "invoice/incomeInvoice/close_info.png",
         close_null:tempPath + "invoice/incomeInvoice/close_null.png",
         loadding:tempPath + "public/loadding.png",
-        updateImgOrPdfArr:[
-            // {
-            //     link:'',
-            // },
-            // {
-            //     link:'',
-            //     linkInfo:{
-            //         seller_name:'北京贝易资有限责任公司',
-            //         invoice_type:'增值税专用发票',
-            //         invoice_dm:'098093808543'
-            //     }
-            // }
-        ],
+        updateImgOrPdfArr:[],
         updateImgOrPdfArrNum:0,
         errInfoNum:0, //错误数量
         active:false, //提交按钮状态
         loaddingActive:false, //每张发票loadding
-        status:0, //上传发票 查验发票 提交完成
-        errInfoShow:false
+        status:1, //上传发票 查验发票 提交完成
+        errInfoShow:false,
+        errInfo:[],
+        returnErrInfoShow:false,
+        invoiceRightNum:0, //正确张数
+        invoiceErrNum:0, //失败张数
     },
     errInfoCloseOrShow(){
         this.setData({
             errInfoShow:!this.data.errInfoShow
         })
+    },
+    // 查验发票跳转详情
+    handelClickDetail(e){
+        const data = e.currentTarget.dataset;
+        if(data.type == 'pdf'){
+            wx.openDocument({
+                filePath: data.pdfpath, //要打开的文件路径
+                success: function (res) {
+                  console.log('打开PDF成功');
+                }
+            })
+        }else{
+            wx.setStorageSync('updateImgOrPdfArr',this.data.updateImgOrPdfArr)
+            wx.setStorageSync('index', data.index)
+            util.navigateTo('/pages/invoice/invoiceUpload/updateImgDetail/index')
+        }
     },
     // 选择拍照上传照片
     updateImgOrPdf(){
@@ -103,13 +112,11 @@ Page({
     },
     // 展示pdf
     updatePdf(lastNum){
-        console.log('剩余上传数量'+lastNum)
         const that = this;
         wx.chooseMessageFile({
             count: lastNum,
             type:'file',
             success(res){
-                console.log('选择pdf',res)
                 if (res.tempFiles ) {
                     that.setLink(res.tempFiles,'pdf');
                 }
@@ -149,7 +156,7 @@ Page({
             info.forEach(item => {
                 tempArr.push({
                     'link':item.path,
-                    'linkPdf':tempPath + "invoice/incomeInvoice/add_invoice.png",
+                    'linkPdf':this.data.pdfImg,
                     'loaddingActive':false,
                     'type':type,
                 })
@@ -159,8 +166,6 @@ Page({
             'updateImgOrPdfArr':tempArr,
             'updateImgOrPdfArrNum':this.data.updateImgOrPdfArrNum+info.length,
         })
-        console.log(this.data.updateImgOrPdfArr)
-        // console.log('上传数量'+this.data.updateImgOrPdfArrNum)
         this.setButtonActice();
     },
     // 更新提交按钮状态
@@ -177,6 +182,11 @@ Page({
     },
     // 删除已经上传的文件
     removeItem(e){
+
+        if(this.data.status ==1 && e.currentTarget.dataset.id){
+            this.ocrDeductInvoice(e.currentTarget.dataset.id)
+        }
+
         const index = e.currentTarget.dataset.index;
         let tempArr = this.data.updateImgOrPdfArr;
         tempArr.splice(index,1)
@@ -185,19 +195,34 @@ Page({
             'updateImgOrPdfArrNum':tempArr.length,
             'errInfoNum':this.data.errInfoNum-1<0?0:this.data.errInfoNum-1
         })
+        // 删除了全部文件 状态变更问上传发票阶段
         if(this.data.updateImgOrPdfArrNum == 0){
             this.setData({
                 active:false,
                 status:0
             })
         }
-        console.log(this.data.updateImgOrPdfArrNum)
+        // 查验阶段删除错误发票 更改提交按钮状态
+        if(this.data.updateImgOrPdfArrNum != 0 && this.data.errInfoNum==0 ){
+            this.setData({
+                active:true
+            })
+        }
+    },
+    // 删除已经识别的发票
+    ocrDeductInvoice(id){
+        ocrDeductInvoice(id).then(res => {
+            if(!res.ret){
+                wx.showToast({
+                    title: res.message,
+                    icon: 'none',
+                })
+            }
+        })
     },
 
-    // 上传dpf/img
-    addPdfOrImg(imageOrPdfPath){
-        // this.submitOcrDeductInvoice();
-        // return;
+    // 上传发票--》查验发票
+    ocrDeductInvoice(){
         const temp = this.data.updateImgOrPdfArr;
         this.setData({
             'updateImgOrPdfArr':temp.map(item => {
@@ -226,6 +251,7 @@ Page({
                     }else{
                         temp[index].linkInfo = {};
                         temp[index].requestStatus = res.ret
+                        temp[index].message = res.message
                         that.setData({
                             errInfoNum:that.data.errInfoNum+1
                         })
@@ -233,7 +259,6 @@ Page({
                     that.setData({
                         'updateImgOrPdfArr':temp
                     })
-                    console.log(that.data.updateImgOrPdfArr)
                 },
                 fail: function (res) {
                     wx.hideLoading();
@@ -242,11 +267,41 @@ Page({
             })
         })
     },
+    // 查验发票---》提交完成
     submitOcrDeductInvoice(){
-        let tempArr = [1,2,3,4,5]
-        submitOcrDeductInvoice({ids:tempArr}).then( res => {
-            console.log(res)
+        const data = this.data.updateImgOrPdfArr;
+        let tempArr = [];
+        data.map(item => {
+            tempArr.push(item.linkInfo.id) 
         })
+        submitOcrDeductInvoice({ids:tempArr}).then( res => {
+            if(res.ret){
+                const info = res.data;
+                const errNum = info.error_data.length;
+                this.setData({
+                    status:2,
+                    errInfo:info.error_list,
+                    returnErrInfoShow:true,
+                    invoiceRightNum: tempArr.length-errNum,
+                    invoiceErrNum:errNum
+                })
+                wx.removeStorageSync("updateImgOrPdfArr")
+                wx.removeStorageSync("index")
+            }else{
+                wx.showToast({
+                    title: res.message,
+                    icon: 'none',
+                })
+            }
+        })
+    },
+    // 上传pdf/img
+    addPdfOrImg(){
+        if(this.data.status ==0 ){
+            this.ocrDeductInvoice();
+        }else if(this.data.status == 1){
+            this.submitOcrDeductInvoice();
+        }
     },
     jumpAddress(){
         util.navigateTo('/pages/invoice/invoiceUpload/address/index')
@@ -254,36 +309,57 @@ Page({
     handelClick(){
         util.navigateTo('/pages/invoice/acquisitionCost/index')
     },
-    ocrDeductInvoice(){
-        
-    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        if(this.data.status==1){
+            const info = wx.getStorageSync('updateImgOrPdfArr');
+            if(info){
+                let errNum = 0;
+                info.map(item => {
+                    if(!item.requestStatus){
+                        errNum = errNum+1;
+                    }
+                })
+                this.setData({
+                    updateImgOrPdfArr: wx.getStorageSync('updateImgOrPdfArr'),
+                    errInfoNum:errNum, //错误数量
+                    status:1, //上传发票 查验发票 提交完成
+                })
+                // 提交按钮
+                if(errNum==0){
+                    this.setData({
+                        active:true
+                    })
+                }
+            }else{
+                this.setData({
+                    updateImgOrPdfArr: [],
+                    errInfoNum:0, //错误数量
+                    status:0, //上传发票 查验发票 提交完成
+                })
+            }
+        }
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**

@@ -8,18 +8,18 @@ Component({
         errInfo: { //input名称
             type: Object,
             value: [
-                {
-                    invoice_hm:123123123,
-                    invoice_type: 2,
-                    seller_name: '北京上帝',
-                    message: '该发票已存在，请勿重复提交！'
-                },
-                {
-                    invoice_hm:23423423,
-                    invoice_type: 2,
-                    seller_name: '难听们',
-                    message: '该发票已存在，请勿重复提交！'
-                },
+                // {
+                //     invoice_hm:123123123,
+                //     invoice_type: 2,
+                //     seller_name: '北京上帝',
+                //     message: '该发票已存在，请勿重复提交！'
+                // },
+                // {
+                //     invoice_hm:23423423,
+                //     invoice_type: 2,
+                //     seller_name: '难听们',
+                //     message: '该发票已存在，请勿重复提交！'
+                // },
             ]
         },
         errInfoShow:{
@@ -33,7 +33,8 @@ Component({
      */
     data: {
         info_max: tempPath + "public/info_max.png",
-
+        close:tempPath + "public/inputClose.png",
+        pdfImg:tempPath + "invoice/incomeInvoice/pdfImg.png",
     },
 
     /**

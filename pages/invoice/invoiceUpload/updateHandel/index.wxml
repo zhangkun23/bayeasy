@@ -29,7 +29,7 @@
         <view class="updateInfo">
             <view class="updateInfo_name">上传图片凭证</view>
             <view class="updateInfo_box" bindtap="updateImage">
-                <image src="{{close}}" class="close" catchtap="clearImg" />
+                <image wx:if="{{form.file_url}}" src="{{close}}" class="close" catchtap="clearImg" />
                 <image src="{{form.file_url}}" class="invoiceImg" />
                 <image wx:if="{{addImgStatus}}" src="{{addImg}}" class="addImg" />
             </view>
@@ -38,8 +38,8 @@
         <view wx:if="{{submit}}" class="submit" bindtap="subbmint">提交查验</view>
         <view wx:if="{{!submit}}" class="submitDiesable" >提交查验</view>
 
-        <view class="submitDiesable" bindtap="jump">成功</view>
-        <view class="submitDiesable" bindtap="jump2">失败</view>
+        <!-- <view class="submitDiesable" bindtap="jump">成功</view>
+        <view class="submitDiesable" bindtap="jump2">失败</view> -->
     </view>
 
     <block wx:if="{{isShowModal}}">

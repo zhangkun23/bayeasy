@@ -1,5 +1,4 @@
-// pages/tax/Successfully/index.js
-
+// pages/tax/components/list/list.js
 const tempPath = getApp().globalData.imgPath;
 
 Page({
@@ -8,34 +7,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info_max: tempPath + "public/info_max.png",
-    showTips: false,
-    tax: 800
+    inputClose: tempPath + "public/inputClose.png",
+    checkArr: [],
+    showList: true
   },
-  backTaxIndex() {
-    wx.navigateTo({
-      url: '../taxreturn/index',
+
+  close() {
+    this.setData({
+      showList: false
     })
   },
-  gotoReult() {
-    wx.navigateTo({
-      url: '../deatil/deatil?type=result',
-    })
+  //  选中当前项
+  checkedItem(value) {
+    console.log(value)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let key = wx.getStorageSync('overdueStatus');
-    if (key == 0) {
-      this.setData({
-        showTips: true
-      })
-    } else if (key == 1) {
-      this.setData({
-        showTips: false
-      })
-    }
+
   },
 
   /**

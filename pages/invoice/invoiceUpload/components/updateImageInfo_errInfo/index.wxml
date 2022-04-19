@@ -5,20 +5,22 @@
     <view class="count" >
         <view class="title titleBottom">
             <view >失败发票明细</view>
-            <image src="{{info_max}}" catchTap="handelClick" />
+            <image src="{{close}}" catchTap="handelClick" />
         </view>
 
-        <view class="err__item" wx:for="{{errInfo}}" wx:for-item="item" wx:key="index">
-            <view class="title">
-                <view >失败发票明细</view>
-                <view>{{item.invoice_type}}</view>
-            </view>
-            <view class="gsName">
-                {{item.seller_name}}
-            </view>
-            <view class="err__info">
-                <image src="{{info_max}}"  />
-                提交失败原因：{{item.message}}
+        <view class="handelAuto">
+            <view class="err__item" wx:for="{{errInfo}}" wx:for-item="item" wx:key="index">
+                <view class="title">
+                    <view >{{item.invoice_type}}</view>
+                    <view>{{item.invoice_hm}}</view>
+                </view>
+                <view class="gsName">
+                    {{item.seller_name}}
+                </view>
+                <view class="err__info">
+                    <image src="{{info_max}}"  />
+                    提交失败原因：{{item.message}}
+                </view>
             </view>
         </view>
     </view>

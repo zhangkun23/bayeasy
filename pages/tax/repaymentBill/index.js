@@ -1,41 +1,53 @@
-// pages/tax/Successfully/index.js
-
+// pages/tax/repaymentBill/index.js
 const tempPath = getApp().globalData.imgPath;
-
+const {
+  repaymentList
+} = require('../../../http/api/api_csbl')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    info_max: tempPath + "public/info_max.png",
-    showTips: false,
-    tax: 800
+    listIcon: tempPath + 'tax/taxreturn/list.png',
+    allRepaymentList: []
   },
-  backTaxIndex() {
+  backIndex() {
     wx.navigateTo({
-      url: '../taxreturn/index',
+      url: 'pages/tax/taxreturn/index',
     })
   },
-  gotoReult() {
+  getrepaymentList() {
+    repaymentList({page_size: 10}).then(res => {
+      console.log(res)
+      if (res.ret) {
+        if(res.data.list.length > 0) {
+          this.setData({
+            isShowList: false,
+            allRepaymentList: res.data.list,
+            totalLoanAmount: res.data.total_loan_amount
+          })
+        } else {
+          this.setData({
+            isShowList: true,
+            totalLoanAmount: '00.00'
+          })
+        }
+      }
+    })
+  },
+  gotoDeatil(event) {
+    let row = event.currentTarget.dataset.row;
+    console.log(row)
     wx.navigateTo({
-      url: '../deatil/deatil?type=result',
+      url: '../billingDetail/billingDetail?id=' + row.id + '&type=repaymentBill'
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let key = wx.getStorageSync('overdueStatus');
-    if (key == 0) {
-      this.setData({
-        showTips: true
-      })
-    } else if (key == 1) {
-      this.setData({
-        showTips: false
-      })
-    }
+    this.getrepaymentList();
   },
 
   /**

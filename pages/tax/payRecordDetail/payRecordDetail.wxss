@@ -1,0 +1,256 @@
+/* pages/tax/payRecordDetail/payRecordDetail.wxss */
+/* pages/tax/deatil/deatil.wxss */
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.font-size-24 {
+  font-size: 24rpx;
+}
+
+.mg-bp-24 {
+  margin-bottom: 24rpx;
+}
+
+
+.detail__topTips {
+  line-height: 36rpx;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 24rpx;
+}
+
+.detail__topTips-icon {
+  display: inline-block;
+  margin-right: 7rpx;
+}
+
+.detail__topTips-icon image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.detail__container {
+  margin: 32rpx;
+}
+
+/* .detail__time {
+} */
+
+.detail__timeout {
+  font-size: 32rpx;
+  color: #283F56;
+  margin-top: 48rpx;
+  margin-bottom: 24rpx;
+}
+
+.detail__time-boxShadow {
+  display: inline-block;
+  width: 72rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  background: rgba(255, 255, 255, 0.48);
+  border-radius: 14rpx;
+  border: 1px solid #FFFFFF;
+  margin: 0 16rpx;
+  color: #1D83F0;
+  /* padding: 13rpx 5rpx; */
+}
+
+.detail__date {
+  text-align: center;
+}
+
+
+.item__container {
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 32rpx;
+  padding: 48rpx 32rpx;
+  margin-bottom: 32rpx;
+  margin-top: 32rpx;
+
+}
+
+.item__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item__center-tips {
+  text-align: center;
+  font-size: 48rpx;
+  color: #283E56;
+}
+
+.item__header-image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+
+.item__header-date {
+  display: flex;
+  justify-content: center;
+}
+
+.item__header-text {
+  font-size: 24rpx;
+  color: #6E87A2;
+
+}
+
+.pd-32 {
+  padding: 0 32rpx 32rpx;
+}
+
+.item__center {
+  padding-top: 24rpx;
+}
+
+.item__text {
+  margin-bottom: 24rpx;
+}
+
+.item__center-title {
+  color: #48617C;
+}
+
+.item__center-image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+
+.detail__tax {
+  margin-bottom: 24rpx;
+}
+
+.detail__taxDetail {
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 32rpx;
+  padding: 48rpx 32rpx;
+  margin-bottom: 64rpx;
+}
+
+.detail__list {
+  margin-bottom: 48rpx;
+}
+
+.detail__list-title {
+  font-size: 28rpx;
+  color: #283E56;
+  padding-bottom: 23rpx;
+  border-bottom: 2rpx dashed #E9ECF3;
+}
+
+.detail__taxDetail-content {
+  margin-top: 23rpx;
+}
+
+.detail__content-title {
+  color: #6E87A2;
+}
+
+.detail__content-text {
+  color: #283E56;
+}
+
+.detail__button {
+  margin: 0 auto 86rpx;
+}
+
+.gray {
+  background: #E5EEF7;
+  box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1);
+}
+
+.blue {
+  background: #1D83F0;
+}
+
+.bubble {
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 16px 50px 14px rgba(0, 0, 0, 0.05), 0px 11px 29px 0px rgba(0, 0, 0, 0.08), 0px 5px 11px -7px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  color: #fff;
+  padding: 20rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  position: relative;
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  left: 136rpx;
+  bottom: -36rpx;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border: 18rpx solid;
+  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+}
+
+.triangle {
+  position: relative;
+}
+
+.position {
+  width: 343rpx;
+  position: absolute;
+  bottom: 57rpx;
+  left: 8rpx;
+}
+
+.list__one {
+  margin-bottom: 32rpx;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.list__one-center {
+  width: 615rpx;
+  margin-right: 14rpx;
+  overflow-y: auto;
+  position: relative;
+}
+
+.list__one-plus {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgb(194 223 255 / 0.39);
+  border-radius: 30rpx;
+  text-align: center;
+
+}
+
+.btn {
+  min-width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  margin-right: 14rpx;
+}
+
+.btns {
+  min-width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  margin-bottom: 32rpx;
+  text-align: center;
+  margin: 0 15rpx 32rpx;
+  box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1);
+}
+
+.default {
+  background-color: #C2DFFF;
+  color: #1D83F0;
+}

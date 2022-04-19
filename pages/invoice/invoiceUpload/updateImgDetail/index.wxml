@@ -2,22 +2,20 @@
     <view class="titleTop">
         <mp-navigation-bar title="增值税发票查验" color="#FFFFFF" bindback="backIndex" />
     </view>
-    <swiper class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' indicator-dots="true" indicator-dots="true" >
+    <swiper class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}" >
         <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
             <swiper-item class="swiper-items">
                 <image class="topBg" src="{{item.requestStatus?green:red}}" />
-
                 <view class="info">
-                
                     <view class="infoStatus">
                         <image class="infoStatus__status" src="{{item.requestStatus?whith_close:whith_right}}" />
-                        <view>{{item.requestStatus?'查验通过':'查验失败'}}</view>
+                        <view>{{item.requestStatus?'查验通过':item.message}}</view>
                     </view>
                     <view class="errMessage" wx:if="{{!item.requestStatus}}">
                         不可用原因：{{item.message}}
                     </view>
-                    <view class="info__swiper">
-                        <image class="invoice_img" src="{{green}}" />
+                    <view class="info__swiper" data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail">
+                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" />
                         <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>  
                         <view class="info__swiper__item">
                             <view>
@@ -39,7 +37,7 @@
                                 价税合计： -----
                             </view>
                         </view> 
-                        <image class="removeItem" src="{{item.requestStatus?close_null : close_info}}" />
+                        <image class="removeItem" src="{{item.requestStatus?close_null : close_info}}" data-index="{{index}}"  bindtap="removeItem" />
                     </view>
                 </view>
             </swiper-item>

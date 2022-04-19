@@ -1,0 +1,53 @@
+/* pages/tax/repaymentBill/index.wxss */
+.repaymentBill__back {
+  padding: 32rpx;
+}
+.taxConfirmation__list-item {
+  width: 686rpx;
+  /* height: 387rpx; */
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 28rpx;
+  margin-bottom: 32rpx;
+}
+
+.item__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #E6EEF7;
+  align-items: center;
+  height: 103rpx;
+}
+
+.item__header-image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+
+.item__header-date {
+  display: flex;
+}
+
+.item__header-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #283E56;
+
+}
+
+.pd-32 {
+  padding: 0 32rpx 32rpx;
+}
+
+.item__center {
+  padding-top: 24rpx;
+}
+
+.item__text {
+  margin-bottom: 10rpx;
+}
+
+.item__center-title {
+  color: #48617C;
+}

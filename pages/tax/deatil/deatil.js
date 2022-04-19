@@ -24,6 +24,8 @@ Page({
     boxShadow: '0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1)',
     splicingStr: '(5s)',
     timestamp: '',
+    title: "",
+    returnType: '',
     buttons: [{
         text: '取消'
       },
@@ -36,13 +38,19 @@ Page({
   // 返回
   backIndex() {
     // 去确认为true  查看结果为false
-    if (this.data.showBtn) {
-      wx.navigateTo({
-        url: '../taxRecord/index',
-      })
-    } else {
-      wx.navigateTo({
-        url: '../taxConfirmation/index',
+    if (this.data.returnType == 'list') {
+      if (this.data.showBtn) {
+        wx.reLaunch({
+          url: '../taxRecord/index?type=result',
+        })
+      } else {
+        wx.reLaunch({
+          url: '../taxConfirmation/index?typs=list',
+        })
+      }
+    } else if (this.data.returnType == 'result') {
+      wx.reLaunch({
+        url: '../taxRecord/index?type=result',
       })
     }
   },
@@ -68,17 +76,15 @@ Page({
       let params = {
         id: wx.getStorageSync('detailId')
       }
-      console.log(this.data.time)
       if (this.data.time == 1) {
-        confirmdeclare(params).then(res => {
-          console.log(res)
-          if (res.ret) {
-            wx.navigateTo({
-              url: '../successfully/index',
-            })
-          }
+        // confirmdeclare(params).then(res => {
+        //   console.log(res)
+        //   if (res.ret) {
+        wx.navigateTo({
+          url: '../successfully/index?typs=list',
         })
-
+        //   }
+        // })
       }
     }
   },
@@ -95,6 +101,7 @@ Page({
       if (res.ret) {
         let arr = []
         if (res.data) {
+          wx.setStorageSync('overdueStatus', res.data.overdue_status)
           var time = res.data.overdue_time;
           this.countDown(time)
           if (res.data.list.length > 0) {
@@ -177,29 +184,45 @@ Page({
       }
     }, 1000)
   },
-
-  methods: {},
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.renderSecon();
-    this.countDown(this.data.timestamp);
+  getUserId(value) {
     let id = undefined;
-    if (options.id) {
-      id = options.id;
-      wx.setStorageSync('detailId', options.id);
+    if (value) {
+      id = value;
+      wx.setStorageSync('detailId', value);
     } else {
       id = wx.getStorageSync('detailId');
       this.setData({
         showBtn: true
       })
     }
-
     this.setData({
       detailId: id
     })
+  },
+  renderPage(value) {
+    if (value == 'list') {
+      this.setData({
+        title: '本期申报税款确认',
+        returnType: value
+      })
+    } else if (value == 'result') {
+      this.setData({
+        title: '申报税款确认记录',
+        returnType: value
+      })
+    }
+  },
+  methods: {},
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log(options, '获取跳转页面的参数')
+    this.renderSecon();
+    this.countDown(this.data.timestamp);
+    this.getUserId(options.id)
+    this.renderPage(options.type)
   },
 
   /**
@@ -215,7 +238,6 @@ Page({
   onShow: function () {
     console.log('onshow')
     this.getdeclareInfo();
-
   },
 
   /**
