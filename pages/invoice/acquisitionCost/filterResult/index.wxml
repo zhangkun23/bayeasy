@@ -1,38 +1,23 @@
-<!--pages/invoice/acquisitionCost/index.wxml-->
+<!--pages/invoice/acquisitionCost/filterResult/index.wxml-->
 <view class="mycontainer">
-    <mp-navigation-bar bindback="handleBackArrow" title="成本发票明细"></mp-navigation-bar>
-    <view wx:if="{{showFilter}}" class="activeBg"></view>
-    <view wx:else class="bgColog"></view>
-    <scroll-view scroll-y="{{canFlip}}" class="wrapper" enable-flex="true">
+    <mp-navigation-bar title="成本发票明细"></mp-navigation-bar>
+    <view class="myColog"></view>
+    <scroll-view scroll-y="true" enable-flex="true" class="wrapper" bindscrolltolower="goNextPage">
         <view class="inner-container">
-            <view id="search" class="search-container">
-                <view wx:if="{{showFilter}}" class="search-bg"></view>
-                <view class="search-content">
-                    <view class="searchbar">
-                        <my-search-bar autoFocus="false" bindtap="showSearch"></my-search-bar>
-                    </view>
-                    <block wx:if="{{showFilter}}">
-                        <view class="filter flex_center" bindtap="toggleFilter">
-                            <image class="icon" src="{{filterIconActive}}" mode="widthFix"></image>
-                            <view class="text orange">筛选</view>
-                        </view>
-                    </block>
-                    <block wx:else>
-                        <view class="filter flex_center" bindtap="toggleFilter">
-                            <image class="icon" src="{{filterIcon}}" mode="widthFix"></image>
-                            <view class="text blue">筛选</view>
-                        </view>
-                    </block>
+            <view class="search-container" bindtap="goSearch">
+                <view class="search">
+                    <my-search-bar id="searchbar" bind:inputkey="handleSearchKey" bind:gosearch="goSearch"></my-search-bar>
+                </view>
+                <view class="filter flex_center" bindtap="toggleFilter">
+                    <image class="icon" src="{{filterIconActive}}" mode="widthFix"></image>
+                    <view class="text orange">筛选</view>
                 </view>
             </view>
-            <view wx:if="{{showFilter}}" class="filter-box">
-                <filter-board class="filter-box" top="{{filterTop}}" showFilter="{{showFilter}}" invoiceTypes="{{invoiceTypes}}" bind:filterres="handleFilterRes"></filter-board>
-            </view>
-            <view wx:if="{{showRes}}" class="res-container">
-                <block wx:if="{{showEmpty}}" class="empty-res-contain">
+            <view class="res-container">
+                <block wx:if="{{showEmpty}}">
                     <view class="empty-res-contain">
                         <image src="{{emptyPic}}" mode="aspectFill" class="emptyPic"></image>
-                        <view class="text">暂无内容</view>
+                        <view class="text">暂无查询到筛选内容</view>
                     </view>
                 </block>
                 <block wx:else>

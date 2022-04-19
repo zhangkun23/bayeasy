@@ -19,10 +19,10 @@
                 <view class="title">增值税发票类型</view>
                 <view class="option-line" wx:for="{{invoice_type_list}}" wx:key="index" wx:for-item="i" wx:for-index="k">
                     <block wx:for="{{i}}" wx:key="i" wx:for-item="j" wx:for-index="l">
-                        <view wx:if="{{j.isSelect && j.widthType === 1}}" class="selected long option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
-                        <view wx:elif="{{!j.isSelect && j.widthType === 1}}" class="long option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
-                        <view wx:elif="{{j.isSelect && j.widthType === 0}}" class="selected option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
-                        <view wx:else class="option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.name}}</view>
+                        <view wx:if="{{j.isSelect && j.widthType === 1}}" class="selected long option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.type}}</view>
+                        <view wx:elif="{{!j.isSelect && j.widthType === 1}}" class="long option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.type}}</view>
+                        <view wx:elif="{{j.isSelect && j.widthType === 0}}" class="selected option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.type}}</view>
+                        <view wx:else class="option" bindtap="selectTypeOption" data-k="{{k}}" data-l="{{l}}">{{j.type}}</view>
                     </block>
                 </view>
             </view>

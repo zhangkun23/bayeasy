@@ -1,70 +1,64 @@
 // pages/invoice/incomeInvoice/details/eInvoice/index.js
 const app = getApp()
-Page({
+const {
+    get_invoice_file
+} = require('../../../../../http/api/api_szpj')
 
+const {
+    baseUrl
+} = require('../../../../../http/request')
+Page({
     /**
      * 页面的初始数据
      */
     data: {
-        contentTop: 0
+        _vid: null,
+        invoicePdfUrl: null
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const statusBarBottom = app.globalData.barTitileStatus.bottom
-        this.setData({
-            contentTop: statusBarBottom + 22
+        const vid = options.vid;
+        // this.setData({_vid: vid})
+        let that = this;
+        get_invoice_file(vid).then(res => {
+            if (res.ret) {
+                console.log(res)
+                if (res.data instanceof Array && res.data.length > 0) {
+                    const data = res.data[0]
+                    if (data instanceof Object && 'invoice_img_file' in data) {
+                        that.setData({
+                            _vid: data['id'],
+                            invoicePdfUrl: data['invoice_img_file']
+                        })
+                    }
+                }
+            } else {
+
+            }
         })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    downloadPdf: function () {
+        const token = wx.getStorageSync('token') || ''
+        const url = `${baseUrl}/invoice/download_invoice_file?id=${this.data._vid}&token=${token}`
+        wx.downloadFile({
+            url: url,
+            success: res => {
+                let Path = res.tempFilePath
+                wx.openDocument({
+                    filePath: Path, //要打开的文件路径
+                    showMenu: true,
+                    success: function (res) {
+                        console.log('打开PDF成功');
+                    },
+                    fail: err => {
+                        console.error("无法打开PDF :", err)
+                    }
+                })
+            }
+        })
     }
+
 })

@@ -1,19 +1,9 @@
 // pages/invoice/acquisitionCost/components/filter/filter.js
 const app = getApp()
 Component({
-    // pageLifetimes: {
-    //     show: function () {
-    //         console.log(">>>>>>>>>")
-    //         this.initData()
-    //     },
-    //     attached: function () {
-    //         console.log(">>>>>>>>>")
-    //         this.initData()
-    //     }
-    // },
     lifetimes: {
         attached: function () {
-            this.initData()
+            this.getTypeBeforeInitData(this.properties.invoiceTypes)
         }
     },
     /**
@@ -27,12 +17,13 @@ Component({
         top: {
             type: Number,
             value: 0,
-            // observer: function (h) {
-            //     console.log("!!!!!!!!", h)
-            //     this.setData({
-            //         filterTop: h
-            //     })
-            // }
+        },
+        invoiceTypes: {
+            type: Object,
+            value: {},
+            observer: function (lists) {
+                this.getTypeBeforeInitData(lists)
+            }
         }
     },
 
@@ -41,78 +32,28 @@ Component({
      */
     data: {
         filterTop: 0,
-        default_invoice_type_list: [
-            [{
-                name: "全部",
-                id: 0,
-                isSelect: false,
-                widthType: 0,
-            }, {
-                name: "增值税专用发票",
-                id: 1,
-                isSelect: false,
-                widthType: 0,
-            }],
-            [{
-                name: "增值税普通发票",
-                id: 2,
-                isSelect: false,
-                widthType: 0,
-            }, {
-                name: "增值税普通发票（电子）",
-                id: 3,
-                isSelect: false,
-                widthType: 0,
-            }],
-            [{
-                name: "增值税普通发票（卷式）",
-                id: 4,
-                isSelect: false,
-                widthType: 0,
-            }, {
-                name: "通行费发票",
-                id: 5,
-                isSelect: false,
-                widthType: 0,
-            }],
-            [{
-                name: "二手车发票",
-                id: 6,
-                isSelect: false,
-                widthType: 0,
-            }, {
-                name: "机动车销售统一发票",
-                id: 7,
-                isSelect: false,
-                widthType: 0,
-            }],
-            [{
-                name: "货运运输业增值税专用发票",
-                id: 8,
-                isSelect: false,
-                widthType: 1,
-            }]
-        ],
+        invoiceType: null,
+        default_invoice_type_list: [],
         default_invoice_status_list: [
             [{
                 name: "全部",
-                id: 0,
+                sid: -1,
                 isSelect: false,
                 widthType: 0,
             }, {
                 name: "审核中",
-                id: 1,
+                sid: 0,
                 isSelect: false,
                 widthType: 0,
             }],
             [{
                 name: "审核通过",
-                id: 2,
+                sid: 1,
                 isSelect: false,
                 widthType: 0,
             }, {
                 name: "审核失败",
-                id: 3,
+                sid: 2,
                 isSelect: false,
                 widthType: 0,
             }]
@@ -125,6 +66,51 @@ Component({
     methods: {
         copyArray: function (a) {
             return JSON.parse(JSON.stringify(a))
+        },
+        getTypeBeforeInitData: function (lists) {
+            let that = this
+            let invoiceType = []
+            if (lists instanceof Array && lists.length > 0) {
+                // 添加一个全部选项
+                let first_line = [{
+                    type: "全部",
+                    id: 0,
+                    isSelect: false,
+                    widthType: 0,
+                }]
+                // 和第一个拼接成第一行
+                let first_option = lists[0]
+                first_option = Object.assign(first_option, {
+                    isSelect: false,
+                    widthType: 0,
+                })
+                first_line.push(first_option)
+                invoiceType.push(first_line)
+                // 轮询其他类型, 两个一行
+                for (let i = 1; i < lists.length; i += 2) {
+                    let option_line = []
+                    for (let j = 0; j < 2; j++) {
+                        // 超出长度则跳过
+                        if (lists[i + j] === undefined) {
+                            continue
+                        }
+                        let option = Object.assign(lists[i + j], {
+                            isSelect: false,
+                            widthType: 0,
+                        })
+                        option_line.push(option)
+                    }
+                    if (option_line.length === 1) {
+                        option_line[0].widthType = 1
+                    }
+                    invoiceType.push(option_line)
+                    // 最后一个元素为长条
+                }
+                that.setData({
+                    default_invoice_type_list: invoiceType
+                })
+            }
+            that.initData()
         },
         getAllOptions: function () {
             let res = {
@@ -152,18 +138,24 @@ Component({
             let type_filter = []
             let status_filter = []
             _r.invoice_type_list.forEach(i => {
-                i.forEach(j => {
-                    if (j.isSelect) {
-                        type_filter.push(j.id)
+                for (let j = 0; j < i.length; j++) {
+                    if (i[j].id === 0) {
+                        continue
                     }
-                })
+                    if (i[j].isSelect) {
+                        type_filter.push(i[j].id)
+                    }
+                }
             })
             _r.invoice_status_list.forEach(i => {
-                i.forEach(j => {
-                    if (j.isSelect) {
-                        status_filter.push(j.id)
+                for (let j = 0; j < i.length; j++) {
+                    if (i[j].sid === -1) {
+                        continue
                     }
-                })
+                    if (i[j].isSelect) {
+                        status_filter.push(i[j].sid)
+                    }
+                }
             })
             if (type_filter.length > 0) {
                 res.invoiceType = type_filter
@@ -171,6 +163,7 @@ Component({
             if (status_filter.length > 0) {
                 res.invoiceStatus = status_filter
             }
+            console.debug("filter res is ", res)
             this.triggerEvent('filterres', res)
         },
 
@@ -338,47 +331,7 @@ Component({
                     highlightToday: true,
                 },
             }
-            // const ws = wx.getSystemInfoSync().windowWidth;
-            // this.setData({ws: ws})
-            wx.getSystemInfo({
-                success: function (res) {
-                    // const xs = res.windowWidth / 750
-                    // that.setData({
-                    //   xs: xs
-                    // })
-                    that.setData({
-                        maxHeight: res.screenHeight * 0.6
-                    });
-                }
-            });
-
-            // // 然后取出navbar和header的高度
-            // // 根据文档，先创建一个SelectorQuery对象实例
-
-            // let query = wx.createSelectorQuery().in(this);
-            // // 然后逐个取出navbar和header的节点信息
-            // // 选择器的语法与jQuery语法相同
-            // // query.select('#navbar').boundingClientRect();
-            // // query.select('#header').boundingClientRect();
-
-            // // 执行上面所指定的请求，结果会按照顺序存放于一个数组中，在callback的第一个参数中返回
-            // query.exec((res) => {
-            //     // 分别取出navbar和header的高度
-            //     // let navbarHeight = res[0].height;
-            //     // let headerHeight = res[1].height;
-
-            //     // 然后就是做个减法
-            //     const ws = this.data.ws
-            //     let scrollViewHeight = this.data.screenHeight - this.data.filterTop/ws - 230 - 62; //+48
-            //     console.log("screenh" , this.data.screenHeight)
-            //     console.log("filterTop " , this.properties.filterTop)
-            //     console.log("final height ",scrollViewHeight)
-
-            //     // 算出来之后存到data对象里面
-            //     that.setData({
-            //         scrollViewHeight: scrollViewHeight
-            //     });
-            // });
+          
             this.setData(initConfig)
         }
     }

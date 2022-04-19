@@ -1,4 +1,27 @@
 /* pages/invoice/incomeInvoice/details/index.wxss */
+page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: max(constant(safe-area-inset-bottom), 50rpx);
+    /* 兼容 iOS < 11.2 */
+    padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
+}
+
+.mycontainer {
+    flex: 1;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex: 1;
+    height: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
 .inv-container {
     margin-top: 24rpx;
     margin-left: 32rpx;
@@ -136,6 +159,7 @@
 
 .report {
     margin-top: 32rpx;
+    margin-bottom: 32rpx;
     position: relative;
     width: 100%;
     box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);

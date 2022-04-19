@@ -30,71 +30,13 @@ Page({
         },
         emptyPic: app.globalData.emptyPic,
         invoice_lists: [],
-        // invoice_lists: [{
-        //         name: '山东烟台芝罘区LV女神工作室',
-        //         status: 0,
-        //         money: '20000.00',
-        //         dateFrom: '2022-02-22',
-        //         dateTo: '2022-03-01'
-        //     },
-        //     {
-        //         name: '山东烟台芝罘区LV女神工作室',
-        //         status: 1,
-        //         money: '20000.00',
-        //         dateFrom: '2022-02-22',
-        //         dateTo: '2022-03-01'
-        //     },
-        //     {
-        //         name: '山东烟台芝罘区LV女神工作室',
-        //         status: 2,
-        //         money: '20000.00',
-        //         dateFrom: '2022-02-22',
-        //         dateTo: '2022-03-01'
-        //     }
-        // ]
     },
     onShow: function (options) {
         var that = this
         get_all_invoices().then(res => {
             if (res.ret) {
                 if (res.data instanceof Array && res.data.length > 0) {
-                    let _invoice_infos = []
-                    res.data.forEach(d => {
-                        // title
-                        if (INVOICE_STATUS_WAIT.includes(d.status_code)) {
-                            d.myStatus = 0
-                        } else if (INVOICE_STATUS_GOING.includes(d.status_code)) {
-                            d.myStatus = 1
-                        } else if (INVOICE_STATUS_DONE.includes(d.status_code)) {
-                            d.myStatus = 2
-                        }
-                        // datetime
-                        const __date = d.time.split(SPLIT_HANZI)
-                        if (__date instanceof Array && __date.length === 2) {
-                            d.dateFrom = __date[0]
-                            d.dateTo = __date[1]
-                        } else {
-                            console.error("分解日期错误", d)
-                            d.dateFrom = '未知'
-                            d.dateTo = '未知'
-                        }
-                        _invoice_infos.push(d)
-                    });
-                    _invoice_infos.sort(function (a, b) {
-                        return new Date(b.dateTo) - new Date(a.dateTo);
-                    });
-                    const ___invoice_infos = _invoice_infos.concat(_invoice_infos)
-                    that.setData({
-                        invoice_lists: ___invoice_infos
-                    },() => {
-                        var query = wx.createSelectorQuery()
-                        query.select('#card').boundingClientRect(function (res) {
-                            console.debug("card attributes", res);
-                            that.setData({
-                                initY: res.top - 10 // 增加用户体验 
-                            })
-                        }).exec();
-                    })
+                    that.handleData(res.data)
                 } else {
                     this.setData({
                         isInvoiceEmpty: true
@@ -120,22 +62,45 @@ Page({
         this.onShow();
         wx.stopPullDownRefresh();
     },
-    setNav: function (y) {
-        if (y >= this.data.initY) {
-            this.setData({
-                showNav: true
-            })
-        } else {
-            this.setData({
-                showNav: false
-            })
-        }
-    },
-    handletouchmove(event) {
-        var that = this;
-        const query = wx.createSelectorQuery().in(this);
-        query.select('#card').boundingClientRect(res => {
-            that.setNav(res.top)
-        }).exec();
-    },
+    handleData(info){
+        var that = this
+        let _invoice_infos = []
+        info.forEach(d => {
+            // title
+            if (INVOICE_STATUS_WAIT.includes(d.status_code)) {
+                d.myStatus = 0
+            } else if (INVOICE_STATUS_GOING.includes(d.status_code)) {
+                d.myStatus = 1
+            } else if (INVOICE_STATUS_DONE.includes(d.status_code)) {
+                d.myStatus = 2
+            }
+            // datetime
+            const __date = d.time.split(SPLIT_HANZI)
+            if (__date instanceof Array && __date.length === 2) {
+                d.dateFrom = __date[0]
+                d.dateTo = __date[1]
+            } else {
+                console.error("分解日期错误", d)
+                d.dateFrom = '未知'
+                d.dateTo = '未知'
+            }
+            _invoice_infos.push(d)
+        });
+        // _invoice_infos.sort(function (a, b) {
+        //     return new Date(b.dateTo) - new Date(a.dateTo);
+        // });
+        // const ___invoice_infos = _invoice_infos.concat(_invoice_infos)
+
+        that.setData({
+            invoice_lists: _invoice_infos
+        },() => {
+            var query = wx.createSelectorQuery()
+            query.select('#card').boundingClientRect(function (res) {
+                console.debug("card attributes", res);
+                that.setData({
+                    initY: res.top - 10 // 增加用户体验 
+                })
+            }).exec();
+        })
+    }
 })

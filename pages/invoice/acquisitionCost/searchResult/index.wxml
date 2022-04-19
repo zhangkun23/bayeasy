@@ -1,7 +1,7 @@
 <view class="mycontainer">
     <mp-navigation-bar bindback="handleBackArrow" delta="0" title="成本发票明细"></mp-navigation-bar>
     <view class="bgColog"></view>
-    <scroll-view scroll-y="{{true}}" class="wrapper" bindscrolltolower="onScrollVReachBottom">
+    <scroll-view scroll-y="true" class="wrapper" bindscrolltolower="onScrollVReachBottom" enable-flex="true">
         <view class="inner-container">
             <view class="search-container" bindtap="goSearch">
                 <view class="search">

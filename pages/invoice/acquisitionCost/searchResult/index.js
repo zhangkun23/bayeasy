@@ -34,7 +34,9 @@ Page({
             })
             that.requestSearch()
         })
-        this.setData({eventChannel: eventChannel})
+        this.setData({
+            eventChannel: eventChannel
+        })
     },
 
 
@@ -45,14 +47,16 @@ Page({
         if (this.data.enablePullDown && !this.data.showEmpty) {
             this.requestSearch()
         } else {
-            if(this.data.enableShowToast){
+            if (this.data.enableShowToast) {
                 wx.showToast({
                     title: '没有更多数据啦',
                     icon: 'none'
                 })
-                this.setData({enableShowToast:false})
+                this.setData({
+                    enableShowToast: false
+                })
             }
-            
+
         }
     },
     handleSearchKey: function (event) {
@@ -65,14 +69,8 @@ Page({
         setTimeout(() => {
             wx.redirectTo({
                 url: '/pages/invoice/acquisitionCost/index',
-                success: () => {
-                    console.log("success")
-                },
                 fail: (e) => {
                     console.log("faile", e)
-                },
-                complete: () => {
-                    console.log("com")
                 },
             })
         }, 0);
@@ -82,7 +80,7 @@ Page({
         // 不返回搜索页直接返回初始页
         var that = this;
         wx.navigateBack({
-          delta: 1,
+            delta: 1,
         })
         // wx.redirectTo({
         //     url: '../searchPage/index'
@@ -99,7 +97,7 @@ Page({
         searchBill(onloadParams).then(res => {
             if (res.ret) {
                 if (this.data.page === 0) {
-                    if(res.data.total===0){
+                    if (res.data.total === 0) {
                         this.setData({
                             showEmpty: true
                         })
@@ -139,5 +137,11 @@ Page({
         wx.navigateTo({
             url: '../invoiceDetails/index?vid=' + vid,
         })
-    }
+    },
+    handleBackArrow: function () {
+
+        wx.redirectTo({
+            url: '../index',
+        })
+    },
 })

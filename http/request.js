@@ -62,4 +62,6 @@ module.exports = {
 
         });
     },
+    /** 统一域名 */
+    baseUrl: baseUrl
 }

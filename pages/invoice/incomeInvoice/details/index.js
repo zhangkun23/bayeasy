@@ -79,17 +79,6 @@ Page({
             })
         }
     },
-    setNav: function (y) {
-        if (y >= this.data.initY) {
-            this.setData({
-                showNav: true
-            })
-        } else {
-            this.setData({
-                showNav: false
-            })
-        }
-    },
     handletouchmove(event) {
         var that = this;
         const query = wx.createSelectorQuery().in(this);
@@ -98,7 +87,7 @@ Page({
         }).exec();
     },
     confirmInvoice() {
-        console.log("!")
+        var that = this;
         wx.showModal({
             content: '确认开票前请仔细核对账单发票信息\r\n如对帐单金额及发票有异议\r\n请及时联系您的贝易资运营专员',
             confirmText: '确认开票',
@@ -114,6 +103,7 @@ Page({
                                 content: '您的账单发票信息已确认成功\r\n贝易资在1个工作日内为您开具电子发票\r\n开具完成后将以短信方式通知你',
                                 confirmText: '好的',
                                 confirmColor: '#576B95',
+                                showCancel: false
                             })
                         } else {
                             wx.showToast({
@@ -144,7 +134,7 @@ Page({
             return
         }
         wx.navigateTo({
-            url: './eInvoice/index?id' + this.data.id,
+            url: './eInvoice/index?vid=' + this.data.id,
         })
     }
 

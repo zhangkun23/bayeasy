@@ -11,9 +11,6 @@
         //线上环境url
         prod:{
             baseUrl:'https://cs.bayeasy.cn/api'
-        },
-        prod_host: {
-            baseUrl: 'https://cs.bayeasy.cn/api'
         }
     }
     
