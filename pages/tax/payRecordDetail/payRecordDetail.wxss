@@ -6,6 +6,11 @@
   justify-content: space-between;
 }
 
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
 .font-size-24 {
   font-size: 24rpx;
 }
