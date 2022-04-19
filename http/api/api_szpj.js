@@ -56,7 +56,7 @@ module.exports = {
     },
 
     // 删除已ocr识别过的发票文件
-    ocrDeductInvoice: (id) => {
+    delDeductInvoiceFile: (id) => {
         return request(api + '/deduct_invoice/del_deduct_invoice_file?id='+id, 'GET', {});
     },
 }

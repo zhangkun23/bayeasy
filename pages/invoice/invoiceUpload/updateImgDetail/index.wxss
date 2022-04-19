@@ -1,7 +1,6 @@
 
 .swiper{
     height: 100vh;
-    border: 1px solid red;
     box-sizing: border-box;
     position: relative;
 }
@@ -44,7 +43,6 @@
 }
 .invoice_img{
     width: 100%;
-    height: 364rpx;
 }
 .index{
     color: #ABBED2;

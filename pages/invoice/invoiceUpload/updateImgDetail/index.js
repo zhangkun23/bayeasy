@@ -15,36 +15,8 @@ Page({
         close_null:tempPath + "invoice/incomeInvoice/close_null.png",
         autoplay:false,
         currentIndex:0,
-        updateImgOrPdfArr:[
-            // {
-            //     link:'',
-            //     linkInfo:{
-            //         seller_name:'asdasd',
-            //         invoice_type:'增值税专asdasd用发票',
-            //         invoice_dm:'123123',
-            //         invoice_hm:'123123',
-            //         total_amount:'123'
-            //     },
-            //     requestStatus:true
-            // },
-            // {
-            //     link:'',
-            //     linkInfo:{},
-            //     requestStatus:false,
-            //     message:'请您在每月23日前将纸质票据邮寄至本公司，邮寄信息请咨询运营专员，如未及时邮寄将无法在本月计入成本！'
-            // },
-            // {
-            //     link:'',
-            //     linkInfo:{
-            //         seller_name:'asdasd',
-            //         invoice_type:'增值税专asdasd用发票',
-            //         invoice_dm:'123123',
-            //         invoice_hm:'123123',
-            //         total_amount:'123'
-            //     },
-            //     requestStatus:true
-            // },
-        ]
+        updateImgOrPdfArr:[],
+        status:0,
     },
 
     // 删除当前选项
@@ -92,7 +64,8 @@ Page({
     onReady: function () {
         this.setData({
             updateImgOrPdfArr: wx.getStorageSync('updateImgOrPdfArr'),
-            currentIndex:wx.getStorageSync('index')
+            currentIndex:wx.getStorageSync('index'),
+            status:wx.getStorageSync('status'),
         })
 
         let arr = this.data.updateImgOrPdfArr;

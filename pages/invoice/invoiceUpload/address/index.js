@@ -33,28 +33,31 @@ Component({
     methods: {
         getUserMeg(){
             getUserMeg().then(res => {
-                console.log(res)
                 if(res.ret){
                     this.setData({
-                        form:{
-                            address: "北京市海淀区中关村大街11号9层908",
-                            name: "贝易资",
-                            phone: "010-82887950"
-                        }
+                        form:res.data
                     })
                 }
             })
         },
         copywxtap: function (e) {
-            console.log(e.currentTarget.dataset.text)
+          let param = [{
+            name:'收货人',
+            value:this.data.form.name,
+          },
+          {
+            name:'电话号码',
+            value:this.data.form.phone,
+          },
+          {
+            name:'收货地址',
+            value:this.data.form.address,
+          }]
            wx.setClipboardData({
-             data:'测试赋值功能1111',
+             data:`${param.map(item =>`${item.name}: ${item.value}`).join("\n")}`,
              success: function (res) {
-
                wx.getClipboardData({
-                 //这个api是把拿到的数据放到电脑系统中的
                  success: function (res) {
-                   console.log(res.data) // data
                    wx.showToast({
                      title: '复制成功',
                      icon:'none'
