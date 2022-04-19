@@ -95,17 +95,16 @@ Page({
    */
   onShow: function () {
     if (!String.prototype.format) {
-      String.prototype.format = function() {
+      String.prototype.format = function () {
         var args = arguments;
-        return this.replace(/{(\d+)}/g, function(match, number) { 
-          return typeof args[number] != 'undefined'
-            ? args[number]
-            : match
-          ;
+        return this.replace(/{(\d+)}/g, function (match, number) {
+          return typeof args[number] != 'undefined' ?
+            args[number] :
+            match;
         });
       };
-    }    
-    var that = this 
+    }
+    var that = this
     todolist().then(res => {
       if (res.ret) {
         if (res.data instanceof Object) {
@@ -168,5 +167,22 @@ Page({
     this.onShow();
     wx.stopPullDownRefresh();
 
+  },
+  /*
+   * 处理返回 除非从个人中心来的统统返回首页
+   */
+  handleBackArrow: function () {
+    let pages = getCurrentPages(); //页面对象
+    let prevpage = pages[pages.length - 2]; //上一个页面对象
+    let path = prevpage.route;
+    if(path !== 'pages/personal/personalIndex/index'){
+      wx.switchTab({
+        url: '../index/index',
+      })
+    }else{
+      wx.switchTab({
+        url: '../personal/personalIndex/index',
+      })
+    }
   }
 })

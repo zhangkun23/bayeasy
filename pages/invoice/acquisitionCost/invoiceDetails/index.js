@@ -26,7 +26,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log("options ", options)
         const aid = options.aid;
         this.getInfo(aid)
     },
@@ -40,7 +39,7 @@ Page({
                 console.log("无法获取详情:", res)
                 wx.showToast({
                     title: '获取详情失败， 请稍后再试',
-                    icon: ''
+                    icon: 'none'
                 })
             }
         }).catch(e => {
@@ -78,5 +77,15 @@ Page({
     },
     goPdf() {
         openPdf(this.data.pdfUrl)
-    }
+    },
+    // handleBackArrow: function(){
+    //     setTimeout(() => {
+    //         wx.redirectTo({
+    //             url: '/pages/invoice/acquisitionCost/index',
+    //             fail: (e) => {
+    //                 console.log("fail redirect: ", e)
+    //             },
+    //         })
+    //     }, 0);
+    // },
 })

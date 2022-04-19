@@ -1,8 +1,9 @@
 <!--pages/invoice/acquisitionCost/invoiceDetails/index.wxml-->
 <view class="mycontainer">
-    <mp-navigation-bar title="成本发票明细"></mp-navigation-bar>
+    <!-- <mp-navigation-bar title="成本发票明细" delta="0" bindback="handleBackArrow"></mp-navigation-bar> -->
+    <mp-navigation-bar title="成本发票明细" ></mp-navigation-bar>
     <view class="bgColog"></view>
-    <scroll-view scroll-y="{{true}}" class="wrapper" bindscrolltolower="onScrollVReachBottom">
+    <scroll-view scroll-y="{{true}}" class="wrapper" enable-flex="true">
         <view class="inner-container">
             <block wx:if="{{status === 1}}">
                 <view class="hint-container pass">

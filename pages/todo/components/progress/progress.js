@@ -10,9 +10,9 @@ Component({
     count: { //百分比 通过此值转换成step
       type: String,
       value: '5',
-      observer: function(c){
+      observer: function (c) {
         this.setData({
-          per: c/this.properties.max,
+          per: c / this.properties.max,
           count: c
         })
         this.drawAll()
@@ -32,22 +32,21 @@ Component({
     r: 108 //圆的半径
   },
   methods: {
-    drawAll: function(){
+    drawAll: function () {
       this.createSelectorQuery()
-      .select('#ctxbg')
-      .fields({
-        node: true,
-        size: true,
-      }).exec(this.drawCircleBg.bind(this))
-
-    if (this.data.per !== '0') {
-      this.createSelectorQuery()
-        .select('#ctx')
+        .select('#ctxbg')
         .fields({
           node: true,
           size: true,
-        }).exec(this.drawCircle.bind(this))
-    }
+        }).exec(this.drawCircleBg.bind(this))
+      if (this.data.per !== 0) {
+        this.createSelectorQuery()
+          .select('#ctx')
+          .fields({
+            node: true,
+            size: true,
+          }).exec(this.drawCircle.bind(this))
+      }
     },
 
     /**
@@ -109,7 +108,7 @@ Component({
   pageLifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     show: function () {
-      console.error(this.properties)
+      console.debug("progress properties: ", this.properties)
       const _this = this;
       //获取屏幕宽度
       wx.getSystemInfo({
@@ -124,15 +123,13 @@ Component({
         },
       });
       // 计算进度
-      console.debug(this.properties.count)
-      console.debug(this.properties.max)
 
       console.debug("per is ", this.properties.count / this.properties.max)
       this.setData({
         per: this.properties.count / this.properties.max
       })
       this.drawAll()
-      
+
       // this.createSelectorQuery()
       //   .select('#ctxbg')
       //   .fields({
