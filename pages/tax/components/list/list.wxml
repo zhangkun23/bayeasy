@@ -1,0 +1,47 @@
+<!--pages/tax/components/list/list.wxml-->
+<view class="modal" wx:if="{{showList}}">
+  <view class="table__list">
+    <view class="space-between mg-bt-32 title">
+      <view class="font-600 tag">标签选择</view>
+      <view bindtap="close">
+        <image class="closeInput" src="{{inputClose}}"></image>
+      </view>
+    </view>
+    <view class="display-flex flex-wrap table__list-item">
+      <view class="btns default" wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category" data-list="item" bindtap="checkedItem">
+        <text class="padding">{{item.tax_category}}</text>
+      </view>
+
+      <view class="btns default">
+        <text class="padding">22fudjshgjaejgkghnvadj</text>
+      </view>
+      <view class="btns default" bindtap="checkedItem">
+        <text class="padding">22fudjshgjaejgkghnvadj</text>
+      </view>
+      <view class="btns default">
+        <text class="padding">22fudjshgjaejgkghnvadj</text>
+      </view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">
+        <text class="padding">22fudjshgjaejgkghnvadj</text>
+      </view>
+      <view class="btns default">22awqeqefxcdj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+      <view class="btns default">22adj</view>
+    </view>
+  </view>
+</view>

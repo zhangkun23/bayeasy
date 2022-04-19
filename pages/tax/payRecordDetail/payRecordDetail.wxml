@@ -32,22 +32,22 @@
           </view>
         </view>
       </view>
-
+      {{taxList}} -- taxList
       <!-- <view class="detail__tax">纳税明细</view> -->
       <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
       <view class="display-flex list__one">
         <view class="list__one-center display-flex">
-          <view class="btn bluebtn">22adj</view>
-          <view class="btn bluebtn">22adj</view>
-          <view class="btn bluebtn">22adj</view>
+          <view class="btns default" wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category">{{item.tax_category}}</view>
+          <view class="btns default">22adj</view>
+          <view class="btns default">22adj</view>
         </view>
         <view class="list__one-plus" bindtap="addTaxItem">
           <text style="color:#1d83ef;">+</text>
         </view>
       </view>
       <!-- 明细内容 -->
-      <view class="detail__taxDetail" wx:if="{{taxList.length > 0}}">
-        <view class="detail__list" wx:for="{{taxList}}" wx:for-item="item" wx:key="id">
+      <view class="detail__taxDetail" wx:if="{{detailList.length > 0}}">
+        <view class="detail__list" wx:for="{{detailList}}" wx:for-item="item" wx:key="id">
           <view class="detail__list-title font-600">{{item.tax_item}}</view>
           <view class="font-size-24 detail__taxDetail-content">
             <view class="space-between mg-bp-24">
@@ -92,12 +92,10 @@
     </view>
   </view>
 
-  <block wx:if="{{isShowModal}}">
+  <!-- <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
-  </block>
-  <block>
-    <view>
-      
-    </view>
-  </block>
+  </block> -->
+  <!-- wx:if="{{showTaxList}}" -->
+  <list></list>
+
 </view>
