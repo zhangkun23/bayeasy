@@ -1,7 +1,10 @@
 <!-- 暂无功能 -->
 <view class="bgColog">
     <mp-navigation-bar />
-    <text class="count">
-        敬请期待...
-    </text>
+    <view class="count">
+        <image src="{{emptyPic}}" />
+        <view class="text">
+            暂无数据...
+        </view>
+    </view>
 </view>

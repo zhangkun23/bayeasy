@@ -61,3 +61,9 @@
 .opction{
   opacity: 0;
 }
+.weui-navigation-bar__btn_goback{
+  margin:20rpx;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
+  
+}

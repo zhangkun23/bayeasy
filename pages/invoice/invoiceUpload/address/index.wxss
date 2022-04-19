@@ -41,8 +41,10 @@
 }
 .title__left{
     color: #6E87A2;
-    width: 136rpx;
+    width: 20%;
+    display: block;
 }
 .title__info{
     color: #283E56;
+    width: 80%;
 }

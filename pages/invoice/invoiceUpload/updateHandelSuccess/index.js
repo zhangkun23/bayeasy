@@ -10,7 +10,7 @@ Page({
     },
     handelClick(){
         wx.navigateTo({
-            url: '../updateHandel/index',
+            url: '../../acquisitionCost/index',
         })
     },
     handelClickLink(){

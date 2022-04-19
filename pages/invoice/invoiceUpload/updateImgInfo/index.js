@@ -4,7 +4,7 @@ const util = require('../../../../utils/util')
 const {
     baseUrl
   } = require('../../../../http/env.js').dev; 
-const {submitOcrDeductInvoice,ocrDeductInvoice} = require('../../../../http/api/api_szpj')
+const {submitOcrDeductInvoice,delDeductInvoiceFile} = require('../../../../http/api/api_szpj')
 Page({
 
     /**
@@ -37,6 +37,15 @@ Page({
         returnErrInfoShow:false,
         invoiceRightNum:0, //正确张数
         invoiceErrNum:0, //失败张数
+        loadStatusNum:0, //查验发票提交完成张数
+        isShowModal:false,
+        buttons: [{
+            text: '取消'
+        },{
+            text: '确定'
+        }],
+        removeItemE:{}, //要删除的e
+        montmShow:false,
     },
     errInfoCloseOrShow(){
         this.setData({
@@ -45,7 +54,11 @@ Page({
     },
     // 查验发票跳转详情
     handelClickDetail(e){
+        if(this.data.loadStatusNum!=0) return;
         const data = e.currentTarget.dataset;
+        wx.setStorageSync('updateImgOrPdfArr',this.data.updateImgOrPdfArr)
+        wx.setStorageSync('index', data.index)
+        wx.setStorageSync('status', this.data.status)
         if(data.type == 'pdf'){
             wx.openDocument({
                 filePath: data.pdfpath, //要打开的文件路径
@@ -54,8 +67,6 @@ Page({
                 }
             })
         }else{
-            wx.setStorageSync('updateImgOrPdfArr',this.data.updateImgOrPdfArr)
-            wx.setStorageSync('index', data.index)
             util.navigateTo('/pages/invoice/invoiceUpload/updateImgDetail/index')
         }
     },
@@ -182,11 +193,9 @@ Page({
     },
     // 删除已经上传的文件
     removeItem(e){
-
         if(this.data.status ==1 && e.currentTarget.dataset.id){
-            this.ocrDeductInvoice(e.currentTarget.dataset.id)
+            this.delDeductInvoiceFile(e.currentTarget.dataset.id)
         }
-
         const index = e.currentTarget.dataset.index;
         let tempArr = this.data.updateImgOrPdfArr;
         tempArr.splice(index,1)
@@ -210,8 +219,8 @@ Page({
         }
     },
     // 删除已经识别的发票
-    ocrDeductInvoice(id){
-        ocrDeductInvoice(id).then(res => {
+    delDeductInvoiceFile(id){
+        delDeductInvoiceFile(id).then(res => {
             if(!res.ret){
                 wx.showToast({
                     title: res.message,
@@ -221,7 +230,7 @@ Page({
         })
     },
 
-    // 上传发票--》查验发票
+    // 上传发票-----》查验发票
     ocrDeductInvoice(){
         const temp = this.data.updateImgOrPdfArr;
         this.setData({
@@ -229,9 +238,15 @@ Page({
                 item.loaddingActive = true
                 return item;
             }),
-            status:1
+            status:1,
+            active:false
         })
         let that = this;
+        // 提交数量 记录全部提交完成才能查看详情页面
+        this.setData({
+            loadStatusNum:temp.length
+        })
+        let tempDeductNum = 0;
         this.data.updateImgOrPdfArr.forEach((item,index)=> {
             const {link} = item;
             wx.uploadFile({
@@ -241,8 +256,6 @@ Page({
                 formData: {},
                 success: function (info) {
                     const res = JSON.parse(info.data);
-                    console.log(res)
-                    console.log('index=='+index)
                     let temp = that.data.updateImgOrPdfArr;
                     temp[index].loaddingActive = false
                     if(res.ret){
@@ -257,8 +270,18 @@ Page({
                         })
                     }
                     that.setData({
-                        'updateImgOrPdfArr':temp
+                        'updateImgOrPdfArr':temp,
+                        'loadStatusNum':that.data.loadStatusNum-1
                     })
+
+                    tempDeductNum = tempDeductNum+1;
+
+                    console.log('temp'+temp.length+'-----'+index)
+                    if(tempDeductNum == temp.length && that.data.errInfoNum == 0 ){
+                        that.setData({
+                            active:true
+                        })
+                    }
                 },
                 fail: function (res) {
                     wx.hideLoading();
@@ -267,26 +290,34 @@ Page({
             })
         })
     },
-    // 查验发票---》提交完成
+    // 查验发票-----》提交完成
     submitOcrDeductInvoice(){
         const data = this.data.updateImgOrPdfArr;
         let tempArr = [];
         data.map(item => {
             tempArr.push(item.linkInfo.id) 
         })
+        this.setData({
+            montmShow:true
+        })
         submitOcrDeductInvoice({ids:tempArr}).then( res => {
             if(res.ret){
                 const info = res.data;
                 const errNum = info.error_data.length;
-                this.setData({
-                    status:2,
-                    errInfo:info.error_list,
-                    returnErrInfoShow:true,
-                    invoiceRightNum: tempArr.length-errNum,
-                    invoiceErrNum:errNum
-                })
+                if(info.error_data.length>0){
+                    this.setData({
+                        errInfo:info.error_list,
+                        returnErrInfoShow:true,
+                        invoiceRightNum: tempArr.length-errNum,
+                        invoiceErrNum:errNum
+                    })
+                }
                 wx.removeStorageSync("updateImgOrPdfArr")
                 wx.removeStorageSync("index")
+                this.setData({
+                    montmShow:false,
+                    status:2,
+                })
             }else{
                 wx.showToast({
                     title: res.message,
@@ -308,6 +339,22 @@ Page({
     },
     handelClick(){
         util.navigateTo('/pages/invoice/acquisitionCost/index')
+    },
+
+    // 展示my-dialog
+    showDialog(e){
+        this.setData({
+            isShowModal:true,
+            removeItemE:e
+        })
+    },
+    tapDialogButtonClose(e){
+        this.setData({
+            isShowModal:false
+        })
+        if(e.detail.item.text == '确定'){
+            this.removeItem(this.data.removeItemE);
+        }
     },
 
     /**
@@ -366,6 +413,21 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
+        console.log('页面卸载')
+        // 返回删除所有文件
+        wx.removeStorageSync("updateImgOrPdfArr")
+        wx.removeStorageSync("index")
+        wx.removeStorageSync("status")
+
+        let tempArr = this.data.updateImgOrPdfArr;
+        if(this.data.status ==1 ){
+            tempArr.map( item => {
+                this.detaileInvoice(item.linkInfo.id)
+            })
+        }
+        this.setData({
+            updateImgOrPdfArr:[]
+        })
 
     },
 

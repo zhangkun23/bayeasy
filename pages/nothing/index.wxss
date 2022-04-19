@@ -1,7 +1,16 @@
 /* pages/nothing/index.wxss */
+
 .count{
+    text-align: center;
+}
+.count>image{
+    width: 370rpx;
+    height: 300rpx;
+    margin-top: 308rpx;
+}
+.text{
     display: flex;
     justify-content: center;
-    margin-top: 30%;
     color: rgb(10, 9, 9);
+    color: #6E87A2;
 }

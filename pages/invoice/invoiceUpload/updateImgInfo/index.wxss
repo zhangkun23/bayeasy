@@ -133,6 +133,9 @@
     font-size: 24rpx;
     font-weight: 400;
     color: #48617C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .item__bottom__text{
     height: 32rpx;
@@ -177,7 +180,8 @@
 }
 .btn{
     margin: 100rpx 125rpx;
-
+    margin-bottom: 150rpx;
+    height: 300rpx;
 }
 .btn__text{
     font-size: 24rpx;
@@ -246,4 +250,14 @@
     bottom: 78rpx;
     left: 50%;
     margin-left: -125rpx;
+}
+.montm{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 9000;
+    opacity: 0;
 }

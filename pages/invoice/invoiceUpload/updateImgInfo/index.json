@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "service":"/components/service/service",
-    "updateImageInfo_errInfo":"../components/updateImageInfo_errInfo/index"
+    "updateImageInfo_errInfo":"../components/updateImageInfo_errInfo/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   },
   "navigationBarBackgroundColor": "#1D83F0",
   "navigationBarTextStyle": "white",
