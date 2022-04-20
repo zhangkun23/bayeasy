@@ -59,7 +59,8 @@ Page({
         title: "您有 {0} 条申报欠款记录需要处理",
         subTitle: "为了不影响公司信誉，请尽快结清欠款",
         btnText: "去查看",
-        url: "../tax/delinquentBill/index"
+        url: "../tax/delinquentBill/index",
+        detailUrl: "../tax/delinquentBill/index",
       },
       {
         id: 4,
@@ -80,6 +81,7 @@ Page({
         subTitle: "请尽快查看核实信息是否有误",
         btnText: "去查看",
         url: "../tax/delinquentBill/index",
+        detailUrl: "../invoice/incomeInvoice/details/index",
       }
     ]
   },
@@ -89,20 +91,20 @@ Page({
     const _todo_list = this.data.todo_lists.filter(e => e.id === tid)[0]
     if ('ids' in _todo_list) {
       if (_todo_list['ids'].length > 1) {
+        if(!('detailUrl' in _todo_list)){
+          return
+        }
         const _ids = _todo_list['ids'].map(i => i.id)
         wx.redirectTo({
-          url: _todo_list.url + '?from=todo&showtype=list&ids=' + _ids.join('_'),
+          url: _todo_list.url + '?type=todo&ids=' + _ids.join('_'),
         })
       } else if (_todo_list['ids'].length === 1)  {
-        console.log("!", _todo_list)
+        
         wx.redirectTo({
-          url: _todo_list.detailUrl + '?from=todo&showtype=detail&id=' + _todo_list['ids'][0]['id'],
+          url: _todo_list.detailUrl + '?type=todo&id=' + _todo_list['ids'][0]['id'],
         })
       }
     }
-
-
-
   },
 
   /**

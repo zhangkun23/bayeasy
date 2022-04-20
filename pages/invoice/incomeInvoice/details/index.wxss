@@ -43,6 +43,13 @@ page {
     align-items: center;
 }
 
+.dialog {
+    font-size: 34rpx;
+    font-weight: 500;
+    color: #353535;
+    line-height: 48rpx;
+}
+
 .tip-container {
     position: absolute;
     width: 100%;

@@ -19,12 +19,13 @@ Page({
         audit_faild_reason: null,
         failure_reason: '',
         hasFile: null,
+        defaultPdfUrl: app.globalData.imgPath + "invoice/incomeInvoice/pdfImg.png",
         pdfImg: app.globalData.imgPath + "invoice/incomeInvoice/pdfImg.png",
         emptyPic: app.globalData.emptyPic,
         passIcon: app.globalData.imgPath + 'invoice/acquisitionCost/passIcon.png',
         failIcon: app.globalData.imgPath + 'invoice/acquisitionCost/failIcon.png',
         invoiceIcon: app.globalData.imgPath + 'invoice/acquisitionCost/invoiceIcon.png',
-        invoicePdfUrl: '',
+        pdfUrl: '',
         invoiceImgUrl: '',
         failReson: ''
     },
@@ -89,14 +90,10 @@ Page({
     goPdf() {
         openPdf(this.data.pdfUrl)
     },
-    // handleBackArrow: function(){
-    //     setTimeout(() => {
-    //         wx.redirectTo({
-    //             url: '/pages/invoice/acquisitionCost/index',
-    //             fail: (e) => {
-    //                 console.log("fail redirect: ", e)
-    //             },
-    //         })
-    //     }, 0);
-    // },
+    previewImg: function (e) {
+        const src = e.currentTarget.dataset.src
+        wx.previewImage({
+            urls: [src],
+        })
+    }
 })
