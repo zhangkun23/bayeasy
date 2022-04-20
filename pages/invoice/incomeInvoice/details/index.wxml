@@ -2,19 +2,17 @@
 <view class="mycontainer">
     <mp-navigation-bar title="账单发票详情"></mp-navigation-bar>
     <view class="bgColog"></view>
-    <scroll-view scroll-y="true" class="wrapper" enable-flex="true">
-        <mp-dialog bindbuttontap="handleApplyDialog" show="{{showApplyDialog}}" buttons="{{applyDialogBtns}}">
-            <view class="dialog">确认开票前请仔细核对账单发票信息</view>
-            <view class="dialog">如对帐单金额及发票有异议</view>
-            <view class="dialog">请及时联系您的贝易资运营专员</view>
-        </mp-dialog>
-        <mp-dialog bindbuttontap="handleConfirmDialog"  show="{{showConfirmDialog}}" buttons="{{confirmDialogBtns}}">
-            <view class="dialog">您的账单发票信息已确认成功</view>
-            <view class="dialog">贝易资在1个工作日内为您开具电子发票</view>
-            <view class="dialog">开具完成后将以短信方式通知你</view>
-
-        </mp-dialog>
-
+    <mp-dialog bindbuttontap="handleApplyDialog" show="{{showApplyDialog}}" buttons="{{applyDialogBtns}}">
+        <view class="dialog">确认开票前请仔细核对账单发票信息</view>
+        <view class="dialog">如对帐单金额及发票有异议</view>
+        <view class="dialog">请及时联系您的贝易资运营专员</view>
+    </mp-dialog>
+    <mp-dialog bindbuttontap="handleConfirmDialog" show="{{showConfirmDialog}}" buttons="{{confirmDialogBtns}}">
+        <view class="dialog">您的账单发票信息已确认成功</view>
+        <view class="dialog">贝易资在1个工作日内为您开具电子发票</view>
+        <view class="dialog">开具完成后将以短信方式通知你</view>
+    </mp-dialog>
+    <scroll-view scroll-y="true" class="wrapper" enable-flex="true" style="color: black;">
         <view wx:if="{{isEmpty}}" class="tip-container flex_center_column">
             <image src="{{emptyPic}}" class="emptyBg" mode="widthFix"></image>
             <text user-select="true" class="subscribe">暂无数据</text>

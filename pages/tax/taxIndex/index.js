@@ -30,7 +30,6 @@ Component({
     methods:{
         handelClickUrl(e) {
             const url = e.currentTarget.dataset.url;
-            console.log(url)
             if(!wx.getStorageSync('token')){
                 this.setData({
                     showModal:true,

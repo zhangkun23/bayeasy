@@ -16,8 +16,15 @@ Page({
         showEmpty: false,
         emptyPic: app.globalData.emptyPic,
         hasOperate: false,
-        applyDialogBtns: [{text:"取消"}, {text:"确认开票"}],
-        confirmDialogBtns: [{text:"好的"}],
+        applyDialogBtns: [{
+            text: "取消",
+            extClass: "black"
+        }, {
+            text: "确认开票"
+        }],
+        confirmDialogBtns: [{
+            text: "好的"
+        }],
         applyText: '',
         confirmText: '',
         showConfirmDialog: false,
@@ -30,7 +37,7 @@ Page({
         if (!options.hasOwnProperty('id')) {
             return
         }
-       
+
         this.setData({
             hasOperate: app.globalData.operate,
         })
@@ -78,7 +85,9 @@ Page({
         }
     },
     confirmInvoice() {
-        this.setData({showApplyDialog: true})
+        this.setData({
+            showApplyDialog: true
+        })
     },
     checkEInvoice() {
         if (!this.data.id) {
@@ -93,19 +102,30 @@ Page({
             url: './eInvoice/index?vid=' + this.data.id,
         })
     },
-    handleApplyDialog(e){
+    handleConfirmDialog(e) {
+        this.setData({
+            showConfirmDialog: false
+        })
+    },
+    handleApplyDialog(e) {
         let that = this
-        if(!(e instanceof Object && 'detail' in e)){
-            this.setData({showApplyDialog: false})
+        if (!(e instanceof Object && 'detail' in e)) {
+            this.setData({
+                showApplyDialog: false
+            })
             return
         }
         const detail = e.detail
-        if(detail.index === 1){
+        if (detail.index === 1) {
             apply_invoice({
                 id: that.data.id
             }).then(res => {
                 if (res.ret) {
-                    that.setData({showConfirmDialog: true,myStatus: 1})
+                    that.setData({
+                        showApplyDialog: false,
+                        showConfirmDialog: true,
+                        myStatus: 1
+                    })
                 } else {
                     wx.showToast({
                         title: '开票请求失败: ' + res.message,
@@ -119,8 +139,10 @@ Page({
                     icon: 'none'
                 })
             })
-        }else{
-            that.setData({showApplyDialog: false})
+        } else {
+            that.setData({
+                showApplyDialog: false
+            })
         }
     }
 
