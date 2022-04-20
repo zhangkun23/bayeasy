@@ -105,10 +105,17 @@
   width: 24rpx;
   height: 24rpx;
 }
+
 .taxConfirmation__nodata {
   margin: 240rpx auto;
 }
+
 .taxConfirmation__image {
   width: 370rpx;
-    height: 300rpx;
+  height: 300rpx;
+}
+
+.taxConfirmation__nodata-text {
+  color: #6E87A2;
+  text-align: center;
 }

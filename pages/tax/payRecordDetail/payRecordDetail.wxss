@@ -253,9 +253,13 @@
   text-align: center;
   margin: 0 15rpx 32rpx;
   box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1);
-}
-
-.default {
   background-color: #C2DFFF;
   color: #1D83F0;
 }
+.active{
+  background: #1D83F0 !important;
+  color: #FFFFFF !important;
+}
+
+
+

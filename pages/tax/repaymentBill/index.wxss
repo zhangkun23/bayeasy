@@ -51,3 +51,19 @@
 .item__center-title {
   color: #48617C;
 }
+.taxConfirmation__nodata {
+  margin: 240rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taxConfirmation__image {
+  width: 370rpx;
+  height: 300rpx;
+}
+
+.taxConfirmation__nodata-text {
+  color: #6E87A2;
+  text-align: center;
+}

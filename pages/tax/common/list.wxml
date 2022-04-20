@@ -1,0 +1,18 @@
+<!--pages/tax/common/list.wxml-->
+<view class="modal" wx:if="{{listShow}}">
+  <view class="table__list">
+    <view class="wrapper">
+      <view class="~space-between mg-bt-32 title">
+        <view class="font-600 tag">标签选择</view>
+        <view bindtap="close">
+          <image class="closeImg" src="{{inputClose}}"></image>
+        </view>
+      </view>
+      <view class="~display-flex flex-wrap table__list-item">
+        <view class="{{item.checked? '~active ~btns' : '~btns'}}" wx:for="{{List}}" wx:for-item="item" wx:key="tax_category" data-item="{{item}}" bindtap="checkedChildItem">
+          <text class="padding">{{item.tax_category}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

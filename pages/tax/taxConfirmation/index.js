@@ -19,11 +19,13 @@ Page({
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     allDeclareList: [],
     title: '',
-    returnType: ''
+    returnType: '',
+    page: 1,
+    page_size: getApp().globalData.page_size,
   },
 
-  backTaxIndex(){
-    if(this.data.returnType == 'todo') {
+  backTaxIndex() {
+    if (this.data.returnType == 'todo') {
       wx.navigateTo({
         url: '../../todo/todo',
       })
@@ -51,31 +53,34 @@ Page({
       url: '../taxRecord/index?type=list',
     })
   },
-  getTaxList() {
+  getTaxList(page) {
     let params = {
       status: 3,
-      page_size: 15,
-      year: ''
+      year: '',
+      page: page ? page: this.data.page,
+      page_size: this.data.page_size,
     }
     wx.setStorageSync('pageStatus', 3)
     declareList(params).then(res => {
       if (res.ret) {
+        wx.hideNavigationBarLoading();
+        let arr = this.data.allDeclareList;
+        let newArr = arr.concat(res.data.list)
         this.setData({
-          allDeclareList: res.data.list
+          allDeclareList: newArr
         })
+        console.log(newArr, '列表')
       }
-      console.log(res, '列表')
     })
   },
   // 跳转详情
   gotoDeatil(event) {
     let row = event.currentTarget.dataset.row
-    console.log(row);
     wx.navigateTo({
       url: '../deatil/deatil?id=' + row.id + '&type=list'
     })
   },
- 
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -116,14 +121,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log(789)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    wx.showNavigationBarLoading();
+    let page = this.data.page + 1;
+    this.setData({
+      page: page
+    })
+    this.getTaxList(page)
   },
 
   /**

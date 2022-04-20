@@ -80,14 +80,8 @@
   font-size: 28rpx;
   font-weight: 600;
   color: #283E56;
-
 }
 
-/* .item__header-tips {
-  font-size: 24rpx;
-  font-weight: 400;
-  color: #FFA42E;
-} */
 
 .pd-32 {
   padding: 0 32rpx 32rpx;
@@ -104,16 +98,6 @@
 .item__center-title {
   color: #48617C;
 }
-
-/* .item__center-amount1 {
-  font-weight: 600;
-  color: #FFA42E;
-}
-
-.item__center-amount2 {
-  font-weight: 600;
-  color: #46CF84;
-} */
 
 .securityCheck__topTips {
   line-height: 32rpx;
@@ -139,4 +123,8 @@
 .taxConfirmation__image {
   width: 370rpx;
   height: 300rpx;
+}
+.taxConfirmation__nodata-text {
+  color: #6E87A2;
+  text-align: center;
 }

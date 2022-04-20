@@ -19,6 +19,8 @@ Page({
     didClick: true,
     showTaxList: false,
     returnType: '',
+    color: '',
+    background: ''
   },
 
   // 返回
@@ -43,47 +45,57 @@ Page({
     //   })
     // }
   },
-
-  //overdue_status 0 逾期 1 未逾期
-  confirmTax() {
-    if (this.data.didClick) {
-      this.setData({
-        isShowModal: true
-      })
-    } else {
-      return
-    }
-
-  },
-  tapDialogButton(e) {
-    // console.log(e)
-    if (e.detail.item.text == '取消') {
-      this.setData({
-        isShowModal: false
-      })
-    } else {
-      let params = {
-        id: wx.getStorageSync('payRowId')
-      }
-      if (this.data.time == 1) {
-        confirmdeclare(params).then(res => {
-          console.log(res)
-          if (res.ret) {
-            wx.navigateTo({
-              url: '../successfully/index?typs=list',
-            })
-          }
-        })
-      }
-    }
+  closeList(){
+    this.setData({
+      showTaxList:false
+    })
   },
   addTaxItem() {
-    // console.log()
     this.setData({
       showTaxList: true
     })
   },
-
+  hideTips(){
+    this.setData({
+      showTips: false
+    })
+  },
+  // 选中当前项
+  checkedItemParent(event) {
+    let row = event.currentTarget.dataset.item
+    let temp = this.data.taxList;
+    this.setData({
+      taxList: temp.map(item => {
+        if (item.index == row.index) {
+          item.checked = true
+        } else {
+          item.checked = false
+        }
+        return item;
+      })
+    })
+    this.updateItemInfo(row.tax_category);
+  },
+  updateItemInfo(name){
+    this.data.listAll.map( item => {
+      if(item.name == name){
+        this.setData({
+          detailList:item.list
+        })
+      }
+    })
+  },
+  // 组件更新item状态和数据
+  updateList(value){
+    console.log(value)
+    this.setData({
+      taxList:value.detail,
+      showTaxList:false
+    })
+    value.detail.map(item => {
+      if(item.checked)this.updateItemInfo(item.tax_category);
+    })
+  },
   showToast() {
     this.setData({
       showTips: true
@@ -96,13 +108,18 @@ Page({
       if (res.ret) {
         let arr = []
         if (res.data.list.length > 0) {
-          arr = res.data.list[0].list
-        } else {
           arr = res.data.list
-        }
+        } 
+        console.log("arrr===="+arr)
+        res.data.category.map((item, i) => {
+          item.checked = false;
+          item.index = i
+        })
+        res.data.category[0].checked = true;
         this.setData({
           deatilObj: res.data,
-          detailList: arr,
+          detailList: arr[0].list,
+          listAll:arr,
           taxList: res.data.category
         })
       } else {

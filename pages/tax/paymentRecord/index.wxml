@@ -13,7 +13,7 @@
         </view>
       </picker>
 
-      <view class="taxConfirmation__list" wx:if="{{!isShowList}}">
+      <view class="taxConfirmation__list" wx:if="{{allDeclareList.length > 0}}">
         <view class="taxConfirmation__list-item" wx:for="{{allDeclareList}}" wx:for-item="list" wx:key="id">
           <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
             <view class="item__header">
@@ -41,6 +41,7 @@
       </view>
       <view class="taxConfirmation__nodata" wx:else>
         <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+        <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
       </view>
     </view>
   </scroll-view>

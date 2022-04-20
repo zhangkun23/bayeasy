@@ -35,6 +35,7 @@ App({
     userStatus: '', //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联
     operate: false, //是否有运营人员
     todolistNum: 0, //待办数量
+    page_size: 5,
   },
   /**
    * 登录接口保存信息在storage

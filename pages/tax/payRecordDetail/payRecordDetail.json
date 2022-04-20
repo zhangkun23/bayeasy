@@ -2,13 +2,11 @@
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
-    "list": "../components/list/list"
+    "list": "../common/list"
   },
   "navigationStyle":"custom",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
   "disableScroll": true
-  
-
 }

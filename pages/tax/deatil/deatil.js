@@ -34,7 +34,11 @@ Page({
       }
     ],
   },
-
+  hideTips() { 
+    this.setData({
+      showTips: false
+    })
+  },
   // 返回
   backIndex() {
     // 去确认为true  查看结果为false

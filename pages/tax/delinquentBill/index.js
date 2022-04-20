@@ -14,7 +14,7 @@ Page({
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     isShowList: false,
     allLoanList: [],
-    totalLoanAmount: '00.00'
+    totalLoanAmount: ''
   },
 
   sureRecord() {

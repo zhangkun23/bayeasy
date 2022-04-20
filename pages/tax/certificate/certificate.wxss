@@ -48,7 +48,26 @@
   padding: 36rpx 47rpx;
   margin-bottom: 32rpx;
 }
+
 .detail__image .images {
   width: 600rpx;
   height: 450rpx;
+}
+
+
+.content {
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.previewimg {
+  float: left;
+  width: 45%;
+  height: 200px;
+  margin: 2%;
+}
+
+.previewimg image {
+  width: 100%;
+  height: 100%;
 }

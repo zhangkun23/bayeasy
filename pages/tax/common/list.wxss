@@ -1,4 +1,4 @@
-/* pages/tax/components/list/list.wxss */
+/* pages/tax/common/list.wxss */
 
 .wrapper{
   display: flex;
@@ -17,7 +17,7 @@
   padding: 0 45rpx;
 }
 
-.closeInput {
+.closeImg {
   width: 40rpx;
   height: 40rpx;
 }
@@ -66,14 +66,10 @@
 
 .table__list-item {
   overflow-y: auto;
-  height: 700rpx;
+  max-height: 700rpx;
 }
 
-.title {
-  /* position: fixed;
-  height: 100rpx;
-  background: #fff;
-  width: 90%;
-  top: 820rpx;
-  line-height: 110rpx; */
+.default {
+  background-color: #C2DFFF;
+  color: #1D83F0;
 }

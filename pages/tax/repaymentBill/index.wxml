@@ -1,9 +1,9 @@
 <!--pages/tax/repaymentBill/index.wxml-->
 <view class="repaymentBill bgColog">
   <mp-navigation-bar title="还款账单" bindback="backIndex"></mp-navigation-bar>
-  <view class="repaymentBill__back taxConfirmation__list">
+  <view class="repaymentBill__back taxConfirmation__list" wx:if="{{allRepaymentList.length > 0}}">
     <view class="taxConfirmation__list-item" wx:for="{{allRepaymentList}}" wx:for-item="list" wx:key="id">
-    <!-- <view class="taxConfirmation__list-item"> -->
+      <!-- <view class="taxConfirmation__list-item"> -->
       <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
         <view class="item__header">
           <view class="item__header-date">
@@ -27,5 +27,9 @@
         </view>
       </view>
     </view>
+  </view>
+  <view class="taxConfirmation__nodata" wx:else>
+    <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+    <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
   </view>
 </view>

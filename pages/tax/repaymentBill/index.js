@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    empty_bg_url: tempPath + 'public/emptyBackGround.png',
     listIcon: tempPath + 'tax/taxreturn/list.png',
     allRepaymentList: []
   },

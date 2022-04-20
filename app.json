@@ -41,9 +41,7 @@
     "pages/tax/taxRecord/index",
     "custom-tab-bar/index",
     "pages/todo/todo",
-    "pages/nothing/index",
-    "pages/tax/components/list",
-    "pages/tax/components/list/list"
+    "pages/nothing/index"
   ],
   "tabBar": {
     "custom": true,

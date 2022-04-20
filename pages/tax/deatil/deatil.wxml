@@ -1,7 +1,6 @@
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
   <view class="detail__container">
-    {{returnType}} -- {{deatilObj.overdue_status}}
     <view wx:if="{{returnType == 'list'}}" class="detail__topTips orangeTips orangeBack font-size-24">
       <view class="detail__topTips-icon">
         <image src="{{info_max}}"></image>
@@ -38,7 +37,7 @@
           </view>
           <view class="item__text space-between triangle">
             <view class="position">
-              <view class="bubble" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+              <view class="bubble" bindtap="hideTips" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
             </view>
             <view class="item__center-title">
               应退税额合计

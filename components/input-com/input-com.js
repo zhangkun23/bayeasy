@@ -29,25 +29,25 @@ Component({
             type: Boolean,
             value: false
         },
-        must:{ //是否必填
+        must: { //是否必填
             type: Boolean,
             value: false
         },
-        icon_rl:{
+        icon_rl: {
             type: Boolean,
             value: false
         },
-        icon_down:{
+        icon_down: {
             type: Boolean,
             value: false
         },
-        type :{
+        type: {
             type: String,
             value: 'text'
         },
-        maxlength:{
-            type:Number,
-            value:200
+        maxlength: {
+            type: Number,
+            value: 200
         }
     },
 
@@ -92,7 +92,7 @@ Component({
             this.setShow(true)
         },
         // 清空input
-        clearInput() {  
+        clearInput() {
             this.setData({
                 inputValue: ''
             })

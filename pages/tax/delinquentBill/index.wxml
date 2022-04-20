@@ -1,15 +1,15 @@
 <!--pages/tax/delinquentBill/index.wxml-->
 <view class="delinquentBill">
-  <mp-navigation-bar ext-class="navigationBar"color="#ffffff" title="申报欠款账单" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar" color="#ffffff" title="申报欠款账单" bindback="backIndex"></mp-navigation-bar>
   <view class="taxConfirmation__container">
     <view class="taxConfirmation__btn font-size-24" bindtap="sureRecord">
       <text class="taxConfirmation__tips">还款账单</text>
     </view>
     <view class="delinquentBill__account">
       <view class="delinquentBill__account-title font-600">申报欠款总额</view>
-      <view class="delinquentBill__account-money font-600">￥{{totalLoanAmount}}</view>
+      <view class="delinquentBill__account-money font-600">￥{{totalLoanAmount || '00.00'}} </view>
     </view>
-    <view class="taxConfirmation__list" wx:if="{{!isShowList}}">
+    <view class="taxConfirmation__list" wx:if="{{allLoanList.length > 0}}">
       <view class="taxConfirmation__list-item" wx:for="{{allLoanList}}" wx:for-item="list" wx:key="id">
         <view class="pd-32" bindtap="gotoDeatil" data-row="{{list}}">
           <view class="item__header">
@@ -37,6 +37,7 @@
     </view>
     <view class="taxConfirmation__nodata" wx:else>
       <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+      <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
     </view>
   </view>
 </view>

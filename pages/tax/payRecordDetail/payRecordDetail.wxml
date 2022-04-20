@@ -19,7 +19,7 @@
             </view>
             <view class="item__text space-between triangle">
               <view class="position">
-                <view class="bubble" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+                <view class="bubble" bindtap="hideTips" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
               </view>
               <view class="item__center-title">
                 应退税额合计
@@ -33,14 +33,11 @@
             </view>
           </view>
         </view>
-        {{taxList}} -- taxList
         <!-- <view class="detail__tax">纳税明细</view> -->
         <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
         <view class="display-flex list__one">
           <view class="list__one-center display-flex">
-            <view class="btns default" wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category">{{item.tax_category}}</view>
-            <view class="btns default">22adj</view>
-            <view class="btns default">22adj</view>
+            <view class="{{item.checked? 'active btns' : 'btns'}} " wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category" data-item="{{item}}" bindtap="checkedItemParent" >{{item.tax_category}}</view>
           </view>
           <view class="list__one-plus" bindtap="addTaxItem">
             <text style="color:#1d83ef;">+</text>
@@ -93,11 +90,5 @@
       </view>
     </view>
   </scroll-view>
-
-  <!-- <block wx:if="{{isShowModal}}">
-    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
-  </block> -->
-  <!-- wx:if="{{showTaxList}}" -->
-  <list></list>
-
+    <list List="{{taxList}}" listShow="{{showTaxList}}"  bind:closeList="closeList" bind:updateList="updateList" ></list>
 </view>

@@ -13,6 +13,7 @@ Page({
     allDeclareList: [],
     listIcon: tempPath + 'tax/taxreturn/list.png',
     dateIcon: tempPath + 'tax/taxreturn/list.png',
+    empty_bg_url: tempPath + 'public/emptyBackGround.png',
     title: "",
     returnType: "",
     date: '2022'

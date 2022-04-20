@@ -15,7 +15,14 @@ Page({
     returnType: '',
     imgArr: []
   },
-
+  previewImg(event) {
+    console.log(event)
+    let src = event.currentTarget.dataset.src;
+    wx.previewImage({
+      current: src,
+      urls: this.data.imgArr
+    })
+  },
   // 返回欠款详情页
   backIndex() {
     if(this.data.returnType == 'delinquentBill') {
