@@ -16,6 +16,7 @@
     "pages/invoice/acquisitionCost/searchPage/index",
     "pages/invoice/acquisitionCost/searchResult/index",
     "pages/invoice/acquisitionCost/invoiceDetails/index",
+    "pages/invoice/acquisitionCost/filterResult/index",
     "pages/invoice/invoiceUpload/index/index",
     "pages/invoice/invoiceUpload/address/index",
     "pages/invoice/invoiceUpload/updateImg/index",

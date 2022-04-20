@@ -42,7 +42,7 @@
                             <image src="{{updateHandel_rigth}}" />
                             <text class="item__info_right">查验通过</text>
                         </view>
-                        <image src="{{close_null}}" data-index="{{index}}" data-id="{{item.linkInfo.id}}" catchtap="removeItem" />
+                        <image src="{{close_null}}" data-index="{{index}}" data-id="{{item.linkInfo.id}}" catchtap="showDialog" />
                     </view>
                     <!-- 失败状态 -->
                     <view class="item__bottom__info" wx:if="{{!item.requestStatus}}">
@@ -50,14 +50,14 @@
                             <image src="{{updateHandel_err}}" />
                             <text class="item__info_error">{{item.message}}</text>
                         </view>
-                        <image src="{{close_info}}" data-index="{{index}}" catchtap="removeItem" />
+                        <image src="{{close_info}}" data-index="{{index}}" catchtap="showDialog" />
                     </view>
                 </view>
                 <!-- 默认状态 -->
                 <view class="item__bottom" wx:else>
                     <view class="item__bottom__info">
-                        <view>{{index}}</view>
-                        <image src="{{close_null}}" data-index="{{index}}" catchtap="removeItem" />
+                        <view></view>
+                        <image src="{{close_null}}" data-index="{{index}}" catchtap="showDialog" />
                     </view>
                 </view>
                 <view wx:if="{{item.loaddingActive}}" class="itemLoadding">
@@ -65,7 +65,10 @@
                 </view>
             </view>
 
+            
         </block>
+
+        <view class="montm" wx:if="{{montmShow}}"></view>
         <!-- 上传 -->
         <view class="item" bindtap="updateImgOrPdf" wx:if="{{updateImgOrPdfArrNum<9 && status==0}}">
             <view class="item__top addImage__felx">
@@ -80,13 +83,11 @@
         </view>
     </view>
 
-
     <view class="btn" wx:if="{{status!=2}}">
         <view class="btn__text" wx:if="{{status==0}}">一次性最多仅支持上传9张发票图片</view>
         <view wx:if="{{active && errInfoNum==0}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
         <view wx:else class="btn__button btn__active_un">下一步</view>
     </view>
-
 
     <view class="statusSusses" wx:if="{{status==2}}">
         <image src="{{updateHandel_rigth}}" />
@@ -95,7 +96,10 @@
         <view class="statusSusses__select" bindtap="handelClick">查看发票信息</view>
     </view>
 
+    <block wx:if="{{isShowModal}}">
+        <mp-dialog show="isShowModal" buttons="{{buttons}}" data-index="{{index}}" bindbuttontap="tapDialogButtonClose" title="确认删除这张发票吗？"></mp-dialog>
+    </block>
 </view>
 <!-- 提交错误提示 -->
 <updateImageInfo_errInfo errInfoShow="{{errInfoShow}}" errInfo="{{errInfo}}" bind:errInfoCloseOrShow="errInfoCloseOrShow" />
-<!-- <service class="servicePosition"></service> -->
+<service class="servicePosition" wx:if="{{status==2}}"></service>

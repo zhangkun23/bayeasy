@@ -7,5 +7,6 @@
     "my-progress": "./components/progress/progress",
     "login-btn": "/components/login-btn/login-btn",
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
-  }
+  },
+  "disableScroll": true
 }

@@ -3,16 +3,23 @@ const app = getApp()
 const {
     getAcquisitionDetails
 } = require('../../../../http/api/api_szpj')
-const { prod }= require('../../../../http/env')
-const { openPdf, nullToEmptyString } = require('../../../../utils/util')
+const {
+    prod
+} = require('../../../../http/env')
+const {
+    openPdf,
+    nullToEmptyString
+} = require('../../../../utils/util')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        audit_faild_reason: null,
+        failure_reason: '',
         hasFile: null,
-        pdfImg:app.globalData.imgPath + "invoice/incomeInvoice/pdfImg.png",
+        pdfImg: app.globalData.imgPath + "invoice/incomeInvoice/pdfImg.png",
         emptyPic: app.globalData.emptyPic,
         passIcon: app.globalData.imgPath + 'invoice/acquisitionCost/passIcon.png',
         failIcon: app.globalData.imgPath + 'invoice/acquisitionCost/failIcon.png',
@@ -26,9 +33,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log("options ", options)
-        const aid = options.aid;
-        this.getInfo(aid)
+        const id = options.id;
+        this.getInfo(id)
     },
     getInfo(aid) {
         var that = this
@@ -40,7 +46,7 @@ Page({
                 console.log("无法获取详情:", res)
                 wx.showToast({
                     title: '获取详情失败， 请稍后再试',
-                    icon: ''
+                    icon: 'none'
                 })
             }
         }).catch(e => {
@@ -48,22 +54,26 @@ Page({
         })
     },
     handleInfo: function (info) {
-        if (! info instanceof Object) {
+        if (!info instanceof Object) {
             return
         }
+        // 处理发票文件展示
         if ('pdf_url' in info && info['pdf_url']) {
             this.setData({
                 pdfUrl: info['pdf_url']
             })
         } else if ('file_image' in info && info['file_image']) {
             this.setData({
-                pdfUrl: info['file_image']
+                invoiceImgUrl: info['file_image']
             })
         }
-        if(info.status === 2){
+        if (info.status === 2) {
             const __fail_reason = info.failure_reason
+            this.setData({
+                audit_faild_reason: info.audit_faild_reason,
+                failure_reason: info.failure_reason
+            })
             console.log("审核失败原因: ", __fail_reason)
-            // todo: get fail reason and 
         }
         this.setData({
             status: info.status,
@@ -78,5 +88,15 @@ Page({
     },
     goPdf() {
         openPdf(this.data.pdfUrl)
-    }
+    },
+    // handleBackArrow: function(){
+    //     setTimeout(() => {
+    //         wx.redirectTo({
+    //             url: '/pages/invoice/acquisitionCost/index',
+    //             fail: (e) => {
+    //                 console.log("fail redirect: ", e)
+    //             },
+    //         })
+    //     }, 0);
+    // },
 })

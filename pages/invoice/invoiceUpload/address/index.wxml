@@ -18,7 +18,7 @@
             <text class="title__info">{{form.phone}}</text>
         </view>
         <view class="title">
-            <text class="title__left" >收获地址</text>
+            <text class="title__left" >收货地址</text>
             <text class="title__info">{{form.address}}</text>
         </view>
     </view>

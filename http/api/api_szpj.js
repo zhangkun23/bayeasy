@@ -13,7 +13,7 @@ module.exports = {
     get_all_invoices: (param) => {
         return request(api + '/invoice/list', 'GET', {});
     },
-
+    /* 获取收入发票详情 */
     get_invoice_detail: (iid) => {
         return request(api + '/invoice/info?id=' + iid, 'GET', {});
     },
@@ -22,9 +22,14 @@ module.exports = {
      * @param {*} params 
      */
     apply_invoice: (params) => {
-        return request('/gshApi/invoice/confirm_invoice', 'POST', params);
-
+        return request('/invoice/confirm_invoice', 'POST', params);
     },
+
+    /* 查看已开发票 */
+    get_invoice_file: (id) => {
+        return request('/invoice/invoice_file?id=' + id, 'GET', {});
+    },
+    
     /*查询收货地址*/
     getUserMeg: () => {
         return request(api + '/personal_nformation/mail_address', 'GET', {});
@@ -43,7 +48,10 @@ module.exports = {
     searchBill: (param) => {
         return request(api + '/deduct_invoice/list', 'POST', param);
     },
-
+    /* 获取增值税发票类型 */
+    getInvoiceType: () => {
+        return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
+    },
 
     // ocr识别pdf与图片
     ocrDeductInvoice: () => {
@@ -56,8 +64,8 @@ module.exports = {
     },
 
     // 删除已ocr识别过的发票文件
-    ocrDeductInvoice: (id) => {
-        return request(api + '/deduct_invoice/del_deduct_invoice_file?id=' + id, 'GET', {});
+    delDeductInvoiceFile: (id) => {
+        return request(api + '/deduct_invoice/del_deduct_invoice_file?id='+id, 'GET', {});
     },
 
     // 获取成本发票详情

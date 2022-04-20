@@ -44,6 +44,7 @@
     height: 0%;
     overflow-y: auto;
     margin: 32rpx;
+    max-height: 60vh;
 }
 
 .bgColor {
@@ -234,7 +235,7 @@
 
 .operate-container {
     height: 80%;
-    bottom: 261rpx;
+    /* bottom: 261rpx; */
     /* position: abvsolute; */
     height: 124rpx;
     display: flex;
@@ -243,10 +244,12 @@
     width: 100%;
     /* background-color: #F3F8FC; */
     /* padding: 32rpx 0 32rpx 0; */
+    box-shadow: 0px -10px 30px 0px rgba(201, 209, 228, 0.5);
     /* box-shadow: 0px -10px 30px 0px rgba(201, 209, 228, 0.38); */
-    box-shadow: 0px -10px 30px 0px rgba(201, 209, 228, 0.38);
     background-color: #F3F8FC;
+    position: relative;
 }
+
 
 .operate-container .btn {
     display: flex;

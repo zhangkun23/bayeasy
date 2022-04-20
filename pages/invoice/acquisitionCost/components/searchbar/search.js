@@ -58,7 +58,6 @@ Component({
             this.triggerEvent("inputkey", key)
         },
         goSearch: function (event) {
-            console.log("!", event)
             this.triggerEvent("gosearch", event.detail.value)
         }
     }

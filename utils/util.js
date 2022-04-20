@@ -3,7 +3,7 @@ const {
   atob
 } = require('./base64')
 const {
-  prod_host
+  prod
 } = require('../http/env')
 const formatTime = date => {
   const year = date.getFullYear()
@@ -34,7 +34,7 @@ const openPdf = (url) => {
     console.error("Wrong url passed to pdf : ", url)
     wx.showToast({
       title: '无法打开url',
-      icon: ''
+      icon: 'none'
     })
     return
   }
@@ -42,7 +42,7 @@ const openPdf = (url) => {
   if (!url.endsWith('.pdf')) {
     url = app.globalData.pafPath + url + '.pdf'
   } else {
-    url = prod_host + url
+    url = prod + url
   }
   // console.log(url)
   //   wx.showToast({

@@ -14,12 +14,8 @@ Page({
      */
     data: {
         showEmpty: false,
-        showNav: true,
         emptyPic: app.globalData.emptyPic,
         hasOperate: app.globalData.operate,
-        startY: 0,
-        endY: 0,
-        initY: 0,
     },
     /**
      * 生命周期函数--监听页面加载
@@ -46,15 +42,7 @@ Page({
                         info_details.myStatus = 2
                     }
                     const new_data = Object.assign(this.data, info_details)
-                    this.setData(new_data, () => {
-                        var query = wx.createSelectorQuery()
-                        query.select('#card').boundingClientRect(function (res) {
-                            console.debug("card attributes", res);
-                            that.setData({
-                                initY: res.top - 10 // 增加用户体验 
-                            })
-                        }).exec();
-                    });
+                    this.setData(new_data);
                 } else {
                     console.error("获取发票详情没有数据返回:", res)
                 }
@@ -79,26 +67,8 @@ Page({
             })
         }
     },
-    setNav: function (y) {
-        if (y >= this.data.initY) {
-            this.setData({
-                showNav: true
-            })
-        } else {
-            this.setData({
-                showNav: false
-            })
-        }
-    },
-    handletouchmove(event) {
-        var that = this;
-        const query = wx.createSelectorQuery().in(this);
-        query.select('#card').boundingClientRect(res => {
-            that.setNav(res.top)
-        }).exec();
-    },
     confirmInvoice() {
-        console.log("!")
+        var that = this;
         wx.showModal({
             content: '确认开票前请仔细核对账单发票信息\r\n如对帐单金额及发票有异议\r\n请及时联系您的贝易资运营专员',
             confirmText: '确认开票',
@@ -114,6 +84,7 @@ Page({
                                 content: '您的账单发票信息已确认成功\r\n贝易资在1个工作日内为您开具电子发票\r\n开具完成后将以短信方式通知你',
                                 confirmText: '好的',
                                 confirmColor: '#576B95',
+                                showCancel: false
                             })
                         } else {
                             wx.showToast({
@@ -144,7 +115,7 @@ Page({
             return
         }
         wx.navigateTo({
-            url: './eInvoice/index?id' + this.data.id,
+            url: './eInvoice/index?vid=' + this.data.id,
         })
     }
 

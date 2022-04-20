@@ -1,5 +1,7 @@
 {
   "navigationStyle":"custom",
   "usingComponents": {
+    "login-btn": "/components/login-btn/login-btn",
+    "modal": "/components/modal/modal"
   }
 }

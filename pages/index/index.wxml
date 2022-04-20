@@ -1,8 +1,8 @@
 
 <modal showModal="{{showModal}}" class="modal" contents="{{contents}}">
-    <login-btn bind:click="goLogin" text="{{textInfo}}" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" 
-    borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
-  </modal>
+  <login-btn bind:click="goLogin" text="{{textInfo}}" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" 
+  borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
+</modal>
 
 <view class="waper" hidden="{{!pageShow}}" >
   <view class="infoTop">
@@ -37,11 +37,11 @@
         <view class="countCenterTitle" >注册进程</view>
       </view>
       <view class="countTop_right">
-        <view class="top" bindtap="handelClickUrl" data-url='/pages/nothing/index'>
+        <view class="top" bindtap="handelClickUrl" data-url='/pages/invoice/incomeInvoice/index/index'>
           <image class="srzdfp" src="{{srzdfp}}" />
           <view class="title">收入账单发票</view>
         </view>
-        <view class="bottom" bindtap="handelClickUrl" data-url='/pages/nothing/index'>
+        <view class="bottom" bindtap="handelClickUrl" data-url='/pages/invoice/acquisitionCost/index'>
           <image class="cbfy" src="{{cbfy}}" />
           <view class="title">成本费用</view>
         </view>
@@ -49,7 +49,7 @@
     </view>
     <view class="usermotto">
       <text class="user-motto">{{motto}}</text>
-      <view class="countCenter" data-url='/pages/nothing/index' bindtap="handelClickUrl">
+      <view class="countCenter" data-url='/pages/tax/taxreturn/index' bindtap="handelClickUrl">
         <text class="countCenterTitle">纳税申报</text>
         <image class="nssb" src="{{nssb}}" />
       </view>

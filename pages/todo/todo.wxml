@@ -1,37 +1,40 @@
 <!--pages/todo/todo.wxml-->
-<view class="bgColog"></view>
-<mp-navigation-bar title="待办事项"></mp-navigation-bar>
-<view class="sum-info-container">
-  <view class="progress-container">
-    <!-- <mpProgress config="{{config}}" percentage="{{percentage}}"></mpProgress> -->
-    <my-progress model:count="{{count}}"></my-progress>
-  </view>
-  <view class="contents">
-    <view class="title">
-      待办事项汇总
-    </view>
-    <view wx:if="{{count === 0}}" class="sub-title">
-      您目前没有需要办理的事项
-    </view>
-    <view wx:else class="sub-title">
-      当前您有 <text class="count">{{count}}</text> 项待办事项请及时处理
-    </view>
-  </view>
-</view>
-<view wx:if="{{count === 0}}" class="default-menu">
-  <image class="bg" src="{{empty_bg_url}}" mode="widthFix"></image>
-</view>
-<view wx:else>
-  <view wx:for="{{todo_lists}}" wx:key="i">
-    <view wx:if="{{item.isShow}}" class="todo-container">
-      <view class="title-container">
-        <view wx:if="{{item.titleYellow}}" class="title yellow">{{item.title}}</view>
-        <view wx:else class="title blue">{{item.title}}</view>
-        <view class="sub-title">{{item.subTitle}}</view>
+<view class="mycontainer">
+  <view class="bgColog"></view>
+  <mp-navigation-bar title="待办事项" delta="0" bindback="handleBackArrow"></mp-navigation-bar>
+  <scroll-view scroll-y="true" enable-flex="true" class="wrapper">
+    <view class="sum-info-container">
+      <view class="progress-container">
+        <my-progress model:count="{{count}}" class="progress-circle"></my-progress>
       </view>
-      <view class="act-btn">
-        <login-btn bindclick="goLogin" text="{{item.btnText}}" btnBgColor="#1D83F0" btnWidth="140rpx" btnHeight="60rpx" borderRadius="35rpx" btnBgColor="#1D83F0" fontSize="28rpx"></login-btn>
+      <view class="contents">
+        <view class="title">
+          待办事项汇总
+        </view>
+        <view wx:if="{{count === 0}}" class="sub-title">
+          您目前没有需要办理的事项
+        </view>
+        <view wx:else class="sub-title">
+          当前您有 <text class="count">{{count}}</text> 项待办事项请及时处理
+        </view>
       </view>
     </view>
-  </view>
+    <view wx:if="{{count === 0}}" class="default-menu">
+      <image class="bg" src="{{empty_bg_url}}" mode="widthFix"></image>
+    </view>
+    <view wx:else>
+      <view wx:for="{{todo_lists}}" wx:key="i">
+        <view wx:if="{{item.isShow}}" class="todo-container">
+          <view class="title-container">
+            <view wx:if="{{item.titleYellow}}" class="title yellow">{{item.title}}</view>
+            <view wx:else class="title blue">{{item.title}}</view>
+            <view class="sub-title">{{item.subTitle}}</view>
+          </view>
+          <view class="act-btn" data-tid="{{item.id}}" bindtap="goCheck">
+            <login-btn text="{{item.btnText}}" btnBgColor="#1D83F0" btnWidth="140rpx" btnHeight="60rpx" borderRadius="35rpx" btnBgColor="#1D83F0" fontSize="28rpx"></login-btn>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
 </view>

@@ -1,11 +1,12 @@
 // pages/nothing/index.js
+const emptyPic = getApp().globalData.emptyPic;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        emptyPic: emptyPic
     },
 
     /**
