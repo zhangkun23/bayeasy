@@ -17,6 +17,7 @@ Page({
         currentIndex:0,
         updateImgOrPdfArr:[],
         status:0,
+        imgArr:[],
     },
 
     // 删除当前选项
@@ -37,12 +38,25 @@ Page({
     // 预览pdf
     handelClickDetail(e){
         const data = e.currentTarget.dataset;
+        console.log(data)
         if(data.type == 'pdf'){
             wx.openDocument({
                 filePath: data.pdfpath, //要打开的文件路径
                 success: function (res) {
                   console.log('打开PDF成功');
                 }
+            })
+        }else{
+            const info = this.data.updateImgOrPdfArr;
+            let arr = []
+            info.map( item => {
+                if(item.type == 'img'){
+                    arr.push(item.link)
+                }
+            })
+            wx.previewImage({
+                current: data.pdfpath,
+                urls:arr
             })
         }
     },
