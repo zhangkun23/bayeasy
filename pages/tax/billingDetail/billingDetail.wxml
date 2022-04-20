@@ -2,6 +2,7 @@
 
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
+  <scroll-view scroll-y="true">
   <view class="detail__container">
 
     <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}">
@@ -126,5 +127,5 @@
       </view>
     </view>
   </view>
-
+</scroll-view>
 </view>

@@ -34,7 +34,7 @@ Page({
       }
     ],
   },
-  hideTips() { 
+  hideTips() {
     this.setData({
       showTips: false
     })
@@ -65,13 +65,9 @@ Page({
       this.setData({
         isShowModal: true
       })
-    } else {
-      return
     }
-
   },
   tapDialogButton(e) {
-    // console.log(e)
     if (e.detail.item.text == '取消') {
       this.setData({
         isShowModal: false
@@ -81,14 +77,14 @@ Page({
         id: wx.getStorageSync('detailId')
       }
       if (this.data.time == 1) {
-        // confirmdeclare(params).then(res => {
-        //   console.log(res)
-        //   if (res.ret) {
-        wx.navigateTo({
-          url: '../successfully/index?typs=list',
+        confirmdeclare(params).then(res => {
+          console.log(res)
+          if (res.ret) {
+            wx.navigateTo({
+              url: '../successfully/index?typs=list',
+            })
+          }
         })
-        //   }
-        // })
       }
     }
   },
@@ -108,9 +104,7 @@ Page({
           wx.setStorageSync('overdueStatus', res.data.overdue_status)
           var time = res.data.overdue_time;
           this.countDown(time)
-          if (res.data.list.length > 0) {
-            arr = res.data.list[0].list
-          } else {
+          if (res.data.list) {
             arr = res.data.list
           }
           this.setData({
@@ -205,8 +199,16 @@ Page({
   },
   renderPage(value) {
     if (value == 'list') {
+      if (wx.getStorageSync('overdueStatus') == 1) {
+        this.setData({
+          title: '本期申报税款确认',
+        })
+      } else {
+        this.setData({
+          title: '申报税款确认'
+        })
+      }
       this.setData({
-        title: '本期申报税款确认',
         returnType: value
       })
     } else if (value == 'result') {

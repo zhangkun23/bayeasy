@@ -1,94 +1,95 @@
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
-  <view class="detail__container">
-    <view wx:if="{{returnType == 'list'}}" class="detail__topTips orangeTips orangeBack font-size-24">
-      <view class="detail__topTips-icon">
-        <image src="{{info_max}}"></image>
-      </view>
-      <text wx:if="{{ deatilObj.overdue_status == 0 }}">请尽快确认税额，申报征期已过纳税信誉产生影响！请联系运营人员</text>
-      <text wx:if="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严格影响主体纳税誉！</text>
-    </view>
-    <view class="detail__time" >
-      <view class="detail__date" wx:if="{{ deatilObj.overdue_status == 1 && deatilObj.overdue_time > 0}}">
-        <view class="detail__timeout font-600">确认时间倒计时</view>
-        <view>
-          <text class="detail__time-boxShadow">{{timeOut.days}}</text>
-          <text>天</text>
-          <text class="detail__time-boxShadow">{{timeOut.hours}}</text>
-          <text>小时</text>
-          <text class="detail__time-boxShadow">{{timeOut.minutes}}</text>
-          <text>分</text>
-          <text class="detail__time-boxShadow">{{timeOut.seconds}}</text>
-          <text>秒</text>
+  <scroll-view scroll-y="true">
+    <view class="detail__container">
+      <view wx:if="{{returnType == 'list'}}" class="detail__topTips orangeTips orangeBack font-size-24">
+        <view class="detail__topTips-icon">
+          <image src="{{info_max}}"></image>
         </view>
+        <text wx:if="{{ deatilObj.overdue_status == 0 }}">请尽快确认税额，申报征期已过纳税信誉产生影响！请联系运营人员</text>
+        <text wx:if="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严格影响主体纳税誉！</text>
       </view>
-      <view class="item__container">
-        <view class="item__header">
-          <view class="item__header-date">
-            <image class="item__header-image" src="{{listIcon}}"></image>
+      <view class="detail__time">
+        <view class="detail__date" wx:if="{{ deatilObj.overdue_status == 1 && deatilObj.overdue_time > 0}}">
+          <view class="detail__timeout font-600">确认时间倒计时</view>
+          <view>
+            <text class="detail__time-boxShadow">{{timeOut.days}}</text>
+            <text>天</text>
+            <text class="detail__time-boxShadow">{{timeOut.hours}}</text>
+            <text>小时</text>
+            <text class="detail__time-boxShadow">{{timeOut.minutes}}</text>
+            <text>分</text>
+            <text class="detail__time-boxShadow">{{timeOut.seconds}}</text>
+            <text>秒</text>
           </view>
-          <text class="item__header-text">申报月份</text>
         </view>
-        <view class="item__center-tips font-600">{{ deatilObj.declare_month }}</view>
-        <view class="item__center font-size-24">
-          <view class="item__text space-between">
-            <view class="item__center-title">应补税额合计</view>
-            <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
-          </view>
-          <view class="item__text space-between triangle">
-            <view class="position">
-              <view class="bubble" bindtap="hideTips" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+        <view class="item__container">
+          <view class="item__header">
+            <view class="item__header-date">
+              <image class="item__header-image" src="{{listIcon}}"></image>
             </view>
-            <view class="item__center-title">
-              应退税额合计
-              <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
-            </view>
-            <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
+            <text class="item__header-text">申报月份</text>
           </view>
-          <view class="item__text space-between">
-            <view class="item__center-title">确认时间</view>
-            <view class="item__center-title">{{deatilObj.confirm_date || '2022-01-20'}}</view>
+          <view class="item__center-tips font-600">{{ deatilObj.declare_month }}</view>
+          <view class="item__center font-size-24">
+            <view class="item__text space-between">
+              <view class="item__center-title">应补税额合计</view>
+              <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
+            </view>
+            <view class="item__text space-between triangle">
+              <view class="position">
+                <view class="bubble" bindtap="hideTips" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+              </view>
+              <view class="item__center-title">
+                应退税额合计
+                <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
+              </view>
+              <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
+            </view>
+            <view class="item__text space-between">
+              <view class="item__center-title">确认时间</view>
+              <view class="item__center-title">{{deatilObj.confirm_date || '2022-01-20'}}</view>
+            </view>
           </view>
         </view>
-      </view>
 
-      <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
-      <!-- 明细内容 -->
-      <view class="detail__taxDetail" wx:if="{{taxList.length > 0}}">
-        <view class="detail__list" wx:for="{{taxList}}" wx:for-item="item" wx:key="id">
-          <view class="detail__list-title font-600">{{item.tax_item}}</view>
-          <view class="font-size-24 detail__taxDetail-content">
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">征收品目</text>
-              <text class="detail__content-text">{{item.tax_item}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">税（费）款所属期起止</text>
-              <text class="detail__content-text">{{item.tax_time}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">纳税期限</text>
-              <text class="detail__content-text">{{item.declare_period}}</text>
-            </view>
-            <view class="space-between mg-bp-24">
-              <text class="detail__content-title">申报期限</text>
-              <text class="detail__content-text">{{item.declare_limit}}</text>
-            </view>
-            <view class="space-between mg-bp-24" wx:if="{{item.should_pay_tax > 0}}">
-              <text class="detail__content-title font-600">应补税额</text>
-              <text class="orangeTips">{{item.should_pay_tax}}</text>
-            </view>
-            <view class="space-between mg-bp-24" wx:if="{{item.should_refund_tax > 0}}">
-              <text class="detail__content-title font-600">应退税额</text>
-              <text class="greennTips">{{item.should_refund_tax}}</text>
+        <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
+        <!-- 明细内容 -->
+        <view class="detail__taxDetail" wx:if="{{taxList.length > 0}}">
+          <view class="detail__list" wx:for="{{taxList}}" wx:for-item="item" wx:key="name">
+            <view class="detail__list-title font-600">{{item.name}}</view>
+            <view class="font-size-24 detail__taxDetail-content" wx:for="{{item.list}}" wx:for-item="childItem" wx:key="id">
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">征收品目</text>
+                <text class="detail__content-text">{{childItem.tax_item}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">税（费）款所属期起止</text>
+                <text class="detail__content-text">{{childItem.tax_time}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">纳税期限</text>
+                <text class="detail__content-text">{{childItem.declare_period}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title">申报期限</text>
+                <text class="detail__content-text">{{childItem.declare_limit}}</text>
+              </view>
+              <view class="space-between mg-bp-24" wx:if="{{childItem.should_pay_tax > 0}}">
+                <text class="detail__content-title font-600">应补税额</text>
+                <text class="orangeTips">{{childItem.should_pay_tax}}</text>
+              </view>
+              <view class="space-between mg-bp-24" wx:if="{{childItem.should_refund_tax > 0}}">
+                <text class="detail__content-title font-600">应退税额</text>
+                <text class="greennTips">{{childItem.should_refund_tax}}</text>
+              </view>
             </view>
           </view>
         </view>
+        <view disabled="{{didClick}}" wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn" style="background:{{backgroundColor}};box-shadow:{{boxShadow}}">税金确认无误{{splicingStr}}</view>
       </view>
-      <view disabled="{{didClick}}" wx:if="{{!showBtn}}" bindtap="confirmTax" class="detail__button bluebtn" style="background:{{backgroundColor}};box-shadow:{{boxShadow}}">税金确认无误{{splicingStr}}</view>
     </view>
-  </view>
-
+  </scroll-view>
   <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
   </block>

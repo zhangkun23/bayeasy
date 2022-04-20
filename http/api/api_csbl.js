@@ -37,6 +37,9 @@ module.exports = {
   getVoucher: (param) => {
     return request(api + '/declare_loan/get_voucher?id=' + param, 'GET', {});
   },
-
+  // 获取商事主体年份
+  getFullYear() {
+    return request(api + '/declare/get_declare_year', 'GET', {});
+  }
 
 }

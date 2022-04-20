@@ -46,7 +46,7 @@
         <!-- 明细内容 -->
         <view class="detail__taxDetail" wx:if="{{detailList.length > 0}}">
           <view class="detail__list" wx:for="{{detailList}}" wx:for-item="item" wx:key="id">
-            <view class="detail__list-title font-600">{{item.tax_item}}</view>
+            <view class="detail__list-title font-600">{{item.tax_category}}</view>
             <view class="font-size-24 detail__taxDetail-content">
               <view class="space-between mg-bp-24">
                 <text class="detail__content-title">征收品目</text>

@@ -5,7 +5,7 @@
   background-size: contain;
 }
 .taxConfirmation__container {
-  height: 100%;
+  max-height: 1360rpx;
   display: flex;
   flex-direction: column;
   padding: 32rpx;
