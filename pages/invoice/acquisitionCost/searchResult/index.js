@@ -135,7 +135,7 @@ Page({
     goDetail: function (e) {
         const vid = e.currentTarget.dataset.vid
         wx.navigateTo({
-            url: '../invoiceDetails/index?vid=' + vid,
+            url: '../invoiceDetails/index?id=' + vid,
         })
     },
     handleBackArrow: function () {

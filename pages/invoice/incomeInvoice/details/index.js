@@ -14,12 +14,8 @@ Page({
      */
     data: {
         showEmpty: false,
-        showNav: true,
         emptyPic: app.globalData.emptyPic,
         hasOperate: app.globalData.operate,
-        startY: 0,
-        endY: 0,
-        initY: 0,
     },
     /**
      * 生命周期函数--监听页面加载
@@ -46,15 +42,7 @@ Page({
                         info_details.myStatus = 2
                     }
                     const new_data = Object.assign(this.data, info_details)
-                    this.setData(new_data, () => {
-                        var query = wx.createSelectorQuery()
-                        query.select('#card').boundingClientRect(function (res) {
-                            console.debug("card attributes", res);
-                            that.setData({
-                                initY: res.top - 10 // 增加用户体验 
-                            })
-                        }).exec();
-                    });
+                    this.setData(new_data);
                 } else {
                     console.error("获取发票详情没有数据返回:", res)
                 }
@@ -78,13 +66,6 @@ Page({
                 phoneNumber: phonenum
             })
         }
-    },
-    handletouchmove(event) {
-        var that = this;
-        const query = wx.createSelectorQuery().in(this);
-        query.select('#card').boundingClientRect(res => {
-            that.setNav(res.top)
-        }).exec();
     },
     confirmInvoice() {
         var that = this;

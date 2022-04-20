@@ -1,6 +1,6 @@
 <!--pages/invoice/incomeInvoice/details/index.wxml-->
 <view class="mycontainer">
-    <mp-navigation-bar animated="true" show="{{showNav}}" title="账单发票详情"></mp-navigation-bar>
+    <mp-navigation-bar  title="账单发票详情"></mp-navigation-bar>
     <view class="bgColog"></view>
     <scroll-view scroll-y="true" class="wrapper" enable-flex="true">
         <view wx:if="{{isEmpty}}" class="tip-container flex_center_column">
@@ -8,7 +8,7 @@
             <text user-select="true" class="subscribe">暂无数据</text>
         </view>
         <view wx:else class="inv-container flex_center_column">
-            <view id="card" class="card" bindtouchmove="handletouchmove">
+            <view id="card" class="card">
                 <view class="content">
                     <view class="topbar">
                         <view>账单发票详情</view>

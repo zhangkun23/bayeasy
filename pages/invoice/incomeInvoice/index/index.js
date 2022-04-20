@@ -22,6 +22,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        filter_ids: null,
         showNav: true,
         isInvoiceEmpty: false,
         btnStyle: {
@@ -31,7 +32,14 @@ Page({
         emptyPic: app.globalData.emptyPic,
         invoice_lists: [],
     },
-    onShow: function (options) {
+    onLoad: function (options) {
+        if(options instanceof Object && 'from' in options){
+            if(options.from === 'todo'){
+                const ids = options.ids.split('_')
+                console.debug("ids is ", ids)
+                this.setData({filter_ids: ids})
+            }
+        }
         var that = this
         get_all_invoices().then(res => {
             if (res.ret) {
@@ -65,6 +73,13 @@ Page({
     handleData(info){
         var that = this
         let _invoice_infos = []
+        if(this.data.filter_ids){
+            info = info.filter(i=>i.id in this.data.filter_ids)
+            if(info.length === 0){
+                that.setData({isInvoiceEmpty: true})
+                return
+            }
+        }
         info.forEach(d => {
             // title
             if (INVOICE_STATUS_WAIT.includes(d.status_code)) {
@@ -93,14 +108,6 @@ Page({
 
         that.setData({
             invoice_lists: _invoice_infos
-        },() => {
-            var query = wx.createSelectorQuery()
-            query.select('#card').boundingClientRect(function (res) {
-                console.debug("card attributes", res);
-                that.setData({
-                    initY: res.top - 10 // 增加用户体验 
-                })
-            }).exec();
         })
     }
 })

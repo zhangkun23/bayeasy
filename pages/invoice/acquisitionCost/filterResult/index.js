@@ -45,7 +45,7 @@ Page({
     goDetail: function (e) {
         const vid = e.currentTarget.dataset.vid
         wx.navigateTo({
-            url: '../invoiceDetails/index?aid=' + vid,
+            url: '../invoiceDetails/index?id=' + vid,
         })
     },
     toggleFilter: function () {

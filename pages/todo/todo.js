@@ -39,7 +39,8 @@ Page({
         titleYellow: true,
         title: "征期申报税款确认",
         subTitle: "请您尽快确认税额，以免影响申报进度",
-        btnText: "去确认"
+        btnText: "去确认",
+        url: '../tax/deatil/deatil?'
       },
       {
         id: 2,
@@ -47,7 +48,8 @@ Page({
         titleYellow: true,
         title: "征期申报税款确认",
         subTitle: "征期已将近，请尽快确认",
-        btnText: "去确认"
+        btnText: "去确认",
+        url: '../tax/deatil/deatil?'
       },
       {
         id: 3,
@@ -56,7 +58,8 @@ Page({
         count: 0,
         title: "您有 {0} 条申报欠款记录需要处理",
         subTitle: "为了不影响公司信誉，请尽快结清欠款",
-        btnText: "去查看"
+        btnText: "去查看",
+        url: "../tax/delinquentBill/index"
       },
       {
         id: 4,
@@ -64,7 +67,9 @@ Page({
         titleYellow: true,
         title: "账单发票信息确认",
         subTitle: "请尽快确认账单发票信息",
-        btnText: "去确认"
+        btnText: "去确认",
+        url: "../invoice/incomeInvoice/index/index",
+        detailUrl: "../invoice/incomeInvoice/details/index",
       },
       {
         id: 5,
@@ -73,20 +78,30 @@ Page({
         count: 0,
         title: "您有 {0} 条申报欠款已结清",
         subTitle: "请尽快查看核实信息是否有误",
-        btnText: "去查看"
+        btnText: "去查看",
+        url: "../tax/delinquentBill/index",
       }
     ]
   },
+  /* 按钮跳转 */
+  goCheck: function (e) {
+    let tid = e.currentTarget.dataset.tid
+    const _todo_list = this.data.todo_lists.filter(e => e.id === tid)[0]
+    if ('ids' in _todo_list) {
+      if (_todo_list['ids'].length > 1) {
+        const _ids = _todo_list['ids'].map(i => i.id)
+        wx.redirectTo({
+          url: _todo_list.url + '?from=todo&showtype=list&ids=' + _ids.join('_'),
+        })
+      } else if (_todo_list['ids'].length === 1)  {
+        console.log("!", _todo_list)
+        wx.redirectTo({
+          url: _todo_list.detailUrl + '?from=todo&showtype=detail&id=' + _todo_list['ids'][0]['id'],
+        })
+      }
+    }
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {},
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
   },
 
@@ -105,7 +120,35 @@ Page({
       };
     }
     var that = this
+    const test_data = {
+      "ret": true,
+      "message": "success",
+      "data": {
+        "invoice": [{
+          "id": 36
+        },{
+          "id": 37
+        }],
+        "declare": [{
+          "id": 36
+        }],
+        "overdue_declare": [{
+          "id": 36
+        }],
+        "loan": [{
+          "id": 36
+        }],
+        "loan_nums": 3,
+        "repayment": [{
+          "id": 34
+        }],
+        "repayment_nums": 5,
+        "nums": 2
+      },
+      "code": 200
+    }
     todolist().then(res => {
+      res = test_data
       if (res.ret) {
         if (res.data instanceof Object) {
           const _data = res.data
@@ -113,6 +156,7 @@ Page({
           const _new_todo_lists = that.data.todo_lists
           if (_todo_keys.includes("invoice") && _data.invoice.length > 0) {
             _new_todo_lists[3].isShow = true
+            _new_todo_lists[3]["ids"] = _data["invoice"]
           }
           if (_todo_keys.includes("declare") && _data.declare.length > 0) {
             _new_todo_lists[0].isShow = true
@@ -144,21 +188,6 @@ Page({
       })
     }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -166,7 +195,6 @@ Page({
     console.debug('更新待办事项')
     this.onShow();
     wx.stopPullDownRefresh();
-
   },
   /*
    * 处理返回 除非从个人中心来的统统返回首页
@@ -175,11 +203,11 @@ Page({
     let pages = getCurrentPages(); //页面对象
     let prevpage = pages[pages.length - 2]; //上一个页面对象
     let path = prevpage.route;
-    if(path !== 'pages/personal/personalIndex/index'){
+    if (path !== 'pages/personal/personalIndex/index') {
       wx.switchTab({
         url: '../index/index',
       })
-    }else{
+    } else {
       wx.switchTab({
         url: '../personal/personalIndex/index',
       })
