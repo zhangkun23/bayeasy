@@ -14,7 +14,9 @@ Page({
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     isShowList: false,
     allLoanList: [],
-    totalLoanAmount: ''
+    totalLoanAmount: '',
+    ids: [],
+    showPage: false
   },
 
   sureRecord() {
@@ -25,25 +27,34 @@ Page({
   // 欠款列表
   getLoanList() {
     loanList({
-      page_size: 10
+      page_size: 1000
     }).then(res => {
-      console.log(res)
       if (res.ret) {
-        this.setData({
-          totalLoanAmount: res.data.total_loan_amount
+        let that = this;
+        let arr = []
+        that.setData({
+          totalLoanAmount: res.data.total_loan_amount  // 欠款总金额
         })
-        if (res.data.list.length > 0) {
-          this.setData({
+        if (that.data.ids.length > 0) {
+          that.data.ids.forEach(item => {
+            res.data.list.forEach(childItem => {
+              if(childItem.id == item){
+                arr.push(childItem)
+              }
+            })
+          })
+          that.setData({
             isShowList: false,
-            allLoanList: res.data.list,
+            allLoanList: arr,
           })
         } else {
-          this.setData({
+          that.setData({
             isShowList: true,
+            allLoanList: res.data.list
           })
         }
       } else {
-        this.setData({
+        that.setData({
           totalLoanAmount: '00.00'
         })
       }
@@ -59,7 +70,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //  let ids = '26_2_36'.split('_');
+    //  console.log(ids)
+    // // if(ids.length > 0) {
+    if(options.ids) {
+      let ids = options.ids.split('_');
+      this.setData({
+        ids: ids
+      })
+    }
   },
 
   /**

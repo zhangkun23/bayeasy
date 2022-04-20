@@ -1,6 +1,6 @@
 <view class="taxConfirmation bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="申报税款确认" bindback="backTaxIndex"></mp-navigation-bar>
-  <scroll-view scroll-y="true" bindscrolltolower="reachBottom">
+  <scroll-view scroll-y="true" bindscrolltolower="reachBottom" hidden="{{!showPage}}">
     <view class="taxConfirmation__container">
       <view class="taxConfirmation__btn font-size-24" bindtap="sureRecord">
         <text class="taxConfirmation__button">确认记录</text>

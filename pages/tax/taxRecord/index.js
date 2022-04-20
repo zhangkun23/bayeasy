@@ -29,11 +29,12 @@ Page({
       wx.navigateTo({
         url: '../taxreturn/index',
       })
-    } else if(this.data.returnType == 'pay') {
-      wx.navigateTo({
-        url: '../taxreturn/index',
-      })
-    }
+    } 
+    // else if(this.data.returnType == 'pay') {
+    //   wx.navigateTo({
+    //     url: '../taxreturn/index',
+    //   })
+    // }
   },
   renderPage(value) {
     if (value == 'list'|| value == 'result') {

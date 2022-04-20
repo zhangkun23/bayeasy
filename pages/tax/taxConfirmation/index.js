@@ -11,7 +11,7 @@ Page({
    */
   data: {
     isShowList: false,
-    empty: false,
+    showPage: false,
     listIcon: tempPath + 'tax/taxreturn/list.png',
     info_max: tempPath + "public/info_max.png",
     month: '2022-03',
@@ -23,9 +23,9 @@ Page({
     returnType: '',
     page: 0,
     page_size: getApp().globalData.page_size,
-    ids: []
+    ids: [],
   },
-
+  // 逻辑正确
   backTaxIndex() {
     if (this.data.returnType == 'todo') {
       wx.navigateTo({
@@ -43,9 +43,9 @@ Page({
         title: '申报税款确认',
         returnType: value
       })
-    } else if (value == 'pay') {
+    } else if (value == 'list') {
       this.setData({
-        title: '申报缴纳记录',
+        title: '申报税款确认',
         returnType: value
       })
     }
@@ -56,7 +56,7 @@ Page({
     })
   },
 
-  getTaxList(page) {
+  getTaxList() {
     let params = {
       status: 1,
       year: '',
@@ -77,12 +77,18 @@ Page({
               }
             })
           });
+          this.setData({
+            allDeclareList: idArr,
+          })
         } else {
-          let newArr = arr.concat(res.data.list)
+          // let newArr = arr.concat(res.data.list)
           that.setData({
-            allDeclareList: newArr
+            allDeclareList: res.data.list
           })
         }
+        this.setData({
+          showPage: true
+        })
         console.log(idArr)
         console.log(res, '列表')
       }
@@ -109,12 +115,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let ids = '1_2_3'.split('_');
-    console.log(ids)
-    // let ids = options.ids.split('_');
-    this.setData({
-      ids: ids
-    })
+    // let ids = '26_2_3'.split('_');
+    console.log(options)
+    if(options.ids) {
+      let ids = options.ids.split('_');
+      this.setData({
+        ids: ids
+      })
+    }
     this.renderPage(options.type)
   },
 

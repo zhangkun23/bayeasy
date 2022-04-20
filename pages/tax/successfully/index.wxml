@@ -1,5 +1,5 @@
 <view class="successfully bgColog">
-  <mp-navigation-bar title="申报税款确认" bindtap="backTaxIndex"></mp-navigation-bar>
+  <!-- <mp-navigation-bar title="申报税款确认" back="false"></mp-navigation-bar> -->
   <view class="successfully__back">
     <view wx:if="{{showTips}}" class="detail__topTips orangeTips orangeBack font-size-24">
       <view class="detail__topTips-icon">

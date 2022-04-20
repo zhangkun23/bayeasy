@@ -41,19 +41,25 @@ Page({
   },
   // 返回
   backIndex() {
+    // wx.navigateBack({
+    //   delta: 1,
+    // })
+    // return
     // 去确认为true  查看结果为false
     if (this.data.returnType == 'list') {
+      console.log(222)
       if (this.data.showBtn) {
-        wx.reLaunch({
+        wx.navigateTo({
           url: '../taxRecord/index?type=result',
         })
+        // wx.navigateBack()
       } else {
-        wx.reLaunch({
+        wx.navigateTo({
           url: '../taxConfirmation/index?typs=list',
         })
       }
     } else if (this.data.returnType == 'result') {
-      wx.reLaunch({
+      wx.navigateTo({
         url: '../taxRecord/index?type=result',
       })
     }
@@ -73,15 +79,14 @@ Page({
         isShowModal: false
       })
     } else {
-      let params = {
-        id: wx.getStorageSync('detailId')
-      }
       if (this.data.time == 1) {
-        confirmdeclare(params).then(res => {
+        confirmdeclare({
+          id: this.data.detailId
+        }).then(res => {
           console.log(res)
           if (res.ret) {
             wx.navigateTo({
-              url: '../successfully/index?typs=list',
+              url: '../successfully/index?typs=list&id=' + this.data.detailId,
             })
           }
         })
@@ -182,24 +187,11 @@ Page({
       }
     }, 1000)
   },
-  getUserId(value) {
-    let id = undefined;
-    if (value) {
-      id = value;
-      wx.setStorageSync('detailId', value);
-    } else {
-      id = wx.getStorageSync('detailId');
-      this.setData({
-        showBtn: true
-      })
-    }
-    this.setData({
-      detailId: id
-    })
-  },
+
+  // 确认是否已逾期 0 逾期 1未逾期   overdueStatus逾期状态
   renderPage(value) {
     if (value == 'list') {
-      if (wx.getStorageSync('overdueStatus') == 1) {
+      if (wx.getStorageSync('overdueStatus') == 1) { 
         this.setData({
           title: '本期申报税款确认',
         })
@@ -214,7 +206,8 @@ Page({
     } else if (value == 'result') {
       this.setData({
         title: '申报税款确认记录',
-        returnType: value
+        returnType: value,
+        showBtn: true
       })
     }
   },
@@ -225,9 +218,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(options, '获取跳转页面的参数')
+    if (options.id) {
+      this.setData({
+        detailId: options.id
+      })
+    }
     this.renderSecon();
     this.countDown(this.data.timestamp);
-    this.getUserId(options.id)
     this.renderPage(options.type)
   },
 

@@ -10,22 +10,28 @@ Page({
   data: {
     info_max: tempPath + "public/info_max.png",
     showTips: false,
-    tax: 800
+    tax: 800,
+    paramsId: 0
   },
-  backTaxIndex() {
-    wx.navigateTo({
-      url: '../taxreturn/index',
-    })
-  },
+  // backTaxIndex() {
+  //   wx.navigateTo({
+  //     url: '../taxreturn/index',
+  //   })
+  // },
   gotoReult() {
     wx.navigateTo({
-      url: '../deatil/deatil?type=result',
+      url: '../deatil/deatil?type=result&id=' + this.data.paramsId,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.id) {
+      this.setData({
+        paramsId: options.id
+      })
+    }
     let key = wx.getStorageSync('overdueStatus');
     if (key == 0) {
       this.setData({

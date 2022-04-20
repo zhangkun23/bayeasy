@@ -16,7 +16,7 @@ Component({
   methods: {
     taxConfirmation() {
       wx.navigateTo({
-        url: '../taxConfirmation/index',
+        url: '../taxConfirmation/index?type=list',
       })
     },
     paymentRecord() {
