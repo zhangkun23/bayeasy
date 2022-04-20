@@ -30,7 +30,7 @@ const navigateTo = (path) => {
 const openPdf = (url) => {
   const app = getApp()
   // if (url == '') return;
-  if (!url || !(url instanceof String)) {
+  if (!url) {
     console.error("Wrong url passed to pdf : ", url)
     wx.showToast({
       title: '无法打开url',

@@ -15,7 +15,20 @@ Page({
     data: {
         showEmpty: false,
         emptyPic: app.globalData.emptyPic,
-        hasOperate: app.globalData.operate,
+        hasOperate: false,
+        applyDialogBtns: [{
+            text: "取消",
+            extClass: "black"
+        }, {
+            text: "确认开票"
+        }],
+        confirmDialogBtns: [{
+            text: "好的"
+        }],
+        applyText: '',
+        confirmText: '',
+        showConfirmDialog: false,
+        showApplyDialog: false,
     },
     /**
      * 生命周期函数--监听页面加载
@@ -24,6 +37,10 @@ Page({
         if (!options.hasOwnProperty('id')) {
             return
         }
+
+        this.setData({
+            hasOperate: app.globalData.operate,
+        })
         get_invoice_detail(options.id).then(res => {
             var that = this
             if (res.ret) {
@@ -68,41 +85,8 @@ Page({
         }
     },
     confirmInvoice() {
-        var that = this;
-        wx.showModal({
-            content: '确认开票前请仔细核对账单发票信息\r\n如对帐单金额及发票有异议\r\n请及时联系您的贝易资运营专员',
-            confirmText: '确认开票',
-            confirmColor: '#576B95',
-            cancelText: '取消',
-            success: function (res) {
-                if (res.confirm) {
-                    apply_invoice({
-                        id: that.data.id
-                    }).then(res => {
-                        if (res.ret) {
-                            wx.showModal({
-                                content: '您的账单发票信息已确认成功\r\n贝易资在1个工作日内为您开具电子发票\r\n开具完成后将以短信方式通知你',
-                                confirmText: '好的',
-                                confirmColor: '#576B95',
-                                showCancel: false
-                            })
-                        } else {
-                            wx.showToast({
-                                title: '开票请求失败: ' + res.message,
-                                icon: 'none'
-                            })
-                        }
-                    }).catch(e => {
-                        console.error("请求开票失败:", e)
-                        wx.showToast({
-                            title: '开票请求失败',
-                            icon: 'none'
-                        })
-                    })
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
-            }
+        this.setData({
+            showApplyDialog: true
         })
     },
     checkEInvoice() {
@@ -117,6 +101,49 @@ Page({
         wx.navigateTo({
             url: './eInvoice/index?vid=' + this.data.id,
         })
+    },
+    handleConfirmDialog(e) {
+        this.setData({
+            showConfirmDialog: false
+        })
+    },
+    handleApplyDialog(e) {
+        let that = this
+        if (!(e instanceof Object && 'detail' in e)) {
+            this.setData({
+                showApplyDialog: false
+            })
+            return
+        }
+        const detail = e.detail
+        if (detail.index === 1) {
+            apply_invoice({
+                id: that.data.id
+            }).then(res => {
+                if (res.ret) {
+                    that.setData({
+                        showApplyDialog: false,
+                        showConfirmDialog: true,
+                        myStatus: 1
+                    })
+                } else {
+                    wx.showToast({
+                        title: '开票请求失败: ' + res.message,
+                        icon: 'none'
+                    })
+                }
+            }).catch(e => {
+                console.error("请求开票失败:", e)
+                wx.showToast({
+                    title: '开票请求失败',
+                    icon: 'none'
+                })
+            })
+        } else {
+            that.setData({
+                showApplyDialog: false
+            })
+        }
     }
 
 })

@@ -12,7 +12,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        _vid: null,
+        showBg: true,
+        invoices: null,
+        // _vid: null,
         invoicePdfUrl: null
     },
 
@@ -21,28 +23,28 @@ Page({
      */
     onLoad: function (options) {
         const vid = options.vid;
-        // this.setData({_vid: vid})
         let that = this;
         get_invoice_file(vid).then(res => {
             if (res.ret) {
-                console.log(res)
                 if (res.data instanceof Array && res.data.length > 0) {
-                    const data = res.data[0]
-                    if (data instanceof Object && 'invoice_img_file' in data) {
-                        that.setData({
-                            _vid: data['id'],
-                            invoicePdfUrl: data['invoice_img_file']
-                        })
-                    }
+                    that.setData({
+                        invoices: res.data
+                    })
+
                 }
             } else {
-
+                wx.showToast({
+                    title: '出错了',
+                    icon: 'none'
+                })
+                console.error("无法获取收入发票详情资源地址: ", res.message)
             }
         })
     },
-    downloadPdf: function () {
+    downloadPdf: function (e) {
+        const vid = e.currentTarget.dataset.vid
         const token = wx.getStorageSync('token') || ''
-        const url = `${baseUrl}/invoice/download_invoice_file?id=${this.data._vid}&token=${token}`
+        const url = `${baseUrl}/invoice/download_invoice_file?id=${vid}&token=${token}`
         wx.downloadFile({
             url: url,
             success: res => {
@@ -58,6 +60,12 @@ Page({
                     }
                 })
             }
+        })
+    },
+    previewImg: function (e) {
+        const src = e.currentTarget.dataset.src
+        wx.previewImage({
+            urls: [src],
         })
     }
 

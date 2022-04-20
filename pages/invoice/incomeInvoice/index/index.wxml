@@ -14,7 +14,7 @@
                         <view class="topbar">
                             <view class="name">{{item.business_name}}</view>
                             <view wx:if="{{item.myStatus === 0}}" class="status yellow">待确认</view>
-                            <view wx:elif="{{item.myStatus === 1}}" class="status blue">待开票</view>
+                            <view wx:elif="{{item.myStatus === 1}}" class="status blue">开票中</view>
                             <view wx:elif="{{item.myStatus === 2}}" class="status grey">已开票</view>
                         </view>
                         <view class="split" style="border-top: 1px dashed #D2E0EF"></view>

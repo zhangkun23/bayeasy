@@ -8,6 +8,10 @@ page {
     padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
 }
 
+.black {
+    color: #000000;
+}
+
 .mycontainer {
     flex: 1;
     /* height: 100%; */
@@ -41,6 +45,13 @@ page {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dialog {
+    font-size: 34rpx;
+    font-weight: 500;
+    color: #353535;
+    line-height: 48rpx;
 }
 
 .tip-container {

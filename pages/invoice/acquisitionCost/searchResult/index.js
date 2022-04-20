@@ -10,6 +10,7 @@ Page({
      */
     data: {
         emptyPic: app.globalData.emptyPic,
+        invoiceIcon: app.globalData.imgPath + 'invoice/acquisitionCost/invoiceIcon.png',
         showNav: true,
         searchKey: '',
         page: 0,

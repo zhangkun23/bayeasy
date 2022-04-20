@@ -18,7 +18,9 @@ Page({
     onShow: function () {
 
     },
-
+    backIndex(){
+        wx.switchTab({url:"/pages/invoice/invoiceIndex/index"})
+    },
     handelClickUrl(e){
         // return;
         const url = e.currentTarget.dataset.url;

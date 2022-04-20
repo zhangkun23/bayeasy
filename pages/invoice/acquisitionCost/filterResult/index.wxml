@@ -4,8 +4,8 @@
     <view class="myColog"></view>
     <scroll-view scroll-y="true" enable-flex="true" class="wrapper" bindscrolltolower="goNextPage">
         <view class="inner-container">
-            <view class="search-container" bindtap="goSearch">
-                <view class="search">
+            <view class="search-container">
+                <view class="search"  bindtap="goSearch">
                     <my-search-bar id="searchbar" bind:inputkey="handleSearchKey" bind:gosearch="goSearch"></my-search-bar>
                 </view>
                 <view class="filter flex_center" bindtap="toggleFilter">

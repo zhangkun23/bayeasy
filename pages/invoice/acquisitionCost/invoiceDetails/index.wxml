@@ -64,11 +64,11 @@
                 <view class="title">发票文件</view>
                 <view class="container">
                     <view class="content">
-                        <block wx:if="{{invoicePdfUrl}}">
+                        <block wx:if="{{pdfUrl}}">
                             <image class="pdf" src="{{defaultPdfUrl}}" bindtap="goPdf" mode="aspectFill"></image>
                         </block>
                         <block wx:elif="{{invoiceImgUrl}}">
-                            <image class="img" src="{{invoiceImgUrl}}" mode="aspectFill"></image>
+                            <image class="img" src="{{invoiceImgUrl}}" data-src="{{invoiceImgUrl}}" bindtap="previewImg" mode="aspectFill"></image>
                         </block>
                         <block wx:else>
                             <image class="empty" src="{{emptyPic}}" mode="aspectFill"></image>

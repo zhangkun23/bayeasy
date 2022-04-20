@@ -31,15 +31,10 @@ Page({
         },
         emptyPic: app.globalData.emptyPic,
         invoice_lists: [],
+
     },
-    onLoad: function (options) {
-        if(options instanceof Object && 'from' in options){
-            if(options.from === 'todo'){
-                const ids = options.ids.split('_')
-                console.debug("ids is ", ids)
-                this.setData({filter_ids: ids})
-            }
-        }
+    onShow: function(){
+        console.debug("onshow showned")
         var that = this
         get_all_invoices().then(res => {
             if (res.ret) {
@@ -58,6 +53,33 @@ Page({
                 })
             }
         })
+    },
+    onLoad: function (options) {
+        if(options instanceof Object && 'type' in options){
+            if(options.type === 'todo'){
+                const ids = options.ids.split('_')
+                console.debug("ids is ", ids)
+                this.setData({filter_ids: ids})
+            }
+        }
+        // var that = this
+        // get_all_invoices().then(res => {
+        //     if (res.ret) {
+        //         if (res.data instanceof Array && res.data.length > 0) {
+        //             that.handleData(res.data)
+        //         } else {
+        //             this.setData({
+        //                 isInvoiceEmpty: true
+        //             })
+        //         }
+        //     } else {
+        //         console.error("无法获取到发票列表:", res)
+        //         wx.showToast({
+        //             title: '获取账单失败，请稍后再试',
+        //             icon: 'none',
+        //         })
+        //     }
+        // })
     },
     goDetails: function (e) {
         const _id = e.currentTarget.dataset.iid

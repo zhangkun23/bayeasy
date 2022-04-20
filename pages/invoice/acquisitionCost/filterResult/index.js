@@ -20,9 +20,9 @@ Page({
         canShowToast: true,
         filters: null
     },
-    goSearch: function(e){
+    goSearch: function (e) {
         wx.redirectTo({
-          url: '../searchPage/index',
+            url: '../searchPage/index',
         })
     },
     goNextPage: function (e) {
@@ -39,6 +39,9 @@ Page({
             return
         }
         let filters = this.data.filters
+        if (!('page' in filters)) {
+            filters["page"] = 1
+        }
         filters["page"] += 1
         this._search(filters)
     },
@@ -50,7 +53,7 @@ Page({
     },
     toggleFilter: function () {
         wx.navigateBack({
-            delta: 0,
+            delta: 1,
         })
     },
     _search: function (filter) {
@@ -114,7 +117,8 @@ Page({
                 if (data.length > 0) {
                     that.setData({
                         searchResult: data,
-                        showEmpty: false
+                        showEmpty: false,
+                        hasMore: false
                     })
                 }
             })

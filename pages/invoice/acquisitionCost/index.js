@@ -165,13 +165,13 @@ Page({
             })
         } else {
             let _list = this.data.searchResult || []
-            let _filter_res = null;
+            let _filter_res = _list;
             for (let key in _filters) {
                 if (key === 'needRequest') {
                     continue
                 }
                 // 从当前列表筛选
-                _filter_res = _list.filter(l => {
+                _filter_res = _filter_res.filter(l => {
                     if (l instanceof Object && key in l) {
                         return l[key] === _filters[key]
                     }

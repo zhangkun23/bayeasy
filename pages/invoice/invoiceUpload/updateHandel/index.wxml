@@ -1,7 +1,7 @@
 
 
 <view class="bgColog">
-    <mp-navigation-bar  title="手动添加增值税发票" />
+    <mp-navigation-bar  title="手动添加增值税发票" bindback="backIndex"/>
     <view class="count">
 
         <picker bindchange="bindPickerChange" range="{{activityArr}}" range-key="type" mode="selector" >

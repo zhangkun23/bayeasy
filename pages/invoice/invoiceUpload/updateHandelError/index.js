@@ -12,8 +12,8 @@ Page({
     },
 
     jumpReact(){
-        wx.navigateTo({
-            url: '../updateHandel/index',
+        wx.navigateBack({
+            url: '/pages/invoice/invoiceUpload/index/index',
         })
     },
 

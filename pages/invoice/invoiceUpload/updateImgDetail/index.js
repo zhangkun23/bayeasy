@@ -17,6 +17,7 @@ Page({
         currentIndex:0,
         updateImgOrPdfArr:[],
         status:0,
+        imgArr:[], //放大图片数组
     },
 
     // 删除当前选项
@@ -30,7 +31,7 @@ Page({
         if(tempArr.length == 0){
             wx.removeStorageSync("updateImgOrPdfArr")
             wx.removeStorageSync("index")
-            util.navigateTo('/pages/invoice/invoiceUpload/updateImgInfo/index')
+            wx.navigateBack()
         }
     },
 
@@ -44,9 +45,22 @@ Page({
                   console.log('打开PDF成功');
                 }
             })
+        }else{
+            const info = this.data.updateImgOrPdfArr;
+            this.setData({
+                imgArr:info.map( item => {
+                    if(item.type == 'img'){
+                        return item.link
+                    }
+                }),
+            })
+            let that = this;
+            wx.previewImage({
+                current: data.pdfpath,
+                urls: that.data.imgArr,
+            })
         }
     },
-
     backIndex(){
         wx.setStorageSync('updateImgOrPdfArr', this.data.updateImgOrPdfArr)
     },

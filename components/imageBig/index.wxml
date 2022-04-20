@@ -1,0 +1,4 @@
+<!-- 图片预览 -->
+<view class="detail__image" wx:for="{{imgArr}}" wx:key="item" wx:for-item="item" bindtap="handelClick">
+    <image bindtap="previewImg" data-src="{{item}}" class="images" src="{{item}}"></image>
+</view>

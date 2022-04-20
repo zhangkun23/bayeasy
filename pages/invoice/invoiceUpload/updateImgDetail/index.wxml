@@ -9,8 +9,9 @@
             <swiper-item>
                 <image class="topBg" src="{{green}}" />
                 <view class="info">
-                    <view class="info__swiper" data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail">
-                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" />
+                    <view class="info__swiper" >
+                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" 
+                        data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail"/>
                         <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>  
                         <image class="removeItem" src="{{close_null}}" data-index="{{index}}"  bindtap="removeItem" />
                     </view>
@@ -32,8 +33,9 @@
                     <view class="errMessage" wx:if="{{!item.requestStatus}}">
                         不可用原因：{{item.message}}
                     </view>
-                    <view class="info__swiper" data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail">
-                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" />
+                    <view class="info__swiper" >
+                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" 
+                            data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail"/>
                         <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>  
                         <view class="info__swiper__item">
                             <view>
@@ -62,4 +64,5 @@
         </block>
     </swiper>
 </view>
+<imageBig imgArr="{{imgArr}}" />
 
