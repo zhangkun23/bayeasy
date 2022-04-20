@@ -422,7 +422,7 @@ Page({
         let tempArr = this.data.updateImgOrPdfArr;
         if(this.data.status ==1 ){
             tempArr.map( item => {
-                this.detaileInvoice(item.linkInfo.id)
+                this.delDeductInvoiceFile(item.linkInfo.id)
             })
         }
         this.setData({

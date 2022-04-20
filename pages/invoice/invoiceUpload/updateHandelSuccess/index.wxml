@@ -1,7 +1,5 @@
 
 <view>
-    <mp-navigation-bar title="手动添加增值税发票" />
-
     <view class="ss">
         <image class="ss_image" src="{{updateHandel_right}}" />
         <view class="ss_text">提交成功</view>

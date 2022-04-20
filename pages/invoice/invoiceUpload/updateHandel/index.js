@@ -32,6 +32,11 @@ Page({
         }],
         isShowModal:false
     },
+    backIndex(){
+        wx.redirectTo({
+            url: '/pages/invoice/invoiceUpload/index/index',
+        }) 
+    },
     jump(){
         wx.navigateTo({
             url: '/pages/invoice/invoiceUpload/updateHandelSuccess/index',
@@ -44,6 +49,9 @@ Page({
     },
     // 手动上传提交
     subbmint(){
+        this.setData({
+            submit:false
+        })
         let param = this.data.form;
         updateHandlInvoice(param).then(res => {
             if(res.ret){
