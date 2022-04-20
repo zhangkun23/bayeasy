@@ -17,7 +17,7 @@ Page({
         currentIndex:0,
         updateImgOrPdfArr:[],
         status:0,
-        imgArr:[],
+        imgArr:[], //放大图片数组
     },
 
     // 删除当前选项
@@ -31,14 +31,13 @@ Page({
         if(tempArr.length == 0){
             wx.removeStorageSync("updateImgOrPdfArr")
             wx.removeStorageSync("index")
-            util.navigateTo('/pages/invoice/invoiceUpload/updateImgInfo/index')
+            wx.navigateBack()
         }
     },
 
     // 预览pdf
     handelClickDetail(e){
         const data = e.currentTarget.dataset;
-        console.log(data)
         if(data.type == 'pdf'){
             wx.openDocument({
                 filePath: data.pdfpath, //要打开的文件路径
@@ -48,19 +47,20 @@ Page({
             })
         }else{
             const info = this.data.updateImgOrPdfArr;
-            let arr = []
-            info.map( item => {
-                if(item.type == 'img'){
-                    arr.push(item.link)
-                }
+            this.setData({
+                imgArr:info.map( item => {
+                    if(item.type == 'img'){
+                        return item.link
+                    }
+                }),
             })
+            let that = this;
             wx.previewImage({
                 current: data.pdfpath,
-                urls:arr
+                urls: that.data.imgArr,
             })
         }
     },
-
     backIndex(){
         wx.setStorageSync('updateImgOrPdfArr', this.data.updateImgOrPdfArr)
     },
