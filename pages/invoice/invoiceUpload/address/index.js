@@ -33,16 +33,16 @@ Component({
      */
     methods: {
       backIndex(){
-        var page = getCurrentPages()  ;// 获取当前页面栈
-        console.log(page)
-        var beforePage = page[page.length - 2]; // 跳转页面的栈
-        console.log(beforePage)
-        wx.navigateBack({
-            success: function () {
-                beforePage.onLoad(beforePage.route); // 执行前一个页面的onLoad方法
-                console.log('11111')
-            }
-        })
+        // var page = getCurrentPages()  ;// 获取当前页面栈
+        // console.log(page)
+        // var beforePage = page[page.length - 2]; // 跳转页面的栈
+        // console.log(beforePage)
+        // wx.navigateBack({
+        //     success: function () {
+        //         beforePage.onLoad(beforePage.route); // 执行前一个页面的onLoad方法
+        //         console.log('11111')
+        //     }
+        // })
       },
       getUserMeg(){
           getUserMeg().then(res => {

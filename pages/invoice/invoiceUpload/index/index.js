@@ -23,7 +23,6 @@ Page({
         // wx.switchTab({url:"/pages/invoice/invoiceIndex/index"})
     },
     handelClickUrl(e){
-        // return;
         const url = e.currentTarget.dataset.url;
         if(!url) return; 
         utils.navigateTo(url)

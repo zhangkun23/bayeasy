@@ -38,8 +38,8 @@
         <view wx:if="{{submit}}" class="submit" bindtap="subbmint">提交查验</view>
         <view wx:if="{{!submit}}" class="submitDiesable" >提交查验</view>
 
-        <!-- <view class="submitDiesable" bindtap="jump">成功</view>
-        <view class="submitDiesable" bindtap="jump2">失败</view> -->
+        <view class="submitDiesable" bindtap="jump">成功</view>
+        <view class="submitDiesable" bindtap="jump2">失败</view>
     </view>
 
     <block wx:if="{{isShowModal}}">
