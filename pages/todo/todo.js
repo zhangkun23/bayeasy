@@ -162,19 +162,26 @@ Page({
           }
           if (_todo_keys.includes("declare") && _data.declare.length > 0) {
             _new_todo_lists[0].isShow = true
+            _new_todo_lists[0]["ids"] = _data["declare"]
           }
           if (_todo_keys.includes("overdue_declare") && _data.overdue_declare.length > 0) {
             _new_todo_lists[1].isShow = true
+            _new_todo_lists[1]["ids"] = _data["overdue_declare"]
+
           }
           if (_todo_keys.includes("loan") && _data.loan.length > 0) {
             _new_todo_lists[2].isShow = true
             _new_todo_lists[2].count = _data.loadn_nums
             _new_todo_lists[2].title = _new_todo_lists[2].title.format(_data.loan_nums)
+            _new_todo_lists[2]["ids"] = _data["loan"]
+
           }
           if (_todo_keys.includes("repayment") && _data.repayment.length > 0) {
             _new_todo_lists[4].isShow = true
             _new_todo_lists[4].count = _data.repayment_nums
             _new_todo_lists[4].title = _new_todo_lists[4].title.format(_data.repayment_nums)
+            _new_todo_lists[4]["ids"] = _data["repayment"]
+
           }
           that.setData({
             todo_lists: _new_todo_lists,

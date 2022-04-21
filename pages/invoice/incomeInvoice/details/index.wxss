@@ -48,6 +48,7 @@ page {
 }
 
 .dialog {
+    text-align: left;
     font-size: 34rpx;
     font-weight: 500;
     color: #353535;
