@@ -35,7 +35,7 @@ Page({
           
         })
       }else{
-        this.jumpUrl(userStatus);
+        utils.jumpUrl(userStatus);
       }
     },
     // 登录与完善个人信息按钮直接跳
@@ -43,19 +43,10 @@ Page({
       const url = e.currentTarget.dataset.url;
       if(url == "info"){
         let userStatus = this.data.userStatus;
-        this.jumpUrl(userStatus);
+        utils.jumpUrl(userStatus);
         return;
       }
       utils.navigateTo(url)
-    },
-    jumpUrl(userStatus){
-      if(userStatus == 0){
-        utils.navigateTo('/pages/login/authentication/index')
-      }else if(userStatus == 1){
-        utils.navigateTo('/pages/login/securityCheck/index')
-      }else if(userStatus==2){
-        utils.navigateTo('/pages/login/information/index')
-      }
     },
     /**
      * 统一跳转拦截

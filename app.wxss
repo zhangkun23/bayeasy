@@ -67,3 +67,9 @@
   padding-right: 5rpx;
   
 }
+.mycontainer {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

@@ -3,5 +3,8 @@
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "imageBig":"/components/imageBig"
   },
-  "navigationStyle":"custom"
+  "navigationBarBackgroundColor": "#FFF",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "增值税发票查验",
+  "backgroundColor": "#1D83F0"
 }

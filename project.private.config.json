@@ -114,6 +114,13 @@
                     "name": "11111111",
                     "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "11111",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

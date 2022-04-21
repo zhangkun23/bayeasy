@@ -1,68 +1,60 @@
-<view>
-    <view class="titleTop">
-        <mp-navigation-bar title="增值税发票查验" color="#FFFFFF" bindback="backIndex" />
-    </view>
 
-    <!-- 上传阶段 -->
-    <swiper wx:if="{{status==0}}" class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}" >
-        <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
-            <swiper-item>
-                <image class="topBg" src="{{green}}" />
-                <view class="info">
-                    <view class="info__swiper" >
-                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" 
-                        data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail"/>
-                        <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>  
-                        <image class="removeItem" src="{{close_null}}" data-index="{{index}}"  bindtap="removeItem" />
-                    </view>
+<!-- 上传阶段 -->
+<swiper wx:if="{{status==0}}" class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}">
+    <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
+        <swiper-item>
+            <image class="topBg" src="{{green}}" />
+            <view class="info">
+                <view class="info__swiper">
+                    <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" data-pdfPath="{{item.link}}" data-type="{{item.type}}" bindtap="handelClickDetail" />
+                    <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>
+                    <image class="removeItem" src="{{close_null}}" data-index="{{index}}" bindtap="removeItem" />
                 </view>
-            </swiper-item>
-        </block>
-    </swiper>
+            </view>
+        </swiper-item>
+    </block>
+</swiper>
 
-    <!-- 查验阶段 -->
-    <swiper wx:if="{{status>0}}" class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}">
-        <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
-            <swiper-item>
-                <image class="topBg" src="{{item.requestStatus?green:red}}" />
-                <view class="info">
-                    <view class="infoStatus">
-                        <image class="infoStatus__status" src="{{item.requestStatus?whith_close:whith_right}}" />
-                        <view>{{item.requestStatus?'查验通过':item.message}}</view>
-                    </view>
-                    <view class="errMessage" wx:if="{{!item.requestStatus}}">
-                        不可用原因：{{item.message}}
-                    </view>
-                    <view class="info__swiper" >
-                        <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" 
-                            data-pdfPath="{{item.link}}" data-type="{{item.type}}"  bindtap="handelClickDetail"/>
-                        <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>  
-                        <view class="info__swiper__item">
-                            <view>
-                                销售方名称：{{item.linkInfo.seller_name?item.linkInfo.seller_name:' -----'}}
-                            </view>
-                            <view>
-                                发票类型：{{item.linkInfo.invoice_type?item.linkInfo.invoice_type:' -----'}}
-                            </view>
-                            <view>
-                                发票代码：{{item.linkInfo.invoice_dm?item.linkInfo.invoice_dm:' -----'}}
-                            </view>
-                            <view>
-                                发票号码：{{item.linkInfo.invoice_hm?item.linkInfo.invoice_hm:' -----'}}
-                            </view>
-                            <view wx:if="{{item.linkInfo.total_amount}}" >
-                                价税合计： <text style="color: #FFA42E;" > {{"¥ "+item.linkInfo.total_amount}} </text>
-                            </view>
-                            <view wx:else>
-                                价税合计： -----
-                            </view>
-                        </view> 
-                        <image class="removeItem" src="{{item.requestStatus?close_null : close_info}}" data-index="{{index}}"  bindtap="removeItem" />
-                    </view>
+<!-- 查验阶段 -->
+<swiper wx:if="{{status>0}}" class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}">
+    <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
+        <swiper-item>
+            <image class="topBg" src="{{item.requestStatus?green:red}}" />
+            <view class="info">
+                <view class="infoStatus">
+                    <image class="infoStatus__status" src="{{item.requestStatus?whith_close:whith_right}}" />
+                    <view>{{item.requestStatus?'查验通过':item.message}}</view>
                 </view>
-            </swiper-item>
-        </block>
-    </swiper>
-</view>
+                <view class="errMessage" wx:if="{{!item.requestStatus}}">
+                    不可用原因：{{item.message}}
+                </view>
+                <view class="info__swiper">
+                    <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" data-pdfPath="{{item.link}}" data-type="{{item.type}}" bindtap="handelClickDetail" />
+                    <view class="index">{{index+1 +'/'+ updateImgOrPdfArr.length}}</view>
+                    <view class="info__swiper__item">
+                        <view>
+                            销售方名称：{{item.linkInfo.seller_name?item.linkInfo.seller_name:' -----'}}
+                        </view>
+                        <view>
+                            发票类型：{{item.linkInfo.invoice_type?item.linkInfo.invoice_type:' -----'}}
+                        </view>
+                        <view>
+                            发票代码：{{item.linkInfo.invoice_dm?item.linkInfo.invoice_dm:' -----'}}
+                        </view>
+                        <view>
+                            发票号码：{{item.linkInfo.invoice_hm?item.linkInfo.invoice_hm:' -----'}}
+                        </view>
+                        <view wx:if="{{item.linkInfo.total_amount}}">
+                            价税合计： <text style="color: #FFA42E;"> {{"¥ "+item.linkInfo.total_amount}} </text>
+                        </view>
+                        <view wx:else>
+                            价税合计： -----
+                        </view>
+                    </view>
+                    <image class="removeItem" src="{{item.requestStatus?close_null : close_info}}" data-index="{{index}}" bindtap="removeItem" />
+                </view>
+            </view>
+        </swiper-item>
+    </block>
+</swiper>
 <imageBig imgArr="{{imgArr}}" />
-
