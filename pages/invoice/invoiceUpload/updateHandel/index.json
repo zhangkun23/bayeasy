@@ -4,5 +4,6 @@
     "input-com":"/components/input-com/input-com",
     "mp-dialog": "weui-miniprogram/dialog/dialog"
   },
-  "navigationStyle":"custom"
+  "navigationStyle":"custom",
+  "disableScroll": true
 }

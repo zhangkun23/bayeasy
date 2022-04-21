@@ -26,11 +26,11 @@ Page({
   // 返回欠款详情页
   backIndex() {
     if(this.data.returnType == 'delinquentBill') {
-      wx.reLaunch({
+      wx.navigateTo({
         url: '../billingDetail/billingDetail&type=delinquentBill',
       })
     } else if(this.data.returnType == 'repaymentBill') {
-      wx.reLaunch({
+      wx.navigateTo({
         url: '../billingDetail/billingDetail&typs=repaymentBill',
       })
     }

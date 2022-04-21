@@ -16,9 +16,19 @@ Page({
     allLoanList: [],
     totalLoanAmount: '',
     ids: [],
-    showPage: false
+    showPage: false,
+    returnType: ''
   },
 
+  backIndex() { 
+    if(this.data.returnType == 'todo') {
+      wx.navigateTo({
+        url: '../../todo/todo',
+      })
+    } else {
+      console.log("不是todo")
+    }
+  },
   sureRecord() {
     wx.navigateTo({
       url: '../repaymentBill/index',
@@ -75,13 +85,16 @@ Page({
   onLoad: function (options) {
     //  let ids = '26_2_36'.split('_');
     //  console.log(ids)
-    // // if(ids.length > 0) {
+    // if(ids.length > 0) {
     if(options.ids) {
       let ids = options.ids.split('_');
       this.setData({
         ids: ids
       })
     }
+    this.setData({
+      returnType: options.type
+    })
   },
 
   /**

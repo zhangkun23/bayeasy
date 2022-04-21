@@ -21,7 +21,7 @@ Page({
     endTime: ''
   },
   backIndex() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../taxreturn/index',
     })
   },

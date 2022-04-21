@@ -16,17 +16,17 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
-    },
-    backIndex(){
-        console.log('111')
-        // wx.switchTab({url:"/pages/invoice/invoiceIndex/index"})
+        
     },
     handelClickUrl(e){
-        // return;
         const url = e.currentTarget.dataset.url;
         if(!url) return; 
         utils.navigateTo(url)
-    }
+    },
+
+    onLoad: function (options) {
+        console.log('222')
+        console.log(options)
+    },
 
 })

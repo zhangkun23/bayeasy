@@ -21,26 +21,24 @@ Page({
     repaymentInfo: {}, //还款详情
     loanInfo: {}, // 欠款详情
     billingDetail: [], // 欠款或还款税种明细
-    declare_month: ''
-
+    declare_month: '',
   },
 
   // 返回
   backIndex() {
-    // 去确认为true  查看结果为false
-    if (this.data.returnType == 'list') {
+    if (this.data.returnType == 'delinquentBill') {
       if (this.data.showBtn) {
-        wx.reLaunch({
-          url: '../taxRecord/index?type=result',
-        })
-      } else {
-        wx.reLaunch({
-          url: '../taxConfirmation/index?typs=list',
+        wx.navigateTo({
+          url: '../delinquentBill/index',
         })
       }
-    } else if (this.data.returnType == 'result') {
-      wx.reLaunch({
-        url: '../taxRecord/index?type=result',
+    } else if (this.data.returnType == 'repaymentBill') {
+      wx.navigateTo({
+        url: '../repaymentBill/index',
+      })
+    } else if(this.data.returnType == 'todo') {
+      wx.navigateTo({
+        url: '../../todo/todo',
       })
     }
   },
@@ -82,16 +80,20 @@ Page({
     declareLoanInfo(this.data.billingDetailId).then(res => {
       console.log(res, '详情')
       if (res.ret) {
-        res.data.detail.map((item, i) => {
-          item.showChildList = true,
-            item.index = i + 1
-        })
-        this.setData({
-          declare_month: res.data.declare_month,
-          loanInfo: res.data.loan_info,
-          repaymentInfo: res.data.repayment_info,
-          billingDetail: res.data.detail
-        })
+        if (res.data.detail) {
+          res.data.detail.map((item, i) => {
+            item.showChildList = true,
+              item.index = i + 1
+          })
+          this.setData({
+            declare_month: res.data.declare_month,
+            loanInfo: res.data.loan_info,
+            repaymentInfo: res.data.repayment_info,
+            billingDetail: res.data.detail
+          })
+        } else {
+          console.log(122)
+        }
       }
     })
   },
@@ -99,8 +101,7 @@ Page({
   getUserId(value) {
     let id = undefined;
     if (value) {
-      id = value;
-      wx.setStorageSync('detailId', value);
+
     } else {
       id = wx.getStorageSync('detailId');
       this.setData({
@@ -113,7 +114,7 @@ Page({
   },
   // 设置type区分欠款还款页面
   renderPage(value) {
-    if (value == 'delinquentBill') {
+    if (value == 'delinquentBill' || value == 'todo') {
       this.setData({
         title: '欠款详情',
         returnType: value
@@ -142,7 +143,9 @@ Page({
     this.setData({
       billingDetailId: options.id
     })
-    this.renderPage(options.type)
+    // this.renderPage('todo');
+    this.renderPage(options.type);
+    this.getUserId(options.id)
   },
 
   /**

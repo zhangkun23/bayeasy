@@ -1,12 +1,13 @@
 
 .swiper{
-    height: 100vh;
+    height: 1600rpx;
     box-sizing: border-box;
     position: relative;
 }
 .topBg{
     width: 100%;
     height: 545rpx;
+    background-color: red;
 }
 .titleTop{
     position: fixed;
@@ -16,7 +17,7 @@
 }
 .info{
     position: absolute;
-    top: 202rpx;
+    top: 80rpx;
     left: 32rpx;
     right: 32rpx;
     text-align: center;

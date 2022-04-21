@@ -173,6 +173,16 @@ const nullToEmptyString = function (obj) {
   }
   return obj
 }
+
+const jumpUrl = function(userStatus){
+  if(userStatus == 0){
+    this.navigateTo('/pages/login/authentication/index')
+  }else if(userStatus == 1){
+    this.navigateTo('/pages/login/securityCheck/index')
+  }else if(userStatus==2){
+    this.navigateTo('/pages/login/information/index')
+  }
+}
 module.exports = {
   arrayBufferToBase64Img,
   formatTime,
@@ -180,5 +190,6 @@ module.exports = {
   openPdf,
   getTabBarIndex,
   Base64Binary,
-  nullToEmptyString
+  nullToEmptyString,
+  jumpUrl
 }
