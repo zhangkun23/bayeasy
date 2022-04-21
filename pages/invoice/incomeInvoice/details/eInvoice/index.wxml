@@ -3,14 +3,14 @@
     <mp-navigation-bar title="电子发票"></mp-navigation-bar>
     <view class="bgColog"/>
     <scroll-view scroll-y="true" enable-flex="true" class="wrapper">
-        <view wx:for="{{invoices}}">
+        <view wx:for="{{invoices}}" wx:key="i">
             <view class="bg">
                 <view class="mycard">
                     <view class="mycontent">
                         <image src="{{item.invoice_img_file}}" mode="aspectFill" class="pdf" bindtap="previewImg" data-src="{{item.invoice_img_file}}" ></image>
                     </view>
                 </view>
-                <view class="download" bindtap="downloadPdf" data-vid="{{item.id}}">下载发票</view>
+                <!-- <view class="download" bindtap="downloadPdf" data-vid="{{item.id}}">下载发票</view> -->
             </view>
         </view>
     </scroll-view>

@@ -16,11 +16,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
-    },
-    backIndex(){
-        console.log('111')
-        // wx.switchTab({url:"/pages/invoice/invoiceIndex/index"})
+        
     },
     handelClickUrl(e){
         const url = e.currentTarget.dataset.url;

@@ -21,14 +21,92 @@ Page({
         isSearchActive: false,
         searchKey: null,
         searchPage: 0,
-        pageSize: 5,
-        searchResult: null,
+        searchResult: [],
         isScroll: false,
         filterTop: 0,
         showEmtpy: false,
         invoiceType: null,
         _filteredData: null,
         _filters: null,
+        page: 1,
+        pageSize: 10,
+        canShowToast: true,
+        hasMore: true
+    },
+    onShow: function () {
+        this.setData({
+            showRes: true,
+            showEmtpy: false,
+            showFilter: false,
+            showSearch: false
+        })
+    },
+    _getData: function (param) {
+        let that = this;
+        searchBill(param).then(res => {
+            if (res.ret) {
+                if (res.data.list.length === 0) {
+                    that.setData({
+                        hasMore: false
+                    })
+                } else {
+                    res.data.list.forEach(e => {
+                        Object.keys(e).forEach(function (key) {
+                            if (e[key] === null) {
+                                e[key] = ''
+                            }
+                        })
+                    })
+                    this.setData({
+                        hasMore: true,
+                        searchResult: this.data.searchResult.concat(res.data.list)
+                    })
+                }
+                if (this.data.searchResult.length === 0) {
+                    this.setData({
+                        showEmtpy: true
+                    })
+                }
+            } else {
+                console.error("无法获取后台数据: ", res)
+                wx.showToast({
+                    title: '网络有问题哦！请稍后再试试！',
+                    icon: 'none',
+                })
+            }
+        }).catch(e => {
+            console.error("获取列表出错: ", e)
+        })
+    },
+    goNextPage: function () {
+        if (!this.data.hasMore) {
+            if (this.data.canShowToast) {
+                wx.showToast({
+                    title: '没有更多啦',
+                    icon: 'none'
+                })
+                this.setData({
+                    canShowToast: false
+                })
+            }
+            return
+        }
+        const currentPage = this.data.page
+        const getParams = {
+            page: currentPage + 1,
+            page_size: this.data.pageSize
+        }
+        this._getData(getParams)
+        this.setData({
+            page: currentPage + 1
+        })
+    },
+    _initData: function () {
+        const onloadParams = {
+            page: 0,
+            page_size: 10
+        }
+        this._getData(onloadParams)
 
     },
     onLoad: function () {
@@ -42,40 +120,8 @@ Page({
                 })
             }
         })
-        const onloadParams = {
-            page: 0,
-            page_size: 10
-        }
         this._getInvoiceType()
-        searchBill(onloadParams).then(res => {
-            if (res.ret) {
-                if (res.data.list.length === 0) {
-                    that.setData({
-                        showEmpty: true
-                    })
-                } else {
-                    res.data.list.forEach(e => {
-                        Object.keys(e).forEach(function (key) {
-                            if (e[key] === null) {
-                                e[key] = ''
-                            }
-                        })
-                    })
-                    this.setData({
-                        searchResult: res.data.list
-                    })
-                }
-
-            } else {
-                console.error("无法获取后台数据: ", res)
-                wx.showToast({
-                    title: '网络有问题哦！请稍后再试试！',
-                    icon: 'none',
-                })
-            }
-        }).catch(e => {
-            console.error("获取列表出错: ", e)
-        })
+        this._initData()
 
     },
 
@@ -178,7 +224,7 @@ Page({
                 })
             }
             console.debug("filter after filter", _filter_res)
-            if(_filter_res !== null){
+            if (_filter_res.length !== this.data.searchResult.length) { // 筛选结果不为空 直接将结果传过去
                 this.setData({
                     showFilter: false,
                     showRes: true,
@@ -194,12 +240,12 @@ Page({
                         })
                     }
                 })
-            }else{
-                this.setData({
+            } else {
+                this.setData({ // 筛选结果为空 关闭筛选 展开结果
                     showFilter: false,
                     showRes: true,
                     canFlip: true,
-                }) 
+                })
             }
         }
     },
@@ -216,11 +262,12 @@ Page({
         if (this.data.showFilter) {
             this.setData({
                 isSearchActive: false,
-                showFilter: false
+                showFilter: false,
+                showRes: true
             })
         } else {
-            wx.switchTab({
-                url: '../invoiceIndex/index',
+            wx.navigateBack({
+                delta: 1,
             })
         }
 

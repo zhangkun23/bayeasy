@@ -47,14 +47,14 @@ Component({
             utils.navigateTo(url)
         },
         goLogin(){
-            let userStatus = this.data.userStatus;  //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联
+            let userStatus = getApp().globalData.userStatus;  //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联
             if(this.data.textInfo == '登录/注册'){
               utils.navigateTo('/pages/login/login/index')
               this.setData({
                 showModal:false,
               })
             }else{
-              this.jumpUrl(userStatus);
+                utils.jumpUrl(userStatus);
             }
         },
     }

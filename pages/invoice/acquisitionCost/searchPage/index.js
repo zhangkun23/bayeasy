@@ -20,7 +20,7 @@ Page({
      */
     onShow: function (options) {
         let history = this.getHistory()
-        const searchKey = history[0]
+        const searchKey = history[0] || ''
         this.setData({
             searchFocus: true,
             lastSearchKey: searchKey
@@ -38,7 +38,7 @@ Page({
             searchKey: event.detail
         })
     },
-   setHistory(k) {
+    setHistory(k) {
         // 顺序为先进先出 index越小越新
         let history = wx.getStorageSync('invoiceSearchHistory') || []
         let _history = history.slice(0, 9)
@@ -51,10 +51,17 @@ Page({
     btnGoSearch: function () {
         this.goSearch()
     },
-    handleBackArrow: function(){
-        wx.redirectTo({
-          url: '../index',
+    handleBackArrow: function () {
+     const pages = getCurrentPages()
+     if (pages[pages.length - 2].__route__ === "pages/invoice/acquisitionCost/filterResult/index") {
+        wx.navigateBack({
+            delta: 2,
         })
+    } else {
+        wx.navigateBack({
+            delta: 1,
+        })
+    }
     },
     goSearch: function (event) {
         var that = this;
@@ -67,11 +74,21 @@ Page({
         } else {
             key = this.data.searchKey
         }
-        if (!key && !this.data.lastSearchKey) {
-            wx.redirectTo({
-                url: '../index',
-            })
-        } else if(!key && this.data.lastSearchKey){
+        const pages = getCurrentPages()
+        if (!key && !this.data.lastSearchKey) { // 没有搜索关键字 且 没有搜索记录直接点了搜索，如果是筛选页跳转的，返回无状态列表页，否则返回
+            // wx.redirectTo({
+            //     url: '../index',
+            // })
+            if (pages[pages.length - 2].__route__ === "pages/invoice/acquisitionCost/filterResult/index") {
+                wx.navigateBack({
+                    delta: 2,
+                })
+            } else {
+                wx.navigateBack({
+                    delta: 1,
+                })
+            }
+        } else if (!key && this.data.lastSearchKey) { // 按照最后一次搜索关键字进行搜索
             wx.navigateTo({
                 url: '../searchResult/index',
                 success: function (res) {
@@ -80,8 +97,7 @@ Page({
                     })
                 }
             })
-        }
-        else {
+        } else {
             this.setHistory(key)
             wx.navigateTo({
                 url: '../searchResult/index',

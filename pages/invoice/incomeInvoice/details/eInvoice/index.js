@@ -15,7 +15,8 @@ Page({
         showBg: true,
         invoices: null,
         // _vid: null,
-        invoicePdfUrl: null
+        invoicePdfUrl: null,
+        showClipDialog: false
     },
 
     /**
@@ -42,25 +43,38 @@ Page({
         })
     },
     downloadPdf: function (e) {
+        let that = this;
         const vid = e.currentTarget.dataset.vid
         const token = wx.getStorageSync('token') || ''
         const url = `${baseUrl}/invoice/download_invoice_file?id=${vid}&token=${token}`
-        wx.downloadFile({
-            url: url,
+        wx.setClipboardData({
+            data: url,
             success: res => {
-                let Path = res.tempFilePath
-                wx.openDocument({
-                    filePath: Path, //要打开的文件路径
-                    showMenu: true,
-                    success: function (res) {
-                        console.log('打开PDF成功');
-                    },
-                    fail: err => {
-                        console.error("无法打开PDF :", err)
-                    }
+                wx.showModal({
+                  content:"链接已复制，请在浏览器中访问。",
+                  showCancel:false
                 })
+                // wx.showToast({
+                //     title: '链接已复制',
+                // })
             }
         })
+        // wx.downloadFile({
+        //     url: url,
+        //     success: res => {
+        //         let Path = res.tempFilePath
+        //         wx.openDocument({
+        //             filePath: Path, //要打开的文件路径
+        //             showMenu: true,
+        //             success: function (res) {
+        //                 console.log('打开PDF成功');
+        //             },
+        //             fail: err => {
+        //                 console.error("无法打开PDF :", err)
+        //             }
+        //         })
+        //     }
+        // })
     },
     previewImg: function (e) {
         const src = e.currentTarget.dataset.src

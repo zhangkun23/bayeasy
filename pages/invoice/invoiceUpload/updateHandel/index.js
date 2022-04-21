@@ -32,8 +32,6 @@ Page({
         }],
         isShowModal:false
     },
-    backIndex(){
-    },
     jump(){
         wx.navigateTo({
             url: '/pages/invoice/invoiceUpload/updateHandelSuccess/index',

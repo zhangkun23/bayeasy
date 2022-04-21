@@ -1,48 +1,50 @@
 
+<view class="mycontainer">
+    <view class="bgColog"></view>
+    <mp-navigation-bar  title="手动添加增值税发票"  ></mp-navigation-bar>
+    <scroll-view scroll-y="true" class="wrapper" enable-flex="true">
+        <view class="count">
 
-<view class="bgColog">
-    <mp-navigation-bar  title="手动添加增值税发票" bindback="backIndex"/>
-    <view class="count">
+            <picker bindchange="bindPickerChange" range="{{activityArr}}" range-key="type" mode="selector" >
+                <input-com title="发票类型" must="true"  placeholder="请选择发票类型" inputValue="{{form.invoice_show}}" 
+                disabled="true" icon_down='true'  key="invoice_type" />
+            </picker>
 
-        <picker bindchange="bindPickerChange" range="{{activityArr}}" range-key="type" mode="selector" >
-            <input-com title="发票类型" must="true"  placeholder="请选择发票类型" inputValue="{{form.invoice_show}}" 
-            disabled="true" icon_down='true'  key="invoice_type" />
-        </picker>
+            <input-com title="发票代码" type="number" must="true" placeholder="请输入发票代码" inputValue="{{form.invoice_dm}}"    
+            key="invoice_dm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
 
-        <input-com title="发票代码" type="number" must="true" placeholder="请输入发票代码" inputValue="{{form.invoice_dm}}"    
-        key="invoice_dm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            <input-com title="发票号码" type="number" must="true" placeholder="请输入发票号码" inputValue="{{form.invoice_hm}}"    
+            key="invoice_hm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
 
-        <input-com title="发票号码" type="number" must="true" placeholder="请输入发票号码" inputValue="{{form.invoice_hm}}"    
-        key="invoice_hm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            <input-com title="价税合计" type="digit" must="true" placeholder="请输入价税合计" inputValue="{{form.total_amount}}"    
+            key="total_amount" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
 
-        <input-com title="价税合计" type="digit" must="true" placeholder="请输入价税合计" inputValue="{{form.total_amount}}"    
-        key="total_amount" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            <input-com title="发票校验码" must="true" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}" maxlength="6"
+            key="invoice_check_code" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
 
-        <input-com title="发票校验码" must="true" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}" maxlength="6"
-        key="invoice_check_code" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            <picker mode="date" value="{{dateTime}}"  start="2010-01-01" end="2050-01-01"   bindcancel="bindcancel" bindchange="bindDateChange">
+                <input-com title="开票日期" must="true" disabled="true" placeholder="请选择开票日期" inputValue="{{form.invoice_date}}" 
+                icon_rl='true' key="invoice_date" clearShow="{{false}}"  bind:setInputValue="setInputValue"/>
+            </picker>
 
-        <picker mode="date" value="{{dateTime}}"  start="2010-01-01" end="2050-01-01"   bindcancel="bindcancel" bindchange="bindDateChange">
-            <input-com title="开票日期" must="true" disabled="true" placeholder="请选择开票日期" inputValue="{{form.invoice_date}}" 
-            icon_rl='true' key="invoice_date" clearShow="{{false}}"  bind:setInputValue="setInputValue"/>
-        </picker>
-
-        <view class="updateInfo">
-            <view class="updateInfo_name">上传图片凭证</view>
-            <view class="updateInfo_box" bindtap="updateImage">
-                <image wx:if="{{form.file_url}}" src="{{close}}" class="close" catchtap="clearImg" />
-                <image src="{{form.file_url}}" class="invoiceImg" />
-                <image wx:if="{{addImgStatus}}" src="{{addImg}}" class="addImg" />
+            <view class="updateInfo">
+                <view class="updateInfo_name">上传图片凭证</view>
+                <view class="updateInfo_box" bindtap="updateImage">
+                    <image wx:if="{{form.file_url}}" src="{{close}}" class="close" catchtap="clearImg" />
+                    <image src="{{form.file_url}}" class="invoiceImg" />
+                    <image wx:if="{{addImgStatus}}" src="{{addImg}}" class="addImg" />
+                </view>
             </view>
+
+            <view wx:if="{{submit}}" class="submit" bindtap="subbmint">提交查验</view>
+            <view wx:if="{{!submit}}" class="submitDiesable" >提交查验</view>
+
+            <!-- <view class="submitDiesable" bindtap="jump">成功</view>
+            <view class="submitDiesable" bindtap="jump2">失败</view> -->
         </view>
 
-        <view wx:if="{{submit}}" class="submit" bindtap="subbmint">提交查验</view>
-        <view wx:if="{{!submit}}" class="submitDiesable" >提交查验</view>
-
-        <view class="submitDiesable" bindtap="jump">成功</view>
-        <view class="submitDiesable" bindtap="jump2">失败</view>
-    </view>
-
-    <block wx:if="{{isShowModal}}">
-        <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认删除这张图片吗？"></mp-dialog>
-    </block>
+        <block wx:if="{{isShowModal}}">
+            <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认删除这张图片吗？"></mp-dialog>
+        </block>
+    </scroll-view>
 </view>

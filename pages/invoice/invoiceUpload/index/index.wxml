@@ -1,7 +1,7 @@
 
 
 <view class="bgColog">
-    <mp-navigation-bar title="采集成本发票1" bindback="backIndex" back="true" />
+    <mp-navigation-bar title="采集成本发票1" back="true" />
     <view class="wapper">  
         <view class="address">
             请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！

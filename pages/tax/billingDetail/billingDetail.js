@@ -1,7 +1,8 @@
 const tempPath = getApp().globalData.imgPath;
 const {
   declareLoanInfo,
-  confirmdeclare
+  confirmdeclare,
+  updateReadStatus
 } = require('../../../http/api/api_csbl');
 Page({
 
@@ -100,7 +101,8 @@ Page({
   getUserId(value) {
     let id = undefined;
     if (value) {
-
+        /* 测试 */
+        id = value
     } else {
       id = wx.getStorageSync('detailId');
       this.setData({
@@ -125,7 +127,14 @@ Page({
       })
     }
   },
-
+  updateReadStatus: function () {
+    if (!this.data.billingDetailId) {
+      return
+    }
+    updateReadStatus({
+      id: this.data.billingDetailId
+    }).then(res => {}).catch(err => console.error("无法更新已读状态: ", err))
+  },
 
   /**
    * 生命周期函数--监听页面加载

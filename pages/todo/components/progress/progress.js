@@ -104,10 +104,8 @@ Component({
     }
 
   },
-
-  pageLifetimes: {
-    // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-    show: function () {
+  lifetimes:{
+    attached:function () {
       console.debug("progress properties: ", this.properties)
       const _this = this;
       //获取屏幕宽度
@@ -130,29 +128,7 @@ Component({
       })
       this.drawAll()
 
-      // this.createSelectorQuery()
-      //   .select('#ctxbg')
-      //   .fields({
-      //     node: true,
-      //     size: true,
-      //   }).exec(this.drawCircleBg.bind(this))
-
-      // if (this.data.per !== '0') {
-      //   this.createSelectorQuery()
-      //     .select('#ctx')
-      //     .fields({
-      //       node: true,
-      //       size: true,
-      //     }).exec(this.drawCircle.bind(this))
-      // }
+    
     }
   },
-  //  observers: {
-  //    'count': function(c){
-  //      this.setData({
-  //        per: c/this.properties.max,
-  //        count: c
-  //      })
-  //    }
-  //  }
 })

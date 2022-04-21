@@ -40,7 +40,8 @@ Page({
         title: "征期申报税款确认",
         subTitle: "请您尽快确认税额，以免影响申报进度",
         btnText: "去确认",
-        url: '/pages/tax/deatil/deatil?'
+        url: '/pages/tax/deatil/deatil',
+        detailUrl: '/pages/tax/deatil/deatil',
       },
       {
         id: 2,
@@ -49,7 +50,8 @@ Page({
         title: "征期申报税款确认",
         subTitle: "征期已将近，请尽快确认",
         btnText: "去确认",
-        url: '/pages/tax/deatil/deatil?'
+        url: '/pages/tax/deatil/deatil',
+        detailUrl: '/pages/tax/deatil/deatil',
       },
       {
         id: 3,
@@ -91,16 +93,15 @@ Page({
     const _todo_list = this.data.todo_lists.filter(e => e.id === tid)[0]
     if ('ids' in _todo_list) {
       if (_todo_list['ids'].length > 1) {
-        if(!('detailUrl' in _todo_list)){
+        if (!('detailUrl' in _todo_list)) {
           return
         }
         const _ids = _todo_list['ids'].map(i => i.id)
-        wx.redirectTo({
+        wx.navigateTo({
           url: _todo_list.url + '?type=todo&ids=' + _ids.join('_'),
         })
-      } else if (_todo_list['ids'].length === 1)  {
-        
-        wx.redirectTo({
+      } else if (_todo_list['ids'].length === 1) {
+        wx.navigateTo({
           url: _todo_list.detailUrl + '?type=todo&id=' + _todo_list['ids'][0]['id'],
         })
       }
@@ -122,66 +123,62 @@ Page({
       };
     }
     var that = this
-    const test_data = {
-      "ret": true,
-      "message": "success",
-      "data": {
-        "invoice": [{
-          "id": 36
-        },{
-          "id": 37
-        }],
-        "declare": [{
-          "id": 36
-        }],
-        "overdue_declare": [{
-          "id": 36
-        }],
-        "loan": [{
-          "id": 36
-        }],
-        "loan_nums": 3,
-        "repayment": [{
-          "id": 34
-        }],
-        "repayment_nums": 5,
-        "nums": 2
-      },
-      "code": 200
-    }
     todolist().then(res => {
-      res = test_data
       if (res.ret) {
         if (res.data instanceof Object) {
           const _data = res.data
           const _todo_keys = Object.keys(_data)
           const _new_todo_lists = that.data.todo_lists
-          if (_todo_keys.includes("invoice") && _data.invoice.length > 0) {
-            _new_todo_lists[3].isShow = true
-            _new_todo_lists[3]["ids"] = _data["invoice"]
+          if (_todo_keys.includes("invoice")) {
+            if (_data.invoice.length > 0) {
+              _new_todo_lists[3].isShow = true
+              _new_todo_lists[3]["ids"] = _data["invoice"]
+            } else {
+              _new_todo_lists[3].isShow = false
+              delete _new_todo_lists[3]["ids"]
+            }
           }
-          if (_todo_keys.includes("declare") && _data.declare.length > 0) {
-            _new_todo_lists[0].isShow = true
-            _new_todo_lists[0]["ids"] = _data["declare"]
+          if (_todo_keys.includes("declare")) {
+            if (_data.declare.length > 0) {
+              _new_todo_lists[0].isShow = true
+              _new_todo_lists[0]["ids"] = _data["declare"]
+            } else {
+              _new_todo_lists[0].isShow = false
+              delete _new_todo_lists[0]["ids"]
+            }
           }
-          if (_todo_keys.includes("overdue_declare") && _data.overdue_declare.length > 0) {
-            _new_todo_lists[1].isShow = true
-            _new_todo_lists[1]["ids"] = _data["overdue_declare"]
-
+          if (_todo_keys.includes("overdue_declare")) {
+            if (_data.overdue_declare.length > 0) {
+              _new_todo_lists[1].isShow = true
+              _new_todo_lists[1]["ids"] = _data["overdue_declare"]
+            } else {
+              _new_todo_lists[1].isShow = false
+              delete _new_todo_lists[1]["ids"]
+            }
           }
-          if (_todo_keys.includes("loan") && _data.loan.length > 0) {
-            _new_todo_lists[2].isShow = true
-            _new_todo_lists[2].count = _data.loadn_nums
-            _new_todo_lists[2].title = _new_todo_lists[2].title.format(_data.loan_nums)
-            _new_todo_lists[2]["ids"] = _data["loan"]
-
+          if (_todo_keys.includes("loan")) {
+            if (_data.loan.length > 0) {
+              _new_todo_lists[2].isShow = true
+              _new_todo_lists[2].count = _data.loadn_nums
+              _new_todo_lists[2].title = _new_todo_lists[2].title.format(_data.loan_nums)
+              _new_todo_lists[2]["ids"] = _data["loan"]
+            } else {
+              _new_todo_lists[2].isShow = false
+              _new_todo_lists[2].title = "您有 {0} 条申报欠款记录需要处理";
+              delete _new_todo_lists[2]["ids"];
+            }
           }
-          if (_todo_keys.includes("repayment") && _data.repayment.length > 0) {
-            _new_todo_lists[4].isShow = true
-            _new_todo_lists[4].count = _data.repayment_nums
-            _new_todo_lists[4].title = _new_todo_lists[4].title.format(_data.repayment_nums)
-            _new_todo_lists[4]["ids"] = _data["repayment"]
-
+          if (_todo_keys.includes("repayment")) {
+            if (_data.repayment.length > 0) {
+              _new_todo_lists[4].isShow = true
+              _new_todo_lists[4].count = _data.repayment_nums
+              _new_todo_lists[4].title = _new_todo_lists[4].title.format(_data.repayment_nums)
+              _new_todo_lists[4]["ids"] = _data["repayment"]
+            } else {
+              _new_todo_lists[4].isShow = false
+              _new_todo_lists[4].title = "您有 {0} 条申报欠款记录需要处理";
+              delete _new_todo_lists[4]["ids"];
+            }
           }
           that.setData({
             todo_lists: _new_todo_lists,

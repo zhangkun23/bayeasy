@@ -343,6 +343,7 @@ Page({
 
     // 展示my-dialog
     showDialog(e){
+        if(this.data.loadStatusNum!=0) return;
         this.setData({
             isShowModal:true,
             removeItemE:e
