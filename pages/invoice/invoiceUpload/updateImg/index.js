@@ -15,6 +15,13 @@ Page({
             url: '/pages/invoice/invoiceUpload/updateImgInfo/index',
         })
     },
+    backIndex(){
+        console.log( getCurrentPages())
+        console.log('图片上传')
+        wx.navigateBack({ //返回
+            delta: 2
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载

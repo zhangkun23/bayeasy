@@ -1,6 +1,6 @@
 // pages/tax/taxRecord/index.js
 const {
-  declareList
+  declareList, getFullYear
 } = require("../../../http/api/api_csbl")
 const tempPath = getApp().globalData.imgPath;
 
@@ -16,11 +16,29 @@ Page({
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     title: "申报缴纳记录",
     returnType: "",
-    date: '2022'
+    date: '',
+    startTime: '',
+    endTime: ''
   },
   backIndex() {
     wx.navigateTo({
       url: '../taxreturn/index',
+    })
+  },
+  getYaer() {
+    let date = new Date();
+    let year = date.getFullYear();
+    this.setData({
+      endTime: year,
+      date:year
+    })
+    getFullYear().then(res => {
+      if(res.ret) {
+        console.log(res)
+        this.setData({
+          startTime: res.data.year
+        })
+      }
     })
   },
   renderPage(value) {
@@ -42,10 +60,8 @@ Page({
       date: event.detail.value
     })
     this.getTaxList(event.detail.value)
-    console.log(event,this.data.date)
   },
   gotoDeatil(event) {
-    console.log(event)
     let row = event.currentTarget.dataset.row;
     wx.setStorageSync('payRowId', row.id)
     wx.navigateTo({
@@ -55,7 +71,7 @@ Page({
   getTaxList(value) {
     let params = {
       status: 2,
-      page_size: 15,
+      page_size: 1000,
       year: value? value : this.data.date
     }
     wx.setStorageSync('pageStatus', 2)
@@ -65,7 +81,6 @@ Page({
           allDeclareList: res.data.list
         })
       }
-      console.log(res, '列表')
     })
   },
 
@@ -74,6 +89,7 @@ Page({
    */
   onLoad: function (options) {
     this.getTaxList();
+    this.getYaer();
     this.renderPage(options.type)
   },
 

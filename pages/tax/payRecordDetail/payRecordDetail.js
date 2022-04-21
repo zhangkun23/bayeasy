@@ -110,7 +110,6 @@ Page({
         if (res.data.list.length > 0) {
           arr = res.data.list
         } 
-        console.log("arrr===="+arr)
         res.data.category.map((item, i) => {
           item.checked = false;
           item.index = i
@@ -119,7 +118,7 @@ Page({
         this.setData({
           deatilObj: res.data,
           detailList: arr[0].list,
-          listAll:arr,
+          listAll: arr,
           taxList: res.data.category
         })
       } else {

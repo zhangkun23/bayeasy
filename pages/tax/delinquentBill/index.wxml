@@ -1,6 +1,7 @@
 <!--pages/tax/delinquentBill/index.wxml-->
 <view class="delinquentBill">
   <mp-navigation-bar ext-class="navigationBar" color="#ffffff" title="申报欠款账单" bindback="backIndex"></mp-navigation-bar>
+  <scroll-view scroll-y="true" hidden="{{!showPage}}">
   <view class="taxConfirmation__container">
     <view class="taxConfirmation__btn font-size-24" bindtap="sureRecord">
       <text class="taxConfirmation__tips">还款账单</text>
@@ -40,4 +41,5 @@
       <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
     </view>
   </view>
+  </scroll-view>
 </view>

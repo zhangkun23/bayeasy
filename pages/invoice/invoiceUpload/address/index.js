@@ -26,47 +26,55 @@ Component({
             address:""
         }
     },
+   
 
     /**
      * 组件的方法列表
      */
     methods: {
-        getUserMeg(){
-            getUserMeg().then(res => {
-                if(res.ret){
-                    this.setData({
-                        form:res.data
-                    })
-                }
-            })
+      backIndex(){
+        console.log( getCurrentPages())
+        console.log('邮寄地址')
+        wx.navigateBack({ //返回
+            delta: 2
+        })
+      },
+      getUserMeg(){
+          getUserMeg().then(res => {
+              if(res.ret){
+                  this.setData({
+                      form:res.data
+                  })
+              }
+          })
+      },
+      copywxtap: function (e) {
+        let param = [{
+          name:'收货人',
+          value:this.data.form.name,
         },
-        copywxtap: function (e) {
-          let param = [{
-            name:'收货人',
-            value:this.data.form.name,
-          },
-          {
-            name:'电话号码',
-            value:this.data.form.phone,
-          },
-          {
-            name:'收货地址',
-            value:this.data.form.address,
-          }]
-           wx.setClipboardData({
-             data:`${param.map(item =>`${item.name}: ${item.value}`).join("\n")}`,
-             success: function (res) {
-               wx.getClipboardData({
-                 success: function (res) {
-                   wx.showToast({
-                     title: '复制成功',
-                     icon:'none'
-                   })
-                 }
-               })
+        {
+          name:'电话号码',
+          value:this.data.form.phone,
+        },
+        {
+          name:'收货地址',
+          value:this.data.form.address,
+        }]
+          wx.setClipboardData({
+            data:`${param.map(item =>`${item.name}: ${item.value}`).join("\n")}`,
+            success: function (res) {
+              wx.getClipboardData({
+                success: function (res) {
+                  wx.showToast({
+                    title: '复制成功',
+                    icon:'none'
+                  })
+                }
+              })
 
-             }
-           })
-        }
+            }
+          })
+      }
     }
 })

@@ -2,7 +2,7 @@
 
 
 <view class="bgColog">
-    <mp-navigation-bar title="增值税发票查验" />
+    <mp-navigation-bar title="增值税发票查验"  bindback="backIndex"/>
 
     <view class="count">
         <view bindtap="updateInvoce">

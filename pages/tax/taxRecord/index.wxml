@@ -2,7 +2,7 @@
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
   <scroll-view scroll-y="true">
     <view class="taxConfirmation__container">
-      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-01-01" bindchange="bindDateChange" fields="year">
+      <picker mode="date" start="{{startTime}}" end="{{endTime}}" value="{{date}}" bindchange="bindDateChange" fields="year">
         <view class="taxConfirmation__header">
           <view>
             <text class="year">记录年度</text>

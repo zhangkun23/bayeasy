@@ -11,17 +11,9 @@ Page({
   data: {
     listIcon: tempPath + 'tax/taxreturn/list.png',
     info_max: tempPath + "public/info_max.png",
-    // deatilObj: {},
     billingDetailId: 0,
-    // timeOut: {}, // 倒计时
     taxList: [], // 明细列表
     showList: false,
-    // didClick: true,
-    // time: '',
-    // backgroundColor: '#E5EEF7',
-    // boxShadow: '0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1)',
-    // splicingStr: '(5s)',
-    // timestamp: '',
     showOpen: "展开",
     title: "",
     returnType: '',

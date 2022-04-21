@@ -33,9 +33,14 @@ Page({
         isShowModal:false
     },
     backIndex(){
-        wx.redirectTo({
-            url: '/pages/invoice/invoiceUpload/index/index',
-        }) 
+        // wx.redirectTo({
+        //     url: '/pages/invoice/invoiceUpload/index/index',
+        // }) 
+        console.log( getCurrentPages())
+        console.log('手动上传')
+        wx.navigateBack({ //返回
+            delta: 1
+        })
     },
     jump(){
         wx.navigateTo({

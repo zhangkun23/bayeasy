@@ -54,6 +54,7 @@
 
 .detail__container {
   margin: 32rpx;
+  max-height: 1360rpx;
 }
 
 .detail__timeout {

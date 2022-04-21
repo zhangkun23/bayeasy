@@ -12,9 +12,10 @@ Page({
     },
 
     jumpReact(){
-        wx.navigateBack({
-            url: '/pages/invoice/invoiceUpload/index/index',
-        })
+        // wx.navigateBack({
+        //     url: '/pages/invoice/invoiceUpload/index/index',
+        // })
+        wx.navigateBack()
     },
 
 

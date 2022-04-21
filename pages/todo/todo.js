@@ -40,7 +40,7 @@ Page({
         title: "征期申报税款确认",
         subTitle: "请您尽快确认税额，以免影响申报进度",
         btnText: "去确认",
-        url: '../tax/deatil/deatil?'
+        url: '/pages/tax/deatil/deatil?'
       },
       {
         id: 2,
@@ -49,7 +49,7 @@ Page({
         title: "征期申报税款确认",
         subTitle: "征期已将近，请尽快确认",
         btnText: "去确认",
-        url: '../tax/deatil/deatil?'
+        url: '/pages/tax/deatil/deatil?'
       },
       {
         id: 3,
@@ -59,8 +59,8 @@ Page({
         title: "您有 {0} 条申报欠款记录需要处理",
         subTitle: "为了不影响公司信誉，请尽快结清欠款",
         btnText: "去查看",
-        url: "../tax/delinquentBill/index",
-        detailUrl: "../tax/delinquentBill/index",
+        url: "/pages/tax/delinquentBill/index",
+        detailUrl: "/pages/tax/billingDetail/billingDetail",
       },
       {
         id: 4,
@@ -80,8 +80,8 @@ Page({
         title: "您有 {0} 条申报欠款已结清",
         subTitle: "请尽快查看核实信息是否有误",
         btnText: "去查看",
-        url: "../tax/delinquentBill/index",
-        detailUrl: "../invoice/incomeInvoice/details/index",
+        url: "/pages/tax/repaymentBill/index",
+        detailUrl: "/pages/tax/billingDetail/billingDetail",
       }
     ]
   },
