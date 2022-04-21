@@ -62,6 +62,10 @@ Page({
       wx.navigateTo({
         url: '../taxRecord/index?type=result',
       })
+    } else if(this.data.returnType == 'todo') {
+      wx.navigateTo({
+        url: '../../todo/todo',
+      })
     }
   },
 
