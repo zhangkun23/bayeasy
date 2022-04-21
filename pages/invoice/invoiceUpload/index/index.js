@@ -27,6 +27,11 @@ Page({
         const url = e.currentTarget.dataset.url;
         if(!url) return; 
         utils.navigateTo(url)
-    }
+    },
+
+    onLoad: function (options) {
+        console.log('222')
+        console.log(options)
+    },
 
 })

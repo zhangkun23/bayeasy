@@ -15,7 +15,9 @@ Page({
         // wx.navigateBack({
         //     url: '/pages/invoice/invoiceUpload/index/index',
         // })
-        wx.navigateBack()
+        wx.navigateBack({
+            delta:1
+        })
     },
 
 

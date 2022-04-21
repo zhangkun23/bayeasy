@@ -16,10 +16,26 @@ Page({
         })
     },
     backIndex(){
-        console.log( getCurrentPages())
-        console.log('图片上传')
-        wx.navigateBack({ //返回
-            delta: 2
+        // console.log( getCurrentPages())
+        // console.log('图片上传')
+        // wx.navigateBack({ //返回
+        //     delta: 1
+        // })
+
+        var page = getCurrentPages()  ;// 获取当前页面栈
+        console.log(page)
+        var beforePage = page[page.length - 2]; // 跳转页面的栈
+        console.log(beforePage)
+        beforePage.onLoad()
+
+        // page =[page[0],page[1]]
+        // console.log(page)
+        wx.navigateBack({
+            delta: 1,
+            success: function () {
+                beforePage.onShow(); // 执行前一个页面的onLoad方法
+                // console.log('11111')
+            }
         })
     },
 

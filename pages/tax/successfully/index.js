@@ -19,9 +19,10 @@ Page({
   //   })
   // },
   gotoReult() {
-    wx.navigateTo({
-      url: '../deatil/deatil?type=result&id=' + this.data.paramsId,
-    })
+    // wx.navigateTo({
+    //   url: '../deatil/deatil?type=result&id=' + this.data.paramsId,
+    // })
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面加载
