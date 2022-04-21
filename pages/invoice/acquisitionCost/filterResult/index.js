@@ -21,8 +21,8 @@ Page({
         filters: null
     },
     goSearch: function (e) {
-        wx.redirectTo({
-            url: '../searchPage/index',
+        wx.navigateTo({
+          url: '../searchPage/index',
         })
     },
     goNextPage: function (e) {

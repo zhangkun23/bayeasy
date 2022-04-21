@@ -40,6 +40,9 @@ module.exports = {
   // 获取商事主体年份
   getFullYear() {
     return request(api + '/declare/get_declare_year', 'GET', {});
+  },
+  // 查看详情更新已读状态
+  updateReadStatus(param) {
+    return request(api + '/declare_loan/read', 'POST', param);
   }
-
 }

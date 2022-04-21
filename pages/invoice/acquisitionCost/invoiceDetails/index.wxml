@@ -1,7 +1,7 @@
 <!--pages/invoice/acquisitionCost/invoiceDetails/index.wxml-->
 <view class="mycontainer">
     <!-- <mp-navigation-bar title="成本发票明细" delta="0" bindback="handleBackArrow"></mp-navigation-bar> -->
-    <mp-navigation-bar title="成本发票明细" ></mp-navigation-bar>
+    <mp-navigation-bar title="成本发票明细"></mp-navigation-bar>
     <view class="bgColog"></view>
     <scroll-view scroll-y="{{true}}" class="wrapper" enable-flex="true">
         <view class="inner-container">
@@ -12,7 +12,7 @@
                             <image src="{{passIcon}}" mode="aspectFill" class="statusIcon"></image>
                             <view>审核通过发票有效：</view>
                         </view>
-                        <view class="info">本张增值税发票将会在下一个征期申报时进行成本抵扣！</view>
+                        <view class="info">本张增值税发票将会在申报时进行成本抵扣！</view>
                     </view>
                 </view>
             </block>
@@ -24,13 +24,13 @@
                             <view>审核未通过如有疑问请及时联系客服</view>
                         </view>
                         <view class="info">审核未通过原因：
-                        <block wx:if="{{audit_faild_reason === 1 }}">
-                            <text>未对应纸质发票</text>
-                        </block>
-                        <block wx:elif="{{audit_faild_reason === 2 }}">
-                            <text>其他</text>
-                        </block>
-                        <view><text>{{failure_reason}}</text></view>
+                            <block wx:if="{{audit_faild_reason === 1 }}">
+                                <text>未对应纸质发票</text>
+                            </block>
+                            <block wx:elif="{{audit_faild_reason === 2 }}">
+                                <text>其他</text>
+                            </block>
+                            <view><text>{{failure_reason}}</text></view>
                         </view>
                     </view>
                 </view>

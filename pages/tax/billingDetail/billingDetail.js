@@ -101,7 +101,8 @@ Page({
   getUserId(value) {
     let id = undefined;
     if (value) {
-
+        /* 测试 */
+        id = value
     } else {
       id = wx.getStorageSync('detailId');
       this.setData({

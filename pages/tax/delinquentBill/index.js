@@ -22,9 +22,10 @@ Page({
 
   backIndex() { 
     if(this.data.returnType == 'todo') {
-      wx.navigateTo({
-        url: '../../todo/todo',
-      })
+      // wx.navigateTo({
+      //   url: '../../todo/todo',
+      // })
+
     } else {
       console.log("不是todo")
     }

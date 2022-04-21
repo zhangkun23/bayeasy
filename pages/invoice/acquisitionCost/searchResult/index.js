@@ -66,27 +66,11 @@ Page({
             searchKey: event.detail
         })
     },
-    handleBackArrow: function () {
-        setTimeout(() => {
-            wx.redirectTo({
-                url: '/pages/invoice/acquisitionCost/index',
-                fail: (e) => {
-                    console.log("faile", e)
-                },
-            })
-        }, 0);
-
-    },
     goSearch: function () {
-        // 不返回搜索页直接返回初始页
-        var that = this;
+        // TODO: 这里把方法邦回搜索组件了可能有问题 明天要看看
         wx.navigateBack({
             delta: 1,
         })
-        // wx.redirectTo({
-        //     url: '../searchPage/index'
-        // })
-
     },
     requestSearch: function () {
         var that = this;
@@ -140,9 +124,8 @@ Page({
         })
     },
     handleBackArrow: function () {
-
-        wx.redirectTo({
-            url: '../index',
+        wx.navigateBack({
+          delta: 2,
         })
     },
 })
