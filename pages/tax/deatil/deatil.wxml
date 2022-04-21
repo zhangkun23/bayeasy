@@ -10,7 +10,7 @@
         <text wx:if="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严格影响主体纳税誉！</text>
       </view>
       <view class="detail__time">
-        <view class="detail__date" wx:if="{{ deatilObj.overdue_status == 1 && deatilObj.overdue_time > 0}}">
+        <view class="detail__date" wx:if="{{showTime && deatilObj.overdue_status == 1 && deatilObj.overdue_time > 0}}">
           <view class="detail__timeout font-600">确认时间倒计时</view>
           <view>
             <text class="detail__time-boxShadow">{{timeOut.days}}</text>

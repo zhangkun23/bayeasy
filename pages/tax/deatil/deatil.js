@@ -19,6 +19,7 @@ Page({
     isShowModal: false,
     showBtn: false,
     didClick: true,
+    showTime: false,
     time: '',
     backgroundColor: '#E5EEF7',
     boxShadow: '0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1)',
@@ -46,27 +47,27 @@ Page({
     // })
     // return
     // 去确认为true  查看结果为false
-    if (this.data.returnType == 'list') {
-      console.log(222)
-      if (this.data.showBtn) {
-        wx.navigateTo({
-          url: '../taxRecord/index?type=result',
-        })
-        // wx.navigateBack()
-      } else {
-        wx.navigateTo({
-          url: '../taxConfirmation/index?typs=list',
-        })
-      }
-    } else if (this.data.returnType == 'result') {
-      wx.navigateTo({
-        url: '../taxRecord/index?type=result',
-      })
-    } else if(this.data.returnType == 'todo') {
-      wx.navigateTo({
-        url: '../../todo/todo',
-      })
-    }
+    // if (this.data.returnType == 'list') {
+    //   console.log(222)
+    //   if (this.data.showBtn) {
+    //     wx.navigateTo({
+    //       url: '../taxRecord/index?type=result',
+    //     })
+    //     // wx.navigateBack()
+    //   } else {
+    //     wx.navigateTo({
+    //       url: '../taxConfirmation/index?typs=list',
+    //     })
+    //   }
+    // } else if (this.data.returnType == 'result') {
+    //   wx.navigateTo({
+    //     url: '../taxRecord/index?type=result',
+    //   })
+    // } else if(this.data.returnType == 'todo') {
+    //   wx.navigateTo({
+    //     url: '../../todo/todo',
+    //   })
+    // }
   },
 
   //overdue_status 0 逾期 1 未逾期
@@ -106,7 +107,7 @@ Page({
   // 获取详情
   getdeclareInfo() {
     declareInfo(this.data.detailId).then(res => {
-      console.log(res, '详情')
+      // console.log(res, '详情')
       if (res.ret) {
         let arr = []
         if (res.data) {
@@ -118,10 +119,15 @@ Page({
           }
           this.setData({
             deatilObj: res.data,
-            taxList: arr
+            taxList: arr,
+            showTime: true
           })
+        } else {
+          this.setData({
+            showTime: false
+        })
         }
-      }
+      } 
     })
   },
   // 秒转换为天时分秒
@@ -198,7 +204,7 @@ Page({
       returnType: value
     })
     if (value == 'list') {
-      if (wx.getStorageSync('overdueStatus') == 1) { 
+      if (wx.getStorageSync('overdueStatus') == 1) {
         this.setData({
           title: '本期申报税款确认',
         })
@@ -213,7 +219,7 @@ Page({
         returnType: value,
         showBtn: true
       })
-    } 
+    }
   },
   methods: {},
 
@@ -227,8 +233,8 @@ Page({
         detailId: options.id
       })
     }
+    this.getdeclareInfo();
     this.renderSecon();
-    this.countDown(this.data.timestamp);
     this.renderPage(options.type)
   },
 
@@ -243,8 +249,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onshow')
-    this.getdeclareInfo();
+
   },
 
   /**

@@ -26,21 +26,21 @@ Page({
 
   // 返回
   backIndex() {
-    if (this.data.returnType == 'delinquentBill') {
-      if (this.data.showBtn) {
-        wx.navigateTo({
-          url: '../delinquentBill/index',
-        })
-      }
-    } else if (this.data.returnType == 'repaymentBill') {
-      wx.navigateTo({
-        url: '../repaymentBill/index',
-      })
-    } else if(this.data.returnType == 'todo') {
-      wx.navigateTo({
-        url: '../../todo/todo',
-      })
-    }
+    // if (this.data.returnType == 'delinquentBill') {
+    //   if (this.data.showBtn) {
+    //     wx.navigateTo({
+    //       url: '../delinquentBill/index',
+    //     })
+    //   }
+    // } else if (this.data.returnType == 'repaymentBill') {
+    //   wx.navigateTo({
+    //     url: '../repaymentBill/index',
+    //   })
+    // } else if(this.data.returnType == 'todo') {
+    //   wx.navigateTo({
+    //     url: '../../todo/todo',
+    //   })
+    // }
   },
   goToCertificate() {
     if (this.data.returnType == 'delinquentBill') {
@@ -97,22 +97,6 @@ Page({
       }
     })
   },
-
-  getUserId(value) {
-    let id = undefined;
-    if (value) {
-        /* 测试 */
-        id = value
-    } else {
-      id = wx.getStorageSync('detailId');
-      this.setData({
-        showBtn: true
-      })
-    }
-    this.setData({
-      billingDetailId: id
-    })
-  },
   // 设置type区分欠款还款页面
   renderPage(value) {
     if (value == 'delinquentBill' || value == 'todo') {
@@ -146,7 +130,6 @@ Page({
     })
     // this.renderPage('todo');
     this.renderPage(options.type);
-    this.getUserId(options.id)
   },
 
   /**

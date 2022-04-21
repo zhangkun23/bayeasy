@@ -14,9 +14,9 @@ Page({
     allRepaymentList: []
   },
   backIndex() {
-    wx.navigateTo({
-      url: '../taxreturn/index',
-    })
+    // wx.navigateTo({
+    //   url: '../taxreturn/index',
+    // })
   },
   getrepaymentList() {
     repaymentList({page_size: 10}).then(res => {

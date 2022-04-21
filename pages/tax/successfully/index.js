@@ -13,16 +13,17 @@ Page({
     tax: 800,
     paramsId: 0
   },
-  // backTaxIndex() {
-  //   wx.navigateTo({
-  //     url: '../taxreturn/index',
-  //   })
-  // },
+  backTaxIndex() {
+   
+  },
   gotoReult() {
     // wx.navigateTo({
     //   url: '../deatil/deatil?type=result&id=' + this.data.paramsId,
     // })
-    wx.navigateBack()
+    // wx.navigateBack()
+    wx.navigateBack({
+      delta:1
+    })
   },
   /**
    * 生命周期函数--监听页面加载

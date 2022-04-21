@@ -17,7 +17,7 @@ Page({
       url: '../../index/index',
     })
   },
-  onLoad: function (options) {
+  onShow: function (options) {
     if (getApp().globalData.todolistNum > 0) {
       this.setData({
         agency: true

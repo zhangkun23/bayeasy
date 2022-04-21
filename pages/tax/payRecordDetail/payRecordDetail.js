@@ -25,9 +25,9 @@ Page({
 
   // 返回
   backIndex() {
-    wx.reLaunch({
-      url: '../paymentRecord/index',
-    })
+    // wx.reLaunch({
+    //   url: '../paymentRecord/index',
+    // })
   },
   closeList(){
     this.setData({

@@ -27,20 +27,20 @@ Page({
   },
   // 逻辑正确
   backTaxIndex() {
-    if (this.data.returnType == 'todo') {
-      wx.navigateTo({
-        url: '../../todo/todo',
-      })
-    } else {
-      // console.log('navigateBack')
-      // console.log( getCurrentPages())
-      // wx.navigateBack({ //返回
-      //   delta: 1
-      // })
-      wx.navigateTo({
-        url: '../taxreturn/index',
-      })
-    }
+    // if (this.data.returnType == 'todo') {
+    //   wx.navigateTo({
+    //     url: '../../todo/todo',
+    //   })
+    // } else {
+    //   console.log('navigateBack')
+    //   console.log( getCurrentPages())
+    //   wx.navigateBack({ //返回
+    //     delta: 1
+    //   })
+    //   wx.navigateTo({
+    //     url: '../taxreturn/index',
+    //   })
+    // }
   },
   renderPage(value) {
     if (value == 'todo') {

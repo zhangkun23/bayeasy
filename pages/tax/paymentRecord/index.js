@@ -21,9 +21,9 @@ Page({
     endTime: ''
   },
   backIndex() {
-    wx.reLaunch({
-      url: '../taxreturn/index',
-    })
+    // wx.reLaunch({
+    //   url: '../taxreturn/index',
+    // })
   },
   getYaer() {
     let date = new Date();

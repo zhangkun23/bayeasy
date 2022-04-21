@@ -21,15 +21,15 @@ Page({
     endTime: ''
   },
   backIndex() {
-    if (this.data.returnType == 'list') {
-      wx.navigateTo({
-        url: '../taxConfirmation/index',
-      })
-    }  else if (this.data.returnType == 'result') {
-      wx.navigateTo({
-        url: '../taxreturn/index',
-      })
-    } 
+    // if (this.data.returnType == 'list') {
+    //   wx.navigateTo({
+    //     url: '../taxConfirmation/index',
+    //   })
+    // }  else if (this.data.returnType == 'result') {
+    //   wx.navigateTo({
+    //     url: '../taxreturn/index',
+    //   })
+    // } 
     // else if(this.data.returnType == 'pay') {
     //   wx.navigateTo({
     //     url: '../taxreturn/index',
