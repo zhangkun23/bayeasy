@@ -58,6 +58,9 @@ Page({
           totalLoanAmount: '00.00'
         })
       }
+      this.setData({
+        showPage:true
+      })
     })
   },
   gotoDeatil(event) {

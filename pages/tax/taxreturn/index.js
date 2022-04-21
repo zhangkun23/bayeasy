@@ -1,7 +1,7 @@
 // pages/tax/taxreturn/index.js
 const tempPath = getApp().globalData.imgPath;
 
-Component({
+Page({
 
   /**
    * 页面的初始数据
@@ -13,7 +13,7 @@ Component({
   },
 
 
-  methods: {
+  // methods: {
     taxConfirmation() {
       wx.navigateTo({
         url: '../taxConfirmation/index?type=list',
@@ -29,8 +29,8 @@ Component({
       wx.navigateTo({
         url: '../delinquentBill/index',
       })
-    }
-  },
+    },
+  // },
 
   /**
    * 生命周期函数--监听页面加载

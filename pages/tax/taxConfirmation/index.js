@@ -32,9 +32,14 @@ Page({
         url: '../../todo/todo',
       })
     } else {
-      wx.navigateTo({
-        url: '../taxreturn/index',
+      console.log('navigateBack')
+      console.log( getCurrentPages())
+      wx.navigateBack({ //返回
+        delta: 1
       })
+      // wx.navigateTo({
+      //   url: '../taxreturn/index',
+      // })
     }
   },
   renderPage(value) {

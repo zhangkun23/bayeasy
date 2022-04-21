@@ -19,7 +19,8 @@ Page({
 
     },
     backIndex(){
-        wx.switchTab({url:"/pages/invoice/invoiceIndex/index"})
+        console.log('111')
+        // wx.switchTab({url:"/pages/invoice/invoiceIndex/index"})
     },
     handelClickUrl(e){
         // return;

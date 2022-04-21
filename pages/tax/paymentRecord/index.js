@@ -16,7 +16,7 @@ Page({
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     title: "申报缴纳记录",
     returnType: "",
-    date: '2022',
+    date: '',
     startTime: '',
     endTime: ''
   },
@@ -29,7 +29,8 @@ Page({
     let date = new Date();
     let year = date.getFullYear();
     this.setData({
-      endTime: year
+      endTime: year,
+      date:year
     })
     getFullYear().then(res => {
       if(res.ret) {
