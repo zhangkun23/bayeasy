@@ -3,7 +3,7 @@
   <view class="authentication__zw">
     <mp-navigation-bar title="身份信息安全校验" bindback="backIndex"></mp-navigation-bar>
     <view class="authentication__header">
-      <image src="https://image.bayeasy.cn/images-data/authentication/illustration.png"></image>
+      <image src="{{headerBg}}"></image>
     </view>
     <view class="authentication__content">
       <view class="authentication__tips">

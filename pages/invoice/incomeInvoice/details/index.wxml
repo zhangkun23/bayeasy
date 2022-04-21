@@ -58,7 +58,7 @@
                 </view>
             </view>
             <view class="report" bindtap="contactOperate">
-                <image class="bg" src='https://image.bayeasy.cn/images-data/invoice/incomeInvoice/barBg.png' mode="widthFix"></image>
+                <image class="bg" src="{{barBgImg}}" mode="widthFix"></image>
                 <view class="content">
                     <view class="text">
                         <view>如账单金额及发票内容有异议</view>

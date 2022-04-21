@@ -3,7 +3,7 @@
   <view class="association">
     <view class="association__success">
       <view class="association__success-img mg-tp-25">
-        <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
+        <image src="{{successIcon}}"></image>
       </view>
       <view class="association__success-text">个人信息关联成功！</view>
     </view>

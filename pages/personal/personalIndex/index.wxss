@@ -10,7 +10,7 @@ page {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  background-image: url('https://image.bayeasy.cn/images-data/personal/personal-bg.png');
+  background-image: url('https://image.bayeasy.cn/images-datas/personal/personal-bg.png');
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;

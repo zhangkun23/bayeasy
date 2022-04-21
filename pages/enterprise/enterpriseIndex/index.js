@@ -1,5 +1,6 @@
 // pages/enterprise/enterpriseIndex/index.js
 const utils = require('../../../utils/util.js')
+const app = getApp()
 Component({
     pageLifetimes: {
         show() {
@@ -18,6 +19,10 @@ Component({
         },
     },
     data: {
+        rgGateBtn: app.globalData.imgPath + "enterprise/gates/regProcess.png",
+        biGateBtn: app.globalData.imgPath + "enterprise/gates/businessInfo.png",
+        baGateBtn: app.globalData.imgPath + "enterprise/gates/bankAccount.png",
+        trGateBtn: app.globalData.imgPath + "enterprise/gates/taxReg.png",
         statusBarHeight: 30,
         pageShow:false,
         showModal:false,

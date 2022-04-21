@@ -16,20 +16,14 @@ App({
     })
   },
   onLaunch() {
-
     const barTitileStatus = wx.getMenuButtonBoundingClientRect()
     this.globalData.barTitileStatus = barTitileStatus
-
-    // 展示本地存储能力
-    // const logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
   },
   globalData: {
     barTitileStatus: null,
-    imgPath: 'https://image.bayeasy.cn/images-data/',
-    emptyPic: 'https://image.bayeasy.cn/images-data/public/emptyBackGround.png',
-    pafPath: 'https://image.bayeasy.cn/images-data/pdf/',
+    imgPath: 'https://image.bayeasy.cn/images-datas/',
+    emptyPic: 'https://image.bayeasy.cn/images-datas/public/emptyBackGround.png',
+    pafPath: 'https://image.bayeasy.cn/images-datas/pdf/',
     dev:'http://gsh.dev.corp.bayeasy.cn:11880/',
     phoneNumber: '400-090-6628', //客服电话
     userStatus: '', //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联

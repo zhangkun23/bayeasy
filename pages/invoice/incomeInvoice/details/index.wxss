@@ -192,7 +192,7 @@ page {
 .report .bg {
     position: absolute;
     width: 100%;
-    /* background-image: url('https://image.bayeasy.cn/images-data/invoice/incomeInvoice/barBg.png'); */
+    /* background-image: url('https://image.bayeasy.cn/images-datas/invoice/incomeInvoice/barBg.png'); */
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
