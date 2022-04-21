@@ -96,7 +96,8 @@ Page({
         var that = this
         let _invoice_infos = []
         if(this.data.filter_ids){
-            info = info.filter(i=>i.id in this.data.filter_ids)
+            // info = info.filter(i=>i.id in this.data.filter_ids)
+            info = info.filter(i=> this.data.filter_ids.includes(i.id.toString()))
             if(info.length === 0){
                 that.setData({isInvoiceEmpty: true})
                 return
