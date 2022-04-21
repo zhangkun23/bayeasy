@@ -1,4 +1,6 @@
 // pages/tax/taxIndex/index.js
+const app = getApp()
+
 const utils = require('../../../utils/util.js')
 Component({
     pageLifetimes: {

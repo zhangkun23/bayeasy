@@ -7,7 +7,6 @@ const app = getApp()
 const INVOICE_STATUS_WAIT = [0]
 const INVOICE_STATUS_GOING = [1, 2, 8, 9]
 const INVOICE_STATUS_DONE = [3]
-const app = getApp()
 Page({
 
     /**
