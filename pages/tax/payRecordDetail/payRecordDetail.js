@@ -25,25 +25,9 @@ Page({
 
   // 返回
   backIndex() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../paymentRecord/index',
     })
-    // 去确认为true  查看结果为false
-    // if (this.data.returnType == 'list') {
-    //   if (this.data.showBtn) {
-    //     wx.reLaunch({
-    //       url: '../taxRecord/index?type=result',
-    //     })
-    //   } else {
-    //     wx.reLaunch({
-    //       url: '../taxConfirmation/index?typs=list',
-    //     })
-    //   }
-    // } else if (this.data.returnType == 'result') {
-    //   wx.reLaunch({
-    //     url: '../taxRecord/index?type=result',
-    //   })
-    // }
   },
   closeList(){
     this.setData({
@@ -110,11 +94,13 @@ Page({
         if (res.data.list.length > 0) {
           arr = res.data.list
         } 
-        res.data.category.map((item, i) => {
-          item.checked = false;
-          item.index = i
-        })
-        res.data.category[0].checked = true;
+        if(res.data.category){
+          res.data.category.map((item, i) => {
+            item.checked = false;
+            item.index = i
+          })
+          res.data.category[0].checked = true;
+        }
         this.setData({
           deatilObj: res.data,
           detailList: arr[0].list,

@@ -15,7 +15,7 @@ Page({
   },
   backIndex() {
     wx.navigateTo({
-      url: 'pages/tax/taxreturn/index',
+      url: '../taxreturn/index',
     })
   },
   getrepaymentList() {
@@ -39,7 +39,6 @@ Page({
   },
   gotoDeatil(event) {
     let row = event.currentTarget.dataset.row;
-    console.log(row)
     wx.navigateTo({
       url: '../billingDetail/billingDetail?id=' + row.id + '&type=repaymentBill'
     })

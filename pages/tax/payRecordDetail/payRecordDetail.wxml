@@ -39,7 +39,7 @@
           <view class="list__one-center display-flex">
             <view class="{{item.checked? 'active btns' : 'btns'}} " wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category" data-item="{{item}}" bindtap="checkedItemParent" >{{item.tax_category}}</view>
           </view>
-          <view class="list__one-plus" bindtap="addTaxItem">
+          <view class="list__one-plus" bindtap="addTaxItem" wx:if="{{ taxList.length > 0}}">
             <text style="color:#1d83ef;">+</text>
           </view>
         </view>
