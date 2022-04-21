@@ -194,6 +194,9 @@ Page({
 
   // 确认是否已逾期 0 逾期 1未逾期   overdueStatus逾期状态
   renderPage(value) {
+    this.setData({
+      returnType: value
+    })
     if (value == 'list') {
       if (wx.getStorageSync('overdueStatus') == 1) { 
         this.setData({
@@ -204,16 +207,13 @@ Page({
           title: '申报税款确认'
         })
       }
-      this.setData({
-        returnType: value
-      })
     } else if (value == 'result') {
       this.setData({
         title: '申报税款确认记录',
         returnType: value,
         showBtn: true
       })
-    }
+    } 
   },
   methods: {},
 
