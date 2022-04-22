@@ -63,7 +63,7 @@ Page({
         // 查询待办
         todolist().then(res => {
             if(res.ret){
-                getApp().globalData.todolistNum = 1//res.data.nums;
+                getApp().globalData.todolistNum = res.data.nums;
             }
         })
         /**

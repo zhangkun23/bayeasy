@@ -27,7 +27,8 @@
               </view>
               <view class="item__text">
                 <text class="item__center-title">确认时间：</text>
-                <text class="item__center-title">{{list.confirm_date}}</text>
+                <text class="item__center-title">--</text>
+                <!-- <text class="item__center-title">{{list.confirm_date}}</text> -->
               </view>
               <view class="securityCheck__topTips orangeTips orangeBack font-size-24">
                 <view class="securityCheck__topTips-icon">
