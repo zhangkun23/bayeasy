@@ -106,7 +106,7 @@ Page({
               isShowModal: false,
               returnType: 'result',
               title: '申报纳税确认记录',
-              showBtn: false
+              showBtn: true
             })
             setTimeout(() => {
               wx.navigateTo({
