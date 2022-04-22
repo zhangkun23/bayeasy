@@ -11,7 +11,7 @@ Page({
     successIconImg: tempPath + "public/success.png",
     info_max: tempPath + "public/info_max.png",
     showTips: false,
-    tax: 800,
+    tax: '',
     paramsId: 0
   },
   // 返回主页

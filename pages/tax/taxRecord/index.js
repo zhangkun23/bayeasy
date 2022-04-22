@@ -83,9 +83,10 @@ Page({
       }
     })
   },
-  gotoDeatil() {
+  gotoDeatil(e) {
+    let row = e.currentTarget.dataset.row;
     wx.navigateTo({
-      url: '../deatil/deatil?type=result',
+      url: '../deatil/deatil?type=result&id=' + row.id,
     })
   },
   getTaxList(value) {
