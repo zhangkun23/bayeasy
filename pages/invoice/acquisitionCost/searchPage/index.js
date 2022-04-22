@@ -19,7 +19,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onShow: function (options) {
-        let history = this.getHistory()
+        // 不进行历史搜索
+        // let history = this.getHistory()
         // const searchKey = history[0] || ''
         const searchKey = ''
         this.setData({

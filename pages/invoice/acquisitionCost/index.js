@@ -130,7 +130,6 @@ Page({
     },
 
     toggleFilter: function () {
-        wx.getSystemInfoSync()
         const __show = this.data.showFilter
         if (__show) { // 设为隐藏
             this.setData({
@@ -277,7 +276,8 @@ Page({
             this.setData({
                 isSearchActive: false,
                 showFilter: false,
-                showRes: true
+                showRes: true,
+                canFlip: true
             })
         } else {
             wx.navigateBack({
