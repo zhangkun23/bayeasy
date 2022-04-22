@@ -4,9 +4,9 @@
 <view class="bg"></view>
 <view class="search-container">
     <view class="search">
-        <my-search-bar id="searchbar" autoFocus="{{searchFocus}}" isActive="true" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" lastSearchKey="{{lastSearchKey}}" searchKey="{{searchKey}}"></my-search-bar>
+        <!-- <my-search-bar id="searchbar" autoFocus="{{searchFocus}}" isActive="true" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" lastSearchKey="{{lastSearchKey}}" searchKey="{{searchKey}}"></my-search-bar> -->
+        <my-search-bar id="searchbar" autoFocus="{{searchFocus}}" isActive="true" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" searchKey="{{searchKey}}"></my-search-bar>
     </view>
-
     <view class="text" bindtap="btnGoSearch">搜索</view>
 </view>
 <view class="history-container">
