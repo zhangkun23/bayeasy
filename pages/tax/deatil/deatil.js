@@ -99,7 +99,6 @@ Page({
         confirmdeclare({
           id: this.data.detailId
         }).then(res => {
-          console.log(res)
           if (res.ret) {
             // 确认无误之后跳转到结果页  此时需要隐藏弹出框
             this.setData({
@@ -256,7 +255,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, '获取跳转页面的参数')
     if (options.id) {
       this.setData({
         detailId: options.id

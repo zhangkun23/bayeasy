@@ -78,7 +78,6 @@ Page({
   // 获取详情
   getdeclareInfo() {
     declareLoanInfo(this.data.billingDetailId).then(res => {
-      console.log(res, '详情')
       if (res.ret) {
         if (res.data.detail) {
           res.data.detail.map((item, i) => {
@@ -124,7 +123,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, '获取跳转页面的参数')
     this.setData({
       billingDetailId: options.id
     })
@@ -144,7 +142,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onshow')
     this.getdeclareInfo();
   },
 

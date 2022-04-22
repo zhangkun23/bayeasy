@@ -74,7 +74,7 @@
               </view>
               <view class="space-between mg-bp-24">
                 <text class="detail__content-title">缴款日期</text>
-                <text class="detail__content-text">{{item.pay_date}}</text>
+                <text class="detail__content-text">{{item.pay_date == null? '-': item.pay_date}}</text>
               </view>
               <view class="space-between mg-bp-24">
                 <text class="detail__content-title">缴款状态</text>

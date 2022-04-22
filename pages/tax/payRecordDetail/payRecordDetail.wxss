@@ -231,6 +231,7 @@
 .list__one-plus {
   width: 60rpx;
   height: 60rpx;
+  line-height: 55rpx;
   background: rgb(194 223 255 / 0.39);
   border-radius: 30rpx;
   text-align: center;

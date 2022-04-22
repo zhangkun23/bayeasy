@@ -71,7 +71,6 @@ Page({
   },
   // 组件更新item状态和数据
   updateList(value) {
-    console.log(value)
     this.setData({
       taxList: value.detail,
       showTaxList: false
@@ -88,7 +87,6 @@ Page({
   // 获取详情
   getdeclareInfo() {
     declareInfo(this.data.repaymentBillId).then(res => {
-      console.log(res, '详情')
       if (res.ret) {
         let arr = []
         if (res.data.list.length > 0) {
@@ -135,7 +133,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, '获取跳转页面的参数')
     this.setData({
       repaymentBillId: options.id
     })

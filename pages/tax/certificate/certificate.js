@@ -16,7 +16,6 @@ Page({
     imgArr: []
   },
   previewImg(event) {
-    console.log(event)
     let src = event.currentTarget.dataset.src;
     wx.previewImage({
       current: src,
