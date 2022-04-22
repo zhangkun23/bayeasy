@@ -27,6 +27,7 @@ Page({
     timestamp: '',
     title: "",
     returnType: '',
+    taxPayable: '',
     buttons: [{
         text: '取消'
       },
@@ -42,6 +43,8 @@ Page({
   },
   // 返回
   backIndex() {
+    wx.setStorageSync('overdueStatus', '')
+
     // wx.navigateBack({
     //   delta: 1,
     // })
@@ -60,9 +63,17 @@ Page({
     //     })
     //   }
     // } else if (this.data.returnType == 'result') {
+
+
+
+    // if (this.data.returnType == 'result') {
+
+
+
     //   wx.navigateTo({
     //     url: '../taxRecord/index?type=result',
     //   })
+    // }
     // } else if(this.data.returnType == 'todo') {
     //   wx.navigateTo({
     //     url: '../../todo/todo',
@@ -90,9 +101,18 @@ Page({
         }).then(res => {
           console.log(res)
           if (res.ret) {
-            wx.navigateTo({
-              url: '../successfully/index?typs=list&id=' + this.data.detailId,
+            // 确认无误之后跳转到结果页  此时需要隐藏弹出框
+            this.setData({
+              isShowModal: false,
+              returnType: 'result',
+              title: '申报纳税确认记录',
+              showBtn: false
             })
+            setTimeout(() => {
+              wx.navigateTo({
+                url: '../successfully/index?typs=list&id=' + this.data.detailId + '&shouldPayTax=' + this.data.taxPayable,
+              })
+            }, 100)
           }
         })
       }
@@ -112,6 +132,14 @@ Page({
         let arr = []
         if (res.data) {
           wx.setStorageSync('overdueStatus', res.data.overdue_status)
+
+          if (res.data.overdue_status == 1) {
+            this.setData({
+              title: '本期申报税款确认'
+            })
+          } else {
+            title: '申报税款确认'
+          }
           var time = res.data.overdue_time;
           this.countDown(time)
           if (res.data.list) {
@@ -120,14 +148,15 @@ Page({
           this.setData({
             deatilObj: res.data,
             taxList: arr,
-            showTime: true
+            showTime: true,
+            taxPayable: res.data.should_pay_tax
           })
         } else {
           this.setData({
             showTime: false
-        })
+          })
         }
-      } 
+      }
     })
   },
   // 秒转换为天时分秒

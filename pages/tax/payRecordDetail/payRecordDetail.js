@@ -29,9 +29,9 @@ Page({
     //   url: '../paymentRecord/index',
     // })
   },
-  closeList(){
+  closeList() {
     this.setData({
-      showTaxList:false
+      showTaxList: false
     })
   },
   addTaxItem() {
@@ -39,7 +39,7 @@ Page({
       showTaxList: true
     })
   },
-  hideTips(){
+  hideTips() {
     this.setData({
       showTips: false
     })
@@ -60,24 +60,24 @@ Page({
     })
     this.updateItemInfo(row.tax_category);
   },
-  updateItemInfo(name){
-    this.data.listAll.map( item => {
-      if(item.name == name){
+  updateItemInfo(name) {
+    this.data.listAll.map(item => {
+      if (item.name == name) {
         this.setData({
-          detailList:item.list
+          detailList: item.list
         })
       }
     })
   },
   // 组件更新item状态和数据
-  updateList(value){
+  updateList(value) {
     console.log(value)
     this.setData({
-      taxList:value.detail,
-      showTaxList:false
+      taxList: value.detail,
+      showTaxList: false
     })
     value.detail.map(item => {
-      if(item.checked)this.updateItemInfo(item.tax_category);
+      if (item.checked) this.updateItemInfo(item.tax_category);
     })
   },
   showToast() {
@@ -93,8 +93,12 @@ Page({
         let arr = []
         if (res.data.list.length > 0) {
           arr = res.data.list
-        } 
-        if(res.data.category){
+          this.setData({
+            listAll: arr,
+            detailList: arr[0].list,
+          })
+        }
+        if (res.data.category.length > 0) {
           res.data.category.map((item, i) => {
             item.checked = false;
             item.index = i
@@ -103,8 +107,6 @@ Page({
         }
         this.setData({
           deatilObj: res.data,
-          detailList: arr[0].list,
-          listAll: arr,
           taxList: res.data.category
         })
       } else {

@@ -1,7 +1,7 @@
 
 .successfully {
   padding: 32rpx;
-  margin-top: 150rpx;
+  /* margin-top: 150rpx; */
 }
 
 .detail__topTips {

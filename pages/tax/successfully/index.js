@@ -14,8 +14,11 @@ Page({
     tax: 800,
     paramsId: 0
   },
+  // 返回主页
   backTaxIndex() {
-   
+    wx.navigateTo({
+      url: '../taxreturn/index',
+    })
   },
   gotoReult() {
     // wx.navigateTo({
@@ -23,14 +26,17 @@ Page({
     // })
     // wx.navigateBack()
     wx.navigateBack({
-      delta:1
+      delta: 1
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.id) {
+    this.setData({
+      tax: options.taxPayable
+    })
+    if (options.id) {
       this.setData({
         paramsId: options.id
       })

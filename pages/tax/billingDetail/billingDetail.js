@@ -130,6 +130,7 @@ Page({
     })
     // this.renderPage('todo');
     this.renderPage(options.type);
+    this.updateReadStatus()
   },
 
   /**

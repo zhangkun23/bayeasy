@@ -1,6 +1,7 @@
 // pages/tax/taxRecord/index.js
 const {
-  declareList,getFullYear
+  declareList,
+  getFullYear
 } = require("../../../http/api/api_csbl")
 const tempPath = getApp().globalData.imgPath;
 
@@ -21,6 +22,18 @@ Page({
     endTime: ''
   },
   backIndex() {
+    let pages = getCurrentPages();
+    console.log(pages)
+    for (var i = 0; i < pages.length; i++) {
+      let item = pages[i];
+      if (item.route.indexOf('successfully') != -1) {
+        console.log('你是从---确认结果页面---来的啦')
+        wx.navigateBack({
+          delta: 2
+        })
+        return;
+      }
+    }
     // if (this.data.returnType == 'list') {
     //   wx.navigateTo({
     //     url: '../taxConfirmation/index',
@@ -37,7 +50,7 @@ Page({
     // }
   },
   renderPage(value) {
-    if (value == 'list'|| value == 'result') {
+    if (value == 'list' || value == 'result') {
       this.setData({
         title: '申报税款确认记录',
         returnType: value
@@ -50,7 +63,7 @@ Page({
     }
   },
   // 选择年
-  bindDateChange(event){
+  bindDateChange(event) {
     this.setData({
       date: event.detail.value
     })
@@ -63,7 +76,7 @@ Page({
       endTime: year
     })
     getFullYear().then(res => {
-      if(res.ret) {
+      if (res.ret) {
         this.setData({
           startTime: res.data.year
         })
@@ -79,7 +92,7 @@ Page({
     let params = {
       status: 2,
       page_size: 1000,
-      year: value? value : this.data.date
+      year: value ? value : this.data.date
     }
     wx.setStorageSync('pageStatus', 2)
     declareList(params).then(res => {
