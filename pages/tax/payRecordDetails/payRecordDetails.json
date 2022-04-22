@@ -4,9 +4,6 @@
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "list": "../common/list"
   },
-  "navigationStyle":"custom",
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
-  "disableScroll": true
+  "navigationStyle": "custom"
+
 }

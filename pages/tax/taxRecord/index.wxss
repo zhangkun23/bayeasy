@@ -3,6 +3,10 @@
 .taxConfirmation {
   padding: 32rpx;
 }
+.display-flex {
+  display: flex;
+  align-items: center;
+}
 
 .taxConfirmation__container {
   max-height: 1360rpx;

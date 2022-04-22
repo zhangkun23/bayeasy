@@ -1,7 +1,13 @@
 // pages/login/login/index.js
 const tempPath = getApp().globalData.imgPath;
 const utils = require('../../../utils/util.js')
-const {getWxPhone,wxlogin,todolist,getUserStatus,myOperate} = require('../../../http/api/api.js');
+const {
+    getWxPhone,
+    wxlogin,
+    todolist,
+    getUserStatus,
+    myOperate
+} = require('../../../http/api/api.js');
 Page({
 
     /**
@@ -12,34 +18,34 @@ Page({
         loginSelect: tempPath + 'login/loginSelect.png',
         loginUnSelect: tempPath + 'login/loginUnSelect.png',
         logo: tempPath + 'public/logo.png',
-        serve:tempPath + 'public/serve.png',
-        agreementStatus:false
-        
+        serve: tempPath + 'public/serve.png',
+        agreementStatus: false
+
     },
     // 勾选协议
-    handelClick(){
+    handelClick() {
         wx.showToast({
             title: '请勾查看并勾选协议',
-            icon:'none'
+            icon: 'none'
         })
     },
-    backIndex(){
+    backIndex() {
         wx.reLaunch({
             url: '/pages/index/index',
         })
     },
     // 微信手机号授权弹框 只能在手机调试
-    getPhoneNumber (e) {
+    getPhoneNumber(e) {
         // console.log(e.detail.code)
         getWxPhone(e.detail.code).then(res => {
-            if(res.ret){
+            if (res.ret) {
                 const phone = res.data.purePhoneNumber;
                 wx.login({
                     success: res => {
-                        if(res.errMsg == "login:ok"){ 
+                        if (res.errMsg == "login:ok") {
                             let param = {
-                                mobile:phone,
-                                code:res.code
+                                mobile: phone,
+                                code: res.code
                             }
                             this.wxlogin(param);
                         }
@@ -49,9 +55,9 @@ Page({
         })
     },
     // 平台登录
-    wxlogin(param){
-        wxlogin(param).then( res => {
-            if(res.ret){
+    wxlogin(param) {
+        wxlogin(param).then(res => {
+            if (res.ret) {
                 wx.setStorageSync('token', res.data.access_token)
                 wx.setStorageSync('mobile', res.data.mobile)
                 wx.setStorageSync('idCard', res.data.identity_card)
@@ -59,10 +65,10 @@ Page({
             }
         })
     },
-    getInfo(){
+    getInfo() {
         // 查询待办
         todolist().then(res => {
-            if(res.ret){
+            if (res.ret) {
                 getApp().globalData.todolistNum = res.data.nums;
             }
         })
@@ -73,9 +79,9 @@ Page({
          *  2 已关联
          */
         getUserStatus().then(res => {
-            if(res.ret){
-                getApp().globalData.userStatus =  res.data.status;
-                switch (getApp().globalData.userStatus ){
+            if (res.ret) {
+                getApp().globalData.userStatus = res.data.status;
+                switch (getApp().globalData.userStatus) {
                     case 0:
                         wx.navigateTo({
                             url: '../authentication/index',
@@ -87,42 +93,46 @@ Page({
                         })
                         break;
                     case 2:
-                        wx.switchTab({url:'../../index/index'})
+                        wx.switchTab({
+                            url: '../../index/index'
+                        })
                         break;
-                    default :
-                    wx.switchTab({url:'../../index/index'})
+                    default:
+                        wx.switchTab({
+                            url: '../../index/index'
+                        })
                 }
             }
         })
         // 是否有运营人员
         myOperate().then(res => {
-            if(res.ret){
+            if (res.ret) {
                 getApp().globalData.operate = true;
             }
         })
     },
 
     // 昵称性别
-    getUserProfile(){
+    getUserProfile() {
         wx.getUserProfile({
             desc: "获取你的昵称、头像、地区及性别",
             success: res => {
-              let wxUserInfo = res.userInfo;
-              if(res.errMsg == 'getUserProfile:ok'){
-                getApp().globalData.logoImg = wxUserInfo.avatarUrl
-              }
+                let wxUserInfo = res.userInfo;
+                if (res.errMsg == 'getUserProfile:ok') {
+                    getApp().globalData.logoImg = wxUserInfo.avatarUrl
+                }
             },
             fail: res => {
-                 //拒绝授权
-              return;
+                //拒绝授权
+                return;
             }
-          })
+        })
     },
     // 是否勾选协议
-    collectFun(value){
+    collectFun(value) {
         console.log(value)
         this.setData({
-            agreementStatus:value.detail
+            agreementStatus: value.detail
         })
     },
 

@@ -13,7 +13,7 @@ Page({
   data: {
     allDeclareList: [],
     listIcon: tempPath + 'tax/taxreturn/list.png',
-    dateIcon: tempPath + 'tax/taxreturn/list.png',
+    dateIcon: tempPath + 'tax/taxreturn/date.png',
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     title: "",
     returnType: "",

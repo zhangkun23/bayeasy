@@ -19,7 +19,7 @@ Page({
     isShowModal: false,
     showBtn: false,
     didClick: true,
-    showTime: false,
+    showTime: true,
     time: '',
     backgroundColor: '#E5EEF7',
     boxShadow: '0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1)',
@@ -147,14 +147,10 @@ Page({
           this.setData({
             deatilObj: res.data,
             taxList: arr,
-            showTime: true,
+            // showTime: true,
             taxPayable: res.data.should_pay_tax
           })
-        } else {
-          this.setData({
-            showTime: false
-          })
-        }
+        } 
       }
     })
   },
@@ -213,17 +209,21 @@ Page({
     // 如果目标时间小于等于当前时间，不需要继续进行了
     if (seconds <= 0) return
     // 定时器
+    this.setData({
+      timeOut: this.getDuration(seconds),
+    })
     let timer = setInterval(() => {
       seconds--
       let result = type == 1 ? seconds : this.getDuration(seconds)
       this.setData({
-        timeOut: result
+        timeOut: result,
       })
+
       if (seconds <= 0) {
         clearInterval(timer)
         console.log('倒计时结束，清除定时器，避免内存溢出')
       }
-    }, 1000)
+    }, 1000)    
   },
 
   // 确认是否已逾期 0 逾期 1未逾期   overdueStatus逾期状态

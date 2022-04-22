@@ -13,7 +13,7 @@ module.exports = {
      *  data:要传递的参数
      *isSubDomain:表示是否添加二级子域名 true代表添加, false代表不添加
      */
-    request: (url, method, data,  responseType) => {
+    request: (url, method, data, responseType) => {
         let _url = `${baseUrl}${url}`;
         let token = wx.getStorageSync('token')
         return new Promise((resolve, reject) => {
@@ -31,9 +31,11 @@ module.exports = {
                 responseType,
                 success: (res) => {
                     // console.log('从接口获取到的数据', res);
-                    let { code } = res.data;
-					if(code===200) {
-						resolve(res.data);
+                    let {
+                        code
+                    } = res.data;
+                    if (code === 200) {
+                        resolve(res.data);
                         wx.hideLoading();
                     } else if (code === 401) {
                         wx.showToast({
@@ -44,12 +46,12 @@ module.exports = {
                             url: '/pages/login/login/index',
                         })
                         wx.setStorageSync('token', '') // 清理缓存中token
-                    }else {
-						wx.showToast({
+                    } else {
+                        wx.showToast({
                             title: res.data.message || '网络有问题哦！请稍后再试试！',
                             icon: 'none',
-						})
-					}
+                        })
+                    }
                 },
                 fail() {
                     wx.showToast({

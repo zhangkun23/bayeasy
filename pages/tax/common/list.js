@@ -26,8 +26,9 @@ Component({
 
   lifetimes:{
     attached() {
-      console.log(this.taxList)
-    }
+      // console.log(this.taxList)
+    },
+    
   },
 
   /**

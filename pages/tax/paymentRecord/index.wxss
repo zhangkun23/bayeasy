@@ -6,6 +6,11 @@
   padding: 32rpx;
 }
 
+.display-flex {
+  display: flex;
+  align-items: center;
+}
+
 .taxConfirmation__container {
   max-height: 1360rpx;
   display: flex;
@@ -29,7 +34,8 @@
   margin-left: 61rpx;
   margin-right: 40rpx;
 }
-.years{ 
+
+.years {
   color: #1D83F0;
 }
 
@@ -126,6 +132,7 @@
   width: 370rpx;
   height: 300rpx;
 }
+
 .taxConfirmation__nodata-text {
   color: #6E87A2;
   text-align: center;

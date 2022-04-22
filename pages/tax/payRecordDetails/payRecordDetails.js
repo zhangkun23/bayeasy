@@ -1,7 +1,9 @@
+// pages/tax/payRecordDetails/payRecordDetails.js
 const tempPath = getApp().globalData.imgPath;
 const {
   declareInfo
 } = require('../../../http/api/api_csbl');
+
 Page({
 
   /**
@@ -22,7 +24,6 @@ Page({
     color: '',
     background: ''
   },
-
   // 返回
   backIndex() {
     // wx.reLaunch({
@@ -46,6 +47,7 @@ Page({
   },
   // 选中当前项
   checkedItemParent(event) {
+    console.log(event)
     let row = event.currentTarget.dataset.item
     let temp = this.data.taxList;
     this.setData({
@@ -127,8 +129,6 @@ Page({
       })
     }
   },
-  methods: {},
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -150,8 +150,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onshow')
     this.getdeclareInfo();
+
   },
 
   /**

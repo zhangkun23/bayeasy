@@ -19,10 +19,11 @@ Page({
     // })
   },
   getrepaymentList() {
-    repaymentList({page_size: 10}).then(res => {
-      console.log(res)
+    repaymentList({
+      page_size: 1000
+    }).then(res => {
       if (res.ret) {
-        if(res.data.list.length > 0) {
+        if (res.data.list.length > 0) {
           this.setData({
             isShowList: false,
             allRepaymentList: res.data.list,
