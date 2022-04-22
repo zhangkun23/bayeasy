@@ -19,8 +19,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onShow: function (options) {
-        let history = this.getHistory()
-        const searchKey = history[0] || ''
+        // 不进行历史搜索
+        // let history = this.getHistory()
+        // const searchKey = history[0] || ''
+        const searchKey = ''
         this.setData({
             searchFocus: true,
             lastSearchKey: searchKey
@@ -76,9 +78,6 @@ Page({
         }
         const pages = getCurrentPages()
         if (!key && !this.data.lastSearchKey) { // 没有搜索关键字 且 没有搜索记录直接点了搜索，如果是筛选页跳转的，返回无状态列表页，否则返回
-            // wx.redirectTo({
-            //     url: '../index',
-            // })
             if (pages[pages.length - 2].__route__ === "pages/invoice/acquisitionCost/filterResult/index") {
                 wx.navigateBack({
                     delta: 2,
