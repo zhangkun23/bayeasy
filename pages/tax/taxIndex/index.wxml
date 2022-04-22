@@ -21,7 +21,7 @@
                 <view class="row">
                     <view class="gate-area-1 taxReturn" data-url='/pages/tax/taxreturn/index'  bindtap="handelClickUrl" >
                         <view>
-                            <image class="gate-icon" src="{{trGateBtn}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{trGateBtn}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             纳税申报
@@ -29,7 +29,7 @@
                     </view>
                     <view class="gate-area-1" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{fsGateBtn}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{fsGateBtn}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             财务报表
@@ -39,7 +39,7 @@
                 <view class="row">
                     <view class="gate-area-2" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{arGateBtn}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{arGateBtn}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             工商年报
@@ -47,7 +47,7 @@
                     </view>
                     <view class="gate-area-2" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{avGateBtn}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{avGateBtn}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             年度汇算清缴

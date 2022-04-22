@@ -10,6 +10,10 @@
   /* opacity: 0.3 !important; */
 }
 
+.modalBg {
+  width: 640rpx;
+}
+
 .modal-wrapper .modal-area-container {
   position: relative;
   top: 30.4%;
@@ -17,10 +21,11 @@
 }
 
 
-.modal-content{
+.modal-content {
   position: relative;
   top: -88rpx;
 }
+
 .modal-content .bg {
   position: absolute;
   /* width: 640rpx; */
@@ -55,20 +60,22 @@
 
 .text-area .btn {
   padding-top: 24rpx;
-  margin:auto;
+  margin: auto;
 }
+
 .modal-area {
   margin: 0 55rpx 0rpx 55rpx;
   border-radius: 16rpx;
 }
 
-.modal-area-container .close-btn{
+.modal-area-container .close-btn {
   position: relative;
   top: -20rpx;
   text-align: center;
   /* width: 60rpx; */
 }
 
-.modal-area-container .close-btn .icon{
+.modal-area-container .close-btn .icon {
   width: 60rpx;
+  height: 60rpx;
 }

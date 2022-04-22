@@ -4,7 +4,7 @@
     <view class="modal-area">
       <view class="modal-content">
         <view class="bg">
-          <image src='/image/modal/modal.png' style="width:640rpx" mode="widthFix"></image>
+          <image src='/image/modal/modal.png' class="modalBg" mode="widthFix"></image>
         </view>
         <view class="text-area">
           <view class="title">
@@ -22,7 +22,7 @@
       </view>
     </view>
     <view class="close-btn" bindtap="closeModal">
-      <image class="icon" src="{{closeBtn}}" mode="widthFix"></image>
+      <image class="icon" src="{{closeBtn}}" mode="aspectFill"></image>
     </view>
   </view>
 

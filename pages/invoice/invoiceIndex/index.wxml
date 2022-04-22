@@ -21,7 +21,7 @@
                 <view class="row">
                     <view class="gate-area-1"  data-url="/pages/invoice/incomeInvoice/index/index" bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{zdfp}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{zdfp}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             收入账单发票
@@ -29,7 +29,7 @@
                     </view>
                     <view class="gate-area-1">
                         <view>
-                            <image class="gate-icon" src="{{zdmx}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{zdmx}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             收入账单明细
@@ -39,7 +39,7 @@
                 <view class="row">
                     <view class="gate-area-2" data-url="/pages/invoice/invoiceUpload/index/index" bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{cbfp}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{cbfp}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             采集成本发票
@@ -47,7 +47,7 @@
                     </view>
                     <view class="gate-area-2" data-url="/pages/invoice/acquisitionCost/index" bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{fpmx}}" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{fpmx}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             成本发票明细
