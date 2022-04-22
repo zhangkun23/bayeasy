@@ -12,19 +12,22 @@ Page({
    */
   data: {
     right_arrow: icons_url.right_arrow,
-    entrances: [{
-      title: '服务介绍',
-      url: 'manual'
-    }, {
-      title: '服务协议',
-      url: 'service_agreement',
-    }, {
-      title: '隐私协议',
-      url: 'privacy_policy',
-    }, {
-      title: '营业执照',
-      url: '',
-    }, ],
+    entrances: [
+      //   {
+      //   title: '服务介绍',
+      //   url: 'manual'
+      // }, 
+      {
+        title: '服务协议',
+        url: 'service_agreement',
+      }, {
+        title: '隐私协议',
+        url: 'privacy_policy',
+      }, {
+        title: '营业执照',
+        url: '',
+      },
+    ],
 
   },
   /**
@@ -84,15 +87,6 @@ Page({
   },
   goEntrance(e) {
     // console.log("go ! ")
-    wx.showLoading({
-      title: '加载中',
-    })
-    setInterval(() => {
-      wx.hideLoading({
-        success: (res) => {},
-      })
-    }, 1000);
-
     openPdf(e.currentTarget.dataset.url)
   }
 })

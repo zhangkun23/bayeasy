@@ -3,7 +3,7 @@
 .count{
     background: #FFFFFF;
     border-radius: 32rpx;
-    margin: 0 35rpx;
+    margin: 32rpx 35rpx;
     padding: 48rpx 32rpx;
 }
 .count__top{

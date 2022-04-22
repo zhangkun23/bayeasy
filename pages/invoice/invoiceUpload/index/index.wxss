@@ -1,6 +1,6 @@
 
 .wapper{
-    margin: 0 35rpx;
+    margin: 32rpx 35rpx;
 }
 .address{
     background: #EAF5FF;
