@@ -32,7 +32,7 @@
     "pages/tax/taxreturn/index",
     "pages/tax/taxConfirmation/index",
     "pages/tax/paymentRecord/index",
-    "pages/tax/payRecordDetail/payRecordDetail",
+    "pages/tax/payRecordDetails/payRecordDetails",
     "pages/tax/delinquentBill/index",
     "pages/tax/repaymentBill/index",
     "pages/tax/billingDetail/billingDetail",
@@ -90,7 +90,6 @@
   "useExtendedLib": {
     "kbone": true,
     "weui": true
-  },
-  "lazyCodeLoading": "requiredComponents"
+  }
 
 }

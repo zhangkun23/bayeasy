@@ -20,7 +20,7 @@ Page({
     })
   },
   onShow: function (options) {
-    if (getApp().globalData.todolistNum > 0) {
+    if (getApp().globalData.todolistNum) {
       this.setData({
         agency: true
       })

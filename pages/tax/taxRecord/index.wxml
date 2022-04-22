@@ -4,7 +4,7 @@
     <view class="taxConfirmation__container">
       <picker mode="date" start="{{startTime}}" end="{{endTime}}" value="{{date}}" bindchange="bindDateChange" fields="year">
         <view class="taxConfirmation__header">
-          <view>
+          <view class="display-flex">
             <text class="year">记录年度</text>
             <text class="years">{{date}}</text>
           </view>

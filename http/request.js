@@ -36,48 +36,38 @@ module.exports = {
                     if (code === 200) {
                         resolve(res.data);
                     }
-                    //  else if (code === 401) {
-                    //     wx.showToast({
-                    //         title: '登录过期，清重新登录',
-                    //         icon: 'none',
-                    //     })
-                    //     wx.navigateTo({
-                    //         url: '/pages/login/login/index',
-                    //     })
-                    //     wx.setStorageSync('token', '') // 清理缓存中token
-                    // } else {
-                    //     wx.showToast({
-                    //         title: res.data.message || '网络有问题哦！请稍后再试试！',
-                    //         icon: 'none',
-                    //     })
-                    // }
                 },
                 fail() {
-                    // wx.showToast({
-                    //     title: '网络有问题哦！请稍后再试试！',
-                    //     icon: 'none',
-                    // })
                     reject('接口有误，请检查')
                 },
-                complete(res) {
+                complete(res, err) {
                     wx.hideLoading({
                         complete: function (hide) {
                             console.log("关闭loading成功: ", hide)
-                            if (res.data.code === 401) {
+
+                            if (err) {
                                 wx.showToast({
-                                    title: '登录过期，清重新登录',
+                                    title: '网络有问题哦！请稍后再试试！',
                                     icon: 'none',
                                 })
-                                wx.navigateTo({
-                                    url: '/pages/login/login/index',
-                                })
-                                wx.setStorageSync('token', '') // 清理缓存中token
-                            } else if (res.data.code === 200) {} else {
-                                wx.showToast({
-                                    title: res.data.message || '网络有问题哦！请稍后再试试！',
-                                    icon: 'none',
-                                })
+                            } else {
+                                if (res.data.code === 401) {
+                                    wx.showToast({
+                                        title: '登录过期，清重新登录',
+                                        icon: 'none',
+                                    })
+                                    wx.navigateTo({
+                                        url: '/pages/login/login/index',
+                                    })
+                                    wx.setStorageSync('token', '') // 清理缓存中token
+                                } else if (res.data.code === 200) {} else {
+                                    wx.showToast({
+                                        title: res.data.message || '网络有问题哦！请稍后再试试！',
+                                        icon: 'none',
+                                    })
+                                }
                             }
+
                         }
                     });
 

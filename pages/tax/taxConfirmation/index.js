@@ -94,8 +94,6 @@ Page({
         this.setData({
           showPage: true
         })
-        console.log(idArr)
-        console.log(res, '列表')
       }
     })
   },
@@ -120,8 +118,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let ids = '26_2_3'.split('_');
-    console.log(options)
     if(options.ids) {
       let ids = options.ids.split('_');
       this.setData({

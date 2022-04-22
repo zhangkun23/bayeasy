@@ -12,7 +12,7 @@ Page({
   data: {
     allDeclareList: [],
     listIcon: tempPath + 'tax/taxreturn/list.png',
-    dateIcon: tempPath + 'tax/taxreturn/list.png',
+    dateIcon: tempPath + 'tax/taxreturn/date.png',
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     title: "申报缴纳记录",
     returnType: "",
@@ -34,7 +34,6 @@ Page({
     })
     getFullYear().then(res => {
       if(res.ret) {
-        console.log(res)
         this.setData({
           startTime: res.data.year
         })
@@ -61,11 +60,11 @@ Page({
     })
     this.getTaxList(event.detail.value)
   },
-  gotoDeatil(event) {
+  gotoDetail(event) {
     let row = event.currentTarget.dataset.row;
     wx.setStorageSync('payRowId', row.id)
     wx.navigateTo({
-      url: '../payRecordDetail/payRecordDetail?id=' + row.id,
+      url: '../payRecordDetails/payRecordDetails?id=' + row.id,
     })
   },
   getTaxList(value) {
