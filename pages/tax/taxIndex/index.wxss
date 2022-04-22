@@ -6,7 +6,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    background-image: url('https://image.bayeasy.cn/images-data/tax/taxBg.png');
+    background-image: url('https://image.bayeasy.cn/images-datas/tax/taxBg.png');
     background-position: top;
     background-repeat: no-repeat;
     background-size: contain;

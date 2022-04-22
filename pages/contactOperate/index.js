@@ -20,7 +20,7 @@ Page({
   data: {
     tel_num: app.globalData.phoneNumber,
     qrcode_url: '',
-    tel_icon: 'https://image.bayeasy.cn/images-data/personal/icons/tel.png'
+    tel_icon: app.globalData.imgPath + 'personal/icons/tel.png'
   },
 
   /**

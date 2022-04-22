@@ -20,7 +20,7 @@
                 <view class="row">
                     <view class="gate-area-1" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/regProcess.png" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{rgGateBtn}}" mode="widthFix"></image>
                         </view>
                         <view class="name">
                             注册进程
@@ -28,7 +28,7 @@
                     </view>
                     <view class="gate-area-1" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/businessInfo.png" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{biGateBtn}}" mode="widthFix"></image>
                         </view>
                         <view class="name">
                             工商信息
@@ -38,7 +38,7 @@
                 <view class="row">
                     <view class="gate-area-2" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/bankAccount.png" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{baGateBtn}}" mode="widthFix"></image>
                         </view>
                         <view class="name">
                             银行账户
@@ -46,7 +46,7 @@
                     </view>
                     <view class="gate-area-2" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="https://image.bayeasy.cn/images-data/enterprise/gates/taxReg.png" mode="widthFix"></image>
+                            <image class="gate-icon" src="{{trGateBtn}}" mode="widthFix"></image>
                         </view>
                         <view class="name">
                             税务登记

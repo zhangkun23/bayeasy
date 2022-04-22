@@ -1,10 +1,12 @@
 // pages/login/association/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    successIcon: app.globalData.imgPath + "public/success.png",
     agency: false
   },
   todoList() {

@@ -13,6 +13,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        barBgImg: app.globalData.imgPath + "/invoice/incomeInvoice/barBg.png",
         showEmpty: false,
         emptyPic: app.globalData.emptyPic,
         hasOperate: false,
