@@ -9,7 +9,7 @@
     </view>
     <view class="successfully__icon">
       <view class="successfully__success-img mg-tp-25">
-        <image src="https://image.bayeasy.cn/images-data/public/success.png"></image>
+        <image src="{{successIconImg}}"></image>
       </view>
       <view class="successfully__success-text">提交成功，税额确认无误</view>
 

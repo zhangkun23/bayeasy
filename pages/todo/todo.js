@@ -190,7 +190,7 @@ Page({
     })
     if (this.data.count !== 0) {
       this.setData({
-        background_img: 'https://image.bayeasy.cn/images-data/public/backGround.png'
+        background_img: app.globalData.imgPath + 'public/backGround.png'
       })
     }
   },

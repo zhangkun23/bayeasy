@@ -5,7 +5,7 @@ Component({
    * 页面的初始数据
    */
   data: {
-
+      headerBg: "https://image.bayeasy.cn/images-data/authentication/illustration.png",
   },
 
   methods:{

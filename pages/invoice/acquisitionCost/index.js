@@ -25,13 +25,15 @@ Page({
         isScroll: false,
         filterTop: 0,
         showEmtpy: false,
-        invoiceType: null,
         _filteredData: null,
         _filters: null,
         page: 1,
         pageSize: 10,
         canShowToast: true,
-        hasMore: true
+        hasMore: true,
+        invoiceTypes: null,
+        invoiceTypeMap: null,
+
     },
     onShow: function () {
         this.setData({
@@ -83,7 +85,8 @@ Page({
             if (this.data.canShowToast) {
                 wx.showToast({
                     title: '没有更多啦',
-                    icon: 'none'
+                    icon: 'none',
+                    duration: 3000
                 })
                 this.setData({
                     canShowToast: false
@@ -146,8 +149,13 @@ Page({
         getInvoiceType().then(res => {
             if (res.ret) {
                 if (res.data instanceof Array && res.data.length > 0) {
+                    let _invoiceTypes = {}
+                    res.data.map(i => {
+                        _invoiceTypes[i.id] = i.type
+                    })
                     that.setData({
-                        invoiceTypes: res.data
+                        invoiceTypes: res.data,
+                        invoiceTypeMap: _invoiceTypes
                     })
                 }
             } else {
@@ -219,7 +227,11 @@ Page({
                 // 从当前列表筛选
                 _filter_res = _filter_res.filter(l => {
                     if (l instanceof Object && key in l) {
-                        return l[key] === _filters[key]
+                        if(key === "invoice_type"){
+                            return l[key] === that.data.invoiceTypeMap[_filters[key]]
+                        }else{
+                            return l[key] === _filters[key]
+                        }
                     }
                 })
             }

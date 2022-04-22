@@ -50,8 +50,9 @@ Page({
         } else {
             if (this.data.enableShowToast) {
                 wx.showToast({
-                    title: '没有更多数据啦',
-                    icon: 'none'
+                    title: '没有更多啦',
+                    icon: 'none',
+                    duration: 3000
                 })
                 this.setData({
                     enableShowToast: false
@@ -125,7 +126,7 @@ Page({
     },
     handleBackArrow: function () {
         wx.navigateBack({
-          delta: 2,
+            delta: 2,
         })
     },
 })

@@ -39,6 +39,7 @@ Component({
     IdcardResever: tempPath + "authentication/idcard_resever.png",
     inputClose: tempPath + "public/inputClose.png",
     loading: tempPath + "public/loading.png",
+    topTipIcon: tempPath + "public/info_max.png",
     userStatus: 0,
     clearShow: true,
     tostTop: true,

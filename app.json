@@ -46,8 +46,7 @@
   ],
   "tabBar": {
     "custom": true,
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/enterprise/enterpriseIndex/index",
         "text": "企业信息",
         "iconPath": "/image/icon/declare.png",
@@ -91,5 +90,7 @@
   "useExtendedLib": {
     "kbone": true,
     "weui": true
-  }
+  },
+  "lazyCodeLoading": "requiredComponents"
+
 }

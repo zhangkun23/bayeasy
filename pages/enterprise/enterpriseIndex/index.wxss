@@ -6,7 +6,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    background-image: url('https://image.bayeasy.cn/images-data/enterprise/enterpriseBg.png');
+    background-image: url('https://image.bayeasy.cn/images-datas/enterprise/enterpriseBg.png');
     background-position: top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -107,6 +107,7 @@
 
 .gate-area-1 .gate-icon {
     width: 130rpx;
+    height: 130rpx;
 }
 
 .gate-area-1 .name {
@@ -129,6 +130,7 @@
 .gate-area-2 .gate-icon {
     margin-top: 56rpx;
     width: 130rpx;
+    height: 130rpx;
 }
 
 .gate-area-2 .name {

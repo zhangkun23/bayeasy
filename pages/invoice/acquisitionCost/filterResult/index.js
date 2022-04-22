@@ -30,11 +30,13 @@ Page({
             if (this.data.canShowToast) {
                 wx.showToast({
                     title: '没有更多啦',
-                    icon: 'none'
+                    icon: 'none',
+                    duration: 3000
                 })
                 this.setData({
                     canShowToast: false
                 })
+                
             }
             return
         }
@@ -81,13 +83,7 @@ Page({
         let hasMore = true;
         if (data.length === 0) {
             hasMore = false
-            wx.showToast({
-                title: '没有更多啦',
-                icon: 'none'
-            })
-            this.setData({
-                canShowToast: false
-            })
+         
         }
         this.setData({
             hasMore: hasMore,

@@ -5,7 +5,7 @@ button{
   width: 0;
 }
 .authentication__zw {
-  background-image: url('https://image.bayeasy.cn/images-data/authentication/back.png');
+  background-image: url('https://image.bayeasy.cn/images-datas/authentication/back.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   padding: 32rpx 61rpx 0 58rpx;
