@@ -48,7 +48,7 @@
                     <view class="item__bottom__info" wx:if="{{!item.requestStatus}}">
                         <view>
                             <image src="{{updateHandel_err}}" />
-                            <text class="item__info_error">{{item.message}}</text>
+                            <text class="item__info_error">查验未通过</text>
                         </view>
                         <image src="{{close_info}}" data-index="{{index}}" catchtap="showDialog" />
                     </view>
