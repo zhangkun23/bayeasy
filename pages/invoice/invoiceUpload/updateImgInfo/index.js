@@ -31,7 +31,7 @@ Page({
         errInfoNum:0, //错误数量
         active:false, //提交按钮状态
         loaddingActive:false, //每张发票loadding
-        status:1, //上传发票 查验发票 提交完成
+        status:0, //0上传发票 1查验发票 2提交完成
         errInfoShow:false,
         errInfo:[],
         returnErrInfoShow:false,

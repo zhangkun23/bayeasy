@@ -174,12 +174,14 @@ Component({
     }, {
       id: 2,
       icon: btns_url.incomeList,
+      url: '../../invoice/incomeInvoice/index/index',
       text: '收入账单',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null,
     }, {
       id: 3,
+      url: '../../invoice/acquisitionCost/index',
       icon: btns_url.costBill,
       text: '成本发票',
       width: '120rpx',

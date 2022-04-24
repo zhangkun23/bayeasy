@@ -1,6 +1,6 @@
 
 <view class="bgColog">
-    <mp-navigation-bar title="邮寄地址" bindback="backIndex"/>
+    <mp-navigation-bar title="邮寄地址" />
     <view class="count">
         <view class="count__top">
             <view class="count__top__left">
