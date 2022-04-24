@@ -69,7 +69,8 @@ Page({
         // 查询待办
         todolist().then(res => {
             if (res.ret) {
-                getApp().globalData.todolistNum = res.data.nums;
+                getApp().globalData.todolistNum =  res.data.nums;
+                // console.log(getApp().globalData.todolistNum,'login页待办数量')
             }
         })
         /**

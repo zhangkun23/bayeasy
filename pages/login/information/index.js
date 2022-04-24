@@ -50,7 +50,6 @@ Component({
   },
   pageLifetimes: {
     show() {
-      console.log(this.data.userStatus)
       const userStatus = getApp().globalData.userStatus;
       this.setData({
         userStatus: userStatus

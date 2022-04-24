@@ -48,6 +48,7 @@
 
 .item__header-date {
   display: flex;
+  align-items: center;
 }
 
 .item__header-text {

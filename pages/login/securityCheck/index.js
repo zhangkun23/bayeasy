@@ -36,7 +36,7 @@ Component({
     detached() {}
   },
   methods: {
-    backIndex(){
+    backIndex() {
       wx.reLaunch({
         url: '/pages/index/index',
       })
@@ -91,7 +91,6 @@ Component({
       })
     },
     closeValue: function () {
-      console.log(1212)
       this.setData({
         idcardValue: '',
         isShowCloseBtn: false
@@ -102,7 +101,6 @@ Component({
       let param = {
         id_card: this.data.idcardValue.replace(/\s/g, "")
       }
-      console.log(param)
       IdcardAuthentication(param).then(res => {
         if (res.ret) {
           wx.navigateTo({
@@ -123,8 +121,8 @@ Component({
     // 修改全局状态
     getStatus() {
       getUserStatus().then(res => {
-        if(res.ret) {
-          getApp().globalData.userStatus =  res.data.status;
+        if (res.ret) {
+          getApp().globalData.userStatus = res.data.status;
           this.setData({
             userStatus: res.data.status
           })
