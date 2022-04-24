@@ -1,20 +1,21 @@
 <!--pages/invoice/incomeInvoice/index/index.wxml-->
-<view class="mycontainer bgColog">
+<view class="bgColog">
     <mp-navigation-bar title="收入账单发票"></mp-navigation-bar>
     <!-- <view class="bgColog"></view> -->
-    <scroll-view scroll-y="true" class="wrapper" enable-flex="true">
+    <scroll-view scroll-y="true" enable-flex="true">
         <view class="incomeInvoice">
-            <view wx:if="{{isInvoiceEmpty}}" class="tip-container flex_center_column">
+            <view wx:if="{{isInvoiceEmpty}}" class="content">
                 <image src="{{emptyPic}}" class="emptyBg" mode="widthFix"></image>
                 <text class="subscribe">暂无数据</text>
             </view>
 
             <view class="content" wx:else>
-                <view id="card" class="inv-container flex_center_column" style="margin-top: rpx;" wx:for="{{invoice_lists}}" wx:key="index">
-                    <view class="card">
-                        <view class="content">
+                <view class="inv-container" wx:for="{{invoice_lists}}" wx:key="index">
+                <!-- <view class="inv-container" wx:for="{{invoice_lists}}" wx:key="index"> -->
+                    <!-- <view class="card"> -->
+                        <!-- <view class="content"> -->
                             <view class="topbar">
-                                <view class="name">{{item.business_name}}</view>
+                                <view class="name font-weight">{{item.business_name}}</view>
                                 <view wx:if="{{item.myStatus === 0}}" class="status yellow">待确认</view>
                                 <view wx:elif="{{item.myStatus === 1}}" class="status blue">开票中</view>
                                 <view wx:elif="{{item.myStatus === 2}}" class="status grey">已开票</view>
@@ -31,8 +32,8 @@
                                 <view wx:elif="{{item.myStatus === 1}}" data-iid="{{item.id}}" bindtap="goDetails" class="detailsBtn flex_center_column blueBg">查看详情</view>
                                 <view wx:elif="{{item.myStatus === 2}}" data-iid="{{item.id}}" bindtap="goDetails" class="detailsBtn flex_center_column blueBg">查看详情</view>
                             </view>
-                        </view>
-                    </view>
+                        <!-- </view> -->
+                    <!-- </view> -->
                 </view>
             </view>
         </view>
