@@ -3,21 +3,15 @@ const {
     get_all_invoices
 } = require('../../../../http/api/api_szpj')
 const app = getApp()
-// const INVOICE_STATUS = {
-//     0: '待确认',
-//     1: '开票中',
-//     2: '开票中',
-//     3: '已开票',
-//     8: '开票中',
-//     9: '开票中'
-// }
+// const INVOICE_STATUS_WAIT = [0]
+// const INVOICE_STATUS_GOING = [1, 2, 8, 9]
+// const INVOICE_STATUS_DONE = [3]
 const INVOICE_STATUS_WAIT = [0]
-const INVOICE_STATUS_GOING = [1, 2, 8, 9]
+const INVOICE_STATUS_GOING = [1, 2]
 const INVOICE_STATUS_DONE = [3]
 const SPLIT_HANZI = '至'
 
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -33,7 +27,7 @@ Page({
         invoice_lists: [],
 
     },
-    onShow: function(){
+    onShow: function () {
         console.debug("onshow showned")
         var that = this
         get_all_invoices().then(res => {
@@ -55,31 +49,15 @@ Page({
         })
     },
     onLoad: function (options) {
-        if(options instanceof Object && 'type' in options){
-            if(options.type === 'todo'){
+        if (options instanceof Object && 'type' in options) {
+            if (options.type === 'todo') {
                 const ids = options.ids.split('_')
                 console.debug("ids is ", ids)
-                this.setData({filter_ids: ids})
+                this.setData({
+                    filter_ids: ids
+                })
             }
         }
-        // var that = this
-        // get_all_invoices().then(res => {
-        //     if (res.ret) {
-        //         if (res.data instanceof Array && res.data.length > 0) {
-        //             that.handleData(res.data)
-        //         } else {
-        //             this.setData({
-        //                 isInvoiceEmpty: true
-        //             })
-        //         }
-        //     } else {
-        //         console.error("无法获取到发票列表:", res)
-        //         wx.showToast({
-        //             title: '获取账单失败，请稍后再试',
-        //             icon: 'none',
-        //         })
-        //     }
-        // })
     },
     goDetails: function (e) {
         const _id = e.currentTarget.dataset.iid
@@ -92,25 +70,29 @@ Page({
         this.onShow();
         wx.stopPullDownRefresh();
     },
-    handleData(info){
+    handleData(info) {
         var that = this
         let _invoice_infos = []
-        if(this.data.filter_ids){
+        if (this.data.filter_ids) {
             // info = info.filter(i=>i.id in this.data.filter_ids)
-            info = info.filter(i=> this.data.filter_ids.includes(i.id.toString()))
-            if(info.length === 0){
-                that.setData({isInvoiceEmpty: true})
+            info = info.filter(i => this.data.filter_ids.includes(i.id.toString()))
+            if (info.length === 0) {
+                that.setData({
+                    isInvoiceEmpty: true
+                })
                 return
             }
         }
         info.forEach(d => {
-            // title
+            // title  0 待确认 1 开票中 2 已开票
             if (INVOICE_STATUS_WAIT.includes(d.status_code)) {
                 d.myStatus = 0
             } else if (INVOICE_STATUS_GOING.includes(d.status_code)) {
                 d.myStatus = 1
             } else if (INVOICE_STATUS_DONE.includes(d.status_code)) {
                 d.myStatus = 2
+            } else {
+                d.myStatus = 1
             }
             // datetime
             const __date = d.time.split(SPLIT_HANZI)
