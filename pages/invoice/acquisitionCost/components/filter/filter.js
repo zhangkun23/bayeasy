@@ -1,5 +1,9 @@
 // pages/invoice/acquisitionCost/components/filter/filter.js
 const app = getApp()
+// 引入插件安装器
+import plugin from '../calendar/plugins/index'
+// 禁用/启用可选状态
+import selectable from '../calendar/plugins/selectable'
 Component({
     lifetimes: {
         attached: function () {
@@ -214,11 +218,14 @@ Component({
         },
         afterCCalendarRender(e) {
             this.data.cCalendar = this.selectComponent('#ccd').calendar
+            plugin.use(selectable)
         },
         afterICalendarRender(e) {
             this.data.iCalendar = this.selectComponent('#cid').calendar
+            plugin.use(selectable)
         },
         afterTapDate(e) {
+            
             const target = this.data._dateTarget // 获取选择目标
             const select_date = e.detail.year + '-' + e.detail.month + '-' + e.detail.date
             if (target) {
@@ -227,18 +234,68 @@ Component({
                 this.setData(_data)
             }
             if (['cStartDate', 'cEndDate'].includes(target)) {
-                this.setData({
-                    showCreateCal: false
-                })
+                // this.setData({
+                //     showCreateCal: false
+                // })
                 if (target === 'cStartDate') {
-
+                    let _config = this.data.calendar_config_cd
+                    _config = Object.assign(_config, {
+                        disableMode: {
+                            // 禁用某一天之前/之后的所有日期
+                            type: 'before', // [‘before’, 'after']
+                            date: select_date // 无该属性或该属性值为假，则默认为当天
+                        },
+                    })
+                    this.setData({
+                        calendar_config_cd : _config,
+                        showCreateCal: false
+                    })
                 } else if (target === 'cEndDate') {
-
+                    let _config = this.data.calendar_config_cd
+                    _config = Object.assign(_config, {
+                        disableMode: {
+                            // 禁用某一天之前/之后的所有日期
+                            type: 'after', // [‘before’, 'after']
+                            date: select_date // 无该属性或该属性值为假，则默认为当天
+                        },
+                    })
+                    this.setData({
+                        calendar_config_cd : _config,
+                        showCreateCal: false
+                    })
                 }
             } else if (['iStartDate', 'iEndDate'].includes(target)) {
                 this.setData({
                     showInvoiceDate: false
                 })
+
+                if (target === 'iStartDate') {
+                    let _config = this.data.calendar_config_id
+                    _config = Object.assign(_config, {
+                        disableMode: {
+                            // 禁用某一天之前/之后的所有日期
+                            type: 'before', // [‘before’, 'after']
+                            date: select_date // 无该属性或该属性值为假，则默认为当天
+                        },
+                    })
+                    this.setData({
+                        calendar_config_id : _config,
+                        showInvoiceDate: false
+                    })
+                } else if (target === 'iEndDate') {
+                    let _config = this.data.calendar_config_id
+                    _config = Object.assign(_config, {
+                        disableMode: {
+                            // 禁用某一天之前/之后的所有日期
+                            type: 'after', // [‘before’, 'after']
+                            date: select_date // 无该属性或该属性值为假，则默认为当天
+                        },
+                    })
+                    this.setData({
+                        calendar_config_id : _config,
+                        showInvoiceDate: false
+                    })
+                }
             }
             // 禁用日期 
             // if (target === 'cStartDate') {
@@ -331,16 +388,18 @@ Component({
                 invoice_type_list: invoice_type_list,
                 invoice_status_list: invoice_status_list,
                 calendar_config_cd: {
-                    theme: 'elegant',
+                    theme: 'elegant', //elegant
                     onlyShowCurrentMonth: false,
                     preventSwipe: true,
-                    highlightToday: true,
+                    // highlightToday: true,
+                    chooseAreaMode: true,
                 },
                 calendar_config_id: {
-                    theme: 'elegant',
+                    theme: 'elegant', //elegant
                     onlyShowCurrentMonth: false,
                     preventSwipe: true,
-                    highlightToday: true,
+                    // highlightToday: true,
+                    chooseAreaMode: true,
                 },
             }
 
