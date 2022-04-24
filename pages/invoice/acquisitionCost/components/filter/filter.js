@@ -31,6 +31,9 @@ Component({
      * 组件的初始数据
      */
     data: {
+        cCalendar: null,
+        iCalendar: null,
+        _dateTarget: null,
         filterTop: 0,
         invoiceType: null,
         default_invoice_type_list: [],
@@ -199,6 +202,7 @@ Component({
                 _dateTarget: target,
                 showCreateCal: !this.data.showCreateCal
             })
+
         },
         toggleInvoiceDate(e) {
 
@@ -207,6 +211,12 @@ Component({
                 _dateTarget: target,
                 showInvoiceDate: !this.data.showInvoiceDate
             })
+        },
+        afterCCalendarRender(e) {
+            this.data.cCalendar = this.selectComponent('#ccd').calendar
+        },
+        afterICalendarRender(e) {
+            this.data.iCalendar = this.selectComponent('#cid').calendar
         },
         afterTapDate(e) {
             const target = this.data._dateTarget // 获取选择目标
@@ -220,14 +230,16 @@ Component({
                 this.setData({
                     showCreateCal: false
                 })
+                if (target === 'cStartDate') {
+
+                } else if (target === 'cEndDate') {
+
+                }
             } else if (['iStartDate', 'iEndDate'].includes(target)) {
                 this.setData({
                     showInvoiceDate: false
                 })
             }
-
-
-
             // 禁用日期 
             // if (target === 'cStartDate') {
             //     if (!this.data.cEndDate) {
@@ -331,7 +343,7 @@ Component({
                     highlightToday: true,
                 },
             }
-          
+
             this.setData(initConfig)
         }
     }

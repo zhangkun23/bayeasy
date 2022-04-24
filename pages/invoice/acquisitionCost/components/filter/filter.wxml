@@ -2,13 +2,13 @@
 <block id="createDate" wx:if="{{showCreateCal}}">
     <view class="calendar-bg" bindtap="toggleCreateCal"></view>
     <view class="calendar open">
-        <calendar id="ccd" config="{{calendar_config_cd}}" bind:afterTapDate="afterTapDate" />
+        <calendar id="ccd" config="{{calendar_config_cd}}" bind:afterCalendarRender="afterCCalendarRender" bind:afterTapDate="afterTapDate" />
     </view>
 </block>
 <block id="invioceDate" wx:if="{{showInvoiceDate}}">
     <view class="calendar-bg" bindtap="toggleInvoiceDate"></view>
     <view class="calendar open">
-        <calendar id="cid" config="{{calendar_config_id}}" bind:afterTapDate="afterTapDate" />
+        <calendar id="cid" config="{{calendar_config_id}}" bind:afterCalendarRender="afterICalendarRender" bind:afterTapDate="afterTapDate" />
     </view>
 </block>
 <view class="bgColor"></view>
@@ -73,5 +73,5 @@
 </view>
 <view class="operate-container">
     <view class="btn reset blue" bindtap="initData">重置</view>
-    <view class="btn finish white"bindtap="getAllOptions">完成</view>
+    <view class="btn finish white" bindtap="getAllOptions">完成</view>
 </view>
