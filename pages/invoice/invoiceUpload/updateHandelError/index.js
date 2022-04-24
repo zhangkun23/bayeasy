@@ -7,13 +7,13 @@ Page({
      */
     data: {
         close: tempPath + "invoice/invoiceUpdate/close.png",
-        updateHandel_err: tempPath + "invoice/incomeInvoice/updateHandel_err.png",
-        errinfo:''
+        updateHandel_err: tempPath + "public/close.png",
+        errinfo: ''
     },
 
-    jumpReact(){
+    jumpReact() {
         wx.navigateBack({
-            delta:1
+            delta: 1
         })
     },
 
@@ -22,7 +22,7 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            errinfo:options.errInfo
+            errinfo: options.errInfo
         })
     },
 

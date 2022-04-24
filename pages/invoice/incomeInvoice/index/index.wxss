@@ -1,43 +1,46 @@
 /* pages/invoice/incomeInvoice/index/index.wxss */
 page {
-    height: 100%;
+    /* height: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: max(constant(safe-area-inset-bottom), 50rpx);
+    padding-bottom: max(constant(safe-area-inset-bottom), 50rpx); */
     /* 兼容 iOS < 11.2 */
-    padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
+    /* padding-bottom: max(env(safe-area-inset-bottom), 50rpx); */
 }
 
 .mycontainer {
-    flex: 1;
+    /* flex: 1;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; */
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     flex: 1;
     height: 1px;
 }
 
+.incomeInvoice {
+    max-height: 1360rpx;
+}
 .wrapper .content {
     margin: 32rpx;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .inv-container {
     margin-bottom: 32rpx;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .flex_center_column {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
 }
@@ -76,7 +79,7 @@ page {
 
 .card .content {
     position: relative;
-    margin: 48rpx 32rpx 0 32rpx;
+    /* margin: 48rpx 32rpx 0 32rpx; */
     display: flex;
     flex-direction: column;
 }

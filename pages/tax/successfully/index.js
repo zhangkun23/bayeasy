@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    successIconImg: tempPath + "public/success.png",
+    successIconImg: tempPath + "public/done.png",
     info_max: tempPath + "public/info_max.png",
     showTips: false,
     tax: '',

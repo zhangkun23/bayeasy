@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    successIcon: app.globalData.imgPath + "public/success.png",
+    successIcon: app.globalData.imgPath + "public/done.png",
     agency: false
   },
   todoList() {
@@ -20,7 +20,7 @@ Page({
     })
   },
   onShow: function (options) {
-    let todoNmu = getApp().globalData.todolistNum;
+    let todoNmu = app.globalData.todolistNum;
     if (todoNmu > 0) {
       this.setData({
         agency: true

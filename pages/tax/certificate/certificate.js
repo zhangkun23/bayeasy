@@ -24,15 +24,15 @@ Page({
   },
   // 返回欠款详情页
   backIndex() {
-    if(this.data.returnType == 'delinquentBill') {
-      wx.navigateTo({
-        url: '../billingDetail/billingDetail&type=delinquentBill',
-      })
-    } else if(this.data.returnType == 'repaymentBill') {
-      wx.navigateTo({
-        url: '../billingDetail/billingDetail&typs=repaymentBill',
-      })
-    }
+    // if(this.data.returnType == 'delinquentBill') {
+    //   wx.navigateTo({
+    //     url: '../billingDetail/billingDetail&type=delinquentBill',
+    //   })
+    // } else if(this.data.returnType == 'repaymentBill') {
+    //   wx.navigateTo({
+    //     url: '../billingDetail/billingDetail&typs=repaymentBill',
+    //   })
+    // }
     
   },
   // 获取凭证记录
