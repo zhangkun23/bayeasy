@@ -3,6 +3,7 @@
 
 .loginText{
     display: flex;
+    flex-wrap: wrap;
     font-size: 24rpx;
     font-weight: 400;
     margin: 0 30rpx;

@@ -76,7 +76,7 @@ Component({
   },
   methods: {
     backIndex() {
-      wx.reLaunch({
+      wx.switchTab({
         url: '/pages/index/index',
       })
     },

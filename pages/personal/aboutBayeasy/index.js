@@ -23,10 +23,11 @@ Page({
       }, {
         title: '隐私协议',
         url: 'privacy_policy',
-      }, {
-        title: '营业执照',
-        url: '',
-      },
+      }, 
+      // {
+      //   title: '营业执照',
+      //   url: '',
+      // },
     ],
 
   },
