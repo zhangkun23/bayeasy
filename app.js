@@ -16,7 +16,6 @@ App({
     })
   },
   onLaunch() {
-    // wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0LmdzaC5jb21cL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTA1OTM5MzEsImV4cCI6MTY1NjU5MzkzMSwibmJmIjoxNjUwNTkzOTMxLCJqdGkiOiJnZW1zWGhZVm03OHdwbkd0Iiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.GsyzYOuJSTdGtFn1MZLzWpswZXhG_7Pj4VINIynqxyo')
     const barTitileStatus = wx.getMenuButtonBoundingClientRect()
     this.globalData.barTitileStatus = barTitileStatus
   },
