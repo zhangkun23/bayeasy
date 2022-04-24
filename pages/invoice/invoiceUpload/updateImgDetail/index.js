@@ -1,6 +1,7 @@
 // pages/invoice/invoiceUpload/updateImgDetail/index.js
 const tempPath = getApp().globalData.imgPath;
 const util = require('../../../../utils/util')
+const {delDeductInvoiceFile} = require('../../../../http/api/api_szpj')
 Page({
 
     /**
@@ -18,10 +19,35 @@ Page({
         updateImgOrPdfArr:[],
         status:0,
         imgArr:[], //放大图片数组
+        isShowModal:false,
+        buttons: [{
+            text: '取消'
+        },{
+            text: '确定'
+        }],
+        removeItemE:{}, //要删除的e
+    },
+    // 展示my-dialog
+    showDialog(e){
+        this.setData({
+            isShowModal:true,
+            removeItemE:e
+        })
+    },
+    tapDialogButtonClose(e){
+        this.setData({
+            isShowModal:false
+        })
+        if(e.detail.item.text == '确定'){
+            this.removeItem(this.data.removeItemE);
+        }
     },
 
     // 删除当前选项
     removeItem(e){
+        if(this.data.status ==1 && e.currentTarget.dataset.id){
+            this.delDeductInvoiceFile(e.currentTarget.dataset.id)
+        }
         const index = e.currentTarget.dataset.index;
         let tempArr = this.data.updateImgOrPdfArr;
         tempArr.splice(index,1)
@@ -32,7 +58,21 @@ Page({
             wx.removeStorageSync("updateImgOrPdfArr")
             wx.removeStorageSync("index")
             wx.navigateBack()
+        }else{
+            wx.setStorageSync('updateImgOrPdfArr',this.data.updateImgOrPdfArr)
         }
+    },
+
+    // 删除已经识别的发票
+    delDeductInvoiceFile(id){
+        delDeductInvoiceFile(id).then(res => {
+            if(!res.ret){
+                wx.showToast({
+                    title: res.message,
+                    icon: 'none',
+                })
+            }
+        })
     },
 
     // 预览pdf

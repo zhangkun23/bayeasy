@@ -1,4 +1,3 @@
-// pages/invoice/invoiceUpload/updateImg/index.js
 const tempPath = getApp().globalData.imgPath;
 Page({
 
@@ -15,16 +14,6 @@ Page({
             url: '/pages/invoice/invoiceUpload/updateImgInfo/index',
         })
     },
-    backIndex(){
-        // var page = getCurrentPages()  ;// 获取当前页面栈
-        // var beforePage = page[page.length - 2]; // 跳转页面的栈
-        // wx.navigateBack({
-        //     success: function () {
-        //         beforePage.onShow(); // 执行前一个页面的onLoad方法
-        //     }
-        // })
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */

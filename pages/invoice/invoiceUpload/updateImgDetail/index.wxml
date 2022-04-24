@@ -23,10 +23,10 @@
             <view class="info">
                 <view class="infoStatus">
                     <image class="infoStatus__status" src="{{item.requestStatus?whith_close:whith_right}}" />
-                    <view>{{item.requestStatus?'查验通过':item.message}}</view>
+                    <view>{{item.requestStatus?'查验通过':'查验未通过'}}</view>
                 </view>
                 <view class="errMessage" wx:if="{{!item.requestStatus}}">
-                    不可用原因：{{item.message}}
+                    未通过原因：{{item.message}}
                 </view>
                 <view class="info__swiper">
                     <image class="invoice_img" src="{{item.type=='img'?item.link:item.linkPdf}}" data-pdfPath="{{item.link}}" data-type="{{item.type}}" bindtap="handelClickDetail" />
@@ -51,10 +51,13 @@
                             价税合计： -----
                         </view>
                     </view>
-                    <image class="removeItem" src="{{item.requestStatus?close_null : close_info}}" data-index="{{index}}" bindtap="removeItem" />
+                    <image class="removeItem" src="{{item.requestStatus?close_null : close_info}}" data-id="{{item.linkInfo.id}}" data-index="{{index}}" bindtap="showDialog" />
                 </view>
             </view>
         </swiper-item>
     </block>
 </swiper>
+<block wx:if="{{isShowModal}}">
+    <mp-dialog show="isShowModal" buttons="{{buttons}}"  bindbuttontap="tapDialogButtonClose" title="确认删除这张发票吗？"></mp-dialog>
+</block>
 <imageBig imgArr="{{imgArr}}" />
