@@ -136,7 +136,7 @@ page {
 .title-container .title {
     display: flex;
     justify-content: flex-start;
-    align-content: center;
+    align-items: center;
     font-size: 28rpx;
     font-weight: 600;
     color: #283E56;
@@ -230,26 +230,31 @@ page {
     color: #283E56;
     line-height: 53rpx;
 }
-.pic-container .container{
+
+.pic-container .container {
     padding: 0rpx;
     background: #FFFFFF;
     box-shadow: 0px 10px 30px 0px rgba(201, 209, 228, 0.38);
     border-radius: 32px;
 }
-.pic-container .container .content{
-    margin: 36rpx 47rpx 36rpx 47rpx;
-}
-.pic-container .container .content .pdf{
 
+.pic-container .container .content {
+    padding: 36rpx 47rpx 36rpx 47rpx;
 }
 
-.pic-container .container .content .img{
+.pic-container .container .content .pdf {
     width: 592rpx;
     height: 378rpx;
 }
 
-.pic-container .container .content .empty{
-    margin: 105rpx 195rpx;
+.pic-container .container .content .img {
+    width: 592rpx;
+    height: 378rpx;
+}
+
+.pic-container .container .content .empty {
+    /* margin: 105rpx 195rpx; */
+    padding: 105rpx 195rpx;
     width: 296rpx;
     height: 240rpx;
     opacity: 0.6;

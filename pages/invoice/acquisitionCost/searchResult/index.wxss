@@ -44,7 +44,8 @@ page {
     display: flex;
     position: relative;
     /* margin-top: 2.7%; */
-    margin-top: 32rpx;
+    /* margin-top: 32rpx; */
+    padding-top: 32rpx;
     margin-left: 32rpx;
     margin-right: 30rpx;
     justify-content: center;
@@ -119,16 +120,6 @@ page {
     justify-content: center;
 }
 
-.search-container {
-    /* margin-top: 2.7%; */
-    margin-top: 32rpx;
-    margin-left: 32rpx;
-    margin-right: 32rpx;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    align-content: stretch;
-}
 
 .search-container .searchbar {
     max-width: 624rpx;

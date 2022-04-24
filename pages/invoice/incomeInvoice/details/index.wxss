@@ -27,9 +27,11 @@ page {
 }
 
 .inv-container {
-    margin-top: 24rpx;
+    /* margin-top: 24rpx;
     margin-left: 32rpx;
     margin-right: 32rpx;
+    margin-bottom: 32rpx; */
+    padding: 24rpx 32rpx ;
     display: flex;
     flex-direction: column;
 }

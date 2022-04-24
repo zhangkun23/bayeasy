@@ -136,11 +136,12 @@
 }
 .countCenter{
   padding-top: 16rpx;
+  padding-bottom: 16rpx;
   position: relative;
 }
 .countCenter>.countCenterTitle{
   position: absolute;
-  top: 90rpx;
+  top: calc(50% - 36rpx);
   left: 32rpx;
   font-size: 36rpx;
   font-weight: 600;
@@ -151,7 +152,7 @@
   height: 228rpx;
 }
 .countBottom{
-  margin-top: 16rpx;
+  /* margin-top: 16rpx; */
   display: flex;
   justify-content: space-between;
 }
