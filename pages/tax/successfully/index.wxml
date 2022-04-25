@@ -15,7 +15,7 @@
 
       <view class="successfully__success_tips">
         <view>本征期将在您的银行账户扣除“
-          <text class="orangeTips">{{tax}}</text>
+          <text class="orangeTips">¥ {{tax}}</text>
           ”
         </view>
         <view>为了避免延误您的申报，请检查银行账户余额是否充足哦！</view>

@@ -44,41 +44,6 @@ Page({
   // 返回
   backIndex() {
     wx.setStorageSync('overdueStatus', '')
-
-    // wx.navigateBack({
-    //   delta: 1,
-    // })
-    // return
-    // 去确认为true  查看结果为false
-    // if (this.data.returnType == 'list') {
-    //   console.log(222)
-    //   if (this.data.showBtn) {
-    //     wx.navigateTo({
-    //       url: '../taxRecord/index?type=result',
-    //     })
-    //     // wx.navigateBack()
-    //   } else {
-    //     wx.navigateTo({
-    //       url: '../taxConfirmation/index?typs=list',
-    //     })
-    //   }
-    // } else if (this.data.returnType == 'result') {
-
-
-
-    // if (this.data.returnType == 'result') {
-
-
-
-    //   wx.navigateTo({
-    //     url: '../taxRecord/index?type=result',
-    //   })
-    // }
-    // } else if(this.data.returnType == 'todo') {
-    //   wx.navigateTo({
-    //     url: '../../todo/todo',
-    //   })
-    // }
   },
 
   //overdue_status 0 逾期 1 未逾期
@@ -95,6 +60,7 @@ Page({
         isShowModal: false
       })
     } else {
+      console.log(this.data.taxPayable)
       if (this.data.time == 1) {
         confirmdeclare({
           id: this.data.detailId
@@ -144,6 +110,7 @@ Page({
           if (res.data.list) {
             arr = res.data.list
           }
+          console.log(res.data)
           this.setData({
             deatilObj: res.data,
             taxList: arr,
