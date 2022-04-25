@@ -16,7 +16,7 @@
           <view class="item__center font-size-24">
             <view class="item__text space-between">
               <view class="item__center-title">应补税额合计</view>
-              <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
+              <view class="orangeTips font-600">¥ {{ deatilObj.should_pay_tax }}</view>
             </view>
             <view class="item__text space-between triangle">
               <view class="position">
@@ -26,7 +26,7 @@
                 应退税额合计
                 <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
               </view>
-              <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
+              <view class="greennTips font-600">¥ {{deatilObj.should_refund_tax }}</view>
             </view>
             <view class="item__text space-between">
               <view class="item__center-title">缴纳税额合计</view>

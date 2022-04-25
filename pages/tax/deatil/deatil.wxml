@@ -34,7 +34,7 @@
           <view class="item__center font-size-24">
             <view class="item__text space-between">
               <view class="item__center-title">应补税额合计</view>
-              <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
+              <view class="orangeTips font-600">¥ {{ deatilObj.should_pay_tax }}</view>
             </view>
             <view class="item__text space-between triangle">
               <view class="position">

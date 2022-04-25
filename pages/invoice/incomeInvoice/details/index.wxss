@@ -20,7 +20,7 @@ page {
 }
 
 .wrapper {
-    max-height: 1360rpx;
+    max-height: 1415rpx;
     /* flex: 1;
     height: 1px;
     display: flex;

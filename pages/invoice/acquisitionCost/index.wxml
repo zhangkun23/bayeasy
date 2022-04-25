@@ -36,23 +36,22 @@
                     </view>
                 </block>
                 <block wx:else>
-                    <view wx:for="{{searchResult}}" wx:key="i" class="card">
-                        <view class="content-container">
+                    <!-- <view  class="card"> -->
+                        <view class="content-container" wx:for="{{searchResult}}" wx:key="i">
                             <view class="title-container">
                                 <view class="title">
                                     <image class="icon" src="{{invoiceIcon}}" mode="aspectFill"></image>
                                     <text class="flex_center">增值税发票</text>
                                 </view>
-                                <view wx:if="{{item.status === 0}}" class="voice-status orange">审核中</view>
-                                <view wx:if="{{item.status === 1}}" class="voice-status green">审核通过</view>
-                                <view wx:if="{{item.status === 2}}" class="voice-status red">审核失败</view>
+                                <view wx:if="{{item.status === 0}}" class="font-size-24 orange">审核中</view>
+                                <view wx:if="{{item.status === 1}}" class="font-size-24 green">审核通过</view>
+                                <view wx:if="{{item.status === 2}}" class="font-size-24 red">审核失败</view>
                             </view>
-                            <view class="split" style="border-top: 1px dashed #E6EEF7"></view>
                             <view class="info-container">
                                 <text class="text">发票类型： <text user-select="true">{{item.invoice_type}}</text> </text>
                                 <text class="text">发票代码： <text user-select="true">{{item.invoice_dm}}</text></text>
                                 <text class="text">发票号码： <text user-select="true">{{item.invoice_hm}}</text></text>
-                                <text class="text">价税合计： <text user-select="true" class="orange">¥{{item.total_amount}}</text></text>
+                                <text class="text">价税合计： <text user-select="true" class="orange">¥ {{item.total_amount}}</text></text>
                             </view>
                             <view class="bottom-container">
                                 <view class="company-name">{{item.seller_name}}</view>
@@ -61,7 +60,7 @@
 
                             </view>
                         </view>
-                    </view>
+                    <!-- </view> -->
                 </block>
             </view>
             <view class="footer">
