@@ -3,7 +3,7 @@ const app = getApp();
 
 const {
   todolist
-} = '../../../http/api/api'
+} = require('../../../http/api/api')
 Page({
 
   /**
@@ -39,21 +39,7 @@ Page({
           }, 3000)
         }
         getApp().globalData.todolistNum = res.data.nums;
-        // console.log(getApp().globalData.todolistNum,'login页待办数量')
       }
     })
-
-    // let todoNmu = app.globalData.todolistNum;
-    // if (todoNmu > 0) {
-    //   this.setData({
-    //     agency: true
-    //   })
-    // } else {
-    //   setTimeout(() => {
-    //     wx.switchTab({
-    //       url: '../../index/index',
-    //     })
-    //   }, 3000)
-    // }
   },
 })
