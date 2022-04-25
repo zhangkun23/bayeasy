@@ -33,7 +33,6 @@ Page({
         hasMore: true,
         invoiceTypes: null,
         invoiceTypeMap: null,
-
     },
     onShow: function () {
         this.setData({
@@ -218,7 +217,8 @@ Page({
                     })
                 }
             })
-        } else {
+        }else {
+           
             let _list = this.data.searchResult || []
             let _filter_res = _list;
             for (let key in _filters) {
@@ -237,7 +237,7 @@ Page({
                 })
             }
             console.debug("filter after filter", _filter_res)
-            if (_filter_res.length !== this.data.searchResult.length) { // 筛选结果不为空 直接将结果传过去
+            if ( _filter_res.length !== this.data.searchResult.length) { // 筛选结果不为空 直接将结果传过去
                 this.setData({
                     showFilter: false,
                     showRes: true,
@@ -254,11 +254,41 @@ Page({
                     }
                 })
             } else {
-                this.setData({ // 筛选结果为空 关闭筛选 展开结果
-                    showFilter: false,
-                    showRes: true,
-                    canFlip: true,
-                })
+                let __emptyTag = true
+                for (const k in _filters){
+                    if(k === "needRequest"){
+                        continue
+                    }
+                    if(_filters[k] === null){
+                        continue
+                    }else{
+                        __emptyTag = false
+                    }
+                }
+                if(__emptyTag === true){ // 都是空 直接返回
+                    this.setData({ // 筛选结果为空 关闭筛选 展开结果
+                        showFilter: false,
+                        showRes: true,
+                        canFlip: true,
+                    })
+                }else{
+                    this.setData({
+                        showFilter: false,
+                        showRes: true,
+                        canFlip: true,
+                        _filteredData: _filter_res
+                    })
+                    wx.navigateTo({
+                        url: './filterResult/index?type=filtered',
+                        success: function (res) {
+                            res.eventChannel.emit('passFilteredData', that.data._filteredData)
+                            that.setData({
+                                _filteredData: null
+                            })
+                        }
+                    })
+                }
+              
             }
         }
     },

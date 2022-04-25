@@ -197,7 +197,7 @@ page {
 .title-container .title {
     display: flex;
     justify-content: flex-start;
-    align-content: center;
+
     font-size: 28rpx;
     font-weight: 600;
     color: #283E56;
@@ -212,7 +212,7 @@ page {
 
 .title-container .voice-status {
     display: flex;
-    align-content: center;
+    
     margin-left: auto;
     order: 2;
     font-size: 24rpx;
@@ -245,7 +245,7 @@ page {
     margin-top: 9rpx;
     display: flex;
     justify-content: flex-start;
-    align-content: center;
+    
 }
 
 .bottom-container .company-name {
