@@ -252,17 +252,18 @@
   height: 60rpx;
   line-height: 60rpx;
   border-radius: 30rpx;
-  margin-bottom: 32rpx;
   text-align: center;
   margin: 0 15rpx 32rpx;
   box-shadow: 0rpx 0rpx 0rpx 0rpx rgba(255, 255, 255, 1);
   background-color: #C2DFFF;
   color: #1D83F0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 20rpx;
 }
-.active{
+
+.active {
   background: #1D83F0 !important;
   color: #FFFFFF !important;
 }
-
-
-

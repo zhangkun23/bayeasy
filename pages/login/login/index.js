@@ -26,7 +26,8 @@ Page({
     handelClick() {
         wx.showToast({
             title: '请勾查看并勾选协议',
-            icon: 'none'
+            icon: 'none',
+            duration: 1500
         })
     },
     backIndex() {

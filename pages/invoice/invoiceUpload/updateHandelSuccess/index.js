@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        updateHandel_right: tempPath + "invoice/incomeInvoice/updateHandel_rigth.png",
+        updateHandel_right: tempPath + "public/done.png",
     },
     handelClick(){
         wx.navigateTo({

@@ -24,30 +24,13 @@ Page({
     declare_month: '',
   },
 
-  // 返回
-  backIndex() {
-    // if (this.data.returnType == 'delinquentBill') {
-    //   if (this.data.showBtn) {
-    //     wx.navigateTo({
-    //       url: '../delinquentBill/index',
-    //     })
-    //   }
-    // } else if (this.data.returnType == 'repaymentBill') {
-    //   wx.navigateTo({
-    //     url: '../repaymentBill/index',
-    //   })
-    // } else if(this.data.returnType == 'todo') {
-    //   wx.navigateTo({
-    //     url: '../../todo/todo',
-    //   })
-    // }
-  },
-  goToCertificate() {
-    if (this.data.returnType == 'delinquentBill') {
+  goToCertificate(e) {
+    let param = e.currentTarget.dataset.info;
+    if (param == 'delinquentBill') {
       wx.navigateTo({
         url: '../certificate/certificate?id=' + this.data.billingDetailId + '&type=delinquentBill',
       })
-    } else if (this.data.returnType == 'repaymentBill') {
+    } else if (param == 'repaymentBill') {
       wx.navigateTo({
         url: '../certificate/certificate?id=' + this.data.billingDetailId + '&type=repaymentBill',
       })

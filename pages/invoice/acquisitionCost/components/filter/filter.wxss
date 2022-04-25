@@ -112,6 +112,9 @@
     font-weight: 400;
     line-height: 33rpx;
     color: #6E87A2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .datetime-container {

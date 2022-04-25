@@ -48,7 +48,6 @@
       </view>
     </view>
     <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
       <view class="countCenter" data-url='/pages/tax/taxreturn/index' bindtap="handelClickUrl">
         <text class="countCenterTitle">纳税申报</text>
         <image class="nssb" src="{{nssb}}" />

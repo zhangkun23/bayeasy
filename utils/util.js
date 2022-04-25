@@ -1,6 +1,5 @@
 const {
-  btoa,
-  atob
+  btoa
 } = require('./base64')
 const {
   prod
@@ -32,10 +31,6 @@ const openPdf = (url) => {
   // if (url == '') return;
   if (!url) {
     console.error("Wrong url passed to pdf : ", url)
-    // wx.showToast({
-    //   title: '无法打开url',
-    //   icon: 'none'
-    // })
     return
   }
   // 拼接的时候如果有 .pdf 结尾就是拼接域名+文件名+手动拼接.pdf， 其他情况直接取线上地址拼接文件路径（成本发票详情）
@@ -44,21 +39,9 @@ const openPdf = (url) => {
   } else {
     url = prod + url
   }
-  // console.log(url)
-  //   wx.showToast({
-  //     title: url,
-  //     icon: 'success',
-  //     duration: 2000
-  // })
   wx.downloadFile({
     url: url,
     success: function (res) {
-      // wx.showToast({
-      //   title: res.tempFilePath,
-      //   icon: 'success',
-      //   duration: 4000
-      // })
-      console.log(res);
       if (res.statusCode === 200) { //成功
         var Path = res.tempFilePath //返回的文件临时地址，用于后面打开本地预览所用
         wx.openDocument({
@@ -174,12 +157,12 @@ const nullToEmptyString = function (obj) {
   return obj
 }
 
-const jumpUrl = function(userStatus){
-  if(userStatus == 0){
+const jumpUrl = function (userStatus) {
+  if (userStatus == 0) {
     this.navigateTo('/pages/login/authentication/index')
-  }else if(userStatus == 1){
+  } else if (userStatus == 1) {
     this.navigateTo('/pages/login/securityCheck/index')
-  }else if(userStatus==2){
+  } else if (userStatus == 2) {
     this.navigateTo('/pages/login/information/index')
   }
 }

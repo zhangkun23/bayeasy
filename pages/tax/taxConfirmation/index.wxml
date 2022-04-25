@@ -19,11 +19,11 @@
             <view class="item__center font-size-24">
               <view class="item__text">
                 <text class="item__center-title">应补税额合计：</text>
-                <text class="orangeTips font-600">{{list.should_pay_tax}}</text>
+                <text class="orangeTips font-600">¥ {{list.should_pay_tax}}</text>
               </view>
               <view class="item__text">
                 <text class="item__center-title">应退税额合计：</text>
-                <text class="greennTips font-600">{{list.should_refund_tax}}</text>
+                <text class="greennTips font-600">¥ {{list.should_refund_tax}}</text>
               </view>
               <view class="item__text">
                 <text class="item__center-title">确认时间：</text>
@@ -34,8 +34,8 @@
                 <view class="securityCheck__topTips-icon">
                   <image src="{{info_max}}"></image>
                 </view>
-                <text wx:if="{{list.overdue_status == 0}}">请尽快确认税额，申报征期已过纳税信誉产生影响！</text>
-                <text wx:if="{{list.overdue_status == 1}}">请您尽快确认税额，以免影响申报进度</text>
+                <view wx:if="{{list.overdue_status == 0}}">请尽快确认税额，申报征期已过纳税信誉产生影响！</view>
+                <view wx:if="{{list.overdue_status == 1}}">请您尽快确认税额，以免影响申报进度</view>
               </view>
             </view>
           </view>

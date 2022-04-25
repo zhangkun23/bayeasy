@@ -34,7 +34,7 @@
           <view class="item__center font-size-24">
             <view class="item__text space-between">
               <view class="item__center-title">应补税额合计</view>
-              <view class="orangeTips font-600">{{ deatilObj.should_pay_tax }}</view>
+              <view class="orangeTips font-600">¥ {{ deatilObj.should_pay_tax }}</view>
             </view>
             <view class="item__text space-between triangle">
               <view class="position">
@@ -44,7 +44,7 @@
                 应退税额合计
                 <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
               </view>
-              <view class="greennTips font-600">{{deatilObj.should_refund_tax }}</view>
+              <view class="greennTips font-600">¥ {{deatilObj.should_refund_tax }}</view>
             </view>
             <view class="item__text space-between">
               <view class="item__center-title">确认时间</view>
@@ -77,11 +77,11 @@
               </view>
               <view class="space-between mg-bp-24" wx:if="{{childItem.should_pay_tax > 0}}">
                 <text class="detail__content-title font-600">应补税额</text>
-                <text class="orangeTips">{{childItem.should_pay_tax}}</text>
+                <text class="orangeTips">¥ {{childItem.should_pay_tax}}</text>
               </view>
               <view class="space-between mg-bp-24" wx:if="{{childItem.should_refund_tax > 0}}">
                 <text class="detail__content-title font-600">应退税额</text>
-                <text class="greennTips">{{childItem.should_refund_tax}}</text>
+                <text class="greennTips">¥ {{childItem.should_refund_tax}}</text>
               </view>
             </view>
           </view>

@@ -121,6 +121,20 @@
                     "name": "11111",
                     "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "990909",
+                    "pathName": "pages/invoice/incomeInvoice/index/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/login/association/index",
+                    "pathName": "pages/login/association/index",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }

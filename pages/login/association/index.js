@@ -1,13 +1,18 @@
 // pages/login/association/index.js
-const app = getApp()
+const app = getApp();
+
+const {
+  todolist
+} = require('../../../http/api/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    successIcon: app.globalData.imgPath + "public/success.png",
-    agency: false
+    successIcon: app.globalData.imgPath + "public/done.png",
+    agency: false,
+
   },
   todoList() {
     wx.navigateTo({
@@ -20,17 +25,21 @@ Page({
     })
   },
   onShow: function (options) {
-    let todoNmu = getApp().globalData.todolistNum;
-    if (todoNmu > 0) {
-      this.setData({
-        agency: true
-      })
-    } else {
-      setTimeout(() => {
-        wx.switchTab({
-          url: '../../index/index',
-        })
-      }, 3000)
-    }
+    todolist().then(res => {
+      if (res.ret) {
+        if (res.data.nums > 0) {
+          this.setData({
+            agency: true
+          })
+        } else {
+          setTimeout(() => {
+            wx.switchTab({
+              url: '../../index/index',
+            })
+          }, 3000)
+        }
+        getApp().globalData.todolistNum = res.data.nums;
+      }
+    })
   },
 })

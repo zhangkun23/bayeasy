@@ -25,15 +25,15 @@
             <view class="item__center font-size-24">
               <view class="item__text">
                 <text class="item__center-title">应补税额合计：</text>
-                <text class="orangeTips font-600">{{list.should_pay_tax}}</text>
+                <text class="orangeTips font-600">¥ {{list.should_pay_tax}}</text>
               </view>
               <view class="item__text">
                 <text class="item__center-title">应退税额合计：</text>
-                <text class="greennTips font-600">{{list.should_refund_tax}}</text>
+                <text class="greennTips font-600">¥ {{list.should_refund_tax}}</text>
               </view>
               <view class="item__text">
                 <text class="item__center-title">缴纳税款合计：</text>
-                <text class="item__center-title">{{list.already_pay_tax}}</text>
+                <text class="item__center-title">¥ {{list.already_pay_tax}}</text>
               </view>
             </view>
           </view>

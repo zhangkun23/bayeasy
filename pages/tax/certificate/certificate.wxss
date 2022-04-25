@@ -18,6 +18,8 @@
 }
 
 .detail__topTips {
+  display: flex;
+  align-items: center;
   line-height: 36rpx;
   border-radius: 12rpx;
   padding: 15rpx;
@@ -26,7 +28,7 @@
 }
 
 .detail__topTips-icon {
-  display: inline-block;
+  display: flex;
   margin-right: 7rpx;
 }
 

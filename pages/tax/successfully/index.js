@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    successIconImg: tempPath + "public/success.png",
+    successIconImg: tempPath + "public/done.png",
     info_max: tempPath + "public/info_max.png",
     showTips: false,
     tax: '',
@@ -33,8 +33,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options,options.shouldPayTax)
     this.setData({
-      tax: options.taxPayable
+      tax: options.shouldPayTax
     })
     if (options.id) {
       this.setData({
