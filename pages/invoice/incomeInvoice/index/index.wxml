@@ -7,7 +7,6 @@
                 <image src="{{emptyPic}}" class="emptyBg" mode="widthFix"></image>
                 <text class="subscribe">暂无数据</text>
             </view>
-
             <view class="content" wx:else>
                 <view class="inv-container" wx:for="{{invoice_lists}}" wx:key="index">
                     <view class="topbar">
@@ -30,7 +29,5 @@
                 </view>
             </view>
         </view>
-
     </scroll-view>
-
 </view>

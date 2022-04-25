@@ -1,56 +1,59 @@
-<view class="container-new">
+<view class="bgColog">
     <mp-navigation-bar bindback="handleBackArrow" delta="0" title="成本发票明细"></mp-navigation-bar>
-    <view class="bgColog"></view>
-    <scroll-view scroll-y="true" class="wrapper" bindscrolltolower="onScrollVReachBottom" enable-flex="true">
-        <!-- <view class="inner-container"> -->
-            <view class="search-container" bindtap="goSearch">
-                <view class="search">
-                    <my-search-bar id="searchbar" searchKey="{{searchKey}}" isActive="true" autoFocus="{{searchFocus}}" bind:inputkey="handleSearchKey" bind:gosearch="goSearch"></my-search-bar>
-                </view>
-                <view class="text" bindtap="btnGoSearch">搜索</view>
-                
-            </view>
-            <view class="res-container">
-                <block wx:if="{{showEmpty}}">
-                    <view class="empty-res-contain">
-                        <image src="{{emptyPic}}" mode="aspectFill" class="emptyPic"></image>
-                        <view class="text">暂无内容</view>
+    <scroll-view scroll-y="true" enable-flex="true">
+        <view class="invoiceDetails">
+            <view class="content">
+                <view class="search-container" bindtap="goSearch">
+                    <view class="search">
+                        <my-search-bar id="searchbar" searchKey="{{searchKey}}" isActive="true" autoFocus="{{searchFocus}}" bind:inputkey="handleSearchKey" bind:gosearch="goSearch"></my-search-bar>
                     </view>
-                </block>
-                <block wx:else>
-                    <view wx:for="{{searchResult}}" wx:key="i" class="card">
-                        <view class="content-container">
-                            <view class="title-container">
-                                <view class="title">
-                                    <image class="icon" src="{{invoiceIcon}}" mode="aspectFill"></image>
-                                    <text class="flex_center">增值税发票</text>
+                    <view class="text" bindtap="btnGoSearch">搜索</view>
+                </view>
+                <view class="res-container">
+                    <block wx:if="{{showEmpty}}">
+                        <view class="empty-res-contain">
+                            <image src="{{emptyPic}}" mode="aspectFill" class="emptyPic"></image>
+                            <view class="text">暂无内容</view>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view wx:for="{{searchResult}}" wx:key="i" class="card">
+                            <view class="content-container">
+                                <view class="title-container">
+                                    <view class="title">
+                                        <image class="icon" src="{{invoiceIcon}}" mode="aspectFill"></image>
+                                        <text class="flex_center">增值税发票</text>
+                                    </view>
+                                    <view wx:if="{{item.status === 0}}" class="voice-status orange">审核中</view>
+                                    <view wx:if="{{item.status === 1}}" class="voice-status green">审核通过</view>
+                                    <view wx:if="{{item.status === 2}}" class="voice-status red">审核失败</view>
                                 </view>
-                                <view wx:if="{{item.status === 0}}" class="voice-status orange">审核中</view>
-                                <view wx:if="{{item.status === 1}}" class="voice-status green">审核通过</view>
-                                <view wx:if="{{item.status === 2}}" class="voice-status red">审核失败</view>
-                            </view>
-                            <view class="info-container">
-                                <text class="text">发票类型： <text user-select="true">{{item.invoice_type}}</text> </text>
-                                <text class="text">发票代码： <text user-select="true">{{item.invoice_dm}}</text></text>
-                                <text class="text">发票号码： <text user-select="true">{{item.invoice_hm}}</text></text>
-                                <text class="text">价税合计： <text user-select="true" class="orange">¥{{item.total_amount}}</text></text>
-                            </view>
-                            <view class="bottom-container">
-                                <view class="company-name">{{item.seller_name}}</view>
-                                <view wx:if="{{item.status !== 0}}" class="details-btn blueBg" bindtap="goDetail" data-vid="{{item.id}}">查看详情</view>
-                                <view wx:else class="details-btn orangeBg" bindtap="goDetail" data-vid="{{item.id}}">查看详情</view>
-
+                                <view class="info-container">
+                                    <text class="text">发票类型： <text user-select="true">{{item.invoice_type}}</text> </text>
+                                    <text class="text">发票代码： <text user-select="true">{{item.invoice_dm}}</text></text>
+                                    <text class="text">发票号码： <text user-select="true">{{item.invoice_hm}}</text></text>
+                                    <text class="text">价税合计： <text user-select="true" class="orange">¥{{item.total_amount}}</text></text>
+                                </view>
+                                <view class="bottom-container">
+                                    <view class="company-name">{{item.seller_name}}</view>
+                                    <view wx:if="{{item.status !== 0}}" class="details-btn blueBg" bindtap="goDetail" data-vid="{{item.id}}">查看详情</view>
+                                    <view wx:else class="details-btn orangeBg" bindtap="goDetail" data-vid="{{item.id}}">查看详情</view>
+                                </view>
                             </view>
                         </view>
-                    </view>
-                </block>
-            </view>
-            <view class="footer">
-                <view class="content">
-                    <view wx:if="{{showFilter}}" class="modal"></view>
-                    <my-service></my-service>
+                    </block>
                 </view>
+                <!-- <view class="footer">
+                    <view class="content">
+                        <my-service></my-service>
+                    </view>
+                </view> -->
+                <!-- <view class="securityCheck__footer">
+                    <view class="securityCheck__bottom">
+                        <my-service class="securityCheck__footer-image"></my-service>
+                    </view>
+                </view> -->
             </view>
-        <!-- </view> -->
+        </view>
     </scroll-view>
 </view>

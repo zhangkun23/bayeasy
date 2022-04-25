@@ -6,7 +6,6 @@ const {
 } = require('../../../http/api/api_szpj')
 
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -59,13 +58,13 @@ Page({
                             }
                         })
                     })
-                    this.setData({
+                    that.setData({
                         hasMore: true,
-                        searchResult: this.data.searchResult.concat(res.data.list)
+                        searchResult: that.data.searchResult.concat(res.data.list)
                     })
                 }
-                if (this.data.searchResult.length === 0) {
-                    this.setData({
+                if (that.data.searchResult.length === 0) {
+                    that.setData({
                         showEmtpy: true
                     })
                 }

@@ -1,41 +1,13 @@
 /* pages/invoice/acquisitionCost/searchResult/index.wxss */
-page {
-    /* display: flex;
-    flex-direction:column; */
-    /* height:100vh; */
-    /* height: 100%; */
-    /* overflow:hidden; */
-    /* padding-bottom: max(constant(safe-area-inset-bottom), 50rpx); */
-    /* 兼容 iOS < 11.2 */
-    /* padding-bottom: max(env(safe-area-inset-bottom), 50rpx); */
+.invoiceDetails {
+    margin: 32rpx;
+    height: 1360rpx;
+    max-height: 1360rpx;
 }
 
-.mycontainer {
-    position:absolute;
-    display: flex;
-    flex-direction: column;
+.content {
     height: 100%;
-    width: 100%;  
-    /* padding: 32rpx; */
-    /* flex: 1; */
-    /* height: 100%; */
-    /* display: flex;
-    flex-direction: column; */
 }
-
-.wrapper {
-    flex: 1;
-    height: 1px;
-    display: flex;
-    flex-direction: column;
-}
-
-.wrapper .inner-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
 
 .bg {
     position: absolute;
@@ -50,13 +22,8 @@ page {
 .search-container {
     display: flex;
     position: relative;
-    /* margin-top: 2.7%; */
-    /* margin-top: 32rpx; */
-    padding-top: 32rpx;
-    margin-left: 32rpx;
-    margin-right: 30rpx;
     justify-content: space-between;
-    padding-bottom: 32rpx;
+    margin-bottom: 32rpx;
     height: 70rpx;
 }
 
@@ -151,10 +118,12 @@ page {
 }
 
 .res-container {
-    position: relative;
+    /* position: relative; */
+    max-height: 1200rpx;
+    overflow-y: auto;
     /* width: 100%; */
     /* margin-bottom: 120rpx; */
-    margin: 0 32rpx;
+    /* margin: 0 32rpx; */
 }
 
 .res-container .card {
@@ -163,7 +132,7 @@ page {
     /* margin: 32rpx; */
     margin-bottom: 32rpx;
     background: #FFFFFF;
-    box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6);
+    box-shadow: 0 10rpx 30rpx 0 rgba(209, 213, 223, 0.6);
     border-radius: 28rpx;
 }
 
@@ -263,13 +232,16 @@ page {
 }
 
 .footer {
-    position: relative;
-    flex: 1;
+    position: fixed;
+    bottom: max(env(safe-area-inset-bottom), 50px);
+    /* left: 0 ; */
+    /* right: ; */
+    /* flex: 1; */
     /* flex-grow: 10; */
     /* padding-bottom: 50PX; */
-    padding-bottom: max(constant(safe-area-inset-bottom), 50px);
+    /* padding-bottom: max(constant(safe-area-inset-bottom), 50px); */
     /* 兼容 iOS < 11.2 */
-    padding-bottom: max(env(safe-area-inset-bottom), 50px);
+    /* padding-bottom:  */
     /* 兼容 iOS >= 11.2 */
 }
 
@@ -307,3 +279,31 @@ page {
     color: #48617C;
     line-height: 33rpx;
 }
+.securityCheck__footer {
+    margin:32rpx;
+    display: flex;
+    justify-content: center;
+    height: 100rpx;
+    align-items: center;
+  }
+  
+  .securityCheck__bottom {
+    position: fixed;
+    bottom: 41rpx;
+  }
+  
+  .securityCheck__footer-image {
+    display: inline-block;
+    margin-top: 3rpx;
+    margin-right: 10rpx;
+  }
+  
+  .securityCheck__footer-image image {
+    width: 30rpx;
+    height: 30rpx;
+  }
+  
+  .securityCheck__footer-service {
+    font-size: 28rpx;
+    color: #283E56;
+  }

@@ -5,9 +5,10 @@
       <view wx:if="{{returnType == 'list'}}" class="detail__topTips orangeTips orangeBack font-size-24">
         <view class="detail__topTips-icon">
           <image src="{{info_max}}"></image>
+          <text wx:if="{{ deatilObj.overdue_status == 0 }}">请尽快确认税额，申报征期已过纳税信誉产生影响！请联系运营人员</text>
+          <text wx:if="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严格影响主体纳税誉！</text>
         </view>
-        <text wx:if="{{ deatilObj.overdue_status == 0 }}">请尽快确认税额，申报征期已过纳税信誉产生影响！请联系运营人员</text>
-        <text wx:if="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严格影响主体纳税誉！</text>
+
       </view>
       <view class="detail__time">
         <view class="detail__date" wx:if="{{showTime && deatilObj.overdue_status == 1 && deatilObj.overdue_time > 0}}">
@@ -53,7 +54,7 @@
           </view>
         </view>
 
-        <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
+        <view class="detail__tax font-600" wx:if="{{taxList.length > 0}}">纳税明细</view>
         <!-- 明细内容 -->
         <view class="detail__taxDetail" wx:if="{{taxList.length > 0}}">
           <view class="detail__list" wx:for="{{taxList}}" wx:for-item="item" wx:key="name">
@@ -77,11 +78,11 @@
               </view>
               <view class="space-between mg-bp-24" wx:if="{{childItem.should_pay_tax > 0}}">
                 <text class="detail__content-title font-600">应补税额</text>
-                <text class="orangeTips">¥ {{childItem.should_pay_tax}}</text>
+                <text class="orangeTips font-600">¥ {{childItem.should_pay_tax}}</text>
               </view>
               <view class="space-between mg-bp-24" wx:if="{{childItem.should_refund_tax > 0}}">
-                <text class="detail__content-title font-600">应退税额</text>
-                <text class="greennTips">¥ {{childItem.should_refund_tax}}</text>
+                <text class="detail__content-title font-600 ">应退税额</text>
+                <text class="greennTips font-600">¥ {{childItem.should_refund_tax}}</text>
               </view>
             </view>
           </view>

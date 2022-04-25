@@ -63,12 +63,12 @@
                     <!-- </view> -->
                 </block>
             </view>
-            <view class="footer">
+            <!-- <view class="footer">
                 <view class="content">
                     <view wx:if="{{showFilter}}" class="modal"></view>
                     <my-service></my-service>
                 </view>
-            </view>
+            </view> -->
         </view>
     </scroll-view>
 </view>

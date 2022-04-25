@@ -129,6 +129,7 @@
 
 .detail__tax {
   margin-bottom: 24rpx;
+  color: #283E56;
 }
 
 .detail__taxDetail {

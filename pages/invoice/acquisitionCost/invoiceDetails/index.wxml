@@ -62,27 +62,31 @@
             </view>
             <view class="pic-container">
                 <view class="title">发票文件</view>
-                <view class="container">
+                <view class="containerImg">
                     <view class="content">
                         <block wx:if="{{pdfUrl}}">
-                            <image class="pdf" src="{{defaultPdfUrl}}" bindtap="goPdf" mode="aspectFill"></image>
+                            <image class="empty" src="{{defaultPdfUrl}}" bindtap="goPdf" mode="aspectFill"></image>
                         </block>
                         <block wx:elif="{{invoiceImgUrl}}">
-                            <image class="img" src="{{invoiceImgUrl}}" data-src="{{invoiceImgUrl}}" bindtap="previewImg" mode="aspectFill"></image>
+                            <image class="empty" src="{{invoiceImgUrl}}" data-src="{{invoiceImgUrl}}" bindtap="previewImg" mode="aspectFill"></image>
                         </block>
                         <block wx:else>
-                            <image class="empty" src="{{emptyPic}}" mode="aspectFill"></image>
+                            <image class="empty2" src="{{emptyPic}}" mode="aspectFill"></image>
                         </block>
                     </view>
                 </view>
             </view>
 
-            <view class="footer">
+            <!-- <view class="footer">
                 <view class="content">
-                    <view wx:if="{{showFilter}}" class="modal"></view>
                     <my-service></my-service>
                 </view>
-            </view>
+            </view> -->
+            <view class="securityCheck__footer">
+                    <view class="securityCheck__bottom">
+                        <my-service class="securityCheck__footer-image"></my-service>
+                    </view>
+                </view>
         </view>
     </scroll-view>
 </view>
