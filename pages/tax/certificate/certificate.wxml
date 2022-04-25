@@ -6,7 +6,7 @@
       <view class="detail__topTips-icon">
         <image src="{{info_max}}"></image>
       </view>
-      <text>对账单有疑问，请联系客服全程为您协调</text>
+      <view>对账单有疑问，请联系客服全程为您协调</view>
     </view>
     <view class="detail__image" wx:for="{{imgArr}}" wx:key="item" wx:for-item="item">
       <image bindtap="previewImg" data-src="{{item}}" class="images" src="{{item}}"></image>

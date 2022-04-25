@@ -30,7 +30,7 @@
             </view>
             <view class="item__text space-between">
               <view class="item__center-title">缴纳税额合计</view>
-              <view class="item__center-title">{{deatilObj.already_pay_tax}}</view>
+              <view class="item__center-title">¥ {{deatilObj.already_pay_tax}}</view>
             </view>
           </view>
         </view>
@@ -83,7 +83,7 @@
               </view>
               <view class="space-between mg-bp-24">
                 <text class="detail__content-title font-600 orangeTips">应补税额</text>
-                <text class="orangeTips">{{item.should_pay_tax}}</text>
+                <text class="orangeTips">¥ {{item.should_pay_tax}}</text>
               </view>
             </view>
           </view>

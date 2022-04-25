@@ -35,14 +35,6 @@ page {
     right: 0;
     bottom: 0;
     z-index: 0;
-
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    background-color: #F3F8FC; */
 }
 
 .bgColog {
@@ -141,7 +133,6 @@ page {
 .filter-box {
     position: relative;
     height: max-content;
-    /* margin-bottom: 50rpx; */
 }
 
 
@@ -152,7 +143,6 @@ page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* margin-bottom: 50vh; */
 }
 
 .empty-res-contain .emptyPic {
@@ -171,16 +161,9 @@ page {
 
 .res-container {
     margin: 32rpx;
-    /* z-index: -2; */
-    /* position: relative; */
-    /* width: 100%; */
-    /* margin-bottom: 120rpx; */
-    /* margin-top: 32rpx; */
 }
 
 .content-container  {
-    /* display: flex; */
-    /* position: relative; */
     margin-bottom: 32rpx;
     padding: 32rpx;
     background: #FFFFFF;
@@ -191,7 +174,6 @@ page {
 .res-container .card .content-container {
     width: 100%;
     margin: 32rpx 32rpx 32rpx 32rpx;
-    /* flex-direction: column; */
 }
 
 .res-container .card .content-container .title-container {
@@ -223,22 +205,14 @@ page {
 }
 
 
-
-
 .info-container {
-    /* display: flex;
-    flex-direction: column; */
     font-size: 24rpx;
-    /* font-weight: 400; */
     color: #48617C;
-    /* line-height: 32rpx; */
 }
 
 .info-container .text {
     display: flex;
-    margin-top: 24rpx;
     line-height: 2;
-    /* align-items: center; */
 }
 
 .bottom-container {
@@ -281,7 +255,6 @@ page {
     position: absolute;
     opacity: 0.5;
     flex: 1;
-    /* height: 100%; */
     top: 0;
     left: 0;
     right: 0;
