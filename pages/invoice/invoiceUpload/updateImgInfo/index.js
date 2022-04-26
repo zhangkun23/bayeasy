@@ -19,7 +19,7 @@ Page({
         update_status_2: tempPath + "invoice/incomeInvoice/update_status_2.png",
 
         updateHandel_err:tempPath + "invoice/incomeInvoice/updateHandel_err.png",
-        updateHandel_rigth:tempPath + "invoice/incomeInvoice/updateHandel_rigth.png",
+        updateHandel_rigth:tempPath + "public/done.png",
         info_max: tempPath + "public/info_max.png",
         
         update_status_bg:tempPath + "invoice/incomeInvoice/update_status_bg.png",
