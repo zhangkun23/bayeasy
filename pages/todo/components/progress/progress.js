@@ -29,7 +29,8 @@ Component({
     xs: 0,
     per: 0.5,
     w: 35, //圆的宽度 
-    r: 108 //圆的半径
+    r: 108, //圆的半径
+    dpr: 0,
   },
   methods: {
     drawAll: function () {
@@ -58,17 +59,27 @@ Component({
     drawCircleBg: function (ctx_lists) {
       const canvas_width = ctx_lists[0].width
       const canvas_height = ctx_lists[0].height
+      console.log(ctx_lists)
       const canvas = ctx_lists[0].node
+      const dpr = this.data.dpr
+      canvas.width = ctx_lists[0].width * dpr
+      canvas.height = ctx_lists[0].height * dpr
+
+
       const ctx = canvas.getContext('2d')
+
       const w = this.data.w
       const r = this.data.r
       this.setData({
         r: r
       })
-      canvas.width = canvas_width
-      canvas.height = canvas_height
+      // canvas.width = canvas_width
+      // canvas.height = canvas_height
+      ctx.scale(dpr, dpr)
+
       const xs = this.data.xs;
-      ctx.lineWidth = w * xs; // 设置圆环的宽度
+      // ctx.lineWidth = w * xs; // 设置圆环的宽度
+      ctx.lineWidth = Math.round(w * xs);
       ctx.strokeStyle = '#e7edf6'; // 设置圆环的颜色
       ctx.lineCap = 'round'; // 设置圆环端点的形状
       ctx.beginPath(); //开始一个新的路径
@@ -94,8 +105,14 @@ Component({
       canvas.width = canvas_width
       canvas.height = canvas_height
       const xs = this.data.xs;
+      const dpr = this.data.dpr
+      canvas.width = ctx_lists[0].width * dpr
+      canvas.height = ctx_lists[0].height * dpr
+      context.scale(dpr, dpr)
+
+
       context.strokeStyle = '#609BFC';
-      context.lineWidth = w * xs;
+      context.lineWidth = Math.round(w * xs);
       context.lineCap = 'round';
       context.beginPath(); //开始一个新的路径
       // step 从0到2为一周
@@ -104,9 +121,10 @@ Component({
     }
 
   },
-  lifetimes:{
-    attached:function () {
+  lifetimes: {
+    attached: function () {
       console.debug("progress properties: ", this.properties)
+      const dpr = wx.getSystemInfoSync().pixelRatio
       const _this = this;
       //获取屏幕宽度
       wx.getSystemInfo({
@@ -124,11 +142,12 @@ Component({
 
       console.debug("per is ", this.properties.count / this.properties.max)
       this.setData({
-        per: this.properties.count / this.properties.max
+        per: this.properties.count / this.properties.max,
+        dpr: dpr
       })
       this.drawAll()
 
-    
+
     }
   },
 })
