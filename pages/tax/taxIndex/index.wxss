@@ -60,9 +60,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 150rpx;
+    height: 568rpx;
     padding: 76rpx 43rpx 84rpx 43rpx;
-    height: max-content;
 }
 
 .content-frame .content-bg .content-container .horizon-border {
@@ -92,13 +91,28 @@
     opacity: 0.5;
 }
 
-.content-frame .content-bg .content-container .row {
+.content-frame .content-bg .content-container .row-1 {
+    position: absolute;
+    top: 96rpx;
+    left: 0;
     display: flex;
+    justify-content: center;
+    height: max-content;
+    width: 100%;
+    /* left: 0; */
+}
+.content-frame .content-bg .content-container .row-2 {
+    display: flex;
+    position: absolute;
+    bottom: 114rpx;
+    right: 0;
+    width: 100%;
+    justify-content: center;
     height: max-content;
 }
 
-.content-frame .content-bg .content-container .row .gate-area-1 {
-    width: 50%;
+.content-frame .content-bg .content-container .row-1 .gate-area-1 {
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,8 +133,8 @@
     line-height: 44rpx;
 }
 
-.content-frame .content-bg .content-container .row .gate-area-2 {
-    width: 50%;
+.content-frame .content-bg .content-container .row-2 .gate-area-2 {
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,7 +149,7 @@
 
 .gate-area-2 .name {
     margin-top: 24rpx;
-    margin-bottom: 56rpx;
+    /* margin-bottom: 56rpx; */
     font-size: 28rpx;
     font-weight: 400;
     color: #48617C;
