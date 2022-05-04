@@ -1,74 +1,81 @@
 {
-  "setting": {},
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "name": "纳税申报",
-          "pathName": "pages/tax/taxreturn/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
         },
-        {
-          "name": "手动添加发票",
-          "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
+        "game": {
+            "list": []
         },
-        {
-          "name": "手动添加成功页面",
-          "pathName": "pages/invoice/invoiceUpload/updateHandelSuccess/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
+        "gamePlugin": {
+            "list": []
         },
-        {
-          "name": "增值税发票查验",
-          "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "登录页面",
-          "pathName": "pages/login/login/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "成本发票明细",
-          "pathName": "pages/invoice/acquisitionCost/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "搜索框",
-          "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "详情",
-          "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "纳税申报",
+                    "pathName": "pages/tax/taxreturn/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "手动添加发票",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "手动添加成功页面",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandelSuccess/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "增值税发票查验",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "登录页面",
+                    "pathName": "pages/login/login/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "成本发票明细",
+                    "pathName": "pages/invoice/acquisitionCost/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "搜索框",
+                    "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "详情",
+                    "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "手动添加发票",
+                    "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
+                    "query": "",
+                    "scene": null,
+                    "launchMode": "default"
+                }
+            ]
         }
-      ]
     }
-  }
 }
