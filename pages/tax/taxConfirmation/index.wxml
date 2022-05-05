@@ -25,7 +25,7 @@
                 <text class="item__center-title">应退税额合计：</text>
                 <text class="greennTips font-600">¥ {{list.should_refund_tax}}</text>
               </view>
-              <view class="item__text">
+              <view class="item__text" wx:if="{{list.status == 2}}">
                 <text class="item__center-title">确认时间：</text>
                 <text class="item__center-title">--</text>
                 <!-- <text class="item__center-title">{{list.confirm_date}}</text> -->

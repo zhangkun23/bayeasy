@@ -8,7 +8,7 @@
     </view>
     <view class="delinquentBill__account">
       <view class="delinquentBill__account-title font-600">申报欠款总额</view>
-      <view class="delinquentBill__account-money font-600">￥{{totalLoanAmount || '00.00'}} </view>
+      <view class="delinquentBill__account-money font-600">￥{{totalLoanAmount || '0.00'}} </view>
     </view>
     <view class="taxConfirmation__list" wx:if="{{allLoanList.length > 0}}">
       <view class="taxConfirmation__list-item" wx:for="{{allLoanList}}" wx:for-item="list" wx:key="id">

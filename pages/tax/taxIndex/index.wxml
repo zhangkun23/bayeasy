@@ -27,7 +27,7 @@
                             纳税申报
                         </view>
                     </view>
-                    <view class="gate-area-1" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
+                    <view class="gate-area-1" data-url='/pages/tax/report/reportIndex/index'  bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{fsGateBtn}}" mode="aspectFill"></image>
                         </view>
