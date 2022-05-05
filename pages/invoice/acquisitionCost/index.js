@@ -23,7 +23,7 @@ Page({
         searchResult: [],
         isScroll: false,
         filterTop: 0,
-        showEmtpy: false,
+        showEmpty: false,
         _filteredData: null,
         _filters: null,
         page: 1,
@@ -36,7 +36,7 @@ Page({
     onShow: function () {
         this.setData({
             showRes: true,
-            showEmtpy: false,
+            showEmpty: false,
             showFilter: false,
             showSearch: false,
             canFlip: true
@@ -65,7 +65,7 @@ Page({
                 }
                 if (that.data.searchResult.length === 0) {
                     that.setData({
-                        showEmtpy: true
+                        showEmpty: true
                     })
                 }
             } else {
