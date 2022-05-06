@@ -40,6 +40,9 @@
     "pages/tax/deatil/deatil",
     "pages/tax/successfully/index",
     "pages/tax/taxRecord/index",
+    "pages/tax/report/reportIndex/index",
+    "pages/tax/report/profit/index",
+    "pages/tax/report/balance/index",
     "custom-tab-bar/index",
     "pages/todo/todo",
     "pages/nothing/index"

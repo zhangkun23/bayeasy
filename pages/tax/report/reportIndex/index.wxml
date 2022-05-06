@@ -1,0 +1,14 @@
+<!--pages/tax/report/reportIndex/index.wxml-->
+<view class="bgColog">
+  <mp-navigation-bar title="财务报表"></mp-navigation-bar>  
+  <view class="financialStatements">
+    <view class="financialStatements__list" bindtap="gotobalance">
+      <view class="financialStatements__title font-600">资产负债表</view>
+      <view class="financialStatements__tips font-size-24">点击查看资产负债表</view>
+    </view>
+    <view class="financialStatements__list2" bindtap="gotoprofit">
+      <view class="financialStatements__title font-600">利润表</view>
+      <view class="financialStatements__tips font-size-24">点击查看利润表</view>
+    </view>
+  </view>
+</view>

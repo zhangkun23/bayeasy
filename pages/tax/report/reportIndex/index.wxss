@@ -1,0 +1,27 @@
+/* pages/tax/report/reportIndex/index.wxss */
+
+.financialStatements {
+  margin: 32rpx;
+}
+
+.financialStatements__list {
+  background: url('https://image.bayeasy.cn/images-datas/report/balance_list.png')no-repeat;
+  background-size: 100% 100%;
+  padding: 115rpx 48rpx;
+  margin-bottom: 32rpx;
+}
+.financialStatements__list2 {
+  background: url('https://image.bayeasy.cn/images-datas/report/profit_list.png')no-repeat;
+  background-size: 100% 100%;
+  padding: 115rpx 48rpx;
+}
+
+.financialStatements__title {
+  font-size: 36rpx;
+  color: #FFFFFF;
+
+}
+
+.financialStatements__tips {
+  color: rgba(255, 255, 255, 0.49);
+}

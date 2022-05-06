@@ -9,6 +9,7 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+  /* color: rgba(0,0,0,0.3) */
 }
 
 .bgColog {
@@ -31,11 +32,31 @@
 .orangeBack {
   background: #FEF8E5 !important;
 }
+
 .buleTips {
   color: #1D83F0 !important;
 }
+
 .greennTips {
   color: #46CF84 !important;
+}
+
+.whiteTips {
+  color: #fff;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .font-600 {
@@ -58,15 +79,18 @@
   text-align: center;
   margin: 0 auto;
 }
-.opction{
+
+.opction {
   opacity: 0;
 }
-.weui-navigation-bar__btn_goback{
-  margin:20rpx;
+
+.weui-navigation-bar__btn_goback {
+  margin: 20rpx;
   padding-left: 5rpx;
   padding-right: 5rpx;
-  
+
 }
+
 .mycontainer {
   flex: 1;
   height: 100%;

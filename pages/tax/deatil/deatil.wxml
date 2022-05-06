@@ -47,7 +47,7 @@
               </view>
               <view class="greennTips font-600">¥ {{deatilObj.should_refund_tax }}</view>
             </view>
-            <view class="item__text space-between">
+            <view class="item__text space-between" wx:if="{{deatilObj.status == 2}}">
               <view class="item__center-title">确认时间</view>
               <view class="item__center-title">{{deatilObj.confirm_date || '2022-01-20'}}</view>
             </view>
@@ -76,13 +76,13 @@
                 <text class="detail__content-title">申报期限</text>
                 <text class="detail__content-text">{{childItem.declare_limit}}</text>
               </view>
-              <view class="space-between mg-bp-24" wx:if="{{childItem.should_pay_tax > 0}}">
+              <view class="space-between mg-bp-24" >
                 <text class="detail__content-title font-600">应补税额</text>
-                <text class="orangeTips font-600">¥ {{childItem.should_pay_tax}}</text>
+                <text class="orangeTips font-600">¥ {{childItem.should_pay_tax || '¥ 0.00'}}</text>
               </view>
-              <view class="space-between mg-bp-24" wx:if="{{childItem.should_refund_tax > 0}}">
+              <view class="space-between mg-bp-24">
                 <text class="detail__content-title font-600 ">应退税额</text>
-                <text class="greennTips font-600">¥ {{childItem.should_refund_tax}}</text>
+                <text class="greennTips font-600">¥ {{childItem.should_refund_tax || '¥ 0.00'}}</text>
               </view>
             </view>
           </view>
