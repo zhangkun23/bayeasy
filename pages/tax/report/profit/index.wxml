@@ -21,10 +21,10 @@
     </block>
     <!-- 选择季度 -->
     <block wx:elif="{{isShowQuarter}}">
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange"  bindcolumnchange="bindMultiPickerColumnChange"  value="{{multiIndex}}" range="{{multiArray}}">
         <!-- <view class="weui-input">{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}</view> -->
         <view class="profit__date" bindchange="showPicker">
-          <view class="profit__date-year">{{multiArray[0][multiIndex[0]]}}-{{multiArray[1][multiIndex[1]]}}</view>
+          <view class="profit__date-year">{{quarterYear}}-第{{quarterMonth}}季</view>
           <!-- <view class="profit__date-year">{{showDate}}</view> -->
           <view class="profit__date-iamge">
             <image class="profit__date-icon" src="{{dropdown}}"></image>
@@ -39,7 +39,7 @@
           <image class="profit__center-icon" src="{{date}}"></image>
         </view>
         <view wx:if="{{isShowMonth}}" class="profit__center-title whiteTips font-600">{{showDate}}</view>
-        <view wx:elif="{{isShowQuarter}}" class="profit__center-title whiteTips font-600">{{multiArray[0][multiIndex[0]]}}年{{multiArray[1][multiIndex[1]]}}</view>
+        <view wx:elif="{{isShowQuarter}}" class="profit__center-title whiteTips font-600">{{quarterYear}}年第{{quarterMonth}}期</view>
         <!-- <view class="profit__center-title whiteTips font-600">{{showDate}} || 2022年第02期</view> -->
       </view>
       <view class="whiteTips font-size-24 profit__center-list">

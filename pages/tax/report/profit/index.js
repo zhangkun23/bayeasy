@@ -8,18 +8,18 @@ const {
 } = require('../../../../http/api/api_csbl');
 const emptyBg = getApp().globalData.emptyPic
 
-
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        checkedMonth: '',
+        checkedQuater: '',
         empty_bg_url: emptyBg,
         dropdown: imgpath + 'report/dropdown_icon.png',
         date: imgpath + 'report/date_blue.png',
         title: '利润表',
-        startTime: '',
         endTime: '',
         showDate: '',
         isShowModal: false,
@@ -44,90 +44,146 @@ Page({
         multiIndex: [],
         // multiIndex: [1, 2], //默认显示的内容
         image: '',
+        monthImage: '',
+        quarterImage: '',
+        quarterYear: '',
+        quarterMonth: ''
     },
-
-    // 获取季度
-    getQuarter() {
-        let _column_year = [];
-        let _column_quater = [];
+    initData() {
+        let that = this;
         getQuarter().then(res => {
             if (res.ret) {
-                let date = res.data[0].year + '-' + res.data[0].month;
-                this.setData({
-                    startTime: date
-                })
-                res.data.map((item, index) => {
-                    _column_year.push({
-                        id: index,
-                        name: item.year
-                    })
-                    item["list"].map((litem, lindex) => {
-                        _column_quater.push({
-                            id: lindex,
-                            name: litem,
-                            parentId: index
+                if (res.data.length > 0) {
+                    // 处理最早时间
+                    const createMonth = res.data[0].month;
+                    const createQuarter = Math.ceil(res.data[0].month / 3);
+                    const startTime = res.data[0].year + '-' + createMonth
+                    res.data[0].list = res.data[0].list.filter(i => i.replace(/\D/g, '') >= createQuarter)
+                    let _column_year = [];
+                    let _column_quater = [];
+                    res.data.map((item, index) => {
+                        _column_year.push({
+                            id: index,
+                            name: item.year
                         })
-                    })
-                })
-                const objectMultiArray = [_column_year, _column_quater]
-                this.setData({
-                    // startTime: res.data[0].year,
-                    // endTime: res.data[res.data.length - 1].year,
-                    objectMultiArray: [_column_year, _column_quater]
-                })
-                const _data = this.data
-                let data = {
-                    objectMultiShow: this.data.objectMultiShow,
-                    objectMultiArray: this.data.objectMultiArray,
-                    multiArray: this.data.multiArray,
-                    multiIndex: this.data.multiIndex,
-                }
-                data = Object.assign(data, _data)
-                data.objectMultiShow = objectMultiArray.map((item, index) => {
-                    // 回归
-                    if (index > 0) {
-                        // item = item.filter(i => i.parentId === objectMultiArray[index - 1][i.parentId].id)
-                        // 第二列的所有项目 是在这句话取得 需要拿到最长那列
-                        // 获取最长那条 
-                        let _iid = 0;
-                        let _longNum = null;
-                        objectMultiArray[index - 1].map((item, index) => {
-                            if (!_longNum) {
-                                _iid = index
-                                _longNum = item.length
-                            } else {
-                                if (item.length > _longNum) {
-                                    _longNum = item.length
-                                }
-                            }
+                        item["list"].map((litem, lindex) => {
+                            
+                            _column_quater.push({
+                                id: lindex,
+                                name: litem,
+                                parentId: index
+                            })
                         })
-                        // 获取第二列的可展示项目
-                        item = item.filter(i => i.parentId === objectMultiArray[index - 1][_iid].id)
+                        const objectMultiArray = [_column_year, _column_quater]
+                        that.setData({
+                            objectMultiArray: [_column_year, _column_quater]
+                        })
+                        const _data = that.data
+                        let data = {
+                            startTime: startTime,
+                            objectMultiShow: this.data.objectMultiShow,
+                            objectMultiArray: this.data.objectMultiArray,
+                            multiArray: this.data.multiArray,
+                            multiIndex: this.data.multiIndex,
+                            quarterArrayIndex: this.data.multiIndex,
+                            quarterArrayShow: this.data.objectMultiShow
+                        }
 
-                    }
-                    return item
-                })
-                data.multiArray = data.objectMultiShow.map(item => {
-                    item = item.map(i => i.name)
-                    return item
-                })
-                let arr = data.objectMultiArray
-                let column_1 = arr[1][arr[1].length - 1].parentId
-                let column_2 = arr[1][arr[1].length - 1].id
-                data.multiIndex = [column_1, column_2]
-                // 数据更新
-                this.setData(data)
+                        data = Object.assign(data, _data)
+
+                        data.objectMultiShow = objectMultiArray.map((item, index) => {
+                            // 回归
+                            if (index > 0) {
+                                // item = item.filter(i => i.parentId === objectMultiArray[index - 1][i.parentId].id)
+                                // 第二列的所有项目 是在这句话取得 需要拿到最长那列
+                                // 获取最长那条 
+                                let _iid = 0;
+                                let _longNum = null;
+                                objectMultiArray[index - 1].map((item, index) => {
+                                    if (!_longNum) {
+                                        _iid = index
+                                        _longNum = item.length
+                                    } else {
+                                        if (item.length > _longNum) {
+                                            _longNum = item.length
+                                        }
+                                    }
+                                })
+                                // 获取第二列的可展示项目
+                                item = item.filter(i => i.parentId === objectMultiArray[index - 1][_iid].id)
+                            }
+                            return item
+                        })
+                        data.quarterArrayShow = data.objectMultiShow
+                        data.multiArray = data.objectMultiShow.map(item => {
+                            item = item.map(i => i.name)
+                            return item
+                        })
+                        // 设置初始化的年份季度
+                        let arr = data.objectMultiArray
+                        let column_1 = arr[1][arr[1].length - 1].parentId
+                        let column_2 = arr[1][arr[1].length - 1].id
+                        data.multiIndex = [column_1, column_2]
+
+                        // picker更新
+                        that.setData(data)
+                    })
+                    const quarterInfo = _column_quater[_column_quater.length - 1]
+                    const qm = quarterInfo
+                    const qy = _column_year.filter(i=>i.id == quarterInfo.parentId)[0]
+                    that.setData({
+                        quarterYear: qy.name,
+                        quarterMonth: qm.name.replace(/\D/g,'')
+                    })
+                }
             }
         })
     },
+    // 获取季度
+    getQuarter() {
+        // 获取picker初始化的数据
+        let that = this;
+        if (this.data.checkedQuater) {
+            console.log("checked quarter already exists", this.data.checkedQuater)
+        } else {
+            const __yearList = this.data.objectMultiArray[0]
+            const _yearInfo = __yearList[__yearList.length - 1]
+            const __monthList = this.data.objectMultiArray[1]
+            const _monthInfo = __monthList[__monthList.length - 1]
+            if (_monthInfo.parentId === _yearInfo.id) {
+                const param = {
+                    type: '3',
+                    year: _yearInfo.name,
+                    month: _monthInfo.name.replace(/\D/g, '')
+                }
+                that.getDetails(param)
+                that.setData({
+                    checkedQuater: _yearInfo.name + '-' + _monthInfo.name.replace(/\D/g, ''),
+                })
+            }
+        }
+    },
+    // 请求数据
     getDetails(param) {
+        let that = this
         reportForm(param).then(res => {
             if (res.ret) {
-                this.setData({
-                    company_name: res.data.company_name,
-                    tax_number: res.data.tax_number,
-                    image: res.data.image
-                })
+                if (param.type === '2') {
+                    that.setData({
+                        company_name: res.data.company_name,
+                        tax_number: res.data.tax_number,
+                        image: res.data.image || '',
+                        monthImage: res.data.image || '',
+                    })
+                } else if (param.type === '3') {
+                    that.setData({
+                        company_name: res.data.company_name,
+                        tax_number: res.data.tax_number,
+                        image: res.data.image || '',
+                        quarterImage: res.data.image || ''
+                    })
+                }
+
             } else {
                 this.setData({
                     company_name: '',
@@ -156,7 +212,8 @@ Page({
         }
         this.setData({
             isShowQuarter: false,
-            isShowMonth: true
+            isShowMonth: true,
+            image: this.data.monthImage
         })
 
         this.getMonths()
@@ -168,8 +225,10 @@ Page({
         }
         this.setData({
             isShowQuarter: true,
-            isShowMonth: false
+            isShowMonth: false,
+            image: this.data.quarterImage
         })
+        this.getQuarter()
         // this.getDetails(param)
     },
     // 修改日期
@@ -204,28 +263,25 @@ Page({
                 isShowModal: false,
                 isShowSaveModal: true
             })
-            const testData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB6ElEQVRIS7WWPU8UURSGn/fOGCOJlVZqQ2IhiQ7R1j+gMYGYWIgMhYVaoAm/wGBhb6IVJlrsqiWBCPwDWrJjY6CgAW2MiWyjZmePmdkPF1jmK3Dbc+77nq973isyjtWDS2CToDsYAY7zGH8R3zFt4WyVNssKo52jYDTMYJ+uXyCO5xEPMfysIIAW0juce6GpjW8HfQ8RWC2YAKsjnc0BPmC2PXw3rfuNz4OGfQT2cfwZcfsVkisH3vU2ayM3p7Dxune/T9CNfLEyeA8xITnlJnuZpARpzVutrzll+YV4DuZhegmcOTpL28Pzx5KedAjqwQLwKLssWlfYuNn1/wJczfSXFjTdeKJ0FMV2gWnZBe5B7IG3BJzLnS4YldWvzYLeVGpq3iXHbJLBGnArz7eaXSuyWrCDuJgLIH5i8QRySZOToEYK3NmUfQh+Y5zOdaZkkzuAzZMlEH+Kl6hKBsZu0uRV4PYJlWitxJhW6YE9Lf7QjA3NRDc6L3l8C+xy9kumhTFaYlUQg9VAHhACQ7VkgPStwuhxmWWX36b/G7WJ71/pL7s07Y7QHM+6Rnc1Ey0nuMcvOJ6b04MhgtPPrqpkmjVBYS/yQ4o2WOBSoq90Wt7jefOFRH8f0bBvS+LQ5gciAlsBLWV9W/4Bbg7jZGHDuk4AAAAASUVORK5CYII="
-            utils.saveImgToAlbum(testData)
         }
     },
     tapDialogSaveButton(e) {
         if (e.detail.item.text == '取消') {
             this.setData({
                 isShowModal: false,
-                isShowSaveModal: false
+                isShowSaveModal: false,
             })
         } else {
+            this.downloadImg()
             this.setData({
                 isShowSaveModal: false,
                 isShowModal: false,
             })
-            // this.downloadImg()
         }
     },
     // 保存图片
     downloadImg: function () {
-        const url = 'https://image.bayeasy.cn/images-datas/report/balance_list.png'
-        utils.saveImgToAlbum(url)
+        utils.saveImgToAlbum(this.data.image)
     },
 
     bindMultiPickerChange: function (e) {
@@ -233,6 +289,13 @@ Page({
         console.debug('picker发送选择改变，携带值为', e.detail)
         const _year = _data[0][e.detail.value[0]].name
         const _month = _data[1][e.detail.value[1]].name.replace(/\D/g, '')
+        if (this.data.checkedQuater) {
+            let _selectedYear = this.data.checkedQuater.split('-')[0]
+            let _selectedQuarter = this.data.checkedQuater.split('-')[1]
+            if (_year === _selectedYear && _month === _selectedQuarter) {
+                return
+            }
+        }
         const param = {
             type: '3',
             year: _year,
@@ -240,7 +303,10 @@ Page({
         }
         this.getDetails(param)
         this.setData({
-            multiIndex: e.detail.value
+            multiIndex: e.detail.value,
+            quarterYear: _year,
+            quarterMonth: _month,
+            checkedQuater: _year + '-' + _month
         })
     },
     bindMultiPickerColumnChange: function (e) {
@@ -251,8 +317,8 @@ Page({
             multiArray: this.data.multiArray,
             multiIndex: this.data.multiIndex
         };
-        // 改变第i列数据之后，后几列选择第0个选项（重置）
         data.multiIndex[e.detail.column] = e.detail.value;
+        // 改变第i列数据之后，后几列选择第0个选项（重置）
         for (let i = e.detail.column; i < data.multiIndex.length - 1; i++) {
             data.multiIndex[i + 1] = 0
         }
@@ -266,14 +332,16 @@ Page({
         _currentData = Object.assign(_currentData, data)
         this.setData(_currentData);
     },
-
+   
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         // 获取开始时间 
         // 结束时间是下一年的12月
-        this.getQuarter()
+        this.initData()
+        this.getMonths()
+        // this.getQuarter()
 
         // let that = this;
         // getFullYear().then(res => {
@@ -284,39 +352,52 @@ Page({
         //     }
         // })
         // if (this.data.isShowMonth) {
-        this.getMonths()
+
         // } else if (this.data.isShowQuarter) {
         //     this.getQuarter()
         // }
     },
     getMonths: function () {
-        let that = this;
-        const mydate = new Date()
-        let _year = mydate.getFullYear()
-        let _month = mydate.getMonth()
-
-        const param = {
-            type: '2',
-            year: _year,
-            month: _month
-        }
-        this.getDetails(param);
-
-        let _endYear;
-        if (_month === 0) {
-            _endYear = _year + 1
-            _year = _year - 1
-            _month = 12
-        } else if (0 < _month <= 9) {
-            _month = "0" + _month
-            _endYear = _year + 1
+        if (this.data.checkedMonth) {
+            const checkedMonth = this.data.checkedMonth
+            const _year = checkedMonth.split('-')[0]
+            const _month = checkedMonth.split('-')[1]
+            const param = {
+                type: '2',
+                year: _year,
+                month: _month
+            }
+            this.getDetails(param);
         } else {
-            _endYear = _year + 1
+            // 获取默认数据进行初始化
+            let that = this;
+            const mydate = new Date()
+            let _year = mydate.getFullYear()
+            let _month = mydate.getMonth()
+            const param = {
+                type: '2',
+                year: _year,
+                month: _month
+            }
+            this.getDetails(param);
+            // 最后的月份为上一个月/季度
+            let _endYear;
+            if (_month === 0) {
+                _endYear = _year + 1
+                _year = _year - 1
+                _month = 12
+            } else if (0 < _month <= 9) {
+                _month = "0" + _month
+                _endYear = _year + 1
+            } else {
+                _endYear = _year + 1
+            }
+            this.setData({
+                checkedMonth: _year + "-" + _month,
+                // endTime: _endYear + "-" + "12-01",
+                endTime: _year + "-" + _month,
+                showDate: _year + "年第" + _month + "期",
+            })
         }
-        this.setData({
-            checkedMonth: _year + "-" + _month,
-            endTime: _endYear + "-" + "12-01",
-            showDate: _year + "年第" + _month + "期",
-        })
     }
 })

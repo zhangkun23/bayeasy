@@ -81,7 +81,6 @@ const saveImgToAlbum = (content) => {
           content: "请重新打开相册权限，方便存入图片",
           success: res => {
               if (res.confirm) {
-                  console.log("?")
                   wx.openSetting({
                       success: res => {
                           console.log("open setting success :", res)
