@@ -173,7 +173,7 @@ Page({
             isShowQuarter: true,
             isShowMonth: false
         })
-        this.getDetails(param)
+        // this.getDetails(param)
     },
     // 修改日期
     changeDate(event) {

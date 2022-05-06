@@ -16,7 +16,7 @@ Page({
     endTime: '',
     year: '',
     month: '',
-    reportImg: '',
+    reportImg: '', // 保存图片的路径
     isShowModal: false,
     isShowSaveModal: false,
     isShwoData: false,
@@ -51,7 +51,7 @@ Page({
     if (month == 0) {
       month = 12
       year = year - 1
-    } 
+    }
     if (month < 10) {
       month = '0' + month
     } else {
@@ -87,10 +87,17 @@ Page({
     }
     reportForm(params).then(res => {
       if (res.ret) {
-        this.setData({
-          reportFormObj: res.data,
-          reportImg: res.data.image
-        })
+        if (!res.data.image) {
+          this.setData({
+            reportImg: '',
+            reportFormObj: res.data,
+          })
+        } else {
+          this.setData({
+            reportFormObj: res.data,
+            reportImg: res.data.image
+          })
+        }
       }
     })
   },
@@ -130,6 +137,15 @@ Page({
 
   // 修改日期
   changeDate(event) {
+    if (this.data.reportFormObj.image) {
+      this.setData({
+        reportFormObj: {
+          image: '',
+          company_name: this.data.reportFormObj.company_name,
+          tax_number: this.data.reportFormObj.tax_number,
+        }
+      })
+    }
     let value = event.detail.value.split('-');
     let year = value[0];
     let month = value[1];
@@ -140,6 +156,7 @@ Page({
     })
     this.getReportContent();
     console.log(this.data.checkedMonth)
+
   },
   // 保存图片
   downloadImg: function () {
