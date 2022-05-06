@@ -10,6 +10,11 @@
     height: 100%;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .inv-container {
     margin-bottom: 32rpx;
@@ -87,4 +92,16 @@
 .blueBg {
     background: #D1E6FC;
     color: #1C83F0;
+}
+
+.emptyBg {
+    margin-top: 306rpx;
+    height: 300rpx;
+    width: 370rpx;
+}
+
+.subscribe {
+    font-size: 28rpx;
+    font-weight: 400;
+    color: #283E56;
 }
