@@ -35,11 +35,8 @@ Page({
             }
         ],
         saveImgBtn: [{
-                text: '取消'
-            },
-            {
-                text: '确认'
-            },
+            text: '知道了'
+          },
         ],
         objectMultiShow: [],
         objectMultiArray: [],

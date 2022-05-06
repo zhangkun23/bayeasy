@@ -62,8 +62,8 @@
     </mp-dialog>
   </block>
   <block wx:if="{{isShowSaveModal}}">
-    <mp-dialog show="isShowSaveModal" buttons="{{saveImgBtn}}" bindbuttontap="tapDialogSaveButton" title="保存图片">
-      <view>保存至您的手机相册</view>
+    <mp-dialog show="isShowSaveModal" buttons="{{saveImgBtn}}" bindbuttontap="tapDialogSaveButton" title="保存成功">
+      <view>已保存至您的手机相册，请查收！</view>
     </mp-dialog>
   </block>
 </view>
