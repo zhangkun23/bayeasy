@@ -18,7 +18,7 @@
             <view class="content-container">
                 <view class="horizon-border" style="border-top: 1px dashed #D2E0EF"></view>
                 <view class="vertical-border" style=" border-left: 1px dashed #D2E0EF"></view>
-                <view class="row">
+                <view class="row-1">
                     <view class="gate-area-1"  data-url="/pages/invoice/incomeInvoice/index/index" bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{zdfp}}" mode="aspectFill"></image>
@@ -36,7 +36,7 @@
                         </view>
                     </view>
                 </view>
-                <view class="row">
+                <view class="row-2">
                     <view class="gate-area-2" data-url="/pages/invoice/invoiceUpload/index/index" bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{cbfp}}" mode="aspectFill"></image>

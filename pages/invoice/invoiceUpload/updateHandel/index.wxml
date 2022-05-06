@@ -19,7 +19,7 @@
             <input-com title="价税合计" type="digit" must="true" placeholder="请输入价税合计" inputValue="{{form.total_amount}}"    
             key="total_amount" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
 
-            <input-com title="发票校验码" must="true" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}" maxlength="6"
+            <input-com title="发票校验码" must="{{must}}" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}" maxlength="6"
             key="invoice_check_code" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
 
             <picker mode="date" value="{{dateTime}}"  start="2010-01-01" end="2050-01-01"   bindcancel="bindcancel" bindchange="bindDateChange">

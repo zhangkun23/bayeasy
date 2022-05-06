@@ -30,7 +30,8 @@ Page({
         },{
             text: '确定'
         }],
-        isShowModal:false
+        isShowModal:false,
+        must:true,
     },
     jump(){
         wx.navigateTo({
@@ -93,15 +94,30 @@ Page({
     // 交验是否可以提交
     checkSubmit(){
         let form = this.data.form;
-        if (form.invoice_type && form.invoice_dm && form.invoice_hm && form.total_amount && form.invoice_check_code && form.invoice_date ) {
-            this.setData({
-                submit:true
-            })
+        let id = form.invoice_type;
+        // 发票类型1 2  4 5 校验码 可以不填写
+        if(id == 1 || id == 2 || id == 4 || id == 5){
+            if (form.invoice_type && form.invoice_dm && form.invoice_hm && form.total_amount && form.invoice_check_code && form.invoice_date ) {
+                this.setData({
+                    submit:true
+                })
+            }else{
+                this.setData({
+                    submit:false
+                })
+            }
         }else{
-            this.setData({
-                submit:false
-            })
+            if (form.invoice_type && form.invoice_dm && form.invoice_hm && form.total_amount  && form.invoice_date ) {
+                this.setData({
+                    submit:true
+                })
+            }else{
+                this.setData({
+                    submit:false
+                })
+            }
         }
+        
     },
     // 价格限制小数点后两位
     priceEvent(e) {
@@ -119,6 +135,18 @@ Page({
     // 设置发票类型
     bindPickerChange(e){
         let category = this.data.activityArr[e.detail.value];
+        console.log(category)
+        // 1 2 4 5 
+        let id = category.id;
+        if(id == 1 || id == 2 || id == 4 || id == 5){
+            this.setData({
+                must:true
+            })
+        }else{
+            this.setData({
+                must:false
+            })
+        }
         this.setData({
             ['form.invoice_type']: category.id,
             ['form.invoice_show']: category.type
