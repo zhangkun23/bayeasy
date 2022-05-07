@@ -1,205 +1,214 @@
 /* pages/tax/report/profit/index.wxss */
-.navigationBar {
+/* .navigationBar {
   color: #fff;
+} */
+
+.navigationBar {
+    color: #fff;
+
 }
+
 
 .profit {
-  background: url('https://image.bayeasy.cn/images-datas/report/profit_back.png') no-repeat;
-  background-size: 100%;
-  padding: 32rpx;
-  display: flex;
-  flex-direction: column;
+    background: url('https://image.bayeasy.cn/images-datas/report/profit_back.png') no-repeat;
+    background-size: 100%;
+    padding: 32rpx;
+    overflow-y: auto;
+    height: calc(100% - 97rpx);
+
+    /* display: flex;
+  flex-direction: column; */
 }
 
-.profit1{
-    display: flex;
+.profit1 {
+    /* display: flex;
     flex-direction:column;
     overflow:hidden;    
-    flex: 1;
+    flex: 1; */
 }
 
 .profit__btngroup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 16rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16rpx;
 }
 
 .profit__btngroup-global {
-  width: 208rpx;
-  height: 64rpx;
-  line-height: 64rpx;
-  text-align: center;
-  background: #5faff3;
+    width: 208rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    text-align: center;
+    background: #5faff3;
 }
 
 .profit__btngroup-month {
-  border-radius: 16rpx 0 0 16rpx;
+    border-radius: 16rpx 0 0 16rpx;
 }
 
 .profit__btngroup-quarter {
-  border-radius: 0rpx 16rpx 16rpx 0rpx;
+    border-radius: 0rpx 16rpx 16rpx 0rpx;
 }
 
 .active {
-  background: #FFFFFF;
-  color: #2E9CFF;
+    background: #FFFFFF;
+    color: #2E9CFF;
 }
 
 .profit__date {
-  display: flex;
-  margin-bottom: 88rpx;
-  /* margin-bottom: 108rpx; */
+    display: flex;
+    margin-bottom: 88rpx;
+    /* margin-bottom: 108rpx; */
 }
 
 .profit__center-header {
-  margin-bottom: 48rpx;
+    margin-bottom: 48rpx;
 }
 
 .profit__date-year {
-  color: #fff;
-  margin-right: 8rpx;
+    color: #fff;
+    margin-right: 8rpx;
 }
 
 .profit__date-icon {
-  width: 48rpx;
-  height: 48rpx;
+    width: 48rpx;
+    height: 48rpx;
 }
 
 .profit__center-back {
-  margin-right: 16rpx;
+    margin-right: 16rpx;
 }
 
 .profit__center-icon {
-  width: 50rpx;
-  height: 50rpx;
+    width: 50rpx;
+    height: 50rpx;
 }
 
 .profit__center-title {
-  font-size: 48rpx;
+    font-size: 48rpx;
 }
 
 .profit__center-list {
-  line-height: 2.2;
-  margin-bottom: 32rpx;
+    line-height: 2.2;
+    margin-bottom: 32rpx;
 }
 
 .date__image {
-  text-align: center;
+    text-align: center;
 }
 
 .date__image-view {
-  /* width: 686rpx; */
-  /* height: 686rpx; */
-  background: #FFFFFF;
-  box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
-  border-radius: 28rpx;
-  padding: 32rpx;
+    /* width: 686rpx; */
+    /* height: 686rpx; */
+    background: #FFFFFF;
+    box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
+    border-radius: 28rpx;
+    padding: 32rpx;
 }
 
 .date__image-img {
-  width: 600rpx;
-  height: 600rpx;
+    width: 600rpx;
+    height: 600rpx;
 }
 
 .date__button {
-  width: 500rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  background: #FFA42E;
-  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
-  border-radius: 44rpx;
-  margin: 64rpx auto 30rpx;
-  text-align: center;
+    width: 500rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: #FFA42E;
+    box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+    border-radius: 44rpx;
+    margin: 64rpx auto 30rpx;
+    text-align: center;
 }
 
 picker-view .btns {
-  width: 100%;
-  height: 100rpx;
-  color: #baa076;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 5;
+    width: 100%;
+    height: 100rpx;
+    color: #baa076;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
 }
 
 picker-view .btns view {
-  width: 20%;
-  text-align: center;
-  font-size: 32rpx;
+    width: 20%;
+    text-align: center;
+    font-size: 32rpx;
 }
 
 picker-view {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #FFF;
-  text-align: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: 0;
-  border-radius: 30rpx 30rpx 0 0;
-  z-index: 999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 0;
+    border-radius: 30rpx 30rpx 0 0;
+    z-index: 999;
 }
 
 /* 添加弹出的过渡动画 */
 picker-view.show {
-  height: 36%;
-  transition: all 0.4s;
+    height: 36%;
+    transition: all 0.4s;
 }
 
 /* 设置单列数据的样式 */
 picker-view-column {
-  color: #B8B8B8;
-  font-size: 32rpx;
+    color: #B8B8B8;
+    font-size: 32rpx;
 }
 
 /*设置选中框的样式 */
 .pickerCol {
-  width: 100%;
-  height: 50rpx;
-  color: #baa076;
-  border-top: 1px solid #f2f3f5;
-  border-bottom: 1px solid #f2f3f5;
+    width: 100%;
+    height: 50rpx;
+    color: #baa076;
+    border-top: 1px solid #f2f3f5;
+    border-bottom: 1px solid #f2f3f5;
 }
 
 .date__image-empty {
-  height: 614rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
-  background: #fff;
-  border-radius: 28rpx;
-  padding: 32rpx;
-  text-align: center;
+    height: 614rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
+    background: #fff;
+    border-radius: 28rpx;
+    padding: 32rpx;
+    text-align: center;
 }
 
 .date__image-view2 {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20rpx;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20rpx;
 }
 
 .date__image-img2 {
-  width: 296rpx;
-  height: 240rpx;
+    width: 296rpx;
+    height: 240rpx;
 }
 
 .date__image-nodata {
-  color: #48617C;
+    color: #48617C;
 }
 
 .grayBack {
-  background: #E5EEF7;
-  color: #ABBED2;
-  box-shadow: none;
+    background: #E5EEF7;
+    color: #ABBED2;
+    box-shadow: none;
 }
 
-.wrapper{
+/* .wrapper{
     flex: 1;
     height: 1px;
-}
+} */

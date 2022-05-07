@@ -16,10 +16,10 @@
 
 .balance1 {
     /* overflow-y: auto; */
-    display: flex;
+    /* display: flex;
     flex-direction:column;
     overflow:hidden;    
-    flex: 1;
+    flex: 1; */
 
 }
 
@@ -127,7 +127,7 @@
     box-shadow: none;
 }
 
-.wrapper {
+/* .wrapper {
     flex: 1;
     height: 1px;
-}
+} */

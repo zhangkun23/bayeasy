@@ -266,6 +266,8 @@ Page({
                 isShowModal: false,
                 isShowSaveModal: true
             })
+            this.downloadImg()
+
         }
     },
     tapDialogSaveButton(e) {

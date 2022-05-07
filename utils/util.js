@@ -47,9 +47,11 @@ const saveImgToAlbum = (content) => {
                     filePath: wx.env.USER_DATA_PATH + '/tempBase64Png.png',
                     success(res) {
                         console.log("保存文件成功: ", res)
-                        wx.showToast({
-                            title: '图片保存成功',
-                            icon: 'success'
+                        wx.showModal({
+                            title: "保存成功",
+                            content: "已保存至您的手机相册，请查收！",
+                            confirmText: '知道了',
+                            showCancel: false,
                         })
                     }
                 })
