@@ -7,20 +7,20 @@
 
             <picker bindchange="bindPickerChange" range="{{activityArr}}" range-key="type" mode="selector" >
                 <input-com title="发票类型" must="true"  placeholder="请选择发票类型" inputValue="{{form.invoice_show}}" 
-                disabled="true" icon_down='true'  key="invoice_type" />
+                disabled="true" icon_down="true" key="invoice_type" />
             </picker>
 
             <input-com title="发票代码" type="number" must="true" placeholder="请输入发票代码" inputValue="{{form.invoice_dm}}"    
-            key="invoice_dm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            key="invoice_dm" clearShow="true"  bind:setInputValue="setInputValue"/>
 
             <input-com title="发票号码" type="number" must="true" placeholder="请输入发票号码" inputValue="{{form.invoice_hm}}"    
-            key="invoice_hm" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            key="invoice_hm" clearShow="true"  bind:setInputValue="setInputValue"/>
 
             <input-com title="价税合计" type="digit" must="true" placeholder="请输入价税合计" inputValue="{{form.total_amount}}"    
-            key="total_amount" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            key="total_amount" clearShow="true"  bind:setInputValue="setInputValue"/>
 
             <input-com title="发票校验码" must="{{must}}" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}" maxlength="6"
-            key="invoice_check_code" clearShow="{{true}}"  bind:setInputValue="setInputValue"/>
+            key="invoice_check_code" clearShow="true"  bind:setInputValue="setInputValue"/>
 
             <picker mode="date" value="{{dateTime}}"  start="2010-01-01" end="2050-01-01"   bindcancel="bindcancel" bindchange="bindDateChange">
                 <input-com title="开票日期" must="true" disabled="true" placeholder="请选择开票日期" inputValue="{{form.invoice_date}}" 
