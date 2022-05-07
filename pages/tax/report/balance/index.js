@@ -18,7 +18,7 @@ Page({
     month: '',
     reportImg: '', // 保存图片的路径
     isShowModal: false,
-    isShowSaveModal: false,
+    // isShowSaveModal: false,
     isShwoData: false,
     reportFormObj: {},
     buttons: [{
@@ -29,9 +29,8 @@ Page({
       }
     ],
     saveImgBtn: [{
-        text: '知道了'
-      },
-    ],
+      text: '知道了'
+    }, ],
   },
 
   onLoad: function (options) {
@@ -65,10 +64,10 @@ Page({
   // 获取商事主体创建时间
   getFullYears() {
     getQuarter().then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.ret) {
         let date = res.data[0].year + '-' + res.data[0].month
-        console.log(date)
+        // console.log(date)
         this.setData({
           startTime: date,
         })
@@ -113,24 +112,17 @@ Page({
     } else {
       this.setData({
         isShowModal: false,
-        isShowSaveModal: true
+        // isShowSaveModal: true
       })
-    }
-  },
-  tapDialogSaveButton(e) {
-    if (e.detail.item.text == '取消') {
-      this.setData({
-        isShowModal: false,
-        isShowSaveModal: false,
-      })
-    } else {
       this.downloadImg()
-      this.setData({
-        isShowSaveModal: false,
-        isShowModal: false,
-      })
     }
   },
+  // tapDialogSaveButton(e) {
+  //   this.setData({
+  //     isShowModal: false,
+  //     isShowSaveModal: false,
+  //   })
+  // },
 
   // 修改日期
   changeDate(event) {

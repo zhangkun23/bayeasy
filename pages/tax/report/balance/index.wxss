@@ -12,9 +12,6 @@
   padding: 32rpx;
 }
 
-.balance1 {
-  /* overflow-y: auto; */
-}
 
 .balance__date {
   display: flex;

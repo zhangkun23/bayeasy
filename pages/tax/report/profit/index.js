@@ -23,7 +23,7 @@ Page({
         endTime: '',
         showDate: '',
         isShowModal: false,
-        isShowSaveModal: false,
+        // isShowSaveModal: false,
         isShowReport: false,
         isShowMonth: true,
         isShowQuarter: false,
@@ -36,8 +36,7 @@ Page({
         ],
         saveImgBtn: [{
             text: '知道了'
-          },
-        ],
+        } ],
         objectMultiShow: [],
         objectMultiArray: [],
         multiArray: [],
@@ -67,7 +66,7 @@ Page({
                             name: item.year
                         })
                         item["list"].map((litem, lindex) => {
-                            
+
                             _column_quater.push({
                                 id: lindex,
                                 name: litem,
@@ -130,10 +129,10 @@ Page({
                     })
                     const quarterInfo = _column_quater[_column_quater.length - 1]
                     const qm = quarterInfo
-                    const qy = _column_year.filter(i=>i.id == quarterInfo.parentId)[0]
+                    const qy = _column_year.filter(i => i.id == quarterInfo.parentId)[0]
                     that.setData({
                         quarterYear: qy.name,
-                        quarterMonth: qm.name.replace(/\D/g,'')
+                        quarterMonth: qm.name.replace(/\D/g, '')
                     })
                 }
             }
@@ -261,24 +260,17 @@ Page({
         } else {
             this.setData({
                 isShowModal: false,
-                isShowSaveModal: true
+                // isShowSaveModal: true
             })
+            this.downloadImg();
         }
     },
-    tapDialogSaveButton(e) {
-        if (e.detail.item.text == '取消') {
-            this.setData({
-                isShowModal: false,
-                isShowSaveModal: false,
-            })
-        } else {
-            this.downloadImg()
-            this.setData({
-                isShowSaveModal: false,
-                isShowModal: false,
-            })
-        }
-    },
+    // tapDialogSaveButton(e) {
+    //     this.setData({
+    //         isShowModal: false,
+    //         isShowSaveModal: false,
+    //     })
+    // },
     // 保存图片
     downloadImg: function () {
         utils.saveImgToAlbum(this.data.image)
@@ -332,7 +324,7 @@ Page({
         _currentData = Object.assign(_currentData, data)
         this.setData(_currentData);
     },
-   
+
     /**
      * 生命周期函数--监听页面加载
      */
