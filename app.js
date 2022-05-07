@@ -25,7 +25,7 @@ App({
     barTitileStatus: null,
     imgPath: 'https://image.bayeasy.cn/images-datas/',
     emptyPic: 'https://image.bayeasy.cn/images-datas/public/emptyBackGround.png',
-    pafPath: 'https://image.bayeasy.cn/images-datas/pdf/',
+    pdfPath: 'https://image.bayeasy.cn/images-datas/pdf/',
     dev:'http://gsh.dev.corp.bayeasy.cn:11880/',
     phoneNumber: '400-090-6628', //客服电话
     userStatus: '', //用户状态 0 不为贝易资用户, 1 为贝易资用户未关联信息,2 已关联

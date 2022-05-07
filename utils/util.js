@@ -47,24 +47,11 @@ const saveImgToAlbum = (content) => {
                     filePath: wx.env.USER_DATA_PATH + '/tempBase64Png.png',
                     success(res) {
                         console.log("保存文件成功: ", res)
-                        // wx.showToast({
-                        //     title: '图片保存成功',
-                        //     icon: 'success'
-                        // })
                         wx.showModal({
                             title: "保存成功",
                             content: "已保存至您的手机相册，请查收！",
                             confirmText: '知道了',
-                            showCancel: false
-                            // success: res => {
-                            //     if (res.confirm) {
-                            //         wx.openSetting({
-                            //             success: res => {
-                            //                 console.log("open setting success :", res)
-                            //             }
-                            //         })
-                            //     }
-                            // }
+                            showCancel: false,
                         })
                     }
                 })
@@ -107,29 +94,53 @@ const saveImgToAlbum = (content) => {
     })
 }
 const openPdf = (url) => {
+    let fileName
+    if (url === 'service_agreement') {
+        fileName = '服务协议'
+    } else if (url === 'privacy_policy') {
+        fileName = '隐私协议'
+    } else {
+        fileName = url
+    }
     const app = getApp()
-    // if (url == '') return;
     if (!url) {
         console.error("Wrong url passed to pdf : ", url)
         return
     }
-    // 拼接的时候如果有 .pdf 结尾就是拼接域名+文件名+手动拼接.pdf， 其他情况直接取线上地址拼接文件路径（成本发票详情）
+    // 拼接的时候如果有 .pdf 结尾就是拼接域名+文件名+手动拼接.pdf，其他情况直接取线上地址拼接文件路径（成本发票详情）
     if (!url.endsWith('.pdf')) {
-        url = app.globalData.pafPath + url + '.pdf'
+        url = app.globalData.pdfPath + url + '.pdf'
     } else {
         url = prod + url
     }
+    // 保存后的文件名
+    if (!fileName.endsWith('.pdf')) {
+        fileName = fileName + '.pdf'
+    }
     wx.downloadFile({
         url: url,
+        filePath: wx.env.USER_DATA_PATH + "/" + fileName,
         success: function (res) {
             if (res.statusCode === 200) { //成功
-                var Path = res.tempFilePath //返回的文件临时地址，用于后面打开本地预览所用
+                let Path
+                if ('filePath' in res) {
+                    Path = res.filePath
+                } else if ('tempFilePath' in res) {
+                    Path = res.tempFilePath
+                } else {
+                    Path = wx.env.USER_DATA_PATH + "/" + fileName
+                }
+                // let Path = res.filePath
                 wx.openDocument({
-                    filePath: Path, //要打开的文件路径
-                    success: function (res) {
-                        console.log('打开PDF成功');
+                    filePath: Path,
+                    success: res => {
+                        console.log("打开pdf成功")
+                    },
+                    fail: err => {
+                        console.error("打开pdf失败: ", err)
                     }
                 })
+
             }
         },
         fail: function (res) {
