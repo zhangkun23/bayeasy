@@ -26,7 +26,7 @@
                 <view class="profit__date" bindchange="showPicker">
                     <view class="profit__date-year">{{quarterYear}}-第{{quarterMonth}}季</view>
                     <!-- <view class="profit__date-year">{{showDate}}</view> -->
-                    <view class="profit__date-iamge">nage
+                    <view class="profit__date-iamge">
                         <image class="profit__date-icon" src="{{dropdown}}"></image>
                     </view>
                 </view>
