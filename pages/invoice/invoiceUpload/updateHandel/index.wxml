@@ -22,7 +22,7 @@
             <input-com title="发票校验码" must="{{must}}" placeholder="请输入发票校验码" inputValue="{{form.invoice_check_code}}" maxlength="6"
             key="invoice_check_code" clearShow="true"  bind:setInputValue="setInputValue"/>
 
-            <picker mode="date" value="{{dateTime}}"  start="2010-01-01" end="2050-01-01"   bindcancel="bindcancel" bindchange="bindDateChange">
+            <picker mode="date" value="{{dateTime}}"  start="{{dateStartTime}}" end="{{dateEndTime}}" bindcancel="bindcancel" bindchange="bindDateChange">
                 <input-com title="开票日期" must="true" disabled="true" placeholder="请选择开票日期" inputValue="{{form.invoice_date}}" 
                 icon_rl='true' key="invoice_date" clearShow="{{false}}"  bind:setInputValue="setInputValue"/>
             </picker>

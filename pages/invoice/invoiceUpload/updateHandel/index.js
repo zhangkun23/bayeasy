@@ -34,7 +34,9 @@ Page({
             text: '确定'
         }],
         isShowModal: false,
-        must: false, 
+        must: false,
+        dateStartTime: '2022-01-01',
+        dateEndTime: ''
     },
     jump() {
         wx.navigateTo({
@@ -245,6 +247,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        const mydate = new Date()
+        const today = mydate.getFullYear() + '-' + (mydate.getMonth() + 1) + '-' + mydate.getDate()
+        this.setData({
+            dateEndTime: today
+        })
         getInvoiceType().then(res => {
             if (res.ret) {
                 this.setData({
