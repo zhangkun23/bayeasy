@@ -45,6 +45,7 @@
 
 .content-frame {
     margin-top: 54rpx;
+    margin-bottom: 256rpx;
 }
 
 .content-frame .content-bg {

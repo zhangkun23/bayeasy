@@ -82,8 +82,8 @@
     ]
   },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "dark",
     "navigationBarTitleText": "Weixin1",
     "navigationBarTextStyle": "black"
   },
@@ -94,5 +94,6 @@
     "kbone": true,
     "weui": true
   }
+
 
 }
