@@ -86,6 +86,7 @@
 
 .date__image {
   text-align: center;
+  margin-bottom: 64rpx;
 }
 
 .date__image-view {
