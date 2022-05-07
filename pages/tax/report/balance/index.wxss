@@ -87,8 +87,9 @@
     background: #FFA42E;
     box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
     border-radius: 44rpx;
-    margin: 64rpx auto 30rpx;
+    /* margin: 64rpx auto 30rpx; */
     text-align: center;
+    margin: 0 auto;
 }
 
 .date__image-empty {
@@ -101,6 +102,7 @@
     border-radius: 28rpx;
     padding: 32rpx;
     text-align: center;
+    margin-bottom: 64rpx;
 }
 
 .date__image-view2 {
