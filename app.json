@@ -45,13 +45,17 @@
     "pages/tax/report/balance/index",
     "custom-tab-bar/index",
     "pages/todo/todo",
-    "pages/nothing/index"
+    "pages/nothing/index",
+    "pages/service/index",
+    "pages/classroom/index",
+    "pages/faq/index"
   ],
   "tabBar": {
     "custom": true,
-    "list": [{
-        "pagePath": "pages/enterprise/enterpriseIndex/index",
-        "text": "企业信息",
+    "list": [
+      {
+        "pagePath": "pages/service/index",
+        "text": "服务介绍",
         "iconPath": "/image/icon/declare.png",
         "selectedIconPath": "/image/icon/declare_check.png"
       },
@@ -94,6 +98,4 @@
     "kbone": true,
     "weui": true
   }
-
-
 }

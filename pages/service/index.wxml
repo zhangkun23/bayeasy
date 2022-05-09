@@ -1,0 +1,9 @@
+<!--pages/service/index.wxml-->
+<view class="service">
+  <!-- <mp-navigation-bar ext-class="navigationBar" back="false" bindback="gotopage"></mp-navigation-bar> -->
+  <view class="service__container">
+    <view class="service__wrapper">
+      <!-- <image class="image" src="https://image.bayeasy.cn/images-datas/index/serviceIntroduction.png" alt="" /> -->
+    </view>
+  </view>
+</view>

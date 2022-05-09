@@ -1,4 +1,3 @@
-
 <!-- 上传阶段 -->
 <swiper wx:if="{{status==0}}" class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}">
     <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
@@ -58,6 +57,6 @@
     </block>
 </swiper>
 <block wx:if="{{isShowModal}}">
-    <mp-dialog show="isShowModal" buttons="{{buttons}}"  bindbuttontap="tapDialogButtonClose" title="确认删除这张发票吗？"></mp-dialog>
+    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButtonClose" title="确认删除这张发票吗？"></mp-dialog>
 </block>
 <imageBig imgArr="{{imgArr}}" />

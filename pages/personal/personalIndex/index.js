@@ -21,7 +21,7 @@ Component({
       if (app.globalData.operate) {
         console.debug("已有客服专员")
         const _entrances_info = this.data.entrances_info
-        _entrances_info[0].text = "联系运营专员"
+        _entrances_info[0].text = "联系财税管家"
         this.setData({
           isOperate: app.globalData.operate,
           entrances_info: _entrances_info
@@ -158,7 +158,13 @@ Component({
         icon: icons_url.about_bayeasy,
         url: '/pages/personal/aboutBayeasy/index',
         text: '关于贝易资'
-      }
+      },
+      {
+        id: 3,
+        icon: icons_url.feed_back,
+        url: '/pages/personal/aboutBayeasy/index',
+        text: '留言反馈'
+      },
     ],
     gates_info: [{
       id: 1,
