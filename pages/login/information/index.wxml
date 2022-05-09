@@ -9,34 +9,68 @@
       <text>以下信息为贝易资企业信息库中您的个人身份信息，如无误，请您确认关联，以便贝易资为您提供完整的服务。如有疑问可联系贝易资客服咨询</text>
     </view>
     <view class="information__idcard">
-      <view class="information__img-group" data-Idcadrparams="front" bindtap="uploadIdcard">
-        <view>
-          <image src="{{IdcardFront}}"></image>
-        </view>
-        <block wx:if="{{!showIdcardFront}}">
-          <view class="idcard__tips">{{front}}</view>
-        </block>
-        <block wx:else>
-          <view class="idcard__tips idcard__upload">
-            <image class="loading" src="{{loading}}"></image>
-            上传中
+      <!-- 用户状态为2时 -->
+      <block wx:if="{{userStatus == 2}}">
+        <view class="information__img-group" data-Idcadrparams="front">
+          <view>
+            <image src="{{IdcardFront}}"></image>
           </view>
-        </block>
-      </view>
-      <view class="information__img-group" data-Idcadrparams="back" bindtap="uploadIdcard">
-        <view>
-          <image src="{{IdcardResever}}"></image>
+          <block wx:if="{{!showIdcardFront}}">
+            <view class="idcard__tips">{{front}}</view>
+          </block>
+          <block wx:else>
+            <view class="idcard__tips idcard__upload">
+              <image class="loading" src="{{loading}}"></image>
+              上传中
+            </view>
+          </block>
         </view>
-        <block wx:if="{{!showIdcardResever}}">
-          <view class="idcard__tips">{{resever}}</view>
-        </block>
-        <block wx:else>
-          <view class="idcard__tips idcard__upload">
-            <image class="loading" src="{{loading}}"></image>
-            上传中
+        <view class="information__img-group" data-Idcadrparams="back">
+          <view>
+            <image src="{{IdcardResever}}"></image>
           </view>
-        </block>
-      </view>
+          <block wx:if="{{!showIdcardResever}}">
+            <view class="idcard__tips">{{resever}}</view>
+          </block>
+          <block wx:else>
+            <view class="idcard__tips idcard__upload">
+              <image class="loading" src="{{loading}}"></image>
+              上传中
+            </view>
+          </block>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class="information__img-group" data-Idcadrparams="front" bindtap="uploadIdcard">
+          <view>
+            <image src="{{IdcardFront}}"></image>
+          </view>
+          <block wx:if="{{!showIdcardFront}}">
+            <view class="idcard__tips">{{front}}</view>
+          </block>
+          <block wx:else>
+            <view class="idcard__tips idcard__upload">
+              <image class="loading" src="{{loading}}"></image>
+              上传中
+            </view>
+          </block>
+        </view>
+        <view class="information__img-group" data-Idcadrparams="back" bindtap="uploadIdcard">
+          <view>
+            <image src="{{IdcardResever}}"></image>
+          </view>
+          <block wx:if="{{!showIdcardResever}}">
+            <view class="idcard__tips">{{resever}}</view>
+          </block>
+          <block wx:else>
+            <view class="idcard__tips idcard__upload">
+              <image class="loading" src="{{loading}}"></image>
+              上传中
+            </view>
+          </block>
+        </view>
+      </block>
     </view>
     <view class="information__form">
       <input-com title="姓名" type="text" disabled="{{userStatus == 1}}" placeholder="请输入姓名" inputValue="{{form.username}}" key="username" clearShow="{{clearShow}}" bind:setInputValue="setInputValue" />

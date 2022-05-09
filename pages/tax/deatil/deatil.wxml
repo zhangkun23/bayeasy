@@ -76,14 +76,19 @@
                 <text class="detail__content-title">申报期限</text>
                 <text class="detail__content-text">{{childItem.declare_limit}}</text>
               </view>
-              <view class="space-between mg-bp-24" >
-                <text class="detail__content-title font-600">应补税额</text>
-                <text class="orangeTips font-600">¥ {{childItem.should_pay_tax || '¥ 0.00'}}</text>
-              </view>
-              <view class="space-between mg-bp-24">
-                <text class="detail__content-title font-600 ">应退税额</text>
-                <text class="greennTips font-600">¥ {{childItem.should_refund_tax || '¥ 0.00'}}</text>
-              </view>
+              
+              <!-- <block wx:if="{{ childItem.should_pay_tax > 0}}"> -->
+                <view class="space-between mg-bp-24">
+                  <text class="detail__content-title font-600">应补税额</text>
+                  <text class="orangeTips font-600">¥ {{childItem.should_pay_tax || '0.00'}}</text>
+                </view>
+              <!-- </block>
+              <block wx:if="{{ childItem.should_pay_tax < 0 }}"> -->
+                <view class="space-between mg-bp-24">
+                  <text class="detail__content-title font-600 ">应退税额</text>
+                  <text class="greennTips font-600">¥ {{childItem.should_refund_tax || '0.00'}}</text>
+                </view>
+              <!-- </block> -->
             </view>
           </view>
         </view>

@@ -4,6 +4,9 @@ const {
   declareInfo,
   confirmdeclare
 } = require('../../../http/api/api_csbl');
+const {
+  getUserStatus,
+} = require('../../../http/api/api.js');
 Page({
 
   /**
@@ -45,6 +48,19 @@ Page({
   backIndex() {
     wx.setStorageSync('overdueStatus', '')
   },
+  // getUserStatus() {
+  //   getUserStatus().then(res => {
+  //     console.log(res,this.data.deatilObj)
+  //     if (res.ret) {
+  //       this.setData({
+  //         deatilObj:{
+  //           // status: res.data.status
+  //         }
+  //       })
+  //       // getApp().globalData.userStatus = res.data.status;
+  //     }
+  //   })
+  // },
 
   //overdue_status 0 逾期 1 未逾期
   confirmTax() {
@@ -62,24 +78,29 @@ Page({
     } else {
       console.log(this.data.taxPayable)
       if (this.data.time == 1) {
-        confirmdeclare({
-          id: this.data.detailId
-        }).then(res => {
-          if (res.ret) {
-            // 确认无误之后跳转到结果页  此时需要隐藏弹出框
-            this.setData({
-              isShowModal: false,
-              returnType: 'result',
-              title: '申报纳税确认记录',
-              showBtn: true
-            })
-            setTimeout(() => {
-              wx.navigateTo({
-                url: '../successfully/index?typs=list&id=' + this.data.detailId + '&shouldPayTax=' + this.data.taxPayable,
-              })
-            }, 100)
+        // confirmdeclare({
+        //   id: this.data.detailId
+        // }).then(res => {
+        //   if (res.ret) {
+        //     // 确认无误之后跳转到结果页  此时需要隐藏弹出框
+        //     this.setData({
+        //       isShowModal: false,
+        //       returnType: 'result',
+        //       title: '申报纳税确认记录',
+        //       showBtn: true
+        //     })
+        //     setTimeout(() => {
+        wx.navigateTo({
+          url: '../successfully/index?typs=list&id=' + this.data.detailId + '&shouldPayTax=' + this.data.taxPayable,
+          events: {
+            acceptDataFromOpenedPage: function (data) {
+              console.log(data)
+            },
           }
         })
+        //     }, 100)
+        //   }
+        // })
       }
     }
   },
@@ -91,8 +112,9 @@ Page({
   },
   // 获取详情
   getdeclareInfo() {
+    let id = wx.getStorageSync('rowid')
     declareInfo(this.data.detailId).then(res => {
-      // console.log(res, '详情')
+      console.log(res, '详情')
       if (res.ret) {
         let arr = []
         if (res.data) {
@@ -110,14 +132,14 @@ Page({
           if (res.data.list) {
             arr = res.data.list
           }
-          console.log(res.data)
+          // console.log(res.data)
           this.setData({
             deatilObj: res.data,
             taxList: arr,
             // showTime: true,
             taxPayable: res.data.should_pay_tax
           })
-        } 
+        }
       }
     })
   },
@@ -190,7 +212,7 @@ Page({
         clearInterval(timer)
         console.log('倒计时结束，清除定时器，避免内存溢出')
       }
-    }, 1000)    
+    }, 1000)
   },
 
   // 确认是否已逾期 0 逾期 1未逾期   overdueStatus逾期状态
@@ -227,6 +249,7 @@ Page({
         detailId: options.id
       })
     }
+    wx.setStorageSync('rowid', options.id)
     this.getdeclareInfo();
     this.renderSecon();
     this.renderPage(options.type)
