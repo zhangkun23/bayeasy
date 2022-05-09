@@ -42,8 +42,8 @@ Page({
     if (num < 0) {
       num = length;
       this.setData({
-        isLeft: false,
-        isRight: false
+        isLeft: true,
+        isRight: true
       })
     } else if (num == this.data.imageArr.length) {
       num = 0;
@@ -58,8 +58,8 @@ Page({
     if (num < this.data.imageArr.length) {
       num + 1;
       this.setData({
-        isLeft: true,
-        isRight: true
+        isLeft: false,
+        isRight: false
       })
     } else if (num == this.data.imageArr.length) {
       num = 0;
