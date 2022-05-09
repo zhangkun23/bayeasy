@@ -31,28 +31,22 @@ Page({
     isLeft: false,
   },
   changeImage(e) {
-    const value = e.detail.current
-    // console.log(e)
+    const value = e.detail.current;
     this.setData({
       currentNum: value
     })
   },
   changeLeft() {
-    if (this.data.currentNum == 0) {
-      this.data.currentNum = this.data.imageArr.length;
-    }
     let num = this.data.currentNum - 1;
-    console.log('数字减1', num);
-    if (num <= 0) {
+    let length = this.data.imageArr.length - 1;
+    if (num < 0) {
+      num = length;
       this.setData({
-        currentNum: this.data.imageArr.length
+        isLeft: false,
+        isRight: false
       })
-      // num - 1;
-      console.log('num= 0')
-      num = this.data.imageArr.length;
     } else if (num == this.data.imageArr.length) {
-      console.log('ppp')
-      num = 0
+      num = 0;
     }
     this.setData({
       currentNum: num
@@ -62,14 +56,14 @@ Page({
   changeRight() {
     let num = this.data.currentNum + 1;
     if (num < this.data.imageArr.length) {
-      console.log(111)
       num + 1;
+      this.setData({
+        isLeft: true,
+        isRight: true
+      })
     } else if (num == this.data.imageArr.length) {
-      console.log(222)
-      num = 0
+      num = 0;
     }
-    console.log('数字加1', num, )
-    // num = newNum
     this.setData({
       currentNum: num
     })

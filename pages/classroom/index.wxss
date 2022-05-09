@@ -4,6 +4,7 @@
   width: 548rpx;
   height: 974rpx;
 }
+
 swiper {
   height: 974rpx;
   margin-bottom: 129rpx;
@@ -11,9 +12,7 @@ swiper {
 
 .classroom__wrapper {
   display: flex;
-  /* justify-content: center; */
   margin-top: 50rpx;
-  /* overflow-x: auto; */
 }
 
 .classroom__wrapper-box {
@@ -26,12 +25,14 @@ swiper {
   display: flex;
   justify-content: space-around;
 }
-.btn{
+
+.btn {
   width: 280rpx;
   height: 70rpx;
   border-radius: 44rpx;
   text-align: center;
 }
+
 .classroom__button-left {
   background: #FFA42E;
   box-shadow: 0px 30rpx 50rpx 0px rgba(255, 164, 46, 0.2);
@@ -48,3 +49,8 @@ swiper {
   width: 50rpx;
   height: 60rpx;
 }
+
+/* .classroom__button-right:active{
+  background-color: #FFA42E;
+  color: #fff;
+} */
