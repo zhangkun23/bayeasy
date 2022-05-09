@@ -22,75 +22,62 @@
         <!-- 选择季度 -->
         <block wx:elif="{{isShowQuarter}}">
             <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-                <!-- <view class="weui-input">{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}</view> -->
                 <view class="profit__date" bindchange="showPicker">
                     <view class="profit__date-year">{{quarterYear}}-第{{quarterMonth}}季</view>
-                    <!-- <view class="profit__date-year">{{showDate}}</view> -->
                     <view class="profit__date-iamge">
                         <image class="profit__date-icon" src="{{dropdown}}"></image>
                     </view>
                 </view>
             </picker>
         </block>
-        <scroll-view scroll-y="true" class="wrapper">
-            <view class="profit__center">
-                <view class="flex-center profit__center-header">
-                    <view class="profit__center-back display-flex">
-                        <image class="profit__center-icon" src="{{date}}"></image>
-                    </view>
-                    <view wx:if="{{isShowMonth}}" class="profit__center-title whiteTips font-600">{{showDate}}</view>
-                    <view wx:elif="{{isShowQuarter}}" class="profit__center-title whiteTips font-600">{{quarterYear}}年第{{quarterMonth}}期</view>
-                    <!-- <view class="profit__center-title whiteTips font-600">{{showDate}} || 2022年第02期</view> -->
+        <view class="profit__center">
+            <view class="flex-center profit__center-header">
+                <view class="profit__center-back display-flex">
+                    <image class="profit__center-icon" src="{{date}}"></image>
                 </view>
-                <view class="whiteTips font-size-24 profit__center-list">
-                    <view class="space-between">
-                        <text>编制单位</text>
-                        <text>{{company_name || '--'}}</text>
-                    </view>
-                    <view class="space-between">
-                        <text>统一社会信用代码</text>
-                        <text>{{tax_number || '--'}}</text>
-                    </view>
-                    <view class="space-between">
-                        <text>单位</text>
-                        <text>元</text>
-                    </view>
+                <view wx:if="{{isShowMonth}}" class="profit__center-title whiteTips font-600">{{showDate}}</view>
+                <view wx:elif="{{isShowQuarter}}" class="profit__center-title whiteTips font-600">{{quarterYear}}年第{{quarterMonth}}期</view>
+            </view>
+            <view class="whiteTips font-size-24 profit__center-list">
+                <view class="space-between">
+                    <text>编制单位</text>
+                    <text>{{company_name || '--'}}</text>
+                </view>
+                <view class="space-between">
+                    <text>统一社会信用代码</text>
+                    <text>{{tax_number || '--'}}</text>
+                </view>
+                <view class="space-between">
+                    <text>单位</text>
+                    <text>元</text>
                 </view>
             </view>
-            <block wx:if="{{image}}">
-                <view class="date__image" data-src="{{image}}" bindtap="previewImg">
-                    <view class="date__image-view">
-                        <image class="date__image-img" src="{{image}}"></image>
-                    </view>
+        </view>
+        <block wx:if="{{image}}">
+            <view class="date__image" data-src="{{image}}" bindtap="previewImg">
+                <view class="date__image-view">
+                    <image class="date__image-img" src="{{image}}"></image>
                 </view>
-                <view class="date__button whiteTips" bindtap="saveImg">
-                    <view>保存图片</view>
+            </view>
+            <view class="date__button whiteTips" bindtap="saveImg">
+                <view>保存图片</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="date__image-empty">
+                <view class="date__image-view2">
+                    <image class="date__image-img2" src="{{empty_bg_url}}"></image>
                 </view>
-            </block>
-            <block wx:else>
-                <view class="date__image-empty">
-                    <view class="date__image-view2">
-                        <image class="date__image-img2" src="{{empty_bg_url}}"></image>
-                    </view>
-                    <view class="date__image-nodata font-size-24">暂无数据</view>
-                </view>
-                <view class="date__button whiteTips grayBack">
-                    <view>保存图片</view>
-                </view>
-            </block>
-        </scroll-view>
+                <view class="date__image-nodata font-size-24">暂无数据</view>
+            </view>
+            <view class="date__button whiteTips grayBack">
+                <view>保存图片</view>
+            </view>
+        </block>
     </view>
-
-
-
-  <block wx:if="{{isShowModal}}">
-    <mp-dialog show="{{isShowModal}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确定保存图片么？">
-      <view>保存利润表</view>
-    </mp-dialog>
-  </block>
-  <!-- <block wx:if="{{isShowSaveModal}}">
-    <mp-dialog show="{{isShowSaveModal}}" buttons="{{saveImgBtn}}" bindbuttontap="tapDialogSaveButton" title="保存成功">
-      <view>已保存至您的手机相册，请查收！</view>
-    </mp-dialog>
-  </block> -->
+    <block wx:if="{{isShowModal}}">
+        <mp-dialog show="{{isShowModal}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确定保存图片么？">
+            <view>保存利润表</view>
+        </mp-dialog>
+    </block>
 </view>

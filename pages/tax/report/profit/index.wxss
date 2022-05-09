@@ -1,21 +1,30 @@
 /* pages/tax/report/profit/index.wxss */
+/* .navigationBar {
+  color: #fff;
+} */
+
 .navigationBar {
   color: #fff;
+
 }
+
 
 .profit {
   background: url('https://image.bayeasy.cn/images-datas/report/profit_back.png') no-repeat;
   background-size: 100%;
   padding: 32rpx;
-  display: flex;
-  flex-direction: column;
+  overflow-y: auto;
+  height: calc(100% - 97rpx);
+
+  /* display: flex;
+flex-direction: column; */
 }
 
-.profit1{
-    display: flex;
-    flex-direction:column;
-    overflow:hidden;    
-    flex: 1;
+.profit1 {
+  /* display: flex;
+  flex-direction:column;
+  overflow:hidden;    
+  flex: 1; */
 }
 
 .profit__btngroup {
@@ -48,7 +57,7 @@
 
 .profit__date {
   display: flex;
-  margin-bottom: 50rpx;
+  margin-bottom: 88rpx;
   /* margin-bottom: 108rpx; */
 }
 
@@ -86,7 +95,6 @@
 
 .date__image {
   text-align: center;
-  margin-bottom: 64rpx;
 }
 
 .date__image-view {
@@ -110,9 +118,8 @@
   background: #FFA42E;
   box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
   border-radius: 44rpx;
-  /* margin: 64rpx auto 30rpx; */
+  margin: 64rpx auto 30rpx;
   text-align: center;
-  margin: 0 auto;
 }
 
 picker-view .btns {
@@ -178,7 +185,6 @@ picker-view-column {
   border-radius: 28rpx;
   padding: 32rpx;
   text-align: center;
-  margin-bottom: 64rpx;
 }
 
 .date__image-view2 {
@@ -202,7 +208,7 @@ picker-view-column {
   box-shadow: none;
 }
 
-.wrapper{
-    flex: 1;
-    height: 1px;
-}
+/* .wrapper{
+  flex: 1;
+  height: 1px;
+} */

@@ -93,9 +93,14 @@ Component({
         },
         // 清空input
         clearInput() {
-            this.setData({
-                inputValue: ''
-            })
+            setTimeout(() => {
+                this.setData({
+                    inputValue: ''
+                })
+            }, 200);
+            // this.setData({
+            //     inputValue: ''
+            // })
         },
         // 显示/隐藏 closeImg
         setShow(type) {
