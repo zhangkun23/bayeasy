@@ -5,19 +5,23 @@
 
 .navigationBar {
     color: #fff;
-
 }
-
 
 .profit {
     background: url('https://image.bayeasy.cn/images-datas/report/profit_back.png') no-repeat;
     background-size: 100%;
     padding: 32rpx;
-    overflow-y: auto;
-    height: calc(100% - 97rpx);
+    /* overflow-y: auto; */
+    /* height: calc(100vh - 97rpx); */
+    height: calc(100vh - 64rpx);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
-    /* display: flex;
-  flex-direction: column; */
+.wrapper {
+    flex: 1;
+    height: 1rpx;
 }
 
 .profit1 {

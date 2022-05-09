@@ -183,5 +183,8 @@ Page({
         wx.previewImage({
             urls: [src],
         })
+    },
+    handleTouchMove: function(e){
+        return 
     }
 })

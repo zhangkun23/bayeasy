@@ -404,5 +404,8 @@ Page({
                 showDate: _year + "年第" + _month + "期",
             })
         }
+    },
+    handleTouchMove: function(e){
+        return 
     }
 })

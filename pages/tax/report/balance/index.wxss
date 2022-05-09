@@ -1,7 +1,4 @@
 /* pages/tax/report/balance/index.wxss */
-
-
-
 .navigationBar {
     color: #fff;
 }
@@ -12,15 +9,18 @@
     padding: 32rpx; 
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 64rpx);
+    overflow: hidden;
 }
 
 .balance1 {
+    flex: 1;
+    height: 1rpx;
     /* overflow-y: auto; */
     /* display: flex;
     flex-direction:column;
     overflow:hidden;    
     flex: 1; */
-
 }
 
 .balance__date {
