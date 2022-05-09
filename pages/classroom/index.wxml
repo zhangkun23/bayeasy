@@ -1,5 +1,5 @@
 <!--pages/classroom/index.wxml-->
-<view class="classroom bgColog">
+<view class="classroom">
   <mp-navigation-bar title="贝易资财税小课堂" back="false" bindback="gotopage"></mp-navigation-bar>
   <view class="classroom__contaniner">
     <swiper previous-margin="80rpx" next-margin="80rpx" current="{{currentNum}}" circular="true" bindchange="changeImage">
@@ -13,9 +13,11 @@
         </view>
       </view>
     </swiper>
+
+
     <view class="classroom__button">
       <block wx:if="{{!isLeft}}">
-        <view class="classroom__button-right btn" bindtap="changeLeft">
+        <view bindtap="changeLeft" class="classroom__button-right btn">
           <image src="{{left_orange}}"></image>
         </view>
       </block>
@@ -36,7 +38,6 @@
           <image src="{{right_orange}}"></image>
         </view>
       </block>
-
     </view>
   </view>
 </view>

@@ -1,5 +1,13 @@
 /* pages/classroom/index.wxss */
 
+.classroom{
+  background-image: url('https://image.bayeasy.cn/images-datas/public/backGround.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .classroom__wrapper-item image {
   width: 548rpx;
   height: 974rpx;
