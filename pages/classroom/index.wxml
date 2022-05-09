@@ -1,0 +1,43 @@
+<!--pages/classroom/index.wxml-->
+<view class="classroom bgColog">
+  <mp-navigation-bar title="贝易资财税小课堂" back="false" bindback="gotopage"></mp-navigation-bar>
+  <view class="classroom__contaniner">
+    <swiper previous-margin="80rpx" next-margin="80rpx" current="{{currentNum}}" circular="true" bindchange="changeImage">
+      <view class="classroom__wrapper">
+        <view class="classroom__wrapper-item" wx:for="{{imageArr}}" wx:key="item" wx:for-item="item">
+          <swiper-item>
+            <view class="classroom__wrapper-box">
+              <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+          </swiper-item>
+        </view>
+      </view>
+    </swiper>
+    <view class="classroom__button">
+
+      <block wx:if="{{isRight}}">
+        <view class="classroom__button-right btn" bindtap="changeRight">
+          <image src="{{left_orange}}"></image>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="classroom__button-left btn" bindtap="changeLeft">
+          <image src="{{left_white}}"></image>
+        </view>
+      </block>
+
+      <block wx:if="{{isLeft}}">
+        <view class="classroom__button-right btn" bindtap="changeRight">
+          <image src="{{right_white}}"></image>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class="classroom__button-right btn" bindtap="changeRight">
+          <image src="{{right_orange}}"></image>
+        </view>
+      </block>
+
+    </view>
+  </view>
+</view>

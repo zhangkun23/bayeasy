@@ -4,6 +4,7 @@ const config = {
     right_arrow: tempPath + 'personal/btns/right-arrow.png',
     contact_operate: tempPath + 'personal/icons/contact-service.png',
     about_bayeasy: tempPath + 'personal/icons/about-bayeasy.png',
+    feed_back: tempPath + 'personal/icons/feedback.png'
   },
   btns_url: {
     personal: tempPath + 'personal/gates/person-info.png',
