@@ -101,7 +101,7 @@ Page({
         let form = this.data.form;
         let id = form.invoice_type;
         // 发票类型1 2  4 5 校验码 可以不填写
-        if (id == 1 || id == 2 || id == 4 || id == 5) {
+        if (id == 2 || id == 3 || id == 4 || id == 5){
             if (form.invoice_type && form.invoice_dm && form.invoice_hm && form.total_amount && form.invoice_check_code && form.invoice_date) {
                 this.setData({
                     submit: true
@@ -224,8 +224,14 @@ Page({
     },
     // 选择开票日期
     bindDateChange(event) {
+        let value
+        if('data' in event.detail){
+            value = event.detail.data
+        }else{
+            value = event.detail.value
+        }
         this.setData({
-            ['form.invoice_date']: event.detail.value
+            ['form.invoice_date']: value
         })
         this.checkSubmit();
     },

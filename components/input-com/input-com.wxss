@@ -1,4 +1,3 @@
-
 .content {
     display: flex;
     width: 686rpx;
@@ -9,44 +8,60 @@
     margin-top: 32rpx;
     box-shadow: 0rpx 5rpx 30rpx 0rpx rgba(201, 209, 228, 0.38);
     position: relative;
-  }
-  
-  .content .title {
+}
+
+.content .title {
     font-size: 28rpx;
     color: #48617C;
     width: 175rpx;
     text-align: right;
-  }
-  .title>h1{
+}
+
+.title>h1 {
     color: red;
     font-size: 28rpx;
     margin-top: 15rpx;
-  }
+}
 
-  .content input {
+.content input {
     margin-top: 23rpx;
     font-size: 28rpx;
     margin-left: 38rpx;
     width: 405rpx;
-  }
-  .closeView{
+}
+
+.closeView {
     height: 100%;
     width: 88rpx;
     position: absolute;
     top: 0;
     right: 0rpx;
     z-index: 11;
-  }
-  .closeView image {
+}
+
+.closeView image {
     height: 30rpx;
     width: 30rpx;
     position: absolute;
     top: 30rpx;
     left: 50%;
     margin-left: -20rpx;
-  }
-  .placeholderStyle {
+}
+
+.placeholderStyle {
     color: #ABBED2;
     font-size: 28rpx;
-  }
-  
+}
+
+.datePlaceholder {
+    margin-left: 38rpx;
+    color: #ABBED2;
+    font-size: 28rpx;
+    width: 405rpx;
+}
+
+.dateValue {
+    font-size: 28rpx;
+    margin-left: 38rpx;
+    width: 405rpx;
+}

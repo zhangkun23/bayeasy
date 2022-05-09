@@ -48,6 +48,18 @@ Component({
         maxlength: {
             type: Number,
             value: 200
+        },
+        dateValue: {
+            type: String,
+            value: ''
+        },
+        dateStart: {
+            type: String,
+            value: ''
+        },
+        dateEnd: {
+            type: String,
+            value: ''
         }
     },
 
@@ -97,6 +109,7 @@ Component({
                 this.setData({
                     inputValue: ''
                 })
+                this.setShow(true)
             }, 200);
             // this.setData({
             //     inputValue: ''
@@ -119,6 +132,19 @@ Component({
             this.triggerEvent('inputShowClick', {
                 key: e.currentTarget.dataset.key,
             })
+        },
+        bindDateChange(e) {
+            this.setData({
+                inputValue: e.detail.value
+            })
+            this.triggerEvent('setInputValue', {
+                data: e.detail.value
+            })
+            if (this.data.inputValue) {
+                this.setShow(false)
+            } else {
+                this.setShow(true)
+            }
         }
     }
 })
