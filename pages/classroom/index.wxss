@@ -10,27 +10,20 @@
     background-size: cover;
 }
 
-.classroom__contaniner {
-    flex: 1;
-}
-
-.classroom__wrapper-item image {
+.pic {
+    height: 100%;
     width: 100%;
-    height: 974rpx;
+    border-radius: 28rpx;
+    box-shadow: 0rpx 9rpx 26rpx -1px rgba(209, 213, 223, 0.6);
 }
 
 swiper {
-    /* flex: 1; */
-    height: 1300rpx;
-    /* height: 100%; */
-    /* height: 974rpx;
-    margin-bottom: 129rpx; */
+    height: 100%;
 }
 
 .swiper-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    flex: 1;
+    margin-top: 50rpx;
 }
 
 .wrapper {
@@ -38,21 +31,23 @@ swiper {
     height: 1rpx;
 }
 
-.classroom__wrapper {
-    display: flex;
-    margin-top: 50rpx;
-}
 
 .classroom__wrapper-box {
-    display: flex;
-    justify-content: center;
-    margin: 0 24rpx;
-    border-radius: 28rpx;
-    box-shadow: 0px 9rpx 26rpx 0px rgba(209, 213, 223, 0.6);
+    height: calc(100% - 40rpx);
+    width: calc(100% - 65rpx);
+    text-align: center;
+    margin: auto;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    /* padding: 0 12rpx; */
+    /* border-radius: 28rpx; */
+
 }
 
 .classroom__button {
-    height: 173rpx;
+    height: 90rpx;
+    align-items: center;
     display: flex;
     justify-content: space-around;
     padding-bottom: 30rpx;
