@@ -6,7 +6,7 @@
             <view wx:for="{{imageArr}}" wx:key="item" wx:for-item="item">
                 <swiper-item>
                     <view class="classroom__wrapper-box">
-                        <image  bindtap="previewImg" data-src="{{item.img}}" class="pic" mode="scaleToFill" src="{{item.img}}"></image>
+                        <image  bindtap="previewImg" data-src="{{item.img}}" class="pic" mode="heightFix" src="{{item.img}}"></image>
                     </view>
                 </swiper-item>
             </view>
