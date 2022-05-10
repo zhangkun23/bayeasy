@@ -21,13 +21,13 @@ Page({
     })
   },
   gotoReult() {
-    // wx.navigateTo({
-    //   url: '../deatil/deatil?type=result&id=' + this.data.paramsId,
-    // })
-    // wx.navigateBack()
-    wx.navigateBack({
-      delta: 1
+    wx.navigateTo({
+      url: '../deatil/deatil?type=result&id=' + this.data.paramsId,
     })
+    // wx.navigateBack()
+    // wx.navigateBack({
+    //   delta: 1
+    // })
   },
   /**
    * 生命周期函数--监听页面加载
