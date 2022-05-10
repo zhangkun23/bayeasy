@@ -41,10 +41,10 @@ Page({
     let length = this.data.imageArr.length - 1;
     if (num < 0) {
       num = length;
-      this.setData({
-        isLeft: true,
-        isRight: true
-      })
+      // this.setData({
+      //   isLeft: true,
+      //   isRight: true
+      // })
     } else if (num == this.data.imageArr.length) {
       num = 0;
     }
@@ -57,10 +57,10 @@ Page({
     let num = this.data.currentNum + 1;
     if (num < this.data.imageArr.length) {
       num + 1;
-      this.setData({
-        isLeft: false,
-        isRight: false
-      })
+      // this.setData({
+      //   isLeft: false,
+      //   isRight: false
+      // })
     } else if (num == this.data.imageArr.length) {
       num = 0;
     }

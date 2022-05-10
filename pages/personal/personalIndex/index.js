@@ -159,12 +159,12 @@ Component({
         url: '/pages/personal/aboutBayeasy/index',
         text: '关于贝易资'
       },
-      {
-        id: 3,
-        icon: icons_url.feed_back,
-        url: '/pages/personal/aboutBayeasy/index',
-        text: '留言反馈'
-      },
+      // {
+      //   id: 3,
+      //   icon: icons_url.feed_back,
+      //   url: '/pages/personal/aboutBayeasy/index',
+      //   text: '留言反馈'
+      // },
     ],
     gates_info: [{
       id: 1,
