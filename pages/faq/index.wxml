@@ -1,11 +1,32 @@
 <!--pages/faq/index.wxml-->
 <!--pages/classroom/index.wxml-->
 <view class="faq">
-  <mp-navigation-bar back="false"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="whiteTips" back="false"></mp-navigation-bar>
   <view class="faq__contaniner">
     <view class="faq__wrapper">
-      
+      <view class="faq__header whiteTips">
+        <view class="faq__header-title font-600">常见问答</view>
+        <view class="faq__header-tips">Frequently asked questions</view>
+      </view>
+      <view class="faq__list">
+        <view class="faq__list-item">
+          <view class="faq__item-header">
+            <view class="faq__item-imagewrapper">
+              <image class="faq__list-image" src="{{qa}}"></image>
+            </view>
+            <view class="faq__list-title font-600">怎么注册账号呢？</view>
+          </view>
+          <view class="faq__list-content font-size-24"> 么是苹果id申请?苹果id是一种可以下载软件的应用，申请之后，我们就可以下载很多应用。但是很多人不知道苹果id是怎么进行申请的，有很多在使用苹果手机的朋友对此是一窍不通，所以下载不了自己想要的软件，下面来学习一下如何进行苹果id申请。我们需要准备好手机和电脑，因为操作的时候需要这两个设备，下面开始看看。</view>
+        </view>
+        <!-- <view class="faq__list-item">
+          <view class="faq__item-header">
+            <view class="faq__item-imagewrapper">
+              <image class="faq__list-image" src="{{qa}}"></image>
+            </view>
+            <view class="faq__list-title font-600">怎么注册账号呢？</view>
+          </view>
+        </view> -->
+      </view>
     </view>
   </view>
 </view>
-

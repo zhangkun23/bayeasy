@@ -18,10 +18,10 @@ Page({
       //   url: 'manual'
       // }, 
       {
-        title: '服务协议',
+        title: '平台服务协议',
         url: 'service_agreement',
       }, {
-        title: '隐私协议',
+        title: '隐私政策',
         url: 'privacy_policy',
       }, 
       // {

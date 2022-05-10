@@ -1,11 +1,13 @@
 // pages/faq/index.js
+const tempPath = getApp().globalData.imgPath;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    qa: tempPath + 'index/qa_icon.png'
   },
   aaa(){
     console.log(213)
