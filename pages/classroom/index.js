@@ -44,6 +44,13 @@ Page({
         isRight: false,
         isLeft: false,
     },
+    previewImg: function (e) {
+        const src = e.currentTarget.dataset.src
+        wx.previewImage({
+            urls: [src],
+        })
+    },
+
     changeImage(e) {
         const value = e.detail.current;
         this.setData({
@@ -82,10 +89,5 @@ Page({
             currentNum: num
         })
     },
-    previewImg: function (e) {
-        const src = e.currentTarget.dataset.src
-        wx.previewImage({
-            urls: [src],
-        })
-    },
+
 })
