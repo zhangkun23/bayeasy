@@ -58,7 +58,7 @@
                 <view class="content">
                     <view class="text">
                         <view>如账单金额及发票内容有异议</view>
-                        <view>请联系您的运营专员</view>
+                        <view>请联系您的财税管家</view>
                     </view>
                     <image class="btn" src="/image/icon/contactIcon.png" mode="widthFix"></image>
                 </view>

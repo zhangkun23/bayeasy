@@ -1,0 +1,22 @@
+/* pages/service/index.wxss */
+
+
+.service {
+  background: url('https://image.bayeasy.cn/images-datas/index/serviceIntroduction.png') no-repeat;
+  background-size: 100% 100%;
+  height: 2668rpx; 
+}
+.image {
+  width: 100%;
+  height: 1200rpx;
+}
+.navigationBar {
+  width: 100%;
+  height: 188rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: #1D83F0;
+  /* background: linear-gradient(180deg, #1D83F0 0%, #0C62BE 100%); */
+}
