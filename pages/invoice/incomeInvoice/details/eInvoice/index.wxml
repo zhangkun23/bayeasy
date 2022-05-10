@@ -1,5 +1,5 @@
 <!--pages/invoice/incomeInvoice/details/eInvoice/index.wxml-->
-<view class="mycontainer">
+<view class="mycontainer" catchtouchmove="handleTouchMove">
     <mp-navigation-bar title="电子发票"></mp-navigation-bar>
     <view class="bgColog"/>
     <scroll-view scroll-y="true" enable-flex="true" class="wrapper">

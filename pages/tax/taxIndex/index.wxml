@@ -1,9 +1,8 @@
 <!--pages/tax/taxIndex/index.wxml-->
 <modal showModal="{{showModal}}" class="modal" contents="{{contents}}">
-  <login-btn bind:click="goLogin" text="{{textInfo}}" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" 
-  borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
+    <login-btn bind:click="goLogin" text="{{textInfo}}" btnBgColor="#1D83F0" btnWidth="240rpx" btnHeight="70rpx" fontSize="28rpx" borderRadius="35rpx" boxShadow="0px 30px 50px 0px rgba(29, 131, 240, 0.2)"></login-btn>
 </modal>
-<view class="{{!pageShow?'bgColog opction':'bgColog' }}"  >
+<view class="{{!pageShow?'bgColog opction':'bgColog' }}">
     <view class="title-container" style="margin-top: {{statusBarHeight}}px;">
         <view class="page-title">
             财税办理
@@ -19,7 +18,7 @@
                 <view class="horizon-border" style="border-top: 1px dashed #D2E0EF"></view>
                 <view class="vertical-border" style=" border-left: 1px dashed #D2E0EF"></view>
                 <view class="row-1">
-                    <view class="gate-area-1 taxReturn" data-url='/pages/tax/taxreturn/index'  bindtap="handelClickUrl" >
+                    <view class="gate-area-1 taxReturn" data-url='/pages/tax/taxreturn/index' bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{trGateBtn}}" mode="aspectFill"></image>
                         </view>
@@ -27,7 +26,7 @@
                             纳税申报
                         </view>
                     </view>
-                    <view class="gate-area-1" data-url='/pages/tax/report/reportIndex/index'  bindtap="handelClickUrl">
+                    <view class="gate-area-1" data-url='/pages/tax/report/reportIndex/index' bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{fsGateBtn}}" mode="aspectFill"></image>
                         </view>
@@ -37,7 +36,7 @@
                     </view>
                 </view>
                 <view class="row-2">
-                    <view class="gate-area-2" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
+                    <view class="gate-area-2" data-url='/pages/nothing/index' bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{arGateBtn}}" mode="aspectFill"></image>
                         </view>
@@ -45,7 +44,7 @@
                             工商年报
                         </view>
                     </view>
-                    <view class="gate-area-2" data-url='/pages/nothing/index'  bindtap="handelClickUrl">
+                    <view class="gate-area-2" data-url='/pages/nothing/index' bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{avGateBtn}}" mode="aspectFill"></image>
                         </view>

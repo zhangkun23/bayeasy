@@ -1,7 +1,7 @@
 <!--pages/invoice/incomeInvoice/index/index.wxml-->
-<view class="bgColog">
+<view class="bgColog" catchtouchmove="handleTouchMove">
     <mp-navigation-bar title="收入账单发票"></mp-navigation-bar>
-    <scroll-view scroll-y="true" enable-flex="true">
+    <scroll-view scroll-y="true" enable-flex="true" class="wrapper">
         <view class="incomeInvoice">
             <view wx:if="{{isInvoiceEmpty}}" class="content">
                 <image src="{{emptyPic}}" class="emptyBg" mode="widthFix"></image>

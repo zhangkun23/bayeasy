@@ -1,14 +1,4 @@
 /* pages/invoice/acquisitionCost/invoiceDetails/index.wxss */
-
-page {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: max(constant(safe-area-inset-bottom), 50rpx);
-    /* 兼容 iOS < 11.2 */
-    padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
-}
-
 .green {
     color: #46CF84
 }
@@ -35,24 +25,24 @@ page {
 
 
 .mycontainer {
-    flex: 1;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
     flex: 1;
-    height: 1px;
+    height: 1rpx;
 }
 
 .wrapper .inner-container {
+    height: calc(100% - 64rpx);
     margin: 32rpx;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: max(constant(safe-area-inset-bottom), 50rpx);
+    /* 兼容 iOS < 11.2 */
+    padding-bottom: max(env(safe-area-inset-bottom), 50rpx);
 }
 
 .hint-container {
@@ -62,7 +52,6 @@ page {
 
 .pass {
     background-color: #E6F9F3;
-
 }
 
 .fail {
@@ -224,16 +213,20 @@ page {
     box-shadow: 0px 10rpx 30rpx 0px rgba(201, 209, 228, 0.38);
     border-radius: 32rpx;
 }
-.containerImg .empty{
+
+.containerImg .empty {
+    width: 592rpx;
     height: 378rpx;
+
 }
-.containerImg .empty2{
+
+.containerImg .empty2 {
     width: 296rpx;
     height: 240rpx;
     opacity: 0.66;
 }
 
-.content{
+.content {
     padding: 36rpx 47rpx;
     box-sizing: border-box;
 }
@@ -312,16 +305,18 @@ page {
 
 
 .securityCheck__footer {
-    display: flex;
-    justify-content: center;
-    height: 100rpx;
+    /* flex: 1; */
+    /* align-self: flex-end; */
+    /* display: flex;
+    justify-content: center; */
+    /* height: 100rpx; */
+    margin: auto auto 64rpx auto;
+    /* margin-top: auto;
+    margin-left: auto;
+    margin-right: auto; */
     align-items: center;
 }
 
-.securityCheck__bottom {
-    position: fixed;
-    bottom: 41rpx;
-}
 
 .securityCheck__footer-image {
     display: inline-block;

@@ -129,4 +129,7 @@ Page({
             delta: 2,
         })
     },
+    handleTouchMove: function (e) {
+        return
+    }
 })
