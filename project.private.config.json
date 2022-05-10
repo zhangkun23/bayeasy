@@ -1,75 +1,84 @@
 {
-    "setting": {
-        "compileHotReLoad": false
+  "setting": {
+    "compileHotReLoad": false
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "condition": {
+    "plugin": {
+      "list": []
     },
-    "condition": {
-        "miniprogram": {
-            "list": [
-                {
-                    "name": "纳税申报",
-                    "pathName": "pages/tax/taxreturn/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "手动添加发票",
-                    "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "手动添加成功页面",
-                    "pathName": "pages/invoice/invoiceUpload/updateHandelSuccess/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "增值税发票查验",
-                    "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "登录页面",
-                    "pathName": "pages/login/login/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "成本发票明细",
-                    "pathName": "pages/invoice/acquisitionCost/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "搜索框",
-                    "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "详情",
-                    "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "手动添加发票",
-                    "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                }
-            ]
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "手动添加发票",
+          "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "手动添加成功页面",
+          "pathName": "pages/invoice/invoiceUpload/updateHandelSuccess/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "增值税发票查验",
+          "pathName": "pages/invoice/invoiceUpload/updateImgInfo/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "登录页面",
+          "pathName": "pages/login/login/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "成本发票明细",
+          "pathName": "pages/invoice/acquisitionCost/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "搜索框",
+          "pathName": "pages/invoice/acquisitionCost/components/searchbar/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/invoice/invoiceUpload/updateImgDetail/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "手动添加发票",
+          "pathName": "pages/invoice/invoiceUpload/updateHandel/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "xkt",
+          "pathName": "pages/classroom/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
         }
-    },
-    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+      ]
+    }
+  }
 }

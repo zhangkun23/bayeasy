@@ -25,7 +25,7 @@
                     <view class="split" style="border-top: 1px dashed #E6EEF7"></view>
                     <view class="main-info">
                         <text user-select="true" class="info">账期时间：{{time}}</text>
-                        <text user-select="true" class="info">账单ID： {{settlement_id}}</text>
+                        <!-- <text user-select="true" class="info">账单ID： {{settlement_id}}</text> -->
                         <text user-select="true" class="info">账单金额： <text user-select="true" class="yellow">¥ {{bill_amount}}</text></text>
                     </view>
                     <view class="split" style="border-top: 1px dashed #E9ECF3"></view>

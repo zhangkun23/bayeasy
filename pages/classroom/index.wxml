@@ -22,15 +22,15 @@
         </view>
       </block>
       <block wx:else> -->
-        <view class="classroom__button-left btn" bindtap="changeLeft">
-          <image src="{{left_white}}"></image>
-        </view>
+      <view class="classroom__button-left btn" bindtap="changeLeft">
+        <image src="{{left_white}}"></image>
+      </view>
       <!-- </block>
 
       <block wx:if="{{!isRight}}"> -->
-        <view class="classroom__button-left btn" bindtap="changeRight">
-          <image src="{{right_white}}"></image>
-        </view>
+      <view class="classroom__button-left btn" bindtap="changeRight">
+        <image src="{{right_white}}"></image>
+      </view>
       <!-- </block>
 
       <block wx:else>

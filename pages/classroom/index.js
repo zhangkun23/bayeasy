@@ -25,6 +25,21 @@ Page({
       {
         img: tempPath + 'index/xkt5.png'
       },
+      {
+        img: tempPath + 'index/xkt6.png'
+      },
+      {
+        img: tempPath + 'index/xkt7.png'
+      },
+      {
+        img: tempPath + 'index/xkt8.png'
+      },
+      {
+        img: tempPath + 'index/xkt9.png'
+      },
+      {
+        img: tempPath + 'index/xkt10.png'
+      },
     ],
     currentNum: 0,
     isRight: false,
