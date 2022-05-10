@@ -1,10 +1,11 @@
 <!--pages/faq/index.wxml-->
 <!--pages/classroom/index.wxml-->
 <view class="faq">
-  <mp-navigation-bar title="贝易资财税小课堂" back="false" bindback="gotopage"></mp-navigation-bar>
+  <mp-navigation-bar back="false"></mp-navigation-bar>
   <view class="faq__contaniner">
-    常见问答
-    <button bindtap="aaa">按钮</button>
+    <view class="faq__wrapper">
+      
+    </view>
   </view>
 </view>
 
