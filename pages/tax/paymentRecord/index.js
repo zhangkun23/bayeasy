@@ -69,7 +69,7 @@ Page({
   },
   getTaxList(value) {
     let params = {
-      status: 2,
+      status: 3,
       page_size: 1000,
       year: value? value : this.data.date
     }
@@ -87,8 +87,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getTaxList();
     this.getYaer();
+    this.getTaxList();
     this.renderPage(options.type)
   },
 
