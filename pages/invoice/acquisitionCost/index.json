@@ -5,6 +5,5 @@
     "my-search-bar": "./components/searchbar/search",
     "filter-board": "./components/filter/filter",
     "my-service": "/components/service/service"
-  },
-  "disableScroll": true
+  }
 }

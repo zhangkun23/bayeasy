@@ -320,6 +320,9 @@ Page({
         wx.navigateTo({
             url: './invoiceDetails/index?id=' + vid,
         })
+    },
+    handleTouchMove: function(e){
+        return
     }
 
 })

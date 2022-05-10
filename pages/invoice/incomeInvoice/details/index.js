@@ -145,6 +145,9 @@ Page({
                 showApplyDialog: false
             })
         }
+    },
+    handleTouchMove:function(e){
+        return
     }
 
 })

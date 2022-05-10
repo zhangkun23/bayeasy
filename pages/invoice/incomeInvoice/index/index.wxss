@@ -1,12 +1,25 @@
 /* pages/invoice/incomeInvoice/index/index.wxss */
+.bgColog {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
 .incomeInvoice {
-    max-height: 1360rpx;
+    height: calc(100% - 64rpx);
+    /* max-height: 1360rpx; */
     margin: 32rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex: 1;
+    height: 1rpx;
 }
 
 .wrapper .content {
-    margin: 32rpx;
     height: 100%;
 }
 
