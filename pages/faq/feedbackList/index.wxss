@@ -1,12 +1,23 @@
 /* pages/faq/feedbackList/index.wxss */
 
+
+.feedbackList {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100vh;
+}
 .feedbackList__wrapper {
-  max-height: 1360rpx;
-  overflow-y: auto;
+  flex: 1;
+  height: 1rpx;
+  margin: 44rpx 32rpx;
+
 }
 
+
 .faq__list {
-  margin: 44rpx 32rpx;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .faq__list-item {

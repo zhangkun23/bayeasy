@@ -2,128 +2,130 @@
 
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
-  <scroll-view scroll-y="true">
+  <scroll-view scroll-y="true" class="wrapper">
     <view class="detail__container">
+      <view class="detail__layout">
 
-      <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}">
-        <view class="detail__topTips-icon">
-          <image src="{{info_max}}"></image>
-        </view>
-        <text>对账单有疑问，请联系财税管家全程为您协调</text>
-      </view>
-      <!-- 还款信息 -->
-      <view wx:if="{{returnType == 'repaymentBill'}}">
-        <view class="detail__information">
-          <view class="info1 font-600">还款信息</view>
-          <view class="info2 font-size-24" data-info="repaymentBill" bindtap="goToCertificate">
-            <text class="text">查看凭证</text>
+        <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}">
+          <view class="detail__topTips-icon">
+            <image src="{{info_max}}"></image>
           </view>
+          <text>对账单有疑问，请联系财税管家全程为您协调</text>
         </view>
-        <view class="item__container">
-          <view class="item__center font-size-24">
-            <view class="item__text space-between">
-              <view class="item__center-title">支付方式</view>
-              <view class="item__center-title">{{ repaymentInfo.repayment_mode }}</view>
-            </view>
-            <view class="item__text space-between triangle">
-              <view class="item__center-title">还款时间</view>
-              <view class="item__center-title">{{ repaymentInfo.repayment_date }}</view>
-            </view>
-            <view class="item__text space-between">
-              <view class="item__center-title">还款金额合计</view>
-              <view class="buleTips font-600">¥ {{ repaymentInfo.repayment_amount }}</view>
+        <!-- 还款信息 -->
+        <view wx:if="{{returnType == 'repaymentBill'}}">
+          <view class="detail__information">
+            <view class="info1 font-600">还款信息</view>
+            <view class="info2 font-size-24" data-info="repaymentBill" bindtap="goToCertificate">
+              <text class="text">查看凭证</text>
             </view>
           </view>
-        </view>
-      </view>
-      <!-- 欠款信息 -->
-      <view>
-        <view class="detail__information">
-          <view class="info1 font-600">欠款信息</view>
-          <view class="info2 font-size-24" data-info="delinquentBill" bindtap="goToCertificate">
-            <text class="text">查看凭证</text>
-          </view>
-        </view>
-        <view class="item__container">
-          <view class="item__center font-size-24">
-            <view class="item__text space-between">
-              <view class="item__center-title">支付方式</view>
-              <view class="item__center-title">{{ loanInfo.loan_mode }}</view>
-            </view>
-            <view class="item__text space-between triangle">
-              <view class="item__center-title">欠款时间</view>
-              <view class="item__center-title">{{loanInfo.loan_date }}</view>
-            </view>
-            <view class="item__text space-between">
-              <view class="item__center-title">欠款金额合计</view>
-              <view class="orangeTips font-600">¥ {{loanInfo.loan_amount}}</view>
-            </view>
-          </view>
-        </view>
-      </view>
-
-      <view>
-        <view class="detail__tax info1 font-600">欠款税种明细</view>
-        <!-- 明细内容 -->
-        <view class="detail__taxDetail">
-          <view class="item__header">
-            <view class="item__header-date">
-              <image class="item__header-image" src="{{listIcon}}"></image>
-            </view>
-            <text class="item__header-text">申报月份</text>
-          </view>
-          <view class="item__center-tips font-600">{{ declare_month }}</view>
-
-          <block wx:for="{{billingDetail}}" wx:for-item="item" wx:key="id">
-            <view class="detail__header">
-              <view class="space-between mg-bp-24">
-                <text class="detail__content-title">征收项目</text>
-                <text class="detail__content-text font-600">{{item.name}}</text>
+          <view class="item__container">
+            <view class="item__center font-size-24">
+              <view class="item__text space-between">
+                <view class="item__center-title">支付方式</view>
+                <view class="item__center-title">{{ repaymentInfo.repayment_mode }}</view>
               </view>
-              <view class="space-between mg-bp-24">
-                <text class="detail__content-title">应补税额合计</text>
-                <text class="detail__content-text orangeTips font-600">¥ {{item.should_pay_tax}}</text>
+              <view class="item__text space-between triangle">
+                <view class="item__center-title">还款时间</view>
+                <view class="item__center-title">{{ repaymentInfo.repayment_date }}</view>
               </view>
-              <view class="space-between" wx:if="{{item.showChildList}}" data-row="{{item}}" bindtap="showList">
+              <view class="item__text space-between">
+                <view class="item__center-title">还款金额合计</view>
+                <view class="buleTips font-600">¥ {{ repaymentInfo.repayment_amount }}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 欠款信息 -->
+        <view>
+          <view class="detail__information">
+            <view class="info1 font-600">欠款信息</view>
+            <view class="info2 font-size-24" data-info="delinquentBill" bindtap="goToCertificate">
+              <text class="text">查看凭证</text>
+            </view>
+          </view>
+          <view class="item__container">
+            <view class="item__center font-size-24">
+              <view class="item__text space-between">
+                <view class="item__center-title">支付方式</view>
+                <view class="item__center-title">{{ loanInfo.loan_mode }}</view>
+              </view>
+              <view class="item__text space-between triangle">
+                <view class="item__center-title">欠款时间</view>
+                <view class="item__center-title">{{loanInfo.loan_date }}</view>
+              </view>
+              <view class="item__text space-between">
+                <view class="item__center-title">欠款金额合计</view>
+                <view class="orangeTips font-600">¥ {{loanInfo.loan_amount}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view>
+          <view class="detail__tax info1 font-600">欠款税种明细</view>
+          <!-- 明细内容 -->
+          <view class="detail__taxDetail">
+            <view class="item__header">
+              <view class="item__header-date">
+                <image class="item__header-image" src="{{listIcon}}"></image>
+              </view>
+              <text class="item__header-text">申报月份</text>
+            </view>
+            <view class="item__center-tips font-600">{{ declare_month }}</view>
+
+            <block wx:for="{{billingDetail}}" wx:for-item="item" wx:key="id">
+              <view class="detail__header">
+                <view class="space-between mg-bp-24">
+                  <text class="detail__content-title">征收项目</text>
+                  <text class="detail__content-text font-600">{{item.name}}</text>
+                </view>
+                <view class="space-between mg-bp-24">
+                  <text class="detail__content-title">应补税额合计</text>
+                  <text class="detail__content-text orangeTips font-600">¥ {{item.should_pay_tax}}</text>
+                </view>
+                <view class="space-between" wx:if="{{item.showChildList}}" data-row="{{item}}" bindtap="showList">
+                  <text class="detail__content-title"></text>
+                  <text class="detail__open">展开</text>
+                </view>
+              </view>
+
+              <view class="detail__list" wx:if="{{!item.showChildList}}" wx:for="{{item.list}}" wx:for-item="childItem" wx:key="id">
+                <view class="font-size-24 detail__taxDetail-content">
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title">征收品目</text>
+                    <text class="detail__content-text">{{childItem.tax_item}}</text>
+                  </view>
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title">税（费）款所属期起止</text>
+                    <text class="detail__content-text">{{childItem.tax_time}}</text>
+                  </view>
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title">申报期限</text>
+                    <text class="detail__content-text">{{childItem.declare_limit}}</text>
+                  </view>
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title">申报日期</text>
+                    <text class="detail__content-text">{{childItem.declare_date}}</text>
+                  </view>
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title">应补税额</text>
+                    <text class="greennTips">¥ {{childItem.money}}</text>
+                  </view>
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title">欠款金额</text>
+                    <text class="detail__content-title">¥ {{childItem.loan_amount}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="space-between border" wx:if="{{!item.showChildList}}" data-row="{{item}}" bindtap="hideList">
                 <text class="detail__content-title"></text>
-                <text class="detail__open">展开</text>
+                <text class="detail__open font-size-24">收起</text>
               </view>
-            </view>
+            </block>
 
-            <view class="detail__list" wx:if="{{!item.showChildList}}" wx:for="{{item.list}}" wx:for-item="childItem" wx:key="id">
-              <view class="font-size-24 detail__taxDetail-content">
-                <view class="space-between mg-bp-24">
-                  <text class="detail__content-title">征收品目</text>
-                  <text class="detail__content-text">{{childItem.tax_item}}</text>
-                </view>
-                <view class="space-between mg-bp-24">
-                  <text class="detail__content-title">税（费）款所属期起止</text>
-                  <text class="detail__content-text">{{childItem.tax_time}}</text>
-                </view>
-                <view class="space-between mg-bp-24">
-                  <text class="detail__content-title">申报期限</text>
-                  <text class="detail__content-text">{{childItem.declare_limit}}</text>
-                </view>
-                <view class="space-between mg-bp-24">
-                  <text class="detail__content-title">申报日期</text>
-                  <text class="detail__content-text">{{childItem.declare_date}}</text>
-                </view>
-                <view class="space-between mg-bp-24">
-                  <text class="detail__content-title">应补税额</text>
-                  <text class="greennTips">¥ {{childItem.money}}</text>
-                </view>
-                <view class="space-between mg-bp-24">
-                  <text class="detail__content-title">欠款金额</text>
-                  <text class="detail__content-title">¥ {{childItem.loan_amount}}</text>
-                </view>
-              </view>
-            </view>
-            <view class="space-between border" wx:if="{{!item.showChildList}}" data-row="{{item}}" bindtap="hideList">
-              <text class="detail__content-title"></text>
-              <text class="detail__open font-size-24">收起</text>
-            </view>
-          </block>
-
+          </view>
         </view>
       </view>
     </view>

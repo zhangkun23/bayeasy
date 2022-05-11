@@ -2,6 +2,7 @@
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
   },
+  "disableScroll": true,
   "navigationStyle":"custom",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#ffffff",

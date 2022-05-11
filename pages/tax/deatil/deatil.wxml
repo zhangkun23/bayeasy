@@ -6,7 +6,7 @@
         <view class="detail__topTips-icon">
           <image src="{{info_max}}"></image>
           <text wx:if="{{ deatilObj.overdue_status == 0 }}">请尽快确认税额，申报征期已过纳税信誉产生影响！请联系财税管家</text>
-          <text wx:elif="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严重影响主体纳税誉！</text>
+          <text wx:elif="{{ deatilObj.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度，倒计时结束后本征期内纳税申报将无法正常进行，会严重影响主体纳税信誉！</text>
         </view>
       </view>
       <view class="detail__time">
