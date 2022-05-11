@@ -75,6 +75,13 @@
           "name": "xkt",
           "pathName": "pages/classroom/index",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "list",
+          "pathName": "pages/faq/feedbackList/index",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         }

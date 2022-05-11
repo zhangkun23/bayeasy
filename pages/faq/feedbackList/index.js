@@ -1,75 +1,46 @@
-// pages/faq/index.js
+// pages/faq/feedbackList/index.js
 const tempPath = getApp().globalData.imgPath;
-const {
-  feedbackStatus,
-  commonProblemList
-} = require('../../http/api/api');
+const { feedbackList }= require("../../../http/api/api")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    qa: tempPath + 'index/qa_icon.png',
-    bottomicon: tempPath + 'index/floatingButton_white.png',
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
+    updateIcon: tempPath + 'index/floatingButton_blue.png',
+    bottomicon: tempPath + 'index/floatingButton_white.png',
     isShowList: false,
-    commonProblemList: [],
-    isStatus: 0
+    feedbackList: []
   },
 
-  gotoMessage() {
-    wx.navigateTo({
-      url: './feedback/index',
-    })
-  },
   feedbackFn() {
-    if (this.data.isStatus == 0) {
-      wx.navigateTo({
-        url: './feedback/index',
-      })
-    } else {
-      wx.navigateTo({
-        url: './feedbackList/index',
-      })
-    }
-  },
-  // 获取是否有留言记录
-  getFeedbackStatus() {
-    feedbackStatus().then(res => {
-      console.log(res)
-      if (res.ret) {
-        this.setData({
-          isStatus: res.data.status
-        })
-      }
+    wx.navigateTo({
+      url: '../feedback/index',
     })
   },
-  // 获取列表
-  getCommonProblemList() {
+  getFeedbackList(){
     let params = {
       page: 1,
       page_size: 10
     }
-    commonProblemList(params).then(res => {
+    feedbackList(params).then(res => {
       console.log(res)
-      if (res.ret) {
+      if(res.ret) {
         this.setData({
-          commonProblemList: res.data.list
+          feedbackList: res.data.list
         })
-      }
+      } 
     })
   },
-
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getFeedbackStatus();
-    this.getCommonProblemList();
-  },
+    this.getFeedbackList();
+  },  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -5,7 +5,8 @@ const {
   defaultAvatar
 } = require('../config/config')
 const {
-  logout
+  logout,
+  feedbackStatus
 } = require('../../../http/api/api')
 const {
   get_user_info
@@ -38,7 +39,7 @@ Component({
 
       if (token) {
         get_user_info().then(res => {
-          console.log("个人信息返回: ",res)
+          console.log("个人信息返回: ", res)
           if (res.data instanceof Object && 'name' in res.data) {
             that.setData({
               user_name: res.data.name || ''
@@ -49,7 +50,7 @@ Component({
               user_name: ''
             })
           }
-          if(!that.data.user_tel && res.data.mobile){
+          if (!that.data.user_tel && res.data.mobile) {
             console.log("从接口设定用户手机号")
             that.setData({
               user_tel: res.data.mobile
@@ -99,9 +100,9 @@ Component({
       // 决定待办事项
       const todoCount = app.globalData.todolistNum;
       let isNewTodo;
-      if(token && todoCount > 0){ // 登录且数量>0
-        isNewTodo = true 
-      }else{
+      if (token && todoCount > 0) { // 登录且数量>0
+        isNewTodo = true
+      } else {
         isNewTodo = false
       }
       this.setData({
@@ -115,18 +116,19 @@ Component({
   },
   lifetimes: {
     ready() {
-      setTimeout( ()=> {
+      setTimeout(() => {
         this.setData({
-            pageShow:true
+          pageShow: true
         })
-      },30)
+      }, 30)
+      this.getFeedbackStatus();
     },
   },
   properties: {
 
   },
   data: {
-    pageShow:false,
+    pageShow: false,
     token: '',
     login_status: 0, // app.globalData.???
     showCompleteInfo: null,
@@ -147,6 +149,7 @@ Component({
     user_name: '', // name 和 tel 都应该存储在全局的info里
     user_tel: '',
     right_arrow: icons_url.right_arrow,
+    isStatus: 0,
     entrances_info: [{
         id: 1,
         icon: icons_url.contact_operate,
@@ -159,12 +162,12 @@ Component({
         url: '/pages/personal/aboutBayeasy/index',
         text: '关于贝易资'
       },
-      // {
-      //   id: 3,
-      //   icon: icons_url.feed_back,
-      //   url: '/pages/personal/aboutBayeasy/index',
-      //   text: '留言反馈'
-      // },
+      {
+        id: 3,
+        icon: icons_url.feed_back,
+        url: '/pages/faq/feedbackList/index',
+        text: '留言反馈'
+      },
     ],
     gates_info: [{
       id: 1,
@@ -209,10 +212,29 @@ Component({
     }, ]
   },
   methods: {
+    getFeedbackStatus() {
+      feedbackStatus().then(res => {
+        console.log(res)
+        if (res.ret) {
+          this.setData({
+            isStatus: res.data.status
+          })
+        }
+      })
+    },
     goEntrance(e) {
+      let url = e.currentTarget.dataset.url;
+      console.log(url)
+      if (url == '/pages/faq/feedbackList/index') {
+        if (this.data.isStatus == 0) {
+          url = '/pages/faq/feedback/index';
+        } else {
+          url = '/pages/faq/feedbackList/index';
+        }
+      }
       console.debug("wx navi to ", e.currentTarget.dataset.url)
       wx.navigateTo({
-        url: e.currentTarget.dataset.url,
+        url: url,
         events: {},
         success: function (res) {
           res.eventChannel.emit('acceptDataFromOpenerPage', {

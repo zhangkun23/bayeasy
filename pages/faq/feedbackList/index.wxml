@@ -1,0 +1,29 @@
+<!--pages/faq/feedbackList/index.wxml-->
+<view class="feedbackList bgColog">
+  <mp-navigation-bar title="留言反馈" bindback="backIndex"></mp-navigation-bar>
+  <view class="feedbackList__wrapper">
+    <view class="faq__list" wx:if="{{!isShowList}}">
+      <view class="faq__list-item" wx:for="{{feedbackList}}" wx:for-item="item" wx:key="id">
+        <view class="faq__item-header">
+          <view class="faq__item-imagewrapper">
+            <image class="faq__list-image" src="{{updateIcon}}"></image>
+          </view>
+          <view class="faq__list-title font-600">{{item.time}}</view>
+        </view>
+        <view class="faq__list-content font-size-24">{{item.content}}</view>
+      </view>
+    </view>
+
+    <view class="taxConfirmation__nodata" wx:else>
+      <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+      <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
+    </view>
+  </view>
+  <view class="faq__icon" bindtap="feedbackFn">
+    <view class="faq__icon-box">
+      <image class="faq__icon-img" src="{{bottomicon}}"></image>
+    </view>
+    <view class="faq__icon-tips">留言反馈</view>
+  </view>
+
+</view>

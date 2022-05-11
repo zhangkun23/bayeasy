@@ -1,0 +1,67 @@
+/* pages/faq/feedback/index.wxss */
+
+.feedback__container {
+  padding: 32rpx;
+}
+
+.placeholderClass {
+  font-size: 24rpx;
+  color: #ABBED2;
+  line-height: 36rpx;
+  text-shadow: 0px 10rpx 30rpx rgba(209, 213, 223, 0.6);
+}
+
+.feedback__box {
+  height: 830rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
+  border-radius: 32rpx;
+  padding: 32rpx;
+  position: relative;
+}
+
+textarea {
+  height: 100%;
+  color: #48617C;
+  font-size: 24rpx;
+}
+
+.feedback__box-num {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  font-size: 24rpx;
+}
+
+.redText {
+  color: #FF475A;
+}
+.gray {
+  color: #D1D5DF;
+}
+
+.feedback__btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+}
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #E6EEF7;
+  border-radius: 44rpx;
+  text-align: center;
+}
+
+.feedback__btns-submit1 {
+  color: #ABBED2;
+}
+
+.feedback__btns-submit2 {
+  background: #1D83F0;
+  box-shadow: 0rpx 29rpx 47rpx 0px rgba(29, 131, 240, 0.2);
+}

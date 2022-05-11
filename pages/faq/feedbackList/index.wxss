@@ -1,27 +1,12 @@
-/* pages/faq/index.wxss */
+/* pages/faq/feedbackList/index.wxss */
 
-.faq {
-  background: url('https://image.bayeasy.cn/images-datas/index/bg.png') no-repeat;
-  background-size: 100%;
-}
-
-.faq__contaniner {
-  margin: 67rpx 32rpx;
+.feedbackList__wrapper {
   max-height: 1360rpx;
   overflow-y: auto;
 }
 
-.faq__header {
-  margin-bottom: 24rpx;
-}
-
-.faq__header-title {
-  font-size: 44rpx;
-}
-
-.faq__header-hedaer {
-  font-size: 28rpx;
-  color: rgba(255, 255, 255, 0.7);
+.faq__list {
+  margin: 44rpx 32rpx;
 }
 
 .faq__list-item {
@@ -30,16 +15,6 @@
   border-radius: 28rpx;
   padding: 32rpx;
   margin-bottom: 32rpx;
-}
-
-.faq_item-conimg {
-  /* display: none; */
-  margin-top: 24rpx;
-}
-
-.faq_item-conimg .faqImages {
-  width: 626rpx;
-  height: 372rpx;
 }
 
 .faq__item-header {
@@ -107,34 +82,4 @@
 .faq__nodata-text {
   color: #6E87A2;
   text-align: center;
-}
-
-.faq__empty {
-  display: flex;
-  width: 686rpx;
-  height: 686rpx;
-  background: #FFFFFF;
-  box-shadow: 0px 10rpx 30rpx 0px rgba(201, 209, 228, 0.38);
-  border-radius: 32rpx;
-}
-
-.faq__button {
-  position: fixed;
-  bottom: 150rpx;
-  right: 100rpx;
-  left: 100rpx;
-  width: 500rpx;
-  height: 88rpx;
-  line-height: 88rpx;
-  background: #FFA42E;
-  box-shadow: 0px 30rpx 50rpx 0px rgba(255, 164, 46, 0.2);
-  border-radius: 44rpx;
-  /* margin: 190rpx auto 188rpx; */
-}
-.faq__button-wrapper {
- display: flex;
-  justify-content: center;
-}
-.faq__button-text {
-  margin-left: 22rpx;
 }
