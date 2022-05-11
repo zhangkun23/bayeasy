@@ -1,11 +1,27 @@
 // pages/faq/feedbackSuccess/index.js
+const tempPath = getApp().globalData.imgPath;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    successIconImg: tempPath + "public/done.png",
+    info_max: tempPath + "public/info_max.png",
+    tax: '',
+    paramsId: 0
+  },
 
+  gotoReult() {
+    wx.navigateTo({
+      url: '../feedbackList/index',
+    })
+  },
+  backTaxIndex() {
+    wx.switchTab({
+      url: '../../index/index',
+    })
   },
 
   /**

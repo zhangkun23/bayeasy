@@ -1,2 +1,15 @@
-<!--pages/faq/feedbackSuccess/index.wxml-->
-<text>pages/faq/feedbackSuccess/index.wxml</text>
+<view class="successfully bgColog">
+  <mp-navigation-bar title="留言反馈" back="false" bindback="backIndex"></mp-navigation-bar>
+  <view class="successfully__back">
+    <view class="successfully__icon">
+      <view class="successfully__success-img mg-tp-25">
+        <image src="{{successIconImg}}"></image>
+      </view>
+      <view class="successfully__success-text">提交成功</view>
+    </view>
+    <view class="successfully__btnGroup">
+      <view class="bluebtn" bindtap="gotoReult">查看留言反馈列表</view>
+      <view class="bluebtn backIndex" bindtap="backTaxIndex">返回主页</view>
+    </view>
+  </view>
+</view>

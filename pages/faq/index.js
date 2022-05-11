@@ -1,6 +1,9 @@
 // pages/faq/index.js
 const tempPath = getApp().globalData.imgPath;
-
+const {
+  feedbackStatus,
+  commonProblemList
+} = require('../../http/api/api');
 Page({
 
   /**
@@ -8,18 +11,64 @@ Page({
    */
   data: {
     qa: tempPath + 'index/qa_icon.png',
-    bottomicon: tempPath + 'index/floatingbutton.png'
+    bottomicon: tempPath + 'index/floatingButton_white.png',
+    empty_bg_url: tempPath + 'public/emptyBackGround.png',
+    isShowList: false,
+    commonProblemList: [],
+    isStatus: 0
   },
-  aaa(){
-    console.log(213)
+
+  gotoMessage() {
+    wx.navigateTo({
+      url: './feedback/index',
+    })
   },
-  
+  feedbackFn() {
+    if (this.data.isStatus == 0) {
+      wx.navigateTo({
+        url: './feedback/index',
+      })
+    } else {
+      wx.navigateTo({
+        url: './feedbackList/index',
+      })
+    }
+  },
+  // 获取是否有留言记录
+  getFeedbackStatus() {
+    feedbackStatus().then(res => {
+      console.log(res)
+      if (res.ret) {
+        this.setData({
+          isStatus: res.data.status
+        })
+      }
+    })
+  },
+  // 获取列表
+  getCommonProblemList() {
+    let params = {
+      page: 1,
+      page_size: 10
+    }
+    commonProblemList(params).then(res => {
+      console.log(res)
+      if (res.ret) {
+        this.setData({
+          commonProblemList: res.data.list
+        })
+      }
+    })
+  },
+
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getFeedbackStatus();
+    this.getCommonProblemList();
   },
 
   /**
