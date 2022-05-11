@@ -2,11 +2,13 @@
 
 .faq {
   background: url('https://image.bayeasy.cn/images-datas/index/bg.png') no-repeat;
-  background-size: 100% 100%;
+  background-size: 100%;
 }
 
 .faq__contaniner {
   margin: 67rpx 32rpx;
+  max-height: 1360rpx;
+  overflow-y: auto;
 }
 
 .faq__header {
@@ -28,6 +30,16 @@
   border-radius: 28rpx;
   padding: 32rpx;
   margin-bottom: 32rpx;
+}
+
+.faq_item-conimg {
+  /* display: none; */
+  margin-top: 24rpx;
+}
+
+.faq_item-conimg .faqImages {
+  width: 626rpx;
+  height: 372rpx;
 }
 
 .faq__item-header {
@@ -54,4 +66,26 @@
   color: #6E87A2;
   line-height: 36rpx;
   margin-top: 24rpx;
+}
+
+.faq__icon {
+  position: fixed;
+  bottom: 88rpx;
+  right: 43rpx;
+  width: 112rpx;
+  height: 112rpx;
+  background: #FFA42E;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0px 30px 50px 0px rgba(255, 164, 46, 0.42);
+}
+
+.faq__icon-tips {
+  font-size: 20rpx;
+}
+
+.faq__icon-img {
+  width: 48rpx;
+  height: 48rpx;
 }

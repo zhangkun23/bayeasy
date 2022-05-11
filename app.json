@@ -48,7 +48,10 @@
     "pages/nothing/index",
     "pages/service/index",
     "pages/classroom/index",
-    "pages/faq/index"
+    "pages/faq/index",
+    "pages/faq/feedback/index",
+    "pages/faq/feedbackList/index",
+    "pages/faq/feedbackSuccess/index"
   ],
   "tabBar": {
     "custom": true,

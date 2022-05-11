@@ -1,19 +1,12 @@
-// pages/faq/index.js
-const tempPath = getApp().globalData.imgPath;
-
+// pages/faq/feedbackList/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    qa: tempPath + 'index/qa_icon.png',
-    bottomicon: tempPath + 'index/floatingbutton.png'
+
   },
-  aaa(){
-    console.log(213)
-  },
-  
 
   /**
    * 生命周期函数--监听页面加载
