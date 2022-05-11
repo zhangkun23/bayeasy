@@ -9,7 +9,7 @@
         <view class="detail__topTips-icon">
           <image src="{{info_max}}"></image>
         </view>
-        <text>对账单有疑问，请联系客服全程为您协调</text>
+        <text>对账单有疑问，请联系财税管家全程为您协调</text>
       </view>
       <!-- 还款信息 -->
       <view wx:if="{{returnType == 'repaymentBill'}}">
@@ -30,7 +30,7 @@
               <view class="item__center-title">{{ repaymentInfo.repayment_date }}</view>
             </view>
             <view class="item__text space-between">
-              <view class="item__center-title">还款金额</view>
+              <view class="item__center-title">还款金额合计</view>
               <view class="buleTips font-600">¥ {{ repaymentInfo.repayment_amount }}</view>
             </view>
           </view>

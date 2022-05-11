@@ -10,7 +10,7 @@
         <view>贝易资的企业信息库</view>
         <view>未检测到与您提交的手机号所关联的个人身份信息</view>
         <view>请您完善个人信息提交给贝易资进行核实</view>
-        <view>如有异议可联系贝易资客服咨询</view>
+        <view>如有异议可联系贝易资财税管家咨询</view>
       </view>
       <view class="authentication__personalInformation" bindtap="handelClick">
         <view class="authentication__personalInformation-btn">完善个人信息</view>

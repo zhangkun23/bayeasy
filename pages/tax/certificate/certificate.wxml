@@ -1,15 +1,16 @@
 <!--pages/tax/certificate/certificate.wxml-->
 <view class="certificate bgColog">
-  <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
-  <view class="detail__container">
-    <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}">
-      <view class="detail__topTips-icon">
-        <image src="{{info_max}}"></image>
-      </view>
-      <view>对账单有疑问，请联系客服全程为您协调</view>
+    <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
+    <view class="detail__container">
+        <!-- <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}"> -->
+        <view class="detail__topTips orangeTips orangeBack font-size-24">
+            <view class="detail__topTips-icon">
+                <image src="{{info_max}}"></image>
+            </view>
+            <view>对账单有疑问，请联系财税管家全程为您协调</view>
+        </view>
+        <view class="detail__image" wx:for="{{imgArr}}" wx:key="item" wx:for-item="item">
+            <image bindtap="previewImg" data-src="{{item}}" class="images" src="{{item}}"></image>
+        </view>
     </view>
-    <view class="detail__image" wx:for="{{imgArr}}" wx:key="item" wx:for-item="item">
-      <image bindtap="previewImg" data-src="{{item}}" class="images" src="{{item}}"></image>
-    </view>
-  </view>
 </view>

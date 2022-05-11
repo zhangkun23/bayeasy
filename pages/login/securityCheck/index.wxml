@@ -36,7 +36,7 @@
   </view>
 
   <block wx:if="{{isShowModal}}">
-    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您今日输入错误的次数已达5次，您的账号已经被保护如有疑问请联系贝易资客服协助"></mp-dialog>
+    <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="您今日输入错误的次数已达5次，您的账号已经被保护如有疑问请联系贝易资财税管家协助"></mp-dialog>
   </block>
 </view>
 <!-- <service></service> -->

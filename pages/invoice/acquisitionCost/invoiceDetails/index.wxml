@@ -21,7 +21,7 @@
                     <view class="fail-content">
                         <view class="title">
                             <image src="{{failIcon}}" mode="aspectFill" class="statusIcon"></image>
-                            <view>审核未通过如有疑问请及时联系客服</view>
+                            <view>审核未通过如有疑问请及时联系财税管家</view>
                         </view>
                         <view class="info">审核未通过原因：
                             <block wx:if="{{audit_faild_reason === 1 }}">

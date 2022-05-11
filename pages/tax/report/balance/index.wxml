@@ -1,7 +1,6 @@
 <!--pages/tax/report/balance/index.wxml-->
 <view class="balance bgColog" catchtouchmove="handleTouchMove">
     <mp-navigation-bar ext-class="navigationBar" title="资产负债表"></mp-navigation-bar>
-    <scroll-view scroll-y="{{true}}" class="balance1">
         <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="changeDate">
             <view class="balance__date">
                 <view class="balance__date-year">{{checkedMonth}}</view>
@@ -10,6 +9,8 @@
                 </view>
             </view>
         </picker>
+    <scroll-view scroll-y="{{true}}" class="balance1">
+
         <view class="balance__center">
             <view class="flex-center balance__center-header">
                 <view class="balance__center-back display-flex">

@@ -58,6 +58,8 @@
 }
 
 .itemImg {
-    width: 20px;
-    height: 20px;
+    /* width: 20rpx;
+    height: 20rpx; */
+    width: 27rpx;
+    height: 33rpx;
 }

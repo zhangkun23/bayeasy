@@ -1,4 +1,5 @@
 // pages/login/components/service.js
+const app = getApp()
 const utils = require('../../utils/util.js')
 Component({
     /**
@@ -9,6 +10,12 @@ Component({
     },
     pageLifetimes: {
         show() {
+            let token = wx.getStorageSync('token') || ''
+            if(token){
+                this.setData({
+                    contact: "财税管家"
+                })
+            }
         }
     },
 
@@ -17,6 +24,7 @@ Component({
      */
     data: {
         logo: getApp().globalData.imgPath + 'public/service.png',
+        contact: "客服"
     },
     /**
      * 组件的方法列表

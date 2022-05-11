@@ -6,7 +6,7 @@
       <view class="securityCheck__topTips-icon">
         <image src="{{topTipIcon}}"></image>
       </view>
-      <text>以下信息为贝易资企业信息库中您的个人身份信息，如无误，请您确认关联，以便贝易资为您提供完整的服务。如有疑问可联系贝易资客服咨询</text>
+      <text>以下信息为贝易资企业信息库中您的个人身份信息，如无误，请您确认关联，以便贝易资为您提供完整的服务。如有疑问可联系贝易资财税管家咨询</text>
     </view>
     <view class="information__idcard">
       <!-- 用户状态为2时 -->

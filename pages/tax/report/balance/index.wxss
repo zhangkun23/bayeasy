@@ -25,7 +25,7 @@
 
 .balance__date {
     display: flex;
-    margin-bottom: 88rpx;
+    margin-bottom: 38rpx;
     /* margin-bottom: 108rpx; */
 }
 

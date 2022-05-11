@@ -5,7 +5,7 @@
       <view class="detail__topTips-icon">
         <image src="{{info_max}}"></image>
       </view>
-      <text>申报征期已过纳税信誉产生影响！请联系运营人员</text>
+      <text>申报征期已过纳税信誉产生影响！请联系财税管家</text>
     </view>
     <view class="successfully__icon">
       <view class="successfully__success-img mg-tp-25">
