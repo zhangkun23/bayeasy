@@ -38,10 +38,14 @@ Page({
      */
     onShow: function () {
         utils.getTabBarIndex(this, 0);
-        let fromType = wx.getStorageSync('serviceIntroType')||''
-        if(fromType === 'gate'){
+        let fromType = wx.getStorageSync('serviceIntroType') || ''
+        if (fromType === 'gate') {
             this.setData({
                 showNav: true
+            })
+            console.log(this.getTabBar().data)
+            this.getTabBar().setData({
+                isShow: false
             })
         }
         wx.removeStorageSync('serviceIntroType')
@@ -53,7 +57,10 @@ Page({
     onHide: function () {
         wx.removeStorageSync('serviceIntroType')
         this.setData({
-            showNav:false
+            showNav: false
+        })
+        this.getTabBar().setData({
+            isShow: true
         })
     },
 

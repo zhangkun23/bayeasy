@@ -86,8 +86,12 @@
 }
 
 .weui-navigation-bar__inner .weui-navigation-bar__center {
+    position: absolute;
+    left: 0;
+    right: 0;
     font-size: 34rpx;
 }
+
 
 .weui-navigation-bar__btn_goback {
     margin: 20rpx;

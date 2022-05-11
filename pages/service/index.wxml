@@ -1,7 +1,7 @@
 <!--pages/service/index.wxml-->
 <view class="service">
     <block wx:if="{{showNav}}">
-        <mp-navigation-bar ext-class="navigationBar" back="false" bindback="gotopage"></mp-navigation-bar>
+        <mp-navigation-bar ext-class="navigationBar" bindback="gotopage"></mp-navigation-bar>
     </block>
     <view class="service__container">
         <view class="service__wrapper">

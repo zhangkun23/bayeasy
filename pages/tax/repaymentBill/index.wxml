@@ -13,7 +13,7 @@
         </view>
         <view class="item__center font-size-24">
           <view class="item__text">
-            <text class="item__center-title">还款额度合计：</text>
+            <text class="item__center-title">还款金额合计：</text>
             <text class="orangeTips font-600">¥ {{list.loan_amount}}</text>
           </view>
           <view class="item__text">

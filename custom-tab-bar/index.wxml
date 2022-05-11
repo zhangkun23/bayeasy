@@ -1,5 +1,5 @@
 <!--miniprogram/custom-tab-bar/index.wxml-->
-<view class="tab-bar">
+<view wx:if="{{isShow}}" class="tab-bar">
   <view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
     <image class="itemImg" wx:if="{{index!=2}}" src="{{selected === index ? item.selectedIconPath : item.iconPath}}" mode="aspectFill" />
     <text class="itemView" wx:if="{{index!=2}}" style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</text>
