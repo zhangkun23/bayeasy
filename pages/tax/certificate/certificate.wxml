@@ -1,6 +1,6 @@
 <!--pages/tax/certificate/certificate.wxml-->
 <view class="certificate bgColog">
-    <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
+    <mp-navigation-bar ext-class="navigationBar" title="{{title}}" back="true" bindback="backIndex"></mp-navigation-bar>
     <view class="detail__container">
         <!-- <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}"> -->
         <view class="detail__topTips orangeTips orangeBack font-size-24">

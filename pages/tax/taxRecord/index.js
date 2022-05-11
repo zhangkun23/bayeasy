@@ -92,7 +92,7 @@ Page({
   getTaxList(value) {
     let params = {
       status: 2,
-      page_size: 1000,
+      page_size: 10,
       year: value ? value : this.data.date
     }
     wx.setStorageSync('pageStatus', 2)

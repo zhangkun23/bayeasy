@@ -2,21 +2,23 @@
 <view class="feedback bgColog">
   <mp-navigation-bar title="留言反馈" back="false" bindback="backIndex"></mp-navigation-bar>
   <view class="feedback__container">
-    <view class="feedback__box">
-      <textarea value="{{feedbackValue}}" placeholder="欢迎使用贝易资！您可将您遇到的问题或期望了解的贝易资服务内容，详细描述反馈给我们，我们将尽快与您联系，为您解决~" placeholder-class="placeholderClass" minlength="{{min}}" maxlength="{{max}}" bindinput="onInput">
+    <view class="feedback__layout">
+      <view class="feedback__box">
+        <textarea value="{{feedbackValue}}" placeholder="欢迎使用贝易资！您可将您遇到的问题或期望了解的贝易资服务内容，详细描述反馈给我们，我们将尽快与您联系，为您解决~" placeholder-class="placeholderClass" minlength="{{min}}" maxlength="{{max}}" bindinput="onInput">
         <view class="feedback__box-num">
         <text class="{{isShowRedText? 'redText' :'gray'}}">{{currentWordNumber}}</text>
         <text class="gray">/</text>
         <text class="gray">{{max}}</text>
         </view>
         </textarea>
-    </view>
-    <view class="feedback__btns">
-      <view class="btn feedback__btns-submit1" wx:if="{{currentWordNumber == 0}}">
-        <view>提交留言</view>
       </view>
-      <view class="btn feedback__btns-submit2 whiteTips" wx:else bindtap="goToSuccess">
-        <view>提交留言</view>
+      <view class="feedback__btns">
+        <view class="btn feedback__btns-submit1" wx:if="{{currentWordNumber == 0}}">
+          <view>提交留言</view>
+        </view>
+        <view class="btn feedback__btns-submit2 whiteTips" wx:else bindtap="goToSuccess">
+          <view>提交留言</view>
+        </view>
       </view>
     </view>
   </view>

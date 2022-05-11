@@ -27,6 +27,7 @@ Page({
   },
   // 逻辑正确
   backTaxIndex() {
+    console.log(12)
     // if (this.data.returnType == 'todo') {
     //   wx.navigateTo({
     //     url: '../../todo/todo',
@@ -37,9 +38,9 @@ Page({
     //   wx.navigateBack({ //返回
     //     delta: 1
     //   })
-    //   wx.navigateTo({
-    //     url: '../taxreturn/index',
-    //   })
+      wx.navigateTo({
+        url: '../taxreturn/index',
+      })
     // }
   },
   renderPage(value) {
