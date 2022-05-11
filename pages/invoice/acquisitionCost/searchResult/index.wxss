@@ -1,12 +1,22 @@
 /* pages/invoice/acquisitionCost/searchResult/index.wxss */
 .invoiceDetails {
     margin: 32rpx;
-    height: 1360rpx;
-    max-height: 1360rpx;
+    height: calc(100% - 64rpx);
+}
+
+.mycontainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
     height: 100%;
+}
+
+.wrapper {
+    flex: 1;
+    height: 1rpx;
 }
 
 .bg {
@@ -117,16 +127,7 @@
     width: 50rpx;
 }
 
-.res-container {
-    /* position: relative; */
-    max-height: 1200rpx;
-    overflow-y: auto;
-    /* width: 100%; */
-    /* margin-bottom: 120rpx; */
-    /* margin: 0 32rpx; */
-}
-
-.res-container .card {
+.card {
     /* display: flex; */
     position: relative;
     /* margin: 32rpx; */
@@ -136,11 +137,11 @@
     border-radius: 28rpx;
 }
 
-.res-container .card .content-container {
+.card .content-container {
     padding: 32rpx 32rpx 32rpx 32rpx;
 }
 
-.res-container .card .content-container .title-container {
+.card .content-container .title-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -279,31 +280,32 @@
     color: #48617C;
     line-height: 33rpx;
 }
+
 .securityCheck__footer {
-    margin:32rpx;
+    margin: 32rpx;
     display: flex;
     justify-content: center;
     height: 100rpx;
     align-items: center;
-  }
-  
-  .securityCheck__bottom {
+}
+
+.securityCheck__bottom {
     position: fixed;
     bottom: 41rpx;
-  }
-  
-  .securityCheck__footer-image {
+}
+
+.securityCheck__footer-image {
     display: inline-block;
     margin-top: 3rpx;
     margin-right: 10rpx;
-  }
-  
-  .securityCheck__footer-image image {
+}
+
+.securityCheck__footer-image image {
     width: 30rpx;
     height: 30rpx;
-  }
-  
-  .securityCheck__footer-service {
+}
+
+.securityCheck__footer-service {
     font-size: 28rpx;
     color: #283E56;
-  }
+}

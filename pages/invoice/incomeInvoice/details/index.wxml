@@ -1,7 +1,7 @@
 <!--pages/invoice/incomeInvoice/details/index.wxml-->
-<view class="mycontainer">
+<view class="mycontainer bgColog" catchtouchmove="handleTouchMove">
     <mp-navigation-bar title="账单发票详情"></mp-navigation-bar>
-    <view class="bgColog"></view>
+    <!-- <view class="bgColog"></view> -->
     <mp-dialog bindbuttontap="handleApplyDialog" show="{{showApplyDialog}}" buttons="{{applyDialogBtns}}">
         <view class="dialog">确认开票前请仔细核对账单发票信息，如对帐单金额及发票有异议，请及时联系您的贝易资运营专员。</view>
     </mp-dialog>
@@ -25,7 +25,7 @@
                     <view class="split" style="border-top: 1px dashed #E6EEF7"></view>
                     <view class="main-info">
                         <text user-select="true" class="info">账期时间：{{time}}</text>
-                        <text user-select="true" class="info">账单ID： {{settlement_id}}</text>
+                        <!-- <text user-select="true" class="info">账单ID： {{settlement_id}}</text> -->
                         <text user-select="true" class="info">账单金额： <text user-select="true" class="yellow">¥ {{bill_amount}}</text></text>
                     </view>
                     <view class="split" style="border-top: 1px dashed #E9ECF3"></view>

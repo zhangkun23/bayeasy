@@ -33,6 +33,8 @@ Page({
         get_all_invoices().then(res => {
             if (res.ret) {
                 if (res.data instanceof Array && res.data.length > 0) {
+                    // test
+                    res.data = res.data.concat(res.data)
                     that.handleData(res.data)
                 } else {
                     this.setData({
@@ -114,5 +116,8 @@ Page({
         that.setData({
             invoice_lists: _invoice_infos
         })
+    },
+    handleTouchMove:function(e){
+        return
     }
 })

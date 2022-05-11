@@ -4,6 +4,18 @@ const {
 const {
     prod
 } = require('../http/env')
+
+if (!String.prototype.format) {
+    String.prototype.format = function () {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function (match, number) {
+            return typeof args[number] != 'undefined' ?
+                args[number] :
+                match;
+        });
+    };
+}
+
 const formatTime = date => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
@@ -256,6 +268,26 @@ const jumpUrl = function (userStatus) {
     } else if (userStatus == 2) {
         this.navigateTo('/pages/login/information/index')
     }
+}
+const dateToStr = function (mydate, formatter = '%Y-%m-%d %H:%M:%S') {
+    formatter = formatter.replace('%Y', '{0}')
+    formatter = formatter.replace('%m', '{1}')
+    formatter = formatter.replace('%d', '{2}')
+    formatter = formatter.replace('%H', '{3}')
+    formatter = formatter.replace('%M', '{4}')
+    formatter = formatter.replace('%S', '{5}')
+    const year = mydate.getFullYear()
+    let month = mydate.getMonth() + 1
+    // 5->05
+    if (1 <= month <= 9) {
+        month = "0" + month
+    }
+    const day = mydate.getDate()
+    const hour = mydate.getHours()
+    const minute = mydate.getMinutes()
+    const second = mydate.getSeconds()
+    formatter = formatter.format(year, month, day, hour, minute, second)
+    return formatter
 }
 module.exports = {
     arrayBufferToBase64Img,

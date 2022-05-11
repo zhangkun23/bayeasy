@@ -101,6 +101,9 @@ Page({
         })
         this._search(_filters)
     },
+    handleTouchMove: function(e){
+        return
+    },
     onLoad: function (option) {
         let that = this
         const eventChannel = this.getOpenerEventChannel()

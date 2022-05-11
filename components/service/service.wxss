@@ -11,6 +11,7 @@
     width: 40rpx;
 }
 .serveText{
+    font-size: 28rpx;
     padding-left: 6rpx;
     color: #283E56;
 }

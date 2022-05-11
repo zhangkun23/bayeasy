@@ -1,7 +1,7 @@
 <!--pages/tax/report/balance/index.wxml-->
-<view class="balance bgColog">
+<view class="balance bgColog" catchtouchmove="handleTouchMove">
     <mp-navigation-bar ext-class="navigationBar" title="资产负债表"></mp-navigation-bar>
-    <view class="balance1">
+    <scroll-view scroll-y="{{true}}" class="balance1">
         <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="changeDate">
             <view class="balance__date">
                 <view class="balance__date-year">{{checkedMonth}}</view>
@@ -53,16 +53,10 @@
                 <view>保存图片</view>
             </view>
         </block>
-    </view>
-
+    </scroll-view>
     <block wx:if="{{isShowModal}}">
         <mp-dialog show="{{isShowModal}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确定保存图片么？">
             <view>资产负债表</view>
         </mp-dialog>
     </block>
-    <!-- <block wx:if="{{isShowSaveModal}}">
-        <mp-dialog show="isShowSaveModal" buttons="{{saveImgBtn}}" bindbuttontap="tapDialogSaveButton" title="保存图片">
-            <view>保存至您的手机相册</view>
-        </mp-dialog>
-    </block> -->
 </view>

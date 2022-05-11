@@ -1,6 +1,6 @@
 <!--pages/tax/taxreturn/index.wxml-->
 <view class="bgColog">
-  <mp-navigation-bar title="纳税申报" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar title="纳税申报"></mp-navigation-bar>
   <view class="taxReturn">
     <view class="taxReturn__container">
       <view class="taxReturn__content back1" data-url="/pages/tax/taxConfirmation/index?type=list" bindtap="handeClick">

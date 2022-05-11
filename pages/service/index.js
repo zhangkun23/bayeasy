@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info_back: tempPath + "index/serviceIntroduction.png",
+    info_back: tempPath + "index/serviceIntro.png",
   },
 
   gotopage() {
