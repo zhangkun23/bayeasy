@@ -86,9 +86,7 @@
 }
 
 .weui-navigation-bar__inner .weui-navigation-bar__center {
-    position: absolute;
-    left: 0;
-    right: 0;
+    white-space: nowrap;
     font-size: 34rpx;
 }
 

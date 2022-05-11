@@ -1,7 +1,15 @@
 /* pages/tax/payRecordDetails/payRecordDetails.wxss */
 /* pages/tax/payRecordDetail/payRecordDetail.wxss */
 /* pages/tax/deatil/deatil.wxss */
-
+.detail{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper{
+    flex: 1;
+    height: 1rpx;
+}
 .space-between {
   display: flex;
   justify-content: space-between;
@@ -40,7 +48,7 @@
 
 .detail__container {
   margin: 32rpx;
-  max-height: 1360rpx;
+  /* max-height: 1360rpx; */
 }
 
 /* .detail__time {
