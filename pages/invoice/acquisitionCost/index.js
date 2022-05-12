@@ -324,5 +324,4 @@ Page({
     handleTouchMove: function(e){
         return
     }
-
 })

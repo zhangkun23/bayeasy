@@ -73,11 +73,13 @@ Page({
   },
   // 组件更新item状态和数据
   updateList(value) {
+    // 
+    console.log("!", value)
     this.setData({
-      taxList: value.detail,
+      taxList: value,
       showTaxList: false
     })
-    value.detail.map(item => {
+    value.map(item => {
       if (item.checked) this.updateItemInfo(item.tax_category);
     })
   },
@@ -149,7 +151,20 @@ Page({
   },
   bindPickerChange: function(e){
       console.log(e.detail.value)
-      this.updateList()
-      this.updateItemInfo()
+      const _index = e.detail.value
+      let _list = this.data.taxList
+      _list.map(i=>{
+        if(i.index == _index){
+          i.checked = true
+        }else{
+          i.checked = false
+        }
+      })
+      _list[_index].checked = true
+      // 更改
+      this.updateList(_list)
+      wx.pageScrollTo({
+        duration: 0,
+      })
   }
 })
