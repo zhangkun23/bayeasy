@@ -7,7 +7,7 @@
     <view class="InfoTop__top">
       <image class="logo_byz" src="{{logo_byz}}" />
       <text class="infoTitle">贝易资企业财税服务商</text>
-      <text class="infoButton" bindtap="handelClick" data-url='info' wx:if="{{token && userStatus<2}}">完善个人信息</text>
+      <text class="infoButton" bindtap="handelClick" data-url='info' wx:if="{{token && userStatus < 2}}">完善个人信息</text>
       <text class="infoButton" bindtap="handelClick" data-url='/pages/login/login/index' wx:if="{{!token}}">登录/注册</text>
     </view>
     <image class="banner" src="{{banner}}" />

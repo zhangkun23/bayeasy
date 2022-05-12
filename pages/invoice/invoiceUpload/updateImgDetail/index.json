@@ -1,10 +1,9 @@
 {
   "usingComponents": {
     "imageBig":"/components/imageBig",
-    "mp-dialog": "weui-miniprogram/dialog/dialog"
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
   },
-  "navigationBarBackgroundColor": "#FFF",
-  "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "增值税发票查验",
+  "navigationStyle":"custom",
   "backgroundColor": "#1D83F0"
 }

@@ -123,7 +123,7 @@
 
 .filter-box {
     position: relative;
-    height:70vh;
+    height:calc(100% - 230rpx);
 }
 
 

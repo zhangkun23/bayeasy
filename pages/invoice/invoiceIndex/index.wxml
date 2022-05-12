@@ -21,7 +21,7 @@
                 <view class="row-1">
                     <view class="gate-area-1"  data-url="/pages/invoice/incomeInvoice/index/index" bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{zdfp}}" mode="aspectFill"></image>
+                            <image class="gate-icon" src="{{img1_1}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             收入账单发票
@@ -29,17 +29,17 @@
                     </view>
                     <view class="gate-area-1" data-url='/pages/nothing/index' bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon"  src="{{zdmx}}" mode="aspectFill"></image>
+                            <image class="gate-icon"  src="{{img1_2}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
-                            收入账单明细
+                            收入开票记录
                         </view>
                     </view>
                 </view>
                 <view class="row-2">
                     <view class="gate-area-2" data-url="/pages/invoice/invoiceUpload/index/index" bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{cbfp}}" mode="aspectFill"></image>
+                            <image class="gate-icon" src="{{img2_1}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             采集成本发票
@@ -47,7 +47,7 @@
                     </view>
                     <view class="gate-area-2" data-url="/pages/invoice/acquisitionCost/index" bindtap="handelClickUrl">
                         <view>
-                            <image class="gate-icon" src="{{fpmx}}" mode="aspectFill"></image>
+                            <image class="gate-icon" src="{{img2_2}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
                             成本发票明细

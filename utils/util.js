@@ -110,7 +110,7 @@ const openPdf = (url) => {
     if (url === 'service_agreement') {
         fileName = '服务协议'
     } else if (url === 'privacy_policy') {
-        fileName = '隐私协议'
+        fileName = '隐私政策'
     } else {
         fileName = url
     }

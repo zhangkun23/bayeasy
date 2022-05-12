@@ -1,4 +1,7 @@
 
+.navBar{
+  color: white;
+}
 
 .bgCount{
     position: relative;

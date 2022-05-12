@@ -1,4 +1,5 @@
 <!-- 上传阶段 -->
+<mp-navigation-bar ext-class="navBar" title="增值税发票查验" background="#FFF" />
 <swiper wx:if="{{status==0}}" class="swiper" autoplay="{{autoplay}}" circular="true" indicator-active-color='#fff' current="{{currentIndex}}">
     <block wx:for="{{updateImgOrPdfArr}}" wx:for-index="index" wx:key="swiperItem" wx:for-item="item">
         <swiper-item>

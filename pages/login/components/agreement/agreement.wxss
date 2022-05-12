@@ -24,4 +24,7 @@
     /* padding-top: 5rpx; */
     height: 40rpx;
     width: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

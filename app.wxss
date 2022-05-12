@@ -102,7 +102,7 @@
   content: '';
   position: absolute;
   left: -20rpx;
-  right: -100rpx;
+  right: -50rpx;
   top: -20rpx;
   bottom: -20rpx;
   transform: scale(1.5);

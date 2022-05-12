@@ -1,4 +1,5 @@
 <view class="bgCount">
+    <mp-navigation-bar ext-class="navBar" title="增值税发票查验" background="#1D83F0"></mp-navigation-bar>
     <view class="titleTop">
         <!-- 查验发票 阶段错误提示 -->
         <view class="errInfo" wx:if="{{errInfoNum!=0}}">
