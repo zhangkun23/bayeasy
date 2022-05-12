@@ -233,13 +233,7 @@ Component({
       }
       console.debug("wx navi to ", e.currentTarget.dataset.url)
       wx.navigateTo({
-        url: url,
-        events: {},
-        success: function (res) {
-          res.eventChannel.emit('acceptDataFromOpenerPage', {
-            data: 'test'
-          })
-        }
+        url: url
       })
     },
     contactOperate(e) {
