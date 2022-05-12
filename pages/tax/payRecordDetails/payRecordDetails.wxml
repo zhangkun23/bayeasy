@@ -37,10 +37,12 @@
         <!-- <view class="detail__tax">纳税明细</view> -->
         <view class="detail__tax" wx:if="{{taxList.length > 0}}">纳税明细</view>
         <view class="display-flex list__one">
-          <scroll-view scroll-x="true" class="list__wrapper">
-          <view class="list__one-center display-flex">
-            <view class="{{item.checked? 'active btns' : 'btns'}} " wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category" data-item="{{item}}" bindtap="checkedItemParent">{{item.tax_category}}</view>
-          </view>
+          <scroll-view scroll-x="true" class="list__wrapper" scroll-into-view="{{currentOptionIndex}}" scroll-with-animation="true">
+            <view class="list__one-center display-flex">
+              <view id="{{item.iid}}" class="{{item.checked? 'active btns' : 'btns'}} " wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category" data-item="{{item}}" bindtap="checkedItemParent">
+                {{item.tax_category}}
+              </view>
+            </view>
           </scroll-view>
           <!-- <view class="list__one-center display-flex">
             <view class="{{item.checked? 'active btns' : 'btns'}} " wx:for="{{taxList}}" wx:for-item="item" wx:key="tax_category" data-item="{{item}}" bindtap="checkedItemParent">{{item.tax_category}}</view>

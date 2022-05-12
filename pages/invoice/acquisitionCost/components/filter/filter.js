@@ -1,9 +1,6 @@
 // pages/invoice/acquisitionCost/components/filter/filter.js
 const app = getApp()
-// 引入插件安装器
-import plugin from '../calendar/plugins/index'
-// 禁用/启用可选状态
-import selectable from '../calendar/plugins/selectable'
+
 Component({
   lifetimes: {
     attached: function () {
@@ -216,14 +213,7 @@ Component({
         showInvoiceDate: !this.data.showInvoiceDate
       })
     },
-    afterCCalendarRender(e) {
-      this.data.cCalendar = this.selectComponent('#ccd').calendar
-      plugin.use(selectable)
-    },
-    afterICalendarRender(e) {
-      this.data.iCalendar = this.selectComponent('#cid').calendar
-      plugin.use(selectable)
-    },
+
     afterTapDate(e) {
       console.debug("选了日期:",e)
       const [start, end] = e.detail;
