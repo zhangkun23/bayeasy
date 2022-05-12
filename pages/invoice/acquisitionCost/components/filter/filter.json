@@ -1,8 +1,8 @@
 {
     "navigationStyle": "custom",
     "usingComponents": {
-        "calendar": "../calendar/index",
         "mp-icon": "weui-miniprogram/icon/icon",
-        "my-service": "/components/service/service"
+        "my-service": "/components/service/service",
+        "van-calendar": "@vant/weapp/calendar/index"
     }
 }

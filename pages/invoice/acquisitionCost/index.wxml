@@ -26,7 +26,7 @@
                 </view>
             </view>
             <view wx:if="{{showFilter}}" class="filter-box">
-                <filter-board class="filter-box" top="{{filterTop}}" showFilter="{{showFilter}}" invoiceTypes="{{invoiceTypes}}" bind:filterres="handleFilterRes"></filter-board>
+                <filter-board top="{{filterTop}}" showFilter="{{showFilter}}" invoiceTypes="{{invoiceTypes}}" bind:filterres="handleFilterRes"></filter-board>
             </view>
             <view wx:if="{{showRes}}" class="res-container">
                 <block wx:if="{{showEmpty}}" class="empty-res-contain">

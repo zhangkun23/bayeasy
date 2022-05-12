@@ -38,11 +38,11 @@
             </view>
             <view class="item__text space-between triangle">
               <view class="position">
-                <view class="bubble" bindtap="hideTips" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view>
+                <!-- <view class="bubble" bindtap="hideTips" wx:if="{{showTips}}">应退税额，会根据国家税务阶段性退还至您的银行账户</view> -->
               </view>
               <view class="item__center-title">
                 应退税额合计
-                <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image>
+                <!-- <image bindtap="showToast" class="item__center-image" src="{{info_max}}"></image> -->
               </view>
               <view class="greennTips font-600">¥ {{deatilObj.should_refund_tax }}</view>
             </view>

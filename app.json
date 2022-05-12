@@ -94,7 +94,6 @@
     "navigationBarTitleText": "Weixin1",
     "navigationBarTextStyle": "black"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {},
   "useExtendedLib": {
