@@ -1,12 +1,12 @@
 <!--pages/invoice/acquisitionCost/components/filter/filter.wxml-->
 <block id="createDate" wx:if="{{showCreateCal}}">
   <view class="calendar-bg" bindtap="toggleCreateCal"></view>
-  <van-calendar id="ccd" title="开票日期选择" show="{{showCreateCal}}" type="range" bind:close="onClose" bind:confirm="afterTapDate" show-confirm="{{true}}" color="#1D83F0" min-date="{{calendarStartDate}}" max-date="{{calendarEndDate}}" show-confirm="{{true}}" allow-same-day="{{true}}" default-date="{{cDefaultDate}}"></van-calendar>
+  <van-calendar id="ccd" title="创建日期选择" show="{{showCreateCal}}" type="range" bind:close="onClose" bind:confirm="afterTapDate" show-confirm="{{true}}" color="#1D83F0" min-date="{{calendarStartDate}}" max-date="{{calendarEndDate}}" show-confirm="{{true}}" allow-same-day="{{true}}" default-date="{{cDefaultDate}}"></van-calendar>
 
 </block>
 <block id="invioceDate" wx:if="{{showInvoiceDate}}">
   <view class="calendar-bg" bindtap="toggleInvoiceDate"></view>
-  <van-calendar id="cid" title="创建日期选择" show="{{showInvoiceDate}}" type="range" bind:close="onClose" bind:confirm="afterTapDate" color="#1D83F0" min-date="{{calendarStartDate}}" max-date="{{calendarEndDate}}" show-confirm="{{true}}" allow-same-day="{{true}}" default-date="{{cDefaultDate}}" default-date="{{iDefaultDate}}"></van-calendar>
+  <van-calendar id="cid" title="开票日期选择" show="{{showInvoiceDate}}" type="range" bind:close="onClose" bind:confirm="afterTapDate" color="#1D83F0" min-date="{{calendarStartDate}}" max-date="{{calendarEndDate}}" show-confirm="{{true}}" allow-same-day="{{true}}" default-date="{{cDefaultDate}}" default-date="{{iDefaultDate}}"></van-calendar>
 </block>
 <view class="mycontainer">
   <scroll-view scroll-y="true" class="wrapper">
