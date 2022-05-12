@@ -20,7 +20,7 @@ Component({
       utils.getTabBarIndex(this, 4);
       // 获取运营
       if (app.globalData.operate) {
-        console.debug("已有客服专员")
+        console.log("已有客服专员")
         const _entrances_info = this.data.entrances_info
         _entrances_info[0].text = "联系财税管家"
         this.setData({
@@ -40,6 +40,7 @@ Component({
       if (token) {
         get_user_info().then(res => {
           console.log("个人信息返回: ", res)
+          this.getFeedbackStatus();
           if (res.data instanceof Object && 'name' in res.data) {
             that.setData({
               user_name: res.data.name || ''
@@ -60,6 +61,7 @@ Component({
 
         const _gate_info = this.data.gates_info
         if (userStatus === 0) {
+          console.log('用户状态为0，不为贝易资用户')
           console.debug("有token但是userstatus为0 跳转完善个人信息")
           _gate_info[0].url = '../../login/authentication/index'
           this.setData({
@@ -70,6 +72,7 @@ Component({
             gates_info: _gate_info,
           })
         } else if (userStatus === 1) {
+          console.log('用户状态为1，未关联')
           _gate_info[0].url = '../../login/securityCheck/index'
           this.setData({
             token: token,
@@ -79,6 +82,7 @@ Component({
             gates_info: _gate_info,
           })
         } else if (userStatus === 2) {
+          console.log('用户状态为2，已关联')
           _gate_info[0].url = '../../login/information/index'
           this.setData({
             token: token,
@@ -95,6 +99,8 @@ Component({
             showCompleteInfo: false
           })
         }
+      } else {
+        console.log('没有token')
       }
 
       // 决定待办事项
@@ -137,6 +143,7 @@ Component({
     todoCount: 0,
     isCheckRequired: false,
     hasUserInfo: false,
+    showCompleteInformationModal: false,
     userInfo: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
@@ -144,11 +151,15 @@ Component({
     showModal: false,
     btn_text: '退出登录',
     nbTitle: '个人中心',
+    contents: ["为便于贝易资为您提供更为完善的服务", "需要您先完成身份信息安全校验"],
     btnUrl: '../../login/information/index',
     user_name: '', // name 和 tel 都应该存储在全局的info里
     user_tel: '',
     right_arrow: icons_url.right_arrow,
-    isStatus: 0,
+    // userStatus: 1,
+    userStatus: app.globalData.userStatus,
+    token: wx.getStorageSync('token') || '',
+    isStatus: null,
     entrances_info: [{
         id: 1,
         icon: icons_url.contact_operate,
@@ -221,26 +232,64 @@ Component({
         }
       })
     },
-    goEntrance(e) {
-      let url = e.currentTarget.dataset.url;
-      console.log(url)
-      if (url == '/pages/faq/feedbackList/index') {
-        if (this.data.isStatus == 0) {
-          url = '/pages/faq/feedback/index';
-        } else {
-          url = '/pages/faq/feedbackList/index';
-        }
-      }
-      console.debug("wx navi to ", e.currentTarget.dataset.url)
+    gotoVerify() {
       wx.navigateTo({
-        url: url,
-        events: {},
-        success: function (res) {
-          res.eventChannel.emit('acceptDataFromOpenerPage', {
-            data: 'test'
-          })
-        }
+        url: '../../login/securityCheck/index',
       })
+    },
+    goEntrance(e) {
+      const userStatus = app.globalData.userStatus;
+      let url = e.currentTarget.dataset.url;
+      let isStatus = this.data.isStatus;
+
+      if (url == '/pages/faq/feedbackList/index') {
+        if (!this.data.token) {
+          this.setData({
+            showModal: true
+          })
+        } else {
+          console.log(userStatus)
+          if (userStatus < 2) {
+            console.log(userStatus, '状态为<2')
+            this.setData({
+              showCompleteInformationModal: true
+            })
+          } else {
+            console.log(userStatus, this.data.isStatus, '状态为=2')
+            // this.setData({
+            //   showCompleteInformationModal: false
+            // })
+            if (isStatus == 0) {
+              url = '/pages/faq/feedback/index';
+            } else {
+              url = '/pages/faq/feedbackList/index';
+            }
+            console.debug("wx navi to ", e.currentTarget.dataset.url)
+            wx.navigateTo({
+              url: url,
+              events: {},
+              success: function (res) {
+                console.log(res)
+                res.eventChannel.emit('acceptDataFromOpenerPage', {
+                  data: 'test'
+                })
+              }
+            })
+          }
+        }
+      } else {
+        wx.navigateTo({
+          url: url,
+          events: {},
+          success: function (res) {
+            console.log(res)
+            res.eventChannel.emit('acceptDataFromOpenerPage', {
+              data: 'test'
+            })
+          }
+        })
+      }
+
     },
     contactOperate(e) {
       if (this.data.isOperate) {

@@ -35,12 +35,12 @@ Page({
     // } else {
     //   console.log('navigateBack')
     //   console.log( getCurrentPages())
-    //   wx.navigateBack({ //返回
-    //     delta: 1
-    //   })
-      wx.navigateTo({
-        url: '../taxreturn/index',
-      })
+      // wx.navigateBack({ //返回
+      //   delta: 0
+      // })
+      // wx.navigateTo({
+      //   url: '../taxreturn/index',
+      // })
     // }
   },
   renderPage(value) {
