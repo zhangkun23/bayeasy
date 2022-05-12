@@ -141,23 +141,6 @@ Page({
     // 获取详情
     getdeclareInfo() {
         let id = wx.getStorageSync('rowid')
-        const test_data = {
-            "ret": true,
-            "message": "success",
-            "data": {
-                "should_pay_tax": "0.00",
-                "should_refund_tax": "0.00",
-                "already_pay_tax": "0.00",
-                "confirm_date": "2022-04-22 11:48:55",
-                "declare_month": "2020-05",
-                "status": 1,
-                "overdue_status": 0,
-                "overdue_time": 792941,
-                "category": [],
-                "list": []
-            },
-            "code": 200
-        }
         declareInfo(this.data.detailId).then(res => {
             console.log(res, '详情')
             if (res.ret) {

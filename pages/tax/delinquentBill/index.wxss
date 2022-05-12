@@ -1,76 +1,81 @@
 /* pages/tax/delinquentBill/index.wxss */
 
 .delinquentBill {
-  background: url('https://image.bayeasy.cn/images-datas/tax/taxreturn/arrearsBack.png') no-repeat;
-  background-size: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+    background: url('https://image.bayeasy.cn/images-datas/tax/taxreturn/arrearsBack.png') no-repeat;
+    background-size: contain;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+.wrapper {
+    flex: 1;
+    height: 1rpx;
+}
+
 .taxConfirmation__container {
-  /* max-height: 1360rpx; */
   display: flex;
   flex-direction: column;
   padding: 32rpx; 
 }
 
 .taxConfirmation__btn {
-  width: 146rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  text-align: center;
-  font-weight: 400;
-  color: #FFFFFF;
-  /* margin-bottom: 34rpx; */
-  align-self: flex-end;
+    width: 146rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    font-weight: 400;
+    color: #FFFFFF;
+    /* margin-bottom: 34rpx; */
+    align-self: flex-end;
 }
 
 .delinquentBill__account {
-  align-self: center;
-  color: #FFFFFF;
-  text-align: center;
-  margin-bottom: 40rpx;
+    align-self: center;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 40rpx;
 }
 
 .delinquentBill__account-title {
-  font-size: 28rpx;
+    font-size: 28rpx;
 }
 
 .delinquentBill__account-money {
-  font-size: 64rpx;
+    font-size: 64rpx;
 }
 
 .taxConfirmation__list-item {
-  width: 686rpx;
-  /* height: 387rpx; */
-  background: #FFFFFF;
-  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
-  border-radius: 28rpx;
-  margin-bottom: 32rpx;
+    width: 686rpx;
+    /* height: 387rpx; */
+    background: #FFFFFF;
+    box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+    border-radius: 28rpx;
+    margin-bottom: 32rpx;
 }
 
 .item__header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2rpx solid #E6EEF7;
-  align-items: center;
-  height: 103rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #E6EEF7;
+    align-items: center;
+    height: 103rpx;
 }
 
 .item__header-image {
-  width: 48rpx;
-  height: 48rpx;
-  margin-right: 16rpx;
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 16rpx;
 }
 
 .item__header-date {
-  display: flex;
+    display: flex;
 }
 
 .item__header-text {
-  font-size: 28rpx;
-  font-weight: 600;
-  color: #283E56;
+    font-size: 28rpx;
+    font-weight: 600;
+    color: #283E56;
 
 }
 
@@ -81,19 +86,19 @@
 } */
 
 .pd-32 {
-  padding: 0 32rpx 32rpx;
+    padding: 0 32rpx 32rpx;
 }
 
 .item__center {
-  padding-top: 24rpx;
+    padding-top: 24rpx;
 }
 
 .item__text {
-  margin-bottom: 10rpx;
+    margin-bottom: 10rpx;
 }
 
 .item__center-title {
-  color: #48617C;
+    color: #48617C;
 }
 
 /* .item__center-amount1 {
@@ -107,35 +112,35 @@
 } */
 
 .securityCheck__topTips {
-  line-height: 32rpx;
-  border-radius: 12rpx;
-  padding: 7rpx 20rpx;
-  margin-top: 32rpx;
+    line-height: 32rpx;
+    border-radius: 12rpx;
+    padding: 7rpx 20rpx;
+    margin-top: 32rpx;
 }
 
 .securityCheck__topTips-icon {
-  display: inline-block;
-  margin-right: 6rpx;
+    display: inline-block;
+    margin-right: 6rpx;
 }
 
 .securityCheck__topTips-icon image {
-  width: 24rpx;
-  height: 24rpx;
+    width: 24rpx;
+    height: 24rpx;
 }
 
 .taxConfirmation__nodata {
-  background: #fff;
-  border-radius: 32px;
-  box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6);
-  padding: 166rpx 160rpx 224rpx;
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6);
+    padding: 166rpx 160rpx 224rpx;
 }
 
 .taxConfirmation__image {
-  width: 370rpx;
-  height: 300rpx;
+    width: 370rpx;
+    height: 300rpx;
 }
 
 .taxConfirmation__nodata-text {
-  color: #6E87A2;
-  text-align: center;
+    color: #6E87A2;
+    text-align: center;
 }

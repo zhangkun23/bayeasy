@@ -1,7 +1,7 @@
 <!--pages/tax/paymentRecord/index.wxml-->
 <view class="taxConfirmation bgColog">
   <mp-navigation-bar title="申报缴纳记录" bindback="backIndex"></mp-navigation-bar>
-  <scroll-view scroll-y="true">
+  <scroll-view scroll-y="true" class="wrapper">
     <view class="taxConfirmation__container">
       <picker mode="date" value="{{date}}" start="{{startTime}}" end="{{endTime}}" bindchange="bindDateChange" fields="year">
         <view class="taxConfirmation__header">

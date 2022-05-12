@@ -1,5 +1,4 @@
 /* pages/tax/billingDetail/billingDetail.wxss */
-
 .detail{
   display: flex;
   flex-direction: column;
@@ -64,7 +63,7 @@
 }
 
 .detail__container {
-  /* max-height: 1360rpx; */
+  margin: 32rpx;
 }
 
 .detail__timeout {
