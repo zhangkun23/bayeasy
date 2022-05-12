@@ -1,0 +1,3 @@
+<!--components/watermark/watermark.wxml-->
+<canvas id="wmCanvas" type="2d" style="width:{{wmWidth}}rpx; height:{{wmHeight}}rpx;"></canvas>
+<canvas id="myCanvas" type="2d" style="width: {{imgWidth}}rpx; height:{{imgHeight}}rpx;"></canvas>
