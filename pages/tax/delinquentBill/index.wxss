@@ -2,13 +2,16 @@
 
 .delinquentBill {
   background: url('https://image.bayeasy.cn/images-datas/tax/taxreturn/arrearsBack.png') no-repeat;
-  background-size: contain;
-}
-.taxConfirmation__container {
-  max-height: 1360rpx;
+  background-size: 100%;
   display: flex;
   flex-direction: column;
-  padding: 32rpx;
+  height: 100vh;
+}
+.taxConfirmation__container {
+  /* max-height: 1360rpx; */
+  display: flex;
+  flex-direction: column;
+  padding: 32rpx; 
 }
 
 .taxConfirmation__btn {

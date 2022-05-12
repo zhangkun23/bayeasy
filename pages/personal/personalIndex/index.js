@@ -121,7 +121,6 @@ Component({
           pageShow: true
         })
       }, 30)
-      this.getFeedbackStatus();
     },
   },
   properties: {

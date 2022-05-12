@@ -1,8 +1,9 @@
 <!--pages/faq/index.wxml-->
-<!--pages/classroom/index.wxml-->
 <view class="faq">
-  <mp-navigation-bar ext-class="whiteTips" back="false"></mp-navigation-bar>
-  <view>
+  <!-- <view class="faq__navigationBar"> -->
+    <mp-navigation-bar ext-class="navigationBar whiteTips" back="false"></mp-navigation-bar>
+  <!-- </view> -->
+  <scroll-view scroll-y="true" class="wrapper">
     <view class="faq__contaniner">
       <view class="faq__wrapper">
         <view class="faq__header whiteTips">
@@ -49,5 +50,5 @@
 
 
     </view>
-  </view>
+  </scroll-view>
 </view>

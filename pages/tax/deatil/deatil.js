@@ -49,7 +49,9 @@ Page({
     },
     // 返回
     backIndex() {
+      console.log(123)
         wx.setStorageSync('overdueStatus', '')
+        
     },
     // getUserStatus() {
     //   getUserStatus().then(res => {
