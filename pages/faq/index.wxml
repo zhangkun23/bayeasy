@@ -11,13 +11,13 @@
           <view class="faq__header-tips">Frequently asked questions</view>
         </view>
 
-        <view class="faq__list" wx:if="{{!isShowList}}">
+        <view class="faq__list" wx:if="{{commonProblemList.length < 0}}">
           <view class="faq__list-item" wx:for="{{commonProblemList}}" wx:for-item="item" wx:key="id">
             <view class="faq__item-header">
               <view class="faq__item-imagewrapper">
                 <image class="faq__list-image" src="{{qa}}"></image>
               </view>
-              <view class="faq__list-title font-600">{{item.time}}</view>
+              <view class="faq__list-title font-600">{{item.title}}</view>
             </view>
             <!-- <view class="faq_item-conimg">
             <image class="faqImages" src="{{qa}}"></image>
