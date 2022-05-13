@@ -24,7 +24,7 @@
           </view> -->
             <view class="faq__list-content font-size-24">{{item.content}}</view>
           </view>
-          <view class="faq__icon" bindtap="feedbackFn">
+          <view class="faq__icon" bindtap="gotoMessage">
             <view class="faq__icon-box">
               <image class="faq__icon-img" src="{{bottomicon}}"></image>
             </view>

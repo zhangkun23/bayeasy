@@ -17,20 +17,14 @@ Page({
     commonProblemList: [],
     isStatus: 0
   },
-
   gotoMessage() {
-    wx.navigateTo({
-      url: './feedback/index',
-    })
-  },
-  feedbackFn() {
-    if (this.data.isStatus == 0) {
-      wx.navigateTo({
-        url: './feedback/index',
-      })
-    } else {
+    if (this.data.isStatus == 1) {
       wx.navigateTo({
         url: './feedbackList/index',
+      })
+    }else{
+      wx.navigateTo({
+        url: './feedback/index',
       })
     }
   },
