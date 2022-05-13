@@ -92,7 +92,7 @@
 
     <view class="statusSusses" wx:if="{{status==2}}">
         <image src="{{updateHandel_rigth}}" />
-        <view class="statusSusses__tj">提交成功</view>
+        <view class="statusSusses__tj">提交完成</view>
         <view class="statusSusses__info">请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！<text bindtap="jumpAddress">邮寄地址</text></view>
         <view class="statusSusses__select" bindtap="handelClick">查看发票信息</view>
     </view>
@@ -103,4 +103,4 @@
 </view>
 <!-- 提交错误提示 -->
 <updateImageInfo_errInfo errInfoShow="{{errInfoShow}}" errInfo="{{errInfo}}" bind:errInfoCloseOrShow="errInfoCloseOrShow" />
-<service class="servicePosition" wx:if="{{status==2}}"></service>
+<service class="servicePosition" wx:if="{{status==2}}" contact="财税管家"></service>

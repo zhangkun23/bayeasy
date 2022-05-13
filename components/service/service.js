@@ -6,7 +6,10 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+        contact: {
+            type: String,
+            value: "客服"
+          },
     },
     pageLifetimes: {
         show() {
@@ -24,7 +27,6 @@ Component({
      */
     data: {
         logo: getApp().globalData.imgPath + 'public/service.png',
-        contact: "客服"
     },
     /**
      * 组件的方法列表

@@ -2,7 +2,7 @@
 <view>
     <view class="ss">
         <image class="ss_image" src="{{updateHandel_right}}" />
-        <view class="ss_text">提交成功</view>
+        <view class="ss_text">提交完成</view>
         <view class="ss_message">
             请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！
             <text class="addressLink" bindtap="handelClickLink">邮寄地址</text>
