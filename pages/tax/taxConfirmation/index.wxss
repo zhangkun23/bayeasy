@@ -129,8 +129,18 @@
 }
 
 .detail__topTips-icon {
-  display: inline-block;
-  margin-right: 7rpx;
+  margin: 8rpx 0rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconImg{
+  padding-right: 8rpx;
 }
 
 .detail__topTips-icon image {
