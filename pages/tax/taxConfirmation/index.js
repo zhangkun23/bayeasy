@@ -100,7 +100,7 @@ Page({
   },
   // 跳转详情
   gotoDeatil(event) {
-    let row = event.currentTarget.dataset.row
+    let row = event.currentTarget.dataset.row;
     wx.navigateTo({
       url: '../deatil/deatil?id=' + row.id + '&type=list'
     })
