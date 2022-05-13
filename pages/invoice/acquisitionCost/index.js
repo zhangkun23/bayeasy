@@ -36,7 +36,7 @@ Page({
     onShow: function () {
         this.setData({
             showRes: true,
-            showEmpty: false,
+            // showEmpty: false,
             showFilter: false,
             showSearch: false,
             canFlip: true
