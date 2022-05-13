@@ -2,8 +2,8 @@
 <mp-navigation-bar bindback="backIndex" />
 <view class="bgColog">
     <view class="logo"> 
-        <view>
-            <image class="logo_byz" src="{{logo_byz}}" />
+        <view class="logo_byz">
+            <image class="logo_byz_img" src="{{logo_byz}}" />
         </view>
         <text class="logoTitle">企业财税服务商</text>
     </view>

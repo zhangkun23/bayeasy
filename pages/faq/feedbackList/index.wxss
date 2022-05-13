@@ -48,7 +48,7 @@
 }
 
 .faq__list-content {
-  text-indent: 30rpx;
+  /* text-indent: 30rpx; */
   color: #6E87A2;
   line-height: 36rpx;
   margin-top: 24rpx;

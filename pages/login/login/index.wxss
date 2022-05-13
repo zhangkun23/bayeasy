@@ -4,6 +4,12 @@
     margin-top: 410rpx;
 }
 .logo_byz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.logo_byz_img{
     height: 125rpx;
     width:330rpx;
 }
