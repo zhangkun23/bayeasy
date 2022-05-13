@@ -53,6 +53,8 @@
     margin-top: 8rpx;
     font-size: 28rpx;
     font-weight: lighter;
+    font-weight: 400;
+    line-height: 36rpx;
 }
 
 .user-info .user-tel {
