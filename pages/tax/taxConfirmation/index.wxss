@@ -97,10 +97,10 @@
 
 }
 
-.securityCheck__topTips-icon {
+/* .securityCheck__topTips-icon {
   display: flex;
   margin-right: 6rpx;
-}
+} */
 
 .securityCheck__topTips-icon image {
   width: 24rpx;
@@ -119,4 +119,21 @@
 .taxConfirmation__nodata-text {
   color: #6E87A2;
   text-align: center;
+}
+
+.detail__topTips {
+  line-height: 36rpx;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 24rpx;
+}
+
+.detail__topTips-icon {
+  display: inline-block;
+  margin-right: 7rpx;
+}
+
+.detail__topTips-icon image {
+  width: 24rpx;
+  height: 24rpx;
 }

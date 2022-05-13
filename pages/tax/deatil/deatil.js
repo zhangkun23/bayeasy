@@ -142,7 +142,7 @@ Page({
   getdeclareInfo() {
     let id = wx.getStorageSync('rowid')
     declareInfo(this.data.detailId).then(res => {
-      console.log(res, '详情')
+      // console.log(res, '详情')
       if (res.ret) {
         let arr = []
         if (res.data) {
@@ -153,7 +153,9 @@ Page({
               title: '本期申报税款确认'
             })
           } else {
-            title: '申报税款确认'
+            this.setData({
+              title: '申报税款确认'
+            })
           }
           var time = res.data.overdue_time;
           this.countDown(time)
@@ -245,6 +247,7 @@ Page({
 
   // 确认是否已逾期 0 逾期 1未逾期   overdueStatus逾期状态
   renderPage(value) {
+    console.log(value)
     this.setData({
       returnType: value
     })
