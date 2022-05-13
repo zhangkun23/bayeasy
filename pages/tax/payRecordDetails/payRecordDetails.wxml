@@ -99,8 +99,12 @@
                 <text class="detail__content-text">{{item.pay_status}}</text>
               </view>
               <view class="space-between mg-bp-24">
-                <text class="detail__content-title font-600 orangeTips">应补税额</text>
+                <text class="detail__content-title font-600">应补税额</text>
                 <text class="orangeTips">¥ {{item.should_pay_tax}}</text>
+              </view>
+              <view class="space-between mg-bp-24">
+                <text class="detail__content-title font-600">应退税额</text>
+                <text class="greennTips">¥ {{item.should_refund_tax}}</text>
               </view>
             </view>
           </view>
