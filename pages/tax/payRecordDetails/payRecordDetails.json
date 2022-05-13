@@ -1,8 +1,7 @@
 {
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-    "mp-dialog": "weui-miniprogram/dialog/dialog",
-    "list": "../common/list"
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   },
   "navigationStyle": "custom"
 
