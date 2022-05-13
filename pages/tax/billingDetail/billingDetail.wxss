@@ -53,6 +53,8 @@
 }
 
 .detail__topTips-icon {
+  display: flex;
+  align-items: center;
   display: inline-block;
   margin-right: 7rpx;
 }
