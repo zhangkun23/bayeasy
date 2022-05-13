@@ -12,6 +12,10 @@
     height: 1rpx;
 }
 
+.infoIcon{
+  margin-right: 8rpx;
+}
+
 .taxConfirmation__container {
   display: flex;
   flex-direction: column;
