@@ -44,7 +44,9 @@
 .user-info .user-name {
     font-size: 44rpx;
     font-size: bolder;
-
+    font-weight: 600;
+    color: #0B1D30;
+    line-height: 68rpx;
 }
 
 .user-info .user-need-login {
