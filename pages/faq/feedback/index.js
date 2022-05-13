@@ -40,11 +40,9 @@ Page({
     }
   },
   goToSuccess() {
-    console.log(this.data.feedbackValue)
     feedbackSubmit({
       content: this.data.feedbackValue
     }).then(res => {
-      console.log(res)
       if (res.ret) {
         wx.navigateTo({
           url: '../feedbackSuccess/index',

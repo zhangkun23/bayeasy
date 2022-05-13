@@ -12,8 +12,8 @@
 }
 
 .successfully__success-img image {
-  width: 83rpx;
-  height: 83rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 
 .successfully__success-text {

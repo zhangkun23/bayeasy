@@ -9,6 +9,7 @@
     margin: 0 30rpx;
     margin-top: 48rpx;
     align-items: center;
+    justify-content: center;
 }
 .loginText__img{
     height: 30rpx;
