@@ -1,5 +1,5 @@
 <!--pages/tax/paymentRecord/index.wxml-->
-<view class="taxConfirmation bgColog">
+<view class="taxConfirmation">
   <mp-navigation-bar title="申报缴纳记录" bindback="backIndex"></mp-navigation-bar>
   <scroll-view scroll-y="true" class="wrapper">
     <view class="taxConfirmation__container">
