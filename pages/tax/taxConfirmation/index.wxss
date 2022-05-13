@@ -13,7 +13,6 @@
 }
 
 .taxConfirmation__container {
-  /* max-height: 1360rpx; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;

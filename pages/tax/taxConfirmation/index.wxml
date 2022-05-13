@@ -1,6 +1,6 @@
 <view class="taxConfirmation bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="申报税款确认" back="true" bindback="backTaxIndex"></mp-navigation-bar>
-  <scroll-view scroll-y="true" bindscrolltolower="reachBottom" hidden="{{!showPage}}" class="wrapper">
+  <scroll-view class="wrapper" scroll-y="true" bindscrolltolower="reachBottom" hidden="{{!showPage}}">
     <view class="taxConfirmation__container">
       <view class="taxConfirmation__btn font-size-24" bindtap="sureRecord">
         <text class="taxConfirmation__button">确认记录</text>
@@ -25,16 +25,16 @@
                 <text class="item__center-title">应退税额合计：</text>
                 <text class="greennTips font-600">¥ {{list.should_refund_tax || '0.00'}}</text>
               </view>
-              <view class="item__text" wx:if="{{list.status == 2}}">
+              <!-- <view class="item__text" wx:if="{{list.status == 2}}">
                 <text class="item__center-title">确认时间：</text>
                 <text class="item__center-title">--</text>
-                <!-- <text class="item__center-title">{{list.confirm_date}}</text> -->
-              </view>
+                <text class="item__center-title">{{list.confirm_date}}</text>
+              </view> -->
               <view class="securityCheck__topTips orangeTips orangeBack font-size-24">
                 <view class="securityCheck__topTips-icon">
                   <image src="{{info_max}}"></image>
                 </view>
-                <view wx:if="{{list.overdue_status == 0}}">请尽快确认税款，申报征期已过，纳税信誉已产生影响！</view>
+                <view wx:if="{{list.overdue_status == 0}}">请尽快确认税额，申报征期已过纳税信誉产生影响！</view>
                 <view wx:if="{{list.overdue_status == 1}}">请您尽快确认税额，以免影响申报进度</view>
               </view>
             </view>
