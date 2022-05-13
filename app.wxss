@@ -90,14 +90,25 @@
     font-size: 34rpx;
 }
 
-
-.weui-navigation-bar__btn_goback {
-    margin: 20rpx;
-    padding-left: 5rpx;
-    padding-right: 5rpx;
-
+.weui-navigation-bar__buttons{
+  position: relative;
 }
 
+.weui-navigation-bar__btn_goback {
+   position: relative;
+}
+
+.weui-navigation-bar__btn_goback::after{
+  content: '';
+  position: absolute;
+  left: -20rpx;
+  right: -50rpx;
+  top: -20rpx;
+  bottom: -20rpx;
+  transform: scale(1.5);
+  border: 1px solid lightgray
+
+}
 .navBarFont {
     font-size: 34rpx;
 }

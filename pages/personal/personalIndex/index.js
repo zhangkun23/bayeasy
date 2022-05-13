@@ -266,30 +266,15 @@ Component({
             }
             console.debug("wx navi to ", e.currentTarget.dataset.url)
             wx.navigateTo({
-              url: url,
-              events: {},
-              success: function (res) {
-                console.log(res)
-                res.eventChannel.emit('acceptDataFromOpenerPage', {
-                  data: 'test'
-                })
-              }
+              url: url
             })
           }
         }
       } else {
         wx.navigateTo({
-          url: url,
-          events: {},
-          success: function (res) {
-            console.log(res)
-            res.eventChannel.emit('acceptDataFromOpenerPage', {
-              data: 'test'
-            })
-          }
+          url: url
         })
       }
-
     },
     contactOperate(e) {
       if (this.data.isOperate) {

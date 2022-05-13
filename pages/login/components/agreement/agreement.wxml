@@ -5,8 +5,8 @@
 
 <view class="loginText">
     <view class="loginSelect" bindtap="handelClickImg">
-        <image class="loginText__img" wx:if="{{status}}" src="{{loginSelect}}"  />
-        <image class="loginText__img" wx:if="{{!status}}" src="{{loginUnSelect}}"  />
+        <image class="loginText__img" wx:if="{{status}}" src="{{loginSelect}}"  mode="aspectFill"/>
+        <image class="loginText__img" wx:if="{{!status}}" src="{{loginUnSelect}}"  mode="aspectFill" />
     </view>
     <view>登录即表示您已经同意</view>
     <view class="loginTextXy" data-type='service_agreement' bindtap="handelClick">《服务平台协议》</view>

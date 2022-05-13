@@ -22,7 +22,8 @@ Page({
     showTaxList: false,
     returnType: '',
     color: '',
-    background: ''
+    background: '',
+    currentOptionIndex: 0
   },
   // 返回
   backIndex() {
@@ -104,6 +105,7 @@ Page({
           res.data.category.map((item, i) => {
             item.checked = false;
             item.index = i
+            item.iid = "option_"+i
           })
           res.data.category[0].checked = true;
         }
@@ -163,8 +165,8 @@ Page({
       _list[_index].checked = true
       // 更改
       this.updateList(_list)
-      wx.pageScrollTo({
-        duration: 0,
+      this.setData({
+        currentOptionIndex: "option_"+_index
       })
   }
 })

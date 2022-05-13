@@ -1,4 +1,6 @@
-
+.navBar{
+  color: black;
+}
 .swiper{
     height: 1600rpx;
     box-sizing: border-box;
