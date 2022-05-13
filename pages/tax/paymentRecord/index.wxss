@@ -3,146 +3,150 @@
 /* pages/tax/taxConfirmation/index.wxss */
 
 .taxConfirmation {
-    height: calc(100% - 64rpx);
-    padding: 32rpx;
-    display: flex;
-    flex-direction: column;
+  height: calc(100% - 64rpx);
+  padding: 32rpx;
+  display: flex;
+  flex-direction: column;
+  background-image: url('https://image.bayeasy.cn/images-datas/public/backGround.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .wrapper {
-    flex: 1;
-    height: 1rpx;
+  flex: 1;
+  height: 1rpx;
 }
 
 .display-flex {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .taxConfirmation__container {
-    /* max-height: 1360rpx; */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  /* max-height: 1360rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .taxConfirmation__header {
-    display: flex;
-    justify-content: space-between;
-    width: 686rpx;
-    /* height: 88rpx; */
-    background: #FFFFFF;
-    border-radius: 28rpx;
-    font-size: 28rpx;
-    padding: 23rpx 0;
-    margin-bottom: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 686rpx;
+  /* height: 88rpx; */
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  font-size: 28rpx;
+  padding: 23rpx 0;
+  margin-bottom: 32rpx;
 }
 
 .year {
-    margin-left: 61rpx;
-    margin-right: 40rpx;
+  margin-left: 61rpx;
+  margin-right: 40rpx;
 }
 
 .years {
-    color: #1D83F0;
+  color: #1D83F0;
 }
 
 .taxConfirmation__header-icon {
-    width: 48rpx;
-    height: 48rpx;
-    margin-right: 45rpx;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 45rpx;
 }
 
 .taxConfirmation__btn {
-    width: 146rpx;
-    height: 50rpx;
-    line-height: 50rpx;
-    text-align: center;
-    background: #1D83F0;
-    border-radius: 25rpx;
-    font-weight: 400;
-    color: #FFFFFF;
-    margin-bottom: 32rpx;
+  width: 146rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background: #1D83F0;
+  border-radius: 25rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-bottom: 32rpx;
 }
 
 .taxConfirmation__list-item {
-    width: 686rpx;
-    /* height: 387rpx; */
-    background: #FFFFFF;
-    box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
-    border-radius: 28rpx;
-    margin-bottom: 32rpx;
+  width: 686rpx;
+  /* height: 387rpx; */
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 28rpx;
+  margin-bottom: 32rpx;
 }
 
 .item__header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2rpx solid #E6EEF7;
-    align-items: center;
-    height: 103rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #E6EEF7;
+  align-items: center;
+  height: 103rpx;
 }
 
 .item__header-image {
-    width: 48rpx;
-    height: 48rpx;
-    margin-right: 16rpx;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
 }
 
 .item__header-date {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .item__header-text {
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #283E56;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #283E56;
 
 }
 
 .pd-32 {
-    padding: 0 32rpx 32rpx;
+  padding: 0 32rpx 32rpx;
 }
 
 .item__center {
-    padding-top: 24rpx;
+  padding-top: 24rpx;
 }
 
 .item__text {
-    margin-bottom: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .item__center-title {
-    color: #48617C;
+  color: #48617C;
 }
 
 .securityCheck__topTips {
-    line-height: 32rpx;
-    border-radius: 12rpx;
-    padding: 7rpx 20rpx;
-    margin-top: 32rpx;
+  line-height: 32rpx;
+  border-radius: 12rpx;
+  padding: 7rpx 20rpx;
+  margin-top: 32rpx;
 }
 
 .securityCheck__topTips-icon {
-    display: inline-block;
-    margin-right: 6rpx;
+  display: inline-block;
+  margin-right: 6rpx;
 }
 
 .securityCheck__topTips-icon image {
-    width: 24rpx;
-    height: 24rpx;
+  width: 24rpx;
+  height: 24rpx;
 }
 
 .taxConfirmation__nodata {
-    margin: 240rpx auto;
+  margin: 240rpx auto;
 }
 
 .taxConfirmation__image {
-    width: 370rpx;
-    height: 300rpx;
+  width: 370rpx;
+  height: 300rpx;
 }
 
 .taxConfirmation__nodata-text {
-    color: #6E87A2;
-    text-align: center;
+  color: #6E87A2;
+  text-align: center;
 }
