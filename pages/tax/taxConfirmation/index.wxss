@@ -129,12 +129,18 @@
 }
 
 .detail__topTips-icon {
-  display: inline-block;
-  margin-right: 7rpx;
 }
-
-.detail__topTips-icon image {
+.itemImgView{
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  padding-right: 8rpx;
+}
+.itemImgView .hide {
+  width: 0;
+  overflow: hidden;
+}
+.itemImgView image {
   width: 24rpx;
   height: 24rpx;
-  margin-right: 8rpx;
 }
