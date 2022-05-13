@@ -217,6 +217,8 @@ Page({
                 active:true
             })
         }
+        // 更新stroy 防止锁屏数据流失
+        wx.setStorageSync('updateImgOrPdfArr',tempArr)
     },
     // 删除已经识别的发票
     delDeductInvoiceFile(id){
@@ -273,6 +275,8 @@ Page({
                         'updateImgOrPdfArr':temp,
                         'loadStatusNum':that.data.loadStatusNum-1
                     })
+                    // 保存提交 防止锁屏数据流失
+                    wx.setStorageSync('updateImgOrPdfArr',temp),
 
                     tempDeductNum = tempDeductNum+1;
 
@@ -374,6 +378,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        console.log('123123123')
         if(this.data.status==1){
             const info = wx.getStorageSync('updateImgOrPdfArr');
             if(info){
