@@ -10,7 +10,7 @@
   height: 1rpx;
 }
 .detail__layout {
-  padding: 32rpx;
+  /* padding: 32rpx; */
 }
 .space-between {
   display: flex;

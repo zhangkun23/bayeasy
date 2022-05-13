@@ -38,7 +38,7 @@
   font-size: 36rpx;
   font-weight: 600;
   color: #0B1D30;
-  margin: 25rpx 0;
+  margin-bottom: 20rpx;
 }
 
 .successfully__success_tips {

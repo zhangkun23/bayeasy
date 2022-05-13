@@ -148,8 +148,8 @@
 .faq__button {
   position: fixed;
   bottom: 150rpx;
-  right: 100rpx;
-  left: 100rpx;
+  right: 150rpx;
+  left: 133rpx;
   width: 500rpx;
   height: 88rpx;
   line-height: 88rpx;

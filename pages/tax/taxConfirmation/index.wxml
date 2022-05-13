@@ -30,12 +30,13 @@
                 <text class="item__center-title">--</text>
                 <text class="item__center-title">{{list.confirm_date}}</text>
               </view> -->
+
               <view class="securityCheck__topTips orangeTips orangeBack font-size-24">
-                <view class="securityCheck__topTips-icon">
-                  <image src="{{info_max}}"></image>
-                </view>
-                <view wx:if="{{list.overdue_status == 0}}">请尽快确认税额，申报征期已过纳税信誉产生影响！</view>
-                <view wx:if="{{list.overdue_status == 1}}">请您尽快确认税额，以免影响申报进度</view>
+              <view class="detail__topTips-icon">
+                <image src="{{info_max}}"></image>
+                <text wx:if="{{ list.overdue_status == 0}}">请尽快确认税额，申报征期已过，纳税信誉产生影响！</text>
+                <text wx:elif="{{ list.overdue_status == 1 }}">请您尽快确认税额，以免影响申报进度</text>
+              </view>
               </view>
             </view>
           </view>
