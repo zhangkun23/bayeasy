@@ -11,7 +11,7 @@
           <view class="faq__header-tips">Frequently asked questions</view>
         </view>
 
-        <view class="faq__list" wx:if="{{commonProblemList.length < 0}}">
+        <view class="faq__list" wx:if="{{commonProblemList.length > 0}}">
           <view class="faq__list-item" wx:for="{{commonProblemList}}" wx:for-item="item" wx:key="id">
             <view class="faq__item-header">
               <view class="faq__item-imagewrapper">
