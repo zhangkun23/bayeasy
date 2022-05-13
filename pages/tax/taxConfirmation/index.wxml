@@ -31,7 +31,7 @@
                 <text class="item__center-title">{{list.confirm_date}}</text>
               </view> -->
 
-              <view class="securityCheck__topTips orangeTips orangeBack font-size-24">
+              <view class="detail__topTips orangeTips orangeBack font-size-24">
               <view class="detail__topTips-icon">
                 <view class="item">
                   <image class="iconImg" src="{{info_max}}"></image>

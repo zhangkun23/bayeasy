@@ -94,7 +94,6 @@
   border-radius: 12rpx;
   padding: 7rpx 20rpx;
   margin-top: 32rpx;
-
 }
 
 /* .securityCheck__topTips-icon {
@@ -121,29 +120,21 @@
   text-align: center;
 }
 
+
 .detail__topTips {
   line-height: 36rpx;
   border-radius: 12rpx;
-  padding: 24rpx;
+  padding: 12rpx;
   font-size: 24rpx;
 }
 
 .detail__topTips-icon {
-  margin: 8rpx 0rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.item{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.iconImg{
-  padding-right: 8rpx;
+  display: inline-block;
+  margin-right: 7rpx;
 }
 
 .detail__topTips-icon image {
   width: 24rpx;
   height: 24rpx;
+  margin-right: 8rpx;
 }

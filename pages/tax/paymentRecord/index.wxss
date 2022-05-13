@@ -3,8 +3,7 @@
 /* pages/tax/taxConfirmation/index.wxss */
 
 .taxConfirmation {
-  height: calc(100% - 64rpx);
-  padding: 32rpx;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-image: url('https://image.bayeasy.cn/images-datas/public/backGround.png');
@@ -16,6 +15,8 @@
 .wrapper {
   flex: 1;
   height: 1rpx;
+  padding: 32rpx;
+
 }
 
 .display-flex {
@@ -24,10 +25,8 @@
 }
 
 .taxConfirmation__container {
-  /* max-height: 1360rpx; */
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 .taxConfirmation__header {
