@@ -27,7 +27,7 @@
                             收入账单发票
                         </view>
                     </view>
-                    <view class="gate-area-1" data-url='/pages/nothing/index' bindtap="handelClickUrl">
+                    <view class="gate-area-1" data-url='/pages/invoice/billingRecord/index/index' bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon"  src="{{img1_2}}" mode="aspectFill"></image>
                         </view>

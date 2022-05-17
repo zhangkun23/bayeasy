@@ -13,5 +13,6 @@
                 <!-- <view class="download" bindtap="downloadPdf" data-vid="{{item.id}}">下载发票</view> -->
             </view>
         </view>
+        <view class="download" bindtap="gotodownload" data-vid="{{item.id}}">下载发票</view>
     </scroll-view>
 </view>

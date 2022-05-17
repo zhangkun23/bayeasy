@@ -38,6 +38,7 @@ const navigateTo = (path) => {
     })
 }
 
+// 保存图片至手机相册
 const saveImgToAlbum = (content) => {
     let saveImg = function () {
         let _pureData;

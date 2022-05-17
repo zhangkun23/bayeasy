@@ -1,0 +1,21 @@
+<!--pages/invoice/incomeInvoice/downloadPage/index/index.wxml-->
+<view class="downloadPage flex-column">
+  <mp-navigation-bar title="下载电子发票文件" ext-class="navigationBar"></mp-navigation-bar>
+  <view class="downloadPage__container">
+    <view class="detail__topTips orangeTips orangeBack font-size-24">
+      <view class="detail__topTips-icon display-flex">
+        <image class="infoIcon" src="{{info_max}}"></image>
+        <text>您当前即将下载 {{downloadNum}} 个电子发票文件</text>
+      </view>
+    </view>
+    <view class="downloadPage__header">
+      <view class="display-flex downloadPage__header">
+        <view>
+          <image class="downloadPage__header-image" src="{{info_max}}"></image>
+        </view>
+        <view>邮箱地址</view>
+      </view>
+      <view class="downloadPage__tips ">提示：电子发票将以OFD的文件格式，发送至您所填写的电子邮件地址中，请确认您所填写的邮箱为正确有效的。</view>
+    </view>
+  </view>
+</view>

@@ -1,75 +1,88 @@
 //收支票据
 const {
-    request
+  request
 } = require('../request.js')
 const api = '';
 
 //基于业务封装的接口
 module.exports = {
 
-    /**
-     * 获取收入账单发票列表
-     */
-    get_all_invoices: (param) => {
-        return request(api + '/invoice/list', 'GET', {});
-    },
-    /* 获取收入发票详情 */
-    get_invoice_detail: (iid) => {
-        return request(api + '/invoice/info?id=' + iid, 'GET', {});
-    },
-    /**
-     * 申请开电子票
-     * @param {*} params 
-     */
-    apply_invoice: (params) => {
-        return request('/invoice/confirm_invoice', 'POST', params);
-    },
+  /**
+   * 获取收入账单发票列表
+   */
+  get_all_invoices: (param) => {
+    return request(api + '/invoice/list', 'GET', {});
+  },
+  /* 获取收入发票详情 */
+  get_invoice_detail: (iid) => {
+    return request(api + '/invoice/info?id=' + iid, 'GET', {});
+  },
+  /**
+   * 申请开电子票
+   * @param {*} params 
+   */
+  apply_invoice: (params) => {
+    return request('/invoice/confirm_invoice', 'POST', params);
+  },
 
-    /* 查看已开发票 */
-    get_invoice_file: (id) => {
-        return request('/invoice/invoice_file?id=' + id, 'GET', {});
-    },
-    
-    /*查询收货地址*/
-    getUserMeg: () => {
-        return request(api + '/personal_nformation/mail_address', 'GET', {});
-    },
+  /* 查看已开发票 */
+  get_invoice_file: (id) => {
+    return request('/invoice/invoice_file?id=' + id, 'GET', {});
+  },
 
-    //手动踢啊家增值发票
-    updateHandlInvoice: (param) => {
-        return request(api + '/deduct_invoice/submit_deduct_invoice', 'POST', param);
-    },
-    /*发票类型*/
-    getInvoiceType: () => {
-        return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
-    },
+  /*查询收货地址*/
+  getUserMeg: () => {
+    return request(api + '/personal_nformation/mail_address', 'GET', {});
+  },
 
-    /*  搜索成本发票 */
-    searchBill: (param) => {
-        return request(api + '/deduct_invoice/list', 'POST', param);
-    },
-    /* 获取增值税发票类型 */
-    getInvoiceType: () => {
-        return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
-    },
+  //手动踢啊家增值发票
+  updateHandlInvoice: (param) => {
+    return request(api + '/deduct_invoice/submit_deduct_invoice', 'POST', param);
+  },
+  /*发票类型*/
+  getInvoiceType: () => {
+    return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
+  },
 
-    // ocr识别pdf与图片
-    ocrDeductInvoice: () => {
-        return request(api + '/deduct_invoice/ocr_deduct_invoice', 'GET', {});
-    },
+  /*  搜索成本发票 */
+  searchBill: (param) => {
+    return request(api + '/deduct_invoice/list', 'POST', param);
+  },
+  /* 获取增值税发票类型 */
+  getInvoiceType: () => {
+    return request(api + '/deduct_invoice/deduct_invoice_type', 'GET', {});
+  },
 
-    // ocr最终提交 返回错误信息
-    submitOcrDeductInvoice: (param) => {
-        return request(api + '/deduct_invoice/submit_ocr_deduct_invoice', 'POST', param);
-    },
+  // ocr识别pdf与图片
+  ocrDeductInvoice: () => {
+    return request(api + '/deduct_invoice/ocr_deduct_invoice', 'GET', {});
+  },
 
-    // 删除已ocr识别过的发票文件
-    delDeductInvoiceFile: (id) => {
-        return request(api + '/deduct_invoice/del_deduct_invoice_file?id='+id, 'GET', {});
-    },
+  // ocr最终提交 返回错误信息
+  submitOcrDeductInvoice: (param) => {
+    return request(api + '/deduct_invoice/submit_ocr_deduct_invoice', 'POST', param);
+  },
 
-    // 获取成本发票详情
-    getAcquisitionDetails: (id) => {
-        return request(api + '/deduct_invoice/info?id=' + id, 'GET', {});
-    }
+  // 删除已ocr识别过的发票文件
+  delDeductInvoiceFile: (id) => {
+    return request(api + '/deduct_invoice/del_deduct_invoice_file?id=' + id, 'GET', {});
+  },
+
+  // 获取成本发票详情
+  getAcquisitionDetails: (id) => {
+    return request(api + '/deduct_invoice/info?id=' + id, 'GET', {});
+  },
+  // 获取收入开票记录
+  getInvoiceRecord: (param) => {
+    return request(api + '/invoice/invoice_record', 'POST', param);
+  },
+  // 获取单个发票图片
+  showInvoiceImage: (id) => {
+    return request(api + '/invoice/show_invoice_image?id=' + id, 'GET', {});
+  },
+  // 发送邮件下载附件
+  downloadEmail: (param) => {
+    return request(api + '/invoice/send_mail', 'POST', param);
+  },
+
 }

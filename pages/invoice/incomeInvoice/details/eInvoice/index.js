@@ -42,6 +42,12 @@ Page({
             }
         })
     },
+    // 去输入邮箱
+    gotodownload() {
+      wx.navigateTo({
+        url: '../../downloadPage/index/index',
+      })
+    },
     downloadPdf: function (e) {
         let that = this;
         const vid = e.currentTarget.dataset.vid

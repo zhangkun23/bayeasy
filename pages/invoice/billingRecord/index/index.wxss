@@ -1,0 +1,133 @@
+/* pages/invoice/billingRecord/index/index.wxss */
+.billingRecord {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navigationBar {
+  /* color: #fff; */
+}
+
+.billingRecord__container {
+  flex: 1;
+  height: 1rpx;
+  margin: 32rpx;
+  overflow-y: auto;
+}
+
+.balance__date {
+  margin-bottom: 10rpx;
+  /* margin-bottom: 108rpx; */
+}
+
+.balance__date-year {
+  /* color: #fff; */
+  margin-right: 8rpx;
+}
+
+.balance__date-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.billingRecord__header {
+
+  margin-bottom: 23rpx;
+}
+
+.billingRecord__List-item {
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
+  border-radius: 28rpx;
+}
+
+.billingRecord__item-header {
+  padding-bottom: 10rpx;
+  align-items: center;
+  border-bottom: 1px solid #184577;
+  /* border-bottom: 1px solid #E6EEF7; */
+}
+
+.billingRecord__item-title {
+  font-size: 28rpx;
+  color: #283E56;
+  line-height: 32px;
+  /* border-bottom: 1rpx solid #4185d3; */
+  /* border-bottom: 1epx solid #E6EEF7; */
+}
+
+.billingRecord__footer-left {
+  align-items: center;
+}
+
+.billingRecord__imgGroup {
+  margin-top: 23rpx;
+}
+
+.billingRecord__imgGroup-con {
+  align-items: center;
+}
+
+.billingRecord__imgGroup-left {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 16rpx;
+}
+
+.billingRecord__imgGroup-right {
+  width: 566rpx;
+  height: 362rpx;
+}
+
+.billingRecord__footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #fff;
+  height: 128rpx;
+  line-height: 128rpx;
+  padding: 20rpx 32rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FFA42E;
+  border-radius: 44rpx;
+  text-align: center;
+}
+
+.billingRecord__footer-text {
+  font-size: 34rpx;
+  color: #6E87A2;
+}
+
+.nothing__nodata {
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6);
+  padding: 166rpx 160rpx 224rpx;
+}
+
+.nothing__image {
+  width: 370rpx;
+  height: 300rpx;
+}
+
+.nothing__nodata-text {
+  color: #6E87A2;
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 74rpx;
+  right: 272rpx;
+  left: 272rpx;
+}

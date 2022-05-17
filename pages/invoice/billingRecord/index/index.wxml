@@ -1,0 +1,76 @@
+<!--pages/invoice/billingRecord/index/index.wxml-->
+<view class="billingRecord flex-column bgColog">
+  <mp-navigation-bar title="收入开票记录" ext-class="navigationBar"></mp-navigation-bar>
+  <view class="billingRecord__container">
+    <view class="billingRecord__header display-flex">
+      <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="bindDateChange">
+        <view class="balance__date display-flex">
+          <view class="balance__date-year">{{checkedMonth}}</view>
+          <view class="balance__date-iamge">
+            <image class="balance__date-icon" src="{{dropdown}}"></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class="billingRecord__List" wx:if="{{!isShowList}}">
+
+      <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item" wx:key="id">
+        <view class="display-flex billingRecord__item-header">
+          <view class="display-flex" wx:if="{{!item.checked}}" data-row="{{item}}" bindtap="checkedAllItem">
+            <image class="billingRecord__imgGroup-left" src="{{loginUnSelect}}" />
+          </view>
+          <view class="display-flex" wx:else>
+            <image class="billingRecord__imgGroup-left" src="{{loginSelect}}" />
+          </view>
+          <view class="billingRecord__item-title font-600">账期时间 {{item.time}}</view>
+        </view>
+
+        <view class="billingRecord__imgGroup">
+          <view class="billingRecord__imgGroup-con display-flex" wx:for="{{item.list}}" wx:for-item="aItem" wx:key="id" >
+            <view wx:if="{{!item.checkedItem}}" bindtap="changeItemChecked" data-row="{{aItem}}">
+              <image class="billingRecord__imgGroup-left" src="{{loginUnSelect}}" />
+            </view>
+            <view wx:else>
+              <image class="billingRecord__imgGroup-left" src="{{loginSelect}}" />
+            </view>
+            <view>
+              <image class="billingRecord__imgGroup-right" bindtap="previewImg" data-src="{{aItem.src}}" src="{{aItem.src}}" />
+            </view>
+          </view>
+        </view>
+
+        <!-- <view class="billingRecord__imgGroup">
+          <view class="billingRecord__imgGroup-con display-flex">
+            <view>
+              <image class="billingRecord__imgGroup-left" src="{{loginUnSelect}}" />
+            </view>
+            <view>
+              <image class="billingRecord__imgGroup-right" src="{{info_max}}" />
+            </view>
+          </view>
+        </view> -->
+
+      </view>
+
+      <view class="billingRecord__footer display-flex">
+        <view class="display-flex billingRecord__footer-left" bindtap="checkedAll">
+          <view class="display-flex">
+            <image class="billingRecord__imgGroup-left" src="{{loginUnSelect}}" />
+          </view>
+          <view class="billingRecord__footer-text" bindtap="checkAll">全选</view>
+        </view>
+        <view class="btn whiteTips" bindtap="gotoDownloadEmail">下载电子发票文件</view>
+      </view>
+
+    </view>
+    <view wx:else>
+      <view class="nothing__nodata">
+        <image class="nothing__image" src="{{empty_bg_url}}"></image>
+        <view class="nothing__nodata-text font-size-24">暂无数据</view>
+      </view>
+      <view class="footer">
+        <service class="securityCheck__footer-image"></service>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,130 +1,130 @@
 /* pages/tax/report/balance/index.wxss */
 .navigationBar {
-    color: #fff;
+  color: #fff;
 }
 
 .balance {
-    background: url('https://image.bayeasy.cn/images-datas/report/balance_back.png') no-repeat;
-    background-size: 100%;
-    padding: 32rpx; 
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 64rpx);
-    overflow: hidden;
+  background: url('https://image.bayeasy.cn/images-datas/report/balance_back.png') no-repeat;
+  background-size: 100%;
+  padding: 32rpx;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64rpx);
+  overflow: hidden;
 }
 
 .balance1 {
-    flex: 1;
-    height: 1rpx;
-    /* overflow-y: auto; */
-    /* display: flex;
+  flex: 1;
+  height: 1rpx;
+  /* overflow-y: auto; */
+  /* display: flex;
     flex-direction:column;
     overflow:hidden;    
     flex: 1; */
 }
 
-.balance__date {
-    display: flex;
-    margin-bottom: 38rpx;
-    /* margin-bottom: 108rpx; */
+.balance__center-header {
+  margin-bottom: 48rpx;
 }
 
-.balance__center-header {
-    margin-bottom: 48rpx;
+.balance__date {
+  display: flex;
+  margin-bottom: 38rpx;
+  /* margin-bottom: 108rpx; */
 }
 
 .balance__date-year {
-    color: #fff;
-    margin-right: 8rpx;
+  color: #fff;
+  margin-right: 8rpx;
 }
 
 .balance__date-icon {
-    width: 48rpx;
-    height: 48rpx;
+  width: 48rpx;
+  height: 48rpx;
 }
 
 .balance__center-back {
-    margin-right: 16rpx;
+  margin-right: 16rpx;
 }
 
 .balance__center-icon {
-    width: 50rpx;
-    height: 50rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .balance__center-title {
-    font-size: 48rpx;
+  font-size: 48rpx;
 }
 
 .balance__center-list {
-    line-height: 2.2;
-    margin-bottom: 32rpx;
+  line-height: 2.2;
+  margin-bottom: 32rpx;
 }
 
 .date__image {
-    text-align: center;
-    margin-bottom: 64rpx;
+  text-align: center;
+  margin-bottom: 64rpx;
 }
 
 .date__image-view {
-    /* width: 686rpx; */
-    /* height: 686rpx; */
-    background: #FFFFFF;
-    box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
-    border-radius: 28rpx;
-    padding: 32rpx;
-    text-align: center;
+  /* width: 686rpx; */
+  /* height: 686rpx; */
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
+  border-radius: 28rpx;
+  padding: 32rpx;
+  text-align: center;
 }
 
 .date__image-img {
-    width: 600rpx;
-    height: 600rpx;
+  width: 600rpx;
+  height: 600rpx;
 }
 
 .date__button {
-    width: 500rpx;
-    height: 88rpx;
-    line-height: 88rpx;
-    background: #FFA42E;
-    box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
-    border-radius: 44rpx;
-    /* margin: 64rpx auto 30rpx; */
-    text-align: center;
-    margin: 0 auto;
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FFA42E;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+  border-radius: 44rpx;
+  /* margin: 64rpx auto 30rpx; */
+  text-align: center;
+  margin: 0 auto;
 }
 
 .date__image-empty {
-    height: 614rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
-    background: #fff;
-    border-radius: 28rpx;
-    padding: 32rpx;
-    text-align: center;
-    margin-bottom: 64rpx;
+  height: 614rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
+  background: #fff;
+  border-radius: 28rpx;
+  padding: 32rpx;
+  text-align: center;
+  margin-bottom: 64rpx;
 }
 
 .date__image-view2 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20rpx;
 }
 
 .date__image-img2 {
-    width: 296rpx;
-    height: 240rpx;
+  width: 296rpx;
+  height: 240rpx;
 }
 
 .date__image-nodata {
-    color: #48617C;
+  color: #48617C;
 }
 
 .grayBack {
-    background: #E5EEF7;
-    color: #ABBED2;
-    box-shadow: none;
+  background: #E5EEF7;
+  color: #ABBED2;
+  box-shadow: none;
 }
 
 /* .wrapper {
