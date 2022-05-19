@@ -1,6 +1,6 @@
 <!--pages/invoice/incomeInvoice/downloadPage/promptSuccessPage/index.wxml-->
 <view class="promptSuccessPage">
-  <mp-navigation-bar title="下载电子发票文件" ext-class="navigationBar"></mp-navigation-bar>
+  <mp-navigation-bar title="下载电子发票文件" ext-class="navigationBar" bindback="backIndex"></mp-navigation-bar>
   <view class="promptSuccessPage__container">
     <view class="promptSuccessPage__box">
       <view>

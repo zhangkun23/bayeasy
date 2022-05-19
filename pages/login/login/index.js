@@ -16,7 +16,7 @@ Page({
   data: {
     logo_byz: tempPath + 'public/logo_byz.png',
     loginSelect: tempPath + 'login/loginSelect.png',
-    loginUnSelect: tempPath + 'login/loginUnSelect.png',
+    loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
     logo: tempPath + 'public/logo.png',
     serve: tempPath + 'public/serve.png',
     agreementStatus: false

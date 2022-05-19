@@ -13,7 +13,7 @@
 .billingRecord__container {
   flex: 1;
   height: 1rpx;
-  margin: 28rpx 32rpx;
+  padding: 28rpx 32rpx;
   overflow-y: auto;
 }
 
@@ -49,8 +49,8 @@
 .billingRecord__item-header {
   padding-bottom: 10rpx;
   align-items: center;
-  border-bottom: 1px solid #184577;
-  /* border-bottom: 1px solid #E6EEF7; */
+  /* border-bottom: 1px solid #184577; */
+  border-bottom: 1px solid #E6EEF7;
 }
 
 .billingRecord__item-title {

@@ -4,5 +4,6 @@
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "service": "/components/service/service"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white"
 }
