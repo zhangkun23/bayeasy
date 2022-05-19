@@ -58,7 +58,7 @@ page {
     font-weight: 400;
     color: #FFFFFF;
     line-height: 48rpx;
-    margin-top: 48rpx;
+    margin: 48rpx auto 0;
     width: 500rpx;
     height: 88rpx;
     background: #1D83F0;

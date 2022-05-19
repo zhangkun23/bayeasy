@@ -2,16 +2,18 @@
 .billingRecord {
   height: 100vh;
   overflow: hidden;
+  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/background.png') no-repeat;
+  background-size: 100%;
 }
 
 .navigationBar {
-  /* color: #fff; */
+  color: #fff;
 }
 
 .billingRecord__container {
   flex: 1;
   height: 1rpx;
-  margin: 32rpx;
+  margin: 28rpx 32rpx;
   overflow-y: auto;
 }
 
@@ -23,6 +25,7 @@
 .balance__date-year {
   /* color: #fff; */
   margin-right: 8rpx;
+  font-size: 32rpx;
 }
 
 .balance__date-icon {
@@ -110,8 +113,8 @@
 
 .nothing__nodata {
   background: #fff;
-  border-radius: 32px;
-  box-shadow: 0px 10px 30px 0px rgba(209, 213, 223, 0.6);
+  border-radius: 32rpx;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
   padding: 166rpx 160rpx 224rpx;
 }
 

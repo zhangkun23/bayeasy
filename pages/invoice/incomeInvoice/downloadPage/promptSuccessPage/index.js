@@ -1,11 +1,13 @@
 // pages/invoice/incomeInvoice/downloadPage/promptSuccessPage/index.js
+const tempPath = getApp().globalData.imgPath;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    successIconImg: tempPath + "public/done.png",
   },
 
   /**

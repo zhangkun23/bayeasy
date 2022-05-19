@@ -2,9 +2,9 @@
 const imgpath = getApp().globalData.imgPath;
 const {
   getInvoiceRecord,
-  showInvoiceImage,
   // downloadEmail,
 } = require('../../../../http/api/api_szpj');
+const utils = require('../../../../utils/util')
 Page({
 
   /**
@@ -12,11 +12,11 @@ Page({
    */
   data: {
     dropdown: imgpath + 'report/dropdown_icon.png',
-    loginSelect: imgpath + 'login/loginSelect.png',
-    loginUnSelect: imgpath + 'login/loginUnSelect.png',
+    loginSelect: imgpath + 'invoice/billingRecord/checked.png',
+    loginUnSelect: imgpath + 'invoice/billingRecord/unchecked.png',
     empty_bg_url: imgpath + 'public/emptyBackGround.png',
-    info_max: imgpath + "public/info_max.png",
     isShowList: false,
+    isShowCheckedAll: false,
     date: "",
     startTime: "2022-01",
     endTime: "",
@@ -28,25 +28,25 @@ Page({
 
 
   // 收入开票记录列表
-  getInvoiceRecord() {
-    let id = 0;
-    let imgArr = [];
+  getInvoiceRecord(time) {
     let params = {
-      time: this.data.checkedMonth,
+      time: time,
       page_size: 10
     }
     let token = wx.getStorageSync('token');
     getInvoiceRecord(params).then(res => {
-      console.log(res)
       if (res.ret) {
-        res.data.list.map((item,index) => {
-          item.index = index;
-          item.checked = false;
-          item.list.map(aItem => {
-            aItem.src = this.data.imgPath + '/invoice/show_invoice_image?id=' + aItem.id + '&token=' + token;
-            aItem.checkedItem = false;
+        if (res.data.list !== null) {
+          res.data.list.map((item, index) => {
+            item.index = index;
+            item.checked = false;
+            item.list.map((aItem, aIndex) => {
+              aItem.src = this.data.imgPath + '/invoice/show_invoice_image?id=' + aItem.id + '&token=' + token;
+              aItem.checkedItem = false;
+              aItem.index = aIndex;
+            })
           })
-        })
+        }
         this.setData({
           billingRecordList: res.data.list
         })
@@ -54,16 +54,75 @@ Page({
     })
 
   },
-  checkedAllItem(row) {
-    this.data.billingRecordList.map(item => {
-      // if()
+  // 选择账期时间
+  checkedAllItem(event) {
+    let value = event.currentTarget.dataset.row;
+    let data = this.data.billingRecordList;
+    data.map(item => {
+      if (item.index == value.index) {
+        if (item.checked) {
+          item.checked = false
+          item.list.map(aItem => {
+            aItem.checkedItem = false;
+          })
+        } else {
+          item.checked = true
+          item.list.map(aItem => {
+            aItem.checkedItem = true;
+          })
+        }
+        // item.checked = !item.checked;
+        // item.list.map(aItem => {
+        //   aItem.checkedItem = !aItem.checkedItem;
+        // })
+      }
+    })
+    this.setData({
+      billingRecordList: data,
+    })
+    this.updateAllStatus(data);
+  },
+
+  // 单选某一item时 是否设置全选
+  updateAllStatus(data) {
+    let tempNum = 0;
+    let size = data.length;
+    data.map(item => {
+      if (item.checked) ++tempNum
+    })
+    this.setData({
+      isShowCheckedAll: tempNum == size
     })
   },
+
   // 选中子项
   changeItemChecked(event) {
-    let status = event.currentTarget.dataset.row;
-    status.checkedItem = true;
-      console.log(event)
+    let parent = event.currentTarget.dataset.parent;
+    const parentNum = parent.list.length; // 当前父亲 list有多个
+
+    let index = event.currentTarget.dataset.index;
+    let data = this.data.billingRecordList;
+    let activeNum = 0;
+
+    // 当前父亲 list 有多个已经被选中
+    data.map(item => {
+      if (item.index == parent.index) {
+        item.list.map(item1 => {
+          if (item1.index == index) {
+            item1.checkedItem = !item1.checkedItem;
+          }
+          if (item1.checkedItem) {
+            ++activeNum
+          }
+        })
+        activeNum == parentNum ? item.checked = true : item.checked = false;
+      }
+    })
+    this.setData({
+      billingRecordList: data,
+      checkedNum: activeNum
+    })
+    this.updateAllStatus(data);
   },
   addZero(num) {
     return num < 10 ? '0' + num : num
@@ -81,42 +140,79 @@ Page({
   },
   // 选择时间
   bindDateChange(event) {
-    console.log(event);
+    this.getInvoiceRecord(event.detail.value)
     this.setData({
       checkedMonth: event.detail.value,
     })
-    console.log(this.data.checkedMonth)
   },
-
+  // 全选
   checkedAll() {
-    console.log(213)
-    this.data.billingRecordList.map(item => {
-      item.checked = true;
+    let data = this.data.billingRecordList;
+    let status = this.data.isShowCheckedAll;
+    data.map(item => {
+      item.checked = !status;
       item.list.map(aItem => {
-        aItem.checkedItem = true;
+        aItem.checkedItem = !status;
       })
+    })
+    this.setData({
+      billingRecordList: data,
+      isShowCheckedAll: !status
     })
   },
   previewImg: function (e) {
     const src = e.currentTarget.dataset.src;
-    console.log(e)
     wx.previewImage({
       urls: [src],
     })
+    utils.saveImgToAlbum(src)
   },
-
+  // 长按事件开始
+  // touchstart(e) {
+  //   console.log(2222, e)
+  //   this.setData({
+  //     touchstart: e.timeStamp
+  //   })
+  // },
+  // // 长按事件结束
+  // touchend(e) {
+  //   console.log(e)
+  //   let src = e.currentTarget.dataset.src 
+  //   this.setData({
+  //     touchend: e.timeStamp
+  //   })
+  //   if ((this.data.touchend - this.data.touchstart) >= 2000) {
+  //     /*长按两秒*/
+  //     utils.saveImgToAlbum(src)      //响应事件
+  //   }
+  // },
   gotoDownloadEmail() {
-    console.log('下载电子发票文件');
+    let arrIds = [];
+    let data = this.data.billingRecordList;
+    data.map(item => {
+      item.list.map(item1 => {
+        if (item1.checkedItem) arrIds.push(item1.id)
+      })
+    })
+
+    if (arrIds.length < 1) {
+      wx.showToast({
+        title: '请选择要下载的发票',
+        icon: 'none'
+      })
+    } else {
+      wx.navigateTo({
+        url: '../../incomeInvoice/downloadPage/index/index?ids=' + arrIds,
+      })
+    }
+
   },
 
-  checkAll() {
-    console.log('全选');
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getInvoiceRecord();
+    this.getInvoiceRecord('');
     this.getDate();
   },
 

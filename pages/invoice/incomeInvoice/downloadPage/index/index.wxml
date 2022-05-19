@@ -8,14 +8,34 @@
         <text>您当前即将下载 {{downloadNum}} 个电子发票文件</text>
       </view>
     </view>
-    <view class="downloadPage__header">
-      <view class="display-flex downloadPage__header">
+    <view class="downloadPage__header whiteTips">
+      <view class="display-flex downloadPage__header-email">
         <view>
-          <image class="downloadPage__header-image" src="{{info_max}}"></image>
+          <image class="downloadPage__header-image" src="{{email}}"></image>
         </view>
         <view>邮箱地址</view>
       </view>
       <view class="downloadPage__tips ">提示：电子发票将以OFD的文件格式，发送至您所填写的电子邮件地址中，请确认您所填写的邮箱为正确有效的。</view>
     </view>
+
+
+    <view class="downloadPage__email">
+      <view class="{{isValid? 'red downloadPage__email-box display-flex' : 'gray downloadPage__email-box display-flex'}}">
+        <input bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" class="downloadPage__email-input" placeholder-class="placeholderClass" type="text" placeholder="请输入您的邮箱地址" value="{{inputValue}}">
+        </input>
+        <view wx:if="{{isShowIcon}}" class="downloadPage__inputClose">
+          <image bindtap="clearInputValue" class="closeInput" src="{{inputClose}}"></image>
+        </view>
+      </view>
+
+
+      <view class="display-flex downloadPage__error font-size-24"  wx:if="{{isValid}}">
+        <image class="downloadPage__error-img" src="{{errorIcon}}"></image>
+        <view class="downloadPage__error-text">格式错误</view>
+      </view>
+    </view>
+
+
+    <view class="downloadPage__btn btn whiteTips" bindtap="gotoDownload">确认下载</view>
   </view>
 </view>

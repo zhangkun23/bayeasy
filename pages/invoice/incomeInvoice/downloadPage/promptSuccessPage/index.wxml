@@ -1,2 +1,22 @@
 <!--pages/invoice/incomeInvoice/downloadPage/promptSuccessPage/index.wxml-->
-<text>pages/invoice/incomeInvoice/downloadPage/promptSuccessPage/index.wxml</text>
+<view class="promptSuccessPage">
+  <mp-navigation-bar title="下载电子发票文件" ext-class="navigationBar"></mp-navigation-bar>
+  <view class="promptSuccessPage__container">
+    <view class="promptSuccessPage__box">
+      <view>
+        <image class="promptSuccessPage__img" src="{{successIconImg}}"></image>
+      </view>
+      <view class="promptSuccessPage__box-send font-600">已发送</view>
+      <view class="font-size-24 promptSuccessPage__box-text">电子发票已发送至您的邮箱，请注意查收</view>
+    </view>
+    <view class="promptSuccessPage__bottom">
+      <view class="promptSuccessPage__bottom-text font-size-24">
+        <view>如您未收到邮件或发送的电子发票文件有疑问</view>
+        <view>可联系您的<text class="orangeTips font-size-24">贝易资专属财税管家</text></view>
+      </view>
+      <view class="promptSuccessPage__service">
+        <service></service>
+      </view>
+    </view>
+  </view>
+</view>

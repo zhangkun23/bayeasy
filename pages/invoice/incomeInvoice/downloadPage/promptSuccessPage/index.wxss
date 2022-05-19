@@ -1,1 +1,40 @@
 /* pages/invoice/incomeInvoice/downloadPage/promptSuccessPage/index.wxss */
+
+
+.promptSuccessPage__box {
+  text-align: center;
+  margin-top: 240rpx;
+}
+.promptSuccessPage__img {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.promptSuccessPage__box-send {
+  font-size: 36rpx;
+  color: #0B1D30;
+  margin-top: 16rpx;
+  margin-bottom: 24rpx;
+}
+.promptSuccessPage__box-text {
+  color: #283E56;
+}
+
+.promptSuccessPage__bottom {
+  position: fixed;
+  bottom: 50rpx;
+  left: 65rpx;
+  right: 65rpx;
+}
+
+.promptSuccessPage__bottom-text {
+  margin-bottom: 32rpx;
+  color: #6E87A2;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.promptSuccessPage__service {
+  display: flex;
+  justify-content: center;
+}

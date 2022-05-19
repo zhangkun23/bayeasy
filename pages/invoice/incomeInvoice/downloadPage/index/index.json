@@ -1,8 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-    "service": "/components/service/service"
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
   },
   "navigationStyle": "custom"
 }

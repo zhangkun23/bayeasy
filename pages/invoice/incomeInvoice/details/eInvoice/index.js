@@ -44,8 +44,15 @@ Page({
     },
     // 去输入邮箱
     gotodownload() {
+      console.log(this.data.invoices)
+      let arr = [];
+      let data = this.data.invoices;
+      data.map(item => {
+        arr.push(item.id)
+      })
+      console.log(arr)
       wx.navigateTo({
-        url: '../../downloadPage/index/index',
+        url: '../../downloadPage/index/index?ids=' + arr,
       })
     },
     downloadPdf: function (e) {

@@ -52,7 +52,7 @@
             查看电子发票
           </view>
 
-          <view class="operateBtn flex_center_column blueBg" bindtap="checkEInvoice">查看电子发票</view>
+          <!-- <view class="operateBtn flex_center_column blueBg" bindtap="checkEInvoice">查看电子发票</view> -->
 
         </view>
       </view>
