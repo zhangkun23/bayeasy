@@ -47,10 +47,10 @@
 }
 
 .billingRecord__item-header {
-  padding-bottom: 10rpx;
+  margin-bottom: 48rpx;
   align-items: center;
   /* border-bottom: 1px solid #184577; */
-  border-bottom: 1px solid #E6EEF7;
+  /* border-bottom: 1px solid #E6EEF7; */
 }
 
 .billingRecord__item-title {

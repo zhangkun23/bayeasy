@@ -13,6 +13,7 @@ Page({
         email: tempPath + "invoice/billingRecord/email.png",
         inputClose: tempPath + "public/inputClose.png",
         errorIcon: tempPath + "invoice/billingRecord/checkmark_circle.png",
+        back: tempPath + 'invoice/billingRecord/email_outlined.png',
         isShowIcon: false,
         isValid: false,
         inputValue: '',

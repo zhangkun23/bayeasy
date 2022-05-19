@@ -4,19 +4,38 @@
 .downloadPage {
   height: 100vh;
   overflow: hidden;
-  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined.png') no-repeat;
-  background-size: 100%;
+  /* background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined.png') no-repeat;
+  background-size: contain; */
+  position: relative;
 }
 
 .navigationBar {
   color: #fff;
+  position: absolute;
+  top: 20rpx;
 }
 
 .downloadPage__container {
-  flex: 1;
-  height: 1rpx;
-  margin: 28rpx 32rpx;
-  overflow-y: auto;
+  /* flex: 1; */
+  /* height: 1rpx; */
+  padding: 28rpx 32rpx;
+  /* overflow-y: auto; */
+  position: absolute;
+  top: 192rpx;
+  z-index: 2;
+}
+
+.downloadPage__background{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    margin-bottom: 32rpx;
+}
+.downloadPage__background-img {
+    width: 100%;
+    /* height: 100%; */
 }
 
 .detail__topTips {
@@ -36,14 +55,15 @@
   margin-right: 16rpx;
 }
 
-.downloadPage__header {
-  margin-bottom: 16rpx;
-}
 
 .downloadPage__header-image {
   width: 44rpx;
   height: 44rpx;
   margin-right: 12rpx;
+}
+.downloadPage__header-email{
+    padding-bottom: 16rpx;
+    align-items: center;
 }
 
 .downloadPage__tips {
@@ -52,7 +72,7 @@
 }
 
 .downloadPage__email {
-  padding-top: 32rpx;
+  /* padding-top: 32rpx; */
 }
 
 .downloadPage__email-box {
