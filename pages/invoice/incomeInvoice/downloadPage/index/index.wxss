@@ -72,7 +72,7 @@
 }
 
 .downloadPage__email {
-  /* padding-top: 32rpx; */
+    margin: 0 32rpx;
 }
 
 .downloadPage__email-box {
