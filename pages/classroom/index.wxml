@@ -14,25 +14,11 @@
         </swiper>
     </view>
     <view class="classroom__button">
-        <!-- <block wx:if="{{!isLeft}}">
-        <view bindtap="changeLeft" class="classroom__button-right btn">
-          <image src="{{left_orange}}"></image>
-        </view>
-      </block>
-      <block wx:else> -->
         <view class="classroom__button-left btn" bindtap="changeLeft">
             <image src="{{left_white}}"></image>
         </view>
-        <!-- </block>
-      <block wx:if="{{!isRight}}"> -->
         <view class="classroom__button-left btn" bindtap="changeRight">
             <image src="{{right_white}}"></image>
         </view>
-        <!-- </block>
-      <block wx:else>
-        <view class="classroom__button-right btn" bindtap="changeRight">
-          <image src="{{right_orange}}"></image>
-        </view>
-      </block> -->
     </view>
 </view>

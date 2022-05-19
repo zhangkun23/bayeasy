@@ -35,8 +35,17 @@ Page({
     }
     let token = wx.getStorageSync('token');
     getInvoiceRecord(params).then(res => {
+      console.log(res)
       if (res.ret) {
         if (res.data.list !== null) {
+          let time = res.data.list[0].time.split('至');
+          // time.split('至')
+          let date = time[0].split('-');
+          let showtime = date[0] + '-' + date[1];
+          console.log(time,date,showtime)
+          this.setData({
+            checkedMonth: showtime
+          })
           res.data.list.map((item, index) => {
             item.index = index;
             item.checked = false;

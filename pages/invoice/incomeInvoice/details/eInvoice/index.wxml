@@ -3,7 +3,7 @@
     <mp-navigation-bar title="电子发票"></mp-navigation-bar>
     <view class="bgColog"/>
     <scroll-view scroll-y="true" enable-flex="true" class="wrapper">
-        <view wx:for="{{invoices}}" wx:key="i">
+        <view wx:for="{{invoices}}" wx:key="i" class="box">
             <view class="bg">
                 <view class="mycard">
                     <view class="mycontent">
