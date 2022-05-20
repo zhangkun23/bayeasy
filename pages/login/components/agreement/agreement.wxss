@@ -14,8 +14,9 @@
 .loginText__img{
     height: 30rpx;
     width: 30rpx;
-    padding-right: 10rpx;
-    padding-top: 2rpx;
+    margin-right: 10rpx;
+    margin-top: 2rpx;
+    border: 1rpx dashed #283E56;
 }
 .loginTextXy{
     color: #1D83F0;

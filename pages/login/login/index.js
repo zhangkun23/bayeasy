@@ -19,6 +19,9 @@ Page({
     loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
     logo: tempPath + 'public/logo.png',
     serve: tempPath + 'public/serve.png',
+    biglogo: tempPath + 'login/logo.png', 
+    back1: tempPath + 'login/bg21.png', 
+    back2: tempPath + 'login/bg1.png', 
     agreementStatus: false
 
   },
