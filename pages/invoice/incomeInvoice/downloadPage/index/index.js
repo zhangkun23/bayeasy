@@ -19,10 +19,16 @@ Page({
         inputValue: '',
         ids: [],
         downloadNum: 0,
+        color: '#E6EEF7'
     },
 
     onInput(e) {
         let value = e.detail.value;
+        if(value) {
+            this.setData({
+                color: '#1D83F0'
+            })
+        }
         this.setData({
             isShowIcon: true,
             inputValue: value
@@ -31,22 +37,28 @@ Page({
     onFocus() {
         this.setData({
             isShowIcon: true,
-            isValid: false
+            isValid: false,
+            color: '#1D83F0'
         })
     },
     onBlur(e) {
         let value = e.detail.value;
-        if (!value) return
+        if (!value) {
+            this.setData({
+                color: '#E6EEF7'
+            })
+        } 
         this.verifyEmail(value);
         this.setData({
-            isShowIcon: false
+            isShowIcon: false,
         })
     },
     // 删除事件
     clearInputValue() {
         this.setData({
             inputValue: '',
-            isValid: false
+            isValid: false,
+            color: '#E6EEF7'
         })
     },
     // 验证邮箱
@@ -54,11 +66,12 @@ Page({
         let reg = new RegExp('^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$');
         if (reg.test(value)) {
             this.setData({
-                isValid: false
+                isValid: false,
             })
         } else {
             this.setData({
-                isValid: true
+                isValid: true,
+                color: '#FF475A'
             })
         }
     },

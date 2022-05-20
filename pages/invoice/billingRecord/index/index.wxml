@@ -33,63 +33,6 @@
           </view>
         </view>
       </view>
-      <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item"  wx:key="id">
-        <view class="display-flex billingRecord__item-header">
-          <view class="display-flex" data-row="{{item}}" bindtap="checkedAllItem">
-            <image class="billingRecord__imgGroup-left" src="{{!item.checked ? loginUnSelect : loginSelect}}" />
-          </view>
-          <view class="billingRecord__item-title font-600">账期时间 {{item.time}}</view>
-        </view>
-
-        <view class="billingRecord__imgGroup">
-          <view class="billingRecord__imgGroup-con display-flex" wx:for="{{item.list}}" wx:for-item="aItem" wx:key="id">
-            <view bindtap="changeItemChecked" data-parent="{{item}}"  data-index="{{aItem.index}}">
-              <image class="billingRecord__imgGroup-left" src="{{!aItem.checkedItem ? loginUnSelect : loginSelect}}" />
-            </view>
-            <view>
-              <image class="billingRecord__imgGroup-right" bind:touchstart="touchstart" bind:touchend="touchend" bindtap="previewImg" data-src="{{aItem.src}}" src="{{aItem.src}}" />
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item"  wx:key="id">
-        <view class="display-flex billingRecord__item-header">
-          <view class="display-flex" data-row="{{item}}" bindtap="checkedAllItem">
-            <image class="billingRecord__imgGroup-left" src="{{!item.checked ? loginUnSelect : loginSelect}}" />
-          </view>
-          <view class="billingRecord__item-title font-600">账期时间 {{item.time}}</view>
-        </view>
-
-        <view class="billingRecord__imgGroup">
-          <view class="billingRecord__imgGroup-con display-flex" wx:for="{{item.list}}" wx:for-item="aItem" wx:key="id">
-            <view bindtap="changeItemChecked" data-parent="{{item}}"  data-index="{{aItem.index}}">
-              <image class="billingRecord__imgGroup-left" src="{{!aItem.checkedItem ? loginUnSelect : loginSelect}}" />
-            </view>
-            <view>
-              <image class="billingRecord__imgGroup-right" bind:touchstart="touchstart" bind:touchend="touchend" bindtap="previewImg" data-src="{{aItem.src}}" src="{{aItem.src}}" />
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item"  wx:key="id">
-        <view class="display-flex billingRecord__item-header">
-          <view class="display-flex" data-row="{{item}}" bindtap="checkedAllItem">
-            <image class="billingRecord__imgGroup-left" src="{{!item.checked ? loginUnSelect : loginSelect}}" />
-          </view>
-          <view class="billingRecord__item-title font-600">账期时间 {{item.time}}</view>
-        </view>
-
-        <view class="billingRecord__imgGroup">
-          <view class="billingRecord__imgGroup-con display-flex" wx:for="{{item.list}}" wx:for-item="aItem" wx:key="id">
-            <view bindtap="changeItemChecked" data-parent="{{item}}"  data-index="{{aItem.index}}">
-              <image class="billingRecord__imgGroup-left" src="{{!aItem.checkedItem ? loginUnSelect : loginSelect}}" />
-            </view>
-            <view>
-              <image class="billingRecord__imgGroup-right" bind:touchstart="touchstart" bind:touchend="touchend" bindtap="previewImg" data-src="{{aItem.src}}" src="{{aItem.src}}" />
-            </view>
-          </view>
-        </view>
-      </view>
 
       <view class="billingRecord__footer display-flex">
         <view class="display-flex billingRecord__footer-left" bindtap="checkedAll">

@@ -29,7 +29,11 @@ swiper {
     margin-top: 50rpx;
 }
 
-
+.classroom__page{
+    color: #ABBED2;
+    font-size: 32rpx;
+    text-align: center;
+}
 
 .classroom__wrapper-box {
     position: relative;

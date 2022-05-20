@@ -13,6 +13,9 @@
             </view>
         </swiper>
     </view>
+    <view class="classroom__page">
+        <view>{{currentNum + 1}}/{{imageArr.length}}</view>
+    </view>
     <view class="classroom__button">
         <view class="classroom__button-left btn" bindtap="changeLeft">
             <image src="{{left_white}}"></image>

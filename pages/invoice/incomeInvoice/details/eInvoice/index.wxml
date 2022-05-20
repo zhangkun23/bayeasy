@@ -1,18 +1,20 @@
 <!--pages/invoice/incomeInvoice/details/eInvoice/index.wxml-->
 <view class="mycontainer" catchtouchmove="handleTouchMove">
     <mp-navigation-bar title="电子发票"></mp-navigation-bar>
-    <view class="bgColog"/>
+    <view class="bgColog" />
     <scroll-view scroll-y="true" enable-flex="true" class="wrapper">
         <view wx:for="{{invoices}}" wx:key="i" class="box">
             <view class="bg">
                 <view class="mycard">
                     <view class="mycontent">
-                        <image src="{{item.invoice_img_file}}" mode="aspectFill" class="pdf" bindtap="previewImg" data-src="{{item.invoice_img_file}}" ></image>
+                        <image src="{{item.invoice_img_file}}" mode="aspectFill" class="pdf" bindtap="previewImg" data-src="{{item.invoice_img_file}}"></image>
                     </view>
                 </view>
                 <!-- <view class="download" bindtap="downloadPdf" data-vid="{{item.id}}">下载发票</view> -->
             </view>
         </view>
-        <view class="download" bindtap="gotodownload" data-vid="{{item.id}}">下载电子发票文件</view>
+        <view class="downloadBox">
+            <view class="download" bindtap="gotodownload" data-vid="{{item.id}}">下载电子发票文件</view>
+        </view>
     </scroll-view>
 </view>
