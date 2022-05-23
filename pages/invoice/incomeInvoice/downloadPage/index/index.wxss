@@ -1,47 +1,40 @@
-
 /* pages/invoice/incomeInvoice/downloadPage/index/index.wxss */
 
 .downloadPage {
   height: 100vh;
   overflow: hidden;
-  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/allback.png') no-repeat;
-  /* background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined.png') no-repeat; */
-  background-size: 100% auto ;
-  /* position: relative; */
 }
 
 .navigationBar {
   color: #fff;
+  background: #1D83FD;
 }
+
 .downloadPage__box {
-  margin: 32rpx;
-  
+  padding: 32rpx;
+
 }
 
 
 .downloadPage__container {
   flex: 1;
   height: 1rpx;
-  /* overflow-y: auto; */
-  /* position: absolute; */
-  /* top: 192rpx; */
-  /* z-index: 2; */
 }
-.downloadPage__headerbox{
+
+.downloadPage__headerbox {
   margin: 28rpx 32rpx;
 }
 
-.downloadPage__background{
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    margin-bottom: 32rpx;
+.downloadPage__background {
+  z-index: 1;
+  margin-bottom: 48rpx;
+  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined2.png') no-repeat;
+  background-size: 100% 100%;
+
 }
+
 .downloadPage__background-img {
-    width: 100%;
-    /* height: 100%; */
+  width: 100%;
 }
 
 .detail__topTips {
@@ -67,9 +60,10 @@
   height: 44rpx;
   margin-right: 12rpx;
 }
-.downloadPage__header-email{
-    padding-bottom: 16rpx;
-    align-items: center;
+
+.downloadPage__header-email {
+  padding-bottom: 16rpx;
+  align-items: center;
 }
 
 .downloadPage__tips {
@@ -78,11 +72,11 @@
 }
 
 .downloadPage__email {
-    margin: 0 32rpx;
-    position: absolute;
-    top: 30%;
-    left: 0;
-    right: 0;
+  margin: 0 32rpx;
+  /* position: absolute;
+  top: 34%;
+  left: 0;
+  right: 0; */
 }
 
 .downloadPage__email-box {
@@ -103,6 +97,7 @@
 .red {
   border: 2rpx solid #FF475A;
 }
+
 .blue {
   border: 2rpx solid #1D83F0;
 }
@@ -123,7 +118,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.downloadPage__email-box:active{
+
+.downloadPage__email-box:active {
   border: 2rpx solid #1D83F0;
 }
 
