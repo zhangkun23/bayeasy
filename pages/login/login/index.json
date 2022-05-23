@@ -4,5 +4,7 @@
     "agreement":"../components/agreement/agreement",
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
   },
-  "navigationStyle":"custom"
+  "navigationStyle":"custom",
+  "navigationBarTextStyle": "white"
+
 }

@@ -4,30 +4,31 @@
 .downloadPage {
   height: 100vh;
   overflow: hidden;
-  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined.png') no-repeat;
+  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/allback.png') no-repeat;
+  /* background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined.png') no-repeat; */
   background-size: 100% auto ;
-  position: relative;
+  /* position: relative; */
 }
 
 .navigationBar {
   color: #fff;
-  /* position: absolute;
-  top: 20rpx; */
-  height: 80rpx;  
 }
 .downloadPage__box {
-  /* height: 100vh; */
   margin: 32rpx;
+  
 }
 
+
 .downloadPage__container {
-  /* flex: 1; */
-  /* height: 1rpx; */
-  padding: 28rpx 32rpx;
+  flex: 1;
+  height: 1rpx;
   /* overflow-y: auto; */
   /* position: absolute; */
   /* top: 192rpx; */
   /* z-index: 2; */
+}
+.downloadPage__headerbox{
+  margin: 28rpx 32rpx;
 }
 
 .downloadPage__background{

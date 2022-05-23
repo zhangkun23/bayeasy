@@ -49,16 +49,12 @@
 .billingRecord__item-header {
   margin-bottom: 48rpx;
   align-items: center;
-  /* border-bottom: 1px solid #184577; */
-  /* border-bottom: 1px solid #E6EEF7; */
 }
 
 .billingRecord__item-title {
   font-size: 28rpx;
   color: #283E56;
   line-height: 32px;
-  /* border-bottom: 1rpx solid #4185d3; */
-  /* border-bottom: 1epx solid #E6EEF7; */
 }
 
 .billingRecord__footer-left {
@@ -73,6 +69,7 @@
 
 .billingRecord__imgGroup-con {
   align-items: center;
+  margin-bottom: 32rpx;
 }
 
 .billingRecord__imgGroup-left {
@@ -134,5 +131,5 @@
   position: fixed;
   bottom: 74rpx;
   right: 272rpx;
-  left: 272rpx;
+  left: 253rpx;
 }

@@ -28,7 +28,7 @@ Page({
   // 勾选协议
   handelClick() {
     wx.showToast({
-      title: '请勾查看并勾选协议',
+      title: '请查看并勾选协议',
       icon: 'none',
       duration: 1500
     })
