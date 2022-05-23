@@ -1,20 +1,30 @@
 .bgColog1 {
     background: url('https://image.bayeasy.cn/images-datas/login/bg21.png')no-repeat;
     background-size: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.login__bgColog1 {
+    /* margin-bottom: 150rpx; */
 }
 
 .login__bgColog2 {
-    /* background: url('https://image.bayeasy.cn/images-datas/login/bg1.png')no-repeat;
+    background: url('https://image.bayeasy.cn/images-datas/login/bg1.png')no-repeat;
     background-size: 100%;
-    margin-top: -65rpx;
-    height: 150rpx; */
-    position: relative;
+    top: 80%;
+    /* height: 150rpx; */
+    width: 100%;
+    position: absolute;
+
+    /* border: 1px solid red; */
 }
 
 .logo_byz {
     margin-bottom: 32rpx;
 }
-.login__bgColog2-img{ 
+
+.login__bgColog2-img {
     width: 100%;
     margin-top: -40rpx;
 }
@@ -22,7 +32,7 @@
 .logo {
     text-align: center;
     padding-top: 187rpx;
-    padding-bottom: 237rpx;
+    padding-bottom: 265rpx;
 }
 
 .logo_byz_img {
@@ -38,62 +48,60 @@
 .logoTitle2 {
     font-size: 34rpx;
 }
+
 .login__btnGroup {
     margin: 0 60rpx;
-    
+    /* margin-top:30%; */
+    /* position: absolute; */
+    /* top: 40%; */
+    margin-top: 30%;
+
 }
 
 .loginButton {
     /* margin: 0 60rpx; */
-    position: absolute;
+    /* position: absolute;
     top: 200rpx;
     left: 60rpx;
-    right: 60rpx;
-    height: 88rpx;
-    line-height: 88rpx;
-    text-align: center;
-    background: #1D83F0;
-    box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
-    border-radius: 44rpx;
-    color: #FFFFFF;
+    right: 60rpx; */
     /* margin-top: 100rpx; */
-    font-size: 34rpx;
 }
 
 .loginButtonWx_box {
-    margin: 0 60rpx;
+    /* margin: 0 60rpx;
     height: 88rpx;
     line-height: 88rpx;
     text-align: center;
-    margin-top: 100rpx;
+    margin-top: 100rpx; */
 }
 
 .loginButtonWx {
-    position: absolute;
+    /* position: absolute;
     top: 200rpx;
     left: 60rpx;
-    right: 60rpx;
-    /* width: 100% !important;
-    height: 100%; */
-    line-height: 88rpx;
-    background: #1D83F0;
-    box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
-    border-radius: 44rpx;
-    color: #FFFFFF;
-    font-size: 34rpx;
-    font-weight: 400;
-    padding: 0;
-    margin: 0;
+    right: 60rpx; */
 }
+
 .login__compontents {
-    position: absolute;
+    /* position: absolute;
     top: 290rpx;
-    margin: 0px 30rpx;
+    margin: 0px 30rpx; */
 }
 
 .servicePosition {
     position: fixed;
-    bottom: 78rpx;
+    bottom: 65rpx;
     left: 50%;
     margin-left: -125rpx;
+}
+
+.btn {
+    height: 88rpx;
+    line-height: 88rpx;
+    background: #1D83F0;
+    box-shadow: 0px 30px 50px 0px rgba(29, 131, 240, 0.2);
+    border-radius: 44rpx;
+    color: #FFFFFF;
+    font-size: 34rpx;
+    text-align: center;
 }

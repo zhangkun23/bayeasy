@@ -1,7 +1,6 @@
 <view class="login bgColog1">
     <mp-navigation-bar bindback="backIndex" ext-class="navigationBar whiteTips" />
     <view class="login__container">
-
         <view class="login__bgColog1">
             <view class="logo">
                 <view class="logo_byz">
@@ -10,19 +9,24 @@
                 <view class="logoTitle1 whiteTips font-600">贝易资企业财税服务商</view>
                 <view class="logoTitle2 whiteTips">企业用户端小程序</view>
             </view>
+            <!-- <view class="login__bgColog2"></view> -->
         </view>
+
         <view class="login__bgColog2">
-            <image class="login__bgColog2-img" src="{{back2}}"></image>
+            <!-- <image class="login__bgColog2-img" src="{{back2}}"></image> -->
             <view class="login__btnGroup">
-                <view wx:if="{{!agreementStatus}}" class="loginButton" bindtap="handelClick"> 登录</view>
+                <view wx:if="{{!agreementStatus}}" class="loginButton btn" bindtap="handelClick"> 登录</view>
                 <view wx:if="{{agreementStatus}}" class="loginButtonWx_box">
-                    <button class="loginButtonWx" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
+                    <button class="loginButton btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
                 </view>
             </view>
             <view class="login__compontents">
                 <agreement bind:collectFun="collectFun" />
             </view>
+            <view class="servicePosition">
+                <service title="联系客服"></service>
+            </view>
         </view>
-        <service class="servicePosition" title="联系客服"></service>
+
     </view>
 </view>
