@@ -23,10 +23,6 @@
                 <agreement bind:collectFun="collectFun" />
             </view>
         </view>
-
-
-
-
         <service class="servicePosition" title="联系客服"></service>
     </view>
 </view>
