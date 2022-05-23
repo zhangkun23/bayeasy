@@ -6,14 +6,18 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        contact: {
+        // contact: {
+        //     type: String,
+        //     value: "客服"
+        // },
+        title: {
             type: String,
-            value: "客服"
+            value: "联系财税管家"
         },
     },
     pageLifetimes: {
         show() {
-            let token = wx.getStorageSync('token') || ''
+            let token = wx.getStorageSync('token') || '';
             if (token) {
                 this.setData({
                     contact: "财税管家"

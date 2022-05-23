@@ -24,7 +24,7 @@ Page({
 
     onInput(e) {
         let value = e.detail.value;
-        if(value) {
+        if (value) {
             this.setData({
                 color: '#1D83F0'
             })
@@ -47,7 +47,7 @@ Page({
             this.setData({
                 color: '#E6EEF7'
             })
-        } 
+        }
         this.verifyEmail(value);
         this.setData({
             isShowIcon: false,
@@ -90,12 +90,16 @@ Page({
                     email: this.data.inputValue,
                     ids: this.data.ids
                 }
-                console.log(params)
                 downloadEmail(params).then(res => {
                     if (res.ret) {
                         console.log(this.data.type)
                         wx.navigateTo({
-                            url: '../promptSuccessPage/index',
+                            url: '../promptSuccessPage/index?type=' + this.data.type,
+                        })
+                    } else {
+                        wx.showToast({
+                            title: res.message,
+                            icon: 'none'
                         })
                     }
                 })
@@ -111,6 +115,7 @@ Page({
         this.setData({
             downloadNum,
             ids: options.ids,
+            type: options.type
         })
     },
 

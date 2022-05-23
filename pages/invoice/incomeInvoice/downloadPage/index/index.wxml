@@ -23,9 +23,8 @@
                 </view>
             </view>
         </view>
-        <view  class="downloadPage__email">
+        <view class="downloadPage__email">
             <view>
-                <!-- class="{{isValid? 'red downloadPage__email-box display-flex' : 'gray downloadPage__email-box display-flex'}}"  -->
                 <view class="downloadPage__email-box display-flex" style="border: 2rpx solid{{color}}">
                     <input bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" class="downloadPage__email-input" placeholder-class="placeholderClass" type="text" placeholder="请输入您的邮箱地址" value="{{inputValue}}">
                     </input>
@@ -40,6 +39,5 @@
             </view>
         </view>
         <view class="downloadPage__btn btn whiteTips" bindtap="gotoDownload">确认下载</view>
-        <!-- </view> -->
     </view>
 </view>

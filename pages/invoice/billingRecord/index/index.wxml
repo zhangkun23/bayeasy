@@ -51,7 +51,7 @@
         <view class="nothing__nodata-text font-size-24">暂无数据</view>
       </view>
       <view class="footer">
-        <service class="securityCheck__footer-image">财税管家</service>
+        <service class="securityCheck__footer-image" ></service>
       </view>
     </view>
   </view>
