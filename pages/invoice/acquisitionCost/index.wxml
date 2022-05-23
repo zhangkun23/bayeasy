@@ -14,7 +14,7 @@
                     <block wx:if="{{showFilter}}">
                         <view class="filter flex_center" bindtap="toggleFilter">
                             <image class="icon" src="{{filterIconActive}}" mode="widthFix"></image>
-                            <view class="text orange">筛选</view>
+                            <view class="text orange font-600">筛选</view>
                         </view>
                     </block>
                     <block wx:else>

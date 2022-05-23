@@ -26,12 +26,13 @@ const formatTime = date => {
 
     return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
-
+// 补0
 const formatNumber = n => {
     n = n.toString()
     return n[1] ? n : `0${n}`
 }
 
+// 路由
 const navigateTo = (path) => {
     wx.navigateTo({
         url: path,
@@ -106,10 +107,12 @@ const saveImgToAlbum = (content) => {
         })
     })
 }
+// 打开pdf文件
 const openPdf = (url) => {
+    console.log(url)
     let fileName
     if (url === 'service_agreement') {
-        fileName = '服务协议'
+        fileName = '平台服务协议'
     } else if (url === 'privacy_policy') {
         fileName = '隐私政策'
     } else {

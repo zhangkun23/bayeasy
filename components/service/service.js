@@ -9,12 +9,12 @@ Component({
         contact: {
             type: String,
             value: "客服"
-          },
+        },
     },
     pageLifetimes: {
         show() {
             let token = wx.getStorageSync('token') || ''
-            if(token){
+            if (token) {
                 this.setData({
                     contact: "财税管家"
                 })
@@ -32,13 +32,13 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        handeClickOpenServe(){
+        handeClickOpenServe() {
             const operate = getApp().globalData.operate;
-            if(operate){
+            if (operate) {
                 wx.navigateTo({
                     url: '/pages/contactOperate/index',
-                  })
-            }else{
+                })
+            } else {
                 wx.makePhoneCall({
                     phoneNumber: getApp().globalData.phoneNumber
                 })

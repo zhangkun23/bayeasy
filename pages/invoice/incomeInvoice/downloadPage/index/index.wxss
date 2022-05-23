@@ -7,7 +7,7 @@
 
 .navigationBar {
   color: #fff;
-  background: #1D83FD;
+  background: #1D83F0;
 }
 
 .downloadPage__box {

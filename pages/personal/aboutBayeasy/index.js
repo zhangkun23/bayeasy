@@ -87,7 +87,8 @@ Page({
 
   },
   goEntrance(e) {
-    // console.log("go ! ")
+    
+    console.log("go ! ",e )
     openPdf(e.currentTarget.dataset.url)
   }
 })
