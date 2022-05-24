@@ -8,15 +8,33 @@ Page({
      */
     data: {
         successIconImg: tempPath + "public/done.png",
-        type: ''
+        type: '',
+        isAndroid: '1',
+        currentID: 0
     },
     backIndex() {
-        if (this.data.type) {
-            wx.navigateBack({
-                delta: 1
+        // const res = wx.getSystemInfoSync() // 读取设备所有信息
+        // console.log("判断手机类型--------------"+res)
+        // console.log(this.data.type, 'type')
+        // if (this.data.type) {
+        //     console.log("判断手机类型--------------"+res.platform )
+        //      if(res.platform == "ios") { 
+        //         wx.redirectTo({
+        //             url: '/pages/invoice/incomeInvoice/details/eInvoice/index?currentID=' + this.data.currentID,
+        //         })
+        //     }
+        // }
+
+    },
+    isIosOrAndroid() {
+        const res = wx.getSystemInfoSync() // 读取设备所有信息
+        console.log(res); // 打印获取的信息
+        console.log(res.platform); // 获取安卓或者iOS数据
+        if (res.platform == "android") { // 判断
+            this.setData({
+                isAndroid: 2
             })
         }
-
     },
 
     /**
@@ -24,11 +42,12 @@ Page({
      */
     onLoad(options) {
         let currerntPage = getCurrentPages();
-        console.log(options, currerntPage)
+        // console.log(options, currerntPage)
         this.setData({
-            type: options.type
+            type: options.type,
+            currentID: options.currentID
         })
-
+        // this.isIosOrAndroid();
     },
 
     /**

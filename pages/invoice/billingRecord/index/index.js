@@ -27,6 +27,7 @@ Page({
   },
 
 
+
   // 收入开票记录列表
   getInvoiceRecord(time) {
     let params = {
@@ -35,7 +36,8 @@ Page({
     }
     let token = wx.getStorageSync('token');
     getInvoiceRecord(params).then(res => {
-      console.log(res)
+      // let arr = [];
+      // console.log(res) 
       if (res.ret) {
         if (res.data.list !== null) {
           let time = res.data.list[0].time.split('至');
@@ -48,12 +50,17 @@ Page({
             item.index = index;
             item.checked = false;
             item.list.map((aItem, aIndex) => {
+              // arr.push(aItem)
               aItem.src = this.data.imgPath + '/invoice/show_invoice_image?id=' + aItem.id + '&token=' + token;
               aItem.checkedItem = false;
               aItem.index = aIndex;
             })
           })
         }
+        // if (arr.length / 10 !== 0) {
+        //   console.log(2222,arr.length / 10 !== 0)
+        // }
+        // console.log(arr)
         this.setData({
           billingRecordList: res.data.list
         })

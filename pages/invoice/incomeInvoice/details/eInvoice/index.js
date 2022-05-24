@@ -14,7 +14,7 @@ Page({
     data: {
         showBg: true,
         invoices: null,
-        // _vid: null,
+        _vid: 0,
         invoicePdfUrl: null,
         showClipDialog: false
     },
@@ -23,7 +23,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const vid = options.vid;
+        console.log(options,'电子发票页')
+        const vid = options.currentID;
+        this.setData({
+            _vid: options.currentID
+        })
         let that = this;
         get_invoice_file(vid).then(res => {
             if (res.ret) {
@@ -41,19 +45,20 @@ Page({
                 console.error("无法获取收入发票详情资源地址: ", res.message)
             }
         })
+        
     },
     // 去输入邮箱
     gotodownload() {
-      console.log(this.data.invoices)
-      let arr = [];
-      let data = this.data.invoices;
-      data.map(item => {
-        arr.push(item.id)
-      })
-      console.log(arr)
-      wx.navigateTo({
-        url: '../../downloadPage/index/index?ids=' + arr +'&type=detail',
-      })
+        console.log(this.data._vid)
+        let arr = [];
+        let data = this.data.invoices;
+        data.map(item => {
+            arr.push(item.id)
+        })
+        console.log(this.data._vid)
+        wx.navigateTo({
+            url: '../../downloadPage/index/index?ids=' + arr + '&type=detail&currentID=' + this.data._vid,
+        })
     },
     downloadPdf: function (e) {
         let that = this;
@@ -64,8 +69,8 @@ Page({
             data: url,
             success: res => {
                 wx.showModal({
-                  content:"链接已复制，请在浏览器中访问。",
-                  showCancel:false
+                    content: "链接已复制，请在浏览器中访问。",
+                    showCancel: false
                 })
                 // wx.showToast({
                 //     title: '链接已复制',
@@ -95,7 +100,7 @@ Page({
             urls: [src],
         })
     },
-    handleTouchMove: function(e){
+    handleTouchMove: function (e) {
         return
     }
 

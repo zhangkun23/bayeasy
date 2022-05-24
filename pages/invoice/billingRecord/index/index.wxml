@@ -19,7 +19,7 @@
           <view class="display-flex" data-row="{{item}}" bindtap="checkedAllItem">
             <image class="billingRecord__imgGroup-left" src="{{!item.checked ? loginUnSelect : loginSelect}}" />
           </view>
-          <view class="billingRecord__item-title font-600">账期时间 {{item.time}}</view>
+          <view class="billingRecord__item-title font-600"  >账期时间 {{item.time}}</view>
         </view>
 
         <view class="billingRecord__imgGroup">

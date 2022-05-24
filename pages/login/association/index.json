@@ -1,7 +1,6 @@
 {
-  "usingComponents": {
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "个人关联",
-  "navigationBarTextStyle": "black"
-
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#ffffff"
 }

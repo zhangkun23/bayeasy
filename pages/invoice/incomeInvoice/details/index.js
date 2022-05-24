@@ -35,14 +35,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (!options.hasOwnProperty('id')) {
+    if (!options.hasOwnProperty('currentID')) {
       return
     }
 
     this.setData({
+      id: options.currentID,
       hasOperate: app.globalData.operate,
     })
-    get_invoice_detail(options.id).then(res => {
+    get_invoice_detail(options.currentID).then(res => {
       var that = this
       if (res.ret) {
         if (res.data instanceof Object && res.data) {
@@ -100,7 +101,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: './eInvoice/index?vid=' + this.data.id,
+      url: './eInvoice/index?currentID=' + this.data.id,
     })
   },
   handleConfirmDialog(e) {

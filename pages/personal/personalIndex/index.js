@@ -6,7 +6,8 @@ const {
 } = require('../config/config')
 const {
   logout,
-  feedbackStatus
+  feedbackStatus,
+  getUserStatus
 } = require('../../../http/api/api')
 const {
   get_user_info
@@ -36,14 +37,18 @@ Component({
       // 决定个人中心跳转
       const token = wx.getStorageSync('token') || '' // 可能从getStorage取
       const userStatus = app.globalData.userStatus
+      // this.getCurrentUserStatus();
 
+      // console.log(this.data.userStatus, userStatus)
       if (token) {
         get_user_info().then(res => {
+          this.getFeedbackStatus(); // 留言接口
+          this.getCurrentUserStatus();
           console.log("个人信息返回: ", res)
-          this.getFeedbackStatus();
           if (res.data instanceof Object && 'name' in res.data) {
             that.setData({
               user_name: res.data.name || ''
+              // user_name: ''
             })
           } else {
             console.log("无法获取姓名")
@@ -89,6 +94,7 @@ Component({
             login_status: 2,
             isCheckRequired: false,
             showCompleteInfo: false,
+            showModal: false,
             gates_info: _gate_info,
           })
         } else {
@@ -101,6 +107,8 @@ Component({
         }
       } else {
         console.log('没有token')
+        return;
+        console.log(token)
       }
 
       // 决定待办事项
@@ -156,8 +164,7 @@ Component({
     user_name: '', // name 和 tel 都应该存储在全局的info里
     user_tel: '',
     right_arrow: icons_url.right_arrow,
-    // userStatus: 1,
-    userStatus: app.globalData.userStatus,
+    userStatus: '',
     token: wx.getStorageSync('token') || '',
     isStatus: null,
     entrances_info: [{
@@ -222,9 +229,9 @@ Component({
     }, ]
   },
   methods: {
+    // 是否提交过留言
     getFeedbackStatus() {
       feedbackStatus().then(res => {
-        console.log(res)
         if (res.ret) {
           this.setData({
             isStatus: res.data.status
@@ -232,10 +239,26 @@ Component({
         }
       })
     },
-    gotoVerify() {
-      wx.navigateTo({
-        url: '../../login/securityCheck/index',
+    // 获取用户状态
+    getCurrentUserStatus() {
+      getUserStatus().then(res => {
+        if (res.ret) {
+          this.setData({
+            userStatus: res.data.status
+          })
+        }
       })
+    },
+    gotoVerify() {
+      if (this.data.userStatus == 0) {
+        wx.navigateTo({
+          url: '../../login/information/index',
+        })
+      } else if (this.data.userStatus == 1) {
+        wx.navigateTo({
+          url: '../../login/securityCheck/index',
+        })
+      }
     },
     goEntrance(e) {
       const userStatus = app.globalData.userStatus;
@@ -286,12 +309,21 @@ Component({
       }
     },
     goGate(e) {
+      console.log(this.data.token)
       if (!this.data.token) {
         this.setData({
           showModal: true
         })
         return
       }
+
+      if (this.data.userStatus == 0 || this.data.userStatus == 1) {
+        this.setData({
+          showCompleteInformationModal: true
+        })
+        return
+      }
+
       const _url = e.currentTarget.dataset.url
       console.debug("go gate", _url)
       wx.navigateTo({

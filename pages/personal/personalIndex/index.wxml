@@ -10,15 +10,15 @@
 <view class="{{!pageShow?'container opction':'container' }}">
     <mp-navigation-bar title="个人中心" back="{{false}}" />
 
-
     <view class="user-info-container">
         <view class="user-info">
             <view class="user-name-container">
-                <view wx:if="{{token && user_name}}" class="user-name">
-                    {{user_name}}
-                </view>
-                <view wx:elif="{{token && !user_name}}" class="user-name">
+
+                <view wx:if="{{(token && userStatus == 0) || (token && userStatus == 1)}}" class="user-name">
                     游客登录
+                </view>
+                <view wx:elif="{{token && userStatus == 2}}" class="user-name">
+                    {{user_name}}
                 </view>
                 <view wx:else class="user-name">
                     未登录

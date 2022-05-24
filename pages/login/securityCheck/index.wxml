@@ -23,8 +23,8 @@
       </view>
       <view wx:if="{{securityCheckText}}" class="securityCheck__content-text">{{errorTips}}</view>
       <view class="mg-tp-20">
-        <button class="securityCheck__content-btn" wx:if="{{!disabled}}">提交</button>
-        <button class="securityCheck__content-btn buttonBg" wx:if="{{disabled}}" bindtap="doConfirm">提交</button>
+        <view class="securityCheck__content-btn" wx:if="{{!disabled}}">提交</view>
+        <view class="securityCheck__content-btn buttonBg" wx:if="{{disabled}}" bindtap="doConfirm">提交</view>
       </view>
     </view>
     <view class="securityCheck__footer">

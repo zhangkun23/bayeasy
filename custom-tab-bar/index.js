@@ -33,7 +33,9 @@ Component({
       selectedIconPath: getApp().globalData.imgPath + 'footer/footer4_click.png',
     }]
   },
-  attached() {},
+  attached() {
+    
+  },
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
@@ -48,8 +50,9 @@ Component({
       this.setData({
         selected: data.index
       })
+
       wx.switchTab({
-        url: url
+        url: url,
       })
       this.setData({
         selected: data.index

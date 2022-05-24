@@ -19,7 +19,8 @@ Page({
         inputValue: '',
         ids: [],
         downloadNum: 0,
-        color: '#E6EEF7'
+        color: '#E6EEF7',
+        currentID: 0
     },
 
     onInput(e) {
@@ -78,6 +79,7 @@ Page({
 
     // 去下载
     gotoDownload() {
+        // console.log(this.data.currentID, '下载页id')
         if (!this.data.inputValue) {
             wx.showToast({
                 title: '请输入您的邮箱地址',
@@ -92,9 +94,12 @@ Page({
                 }
                 downloadEmail(params).then(res => {
                     if (res.ret) {
-                        console.log(this.data.type)
+                        this.setData({
+                            inputValue: ''
+                        })
+                        // console.log(this.data.type)
                         wx.navigateTo({
-                            url: '../promptSuccessPage/index?type=' + this.data.type,
+                            url: '../promptSuccessPage/index?type=' + this.data.type + '&currentID=' + this.data.currentID,
                         })
                     } else {
                         wx.showToast({
@@ -110,12 +115,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options)
         let downloadNum = options.ids.split(',').length;
         this.setData({
             downloadNum,
             ids: options.ids,
-            type: options.type
+            type: options.type,
+            currentID: options.currentID
         })
     },
 

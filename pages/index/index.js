@@ -169,7 +169,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        console.log(34423400)
+        this.setData({
+            showModal: false
+        })
     },
 
     /**

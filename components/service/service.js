@@ -17,6 +17,7 @@ Component({
     },
     pageLifetimes: {
         show() {
+            // console.log(this.data.title)
             let token = wx.getStorageSync('token') || '';
             if (token) {
                 this.setData({
@@ -37,11 +38,17 @@ Component({
      */
     methods: {
         handeClickOpenServe() {
-            const operate = getApp().globalData.operate;
-            if (operate) {
-                wx.navigateTo({
-                    url: '/pages/contactOperate/index',
-                })
+            if(this.data.title == '联系财税管家') {
+                const operate = getApp().globalData.operate;
+                if (operate) {
+                    wx.navigateTo({
+                        url: '/pages/contactOperate/index',
+                    })
+                } else {
+                    wx.makePhoneCall({
+                        phoneNumber: getApp().globalData.phoneNumber
+                    })
+                }
             } else {
                 wx.makePhoneCall({
                     phoneNumber: getApp().globalData.phoneNumber
