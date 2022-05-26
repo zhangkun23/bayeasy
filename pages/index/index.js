@@ -23,6 +23,7 @@ Page({
         fwjs: tempPath + 'index/fwjs.png',
         daiban: tempPath + 'index/daiban.png',
         csxkt: tempPath + 'index/csxkt.png',
+        serviceFee: tempPath + 'index/serviceFee.png',
         dbNum: 0, //待办数量
         daibanShow: true,
         token: '',

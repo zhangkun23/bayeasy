@@ -1,0 +1,5 @@
+/* pages/serviceFee/details/index.wxss */
+
+.serviceFeeDetail{
+  height: 100vh;
+}

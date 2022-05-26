@@ -1,0 +1,9 @@
+<!--pages/serviceFee/details/index.wxml-->
+<view class="serviceFeeDetail">
+  <mp-navigation-bar title="服务费用" ext-class="navigationBar"></mp-navigation-bar>
+  <view class="serviceFeeDetail__container">
+    <view>
+      详情
+    </view>
+  </view>
+</view>

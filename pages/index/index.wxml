@@ -30,14 +30,14 @@
 
   <view class="count">
     <view class="countTop">
-      <view class="countTop_left" data-url='/pages/nothing/index' bindtap="handelClickUrl">
-        <image class="zcjc" src="{{zcjc}}" />
-        <view class="countCenterTitle">注册进程</view>
+      <view class="countTop_left" data-url='/pages/tax/taxreturn/index' bindtap="handelClickUrl">
+        <image class="zcjc" src="{{nssb}}" />
+        <view class="countCenterTitle">纳税申报</view>
       </view>
       <view class="countTop_right">
-        <view class="top" bindtap="handelClickUrl" data-url='/pages/invoice/incomeInvoice/index/index'>
-          <image class="srzdfp" src="{{srzdfp}}" />
-          <view class="title">收入账单发票</view>
+        <view class="top" bindtap="handelClickUrl" data-url='/pages/serviceFee/index/index'>
+          <image class="srzdfp" src="{{serviceFee}}" />
+          <view class="title">服务费用</view>
         </view>
         <view class="bottom" bindtap="handelClickUrl" data-url='/pages/invoice/acquisitionCost/index'>
           <image class="cbfy" src="{{cbfy}}" />
@@ -45,9 +45,9 @@
         </view>
       </view>
     </view>
-    <view class="countCenter" data-url='/pages/tax/taxreturn/index' bindtap="handelClickUrl">
-      <text class="countCenterTitle">纳税申报</text>
-      <image class="nssb" src="{{nssb}}" />
+    <view class="countCenter" data-url='/pages/invoice/incomeInvoice/index/index' bindtap="handelClickUrl">
+      <text class="countCenterTitle">收入账单发票</text>
+      <image class="nssb" src="{{srzdfp}}" />
     </view>
     <view class="usermotto">
       <view class="countBottom">

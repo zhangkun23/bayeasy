@@ -1,0 +1,65 @@
+/* pages/serviceFee/index/index.wxss */
+
+.serviceFee {
+  height: 100vh;
+}
+
+.serviceFee__container {
+  flex: 1;
+  overflow-y: auto;
+  height: 1rpx;
+}
+
+.serviceFee__list {
+  margin: 44rpx 32rpx;
+}
+
+.serviceFee__item {
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(201, 209, 228, 0.38);
+  border-radius: 28rpx;
+  margin-bottom: 32rpx;
+}
+
+
+.serviceFee__item-image {
+  width: 200rpx;
+  height: 64rpx;
+}
+
+.serviceFee__item-box {
+  padding: 40rpx 32rpx 48rpx;
+  color: #283E56;
+}
+
+.serviceFee__item-allmoney {
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+}
+
+.serviceFee__item-money {
+  font-size: 56rpx;
+  /* line-height: 72rpx; */
+  margin-bottom: 32rpx;
+}
+
+.serviceFee__item-date {
+  height: 48rpx;
+  line-height: 48rpx;
+  background: #E6EEF7;
+  border-radius: 24rpx;
+  font-size: 20rpx;
+  color: #6E87A2;
+  text-align: center;
+  padding: 5rpx 26rpx;
+}
+
+.serviceFee__item-btn {
+  width: 156rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #FFAB3F;
+  border-radius: 30rpx;
+  /* padding: 14rpx 30rpx; */
+}
