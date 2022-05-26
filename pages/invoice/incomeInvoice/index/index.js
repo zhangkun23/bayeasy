@@ -62,7 +62,7 @@ Page({
     goDetails: function (e) {
         const _id = e.currentTarget.dataset.iid
         wx.navigateTo({
-            url: '../details/index?currentID=' + _id,
+            url: '../details/index?id=' + _id, 
         })
     },
     onPullDownRefresh: function () {
