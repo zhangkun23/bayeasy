@@ -21,7 +21,6 @@
   margin-bottom: 32rpx;
 }
 
-
 .serviceFee__item-image {
   width: 200rpx;
   height: 64rpx;
@@ -39,7 +38,6 @@
 
 .serviceFee__item-money {
   font-size: 56rpx;
-  /* line-height: 72rpx; */
   margin-bottom: 32rpx;
 }
 
@@ -63,3 +61,45 @@
   border-radius: 30rpx;
   /* padding: 14rpx 30rpx; */
 }
+
+.taxConfirmation__nodata {
+  margin: 240rpx auto;
+  text-align: center;
+}
+
+.taxConfirmation__image {
+  width: 370rpx;
+  height: 300rpx;
+}
+
+.taxConfirmation__nodata-text {
+  color: #6E87A2;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

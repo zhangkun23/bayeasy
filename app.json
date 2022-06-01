@@ -56,7 +56,9 @@
     "pages/faq/feedbackList/index",
     "pages/faq/feedbackSuccess/index",
     "pages/serviceFee/index/index",
-    "pages/serviceFee/details/index"
+    "pages/serviceFee/details/index",
+    "pages/serviceFee/payment/index",
+    "pages/serviceFee/components/modal"
   ],
   "tabBar": {
     "custom": true,

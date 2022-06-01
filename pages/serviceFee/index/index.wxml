@@ -2,49 +2,37 @@
 <view class="serviceFee bgColog flex-column">
   <mp-navigation-bar title="服务费用" ext-class="navigationBar" bindback="gotopage"></mp-navigation-bar>
   <view class="serviceFee__container">
-    <view class="serviceFee__list">
+    <view class="serviceFee__list" wx:if="{{payList.length > 0}}">
 
-      <view class="serviceFee__item">
+      <view class="serviceFee__item" wx:for="{{payList}}" wx:for-item="item" wx:key="id">
         <view>
           <view class="font-600 display-flex serviceFee__item-header">
-            <view>
-              <image class="serviceFee__item-image" src="{{iconOrangeList}}"></image>
+            <view wx:if="{{item.order_status == 0}}">
+              <image class="serviceFee__item-image" mode="widthFix" src="{{iconOrangeList}}"></image>
             </view>
-          </view>
-
-          <view class="serviceFee__item-box">
-            <view class="serviceFee__item-allmoney">实付总金额(元)</view>
-            <view class="font-600 serviceFee__item-money">￥3000.00</view>
-            <view class="space-between">
-              <view class="serviceFee__item-date">服务费所属期：2022-01-01至2022-03-31</view>
-              <view class="serviceFee__item-btn whiteTips font-size-24" bindtap="gotodeatil">查看详情</view>
+            <view wx:if="{{item.order_status == 1}}">
+              <image class="serviceFee__item-image" mode="widthFix" src="{{iconGreenList}}"></image>
             </view>
-          </view>
-        </view>
-      </view>
-      <view class="serviceFee__item">
-        <view>
-          <view class="font-600 display-flex serviceFee__item-header">
-            <view>
-              <image class="serviceFee__item-image" src="{{iconGreenList}}"></image>
+            <view wx:if="{{item.order_status == 2}}">
+              <image class="serviceFee__item-image" mode="widthFix" src="{{iconBlueList}}"></image>
             </view>
           </view>
 
           <view class="serviceFee__item-box">
             <view class="serviceFee__item-allmoney">实付总金额(元)</view>
-            <view class="font-600 serviceFee__item-money">￥3000.00</view>
+            <view class="font-600 serviceFee__item-money">￥{{item.money}}</view>
             <view class="space-between">
-              <view class="serviceFee__item-date">服务费所属期：2022-01-01至2022-03-31</view>
-              <view class="serviceFee__item-btn whiteTips font-size-24">查看详情</view>
+              <view class="serviceFee__item-date">服务费所属期：{{item.begin_date}}至{{item.end_date}}</view>
+              <view class="serviceFee__item-btn whiteTips font-size-24" data-row="{{item}}" bindtap="gotodeatil">查看详情</view>
             </view>
           </view>
         </view>
       </view>
-      <view class="serviceFee__item">
+      <!-- <view class="serviceFee__item">
         <view>
           <view class="font-600 display-flex serviceFee__item-header">
             <view>
-              <image class="serviceFee__item-image" src="{{iconBlueList}}"></image>
+              <image class="serviceFee__item-image" mode="widthFix" src="{{iconGreenList}}"></image>
             </view>
           </view>
 
@@ -58,7 +46,29 @@
           </view>
         </view>
       </view>
+      <view class="serviceFee__item">
+        <view>
+          <view class="font-600 display-flex serviceFee__item-header">
+            <view>
+              <image class="serviceFee__item-image" mode="widthFix" src="{{iconBlueList}}"></image>
+            </view>
+          </view>
 
+          <view class="serviceFee__item-box">
+            <view class="serviceFee__item-allmoney">实付总金额(元)</view>
+            <view class="font-600 serviceFee__item-money">￥3000.00</view>
+            <view class="space-between">
+              <view class="serviceFee__item-date">服务费所属期：2022-01-01至2022-03-31</view>
+              <view class="serviceFee__item-btn whiteTips font-size-24">查看详情</view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+
+    </view>
+    <view class="taxConfirmation__nodata" wx:else>
+      <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
+      <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
     </view>
   </view>
 </view>

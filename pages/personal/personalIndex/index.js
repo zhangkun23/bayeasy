@@ -207,9 +207,9 @@ Component({
       extraInfo: null,
     }, {
       id: 3,
-      url: '../../invoice/acquisitionCost/index',
-      icon: btns_url.costBill,
-      text: '成本发票',
+      url: '../../serviceFee/index/index',
+      icon: btns_url.billingView,
+      text: '服务费用',
       width: '120rpx',
       isExtraInfo: false,
       extraInfo: null

@@ -1,0 +1,104 @@
+/* pages/serviceFee/payment/index.wxss */
+
+.navigationBar {
+  color: #fff;
+}
+
+.payment {
+  height: 100vh;
+  background: url('https://image.bayeasy.cn/images-datas/serviecFee/detail/paybackground.png') no-repeat;
+  background-size: contain;
+}
+
+.payment__container {
+  flex: 1;
+  height: 1rpx;
+  overflow-y: auto;
+}
+
+.payment__wrapper {
+  padding: 32rpx;
+}
+
+.payment__content-money {
+  font-size: 64rpx;
+  text-align: center;
+  margin: 60rpx auto 32rpx;
+}
+
+.payment__content-date {
+  margin-bottom: 40rpx;
+}
+
+.payment__content-center {
+  padding: 40rpx 32rpx 48rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 28rpx;
+}
+
+.payment__content-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}
+
+.payment__content-checked {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+
+.detail__topTips {
+  line-height: 36rpx;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.detail__topTips-icon {
+  display: inline-block;
+}
+
+.detail__topTips-icon image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 7rpx;
+}
+
+.payment__accountInformation {
+  background: rgba(194, 223, 255, .2);
+  border-radius: 28rpx;
+  padding: 32rpx 24rpx;
+}
+
+.payment__accountInformation-solid {
+  width: 8rpx;
+  height: 24rpx;
+  background: #1A94FF;
+  border-radius: 4rpx;
+  margin-right: 17rpx;
+}
+
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 34rpx;
+  background: #FFA42E;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+  border-radius: 44rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.payment__btn-pay{ 
+  margin-top: 350rpx;
+}
+
+.payment__btn-copy{ 
+  margin-top: 84rpx;
+}
+
+

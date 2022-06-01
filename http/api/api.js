@@ -104,4 +104,19 @@ module.exports = {
 		return request(api + '/feedback/submit', "POST", param);
 	},
 
+	/* 服务费用列表 */
+	getPayList: (param) => {
+		return request(api + '/service_charge/list', "POST", param);
+	},
+	/* 获取上次支付的方式 */
+	serviceFeeDeatail: (param) => {
+		return request(api + '/service_charge/info?id=' + param, "GET",);
+	},
+	/* 获取上次支付的方式 */
+	getPayType: () => {
+		return request(api + '/service_charge/pay_type', "GET", {});
+	},
+
+
+
 }

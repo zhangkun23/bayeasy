@@ -1,0 +1,20 @@
+<!--pages/serviceFee/components/modal.wxml-->
+
+<view class="modal__wrapper" wx:if="{{showModal}}">
+  <view class="modal__container">
+    <view>
+      <image src="{{iconSrc}}" class="modal__container-modalBg" mode="widthFix"></image>
+    </view>
+    <view class="modal__container-text">
+      <view class="font-size-28 blackTips font-600">{{title}}</view>
+      <view class="modal__container-money mg-bt-24">¥ {{money}}</view>
+    </view>
+    <view class="modal__container-btn">
+      <view class="btn whiteTips font-size-28" bindtap="topay">{{btnText}}</view>
+    </view>
+    <view bindtap="closeModal" class="modal__container-close">
+      <image src="{{closeBtn}}" class="modal__container-closeBtn" mode="aspectFill"></image>
+    </view>
+  </view> 
+
+</view>

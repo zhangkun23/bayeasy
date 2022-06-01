@@ -1,5 +1,6 @@
 // pages/serviceFee/index/index.js
 const tempPath = getApp().globalData.imgPath;
+const { getPayList } = require('../../../http/api/api')
 Page({
 
   /**
@@ -9,11 +10,15 @@ Page({
     iconGreenList: tempPath + '/serviecFee/icon_payList_green.png',
     iconBlueList: tempPath + '/serviecFee/icon_payList_blue.png',
     iconOrangeList: tempPath + '/serviecFee/icon_payList_orange.png',
-    payStatus: '待支付'
+    empty_bg_url: tempPath + 'public/emptyBackGround.png',
+    payStatus: '待支付',
+    isShowList: false,
+    payList: []
   },
-  gotodeatil() {
+  gotodeatil(e) {
+    let row = e.currentTarget.dataset.row;
     wx.navigateTo({
-      url: '../details/index',
+      url: '../details/index?id=' + row.id + '&status=' + row.order_status,
     })
     // wx.requestPayment({
     //   timeStamp: '',
@@ -27,12 +32,22 @@ Page({
     //   }
     // })
   },
+  // 列表
+  getPaymentList() {
+    getPayList().then(res => {
+      if(res.ret) {
+        this.setData({
+          payList: res.data.list
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getPaymentList();
   },
 
   /**

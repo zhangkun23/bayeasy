@@ -7,11 +7,11 @@ Component({
   properties: {
     title: {
       type: String,
-      value: "温馨提示"
+      value: "支付"
     },
-    contents: {
-      type: Array,
-      value: ["为便于贝易资为您提供更为完善的服务", "需您先登录贝易资并完成身份信息安全校验"]
+    money: {
+      type: String,
+      value: "0.00"
     },
     showModal: {
       type: Boolean,
@@ -19,7 +19,11 @@ Component({
     },
     iconSrc: {
       type: String,
-      value: "/image/modal/modal.png"
+      value: tempPath + "serviecFee/detail/icon_pay.png",
+    },
+    btnText: {
+      type: String,
+      value: "确认支付"
     }
   },
   pageLifetimes: {
@@ -31,14 +35,18 @@ Component({
    * 组件的初始数据
    */
   data: {
-    closeBtn: tempPath+"public/close-icon.png",
-    // icon: '/image/modal/modal.png'
+    closeBtn: tempPath + "public/close-icon.png",
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    // 确认支付
+    topay(){
+      
+    },
+
     closeModal() {
       console.debug("modal close btn tap");
       this.setData({

@@ -11,6 +11,7 @@ const config = {
     incomeList: tempPath + 'personal/gates/my-sign.png',
     costBill: tempPath + 'personal/gates/check-ticket.png',
     todoList: tempPath + 'personal/gates/todo.png',
+    billingView: tempPath + 'personal/gates/billingView.png'
   },
   defaultAvatar: tempPath + 'personal/default-avatar.png'
 }

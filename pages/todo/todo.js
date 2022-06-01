@@ -84,6 +84,17 @@ Page({
         btnText: "去查看",
         url: "/pages/tax/repaymentBill/index",
         detailUrl: "/pages/tax/billingDetail/billingDetail",
+      },
+      {
+        id: 6,
+        isShow: false,
+        titleYellow: true,
+        count: 0,
+        title: "服务费支付结算",
+        subTitle: "请尽快支付结算服务费",
+        btnText: "去支付",
+        url: "/pages/serviceFee/index/index",
+        detailUrl: "/pages/serviceFee/details/index",
       }
     ]
   },
@@ -129,6 +140,7 @@ Page({
           const _data = res.data
           const _todo_keys = Object.keys(_data)
           const _new_todo_lists = that.data.todo_lists
+          // 待办账单发票信息
           if (_todo_keys.includes("invoice")) {
             if (_data.invoice.length > 0) {
               _new_todo_lists[3].isShow = true
@@ -138,6 +150,7 @@ Page({
               delete _new_todo_lists[3]["ids"]
             }
           }
+          // 正常待确认申报税款
           if (_todo_keys.includes("declare")) {
             if (_data.declare.length > 0) {
               _new_todo_lists[0].isShow = true
@@ -147,6 +160,7 @@ Page({
               delete _new_todo_lists[0]["ids"]
             }
           }
+          // 即将逾期待确认申报税款
           if (_todo_keys.includes("overdue_declare")) {
             if (_data.overdue_declare.length > 0) {
               _new_todo_lists[1].isShow = true
@@ -156,6 +170,7 @@ Page({
               delete _new_todo_lists[1]["ids"]
             }
           }
+          // 欠款账单
           if (_todo_keys.includes("loan")) {
             if (_data.loan.length > 0) {
               _new_todo_lists[2].isShow = true
@@ -168,6 +183,7 @@ Page({
               delete _new_todo_lists[2]["ids"];
             }
           }
+          // 还款账单
           if (_todo_keys.includes("repayment")) {
             if (_data.repayment.length > 0) {
               _new_todo_lists[4].isShow = true
@@ -178,6 +194,16 @@ Page({
               _new_todo_lists[4].isShow = false
               _new_todo_lists[4].title = "您有 {0} 条申报欠款记录需要处理";
               delete _new_todo_lists[4]["ids"];
+            }
+          }
+          // 支付费用
+          if(_todo_keys.includes("service_charge")) {
+            if(_data.service_charge.length > 0) {
+              _new_todo_lists[5].isShow = true;
+              _new_todo_lists[5]["ids"] = _data["service_charge"]
+            } else {
+              _new_todo_lists[5].isShow = false;
+              delete _new_todo_lists[5]["ids"];
             }
           }
           that.setData({

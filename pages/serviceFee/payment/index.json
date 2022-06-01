@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "modal": "../components/modal"
+  },
+  "navigationStyle":"custom",
+  "navigationBarTextStyle": "white"
+
+}
