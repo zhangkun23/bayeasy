@@ -13,10 +13,11 @@ if (type === 'publish') {
         console.error('desc不能为空!!!');
         process.exit(1);
     }
-    if(!buildId){
-        console.error('buildId不能为空!!!');
-        process.exit(1);
-    }
+}
+
+if(!buildId){
+    console.error('buildId不能为空!!!');
+    process.exit(1);
 }
 
 const appid = 'wx8c15bc82c287b2b7';
