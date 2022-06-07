@@ -47,7 +47,7 @@ const preview = async () => {
             es6: true,
         },
         qrcodeFormat: 'image',
-        qrcodeOutputDest: `./preview_qrcode_${buildId}.png`,
+        qrcodeOutputDest: `../output/qrcode/preview_qrcode_${buildId}.png`,
         onProgressUpdate: console.log,
     })
     console.log("########################## previewResult ##########################")
