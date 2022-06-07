@@ -1,5 +1,5 @@
 const ci = require('miniprogram-ci')
-const { type, version = '', desc = ''} = getEnvParams(process.argv);
+const { type, version = '', desc = '', buildId = ""} = getEnvParams(process.argv);
 
 console.log("########################## Params ##########################")
 console.log(process.argv);
@@ -11,6 +11,10 @@ if (type === 'publish') {
     }
     if(!desc){
         console.error('desc不能为空!!!');
+        process.exit(1);
+    }
+    if(!buildId){
+        console.error('buildId不能为空!!!');
         process.exit(1);
     }
 }
@@ -42,7 +46,7 @@ const preview = async () => {
             es6: true,
         },
         qrcodeFormat: 'image',
-        qrcodeOutputDest: './preview_qrcode.png',
+        qrcodeOutputDest: `./preview_qrcode_${buildId}.png`,
         onProgressUpdate: console.log,
     })
     console.log("########################## previewResult ##########################")
