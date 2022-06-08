@@ -1,0 +1,36 @@
+<!--pages/serviceFee/paymentError/index.wxml-->
+
+<view class="paymentError">
+  <mp-navigation-bar ext-class="navigationBar" back="{{false}}"></mp-navigation-bar> 
+  <view class="paymentError__wrapper">
+    <view class="paymentError__image mg-bt-32">
+      <image class="paymentError__wrapper-img" src="{{icon}}" mode="widthFix"></image>
+    </view>
+    <view class="whiteTips font-600 text-center mg-bt-32 paymentError__text">服务费支付失败</view>
+    <view class="whiteTips font-size-24 paymentError__text-tips">支付失败原因：请您在每月23日前将纸质票据邮寄至本公司，邮寄信息请咨询财税管家，如未及时邮寄将无法在本月计入成本！</view>
+    <view class="paymentError__box font-size-24 grayTips">
+      <view class="space-between mg-bt-24">
+        <view>服务费所属期</view>
+        <view>2022-01-01至2022-03-31</view>
+      </view>
+      <view class="space-between mg-bt-24">
+        <view>支付金额</view>
+        <view>￥100000.00</view>
+      </view>
+      <view class="space-between">
+        <view>支付方式</view>
+        <view>微信支付</view>
+      </view>
+    </view>
+
+    <view class="paymentError__btnGroup">
+      <view class="mg-bt-32">
+        <view class="paymentError__btnGroup-detail btn" bindtap="toList">返回服务列表</view>
+      </view>
+      <!-- <view>
+        <view class="paymentError__btnGroup-back btn" bindtap="toback">返回服务费用</view>
+      </view> -->
+    </view>
+  </view>
+
+</view>

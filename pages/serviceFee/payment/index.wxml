@@ -1,0 +1,99 @@
+<!--pages/serviceFee/payment/index.wxml-->
+<view class="payment flex-column">
+  <mp-navigation-bar title="提交服务费" ext-class="navigationBar"></mp-navigation-bar>
+  <view class="payment__container">
+    <view class="payment__wrapper">
+      <view class="payment__content">
+        <view class="font-600 whiteTips payment__content-money">￥ {{unpaidmoney}}</view>
+        <view class="space-between font-size-24 whiteTips payment__content-date">
+          <view>服务费所属期</view>
+          <view>{{starttime}}至{{endtime}}</view>
+        </view>
+        <view class="font-size-24 payment__content-center">
+          <view class="font-size-28 font-600 blackTips mg-bt-32">选择支付方式</view>
+          <view class="space-between mg-bt-32">
+            <view class="display-flex">
+              <view>
+                <image class="payment__content-icon" mode="widthFix" src="{{wechat}}"></image>
+              </view>
+              <view>微信支付</view>
+            </view>
+
+            <view bindtap="paymentMethod" data-pay="wechat">
+              <image class="payment__content-checked" mode="widthFix" src="{{!isWechat ? loginUnSelect : loginSelect}}"></image>
+            </view>
+
+          </view>
+
+          <view class="space-between mg-bt-32">
+            <view class="display-flex">
+              <view>
+                <image class="payment__content-icon" mode="widthFix" src="{{alipay}}"></image>
+              </view>
+              <view>支付宝支付</view>
+            </view>
+
+            <view bindtap="paymentMethod" data-pay="alipay">
+              <image class="payment__content-checked" mode="widthFix" src="{{!isAlipay ? loginUnSelect : loginSelect}}"></image>
+            </view>
+
+          </view>
+          <view class="space-between">
+            <view class="display-flex">
+              <view>
+                <image class="payment__content-icon" src="{{unionPay}}" mode="widthFix"></image>
+              </view>
+              <view>银行转账支付</view>
+            </view>
+
+            <view bindtap="paymentMethod" data-pay="unionPay">
+              <image class="payment__content-checked" src="{{!isUnionPay ? loginUnSelect : loginSelect}}" mode="widthFix"></image>
+            </view>
+
+          </view>
+          <!-- 选择银联支付展示 -->
+          <view class="mg-tp-24 payment__unionPay" wx:if="{{isUnionPay}}">
+            <view class="detail__topTips orangeTips orangeBack font-size-24">
+              <view class="detail__topTips-icon">
+                <image src="{{info_max}}"></image>
+                <text>贝易资暂未开放线上银行卡支付通道，您可将服务费通过线下银行转账至以下贝易资收款账户中</text>
+              </view>
+            </view>
+            <view class="payment__accountInformation font-size-24">
+              <view class="align-center mg-bt-24">
+                <text class="payment__accountInformation-solid"></text>
+                <text class="font-size-24 font-600 blackTips">银行账户信息</text>
+              </view>
+              <view class="space-between mg-bt-24">
+                <view class="grayTips">开户银行</view>
+                <view class="blackTips">{{backInfo.bank_type}}</view>
+              </view>
+              <view class="space-between mg-bt-24">
+                <view class="grayTips">银行户名</view>
+                <view class="blackTips">{{backInfo.bank_account_name}}</view>
+              </view>
+              <view class="space-between">
+                <view class="grayTips">银行账号</view>
+                <view class="blackTips">{{backInfo.bank_account}}</view>
+              </view>
+            </view>
+          </view>
+          <view>
+
+          </view>
+
+        </view>
+      </view>
+      <view class="payment__footer">
+        <view class="payment__btn-pay btn  whiteTips" wx:if="{{!isUnionPay}}" bindtap="toPay">提交支付</view>
+        <view class="whiteTips btn payment__btn-copy" wx:else bindtap="tocopy">一键复制</view>
+      </view>
+    </view>
+  </view>
+<!-- 支付框 -->
+<!--  contents="¥{{contents}}" -->
+  <modal title="支付" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}" orderno="{{orderno}}"></modal>
+  <alipayModal orderno="{{orderno}}" showModal="{{isShowPayModal}}" payUrl="{{payUrl}}"></alipayModal>
+</view>
+
+

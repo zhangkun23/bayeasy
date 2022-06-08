@@ -45,6 +45,30 @@
     color: #fff;
 }
 
+.blackTips {
+    color: #283E56;
+}
+
+.grayTips {
+    color: #6E87A2;
+}
+
+.mg-bt-8 {
+    margin-bottom: 8rpx;
+}
+
+.mg-bt-24 {
+    margin-bottom: 24rpx;
+}
+
+.mg-bt-32 {
+    margin-bottom: 32rpx;
+}
+
+.mg-tp-24 {
+    margin-top: 24rpx;
+}
+
 .display-flex {
     display: flex;
 }
@@ -54,22 +78,48 @@
     justify-content: space-between;
 }
 
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.flex-column{
-  display: flex;
-  flex-direction: column;
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .font-600 {
     font-weight: 600;
 }
 
+.font-size-20 {
+    font-size: 20rpx;
+}
+
 .font-size-24 {
     font-size: 24rpx;
+}
+
+.font-size-28 {
+    font-size: 28rpx;
+}
+
+.font-size-32 {
+    font-size: 32rpx;
+}
+
+.font-size-56 {
+    font-size: 56rpx;
 }
 
 .bluebtn {
@@ -94,25 +144,25 @@
     font-size: 34rpx;
 }
 
-.weui-navigation-bar__buttons{
-  position: relative;
+.weui-navigation-bar__buttons {
+    position: relative;
 }
 
 .weui-navigation-bar__btn_goback {
-   position: relative;
+    position: relative;
 }
 
-.weui-navigation-bar__btn_goback::after{
-  content: '';
-  position: absolute;
-  left: -20rpx;
-  right: -50rpx;
-  top: -20rpx;
-  bottom: -20rpx;
-  transform: scale(1.5);
-  border: 1px solid lightgray
-
+.weui-navigation-bar__btn_goback::after {
+    content: '';
+    position: absolute;
+    left: -20rpx;
+    right: -50rpx;
+    top: -20rpx;
+    bottom: -20rpx;
+    transform: scale(1.5);
+    border: 1px solid lightgray
 }
+
 .navBarFont {
     font-size: 34rpx;
 }

@@ -1,0 +1,142 @@
+/* pages/serviceFee/components/modal.wxss */
+
+.modal__wrapper {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 29, 48, 0.3);
+}
+
+.modal__container {
+  position: relative;
+  top: 30.4%;
+  background: #fff;
+  height: 374rpx;
+  border-radius: 16px;
+  margin: 0 55rpx;
+}
+
+.modal__container-modalBg {
+  position: absolute;
+  width: 190rpx;
+  height: 142rpx;
+  top: -70rpx;
+  left: 37%;
+}
+
+.modal__container-text {
+  text-align: center;
+  padding-top: 110rpx;
+  padding-bottom: 16rpx;
+}
+
+.modal__container-money {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #353535;
+}
+
+.modal__container-btn {
+  text-align: center;
+  margin-bottom: 65rpx;
+}
+
+.btn {
+  width: 240rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #46CF84;
+  color: #fff;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(70, 207, 132, 0.2);
+  border-radius: 35rpx;
+  margin: 0 auto;
+}
+
+
+.modal__container-close {
+  display: flex;
+  justify-content: center;
+  padding-top: 24rpx;
+}
+
+.modal__container-closeBtn {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+
+
+.modalBg {
+  width: 640rpx;
+}
+
+.modal-wrapper .modal-area-container {
+  position: relative;
+  top: 30.4%;
+  margin: 0 auto;
+}
+
+
+.modal-content {
+  position: relative;
+  top: -88rpx;
+}
+
+.modal-content .bg {
+  position: absolute;
+  /* width: 640rpx; */
+}
+
+.modal-content .text-area {
+  padding-top: 192rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.text-area .title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #283E56;
+  line-height: 50rpx;
+}
+
+.text-area .content-container {
+  padding-top: 16rpx;
+}
+
+.text-area .content-container .content {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #48617C;
+  line-height: 40rpx;
+}
+
+.text-area .btn {
+  padding-top: 24rpx;
+  margin: auto;
+}
+
+.modal-area {
+  background: #fff;
+  /* margin: 0 55rpx 0rpx 55rpx; */
+  border-radius: 16rpx;
+}
+
+.modal-area-container .close-btn {
+  position: relative;
+  top: -20rpx;
+  text-align: center;
+  /* width: 60rpx; */
+}
+
+.modal-area-container .close-btn .icon {
+  width: 60rpx;
+  height: 60rpx;
+}

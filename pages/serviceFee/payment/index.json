@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "modal": "../components/modal/modal",
+    "alipayModal": "../components/alipayModal/alipayModal"
+  },
+  "navigationStyle":"custom",
+  "navigationBarTextStyle": "white"
+
+}

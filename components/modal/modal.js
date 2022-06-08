@@ -16,6 +16,10 @@ Component({
     showModal: {
       type: Boolean,
       value: false
+    },
+    iconSrc: {
+      type: String,
+      value: "/image/modal/modal.png"
     }
   },
   pageLifetimes: {
@@ -27,7 +31,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    closeBtn: tempPath+"public/close-icon.png"
+    closeBtn: tempPath+"public/close-icon.png",
+    // icon: '/image/modal/modal.png'
   },
 
   /**

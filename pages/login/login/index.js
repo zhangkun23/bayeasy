@@ -19,9 +19,9 @@ Page({
     loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
     logo: tempPath + 'public/logo.png',
     serve: tempPath + 'public/serve.png',
-    biglogo: tempPath + 'login/logo.png', 
-    back1: tempPath + 'login/bg21.png', 
-    back2: tempPath + 'login/bg1.png', 
+    biglogo: tempPath + 'login/logo.png',
+    back1: tempPath + 'login/bg21.png',
+    back2: tempPath + 'login/bg1.png',
     agreementStatus: false
 
   },
@@ -61,11 +61,19 @@ Page({
   // 平台登录
   wxlogin(param) {
     wxlogin(param).then(res => {
+      console.log(res)
       if (res.ret) {
+        // getApp().globalData.open_id = res.data.open_id;
+        getApp().globalData.open_id = "olXtf49M8xkKY5Qu1ClC9RBBH-cg";
         wx.setStorageSync('token', res.data.access_token)
         wx.setStorageSync('mobile', res.data.mobile)
         wx.setStorageSync('idCard', res.data.identity_card)
         this.getInfo();
+      } else{
+        wx.showToast({
+          title: res.message,
+          icon: "none"
+        })
       }
     })
   },
