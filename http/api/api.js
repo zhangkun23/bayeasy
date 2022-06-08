@@ -108,13 +108,34 @@ module.exports = {
 	getPayList: (param) => {
 		return request(api + '/service_charge/list', "POST", param);
 	},
-	/* 获取上次支付的方式 */
+	/* 获取服务费详情 */
 	serviceFeeDeatail: (param) => {
 		return request(api + '/service_charge/info?id=' + param, "GET",);
 	},
-	/* 获取上次支付的方式 */
+	/* 获取支付方式 */
 	getPayType: () => {
 		return request(api + '/service_charge/pay_type', "GET", {});
+	},
+	/* 获取银行信息 */
+	getBankInfo: () => {
+		return request(api + '/service_charge/bank_info', "GET", {});
+	},
+
+	/* 微信支付提交预订单支付吊起微信支付控件  */ 
+	wechatPay: (param) => {
+		return request('/wechat_pay/pre_pay', "POST", param);
+	},
+	/* 确认支付 */
+	wechatPayData: (param) => {
+		return request('/wechat/pay_data', "POST", param);
+	},
+	// 获取银行信息
+	getBankInfo: () => {
+		return request(api + '/service_charge/bank_info', "GET", {});
+	},
+	//  获取支付宝跳转
+	alipayUrl: (param) => {
+		return request(api + '/alipay/service/url', "POST", param);
 	},
 
 

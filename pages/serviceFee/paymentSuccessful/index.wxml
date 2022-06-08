@@ -1,0 +1,42 @@
+<!--pages/serviceFee/paymentSuccessful/index.wxml-->
+<view class="paymentSuccessful">
+  <mp-navigation-bar ext-class="navigationBar" back="{{false}}"></mp-navigation-bar> 
+  <view class="paymentSuccessful__wrapper">
+    <view class="paymentSuccessful__image mg-bt-32">
+      <image class="paymentSuccessful__wrapper-img" src="{{icon}}" mode="widthFix"></image>
+    </view>
+    <view class="whiteTips font-600 text-center mg-bt-32 paymentSuccessful-text">服务费支付完成</view>
+    <view class="paymentSuccessful__box font-size-24 grayTips">
+      <view class="space-between mg-bt-24">
+        <view>服务费所属期</view>
+        <view>2022-01-01至2022-03-31</view>
+      </view>
+      <view class="space-between mg-bt-24">
+        <view>支付金额</view>
+        <view>￥100000.00</view>
+      </view>
+      <view class="space-between mg-bt-24">
+        <view>支付方式</view>
+        <view>微信支付</view>
+      </view>
+      <view class="space-between mg-bt-24">
+        <view>支付订单号</view>
+        <view>1234 1422 1241 1241 123</view>
+      </view>
+      <view class="space-between">
+        <view>支付时间</view>
+        <view>2022-03-22 21:00:23</view>
+      </view>
+    </view>
+
+    <view class="paymentSuccessful__btnGroup">
+      <view class="mg-bt-32">
+        <view class="paymentSuccessful__btnGroup-detail btn" bindtap="todetail">查看服务费详情</view>
+      </view>
+      <view>
+        <view class="paymentSuccessful__btnGroup-back btn" bindtap="toback">返回服务费用</view>
+      </view>
+    </view>
+  </view>
+
+</view>

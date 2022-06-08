@@ -53,7 +53,7 @@
             <text class="grayTips">服务费账期</text>
             <text class="blackTips">{{item.begin_date}}至{{item.end_date}}</text>
           </view>
-          <view class="space-between mg-bt-24" wx:if="{{item.type==2}}">
+          <view class="space-between mg-bt-24" wx:if="{{item.type == 2}}">
             <text class="grayTips">发票总额</text>
             <text class="blackTips">￥{{item.invoice_money || '0.00'}}</text>
           </view>
@@ -84,73 +84,6 @@
         </view>
       </view>
 
-
-      <!-- <view class="detail__background mg-bt-32 font-size-24">
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">服务费账期</text>
-          <text class="blackTips">2022-01-01至2022-03-31</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">发票总额</text>
-          <text class="blackTips">￥10000000.89</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">服务费金额</text>
-          <text class="blackTips">￥25000.00</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">减免优惠</text>
-          <text class="blackTips">无减免</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">减免金额</text>
-          <text class="blackTips">￥0.00</text>
-        </view>
-        <view class="detail__topTips orangeTips orangeBack font-size-24 mg-bt-24">
-          <view class="detail__topTips-icon">
-            <image src="{{info_max}}"></image>
-            <text>平台统一减免优惠服务</text>
-          </view>
-        </view>
-
-        <view class="space-between">
-          <text class="grayTips">实付金额</text>
-          <text class="blackTips">￥2500.00</text>
-        </view>
-      </view>
-      <view class="detail__background mg-bt-32 font-size-24">
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">服务费账期</text>
-          <text class="blackTips">2022-01-01至2022-03-31</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">发票总额</text>
-          <text class="blackTips">￥10000000.89</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">服务费金额</text>
-          <text class="blackTips">￥25000.00</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">减免优惠</text>
-          <text class="blackTips">无减免</text>
-        </view>
-        <view class="space-between mg-bt-24">
-          <text class="grayTips">减免金额</text>
-          <text class="blackTips">￥0.00</text>
-        </view>
-        <view class="detail__topTips orangeTips orangeBack font-size-24 mg-bt-24">
-          <view class="detail__topTips-icon">
-            <image src="{{info_max}}"></image>
-            <text>小主，我还没检测到您的公司主体信息。抱歉！您还不能使用我为您提供的成本发票上传功能哦！</text>
-          </view>
-        </view>
-
-        <view class="space-between">
-          <text class="grayTips">实付金额</text>
-          <text class="blackTips">￥2500.00</text>
-        </view>
-      </view> -->
       <!-- 已支付展示 -->
       <!-- wx:if="{{detailObj.status == 2}}" -->
       <view wx:if="{{detailObj.pay_list.length > 0}}">
@@ -168,31 +101,13 @@
           </view>
           <view class="space-between mg-bt-24">
             <text class="grayTips">交易流水号</text>
-            <text class="blackTips">{{item.flow_no || '--' }}</text>
+            <text class="blackTips">{{item.flow_no || '-' }}</text>
           </view>
           <view class="space-between mg-bt-24">
             <text class="grayTips">支付金额</text>
             <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
           </view>
         </view>
-        <!-- <view class="detail__background mg-bt-32 font-size-24">
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">支付方式</text>
-            <text class="blackTips">银行转账支付</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">支付时间</text>
-            <text class="blackTips">2022-01-01 21:00:22</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">交易流水号</text>
-            <text class="blackTips">09380458094850354095</text>
-          </view>
-          <view class="space-between">
-            <text class="grayTips">支付金额</text>
-            <text class="blackTips">￥5000.00</text>
-          </view>
-        </view> -->
       </view>
       <view class="detail__report" bindtap="contactOperate">
         <view class="content font-size-24 whiteTips space-between">
@@ -205,13 +120,14 @@
       </view>
     </view>
   </view>
-  <view class="detail__footer">
+  <view class="detail__footer" wx:if="{{detailObj.order_status !== 2}}">
     <view class="pd-tp-24 space-between detail__footer-wrapper">
       <view>
         <view class="font-size-24">未支付总金额：</view>
         <view class="detail__footer-money orangeTips font-600">￥ {{detailObj.unpaid_money || 0.00}}</view>
       </view>
-      <view class="detail__footer-btn whiteTips" data-startTime="{{detailObj.begin_date}}" data-endTime="{{detailObj.end_date}}" data-unpaidMoney="{{detailObj.unpaid_money}}" bindtap="goToPay">去支付</view>
+      <view class="detail__footer-btn whiteTips" data-startTime="{{detailObj.begin_date}}" data-endTime="{{detailObj.end_date}}" data-unpaidMoney="{{detailObj.unpaid_money}}" 
+      data-orderNo="{{detailObj.order_no}}" bindtap="goToPay">去支付</view>
     </view>
   </view>
 </view>

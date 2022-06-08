@@ -1,0 +1,65 @@
+/* pages/serviceFee/paymentError/index.wxss */
+
+.paymentError {
+  background: url('https://image.bayeasy.cn/images-datas/serviecFee/pay/payError.png') no-repeat;
+  background-size: 118%;
+  height: 100vh;
+}
+
+
+.paymentError__wrapper {
+  flex: 1;
+  height: 1rpx;
+  padding: 32rpx;
+}
+.paymentError__image{
+  margin-top: 68rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paymentError__wrapper-img {
+  width: 171rpx;
+  height: 171rpx;
+}
+
+.paymentError__text{ 
+  font-size: 36rpx;
+}
+.paymentError__text-tips{
+  padding-bottom: 32rpx;
+}
+
+.paymentError__box {
+  padding: 48rpx 32rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 32rpx;
+  margin-bottom: 360rpx;
+}
+
+.paymentError__btnGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+  border-radius: 44rpx;
+  color: #FFFFFF;
+  font-size: 34rpx;
+}
+
+.paymentError__btnGroup-back {
+  background-color: #1D83F0;
+}
+
+.paymentError__btnGroup-detail {
+  background: #FFA42E;
+}

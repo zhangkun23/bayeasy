@@ -1,0 +1,101 @@
+/* pages/serviceFee/components/alipayModal/alipayModal.wxss */
+
+.alipayModal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 29, 48, 0.3);
+}
+
+
+.alipayModal__modal {
+  position: relative;
+  top: 26.4%;
+  /* height: 374rpx; */
+  border-radius: 16px;
+  margin: 0 55rpx;
+  background: url('https://image.bayeasy.cn/images-datas/serviecFee/pay/modalBg.png') no-repeat;
+  background-size: 100%;
+  padding: 48rpx 36rpx;
+}
+
+.alipayModal__modal-title{
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+  display: flex;
+  color: #283E56;
+}
+
+.alipayModal__modal-tips {
+  font-size: 20rpx;
+  line-height: 28rpx;
+  color: #283E56;
+  margin-bottom: 24rpx;
+}
+
+.alipayModal__modal-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+  display: flex;
+}
+
+.alipayModal__url {
+  height: 99rpx;
+  line-height: 99rpx;
+  text-align: center;
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 10rpx 0rpx rgba(209, 213, 223, 0.3);
+  border-radius: 14rpx;
+  margin-bottom: 48rpx;
+  color: #1D83F0;
+  font-size: 32rpx;
+}
+
+.alipayModal__modal-copybtn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #FFA42E;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+  border-radius: 44rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.alipayModal__modal-back {
+  margin-bottom: 16rpx;
+  margin-top: 24rpx;
+}
+.alipayModal__modal-list{
+  width: 100%;
+  height: 105rpx;
+}
+
+.alipayModal__modal-text{
+  display: flex;
+  justify-content: space-between;
+  color: #48617C;
+  margin-bottom: 56rpx;
+  font-size: 20rpx;
+  text-align: center;
+}
+
+
+.modal__container-close {
+  display: flex;
+  justify-content: center;
+  padding-top: 24rpx;
+}
+
+.modal__container-closeBtn {
+  width: 60rpx;
+  height: 60rpx;
+}

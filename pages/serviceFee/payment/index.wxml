@@ -66,15 +66,15 @@
               </view>
               <view class="space-between mg-bt-24">
                 <view class="grayTips">开户银行</view>
-                <view class="blackTips">平安银行</view>
+                <view class="blackTips">{{backInfo.bank_type}}</view>
               </view>
               <view class="space-between mg-bt-24">
                 <view class="grayTips">银行户名</view>
-                <view class="blackTips">山东张先生有限责任公司</view>
+                <view class="blackTips">{{backInfo.bank_account_name}}</view>
               </view>
               <view class="space-between">
                 <view class="grayTips">银行账号</view>
-                <view class="blackTips">6217 5801 0000 7060 330 </view>
+                <view class="blackTips">{{backInfo.bank_account}}</view>
               </view>
             </view>
           </view>
@@ -91,5 +91,9 @@
     </view>
   </view>
 <!-- 支付框 -->
-  <modal title="支付" contents="¥23000.00" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}"></modal>
+<!--  contents="¥{{contents}}" -->
+  <modal title="支付" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}" orderno="{{orderno}}"></modal>
+  <alipayModal orderno="{{orderno}}" showModal="{{isShowPayModal}}" payUrl="{{payUrl}}"></alipayModal>
 </view>
+
+

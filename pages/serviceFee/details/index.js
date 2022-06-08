@@ -35,12 +35,21 @@ Page({
   },
   // 去支付
   goToPay(e) {
-    console.log(e)
     let unpaidmoney = e.currentTarget.dataset.unpaidmoney;
     let starttime = e.currentTarget.dataset.starttime;
     let endtime = e.currentTarget.dataset.endtime;
+    let orderno = e.currentTarget.dataset.orderno;
+    if (!unpaidmoney) {
+      unpaidmoney = ''
+    } else if (!starttime) {
+      starttime = ''
+    } else if (!endtime) {
+      endtime = ''
+    } else if (!orderno) {
+      orderno = ''
+    }
     wx.navigateTo({
-      url: '../payment/index?unpaidmoney=' + unpaidmoney + '&starttime=' + starttime + '&endtime=' + endtime,
+      url: '../payment/index?unpaidmoney=' + unpaidmoney + '&starttime=' + starttime + '&endtime=' + endtime + '&orderno=' + orderno,
     })
   },
   // 服务费详情
@@ -51,6 +60,10 @@ Page({
         this.setData({
           detailObj: res.data
         })
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
       }
     })
   },
@@ -60,7 +73,7 @@ Page({
    * 0 待支付   1 部分支付   2已支付
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     if (options.status == 0) {
       this.setData({
         background: tempPath + '/serviecFee/detail/tobepaid.png',

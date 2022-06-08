@@ -77,6 +77,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .align-center {
     display: flex;
     align-items: center;
@@ -93,8 +94,16 @@
     flex-direction: column;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .font-600 {
     font-weight: 600;
+}
+
+.font-size-20 {
+    font-size: 20rpx;
 }
 
 .font-size-24 {

@@ -28,44 +28,8 @@
           </view>
         </view>
       </view>
-      <!-- <view class="serviceFee__item">
-        <view>
-          <view class="font-600 display-flex serviceFee__item-header">
-            <view>
-              <image class="serviceFee__item-image" mode="widthFix" src="{{iconGreenList}}"></image>
-            </view>
-          </view>
-
-          <view class="serviceFee__item-box">
-            <view class="serviceFee__item-allmoney">实付总金额(元)</view>
-            <view class="font-600 serviceFee__item-money">￥3000.00</view>
-            <view class="space-between">
-              <view class="serviceFee__item-date">服务费所属期：2022-01-01至2022-03-31</view>
-              <view class="serviceFee__item-btn whiteTips font-size-24">查看详情</view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="serviceFee__item">
-        <view>
-          <view class="font-600 display-flex serviceFee__item-header">
-            <view>
-              <image class="serviceFee__item-image" mode="widthFix" src="{{iconBlueList}}"></image>
-            </view>
-          </view>
-
-          <view class="serviceFee__item-box">
-            <view class="serviceFee__item-allmoney">实付总金额(元)</view>
-            <view class="font-600 serviceFee__item-money">￥3000.00</view>
-            <view class="space-between">
-              <view class="serviceFee__item-date">服务费所属期：2022-01-01至2022-03-31</view>
-              <view class="serviceFee__item-btn whiteTips font-size-24">查看详情</view>
-            </view>
-          </view>
-        </view>
-      </view> -->
-
     </view>
+    
     <view class="taxConfirmation__nodata" wx:else>
       <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
       <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>

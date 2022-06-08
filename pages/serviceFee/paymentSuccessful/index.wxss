@@ -1,0 +1,63 @@
+/* pages/serviceFee/paymentSuccessful/index.wxss */
+
+
+.paymentSuccessful {
+  background: url('https://image.bayeasy.cn/images-datas/serviecFee/pay/paySucc.png') no-repeat;
+  background-size: 100%;
+  height: 100vh;
+}
+
+
+.paymentSuccessful__wrapper {
+  flex: 1;
+  height: 1rpx;
+  padding: 32rpx;
+}
+.paymentSuccessful__image{
+  margin-top: 68rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paymentSuccessful__wrapper-img {
+  width: 171rpx;
+  height: 171rpx;
+}
+
+.paymentSuccessful-text{ 
+  font-size: 36rpx;
+}
+
+.paymentSuccessful__box {
+  padding: 48rpx 32rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 32rpx;
+  margin-bottom: 360rpx;
+}
+
+.paymentSuccessful__btnGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+  border-radius: 44rpx;
+  color: #FFFFFF;
+  font-size: 34rpx;
+}
+
+.paymentSuccessful__btnGroup-back {
+  background-color: #1D83F0;
+}
+
+.paymentSuccessful__btnGroup-detail {
+  background: #FFA42E;
+}

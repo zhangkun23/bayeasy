@@ -58,7 +58,10 @@
     "pages/serviceFee/index/index",
     "pages/serviceFee/details/index",
     "pages/serviceFee/payment/index",
-    "pages/serviceFee/components/modal"
+    "pages/serviceFee/components/modal/modal",
+    "pages/serviceFee/components/alipayModal/alipayModal",
+    "pages/serviceFee/paymentSuccessful/index",
+    "pages/serviceFee/paymentError/index"
   ],
   "tabBar": {
     "custom": true,

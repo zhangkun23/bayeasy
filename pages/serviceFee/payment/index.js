@@ -1,7 +1,9 @@
 // pages/serviceFee/payment/index.js
 const tempPath = getApp().globalData.imgPath;
 const {
-  getPayType
+  getPayType,
+  getBankInfo,
+  alipayUrl
 } = require('../../../http/api/api');
 Page({
 
@@ -16,17 +18,20 @@ Page({
     loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
     info_max: tempPath + "public/info_max.png",
     isShowModal: false,
+    isShowPayModal: false,
     isWechat: false,
     isAlipay: false,
     isUnionPay: false,
     unpaidmoney: '',
+    backInfo: {},
+    contents: ""
   },
 
   paymentMethod(e) {
     let key = e.currentTarget.dataset.pay;
     this.setData({
       toPay: key
-    }) 
+    })
     if (key == 'wechat') {
       this.setData({
         isWechat: !this.data.isWechat,
@@ -50,49 +55,133 @@ Page({
   // 获取上次支付方式
   getPayMethod() {
     getPayType().then(res => {
-      console.log(res)
-      let type = res.data.type;
-      if (type == 1) {
+      if (res.ret) {
+        let type = res.data.type;
+        if (type == 1) {
+          this.setData({
+            isWechat: true
+          })
+        } else if (type == 2) {
+          this.setData({
+            isAlipay: true
+          })
+        } else {
+          this.setData({
+            isUnionPay: true
+          })
+        }
         this.setData({
-          isWechat: true
-        })
-      } else if (type == 2) {
-        this.setData({
-          isAlipay: true
+          payType: type
         })
       } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    })
+  },
+  // 获取银行信息
+  getBankInfo() {
+    getBankInfo().then(res => {
+      if (res.ret) {
         this.setData({
-          isUnionPay: true
+          backInfo: res.data
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
         })
       }
     })
   },
   // 一键复制
-  tocopy() {
-    console.log('复制地址去银行卡支付')
+  tocopy(e) {
+    let param = [{
+        name: '开户银行',
+        value: this.data.backInfo.bank_type,
+      },
+      {
+        name: '银行户名',
+        value: this.data.backInfo.bank_account_name,
+      },
+      {
+        name: '银行账号',
+        value: this.data.backInfo.bank_account,
+      }
+    ]
+    // 复制方法
+    wx.setClipboardData({
+      data: `${param.map(item =>`${item.name}: ${item.value}`).join("\n")}`,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功',
+              icon: 'none'
+            })
+          }
+        })
+
+      }
+    })
   },
 
   // 去支付
   toPay() {
-    if(this.data.toPay == 'wechat') {
-      console.log('调用微信接口')
+    if (this.data.toPay == undefined) {
+      if (this.data.payType == 1) {
+        this.setData({
+          isShowModal: true,
+        })
+      } else if (this.data.payType == 2) {
+        this.setData({
+          isShowPayModal: true
+        })
+      }
+    } else if (this.data.toPay == 'wechat') {
       this.setData({
-        isShowModal: true
+        isShowModal: true,
       })
     } else {
-      console.log('调用支付宝接口')
+      this.setData({
+        isShowPayModal: true
+      })
     }
+  },
+  // 获取支付宝短链接
+  getAlipayUrl() {
+    let param = {
+      order_no: this.data.orderno
+    }
+    alipayUrl(param).then(res => {
+      if (res.ret) {
+        let url = res.data.url;
+        this.setData({
+          payUrl: url
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
+          icon: "none"
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       unpaidmoney: options.unpaidmoney,
       starttime: options.starttime,
-      endtime: options.endtime
+      endtime: options.endtime,
+      orderno: options.orderno
     })
-    console.log(options)
+    this.getPayMethod();
+    this.getAlipayUrl();
+    this.getBankInfo();
+
   },
 
   /**
