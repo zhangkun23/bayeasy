@@ -18,7 +18,7 @@
             <view class="font-600 buleTips" wx:if="{{detailObj.order_status == 2}}">已支付</view>
             <view class="font-600 buleTips" wx:if="{{detailObj.order_status == 'null'}}">已支付</view>
           </view>
-          <view class="mg-bt-8 font-size-28">实付总金额</view>
+          <view class="mg-bt-8 font-size-28">应付总金额</view>
           <view class="font-600 font-size-56">￥ {{detailObj.pay_money}}</view>
         </view>
         <view class="space-between font-size-24 blackTips mg-bt-24">
@@ -78,7 +78,7 @@
             </view>
           </view>
           <view class="space-between">
-            <text class="grayTips">实付金额</text>
+            <text class="grayTips">应付金额</text>
             <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
           </view>
         </view>

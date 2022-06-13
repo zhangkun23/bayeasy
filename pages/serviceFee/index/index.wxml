@@ -19,7 +19,7 @@
           </view>
 
           <view class="serviceFee__item-box">
-            <view class="serviceFee__item-allmoney">实付总金额(元)</view>
+            <view class="serviceFee__item-allmoney">应付总金额(元)</view>
             <view class="font-600 serviceFee__item-money">￥{{item.money}}</view>
             <view class="space-between">
               <view class="serviceFee__item-date">服务费所属期：{{item.begin_date}}至{{item.end_date}}</view>
@@ -29,7 +29,7 @@
         </view>
       </view>
     </view>
-    
+
     <view class="taxConfirmation__nodata" wx:else>
       <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
       <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
