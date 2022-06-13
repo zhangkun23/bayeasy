@@ -5,7 +5,7 @@
     <view class="payment__wrapper">
       <view class="payment__content">
         <view class="font-600 whiteTips payment__content-money">￥ {{unpaidmoney}}</view>
-        <view class="space-between font-size-24 whiteTips payment__content-date">
+        <view class="space-between font-size-28 whiteTips payment__content-date">
           <view>服务费所属期</view>
           <view>{{starttime}}至{{endtime}}</view>
         </view>

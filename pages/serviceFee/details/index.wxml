@@ -1,114 +1,119 @@
 <!--pages/serviceFee/details/index.wxml-->
-<view class="serviceFeeDetail flex-column" style="background-image: url({{background}});">
-  <mp-navigation-bar title="服务费用" ext-class="navigationBar"></mp-navigation-bar>
+<!-- style="background-image: url({{background}});" -->
+<view class="serviceFeeDetail flex-column">
+  <mp-navigation-bar title="服务费用" ext-class="navigationBar" style="background-image: url({{headerbackground}});background-repeat: no-repeat;background-size: 100%;"></mp-navigation-bar>
   <view class="serviceFeeDetail__container">
     <view class="serviceFeeDetail__header">
 
-      <view class="space-between serviceFeeDetail__header-text whiteTips font-size-24">
-        <view>服务费所属期</view>
-        <view>{{detailObj.begin_date}}至{{detailObj.end_date}}</view>
-      </view>
 
-      <view class="serviceFeeDetail__detail" style="background-image: url({{paymentBackground}})">
-        <view>
-          <view class="serviceFeeDetail__detail-title display-flex">
-            <image class="serviceFeeDetail__detail-icon" src="{{paymentIcon}}" mode="widthFix"></image>
-            <view class="font-600 orangeTips" wx:if="{{detailObj.order_status == 0}}">待支付</view>
-            <view class="font-600 greennTips" wx:if="{{detailObj.order_status == 1}}">部分支付</view>
-            <view class="font-600 buleTips" wx:if="{{detailObj.order_status == 2}}">已支付</view>
-            <view class="font-600 buleTips" wx:if="{{detailObj.order_status == 'null'}}">已支付</view>
-          </view>
-          <view class="mg-bt-8 font-size-28">应付总金额</view>
-          <view class="font-600 font-size-56">￥ {{detailObj.pay_money}}</view>
+      <view style="background-image: url({{background}});" class="serviceFeeDetail__wrapper">
+        <view class="space-between serviceFeeDetail__header-text whiteTips font-size-28">
+          <view>服务费所属期</view>
+          <view>{{detailObj.begin_date}}至{{detailObj.end_date}}</view>
         </view>
-        <view class="space-between font-size-24 blackTips mg-bt-24">
-          <view class="display-flex">
-            <text class="grayTips">服务费总金额</text>
-            <text>￥ {{detailObj.total_money || '0.00'}}</text>
-          </view>
-          <view class="display-flex">
-            <view class="grayTips">减免总金额</view>
-            <view>￥ {{detailObj.reduction_money || '0.00'}}</view>
-          </view>
-        </view>
-        <view class="display-flex serviceFeeDetail__detail-bottom font-size-24">
+        <view class="serviceFeeDetail__detail" style="background-image: url({{paymentBackground}})">
           <view>
-            <view class="grayTips mg-bt-8">已支付总金额</view>
-            <view>￥{{detailObj.paid_money || '0.00'}}</view>
+            <view class="serviceFeeDetail__detail-title display-flex">
+              <image class="serviceFeeDetail__detail-icon" src="{{paymentIcon}}" mode="widthFix"></image>
+              <view class="font-600 orangeTips" wx:if="{{detailObj.order_status == 0}}">待支付</view>
+              <view class="font-600 greennTips" wx:if="{{detailObj.order_status == 1}}">部分支付</view>
+              <view class="font-600 buleTips" wx:if="{{detailObj.order_status == 2}}">已支付</view>
+              <view class="font-600 buleTips" wx:if="{{detailObj.order_status == 'null'}}">已支付</view>
+            </view>
+            <view class="mg-bt-8 font-size-28">应付总金额</view>
+            <view class="font-600 font-size-56">￥ {{detailObj.pay_money}}</view>
           </view>
-          <view>
-            <view class="grayTips mg-bt-8">未支付总金额</view>
-            <view class="orangeTips" wx:if="{{detailObj.order_status == 0}}">￥ {{detailObj.unpaid_money || 0.00}}</view>
-            <view class="greennTips" wx:if="{{detailObj.order_status == 1}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
-            <view class="buleTips" wx:if="{{detailObj.order_status == 2}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
-            <view class="buleTips" wx:if="{{detailObj.order_status == 'null'}}">￥ {{detailObj.unpaid_money}}</view>
-          </view>
-        </view>
-      </view>
-
-      <view wx:if="{{detailObj.service_detail.length > 0}}">
-        <view class="font-size-32 blackTips font-600">服务费用明细</view>
-        <view class="detail__background mg-bt-32 font-size-24" wx:for="{{detailObj.service_detail}}" wx:for-item="item" wx:key="item">
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">服务费账期</text>
-            <text class="blackTips">{{item.begin_date}}至{{item.end_date}}</text>
-          </view>
-          <view class="space-between mg-bt-24" wx:if="{{item.type == 2}}">
-            <text class="grayTips">发票总额</text>
-            <text class="blackTips">￥{{item.invoice_money || '0.00'}}</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">服务费金额</text>
-            <text class="blackTips">￥{{item.total_money || '0.00'}}</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">减免优惠</text>
-            <text class="blackTips" wx:if="{{item.type == 0 }}">无减免</text>
-            <text class="blackTips" wx:if="{{item.type == 1 }}">部分减免</text>
-            <text class="blackTips" wx:if="{{item.type == 2 }}">全部减免</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">减免金额</text>
-            <text class="blackTips">￥ {{item.reduction_money || '0.00'}}</text>
-          </view>
-          <view class="detail__topTips orangeTips orangeBack font-size-24 mg-bt-24" wx:if="{{item.reduction_reason}}">
-            <view class="detail__topTips-icon">
-              <image src="{{info_max}}"></image>
-              <text>{{item.reduction_reason}}</text>
+          <view class="space-between font-size-24 blackTips mg-bt-24">
+            <view class="display-flex">
+              <text class="grayTips mg-rg-8">服务费总金额</text>
+              <text>￥ {{detailObj.total_money || '0.00'}}</text>
+            </view>
+            <view class="display-flex">
+              <view class="grayTips">减免总金额</view>
+              <view>￥ {{detailObj.reduction_money || '0.00'}}</view>
             </view>
           </view>
-          <view class="space-between">
-            <text class="grayTips">应付金额</text>
-            <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
+          <view class="display-flex serviceFeeDetail__detail-bottom font-size-24">
+            <view>
+              <view class="grayTips mg-bt-8">已支付总金额</view>
+              <view class="text-center">￥{{detailObj.paid_money || '0.00'}}</view>
+            </view>
+            <view>
+              <view class="grayTips mg-bt-8">未支付总金额</view>
+              <view class="text-center orangeTips" wx:if="{{detailObj.order_status == 0}}">￥ {{detailObj.unpaid_money || 0.00}}</view>
+              <view class="text-center greennTips" wx:if="{{detailObj.order_status == 1}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
+              <view class="text-center buleTips" wx:if="{{detailObj.order_status == 2}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
+              <view class="text-center buleTips" wx:if="{{detailObj.order_status == 'null'}}">￥ {{detailObj.unpaid_money}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="serviceFeeDetail__padding">
+        <view wx:if="{{detailObj.service_detail.length > 0}}">
+          <view class="font-size-32 blackTips font-600">服务费用明细</view>
+          <view class="detail__background mg-bt-32 font-size-24" wx:for="{{detailObj.service_detail}}" wx:for-item="item" wx:key="item">
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">服务费账期</text>
+              <text class="blackTips">{{item.begin_date}}至{{item.end_date}}</text>
+            </view>
+            <view class="space-between mg-bt-24" wx:if="{{item.type == 2}}">
+              <text class="grayTips">发票总额</text>
+              <text class="blackTips">￥{{item.invoice_money || '0.00'}}</text>
+            </view>
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">服务费金额</text>
+              <text class="blackTips">￥{{item.total_money || '0.00'}}</text>
+            </view>
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">减免优惠</text>
+              <text class="blackTips" wx:if="{{item.type == 0 }}">无减免</text>
+              <text class="blackTips" wx:if="{{item.type == 1 }}">部分减免</text>
+              <text class="blackTips" wx:if="{{item.type == 2 }}">全部减免</text>
+            </view>
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">减免金额</text>
+              <text class="blackTips">￥ {{item.reduction_money || '0.00'}}</text>
+            </view>
+            <view class="detail__topTips orangeTips orangeBack font-size-24 mg-bt-24" wx:if="{{item.reduction_reason}}">
+              <view class="detail__topTips-icon">
+                <image src="{{info_max}}"></image>
+                <text>{{item.reduction_reason}}</text>
+              </view>
+            </view>
+            <view class="space-between">
+              <text class="grayTips">应付金额</text>
+              <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 已支付展示 -->
+        <!-- wx:if="{{detailObj.status == 2}}" -->
+        <view wx:if="{{detailObj.pay_list.length > 0}}">
+          <view class="font-size-32 blackTips font-600 mg-bt-24">支付结算信息</view>
+          <view class="detail__background mg-bt-32 font-size-24" wx:for="{{detailObj.pay_list}}" wx:for-item="item" wx:key="item">
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">支付方式</text>
+              <text class="blackTips" wx:if="{{item.pay_type == 1}}">微信</text>
+              <text class="blackTips" wx:if="{{item.pay_type == 2}}">支付宝</text>
+              <text class="blackTips" wx:if="{{item.pay_type == 3}}">银行卡</text>
+            </view>
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">支付时间</text>
+              <text class="blackTips">{{item.time}}</text>
+            </view>
+            <view class="space-between mg-bt-24">
+              <text class="grayTips">交易流水号</text>
+              <text class="blackTips">{{item.flow_no || '-' }}</text>
+            </view>
+            <view class="space-between">
+              <text class="grayTips">支付金额</text>
+              <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
+            </view>
           </view>
         </view>
       </view>
 
-      <!-- 已支付展示 -->
-      <!-- wx:if="{{detailObj.status == 2}}" -->
-      <view wx:if="{{detailObj.pay_list.length > 0}}">
-        <view class="font-size-32 blackTips font-600">支付结算信息</view>
-        <view class="detail__background mg-bt-32 font-size-24" wx:for="{{detailObj.pay_list}}" wx:for-item="item" wx:key="item">
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">支付方式</text>
-            <text class="blackTips" wx:if="{{item.pay_type == 1}}">微信</text>
-            <text class="blackTips" wx:if="{{item.pay_type == 2}}">支付宝</text>
-            <text class="blackTips" wx:if="{{item.pay_type == 3}}">银行卡</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">支付时间</text>
-            <text class="blackTips">{{item.time}}</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">交易流水号</text>
-            <text class="blackTips">{{item.flow_no || '-' }}</text>
-          </view>
-          <view class="space-between mg-bt-24">
-            <text class="grayTips">支付金额</text>
-            <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
-          </view>
-        </view>
-      </view>
       <view class="detail__report" bindtap="contactOperate">
         <view class="content font-size-24 whiteTips space-between">
           <view class="text">
@@ -120,14 +125,14 @@
       </view>
     </view>
   </view>
+
   <view class="detail__footer" wx:if="{{detailObj.order_status !== 2}}">
     <view class="pd-tp-24 space-between detail__footer-wrapper">
       <view>
         <view class="font-size-24">未支付总金额：</view>
         <view class="detail__footer-money orangeTips font-600">￥ {{detailObj.unpaid_money || 0.00}}</view>
       </view>
-      <view class="detail__footer-btn whiteTips" data-startTime="{{detailObj.begin_date}}" data-endTime="{{detailObj.end_date}}" data-unpaidMoney="{{detailObj.unpaid_money}}" 
-      data-orderNo="{{detailObj.order_no}}" bindtap="goToPay">去支付</view>
+      <view class="detail__footer-btn whiteTips" data-startTime="{{detailObj.begin_date}}" data-endTime="{{detailObj.end_date}}" data-unpaidMoney="{{detailObj.unpaid_money}}" data-orderNo="{{detailObj.order_no}}" bindtap="goToPay">去支付</view>
     </view>
   </view>
 </view>

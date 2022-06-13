@@ -31,6 +31,7 @@
     </view>
 
     <view class="taxConfirmation__nodata" wx:else>
+    <!-- <button open-type="contact" show-message-card="我要发消息了">按钮一个</button> -->
       <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
       <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>
     </view>
