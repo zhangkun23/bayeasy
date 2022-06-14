@@ -5,6 +5,10 @@
 
 .infoTop {
   position: relative;
+  background-image: url('https://image.bayeasy.cn/images-datas/index/banner.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 430rpx;
 }
 
 .InfoTop__top {
