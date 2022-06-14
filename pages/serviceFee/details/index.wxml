@@ -97,10 +97,11 @@
               <text class="blackTips" wx:if="{{item.pay_type == 1}}">微信</text>
               <text class="blackTips" wx:if="{{item.pay_type == 2}}">支付宝</text>
               <text class="blackTips" wx:if="{{item.pay_type == 3}}">银行卡</text>
+              <text class="blackTips" wx:if="{{item.pay_type == null}}">-</text>
             </view>
             <view class="space-between mg-bt-24">
               <text class="grayTips">支付时间</text>
-              <text class="blackTips">{{item.time}}</text>
+              <text class="blackTips">{{item.time || '-'}}</text>
             </view>
             <view class="space-between mg-bt-24">
               <text class="grayTips">交易流水号</text>
