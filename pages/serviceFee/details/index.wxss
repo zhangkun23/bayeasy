@@ -8,13 +8,21 @@
 
 .navigationBar {
   color: #fff;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .serviceFeeDetail__container {
   flex: 1;
   height: 1rpx;
-  padding: 36rpx 32rpx;
+  /* padding: 36rpx 32rpx; */
   overflow-y: auto;
+}
+
+.serviceFeeDetail__wrapper{
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 32rpx;
 }
 
 .serviceFeeDetail__header-text {
@@ -70,12 +78,16 @@
   height: 24rpx;
   margin-right: 7rpx;
 }
+.serviceFeeDetail__padding{
+  padding: 0 32rpx;
+}
 
 .detail__report {
   height: 140rpx;
   box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
   background: url('https://image.bayeasy.cn/images-datas/invoice/incomeInvoice/barBg.png') no-repeat;
   background-size: 100%;
+  margin: 0 32rpx;
 }
 
 .detail__report-earphone {

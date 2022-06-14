@@ -11,7 +11,7 @@ Page({
 
   toList() {
     wx.redirectTo({
-      url: '../payment/index',
+      url: '../index/index',
     })
   },
   /**

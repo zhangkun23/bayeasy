@@ -18,16 +18,21 @@ Page({
     loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
     info_max: tempPath + "public/info_max.png",
     isShowModal: false,
+    isShowModalToo: false,
     isShowPayModal: false,
+    isShowUnionPay: false,
     isWechat: false,
     isAlipay: false,
     isUnionPay: false,
     unpaidmoney: '',
     backInfo: {},
-    contents: ""
+    contents: "",
+    title: '支付'
   },
 
+  // 选择支付方式
   paymentMethod(e) {
+    console.log(e)
     let key = e.currentTarget.dataset.pay;
     this.setData({
       toPay: key
@@ -70,6 +75,7 @@ Page({
             isUnionPay: true
           })
         }
+        console.log(type)
         this.setData({
           payType: type
         })
@@ -84,9 +90,16 @@ Page({
   getBankInfo() {
     getBankInfo().then(res => {
       if (res.ret) {
-        this.setData({
-          backInfo: res.data
-        })
+        if (res.bank_type !== undefined && res.bank_account_name !== undefined && res.bank_account !== undefined) {
+          this.setData({
+            isShowUnionPay: true
+          })
+        } else {
+          this.setData({
+            isShowUnionPay: false,
+            backInfo: res.data
+          })
+        }
       } else {
         wx.showToast({
           title: res.message,
@@ -125,9 +138,14 @@ Page({
       }
     })
   },
+  // 接受子组件传来的值
+  sendParent(e) {
+    console.log(e)
+  },
 
   // 去支付
   toPay() {
+    console.log(this.data.toPay,this.data.payType)
     if (this.data.toPay == undefined) {
       if (this.data.payType == 1) {
         this.setData({
@@ -143,6 +161,7 @@ Page({
         isShowModal: true,
       })
     } else {
+      console.log(123)
       this.setData({
         isShowPayModal: true
       })

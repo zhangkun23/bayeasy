@@ -26,7 +26,11 @@ Page({
   },
   // 列表
   getPaymentList() {
-    getPayList().then(res => {
+    let params = {
+      page: 1,
+      page_size: 100
+    }
+    getPayList(params).then(res => {
       if (res.ret) {
         this.setData({
           payList: res.data.list

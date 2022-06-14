@@ -5,7 +5,7 @@
     <view class="payment__wrapper">
       <view class="payment__content">
         <view class="font-600 whiteTips payment__content-money">￥ {{unpaidmoney}}</view>
-        <view class="space-between font-size-24 whiteTips payment__content-date">
+        <view class="space-between font-size-28 whiteTips payment__content-date">
           <view>服务费所属期</view>
           <view>{{starttime}}至{{endtime}}</view>
         </view>
@@ -38,7 +38,7 @@
             </view>
 
           </view>
-          <view class="space-between">
+          <view class="space-between" wx:if="{{!isShowUnionPay}}">
             <view class="display-flex">
               <view>
                 <image class="payment__content-icon" src="{{unionPay}}" mode="widthFix"></image>
@@ -92,8 +92,11 @@
   </view>
 <!-- 支付框 -->
 <!--  contents="¥{{contents}}" -->
-  <modal title="支付" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}" orderno="{{orderno}}"></modal>
-  <alipayModal orderno="{{orderno}}" showModal="{{isShowPayModal}}" payUrl="{{payUrl}}"></alipayModal>
+  <modal title="{{title}}" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}" orderno="{{orderno}}" 
+  bind:sendParent="sendParent"></modal>
+  <!-- <alipayModal></alipayModal> -->
+  <alipayModal orderno="{{orderno}}" showModalToo="{{isShowPayModal}}" payUrl="{{payUrl}}"></alipayModal>
+  <!-- showModalToo="{{isShowPayModal}}" -->
 </view>
 
 

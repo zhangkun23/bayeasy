@@ -126,9 +126,9 @@ module.exports = {
 		return request('/wechat_pay/pre_pay', "POST", param);
 	},
 	/* 确认支付 */
-	wechatPayData: (param) => {
-		return request('/wechat/pay_data', "POST", param);
-	},
+	// wechatPayData: (param) => {
+	// 	return request('/wechat_pay/pay_data', "POST", param);
+	// },
 	// 获取银行信息
 	getBankInfo: () => {
 		return request(api + '/service_charge/bank_info', "GET", {});

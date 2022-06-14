@@ -13,6 +13,7 @@ Page({
     iconBlue: tempPath + '/serviecFee/icon_pay_blue.png',
     iconGreen: tempPath + '/serviecFee/icon_pay_green.png',
     iconOrange: tempPath + '/serviecFee/icon_pay_orange.png',
+    headerbackground: tempPath + '/serviecFee/detail/detail_orange-1.png',
     background: tempPath + '/serviecFee/detail/paid.png',
     paymentBackground: tempPath + '/serviecFee/detail/bluepaymentbg.png',
     paymentIcon: tempPath + '/serviecFee/icon_pay_blue.png',
@@ -76,19 +77,22 @@ Page({
     // console.log(options)
     if (options.status == 0) {
       this.setData({
-        background: tempPath + '/serviecFee/detail/tobepaid.png',
+        headerbackground: tempPath + '/serviecFee/detail/detail_orange-1.png',
+        background: tempPath + '/serviecFee/detail/detail_orange-2.png',
         paymentIcon: tempPath + '/serviecFee/icon_pay_orange.png',
         paymentBackground: tempPath + '/serviecFee/detail/orangepaymentbg.png',
       })
     } else if (options.status == 1) {
       this.setData({
-        background: tempPath + '/serviecFee/detail/partialPayment.png',
+        headerbackground: tempPath + '/serviecFee/detail/detail_green-1.png',
+        background: tempPath + '/serviecFee/detail/detail_green-2.png',
         paymentIcon: tempPath + '/serviecFee/icon_pay_green.png',
         paymentBackground: tempPath + '/serviecFee/detail/greenpaymentbg.png',
       })
     } else {
       this.setData({
-        background: tempPath + '/serviecFee/detail/paid.png',
+        headerbackground: tempPath + '/serviecFee/detail/detail_blue-1.png',
+        background: tempPath + '/serviecFee/detail/detail_blue-2.png',
         paymentIcon: tempPath + '/serviecFee/icon_pay_blue.png',
         paymentBackground: tempPath + '/serviecFee/detail/bluepaymentbg.png',
       })

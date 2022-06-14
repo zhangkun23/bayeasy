@@ -17,7 +17,7 @@ Component({
   },
 
   properties: {
-    showModal: {
+    showModalToo: {
       type: Boolean,
       value: false
     },
@@ -54,7 +54,7 @@ Component({
     closeModal() {
       console.debug("modal close btn tap");
       this.setData({
-        showModal: false
+        showModalToo: false
       })
       this.triggerEvent('closeBtn')
     },
