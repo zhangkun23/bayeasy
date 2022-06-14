@@ -19,7 +19,7 @@
   overflow-y: auto;
 }
 
-.serviceFeeDetail__wrapper{
+.serviceFeeDetail__wrapper {
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 32rpx;
@@ -29,14 +29,20 @@
   margin-bottom: 24rpx;
 }
 
-.serviceFeeDetail__detail {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+.serviceFeeDetail__pay {
+  padding: 32rpx 32rpx 0 32rpx;
 }
 
 .serviceFeeDetail__detail {
-  padding: 32rpx;
-  margin-bottom: 32rpx;
+  border-radius: 40rpx;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0rpx 20rpx 60rpx 0rpx rgba(209, 213, 223, 0.6);
+}
+
+.serviceFeeDetail__detail {
+  /* margin-bottom: 32rpx; */
 }
 
 .serviceFeeDetail__detail-title {
@@ -46,8 +52,10 @@
 
 .serviceFeeDetail__detail-bottom {
   justify-content: space-around;
-  border-top: 2px dashed #E6EEF7;
-  padding-top: 32rpx;
+  /* border-top: 2rpx dashed #E6EEF7; */
+  padding: 32rpx 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .serviceFeeDetail__detail-icon {
@@ -78,7 +86,8 @@
   height: 24rpx;
   margin-right: 7rpx;
 }
-.serviceFeeDetail__padding{
+
+.serviceFeeDetail__padding {
   padding: 0 32rpx;
 }
 
@@ -99,7 +108,8 @@
   align-items: center;
   padding: 37rpx;
 }
-.detail__footer{
+
+.detail__footer {
   background: #fff;
   box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
 }
@@ -113,9 +123,11 @@
   border-radius: 44rpx;
   text-align: center;
 }
-.detail__footer-wrapper{
+
+.detail__footer-wrapper {
   padding: 24rpx 32rpx;
 }
+
 .detail__footer-money {
   font-size: 42rpx;
 }
