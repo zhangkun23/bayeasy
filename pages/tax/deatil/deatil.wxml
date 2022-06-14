@@ -98,4 +98,5 @@
   <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
   </block>
+  <contactService></contactService>
 </view>

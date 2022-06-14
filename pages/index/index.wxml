@@ -41,7 +41,7 @@
         </view>
         <view class="bottom" bindtap="handelClickUrl" data-url='/pages/invoice/acquisitionCost/index'>
           <image class="cbfy" src="{{cbfy}}" />
-          <view class="title">成本费用</view>
+          <view class="title">进项成本发票</view>
         </view>
       </view>
     </view>

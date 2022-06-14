@@ -6,7 +6,7 @@
   <block wx:else>
     <view class="bgColog" />
   </block>
-  <mp-navigation-bar bindback="handleBackArrow" delta="0" title="成本发票明细"></mp-navigation-bar>
+  <mp-navigation-bar bindback="handleBackArrow" delta="0" title="进项成本发票"></mp-navigation-bar>
   <view class="search-container">
     <view class="search" bindtap="showSearch">
       <my-search-bar id="searchbar" autoFocus="{{searchFocus}}" isActive="{{isSearchActive}}" bind:inputkey="handleSearchKey" bind:gosearch="goSearch" lastSearchKey="{{lastSearchKey}}" searchKey="{{searchKey}}"></my-search-bar>

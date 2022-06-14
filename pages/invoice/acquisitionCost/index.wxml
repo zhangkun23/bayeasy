@@ -1,6 +1,6 @@
 <!--pages/invoice/acquisitionCost/index.wxml-->
 <view class="mycontainer" catchtouchmove="handleTouchMove">
-    <mp-navigation-bar title="成本发票明细" bindback="handleBackArrow" delta="0" />
+    <mp-navigation-bar title="进项成本发票" bindback="handleBackArrow" delta="0" />
     <view wx:if="{{showFilter}}" class="activeBg"></view>
     <view wx:else class="bgColog"></view>
     <scroll-view scroll-y="{{canFlip}}" class="wrapper" enable-flex="true" bindscrolltolower="goNextPage">

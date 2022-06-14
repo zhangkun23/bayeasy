@@ -1,0 +1,4 @@
+<!--components/contactService/contactService.wxml-->
+<view class="contactService">
+  <view class="contactService__content">底部按钮</view>
+</view>

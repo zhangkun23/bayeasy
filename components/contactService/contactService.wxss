@@ -1,0 +1,15 @@
+/* components/contactService/contactService.wxss */
+
+
+
+.contactService {
+  position: fixed;
+  bottom: 253rpx;
+  right: 50rpx;
+  width: 120rpx;
+  height: 120rpx;
+  background: #C2DFFF;
+  box-shadow: 0rpx 30rpx 30rpx 0rpx rgba(29, 131, 240, 0.25);
+  opacity: 0.6;
+  border-radius: 50%;
+}

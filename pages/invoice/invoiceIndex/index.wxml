@@ -50,7 +50,7 @@
                             <image class="gate-icon" src="{{img2_2}}" mode="aspectFill"></image>
                         </view>
                         <view class="name">
-                            成本发票明细
+                            进项成本发票
                         </view>
                     </view>
                 </view>
