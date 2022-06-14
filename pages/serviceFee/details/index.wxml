@@ -11,8 +11,9 @@
           <view>服务费所属期</view>
           <view>{{detailObj.begin_date}}至{{detailObj.end_date}}</view>
         </view>
-        <view class="serviceFeeDetail__detail" style="background-image: url({{paymentBackground}})">
-          <view>
+        <view class="serviceFeeDetail__detail">
+          <!-- style="background-image: url({{paymentBackground}})" -->
+          <view class="serviceFeeDetail__pay">
             <view class="serviceFeeDetail__detail-title display-flex">
               <image class="serviceFeeDetail__detail-icon" src="{{paymentIcon}}" mode="widthFix"></image>
               <view class="font-600 orangeTips" wx:if="{{detailObj.order_status == 0}}">待支付</view>
@@ -22,18 +23,20 @@
             </view>
             <view class="mg-bt-8 font-size-28">应付总金额</view>
             <view class="font-600 font-size-56">￥ {{detailObj.pay_money}}</view>
-          </view>
-          <view class="space-between font-size-24 blackTips mg-bt-24">
-            <view class="display-flex">
-              <text class="grayTips mg-rg-8">服务费总金额</text>
-              <text>￥ {{detailObj.total_money || '0.00'}}</text>
+            <view class="space-between font-size-24 blackTips mg-bt-24">
+              <view class="display-flex">
+                <text class="grayTips mg-rg-8">服务费总金额</text>
+                <text>￥ {{detailObj.total_money || '0.00'}}</text>
+              </view>
+              <view class="display-flex">
+                <view class="grayTips">减免总金额</view>
+                <view>￥ {{detailObj.reduction_money || '0.00'}}</view>
+              </view>
             </view>
-            <view class="display-flex">
-              <view class="grayTips">减免总金额</view>
-              <view>￥ {{detailObj.reduction_money || '0.00'}}</view>
-            </view>
+            <view style="border: 2rpx dashed #E6EEF7;"></view>
           </view>
-          <view class="display-flex serviceFeeDetail__detail-bottom font-size-24">
+
+          <view class="display-flex serviceFeeDetail__detail-bottom font-size-24" style="background-image: url({{paymentBackground}})">
             <view>
               <view class="grayTips mg-bt-8">已支付总金额</view>
               <view class="text-center">￥{{detailObj.paid_money || '0.00'}}</view>
