@@ -76,11 +76,12 @@ Component({
           showModal: false
         })
       } else {
-        let open_id = "olXtf42GIc3kPJZMwZ5yRKSt5a98";   // 我的
+        // let open_id = "olXtf42GIc3kPJZMwZ5yRKSt5a98";   // 我的
         // let open_id = "olXtf460cBzc5mW5rfjmxfRYvN68"; 
-        // let open_id = getApp().globalData.open_id;
+        let open_id = getApp().globalData.open_id;
+        // let app_id = getApp().globalData.app_id;
         let app_id = "wx8c15bc82c287b2b7";
-        // if (!open_id) return;
+        if (!open_id) return;
         // 提交预订单
         let params = {
           open_id, // 用户id,后端返回
@@ -123,13 +124,13 @@ Component({
                   btnText: '完成',
                   showModal: false
                 })
-                // let data = {
-                //   title: this.data.title,
-                //   btnText: this.data.btnText,
-                // }
-                // this.triggerEvent("sendParent",data)
+                let data = {
+                  title: this.data.title,
+                  btnText: this.data.btnText,
+                }
+                this.triggerEvent("sendParent", data)
 
-                // this.triggerEvent('closeBtn')
+                this.triggerEvent('closeBtn')
                 // if (res.ret) {
                 wx.navigateTo({
                   url: '/pages/serviceFee/paymentSuccessful/index',
@@ -138,9 +139,9 @@ Component({
               },
               "fail": function (res) {
                 console.log(res)
-                // wx.navigateTo({
-                //   url: '/pages/serviceFee/paymentError/index',
-                // })
+                wx.navigateTo({
+                  url: '/pages/serviceFee/paymentError/index',
+                })
               },
               "complete": function (res) {
                 console.log(res)

@@ -33,7 +33,9 @@ App({
     operate: false, //是否有运营人员
     todolistNum: 0, //待办数量
     page_size: 15,
-    open_id: 'olXtf460cBzc5mW5rfjmxfRYvN68', // 用户id  登录后返回在微信支付时使用
+    open_id: "",   
+    app_id: "wx8c15bc82c287b2b7",  // 本人的appid 
+    // open_id: 'olXtf460cBzc5mW5rfjmxfRYvN68', // 我的用户id  登录后返回在微信支付时使用
     // open_id: 'olXtf49M8xkKY5Qu1ClC9RBBH-cg', // 用户id  登录后返回在微信支付时使用
   },
   /**
