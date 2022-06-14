@@ -196,7 +196,9 @@ Page({
               delete _new_todo_lists[4]["ids"];
             }
           }
+          console.log(_todo_keys)
           // 支付费用
+          // detailUrl: "/pages/serviceFee/details/index",
           if(_todo_keys.includes("service_charge")) {
             if(_data.service_charge.length > 0) {
               _new_todo_lists[5].isShow = true;

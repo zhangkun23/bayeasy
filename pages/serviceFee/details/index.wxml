@@ -1,7 +1,7 @@
 <!--pages/serviceFee/details/index.wxml-->
 <!-- style="background-image: url({{background}});" -->
 <view class="serviceFeeDetail flex-column">
-  <mp-navigation-bar title="服务费用" ext-class="navigationBar" style="background-image: url({{headerbackground}});background-repeat: no-repeat;background-size: 100%;"></mp-navigation-bar>
+  <mp-navigation-bar title="服务费用" ext-class="navigationBar" style="background-image: url({{headerbackground}});background-repeat: no-repeat;background-size: 100% 100%;"></mp-navigation-bar>
   <view class="serviceFeeDetail__container">
     <view class="serviceFeeDetail__header">
 
@@ -50,7 +50,7 @@
       </view>
       <view class="serviceFeeDetail__padding">
         <view wx:if="{{detailObj.service_detail.length > 0}}">
-          <view class="font-size-32 blackTips font-600">服务费用明细</view>
+          <view class="font-size-32 blackTips font-600 mg-bt-24">服务费用明细</view>
           <view class="detail__background mg-bt-32 font-size-24" wx:for="{{detailObj.service_detail}}" wx:for-item="item" wx:key="item">
             <view class="space-between mg-bt-24">
               <text class="grayTips">服务费账期</text>
