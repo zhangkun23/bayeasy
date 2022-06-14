@@ -145,7 +145,6 @@ Page({
 
   // 去支付
   toPay() {
-    console.log(this.data.toPay,this.data.payType)
     if (this.data.toPay == undefined) {
       if (this.data.payType == 1) {
         this.setData({
@@ -161,7 +160,6 @@ Page({
         isShowModal: true,
       })
     } else {
-      console.log(123)
       this.setData({
         isShowPayModal: true
       })
