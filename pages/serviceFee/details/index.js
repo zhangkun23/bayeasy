@@ -58,6 +58,7 @@ Page({
     let id = this.data.id;
     serviceFeeDeatail(id).then(res => {
       if (res.ret) {
+        this.showBackground(res.data.order_status)
         this.setData({
           detailObj: res.data
         })
@@ -68,28 +69,23 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   * 0 待支付   1 部分支付   2已支付
-   */
-  onLoad: function (options) {
-    // console.log(options)
-    if (options.status == 0) {
+  // 判断背景颜色
+  showBackground(status) {
+    if (status == 0) {
       this.setData({
         headerbackground: tempPath + '/serviecFee/detail/detail_orange-1.png',
         background: tempPath + '/serviecFee/detail/detail_orange-2.png',
         paymentIcon: tempPath + '/serviecFee/icon_pay_orange.png',
         paymentBackground: tempPath + '/serviecFee/detail/orangepaymentbg.png',
       })
-    } else if (options.status == 1) {
+    } else if (status == 1) {
       this.setData({
         headerbackground: tempPath + '/serviecFee/detail/detail_green-1.png',
         background: tempPath + '/serviecFee/detail/detail_green-2.png',
         paymentIcon: tempPath + '/serviecFee/icon_pay_green.png',
         paymentBackground: tempPath + '/serviecFee/detail/greenpaymentbg.png',
       })
-    } else {
+    } else if (status == 2) {
       this.setData({
         headerbackground: tempPath + '/serviecFee/detail/detail_blue-1.png',
         background: tempPath + '/serviecFee/detail/detail_blue-2.png',
@@ -97,12 +93,25 @@ Page({
         paymentBackground: tempPath + '/serviecFee/detail/bluepaymentbg.png',
       })
     }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   * 0 待支付   1 部分支付   2已支付
+   */
+  onLoad: function (options) {
+    console.log(options,'详情页')
     this.setData({
       id: options.id,
       status: options.status,
-      hasOperate: app.globalData.operate,
+      hasOperate: app.globalData.operate,   // 是否有运营专员
     })
     this.getServiceFeeDeatail();
+
+    if (options.status) {
+      this.showBackground(options.status);
+    }
+
   },
 
   /**
