@@ -1,4 +1,11 @@
 <!--components/contactService/contactService.wxml-->
 <view class="contactService">
-  <view class="contactService__content">底部按钮</view>
+  <view class="contactService__content" wx:if="{{!showService}}">
+    <image class="contactService__icon" src="{{imgSrc}}"></image>
+  </view>
+
+  <view class="contactService__boder" wx:else>
+    <image class="contactService__icon2" src="{{imgSrc}}"></image>
+  </view>
+
 </view>

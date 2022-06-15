@@ -34,6 +34,8 @@ Page({
     title: "",
     returnType: '',
     taxPayable: '',
+    // showBigIcon: false,  
+    showService: false,  
     buttons: [{
         text: '取消'
       },
@@ -42,6 +44,16 @@ Page({
       }
     ],
   },
+  // 页面滚动开始
+  touchstartFn(e) {
+    console.log('开始滚动', e)
+
+  },
+  //  页面滚动结束
+  touchendFn(e) {
+    console.log('滚动结束', e)
+  },
+
   hideTips() {
     this.setData({
       showTips: false
