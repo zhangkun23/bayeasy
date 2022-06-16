@@ -20,6 +20,7 @@
 .contactService__icon {
   width: 70rpx;
   height: 70rpx;
+  transition: all 0.5s ease-out;
 }
 
 .contactService__boder {
@@ -41,4 +42,5 @@
 .contactService__icon2 {
   width: 48rpx;
   height: 48rpx;
+  transition: all 0.5s ease-out;
 }

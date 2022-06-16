@@ -1,0 +1,4 @@
+<view class="layout" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <slot></slot>
+  <contactService touchStat="{{touchStat}}" />
+</view>

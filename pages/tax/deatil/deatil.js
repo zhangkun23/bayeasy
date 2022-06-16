@@ -351,7 +351,7 @@ Page({
 
   },
   onPageScroll(ev) {
-    console.log(ev)
+    console.log("detail", ev.scrollTop)
     this.setData({
       scrollTop: ev.scrollTop
     })

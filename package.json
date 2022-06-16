@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "wxci": "cross-env  node ./wxCI.js"
+  },
   "dependencies": {
     "@vant/weapp": "^1.10.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "miniprogram-ci": "^1.8.25"
   }
 }
