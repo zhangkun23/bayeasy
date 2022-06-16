@@ -1,6 +1,6 @@
 <!--components/contactService/contactService.wxml-->
 <view class="contactService">
-  <view class="contactService__content" wx:if="{{!serviceStatus}}" bindtap="contactService">
+  <view class="contactService__content" wx:if="{{!suspend}}" bindtap="contactService">
     <image class="contactService__icon" src="{{imgSrc}}"></image>
   </view>
 

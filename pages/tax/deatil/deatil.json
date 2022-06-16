@@ -2,7 +2,8 @@
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
-    "contactService": "../../../components/contactService/contactService"
+    "contactService": "../../../components/contactService/contactService",
+    "contactServiceLayout": "../../layout/contactServiceLayout/index"
   },
   "navigationStyle":"custom",
   "backgroundTextStyle": "light",

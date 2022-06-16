@@ -4,12 +4,9 @@ App({
    
   },
   //监听屏幕滚动 判断上下滚动
-  onPageScroll(ev) {
-    console.log(ev,123143)
-    // this.setData({
-    //   scrollTop: ev.scrollTop
-    // })
-  },
+  // onPageScroll(ev) {
+  //   console.log(ev,123143888888)
+  // },
 
   watch(method) {
     console.log(21234)
@@ -29,7 +26,7 @@ App({
 
 
   onLaunch() {
-    this.onPageScroll()
+    // this.onPageScroll()
     const barTitileStatus = wx.getMenuButtonBoundingClientRect()
     this.globalData.barTitileStatus = barTitileStatus
     // wx.setStorageSync('open_id','olXtf49M8xkKY5Qu1ClC9RBBH-cg')

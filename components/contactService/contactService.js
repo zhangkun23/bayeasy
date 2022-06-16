@@ -1,23 +1,38 @@
 // components/contactService/contactService.js
 const tempPath = getApp().globalData.imgPath;
 const { operateList } = require("../../http/api/api_grzx")
-const serviceStatus = getApp().globalData.serviceStatus // 页面滚动开始
+// const serviceStatus = getApp().globalData.serviceStatus // 页面滚动开始
+let touchStatTimeout = null
+
 Component({ 
   /**
    * 组件的属性列表
    */
   properties: {
-    serviceStatus: {
-      type: Boolean,
-      value: getApp().globalData.serviceStatus,
+    touchStat: {
+      touchStat: Boolean,
+      value: getApp().globalData.touchStat,
     },
-    // 固定传入type判断是由
-    type: {
-      type: String,
-      value: '',
+  },
+  data: {
+    suspend: false,
+  },
+  observers: {
+    touchStat(val) {
+      clearTimeout(touchStatTimeout)
+      if(val) {
+        this.setData({
+          suspend: true,
+        })
+      } else {
+        touchStatTimeout = setTimeout(() => {
+          this.setData({
+            suspend: false,
+          })
+        }, 2000)
+      }
     }
   },
-
 
   methods: {
     // 联系运营人员
