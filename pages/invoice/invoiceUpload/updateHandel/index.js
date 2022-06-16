@@ -14,8 +14,9 @@ Page({
      */
     data: {
         close: tempPath + "invoice/invoiceUpdate/close.png",
-        invoiceImage: "",
         addImg: tempPath + "invoice/invoiceUpdate/add.png",
+        info_max: tempPath + "public/info_max.png",
+        invoiceImage: "",
         addImgStatus: true,
         form: {
             invoice_type: '',

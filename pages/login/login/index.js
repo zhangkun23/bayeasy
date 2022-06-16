@@ -118,11 +118,11 @@ Page({
       }
     })
     // 是否有运营人员
-    myOperate().then(res => {
-      if (res.ret) {
-        getApp().globalData.operate = true;
-      }
-    })
+    // myOperate().then(res => {
+    //   if (res.ret) {
+    //     getApp().globalData.operate = true;
+    //   }
+    // })
   },
 
   // 昵称性别

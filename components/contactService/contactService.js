@@ -1,39 +1,27 @@
 // components/contactService/contactService.js
 const tempPath = getApp().globalData.imgPath;
-
-Component({
+const { operateList } = require("../../http/api/api_grzx")
+const serviceStatus = getApp().globalData.serviceStatus // 页面滚动开始
+Component({ 
   /**
    * 组件的属性列表
    */
   properties: {
-    showService: {
+    serviceStatus: {
       type: Boolean,
-      value: false
+      value: getApp().globalData.serviceStatus,
     },
-    showBigIcon: {
-      type: Boolean,
-      value: false
-    },
+    // 固定传入type判断是由
+    type: {
+      type: String,
+      value: '',
+    }
   },
 
+
   methods: {
-    getParams() {
-      wx.getSystemInfo({
-        success: function (res) {
-          console.log(res);
-          // 屏幕宽度、高度
-          console.log('height=' + res.windowHeight);
-          console.log('width=' + res.windowWidth);
-          // 高度,宽度 单位为px
-          that.setData({
-            windowHeight: res.windowHeight,
-            windowWidth: res.windowWidth,
-            buttonTop: res.windowHeight * 0.70, //这里定义按钮的初始位置
-            buttonLeft: res.windowWidth * 0.70, //这里定义按钮的初始位置
-          })
-        }
-      })
-    },
+    // 联系运营人员
+    contactService() {},
   },
 
   /**
@@ -41,6 +29,7 @@ Component({
    */
   data: {
     imgSrc: tempPath + 'public/icon__figure.png',
+    serviceList: []
   },
 
 
@@ -49,6 +38,32 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    contactService() {
+      console.log(888999)
+      this.getOperateList();
+    },
+    aaa() {
+      console.log('页面改变')
+    },
+    // 获取运营人员列表
+    getOperateList() {
+      operateList().then(res => {
+        console.log(res)
+        if(res.ret) {
+          let data = res.data;
+          data.map(item => {
+           if(item.label_name == '财务运营') {
+            data[0].type = 'financialOperations'
+           } else if(item.label_name == '开票专员') {
+             item.type = 'billingSpecialist'
+           } else if(item.label_name == '商务运营') {
+             item.type = 'businessOperation'
+           }
 
+          })
+          console.log(data)
+        }
+      })
+    },
   }
 })

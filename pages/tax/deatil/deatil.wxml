@@ -1,7 +1,7 @@
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
   <scroll-view scroll-y="true" class="wrapper">
-    <view class="detail__container" hover-class="" bindtouchstart="touchstartFn" bindtouchend="touchendFn">
+    <view class="detail__container">
       <view wx:if="{{returnType == 'list'}}" class="detail__topTips orangeTips orangeBack font-size-24">
         <view class="detail__topTips-icon">
           <image class="infoIcon" src="{{info_max}}"></image>
@@ -98,6 +98,6 @@
   <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
   </block>
-  <contactService showService="{{showService}}" ></contactService>
+  <contactService serviceStatus="{{serviceStatus}}" ></contactService>
   <!-- showBigIcon="{{!showBigIcon}}" -->
 </view>

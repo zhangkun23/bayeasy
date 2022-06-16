@@ -22,6 +22,10 @@ module.exports = {
 	/* 获取二维码 */
 	get_operate: () => {
 		return request(api + '/personal_nformation/operate_wx_qrcode', 'GET', {});
+  },
+  /* 获取运营人员列表 */
+	operateList: () => {
+		return request(api + '/personal_nformation/operate_list', 'GET', {});
 	},
 
 	/* 获取用户姓名 */

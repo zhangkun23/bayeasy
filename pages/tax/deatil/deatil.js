@@ -11,7 +11,7 @@ const {
   dateToStr
 } = require('../../../utils/util')
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -35,7 +35,7 @@ Page({
     returnType: '',
     taxPayable: '',
     // showBigIcon: false,  
-    showService: false,  
+    serviceStatus: false,
     buttons: [{
         text: '取消'
       },
@@ -44,15 +44,18 @@ Page({
       }
     ],
   },
-  // 页面滚动开始
-  touchstartFn(e) {
-    console.log('开始滚动', e)
 
+   // 页面滚动开始
+   touchstartFn(e) {
+    this.sendCurrentStatus();
+    console.log('开始滚动', e)
   },
+
   //  页面滚动结束
   touchendFn(e) {
     console.log('滚动结束', e)
   },
+
 
   hideTips() {
     this.setData({
@@ -61,7 +64,6 @@ Page({
   },
   // 返回
   backIndex() {
-    console.log(123)
     wx.setStorageSync('overdueStatus', '')
 
   },
@@ -93,7 +95,7 @@ Page({
         isShowModal: false
       })
     } else {
-      console.log(this.data.taxPayable)
+      // console.log(this.data.taxPayable)
       if (this.data.time == 1) {
         // confirmdeclare({
         //   id: this.data.detailId
@@ -259,7 +261,7 @@ Page({
 
   // 确认是否已逾期 0 逾期 1未逾期   overdueStatus逾期状态
   renderPage(value) {
-    console.log(value)
+    // console.log(value)
     this.setData({
       returnType: value
     })
@@ -347,5 +349,12 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  onPageScroll(ev) {
+    console.log(ev)
+    this.setData({
+      scrollTop: ev.scrollTop
+    })
+  },
+  
 })
