@@ -1,5 +1,6 @@
 project.config.json
 .DS_Store
 project.private.config.json
+node_modules
 .idea
-node_modules/
+preview_qrcode.png
