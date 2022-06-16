@@ -1,8 +1,10 @@
 // components/contactService/contactService.js
 const tempPath = getApp().globalData.imgPath;
-const { operateList } = require("../../http/api/api_grzx")
+const {
+  operateList
+} = require("../../http/api/api_grzx")
 const serviceStatus = getApp().globalData.serviceStatus // 页面滚动开始
-Component({ 
+Component({
   /**
    * 组件的属性列表
    */
@@ -11,17 +13,15 @@ Component({
       type: Boolean,
       value: getApp().globalData.serviceStatus,
     },
-    // 固定传入type判断是由
+    // 固定传入type判断是
     type: {
       type: String,
       value: '',
     }
   },
 
-
-  methods: {
-    // 联系运营人员
-    contactService() {},
+  attached() {
+    this.getOperateList();
   },
 
   /**
@@ -32,36 +32,46 @@ Component({
     serviceList: []
   },
 
-
-
   /**
    * 组件的方法列表
    */
   methods: {
+
+    // l联系客服
     contactService() {
-      console.log(888999)
-      this.getOperateList();
-    },
-    aaa() {
+      let item = this.data.serviceList.filter(item => {
+        return item.type == this.data.type
+      })
+      console.log(item)
+      if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist') {
+        wx.navigateTo({
+          url: '/pages/contactOperate/index',
+        })
+      } else {
+
+      }
       console.log('页面改变')
     },
+
     // 获取运营人员列表
     getOperateList() {
       operateList().then(res => {
         console.log(res)
-        if(res.ret) {
+        if (res.ret) {
           let data = res.data;
           data.map(item => {
-           if(item.label_name == '财务运营') {
-            data[0].type = 'financialOperations'
-           } else if(item.label_name == '开票专员') {
-             item.type = 'billingSpecialist'
-           } else if(item.label_name == '商务运营') {
-             item.type = 'businessOperation'
-           }
-
+            if (item.label_name == '财务运营') {
+              data[0].type = 'financialOperations'
+            } else if (item.label_name == '开票专员') {
+              item.type = 'billingSpecialist'
+            } else if (item.label_name == '商务运营') {
+              item.type = 'businessOperation'
+            }
           })
           console.log(data)
+          this.setData({
+            serviceList: data
+          })
         }
       })
     },

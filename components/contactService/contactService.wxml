@@ -1,5 +1,5 @@
 <!--components/contactService/contactService.wxml-->
-<view class="contactService">
+<view class="contactService" type="{{type}}">
   <view class="contactService__content" wx:if="{{!serviceStatus}}" bindtap="contactService">
     <image class="contactService__icon" src="{{imgSrc}}"></image>
   </view>
@@ -8,4 +8,7 @@
     <image class="contactService__icon2" src="{{imgSrc}}"></image>
   </view>
 
+  <picker>
+  
+  </picker>
 </view>
