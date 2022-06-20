@@ -1,4 +1,3 @@
-
 <view>
     <view class="ss">
         <image class="ss_image" src="{{updateHandel_right}}" />
@@ -8,5 +7,13 @@
             <text class="addressLink" bindtap="handelClickLink">邮寄地址</text>
         </view>
         <view class="ss_button" bindtap="handelClick">查看发票信息</view>
+    </view>
+    <view class="grayTips font-size-20  flex-rowcenter ss_service">
+        <view class="flex-rowcenter">
+            <view>如对提交完成的增值税发票有疑问，请联系您</view>
+            <view class="orangeTips">财税管家</view>
+            <view>咨询！</view>
+        </view>
+        <service type="financialOperations"></service>
     </view>
 </view>

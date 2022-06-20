@@ -1,4 +1,5 @@
 <!--pages/invoice/acquisitionCost/invoiceDetails/index.wxml-->
+<contactServiceLayout type="financialOperations">
 <view class="mycontainer bgColog" catchtouchmove="handleTouchMove">
     <!-- <mp-navigation-bar title="成本发票明细" delta="0" bindback="handleBackArrow"></mp-navigation-bar> -->
     <mp-navigation-bar title="成本发票详情"></mp-navigation-bar>
@@ -90,3 +91,4 @@
         </view>
     </scroll-view>
 </view>
+</contactServiceLayout>

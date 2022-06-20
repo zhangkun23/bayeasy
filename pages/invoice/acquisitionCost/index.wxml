@@ -69,6 +69,7 @@
                     <!-- <my-service></my-service> -->
                 </view>
             </view>
+            <service type="financialOperations"></service>
         </view>
     </scroll-view>
 </view>

@@ -1,4 +1,6 @@
 <!--components/contactService/contactService.wxml-->
+
+<!-- 联系客服icon -->
 <view class="contactService" type="{{type}}">
   <view class="contactService__content" wx:if="{{!suspend}}" bindtap="contactService">
     <image class="contactService__icon" src="{{imgSrc}}"></image>
@@ -8,7 +10,6 @@
     <image class="contactService__icon2" src="{{imgSrc}}"></image>
   </view>
 
-  <picker>
-  
-  </picker>
+  <serviceModal showModal="{{showModal}}"></serviceModal>
+
 </view>

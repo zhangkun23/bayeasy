@@ -1,5 +1,4 @@
-<!--pages/tax/payRecordDetails/payRecordDetails.wxml-->
-<!--pages/tax/payRecordDetail/payRecordDetail.wxml-->
+<contactServiceLayout type="financialOperations">
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="申报缴纳明细" bindback="backIndex"></mp-navigation-bar>
   <scroll-view scroll-y="true" class="wrapper">
@@ -113,3 +112,4 @@
     </view>
   </scroll-view>
 </view>
+</contactServiceLayout>

@@ -2,6 +2,7 @@
     "navigationStyle": "custom",
     "usingComponents": {
         "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-        "my-service": "/components/service/service"
+        "my-service": "/components/service/service",
+        "contactServiceLayout": "../../../layout/contactServiceLayout/index"
     }
 }

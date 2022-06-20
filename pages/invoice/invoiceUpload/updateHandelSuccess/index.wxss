@@ -39,3 +39,9 @@
     color: #FFA42E;
     text-decoration:underline;
 }
+
+.ss_service {
+    position: fixed;
+    bottom: 100rpx;
+    right: 13%;
+}

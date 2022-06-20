@@ -1,4 +1,5 @@
 <!--pages/invoice/incomeInvoice/details/index.wxml-->
+<contactServiceLayout type="billingSpecialist">
 <view class="mycontainer bgColog" catchtouchmove="handleTouchMove">
   <mp-navigation-bar title="账单发票详情"></mp-navigation-bar>
   <!-- <view class="bgColog"></view> -->
@@ -13,7 +14,7 @@
       <image src="{{emptyPic}}" class="emptyBg" mode="widthFix"></image>
       <text user-select="true" class="subscribe">暂无数据</text>
     </view>
-    <view wx:else class="inv-container flex_center_column">
+    <view wx:else class="inv-container flex_center_column mg-bt-24">
       <view id="card" class="card">
         <view class="content">
           <view class="topbar">
@@ -56,7 +57,7 @@
 
         </view>
       </view>
-      <view class="report" bindtap="contactOperate">
+      <!-- <view class="report" bindtap="contactOperate">
         <image class="bg" src="{{barBgImg}}" mode="widthFix"></image>
         <view class="content">
           <view class="text">
@@ -65,7 +66,8 @@
           </view>
           <image class="btn" src="/image/icon/contactIcon.png" mode="widthFix"></image>
         </view>
-      </view>
+      </view> -->
     </view>
   </scroll-view>
 </view>
+</contactServiceLayout>

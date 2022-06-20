@@ -12,10 +12,10 @@
     <view class="promptSuccessPage__bottom">
       <view class="promptSuccessPage__bottom-text font-size-24">
         <view>如您未收到邮件或发送的电子发票文件有疑问</view>
-        <view>可联系您的<text class="orangeTips font-size-24">贝易资专属财税管家</text></view>
+        <view>请联系<text class="orangeTips font-size-24">财税管家</text>咨询！</view>
       </view>
       <view class="promptSuccessPage__service">
-        <service></service>
+        <service title="联系贝易资" type="billingSpecialist"></service>
       </view>
     </view>
   </view>

@@ -79,7 +79,6 @@ Page({
 
     // 去下载
     gotoDownload() {
-        // console.log(this.data.currentID, '下载页id')
         if (!this.data.inputValue) {
             wx.showToast({
                 title: '请输入您的邮箱地址',
@@ -97,7 +96,6 @@ Page({
                         this.setData({
                             inputValue: ''
                         })
-                        // console.log(this.data.type)
                         wx.navigateTo({
                             url: '../promptSuccessPage/index?type=' + this.data.type + '&currentID=' + this.data.currentID,
                         })

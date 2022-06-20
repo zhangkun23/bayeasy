@@ -1,5 +1,5 @@
 <!--pages/tax/report/profit/index.wxml-->
-
+<contactServiceLayout type="financialOperations">
 <view class="profit bgColog" catchtouchmove="handleTouchMove">
     <mp-navigation-bar ext-class="navigationBar" title="{{title}}"></mp-navigation-bar>
     <view class="profit__btngroup whiteTips font-size-24">
@@ -82,3 +82,4 @@
         </mp-dialog>
     </block>
 </view>
+</contactServiceLayout>

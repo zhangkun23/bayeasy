@@ -1,0 +1,54 @@
+/* components/serviceModal/serviceModal.wxss */
+
+.serviceModal{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(151, 151, 151, 0.3);
+}
+
+.serviceModal__wrapper{ 
+  position: absolute;
+  bottom: 60rpx;
+  width: 100%;
+
+}
+
+.serviceModal__content {
+  background-color: #fff;
+  border-radius: 29rpx;
+  margin: 0 19rpx 30rpx 19rpx;
+}
+
+.serviceModal__contact{ 
+  text-align: center;
+  padding: 30rpx 0;
+  color: #1D83F0;
+  font-size: 36rpx;
+  border-bottom: 1px solid #E6EEF7;
+}
+
+.serviceModal__cancel {
+  background-color: #fff;
+  color: #1D83F0;
+  text-align: center;
+  padding: 30rpx 0;
+  border-radius: 29rpx;
+  margin: 0 19rpx;
+  font-size: 36rpx;
+}
+
+button{ 
+  background-color: #fff;
+  padding: 8rpx 0;
+  color: #1D83F0;
+  margin: 0;
+  border-radius: 29rpx;
+}
+
+button::after {
+  border: none;
+}

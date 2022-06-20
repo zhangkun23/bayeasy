@@ -22,7 +22,7 @@
 
 .promptSuccessPage__bottom {
   position: fixed;
-  bottom: 50rpx;
+  bottom: 100rpx;
   left: 65rpx;
   right: 65rpx;
 }
@@ -35,6 +35,6 @@
 }
 
 .promptSuccessPage__service {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }

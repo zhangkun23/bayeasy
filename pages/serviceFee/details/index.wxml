@@ -1,5 +1,6 @@
 <!--pages/serviceFee/details/index.wxml-->
-<!-- style="background-image: url({{background}});" -->
+<contactServiceLayout type="financialOperations">
+
 <view class="serviceFeeDetail flex-column">
   <mp-navigation-bar title="服务费用" ext-class="navigationBar" style="background-image: url({{headerbackground}});background-repeat: no-repeat;background-size: 100% 100%;"></mp-navigation-bar>
   <view class="serviceFeeDetail__container">
@@ -118,7 +119,7 @@
         </view>
       </view>
 
-      <view class="detail__report" bindtap="contactOperate">
+      <!-- <view class="detail__report" bindtap="contactOperate">
         <view class="content font-size-24 whiteTips space-between">
           <view class="text">
             <view>如对服务费信息有异议</view>
@@ -126,7 +127,7 @@
           </view>
           <image class="detail__report-earphone" src="/image/icon/contactIcon.png" mode="widthFix"></image>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 
@@ -140,3 +141,4 @@
     </view>
   </view>
 </view>
+</contactServiceLayout> 

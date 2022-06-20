@@ -51,21 +51,21 @@ Page({
     },
     // 手动上传提交
     subbmint() {
-        this.setData({
-            submit: false
-        })
-        let param = this.data.form;
-        updateHandlInvoice(param).then(res => {
-            if (res.ret) {
+        // this.setData({
+        //     submit: false
+        // })
+        // let param = this.data.form;
+        // updateHandlInvoice(param).then(res => {
+        //     if (res.ret) {
                 wx.navigateTo({
                     url: '/pages/invoice/invoiceUpload/updateHandelSuccess/index',
                 })
-            } else {
-                wx.navigateTo({
-                    url: '/pages/invoice/invoiceUpload/updateHandelError/index?errInfo=' + res.message
-                })
-            }
-        })
+        //     } else {
+        //         wx.navigateTo({
+        //             url: '/pages/invoice/invoiceUpload/updateHandelError/index?errInfo=' + res.message
+        //         })
+        //     }
+        // })
     },
     // 确认删除/取消
     tapDialogButton(e) {

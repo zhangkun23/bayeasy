@@ -25,5 +25,13 @@
       <view class="bluebtn" bindtap="gotoReult">查看确认结果</view>
       <view class="bluebtn backIndex" bindtap="backTaxIndex">返回主页</view>
     </view>
+    <view class="grayTips font-size-20  flex-rowcenter ss_service">
+      <view class="flex-rowcenter">
+        <view>如对提交完成的增值税发票有疑问，请联系您</view>
+        <view class="orangeTips">财税管家</view>
+        <view>咨询！</view>
+      </view>
+      <service type="financialOperations"></service>
+    </view>
   </view>
 </view>

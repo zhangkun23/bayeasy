@@ -1,8 +1,8 @@
-
-.wapper{
+.wapper {
     margin: 32rpx 35rpx;
 }
-.address{
+
+.address {
     background: #EAF5FF;
     border-radius: 12rpx;
     font-size: 24rpx;
@@ -10,25 +10,30 @@
     color: #1D83F0;
     padding: 24rpx;
 }
-.addresLink{
+
+.addresLink {
     color: #FFA42E;
     text-decoration-line: underline;
 }
-.imgBox{
+
+.imgBox {
     margin-top: 38rpx;
 }
-.imgBox>view{
+
+.imgBox>view {
     height: 320rpx;
     position: relative;
     margin-bottom: 38rpx;
 }
-.updateImg{
+
+.updateImg {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: -1;
 }
-.top{
+
+.top {
     font-size: 36rpx;
     font-weight: 600;
     color: #FFFFFF;
@@ -36,7 +41,8 @@
     top: 104rpx;
     left: 48rpx;
 }
-.bottom{
+
+.bottom {
     font-size: 24rpx;
     font-weight: 400;
     color: #FFFFFF;
@@ -44,4 +50,10 @@
     top: 162rpx;
     left: 48rpx;
     opacity: .4;
+}
+
+.ss_service {
+    position: fixed;
+    bottom: 100rpx;
+    right: 13%;
 }

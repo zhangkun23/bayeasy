@@ -29,7 +29,7 @@
   align-items: center;
   position: fixed;
   right: 0;
-  bottom: 235rpx;
+  bottom: 253rpx;
   width: 75rpx;
   height: 80rpx;
   background: #C2DFFF;
@@ -42,5 +42,6 @@
 .contactService__icon2 {
   width: 48rpx;
   height: 48rpx;
+  margin-left: 15rpx;
   transition: all 0.5s ease-out;
 }

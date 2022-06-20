@@ -1,0 +1,17 @@
+<!--components/serviceModal/serviceModal.wxml-->
+
+
+<!-- 全局弹框联系客服,公用组件，两种情况会调取 -->
+<view class="serviceModal" wx:if="{{showModal}}">
+  <view class="serviceModal__wrapper">
+    <view class="serviceModal__content">
+      <view class="serviceModal__contact" bindtap="callNumber">400-090-6628</view>
+      <view>
+        <button bindtap="onlineService">在线客服</button>
+      </view>
+    </view>
+
+    <view class="text-center serviceModal__cancel" bindtap="hideModal">取消</view>
+  </view>
+
+</view>

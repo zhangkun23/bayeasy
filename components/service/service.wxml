@@ -1,7 +1,9 @@
-
-<!-- 联系客服 -->
-<view class="openServe" bindtap="handeClickOpenServe">
-    <image class="serveImg" src="{{logo}}"/> 
-    <text class="serveText"> {{title}}</text>
-    <!-- <text class="serveText"> 联系{{contact}}</text> -->
+<!-- 页面底部联系贝易资客服 -->
+<view class="service">
+    <view class="openServe" bindtap="handeClickOpenServe">
+        <image class="serveImg" src="{{logo}}" />
+        <text class="serveText"> {{title}}</text>
+        <!-- <text class="serveText"> 联系{{contact}}</text> -->
+    </view>
+    <serviceModal showModal="{{showModal}}"></serviceModal>
 </view>

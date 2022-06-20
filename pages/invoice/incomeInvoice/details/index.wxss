@@ -16,7 +16,7 @@
 }
 
 .inv-container {
-    padding: 32rpx;
+    margin: 32rpx;
 }
 
 .flex_center_column {

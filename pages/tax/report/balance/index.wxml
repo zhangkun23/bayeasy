@@ -1,4 +1,6 @@
 <!--pages/tax/report/balance/index.wxml-->
+<contactServiceLayout type="financialOperations">
+
 <view class="balance bgColog" catchtouchmove="handleTouchMove">
     <mp-navigation-bar ext-class="navigationBar" title="资产负债表"></mp-navigation-bar>
         <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="changeDate">
@@ -61,3 +63,4 @@
         </mp-dialog>
     </block>
 </view>
+</contactServiceLayout>

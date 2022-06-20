@@ -23,7 +23,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options,'电子发票页')
         const vid = options.currentID;
         this.setData({
             _vid: options.currentID
@@ -49,13 +48,11 @@ Page({
     },
     // 去输入邮箱
     gotodownload() {
-        console.log(this.data._vid)
         let arr = [];
         let data = this.data.invoices;
         data.map(item => {
             arr.push(item.id)
         })
-        console.log(this.data._vid)
         wx.navigateTo({
             url: '../../downloadPage/index/index?ids=' + arr + '&type=detail&currentID=' + this.data._vid,
         })

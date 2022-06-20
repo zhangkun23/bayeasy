@@ -1,28 +1,32 @@
 /* pages/invoice/invoiceUpload/updateHandelSu/index.wxss */
 
-.ss{
+.ss {
     margin: 0 65rpx;
     text-align: center;
     margin-top: 264rpx;
 }
-.ss_image{
+
+.ss_image {
     width: 83rpx;
     height: 83rpx;
 }
-.ss_text{
+
+.ss_text {
     font-size: 36rpx;
     font-weight: 600;
     color: #0B1D30;
     margin-bottom: 20rpx;
 }
-.ss_message{
+
+.ss_message {
     font-size: 24rpx;
     font-weight: 400;
     color: #283E56;
     text-align: left;
     margin-bottom: 64rpx;
 }
-.ss_button{
+
+.ss_button {
     width: 500rpx;
     height: 88rpx;
     line-height: 88rpx;
@@ -33,4 +37,10 @@
     box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
     border-radius: 44rpx;
     color: #FFFFFF;
+}
+
+.ss_service {
+    position: fixed;
+    bottom: 100rpx;
+    right: 13%;
 }

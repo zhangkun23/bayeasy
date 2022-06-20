@@ -54,6 +54,7 @@
       </view>
     </scroll-view>
   </block>
+  <service type="financialOperations"></service>
   <!-- <view hidden="true" class="history-container">
     <view>搜索历史：</view>
     <block wx:if="{{history === []}}">

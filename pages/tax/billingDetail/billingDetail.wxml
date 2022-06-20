@@ -1,4 +1,5 @@
 <!--pages/tax/billingDetail/billingDetail.wxml-->
+<contactServiceLayout type="financialOperations">
 
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
@@ -131,3 +132,4 @@
     </view>
   </scroll-view>
 </view>
+</contactServiceLayout>

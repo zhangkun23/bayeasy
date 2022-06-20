@@ -1,4 +1,4 @@
-<contactServiceLayout>
+<contactServiceLayout type="financialOperations">
 <view class="detail bgColog">
   <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
   <scroll-view scroll-y="true" class="wrapper">
@@ -99,7 +99,8 @@
   <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确认本征期税金无误吗？"></mp-dialog>
   </block>
-  <!-- <contactService serviceStatus="{{serviceStatus}}" type="financialOperations"></contactService> -->
-  <!-- showBigIcon="{{!showBigIcon}}" -->
+
+
 </view>
+
 </contactServiceLayout>

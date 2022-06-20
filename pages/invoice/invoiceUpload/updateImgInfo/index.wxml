@@ -19,7 +19,7 @@
     </view>
     <view class="invoice__status">
       <view class="invoice__status__active">
-        <image class="status__active" src="{{status==0?update_status_0:status==1?update_status_1:update_status_2}}" />
+        <image class="status__active" src="{{status == 0 ? update_status_0 : status == 1?update_status_1:update_status_2}}" />
         <view>
           <text>上传发票</text>
           <text class="{{status==0?'textColor':''}}">查验发票</text>
@@ -34,7 +34,7 @@
     <block wx:for="{{updateImgOrPdfArr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
       <view class="item" data-index="{{index}}" data-pdfPath="{{item.link}}" data-type="{{item.type}}" bindtap="handelClickDetail">
         <view class="item__top">
-          <image class="item__top__invoice" src="{{item.type=='img'?item.link:item.linkPdf}}" />
+          <image class="item__top__invoice" src="{{item.type == 'img' ? item.link : item.linkPdf}}" />
         </view>
         <view class="item__bottom" wx:if="{{item.linkInfo}}">
           <view class="item__bottom__title">{{item.requestStatus?item.linkInfo.seller_name:'----'}}</view>
@@ -88,12 +88,12 @@
   </view>
 
   <view class="btn" wx:if="{{status!=2}}">
-    <view class="btn__text" wx:if="{{status==0}}">一次性最多仅支持上传9张发票图片</view>
-    <view wx:if="{{active && errInfoNum==0}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
+    <view class="btn__text" wx:if="{{status == 0}}">一次性最多仅支持上传9张发票图片</view>
+    <view wx:if="{{active && errInfoNum == 0}}" class="btn__button btn__active" bindtap="addPdfOrImg">下一步</view>
     <view wx:else class="btn__button btn__active_un">下一步</view>
   </view>
 
-  <view class="statusSusses" wx:if="{{status==2}}">
+  <view class="statusSusses" wx:if="{{status == 2}}">
     <image src="{{updateHandel_rigth}}" />
     <view class="statusSusses__tj">提交完成</view>
     <view class="statusSusses__info">请您在每月23日前将纸质票据邮寄至贝易资，进行人工审核，如未及时邮寄将无法在本月计入成本！<text bindtap="jumpAddress">邮寄地址</text></view>
@@ -106,4 +106,4 @@
 </view>
 <!-- 提交错误提示 -->
 <updateImageInfo_errInfo errInfoShow="{{errInfoShow}}" errInfo="{{errInfo}}" bind:errInfoCloseOrShow="errInfoCloseOrShow" />
-<service class="servicePosition" wx:if="{{status==2}}" contact="财税管家"></service>
+<service class="servicePosition" wx:if="{{status == 2}}" contact="财税管家"></service>

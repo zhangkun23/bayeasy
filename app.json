@@ -61,7 +61,8 @@
     "pages/serviceFee/components/modal/modal",
     "pages/serviceFee/components/alipayModal/alipayModal",
     "pages/serviceFee/paymentSuccessful/index",
-    "pages/serviceFee/paymentError/index"
+    "pages/serviceFee/paymentError/index",
+    "pages/layout/contactServiceLayout/index"
   ],
   "tabBar": {
     "custom": true,

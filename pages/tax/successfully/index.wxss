@@ -49,5 +49,12 @@
 .backIndex {
   margin-top: 32rpx;
   background: #FFA42E;
-  box-shadow: 0px 30px 50px 0px rgba(255, 164, 46, 0.2);
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+}
+
+
+.ss_service {
+  position: fixed;
+  bottom: 100rpx;
+  right: 13%;
 }

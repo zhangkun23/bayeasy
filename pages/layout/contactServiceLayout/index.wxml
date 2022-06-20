@@ -1,4 +1,4 @@
-<view class="layout" bindtouchstart="touchStart" bindtouchend="touchEnd">
+<view class="layout" bindtouchstart="touchStart" bindtouchend="touchEnd" type="{{type}}">
   <slot></slot>
-  <contactService touchStat="{{touchStat}}" />
+  <contactService touchStat="{{touchStat}}" type="{{type}}"/>
 </view>

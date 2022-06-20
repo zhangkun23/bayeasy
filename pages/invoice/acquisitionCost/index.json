@@ -4,6 +4,6 @@
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
     "my-search-bar": "./components/searchbar/search",
     "filter-board": "./components/filter/filter",
-    "my-service": "/components/service/service"
+    "service": "/components/service/service"
   }
 }

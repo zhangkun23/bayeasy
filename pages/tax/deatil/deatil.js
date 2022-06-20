@@ -44,17 +44,16 @@ Page({
       }
     ],
   },
+  //  // 页面滚动开始
+  //  touchstartFn(e) {
+  //   this.sendCurrentStatus();
+  //   console.log('开始滚动', e)
+  // },
 
-   // 页面滚动开始
-   touchstartFn(e) {
-    this.sendCurrentStatus();
-    console.log('开始滚动', e)
-  },
-
-  //  页面滚动结束
-  touchendFn(e) {
-    console.log('滚动结束', e)
-  },
+  // //  页面滚动结束
+  // touchendFn(e) {
+  //   console.log('滚动结束', e)
+  // },
 
 
   hideTips() {
@@ -156,12 +155,10 @@ Page({
   getdeclareInfo() {
     let id = wx.getStorageSync('rowid')
     declareInfo(this.data.detailId).then(res => {
-      // console.log(res, '详情')
       if (res.ret) {
         let arr = []
         if (res.data) {
           wx.setStorageSync('overdueStatus', res.data.overdue_status)
-
           if (res.data.overdue_status == 1) {
             this.setData({
               title: '本期申报税款确认'
@@ -176,7 +173,6 @@ Page({
           if (res.data.list) {
             arr = res.data.list
           }
-          // console.log(res.data)
           this.setData({
             deatilObj: res.data,
             taxList: arr,
@@ -290,7 +286,7 @@ Page({
    * 如果传参带id则为单挑详情页
    */
   onLoad: function (options) {
-    console.log(options);
+    // console.log(options);
     if (options.id) {
       this.setData({
         detailId: options.id
