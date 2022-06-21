@@ -25,7 +25,7 @@ Page({
   contactOperate: function () {
     if (this.data.hasOperate) {
       wx.navigateTo({
-        url: '../../../contactOperate/index',
+        url: '../../contactOperate/index',
       })
     } else {
       const phonenum = app.globalData.phoneNumber

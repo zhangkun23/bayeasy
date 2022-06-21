@@ -11,11 +11,11 @@
     <view class="paymentError__box font-size-24 grayTips">
       <view class="space-between mg-bt-24">
         <view>服务费所属期</view>
-        <view>2022-01-01至2022-03-31</view>
+        <view>{{starttime}}至{{endtime}}</view>
       </view>
       <view class="space-between mg-bt-24">
         <view>支付金额</view>
-        <view>￥100000.00</view>
+        <view>￥{{money}}</view>
       </view>
       <view class="space-between">
         <view>支付方式</view>

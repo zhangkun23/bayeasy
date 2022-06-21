@@ -1,6 +1,6 @@
 // pages/serviceFee/paymentSuccessful/index.js
 const tempPath = getApp().globalData.imgPath;
-
+const util = require('../../../utils/util');
 Page({
 
   /**
@@ -28,11 +28,35 @@ Page({
       url: '../details/index',
     })
   },
+
+  fn(val) {
+    return val < 10 ? '0' + val : val;
+  },
+  getTime() {
+    let str = ''
+    let date = new Date()
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let sencode = date.getSeconds();
+    str = year + '-' + this.fn(month) + '-' + this.fn(day) + ' ' + this.fn(hour) + ':' + this.fn(minute) + ':' + this.fn(sencode)
+    this.setData({
+      noTime: str
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getTime()
+    this.setData({
+      orderno: options.orderno,
+      starttime: options.starttime,
+      endtime: options.endtime,
+      money: options.money,
+    })
   },
 
   /**

@@ -75,7 +75,6 @@ Page({
             isUnionPay: true
           })
         }
-        console.log(type)
         this.setData({
           payType: type
         })

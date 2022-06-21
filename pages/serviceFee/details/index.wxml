@@ -1,7 +1,7 @@
 <!--pages/serviceFee/details/index.wxml-->
 <!-- style="background-image: url({{background}});" -->
 <view class="serviceFeeDetail flex-column">
-  <mp-navigation-bar title="服务费用" ext-class="navigationBar" style="background-image: url({{headerbackground}});background-repeat: no-repeat;background-size: 100% 100%;"></mp-navigation-bar>
+  <mp-navigation-bar title="服务费详情" ext-class="navigationBar" style="background-image: url({{headerbackground}});background-repeat: no-repeat;background-size: 100% 100%;"></mp-navigation-bar>
   <view class="serviceFeeDetail__container">
     <view class="serviceFeeDetail__header">
 
