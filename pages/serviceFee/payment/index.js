@@ -27,7 +27,8 @@ Page({
     unpaidmoney: '',
     backInfo: {},
     contents: "",
-    title: '支付'
+    title: '支付',
+    btnText: '确认支付'
   },
 
   // 选择支付方式
@@ -139,7 +140,11 @@ Page({
   },
   // 接受子组件传来的值
   sendParent(e) {
-    console.log(e)
+    console.log(e,32424)
+    this.setData({
+      title: '支付完成',
+      btnText: '完成',
+    })
   },
 
   // 去支付

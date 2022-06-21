@@ -75,16 +75,16 @@ Component({
   methods: {
     // 确认支付
     topay() {
-      console.log(32423523502349)
+      console.log(324242,this.data.title)
       if (this.data.title == '支付完成') {
         this.setData({
           showModal: false
         })
-        console.log(123123123)
+        console.log(999888)
       } else {
-        let open_id = getApp().globalData.openid;
+        let open_id = "olXtf460cBzc5mW5rfjmxfRYvN68";
+        // let open_id = getApp().globalData.openid;
         let app_id = getApp().globalData.app_id;
-        console.log(456456,open_id,app_id)
         if (!open_id) return;
         // 提交预订单
         let params = {
@@ -93,7 +93,7 @@ Component({
           amount: this.data.money, // 金额
           app_id
         }
-        console.log(999888,params)
+        console.log(params,1231312312)
         // 提交预支付订单
         wechatPay(params).then(res => {
           console.log(res)
@@ -113,10 +113,10 @@ Component({
               "signType": paymentarams.signType,
               "paySign": paymentarams.paySign,
               "success": function (res) {
+                console.log('支付成功',123214321432412312423543,res)
                 this.setData({
                   title: '支付完成',
                   btnText: '完成',
-                  showModal: false
                 })
                 let data = {
                   title: this.data.title,
@@ -130,6 +130,7 @@ Component({
                 })
               },
               "fail": function (res) {
+                console.log(res)
                 wx.navigateTo({
                   url: '/pages/serviceFee/paymentError/index?starttime=' + this.data.starttime + '&endtime=' + this.data.endtime + '&money=' + this.data.money,
                 })
