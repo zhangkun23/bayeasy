@@ -14,9 +14,9 @@ Page({
     iconGreen: tempPath + '/serviecFee/icon_pay_green.png',
     iconOrange: tempPath + '/serviecFee/icon_pay_orange.png',
     headerbackground: tempPath + '/serviecFee/detail/detail_orange-1.png',
-    background: tempPath + '/serviecFee/detail/paid.png',
-    paymentBackground: tempPath + '/serviecFee/detail/blue_sm_bg.png',
-    paymentIcon: tempPath + '/serviecFee/icon_pay_blue.png',
+    background: tempPath + '/serviecFee/detail/detail_orange-2.png',
+    paymentBackground: tempPath + '/serviecFee/detail/orange_sm_bg.png',
+    paymentIcon: tempPath + '/serviecFee/icon_pay_orange.png',
     info_max: tempPath + "public/info_max.png",
     hasOperate: false,
     detailObj: {}
@@ -25,7 +25,7 @@ Page({
   contactOperate: function () {
     if (this.data.hasOperate) {
       wx.navigateTo({
-        url: '../../../contactOperate/index',
+        url: '../../contactOperate/index',
       })
     } else {
       const phonenum = app.globalData.phoneNumber

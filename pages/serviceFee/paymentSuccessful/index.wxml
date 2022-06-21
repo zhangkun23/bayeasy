@@ -9,11 +9,11 @@
     <view class="paymentSuccessful__box font-size-24 grayTips">
       <view class="space-between mg-bt-24">
         <view>服务费所属期</view>
-        <view>2022-01-01至2022-03-31</view>
+        <view>{{starttime}}至{{endtime}}</view>
       </view>
       <view class="space-between mg-bt-24">
         <view>支付金额</view>
-        <view>￥100000.00</view>
+        <view>￥{{money}}</view>
       </view>
       <view class="space-between mg-bt-24">
         <view>支付方式</view>
@@ -21,11 +21,11 @@
       </view>
       <view class="space-between mg-bt-24">
         <view>支付订单号</view>
-        <view>1234 1422 1241 1241 123</view>
+        <view>{{orderno}}</view>
       </view>
       <view class="space-between">
         <view>支付时间</view>
-        <view>2022-03-22 21:00:23</view>
+        <view>{{noTime}}</view>
       </view>
     </view>
 

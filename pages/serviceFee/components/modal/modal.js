@@ -51,13 +51,17 @@ Component({
     contents: {
       type: String,
       value: ""
+    },
+    starttime: {
+      type: String,
+      value: "",
+    },
+    endtime: {
+      type: String,
+      value: "",
     }
   },
-  pageLifetimes: {
-    attached() {
-      console.debug("modal attached")
-    }
-  },
+
   /**
    * 组件的初始数据
    */
@@ -76,33 +80,19 @@ Component({
           showModal: false
         })
       } else {
-        // let open_id = "olXtf42GIc3kPJZMwZ5yRKSt5a98";   // 我的
-        // let open_id = "olXtf460cBzc5mW5rfjmxfRYvN68"; 
         let open_id = getApp().globalData.open_id;
-        // let app_id = getApp().globalData.app_id;
-        let app_id = "wx8c15bc82c287b2b7";
+        let app_id = getApp().globalData.app_id;
         if (!open_id) return;
-        // 提交预订单
+        提交预订单
         let params = {
           open_id, // 用户id,后端返回
-          order_no: this.data.orderno, //"F226641562563136523",// 订单号
+          order_no: this.data.orderno, // 订单号
           amount: this.data.money, // 金额
           app_id
         }
-        // 提交支付
-        // let payParam = {
-        //   open_id, 
-        //   order_no: this.data.orderno, // "F226641562563136523", // this.data.orderno, // 订单号
-        //   app_id
-        // }
-        // 提交预支付订单
+        提交预支付订单
         wechatPay(params).then(res => {
-          console.log(res)
           if (res.ret) {
-            // 提交支付
-            // wechatPayData(payParam).then(res => {
-            //   if (res.ret) {
-            // console.log(res.ret)
             let paymentarams = {
               timeStamp: res.data.timeStamp,
               nonceStr: res.data.nonceStr,
@@ -110,7 +100,7 @@ Component({
               signType: res.data.signType,
               paySign: res.data.paySign,
             }
-            // 调起微信支付控件
+            调起微信支付控件
             wx.requestPayment({
               "timeStamp": paymentarams.timeStamp + '',
               "nonceStr": paymentarams.nonceStr,
@@ -118,7 +108,6 @@ Component({
               "signType": paymentarams.signType,
               "paySign": paymentarams.paySign,
               "success": function (res) {
-                console.log(res)
                 this.setData({
                   title: '支付完成',
                   btnText: '完成',
@@ -131,16 +120,13 @@ Component({
                 this.triggerEvent("sendParent", data)
 
                 this.triggerEvent('closeBtn')
-                // if (res.ret) {
                 wx.navigateTo({
-                  url: '/pages/serviceFee/paymentSuccessful/index',
+                  url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + this.data.starttime + '&endtime=' + this.data.endtime + '&money=' + this.data.money + '&orderno=' + this.data.orderno,
                 })
-                // }
               },
               "fail": function (res) {
-                console.log(res)
                 wx.navigateTo({
-                  url: '/pages/serviceFee/paymentError/index',
+                  url: '/pages/serviceFee/paymentError/index?starttime=' + this.data.starttime + '&endtime=' + this.data.endtime + '&money=' + this.data.money,
                 })
               },
               "complete": function (res) {
@@ -154,21 +140,6 @@ Component({
             })
           }
         })
-
-        // } else {
-        // console.log(this.data)
-        // this.setData({
-        //   title: '支付完成',
-        //   btnText: '完成',
-        // })
-        // let data = {
-        //   title: this.data.title,
-        //   btnText: this.data.btnText,
-        // }
-        // this.triggerEvent("sendParent",data)
-        // this.triggerEvent('closeBtn')
-        //   }
-        // })
       }
     },
 
