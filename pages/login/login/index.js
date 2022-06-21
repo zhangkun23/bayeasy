@@ -61,10 +61,8 @@ Page({
   // 平台登录
   wxlogin(param) {
     wxlogin(param).then(res => {
-      console.log(res)
       if (res.ret) {
-        // getApp().globalData.open_id = res.data.open_id;
-        getApp().globalData.open_id = "olXtf49M8xkKY5Qu1ClC9RBBH-cg";
+        getApp().globalData.open_id = res.data.open_id;
         wx.setStorageSync('token', res.data.access_token)
         wx.setStorageSync('mobile', res.data.mobile)
         wx.setStorageSync('idCard', res.data.identity_card)
