@@ -75,23 +75,28 @@ Component({
   methods: {
     // 确认支付
     topay() {
+      console.log(32423523502349)
       if (this.data.title == '支付完成') {
         this.setData({
           showModal: false
         })
+        console.log(123123123)
       } else {
-        let open_id = getApp().globalData.open_id;
+        let open_id = getApp().globalData.openid;
         let app_id = getApp().globalData.app_id;
+        console.log(456456,open_id,app_id)
         if (!open_id) return;
-        提交预订单
+        // 提交预订单
         let params = {
           open_id, // 用户id,后端返回
           order_no: this.data.orderno, // 订单号
           amount: this.data.money, // 金额
           app_id
         }
-        提交预支付订单
+        console.log(999888,params)
+        // 提交预支付订单
         wechatPay(params).then(res => {
+          console.log(res)
           if (res.ret) {
             let paymentarams = {
               timeStamp: res.data.timeStamp,
@@ -100,7 +105,7 @@ Component({
               signType: res.data.signType,
               paySign: res.data.paySign,
             }
-            调起微信支付控件
+            // 调起微信支付控件
             wx.requestPayment({
               "timeStamp": paymentarams.timeStamp + '',
               "nonceStr": paymentarams.nonceStr,
