@@ -48,7 +48,7 @@ Component({
       type: String,
       value: ""
     },
-    currentid: {
+    ids: {
       type: String,
       value: ""
     },
@@ -69,7 +69,7 @@ Component({
     closeBtn: tempPath + "public/close-icon.png",
   },
 
-  attached(){
+  attached() {
     console.log(this.data)
   },
 
@@ -123,7 +123,7 @@ Component({
 
                 that.triggerEvent('closeBtn')
                 wx.navigateTo({
-                  url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money + '&orderno=' + that.data.orderno + '&currentid=' + this.data.currentid,
+                  url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money + '&orderno=' + that.data.orderno + '&id=' + that.data.ids,
                 })
               },
               "fail": function (res) {

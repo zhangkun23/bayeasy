@@ -26,7 +26,7 @@ Page({
     isUnionPay: false,
     unpaidmoney: '',
     backInfo: {},
-    contents: "",
+    id: "",
     title: '支付',
     btnText: '确认支付'
   },
@@ -143,7 +143,7 @@ Page({
     this.setData({
       title: '支付完成',
       btnText: '完成',
-      showModal: false
+      isShowModal: false
     })
   },
 
@@ -192,12 +192,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       unpaidmoney: options.unpaidmoney,
       starttime: options.starttime,
       endtime: options.endtime,
       orderno: options.orderno,
-      currentid: options.currentid
+      id: options.id
     })
     this.getPayMethod();
     this.getAlipayUrl();

@@ -49,13 +49,14 @@ Page({
     } else if (!orderno) {
       orderno = ''
     }
+    console.log(this.data.id)
     wx.navigateTo({
-      url: '../payment/index?unpaidmoney=' + unpaidmoney + '&starttime=' + starttime + '&endtime=' + endtime + '&orderno=' + orderno + '&currentid=' + this.data.currentid,
+      url: '../payment/index?unpaidmoney=' + unpaidmoney + '&starttime=' + starttime + '&endtime=' + endtime + '&orderno=' + orderno + '&id=' + this.data.id,
     })
   },
   // 服务费详情
   getServiceFeeDeatail() {
-    serviceFeeDeatail(this.data.currentid).then(res => {
+    serviceFeeDeatail(this.data.id).then(res => {
       if (res.ret) {
         this.showBackground(res.data.order_status)
         this.setData({
@@ -100,7 +101,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      currentid: options.currentid,
+      id: options.id,
       status: options.status,
       hasOperate: app.globalData.operate, // 是否有运营专员
     })
