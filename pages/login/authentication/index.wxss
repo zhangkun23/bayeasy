@@ -1,9 +1,5 @@
 /* pages/login/authentication/index.wxss */
 
-button {
-  margin: 0;
-  width: 0;
-}
 
 .authentication__zw {
   background-image: url('https://image.bayeasy.cn/images-datas/authentication/back.png');
@@ -25,14 +21,16 @@ button {
   line-height: 36rpx;
 }
 
-.authentication__personalInformation {
+/* .authentication__personalInformation {
+  margin: 200rpx auto;
+} */
+
+.authentication__personalInformation-btn {
   width: 500rpx;
   height: 88rpx;
   line-height: 88rpx;
-  margin: 200rpx auto;
-}
-
-.authentication__personalInformation-btn {
+  display: flex;
+  justify-content: center;
   color: #ffffff;
   font-size: 34rpx;
   background: #1D83F0;
@@ -48,7 +46,11 @@ button {
   margin-right: 16rpx;
 }
 
+.authentication__btn{
+  margin-top: 200rpx;
+}
 
 .authentication__customer_service {
   width: 42rpx;
+  height: 42rpx;
 }

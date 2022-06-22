@@ -1,16 +1,7 @@
 // pages/personal/contactStaff/index.js
-// const {
-//   getOperateQR
-// } = require('../../http/api/api')
 const {
   get_operate
 } = require('../../http/api/api_grzx')
-// const {
-//   baseUrl
-// } = require('../../http/env.js').dev;
-// const {
-//   arrayBufferToBase64Img
-// } = require('../../utils/util')
 const app = getApp()
 Page({
 
