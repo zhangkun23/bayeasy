@@ -13,7 +13,7 @@ Page({
 
   toback() {
     wx.redirectTo({
-      url: '../payment/index',
+      url: '../index/index',
     })
     // wx.navigateBack({
     //   delta: 2
@@ -25,7 +25,7 @@ Page({
     //   delta: 2
     // })
     wx.redirectTo({
-      url: '../details/index',
+      url: '../details/index?id=' + this.data.id,
     })
   },
 
@@ -50,12 +50,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.getTime()
     this.setData({
       orderno: options.orderno,
       starttime: options.starttime,
       endtime: options.endtime,
       money: options.money,
+      id: options.id
     })
   },
 

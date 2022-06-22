@@ -87,6 +87,7 @@
     </view>
   </view>
   <!-- 支付框 -->
-  <modal title="{{title}}" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}" orderno="{{orderno}}" starttime="{{starttime}}" endtime="{{endtime}}" bind:sendParent="sendParent"></modal>
+  <!--  contents="¥{{contents}}" -->
+  <modal title="{{title}}" btnText="{{btnText}}" showModal="{{isShowModal}}" class="modal" money="{{unpaidmoney}}" orderno="{{orderno}}" starttime="{{starttime}}" endtime="{{endtime}}" ids="{{id}}"  bind:sendParent="sendParent"></modal>
   <alipayModal orderno="{{orderno}}" showModalToo="{{isShowPayModal}}" payUrl="{{payUrl}}"></alipayModal>
 </view>

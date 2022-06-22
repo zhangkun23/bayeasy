@@ -48,7 +48,7 @@ Component({
       type: String,
       value: ""
     },
-    contents: {
+    ids: {
       type: String,
       value: ""
     },
@@ -69,28 +69,34 @@ Component({
     closeBtn: tempPath + "public/close-icon.png",
   },
 
+  attached() {
+    console.log(this.data)
+  },
+
   /**
    * 组件的方法列表
    */
   methods: {
     // 确认支付
     topay() {
-      if (this.data.title == '支付完成') {
-        this.setData({
+      let that = this;
+      if (that.data.title == '支付完成') {
+        that.setData({
           showModal: false
         })
       } else {
-        let open_id = getApp().globalData.open_id;
+        // let open_id = "olXtf460cBzc5mW5rfjmxfRYvN68";
+        let open_id = getApp().globalData.openid;
         let app_id = getApp().globalData.app_id;
         if (!open_id) return;
-        提交预订单
+        // 提交预订单
         let params = {
           open_id, // 用户id,后端返回
-          order_no: this.data.orderno, // 订单号
-          amount: this.data.money, // 金额
+          order_no: that.data.orderno, // 订单号
+          amount: that.data.money, // 金额
           app_id
         }
-        提交预支付订单
+        // 提交预支付订单
         wechatPay(params).then(res => {
           if (res.ret) {
             let paymentarams = {
@@ -100,7 +106,7 @@ Component({
               signType: res.data.signType,
               paySign: res.data.paySign,
             }
-            调起微信支付控件
+            // 调起微信支付控件
             wx.requestPayment({
               "timeStamp": paymentarams.timeStamp + '',
               "nonceStr": paymentarams.nonceStr,
@@ -108,25 +114,22 @@ Component({
               "signType": paymentarams.signType,
               "paySign": paymentarams.paySign,
               "success": function (res) {
-                this.setData({
-                  title: '支付完成',
-                  btnText: '完成',
-                  showModal: false
-                })
                 let data = {
-                  title: this.data.title,
-                  btnText: this.data.btnText,
+                  title: that.data.title,
+                  btnText: that.data.btnText,
+                  showModal: false
                 }
-                this.triggerEvent("sendParent", data)
+                that.triggerEvent("sendParent", data)
 
-                this.triggerEvent('closeBtn')
+                that.triggerEvent('closeBtn')
                 wx.navigateTo({
-                  url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + this.data.starttime + '&endtime=' + this.data.endtime + '&money=' + this.data.money + '&orderno=' + this.data.orderno,
+                  url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money + '&orderno=' + that.data.orderno + '&id=' + that.data.ids,
                 })
               },
               "fail": function (res) {
+                console.log(res)
                 wx.navigateTo({
-                  url: '/pages/serviceFee/paymentError/index?starttime=' + this.data.starttime + '&endtime=' + this.data.endtime + '&money=' + this.data.money,
+                  url: '/pages/serviceFee/paymentError/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money,
                 })
               },
               "complete": function (res) {

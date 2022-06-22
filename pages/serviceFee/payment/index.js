@@ -26,8 +26,9 @@ Page({
     isUnionPay: false,
     unpaidmoney: '',
     backInfo: {},
-    contents: "",
-    title: '支付'
+    id: "",
+    title: '支付',
+    btnText: '确认支付'
   },
 
   // 选择支付方式
@@ -139,7 +140,11 @@ Page({
   },
   // 接受子组件传来的值
   sendParent(e) {
-    console.log(e)
+    this.setData({
+      title: '支付完成',
+      btnText: '完成',
+      isShowModal: false
+    })
   },
 
   // 去支付
@@ -192,7 +197,8 @@ Page({
       unpaidmoney: options.unpaidmoney,
       starttime: options.starttime,
       endtime: options.endtime,
-      orderno: options.orderno
+      orderno: options.orderno,
+      id: options.id
     })
     this.getPayMethod();
     this.getAlipayUrl();
