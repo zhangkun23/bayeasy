@@ -21,7 +21,7 @@ Page({
   gotodeatil(e) {
     let row = e.currentTarget.dataset.row;
     wx.navigateTo({
-      url: '../details/index?id=' + row.id + '&status=' + row.order_status,
+      url: '../details/index?currentid=' + row.id + '&status=' + row.order_status,
     })
   },
   // 列表

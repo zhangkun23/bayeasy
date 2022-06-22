@@ -50,13 +50,12 @@ Page({
       orderno = ''
     }
     wx.navigateTo({
-      url: '../payment/index?unpaidmoney=' + unpaidmoney + '&starttime=' + starttime + '&endtime=' + endtime + '&orderno=' + orderno,
+      url: '../payment/index?unpaidmoney=' + unpaidmoney + '&starttime=' + starttime + '&endtime=' + endtime + '&orderno=' + orderno + '&currentid=' + this.data.currentid,
     })
   },
   // 服务费详情
   getServiceFeeDeatail() {
-    let id = this.data.id;
-    serviceFeeDeatail(id).then(res => {
+    serviceFeeDeatail(this.data.currentid).then(res => {
       if (res.ret) {
         this.showBackground(res.data.order_status)
         this.setData({
@@ -100,11 +99,10 @@ Page({
    * 0 待支付   1 部分支付   2已支付
    */
   onLoad: function (options) {
-    console.log(options,'详情页')
     this.setData({
-      id: options.id,
+      currentid: options.currentid,
       status: options.status,
-      hasOperate: app.globalData.operate,   // 是否有运营专员
+      hasOperate: app.globalData.operate, // 是否有运营专员
     })
     this.getServiceFeeDeatail();
 

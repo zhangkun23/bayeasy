@@ -140,10 +140,10 @@ Page({
   },
   // 接受子组件传来的值
   sendParent(e) {
-    console.log(e,32424)
     this.setData({
       title: '支付完成',
       btnText: '完成',
+      showModal: false
     })
   },
 
@@ -192,12 +192,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       unpaidmoney: options.unpaidmoney,
       starttime: options.starttime,
       endtime: options.endtime,
-      orderno: options.orderno
+      orderno: options.orderno,
+      currentid: options.currentid
     })
     this.getPayMethod();
     this.getAlipayUrl();

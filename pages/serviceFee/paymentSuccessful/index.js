@@ -13,7 +13,7 @@ Page({
 
   toback() {
     wx.redirectTo({
-      url: '../payment/index',
+      url: '../index/index',
     })
     // wx.navigateBack({
     //   delta: 2
@@ -25,7 +25,7 @@ Page({
     //   delta: 2
     // })
     wx.redirectTo({
-      url: '../details/index',
+      url: '../details/index?currentid=' + this.data.currentid,
     })
   },
 
@@ -56,6 +56,7 @@ Page({
       starttime: options.starttime,
       endtime: options.endtime,
       money: options.money,
+      currentid: options.currentid
     })
   },
 
