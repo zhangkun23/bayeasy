@@ -253,7 +253,7 @@ Component({
     gotoVerify() {
       if (this.data.userStatus == 0) {
         wx.navigateTo({
-          url: '../../login/information/index',
+          url: '../../login/authentication/index',
         })
       } else if (this.data.userStatus == 1) {
         wx.navigateTo({
