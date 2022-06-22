@@ -89,4 +89,5 @@
     <view wx:else class="login-btn" bindtap="userLogout">
         退出登录
     </view>
+    <serviceModal showModal="{{serviceModal}}"></serviceModal>
 </view>

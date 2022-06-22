@@ -20,13 +20,34 @@ Page({
   data: {
     tel_num: app.globalData.phoneNumber,
     qrcode_url: '',
-    tel_icon: app.globalData.imgPath + 'personal/icons/tel.png'
+    tel_icon: app.globalData.imgPath + 'personal/icons/tel.png',
+    customer_service: app.globalData.imgPath + 'public/customer_service.png',
+    showModal: false,
+    isShowImg: false
   },
-
+  telContact() {
+    this.setData({
+      showModal: true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options, '个人中心联系客服')
+    if (options.wechat_img) {
+      this.setData({
+        qrcode_url: options.wechat_img,
+        isShowImg: true
+      })
+    } else {
+      this.setData({
+        isShowImg: false,
+        qrcode_url: ''
+      })
+    }
+
+
     // const that = this
     // const token = wx.getStorageSync('token')
     // const getQR = new Promise((resolve, reject) => {
@@ -47,27 +68,27 @@ Page({
     //     }
     //   })
     // })
-    get_operate().then(res => {
-      // const str = arrayBufferToBase64Img(res.data)
-      console.debug("qr code res", res)
-      if (res.ret) {
-        if (res.data instanceof Object && res.data.hasOwnProperty('image')) {
-          this.setData({
-            qrcode_url: res.data.image
-          })
-        } else {
-          wx.showToast({
-            title: '无法获取二维码',
-            icon: 'none'
-          })
-        }
-      }else{
-        console.error("Failed to get QR ", res.message)
-      }
+    // get_operate().then(res => {
+    //   // const str = arrayBufferToBase64Img(res.data)
+    //   console.debug("qr code res", res)
+    //   if (res.ret) {
+    //     if (res.data instanceof Object && res.data.hasOwnProperty('image')) {
+    //       this.setData({
+    //         qrcode_url: res.data.image
+    //       })
+    //     } else {
+    //       wx.showToast({
+    //         title: '无法获取二维码',
+    //         icon: 'none'
+    //       })
+    //     }
+    //   } else {
+    //     console.error("Failed to get QR ", res.message)
+    //   }
 
-    }).catch(e => {
-      console.log("Failed to get qr code from request: ", e)
-    })
+    // }).catch(e => {
+    //   console.log("Failed to get qr code from request: ", e)
+    // })
   },
 
   /**
@@ -118,10 +139,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  telContact() {
-    wx.makePhoneCall({
-      phoneNumber: this.data.tel_num //仅为示例，并非真实的电话号码
-    })
-  }
+
 
 })

@@ -1,14 +1,17 @@
 // pages/login/authentication/index.js
-Component({
+const tempPath = getApp().globalData.imgPath;
+
+Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      headerBg: "https://image.bayeasy.cn/images-data/authentication/illustration.png",
+    headerBg: tempPath + "authentication/illustration.png",
+    customer_service: tempPath + 'public/customer_service.png',
+    showModal: false
   },
 
-  methods:{
   handelClick() {
     wx.navigateTo({
       url: '../information/index',
@@ -24,6 +27,11 @@ Component({
       url: '../securityCheck/index',
     })
   },
+  // 联系客服
+  customerService() {
+    this.setData({
+      showModal: true
+    })
   },
 
   /**

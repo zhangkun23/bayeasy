@@ -13,7 +13,6 @@
   height: 120rpx;
   background: #C2DFFF;
   box-shadow: 0rpx 30rpx 30rpx 0rpx rgba(29, 131, 240, 0.25);
-  opacity: 0.6;
   border-radius: 50%;
 }
 
@@ -35,8 +34,6 @@
   background: #C2DFFF;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
-  opacity: 0.6;
-
 }
 
 .contactService__icon2 {

@@ -25,17 +25,17 @@ Component({
     },
     pageLifetimes: {
         show() {
-            this.getOperateList();
-            // console.log(this.data.title)
             let token = wx.getStorageSync('token') || '';
             if (token) {
                 this.setData({
                     title: "联系贝易资"
                 })
+                this.getOperateList();
             } else {
                 this.setData({
                     title: "在线客服"
                 })
+
             }
         }
     },
@@ -56,8 +56,8 @@ Component({
      */
     methods: {
         handeClickOpenServe() {
-            console.log(134234324234524)
-            let token = wx.getStorageSync('token') || '';
+            // console.log(134234324234524)
+            // let token = wx.getStorageSync('token') || '';
             // console.log(token)
             // if (token) {
                 this.setData({

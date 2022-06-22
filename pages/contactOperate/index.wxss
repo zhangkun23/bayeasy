@@ -32,7 +32,7 @@
 
 
 .staff-info-container .qrcode-container .qrcode {
-  margin:auto;
+  margin: auto;
   width: 362rpx;
   height: 362rpx;
 }
@@ -46,17 +46,26 @@
 }
 
 .staff-info-container .tel-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-top: 199rpx;
-  font-size: 44rpx;
-  font-weight: 600;
-  color: #283E56;
-  line-height: 63rpx;
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 34rpx;
+  background: #1D83F0;
+  box-shadow: 0rpx 2rpx 28rpx 0rpx rgba(29, 131, 240, 0.53);
+  border-radius: 44rpx;
+  text-align: center;
+  margin-top: 80rpx;
+
 }
 
-.staff-info-container .tel-container>.icon {
-  width: 45rpx;
-  margin-right: 8rpx;
+.staff-info-container .tel-container >.icon {
+  display: flex;
+  align-items: center;
+  margin-right: 16rpx;
+}
+
+.customer_service{
+  width: 42rpx;
+  
+
 }

@@ -5,7 +5,8 @@
     <view class="authentication__header">
       <image src="{{headerBg}}"></image>
     </view>
-    <view class="authentication__content">
+
+    <view class="authentication__content" wx:if="{{getApp().globalData.userStatus == 1}}">
       <view class="authentication__tips">
         <view>贝易资的企业信息库</view>
         <view>未检测到与您提交的手机号所关联的个人身份信息</view>
@@ -15,7 +16,24 @@
       <view class="authentication__personalInformation" bindtap="handelClick">
         <view class="authentication__personalInformation-btn">完善个人信息</view>
       </view>
-      <!-- <view class="authentication__personalInformation-btn" bindtap="handelClick1">身份验证</view> -->
     </view>
+
+    <view class="authentication__content" wx:if="{{getApp().globalData.userStatus == 0}}">
+      <view class="authentication__tips">
+        <view>贝易资的企业信息库</view>
+        <view>未检测到与您提交的手机号所关联的身份信息</view>
+        <view>抱歉暂无法为您提供服务</view>
+        <view>如您有意愿了解贝易资业务或洽谈合作</view>
+        <view>可联系贝易资客服进行咨询</view>
+      </view>
+      <view class="authentication__personalInformation" bindtap="customerService">
+        <view class="authentication__icon">
+          <image class="authentication__customer_service" src="{{customer_service}}"></image>
+        </view>
+        <view class="authentication__personalInformation-btn">联系客服</view>
+      </view>
+    </view>
+
   </view>
+  <serviceModal showModal="{{showModal}}"></serviceModal>
 </view>

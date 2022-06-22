@@ -3,7 +3,6 @@ const utils = require('../../utils/util.js')
 const {
     todolist,
     getUserStatus,
-    myOperate
 } = require('../../http/api/api.js');
 Page({
 
@@ -132,12 +131,6 @@ Page({
                     // })
                 }
             })
-            // 是否有运营人员
-            // myOperate().then(res => {
-            //     if (res.ret) {
-            //         getApp().globalData.operate = true;
-            //     }
-            // })
         } else {
             this.setData({
                 token: ''

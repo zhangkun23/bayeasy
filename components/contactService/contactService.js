@@ -51,10 +51,10 @@ Component({
       }
     }
   },
-  
+
   attached() {
     console.log(this.data.type)
-    this.getOperateList()
+    // this.getOperateList()
   },
 
 
@@ -62,73 +62,42 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 弹窗内
-    btnClick(e) {
-      if (e.detail.value == 1) {
-        wx.makePhoneCall({
-          phoneNumber: getApp().globalData.phoneNumber
-        })
-      } else {
-        this.toContact()
-      }
-    },
-    toContact() {},
+
 
     // 联系客服
     contactService() {
-      // if (!this.data.suspend) {
-      //   this.setData({
-      //     suspend: false
-      //   })
-      // } else {
-      //   this.setData({
-      //     suspend: true
-      //   })
-      // }
-      console.log(this.data.type)
-      let item = this.data.serviceList.filter(item => {
-        return item.type == this.data.type
-      })
-      console.log(item)
-      if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist') {
-        wx.navigateTo({
-          url: '/pages/contactOperate/index?label_name=' + item.label_name + '&img=' + item.wechat_img,
-        })
-        // this.setData({
-        //   showModal: true
-        // })
-      } else {
-        // wx.navigateTo({
-        //   url: '/pages/contactOperate/index?label_name=' + item.label_name + '&img=' + item.wechat_img,
-        // })
-        this.setData({
-          showModal: true
-        })
-      }
-    },
-
-    // 获取运营人员列表
-    getOperateList() {
       operateList().then(res => {
         if (res.ret) {
-          let data = res.data;
-          data.map(item => {
-            if (item.label_name == '财务运营') {
-              item.type = 'financialOperations'
-            } else if (item.label_name == '开票运营') {
-              item.type = 'billingSpecialist'
-            } else if (item.label_name == '商务运营') {
-              item.type = 'businessOperation'
+          if (res.data && res.data.length > 0) {
+            let data = res.data;
+            data.map(item => {
+              if (item.label_name == '财务运营') {
+                item.type = 'financialOperations'
+              } else if (item.label_name == '开票运营') {
+                item.type = 'billingSpecialist'
+              } else if (item.label_name == '商务运营') {
+                item.type = 'businessOperation'
+              }
+            })
+            let item = data.filter(item => {
+              return item.type == this.data.type
+            })
+            if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist') {
+              wx.navigateTo({
+                url: '../../pages/contactOperate/index.wxml?label_name=' + item.label_name + '&wechat_img=' + item.wechat_img,
+              })
+            } else {
+              this.setData({
+                showModal: true
+              })
             }
-          })
-          this.setData({
-            serviceList: data
-          })
-          console.log(data)
+          } else {
+            this.setData({
+              showModal: true
+            })
+          }
         }
       })
     },
-
-
   }
 })

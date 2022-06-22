@@ -141,6 +141,7 @@ Component({
 
   },
   data: {
+    serviceModal: false,
     pageShow: false,
     token: '',
     login_status: 0, // app.globalData.???
@@ -300,13 +301,19 @@ Component({
       }
     },
     contactOperate(e) {
-      if (this.data.isOperate) {
-        console.error("客户已有运营专员仍旧触发联系客服 ")
-      } else {
-        wx.makePhoneCall({
-          phoneNumber: app.globalData.phoneNumber
+      // if (this.data.isOperate) {
+      //   console.error("客户已有运营专员仍旧触发联系客服 ")
+      // } else {
+        // wx.navigateTo({
+        //   url: '../../contactOperate/index',
+        // })
+        this.setData({
+          serviceModal: true
         })
-      }
+        // wx.makePhoneCall({
+        //   phoneNumber: app.globalData.phoneNumber
+        // })
+      // }
     },
     goGate(e) {
       console.log(this.data.token)
