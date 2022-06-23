@@ -8,7 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sendByPost :tempPath + 'tax/businessAnnual/sendByPost.png',
+    sendByPost: tempPath + 'tax/businessAnnual/sendByPost.png',
+    pdf_icon: tempPath + 'tax/businessAnnual/pdf_icon.png',
+    loginSelect: tempPath + 'invoice/billingRecord/checked.png',
+    loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
+  },
+
+  gotoDownloadReport() {
+    wx.navigateTo({
+      url: '../download/index',
+    })
   },
 
   /**

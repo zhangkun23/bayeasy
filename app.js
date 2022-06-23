@@ -36,8 +36,7 @@ App({
     page_size: 15,
     openid: "",   
     app_id: "wx8c15bc82c287b2b7",  // 本人的appid 
-    // open_id: 'olXtf460cBzc5mW5rfjmxfRYvN68', // 我的用户id  登录后返回在微信支付时使用
-    // open_id: 'olXtf49M8xkKY5Qu1ClC9RBBH-cg', // 用户id  登录后返回在微信支付时使用
+    email: "123456789@qq.com"  
   },
   /**
    * 登录接口保存信息在storage

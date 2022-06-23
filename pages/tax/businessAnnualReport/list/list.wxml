@@ -2,8 +2,8 @@
 <view class="businessAnnualReport bgColog flex-column">
   <mp-navigation-bar ext-class="navigationBar" title="工商年报" bindback="backIndex"></mp-navigation-bar>
   <view class="businessAnnualReport__container">
+  
     <view class="businessAnnualReport__list" wx:if="{{list.length <= 0}}">
-
       <view class="businessAnnualReport__item space-between" bindtap="gotodetail">
         <view class="display-flex businessAnnualReport__left">
           <view class="display-flex">
@@ -20,9 +20,8 @@
           <view class="orangeTips font-size-24 font-600">年报更新</view>
         </view>
       </view>
-
-
     </view>
+
     <view class="taxConfirmation__nodata" wx:else>
       <image class="taxConfirmation__image" src="{{empty_bg_url}}"></image>
       <view class="taxConfirmation__nodata-text font-size-24">暂无数据</view>

@@ -1,13 +1,23 @@
 <!--pages/invoice/incomeInvoice/downloadPage/promptSuccessPage/index.wxml-->
-<view class="promptSuccessPage">
+<view class="promptSuccessPage bgColog">
   <mp-navigation-bar title="下载电子发票文件" ext-class="navigationBar" bindback="backIndex"></mp-navigation-bar>
   <view class="promptSuccessPage__container">
     <view class="promptSuccessPage__box">
       <view>
-        <image class="promptSuccessPage__img" src="{{successIconImg}}"></image>
+        <image class="promptSuccessPage__img" src="{{sentSuccessfully}}"></image>
       </view>
-      <view class="promptSuccessPage__box-send font-600">已发送</view>
-      <view class="font-size-24 promptSuccessPage__box-text">电子发票已发送至您的邮箱，请注意查收</view>
+      <view class="promptSuccessPage__box-send font-600">发送成功，请至您的邮箱查收！</view>
+      <view class="font-size-24 blackTips">
+        <text>已发送</text>
+        <text class="orangeTips">{{downloadNum}}</text>
+        <text>个电子发票文件</text>
+      </view>
+      <view></view>
+      <view class="font-size-24 promptSuccessPage__box-text">
+        <text>请您至</text>
+        <text class="orangeTips">"{{email}}"</text>
+        <text>邮箱查收下载文件!</text>
+      </view>
     </view>
     <view class="promptSuccessPage__bottom">
       <view class="promptSuccessPage__bottom-text font-size-24">

@@ -97,7 +97,7 @@ Page({
                             inputValue: ''
                         })
                         wx.navigateTo({
-                            url: '../promptSuccessPage/index?type=' + this.data.type + '&currentID=' + this.data.currentID,
+                            url: '../promptSuccessPage/index?type=' + this.data.type + '&currentID=' + this.data.currentID + '&email=' + this.data.inputValue + '&downloadNum=' + this.data.downloadNum,
                         })
                     } else {
                         wx.showToast({
@@ -113,6 +113,18 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        let email = getApp().globalData.email;
+        if (email) {
+            this.setData({
+                inputValue: email,
+                color: '#1D83F0',
+            })
+        } else {
+            this.setData({
+                inputValue: '',
+                color: '#E6EEF7',
+            })
+        }
         let downloadNum = options.ids.split(',').length;
         this.setData({
             downloadNum,

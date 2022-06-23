@@ -1,8 +1,9 @@
 <!--pages/tax/businessAnnualReport/detail/detail.wxml-->
-<!-- <contactServiceLayout type="financialOperations"> -->
+<contactServiceLayout type="financialOperations">
 <view class="detail">
   <mp-navigation-bar ext-class="navigationBar" title="工商年报详情" bindback="backIndex"></mp-navigation-bar>
   <view class="detail__container">
+
     <view class="detail__date ">
       <view class="flex-rowcenter">
         <view>
@@ -12,11 +13,40 @@
       </view>
       <view class="text-center whiteTips font-600 detail__date-year">2023</view>
     </view>
-    <view class="space-between font-size-24 whiteTips">
+
+    <view class="space-between font-size-24 whiteTips detail__year">
       <view>公示日期</view>
       <view>2024-04-17</view>
     </view>
 
+    <view class="detail__report mg-tp-32">
+      <view class="display-flex mg-bt-24">
+        <view class="detail__report-border"></view>
+        <view class="font-size-28 font-600 blackTips">工商年度报告书</view>
+      </view>
+
+      <view class="detail__report-item display-flex">
+        <view class="detail__checkicon" bindtap="checkedDownload">
+          <image class="detail__checked" src="{{loginUnSelect}}"></image>
+        </view>
+        <view class="detail__checkicon">
+          <image class="detail__itemPdf" src="{{pdf_icon}}"></image>
+        </view>
+        <view class="font-size-28">2020年工商年度报告书1.pdf</view>
+      </view>
+      
+    </view>
+
+    <view class="billingRecord__footer display-flex">
+        <view class="display-flex billingRecord__footer-left" bindtap="checkedAll">
+          <view class="display-flex">
+            <image class="billingRecord__imgGroup-left" src="{{!isShowCheckedAll ? loginUnSelect : loginSelect}}" />
+          </view>
+          <view class="billingRecord__footer-text">全选</view>
+        </view>
+        <view class="btn whiteTips" bindtap="gotoDownloadReport">下载工商年报</view>
+      </view>
+
   </view>
 </view>
-<!-- </contactServiceLayout> -->
+</contactServiceLayout>

@@ -64,6 +64,8 @@ Page({
       console.log(res)
       if (res.ret) {
         getApp().globalData.openid = res.data.openid;
+        getApp().globalData.email = res.data.email;
+        // getApp().globalData.email = '123456789@qq.com';
         console.log(getApp().globalData.openid)
         // getApp().globalData.open_id = "olXtf49M8xkKY5Qu1ClC9RBBH-cg";
         wx.setStorageSync('token', res.data.access_token)

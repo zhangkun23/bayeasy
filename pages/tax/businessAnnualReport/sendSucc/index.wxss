@@ -1,1 +1,32 @@
 /* pages/tax/businessAnnualReport/sendSucc/index.wxss */
+
+.sendSucc__container {
+  padding: 38rpx;
+}
+
+.sendSucc__img {
+  margin-top: 150rpx;
+}
+
+.sendSucc__icon {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.sendSucc__text {
+  line-height: 36rpx;
+}
+
+.sendSucc__title {
+  color: #0B1D30;
+}
+
+.sendSucc__btn {
+  margin: 80rpx auto 0;
+}
+
+.sendSucc__service {
+  position: fixed;
+  bottom: 100rpx;
+  right: 20%;
+}
