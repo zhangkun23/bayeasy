@@ -62,7 +62,11 @@
     "pages/serviceFee/components/alipayModal/alipayModal",
     "pages/serviceFee/paymentSuccessful/index",
     "pages/serviceFee/paymentError/index",
-    "pages/layout/contactServiceLayout/index"
+    "pages/layout/contactServiceLayout/index",
+    "pages/tax/businessAnnualReport/list/list",
+    "pages/tax/businessAnnualReport/detail/detail",
+    "pages/tax/businessAnnualReport/download/index",
+    "pages/tax/businessAnnualReport/sendSucc/index"
   ],
   "tabBar": {
     "custom": true,

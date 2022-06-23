@@ -1,0 +1,62 @@
+/* pages/tax/businessAnnualReport/list/list.wxss */
+
+
+.businessAnnualReport {
+  height: 100vh;
+}
+
+.businessAnnualReport__container {
+  flex: 1;
+  overflow-y: auto;
+  height: 1rpx;
+  padding: 44rpx 32rpx;
+}
+
+.businessAnnualReport__item {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 20rpx;
+  /* border: 1rpx solid rgba(255, 255, 255, 0.5); */
+}
+
+.businessAnnualReport__left{
+  padding: 40rpx 32rpx;
+}
+
+.businessAnnualReport__item-title{ 
+  margin-right: 25rpx;
+}
+
+.businessAnnualReport__item-icon {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.businessAnnualReport__right{
+  display: flex;
+  justify-content: center;
+  background: #fff5e8;
+  width: 153rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  text-align: center;
+  border-top-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+}
+
+.taxConfirmation__nodata {
+  margin-top: 240rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taxConfirmation__image {
+  width: 370rpx;
+  height: 300rpx;
+}
+
+.taxConfirmation__nodata-text {
+  color: #6E87A2;
+  text-align: center;
+}

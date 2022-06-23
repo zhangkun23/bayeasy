@@ -1,0 +1,33 @@
+/* pages/tax/businessAnnualReport/detail/detail.wxss */
+
+.navigationBar {
+  color: #fff;
+}
+
+.detail{
+  height: 100vh;
+  background-image: url('https://image.bayeasy.cn/images-datas/tax/businessAnnual/businessAnnual.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.detail__container {
+  padding: 32rpx;
+}
+
+.detail__date {
+
+}
+
+.detail__date-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 9rpx;
+}
+.detail__date-text {
+  opacity: .69;
+}
+
+.detail__date-year {
+  font-size: 64rpx;
+}

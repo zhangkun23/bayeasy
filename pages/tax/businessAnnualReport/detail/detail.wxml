@@ -1,0 +1,22 @@
+<!--pages/tax/businessAnnualReport/detail/detail.wxml-->
+<!-- <contactServiceLayout type="financialOperations"> -->
+<view class="detail">
+  <mp-navigation-bar ext-class="navigationBar" title="工商年报详情" bindback="backIndex"></mp-navigation-bar>
+  <view class="detail__container">
+    <view class="detail__date ">
+      <view class="flex-rowcenter">
+        <view>
+          <image class="detail__date-icon" src="{{sendByPost}}"></image>
+        </view>
+        <view class="detail__date-text font-size-28 font-600 whiteTips">报告年份</view>
+      </view>
+      <view class="text-center whiteTips font-600 detail__date-year">2023</view>
+    </view>
+    <view class="space-between font-size-24 whiteTips">
+      <view>公示日期</view>
+      <view>2024-04-17</view>
+    </view>
+
+  </view>
+</view>
+<!-- </contactServiceLayout> -->

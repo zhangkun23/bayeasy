@@ -36,7 +36,7 @@
                     </view>
                 </view>
                 <view class="row-2">
-                    <view class="gate-area-2" data-url='/pages/nothing/index' bindtap="handelClickUrl">
+                    <view class="gate-area-2" data-url='/pages/tax/businessAnnualReport/list/list' bindtap="handelClickUrl">
                         <view>
                             <image class="gate-icon" src="{{img2_1}}" mode="aspectFill"></image>
                         </view>
