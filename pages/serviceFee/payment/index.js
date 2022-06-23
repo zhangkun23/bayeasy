@@ -24,6 +24,7 @@ Page({
     isWechat: false,
     isAlipay: false,
     isUnionPay: false,
+    showUnionPayModal: false,
     unpaidmoney: '',
     backInfo: {},
     id: "",
@@ -136,6 +137,9 @@ Page({
         })
 
       }
+    })
+    this.setData({
+      showUnionPayModal: true
     })
   },
   // 接受子组件传来的值

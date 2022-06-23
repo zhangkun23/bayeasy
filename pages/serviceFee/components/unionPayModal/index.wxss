@@ -1,0 +1,63 @@
+/* pages/serviceFee/components/unionPayModal/index.wxss */
+
+.unionPayModal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 29, 48, 0.3);
+}
+
+.unionPayModal__container {
+  position: relative;
+  top: 28.4%;
+  background: url('https://image.bayeasy.cn/images-datas/serviecFee/pay/unionpayback.png') no-repeat;
+  background-size: 100%;
+  border-radius: 16px;
+  margin: 0 95rpx;
+  padding: 70rpx 35rpx;
+}
+
+.unionPayModal__title {
+  font-size: 48rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 117rpx;
+}
+
+.unionPayModal__tips {
+  font-size: 24rpx;
+  color: #48617C;
+  line-height: 36rpx
+}
+
+.unionPayModal__btn {
+  margin-top: 48rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.unionPayModal__know {
+  width: 240rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #FFA42E;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(255, 164, 46, 0.2);
+  border-radius: 35rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.unionPayModal__closeBtn {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.unionPayModal__icon {
+  margin-top: 90rpx;
+  display: flex;
+  justify-content: center;
+}
