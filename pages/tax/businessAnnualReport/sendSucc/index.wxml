@@ -1,2 +1,38 @@
 <!--pages/tax/businessAnnualReport/sendSucc/index.wxml-->
-<text>pages/tax/businessAnnualReport/sendSucc/index.wxml</text>
+<view class="sendSucc bgColog">
+  <mp-navigation-bar title="发送成功" ext-class="navigationBar"></mp-navigation-bar>
+  <view class="sendSucc__container">
+    <view class="flex-rowcenter sendSucc__img">
+      <image class="sendSucc__icon" src="{{sentSuccessfully}}"></image>
+    </view>
+    <view class="text-center font-size-24 blackTips">
+      <view class="font-size-36 font-600 sendSucc__title mg-bt-24">发送成功，请至您的邮箱查收！</view>
+      <view class="sendSucc__text">
+        <view>
+          <text>已发送</text>
+          <text class="orangeTips">{{downloadNum}}</text>
+          <text>个工商年报文件</text>
+        </view>
+        <view class="font-size-24 blackTips">
+          <text>请您至</text>
+          <text class="orangeTips">"{{email}}"</text>
+          <text>邮箱查收下载文件!</text>
+        </view>
+      </view>
+    </view>
+    <view class="sendSucc__btn" bindtap="toList">
+      <view class="bluebtn">返回工商年报</view>
+    </view>
+  </view>
+  <view>
+    <view class="font-size-20 grayTips text-center sendSucc__service">
+      <view>如您未收到邮件或对发送的工商年报文件有疑问，</view>
+      <view>
+        <text>请联系</text>
+        <text class="orangeTips ">财税管家</text>
+        <text>咨询！</text>
+      </view>
+    </view>
+    <service type="financialOperations"></service>
+  </view>
+</view>

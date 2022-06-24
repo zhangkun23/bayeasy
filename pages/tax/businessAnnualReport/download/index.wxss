@@ -1,1 +1,166 @@
 /* pages/tax/businessAnnualReport/download/index.wxss */
+
+.downloadPage {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navigationBar {
+  color: #fff;
+  background: #1D83F0;
+}
+
+.downloadPage__box {
+  padding: 32rpx;
+
+}
+
+
+.downloadPage__container {
+  flex: 1;
+  height: 1rpx;
+}
+
+.downloadPage__headerbox {
+  margin: 28rpx 32rpx;
+}
+
+.downloadPage__background {
+  z-index: 1;
+  margin-bottom: 48rpx;
+  background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/email_outlined2.png') no-repeat;
+  background-size: 100% 100%;
+
+}
+
+.downloadPage__background-img {
+  width: 100%;
+}
+
+.detail__topTips {
+  line-height: 36rpx;
+  border-radius: 12rpx;
+  padding: 16rpx 22rpx;
+  margin-bottom: 32rpx;
+}
+
+.detail__topTips-icon {
+  align-items: center;
+}
+
+.detail__topTips-icon image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 16rpx;
+}
+
+
+.downloadPage__header-image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 12rpx;
+}
+
+.downloadPage__header-email {
+  padding-bottom: 16rpx;
+  align-items: center;
+}
+
+.downloadPage__tips {
+  font-size: 20rpx;
+  line-height: 32rpx;
+}
+
+.downloadPage__email {
+  margin: 0 32rpx;
+  /* position: absolute;
+  top: 34%;
+  left: 0;
+  right: 0; */
+}
+
+.downloadPage__email-box {
+  width: 686rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FFFFFF;
+  border-radius: 44rpx;
+  padding: 22rpx 55rpx 22rpx 48rpx;
+  box-sizing: border-box;
+  margin-bottom: 24rpx;
+}
+
+.gray {
+  border: 2rpx solid #E6EEF7;
+}
+
+.red {
+  border: 2rpx solid #FF475A;
+}
+
+.blue {
+  border: 2rpx solid #1D83F0;
+}
+
+.downloadPage__email-input {
+  flex: 1;
+  font-size: 24rpx;
+  color: #283E56;
+  /* width: 660rpx; */
+}
+
+.placeholderClass {
+  font-size: 24rpx;
+  color: #ABBED2;
+}
+
+.downloadPage__email-box {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.downloadPage__email-box:active {
+  border: 2rpx solid #1D83F0;
+}
+
+.closeInput {
+  height: 30rpx;
+  width: 30rpx;
+  margin-left: 10rpx;
+}
+
+.downloadPage__inputClose {
+  width: 60rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.downloadPage__error {
+  margin-left: 48rpx;
+  align-items: baseline;
+}
+
+.downloadPage__error-img {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.downloadPage__error-text {
+  color: #FF475A;
+}
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #1D83F0;
+  box-shadow: 0rpx 29rpx 47rpx 0rpx rgba(29, 131, 240, 0.2);
+  border-radius: 44rpx;
+  margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  bottom: 188rpx;
+  left: 125rpx;
+  right: 125rpx;
+}

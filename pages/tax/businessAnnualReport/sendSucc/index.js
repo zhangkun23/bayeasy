@@ -1,18 +1,30 @@
 // pages/tax/businessAnnualReport/sendSucc/index.js
+const tempPath = getApp().globalData.imgPath;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    sentSuccessfully: tempPath + 'tax/businessAnnual/sentSuccessfully.png',
+    email: "1232343242@qq.com",
+    downloadNum: "1"
   },
 
+  toList() {
+    wx.navigateTo({
+      url: '../list/list',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      email: options.email,
+      downloadNum: options.downloadNum
+    })
   },
 
   /**

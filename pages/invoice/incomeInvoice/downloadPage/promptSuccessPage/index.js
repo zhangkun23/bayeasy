@@ -8,6 +8,7 @@ Page({
      */
     data: {
         successIconImg: tempPath + "public/done.png",
+        sentSuccessfully: tempPath + 'tax/businessAnnual/sentSuccessfully.png',
         type: '',
         isAndroid: '1',
         currentID: 0
@@ -42,10 +43,12 @@ Page({
      */
     onLoad(options) {
         let currerntPage = getCurrentPages();
-        // console.log(options, currerntPage)
+        console.log(options, currerntPage)
         this.setData({
             type: options.type,
-            currentID: options.currentID
+            currentID: options.currentID,
+            downloadNum: options.downloadNum,
+            email: options.email
         })
         // this.isIosOrAndroid();
     },

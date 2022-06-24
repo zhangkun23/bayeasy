@@ -4,7 +4,7 @@
   color: #fff;
 }
 
-.detail{
+.detail {
   height: 100vh;
   background-image: url('https://image.bayeasy.cn/images-datas/tax/businessAnnual/businessAnnual.png');
   background-repeat: no-repeat;
@@ -15,19 +15,95 @@
   padding: 32rpx;
 }
 
-.detail__date {
-
-}
+.detail__date {}
 
 .detail__date-icon {
   width: 32rpx;
   height: 32rpx;
   margin-right: 9rpx;
 }
+
 .detail__date-text {
   opacity: .69;
 }
 
 .detail__date-year {
   font-size: 64rpx;
+}
+
+.detail__year {
+  padding: 0 32rpx;
+}
+
+.detail__report {
+  padding: 48rpx 28rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 10rpx 30rpx 0rpx rgba(209, 213, 223, 0.6);
+  border-radius: 28rpx;
+}
+
+.detail__report-item {
+  align-items: center;
+}
+
+.detail__report-border {
+  width: 8rpx;
+  height: 32rpx;
+  background: #1D83F0;
+  border-radius: 4rpx;
+  margin-right: 24rpx;
+}
+
+.detail__report-item {
+  background: rgba(194, 223, 255, 0.19);
+  border-radius: 28rpx;
+  padding: 29rpx 32rpx;
+}
+.detail__checkicon {
+  display: flex;
+  align-items: center;
+  margin-right: 15rpx;
+}
+
+.detail__itemPdf {
+  width: 102rpx;
+  height: 102rpx;
+}
+
+.detail__checked {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.billingRecord__footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #fff;
+  height: 128rpx;
+  line-height: 128rpx;
+  padding: 20rpx 32rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.billingRecord__footer-left {
+  align-items: center;
+}
+
+
+.btn {
+  width: 500rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FFA42E;
+  border-radius: 44rpx;
+  text-align: center;
+}
+
+.billingRecord__imgGroup-left {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 16rpx;
 }
