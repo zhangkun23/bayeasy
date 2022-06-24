@@ -7,7 +7,8 @@
             <view class="bg">
                 <view class="mycard">
                     <view class="mycontent">
-                        <image src="{{item.invoice_img_file}}" mode="aspectFill" class="pdf" bindtap="previewImg" data-src="{{item.invoice_img_file}}"></image>
+                        <image src="{{item.invoice_img_file}}" mode="aspectFill" class="pdf" bindtap="previewImg"
+                         data-src="{{item.invoice_img_file}}"></image>
                     </view>
                 </view>
                 <!-- <view class="download" bindtap="downloadPdf" data-vid="{{item.id}}">下载发票</view> -->
@@ -18,3 +19,4 @@
         </view>
     </scroll-view>
 </view>
+<imgPreviewRotation isShow="{{imgPreviewRotationShow}}" imgUrl="{{imgActiveUrl}}" bind:closeImgPreviewRotation="closeImgPreviewRotation"></imgPreviewRotation>

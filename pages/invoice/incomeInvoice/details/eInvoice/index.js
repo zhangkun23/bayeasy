@@ -7,6 +7,7 @@ const {
 const {
     baseUrl
 } = require('../../../../../http/request')
+
 Page({
     /**
      * 页面的初始数据
@@ -16,7 +17,10 @@ Page({
         invoices: null,
         _vid: 0,
         invoicePdfUrl: null,
-        showClipDialog: false
+        showClipDialog: false,
+        imgActiveUrl:'',
+        imgPreviewRotationShow:false
+
     },
 
     /**
@@ -93,12 +97,23 @@ Page({
     },
     previewImg: function (e) {
         const src = e.currentTarget.dataset.src
-        wx.previewImage({
-            urls: [src],
+        // wx.previewImage({
+        //     urls: [src],
+        // })
+        this.setData({
+            imgActiveUrl:src,
+            imgPreviewRotationShow:true,
         })
     },
+
+
     handleTouchMove: function (e) {
         return
-    }
+    },
 
+    closeImgPreviewRotation:function(){
+        this.setData({
+            imgPreviewRotationShow:false,
+        })
+    }
 })

@@ -16,6 +16,7 @@ page {
     display: flex;
     flex-direction: column;
     margin-top: 44rpx;
+    padding-bottom: 168rpx;
 }
 
 .bg {
@@ -46,12 +47,17 @@ page {
     width: 592rpx;
     height: 378rpx;
 }
-
 .bg .mycard .mycontent {
     margin: 36rpx 47rpx 36rpx 47rpx;
 }
-
-.download {
+.downloadBox{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0rpx;
+    height: 168rpx;
+}
+.downloadBox>.download {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +65,7 @@ page {
     font-weight: 400;
     color: #FFFFFF;
     line-height: 88rpx;
-    margin: 48rpx auto;
+    margin: 40rpx auto;
     width: 500rpx;
     height: 88rpx;
     background: #1D83F0;
