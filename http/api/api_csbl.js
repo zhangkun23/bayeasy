@@ -53,4 +53,14 @@ reportForm(param) {
 getQuarter() {
   return request(api + '/financial_statement/get_report_time', 'GET', {});
 },
+// 工商年报列表
+annualReportList(param) {
+  return request(api + '/annual_report/list', 'POST', param);
+},
+// 工商年报详情
+annualReportInfo(param) {
+  return request(api + '/annual_report/info?id=' + param, 'GET', {});
+},
+
+
 }

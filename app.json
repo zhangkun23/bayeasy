@@ -66,7 +66,8 @@
     "pages/tax/businessAnnualReport/list/list",
     "pages/tax/businessAnnualReport/detail/detail",
     "pages/tax/businessAnnualReport/download/index",
-    "pages/tax/businessAnnualReport/sendSucc/index"
+    "pages/tax/businessAnnualReport/sendSucc/index",
+    "pages/personal/myEmail/index"
   ],
   "tabBar": {
     "custom": true,

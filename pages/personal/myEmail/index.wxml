@@ -1,0 +1,32 @@
+<!-- pages/personal/myEmail/index.wxml -->
+<view class="myEmail bgColog">
+  <mp-navigation-bar title="我的邮箱" />
+  <view class="myEmail__container">
+    <view class="display-flex myEmail__header mg-bt-24">
+      <view class="display-flex">
+        <image class="myEmail__image" src="{{email}}"></image>
+      </view>
+      <view>邮箱地址</view>
+    </view>
+    <view class="downloadPage__email">
+      <view>
+        <view class="downloadPage__email-box display-flex" style="border: 2rpx solid{{color}}">
+          <input bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" class="downloadPage__email-input" placeholder-class="placeholderClass" type="text" placeholder="请输入邮箱地址" value="{{inputValue}}" disabled="{{disabled}}"></input>
+          <view wx:if="{{isShowIcon}}" class="downloadPage__inputClose">
+            <image bindtap="clearInputValue" class="closeInput" src="{{inputClose}}"></image>
+          </view>
+        </view>
+        <view class="display-flex downloadPage__error font-size-24" wx:if="{{isValid}}">
+          <image class="downloadPage__error-img" src="{{errorIcon}}"></image>
+          <view class="downloadPage__error-text">格式错误</view>
+        </view>
+      </view>
+    </view>
+    <view class="myEmail__btn whiteTips" wx:if="{{!isShowUpdateEmail}}" bindtap="sureEmail">
+      <view class="btn" style="background: {{btnBackgroundColor}}; color: {{btnColor}};">确认保存</view>
+    </view>
+    <view bind:tap="updateEmail" class="myEmail__btn whiteTips" wx:else>
+      <view class="btn">修改邮箱</view>
+    </view>
+  </view>
+</view>

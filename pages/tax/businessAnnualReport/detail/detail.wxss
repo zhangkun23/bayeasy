@@ -15,7 +15,6 @@
   padding: 32rpx;
 }
 
-.detail__date {}
 
 .detail__date-icon {
   width: 32rpx;
@@ -42,10 +41,6 @@
   border-radius: 28rpx;
 }
 
-.detail__report-item {
-  align-items: center;
-}
-
 .detail__report-border {
   width: 8rpx;
   height: 32rpx;
@@ -55,6 +50,7 @@
 }
 
 .detail__report-item {
+  align-items: center;
   background: rgba(194, 223, 255, 0.19);
   border-radius: 28rpx;
   padding: 29rpx 32rpx;

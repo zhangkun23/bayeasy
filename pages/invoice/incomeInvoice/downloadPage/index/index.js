@@ -93,9 +93,6 @@ Page({
                 }
                 downloadEmail(params).then(res => {
                     if (res.ret) {
-                        this.setData({
-                            inputValue: ''
-                        })
                         wx.navigateTo({
                             url: '../promptSuccessPage/index?type=' + this.data.type + '&currentID=' + this.data.currentID + '&email=' + this.data.inputValue + '&downloadNum=' + this.data.downloadNum,
                         })

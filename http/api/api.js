@@ -137,6 +137,13 @@ module.exports = {
 	alipayUrl: (param) => {
 		return request(api + '/alipay/service/url', "POST", param);
 	},
+	// 重置邮箱
+	resetEmail: (param) => {
+		return request(api + '/personal_nformation/reset_email', "POST", param);
+	},
+
+
+	
 
 
 

@@ -1,20 +1,32 @@
 // pages/tax/businessAnnualReport/list/list.js
 const tempPath = getApp().globalData.imgPath;
-
+const { annualReportList } = require("../../../../http/api/api_csbl");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listIcon: tempPath + 'tax/businessAnnual/list_icon_orange.png',
+    listOrangeIcon: tempPath + 'tax/businessAnnual/list_icon_orange.png',
+    listBlueIcon: tempPath + 'tax/businessAnnual/list_icon_blue.png',
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
     list: []
   },
 
-  gotodetail() {
+  gotodetail(e) {
+    let row = e.currentTarget.dataset.row;
     wx.navigateTo({
-      url: '../detail/detail',
+      url: '../detail/detail?id=' + row.id,
+    })
+  },
+
+  getBusinessAnnualReport() {
+    annualReportList().then(res => {
+      if(res.ret) {
+        this.setData({
+          list: res.data.list
+        })
+      }
     })
   },
 
@@ -22,7 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getBusinessAnnualReport()
   },
 
   /**

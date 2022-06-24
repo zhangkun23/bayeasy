@@ -1,7 +1,9 @@
 // pages/tax/businessAnnualReport/detail/detail.js
 
 const tempPath = getApp().globalData.imgPath;
-
+const {
+  annualReportInfo
+} = require('../../../../http/api/api_csbl')
 Page({
 
   /**
@@ -12,11 +14,46 @@ Page({
     pdf_icon: tempPath + 'tax/businessAnnual/pdf_icon.png',
     loginSelect: tempPath + 'invoice/billingRecord/checked.png',
     loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
+    businessAnnualObj: {}
+  },
+  // 下载工商年报
+  gotoDownloadReport() {
+    // wx.navigateTo({
+    //   url: '../download/index',
+    // })
   },
 
-  gotoDownloadReport() {
-    wx.navigateTo({
-      url: '../download/index',
+  checkedDownload(e) {
+    let data = this.data.businessAnnualObj.report_file;
+    console.log(data)
+    let id = e.currentTarget.dataset.id;
+    data.map(item => {
+      if (id == item.id) {
+        item.checked = !item.checked
+      }
+    })
+    this.setData({
+      businessAnnualObj: {
+        ...this.data.businessAnnualObj,
+        report_file: data
+      }
+    })
+  },
+
+  getDeatail(id) {
+    annualReportInfo(id).then(res => {
+      if (res.ret) {
+        let reportfFle = res.data.report_file;
+        reportfFle.map(item => {
+          item.checked = false;
+          item.title = '2021年工商年度报告书1.pdf'
+        })
+        this.setData({
+          businessAnnualObj: res.data
+        })
+        console.log(this.data.businessAnnualObj)
+
+      }
     })
   },
 
@@ -24,7 +61,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getDeatail(options.id)
   },
 
   /**

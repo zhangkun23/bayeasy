@@ -186,6 +186,12 @@ Component({
         url: '/pages/faq/feedbackList/index',
         text: '留言反馈'
       },
+      {
+        id: 4,
+        icon: icons_url.feed_back,
+        url: '/pages/personal/myEmail/index',
+        text: '我的邮箱'
+      },
     ],
     gates_info: [{
       id: 1,
