@@ -60,4 +60,3 @@
 <block wx:if="{{isShowModal}}">
     <mp-dialog show="isShowModal" buttons="{{buttons}}" bindbuttontap="tapDialogButtonClose" title="确认删除这张发票吗？"></mp-dialog>
 </block>
-<imageBig imgArr="{{imgArr}}" />

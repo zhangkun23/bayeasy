@@ -1,0 +1,13 @@
+
+
+<view class="wapper" wx:if="{{isShow}}">
+    <view class="detail__image" style="width: {{ touch.scaleWidth }}%"  >
+        <image class="avtiveImg"  mode="widthFix" style="transform:{{transform}}"  data-src="{{imgUrl}}" class="images" src="{{imgUrl}}"
+            bindtouchstart='touchStartHandle'
+            bindtouchmove='touchMoveHandle' 
+            bindtouchend='touchEndHandle' 
+            lazy-load="true"
+        ></image>
+        <image class="rotateIcon" bindtap="rotationClick"  style="transform:{{transform}}" src="{{rotateIcon}}" ></image>
+    </view>
+</view>
