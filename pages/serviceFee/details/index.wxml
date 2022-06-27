@@ -39,14 +39,14 @@
           <view class="display-flex serviceFeeDetail__detail-bottom font-size-24" style="background-image: url({{paymentBackground}})">
             <view>
               <view class="grayTips mg-bt-8">已支付总金额</view>
-              <view class="text-center">￥{{detailObj.paid_money || '0.00'}}</view>
+              <view class="text-center font-600">￥{{detailObj.paid_money || '0.00'}}</view>
             </view>
             <view>
               <view class="grayTips mg-bt-8">未支付总金额</view>
-              <view class="text-center orangeTips" wx:if="{{detailObj.order_status == 0}}">￥ {{detailObj.unpaid_money || 0.00}}</view>
-              <view class="text-center greennTips" wx:if="{{detailObj.order_status == 1}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
-              <view class="text-center buleTips" wx:if="{{detailObj.order_status == 2}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
-              <view class="text-center buleTips" wx:if="{{detailObj.order_status == 'null'}}">￥ {{detailObj.unpaid_money}}</view>
+              <view class="text-center font-600 orangeTips" wx:if="{{detailObj.order_status == 0}}">￥ {{detailObj.unpaid_money || 0.00}}</view>
+              <view class="text-center font-600 greennTips" wx:if="{{detailObj.order_status == 1}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
+              <view class="text-center font-600 buleTips" wx:if="{{detailObj.order_status == 2}}">￥ {{detailObj.unpaid_money || '0.00'}}</view>
+              <view class="text-center font-600 buleTips" wx:if="{{detailObj.order_status == 'null'}}">￥ {{detailObj.unpaid_money}}</view>
             </view>
           </view>
         </view>

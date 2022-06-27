@@ -96,7 +96,7 @@
   box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
   background: url('https://image.bayeasy.cn/images-datas/invoice/incomeInvoice/barBg.png') no-repeat;
   background-size: 100%;
-  margin: 0 32rpx;
+  margin: 20rpx 32rpx;
 }
 
 .detail__report-earphone {
