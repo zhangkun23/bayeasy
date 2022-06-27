@@ -95,6 +95,17 @@ Page({
         btnText: "去支付",
         url: "/pages/serviceFee/index/index",
         detailUrl: "/pages/serviceFee/details/index",
+      },
+      {
+        id: 7,
+        isShow: false,
+        titleYellow: false,
+        count: 0,
+        title: "工商年报公示通知",
+        subTitle: "工商年报公示信息请查看",
+        btnText: "去查看",
+        url: "/pages/tax/businessAnnualReport/list/list",
+        detailUrl: "/pages/tax/businessAnnualReport/detail/detail",
       }
     ]
   },
@@ -210,6 +221,18 @@ Page({
               delete _new_todo_lists[5]["ids"];
             }
           }
+
+          // 工商年报
+          if(_todo_keys.includes('annual_report')) {
+            if(_data.annual_report.length > 0) {
+              _new_todo_lists[6].isShow = true;
+              _new_todo_lists[6]["ids"] = _data["annual_report"]
+            } else {
+              _new_todo_lists[6].isShow = false;
+              delete _new_todo_lists[6]["ids"];
+            }
+          }
+
           that.setData({
             todo_lists: _new_todo_lists,
             count: _data.nums

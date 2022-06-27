@@ -1,8 +1,8 @@
 // pages/invoice/incomeInvoice/downloadPage/index/index.js
 const tempPath = getApp().globalData.imgPath;
-// const {
-//   downloadEmail
-// } = require('../../../../../http/api/api_szpj')
+const {
+  annualReportSendEmail
+} = require('../../../../http/api/api_csbl')
 Page({
 
   /**
@@ -79,43 +79,39 @@ Page({
 
   // 去下载
   gotoDownload() {
-    wx.navigateTo({
-      url: '../sendSucc/index',
-    })
-    // if (!this.data.inputValue) {
-    //   wx.showToast({
-    //     title: '请输入您的邮箱地址',
-    //     icon: 'none'
-    //   })
-    // } else {
-    //   this.verifyEmail(this.data.inputValue);
-    //   if (!this.data.isValid) {
-    //     let params = {
-    //       email: this.data.inputValue,
-    //       ids: this.data.ids
-    //     }
-    //     downloadEmail(params).then(res => {
-    //       if (res.ret) {
-    //         this.setData({
-    //           inputValue: ''
-    //         })
-    //         wx.navigateTo({
-    //           url: '../promptSuccessPage/index?type=' + this.data.type + '&currentID=' + this.data.currentID,
-    //         })
-    //       } else {
-    //         wx.showToast({
-    //           title: res.message,
-    //           icon: 'none'
-    //         })
-    //       }
-    //     })
-    //   }
-    // }
+    if (!this.data.inputValue) {
+      wx.showToast({
+        title: '请输入您的邮箱地址',
+        icon: 'none'
+      })
+    } else {
+      this.verifyEmail(this.data.inputValue);
+      if (!this.data.isValid) {
+        let params = {
+          email: this.data.inputValue,
+          id: this.data.currentId,
+          file_id: this.data.ids,
+        }
+        annualReportSendEmail(params).then(res => {
+          if (res.ret) {
+            wx.navigateTo({
+              url: '../sendSucc/index?type=' + this.data.type + '&currentID=' + this.data.currentID,
+            })
+          } else {
+            wx.showToast({
+              title: res.message,
+              icon: 'none'
+            })
+          }
+        })
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log(options)
     let email = getApp().globalData.email;
     if (email) {
       this.setData({
@@ -128,13 +124,13 @@ Page({
         color: '#E6EEF7',
       })
     }
-    // let downloadNum = options.ids.split(',').length;
-    // this.setData({
-    //   downloadNum,
-    //   ids: options.ids,
-    //   type: options.type,
-    //   currentID: options.currentID
-    // })
+    let downloadNum = options.ids.split(',').length;
+    console.log(downloadNum)
+    this.setData({
+      downloadNum,
+      ids: options.ids,
+      currentId: options.currentId
+    })
   },
 
   /**

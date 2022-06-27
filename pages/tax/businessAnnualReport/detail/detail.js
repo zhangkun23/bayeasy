@@ -18,20 +18,69 @@ Page({
   },
   // 下载工商年报
   gotoDownloadReport() {
-    // wx.navigateTo({
-    //   url: '../download/index',
-    // })
+    let arr = [];
+    let data = this.data.businessAnnualObj.report_file;
+    data.map(item => {
+      if (item.checked) {
+        arr.push(item.id)
+      }
+    })
+    if (arr.length < 1) {
+      wx.showToast({
+        title: '请选择要下载的工商年报',
+        icon: 'none'
+      })
+    } else {
+      wx.navigateTo({
+        url: '../download/index?ids=' + arr + '&currentId=' + this.data.currentId,
+      })
+    }
+
   },
 
+  // 切换是否选中
   checkedDownload(e) {
     let data = this.data.businessAnnualObj.report_file;
-    console.log(data)
     let id = e.currentTarget.dataset.id;
     data.map(item => {
       if (id == item.id) {
         item.checked = !item.checked
       }
     })
+    this.setData({
+      businessAnnualObj: {
+        ...this.data.businessAnnualObj,
+        report_file: data
+      }
+    })
+    this.updateAllStatus(this.data.businessAnnualObj.report_file)
+  },
+  // 单选某一item时 是否设置全选
+  updateAllStatus(data) {
+    let tempNum = 0;
+    let size = data.length;
+    data.map(item => {
+      if (item.checked) ++tempNum
+    })
+    this.setData({
+      isShowCheckedAll: tempNum == size
+    })
+  },
+  // 全选
+  checkedAll() {
+    this.setData({
+      isShowCheckedAll: !this.data.isShowCheckedAll
+    })
+    let data = this.data.businessAnnualObj.report_file;
+    if (this.data.isShowCheckedAll) {
+      data.map(item => {
+        item.checked = true;
+      })
+    } else {
+      data.map(item => {
+        item.checked = false;
+      })
+    }
     this.setData({
       businessAnnualObj: {
         ...this.data.businessAnnualObj,
@@ -52,7 +101,6 @@ Page({
           businessAnnualObj: res.data
         })
         console.log(this.data.businessAnnualObj)
-
       }
     })
   },
@@ -61,6 +109,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      currentId: options.id
+    })
     this.getDeatail(options.id)
   },
 
