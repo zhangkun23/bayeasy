@@ -1,0 +1,14 @@
+<!--pages/serviceFee/components/unionPayModal/index.wxml-->
+<view class="unionPayModal" wx:if="{{showUnionPayModal}}">
+  <view class="unionPayModal__container">
+    <view class="unionPayModal__title">温馨提示</view>
+    <view class="unionPayModal__tips">若您使用「银行转账支付」方式结算服务费用，由于银行系统到账时间，银行打款完成后财税管家会在1-3个工作日内为您处理本期服务费，在此期间请您随时关注本期服务费结算情况；如对服务费结算处理有疑问，可联系财税管家咨询！</view>
+    <view class="unionPayModal__btn" bindtap="hideModal">
+      <view class="unionPayModal__know">知道了</view>
+    </view>
+    <!-- <view class="unionPayModal__icon">
+      <image class="unionPayModal__closeBtn" src="{{closeBtn}}"></image>
+    </view> -->
+  </view>
+
+</view>

@@ -25,6 +25,9 @@
   width: 200rpx;
   height: 64rpx;
 }
+.serviceFee__item-header {
+  height: 64rpx;
+}
 
 .serviceFee__item-box {
   padding: 40rpx 32rpx 48rpx;

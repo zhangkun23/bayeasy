@@ -20,7 +20,7 @@ App({
     this.globalData.barTitileStatus = barTitileStatus
     // wx.setStorageSync('open_id','olXtf49M8xkKY5Qu1ClC9RBBH-cg')
 
-    // wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guYmV0YS5jb3JwLmJheWVhc3kuY246MTE4ODBcL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTYzODYwMjUsImV4cCI6MTcyODM4NjAyNSwibmJmIjoxNjU2Mzg2MDI1LCJqdGkiOiJScWxYY0ZzQ0h0MTI1REF6Iiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.vdc_u6k7IKNJuRJzdK73-lcil6nEQ1FOXVAkgFeu--8')
+    wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guYmV0YS5jb3JwLmJheWVhc3kuY246MTE4ODBcL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTYzODYwMjUsImV4cCI6MTcyODM4NjAyNSwibmJmIjoxNjU2Mzg2MDI1LCJqdGkiOiJScWxYY0ZzQ0h0MTI1REF6Iiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.vdc_u6k7IKNJuRJzdK73-lcil6nEQ1FOXVAkgFeu--8')
     // wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guYmV0YS5pbnRlcm5hbC5iYXllYXN5LmNuOlwvZ3NoQXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY1MzM4NDYzNSwiZXhwIjoxNzI1Mzg0NjM1LCJuYmYiOjE2NTMzODQ2MzUsImp0aSI6InZaM3o0RUhCR01aT3c3bm8iLCJzdWIiOjE5LCJwcnYiOiIwNWQ5MjQxZTYzMjNjZTNlMDllYzYwMWU4Y2M1YTA3OGU0ODRmNDUyIn0.JkjSKv7W_BJey6dC2iGbRd1DOr6ZMGfljBB5J5muOVs')
   },
   globalData: {
@@ -34,7 +34,6 @@ App({
     operate: false, //是否有运营人员
     todolistNum: 0, //待办数量
     page_size: 15,
-    openid: "",   
     app_id: "wx8c15bc82c287b2b7",  // 本人的appid 
     // open_id: 'olXtf460cBzc5mW5rfjmxfRYvN68', // 我的用户id  登录后返回在微信支付时使用
     // open_id: 'olXtf49M8xkKY5Qu1ClC9RBBH-cg', // 用户id  登录后返回在微信支付时使用

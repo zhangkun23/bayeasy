@@ -7,13 +7,13 @@
       <view class="serviceFee__item" wx:for="{{payList}}" wx:for-item="item" wx:key="id">
         <view>
           <view class="font-600 display-flex serviceFee__item-header">
-            <view wx:if="{{item.order_status == 0}}">
+            <view wx:if="{{item.order_status == 0}}" class="serviceFee__Image">
               <image class="serviceFee__item-image" mode="widthFix" src="{{iconOrangeList}}"></image>
             </view>
-            <view wx:if="{{item.order_status == 1}}">
+            <view wx:if="{{item.order_status == 1}}" class="serviceFee__Image">
               <image class="serviceFee__item-image" mode="widthFix" src="{{iconGreenList}}"></image>
             </view>
-            <view wx:if="{{item.order_status == 2}}">
+            <view wx:if="{{item.order_status == 2}}" class="serviceFee__Image">
               <image class="serviceFee__item-image" mode="widthFix" src="{{iconBlueList}}"></image>
             </view>
           </view>

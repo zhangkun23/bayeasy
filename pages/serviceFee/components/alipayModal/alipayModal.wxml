@@ -5,9 +5,9 @@
       <view>
         <image class="alipayModal__modal-icon" src="{{alipay}}" mode="widthFix"></image>
       </view>
-      <text class="font-size-28 font-600 blackTips">支付宝支付</text>
+      <text class="alipayModal__modal-header" >支付宝支付</text>
     </view>
-    <view class="blackTips alipayModal__modal-tips mg-bt-24 ">复制链接 > 浏览器打开 > 支付宝支付服务费</view>
+    <view class=" alipayModal__modal-tips">复制链接 > 浏览器打开 > 支付宝支付服务费</view>
     <view class="alipayModal__url">
       <view class="font-600 buleTips font-size-32">{{payUrl}}</view>
     </view>

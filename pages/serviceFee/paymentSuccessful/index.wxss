@@ -56,6 +56,7 @@
 
 .paymentSuccessful__btnGroup-back {
   background-color: #1D83F0;
+  box-shadow: 0rpx 30rpx 50rpx 0rpx rgba(29, 131, 240, 0.2);
 }
 
 .paymentSuccessful__btnGroup-detail {
