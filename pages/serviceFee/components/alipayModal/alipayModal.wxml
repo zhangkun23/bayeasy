@@ -1,26 +1,29 @@
 <!--pages/serviceFee/components/alipayModal/alipayModal.wxml-->
 <view class="alipayModal" wx:if="{{showModalToo}}">
   <view class="alipayModal__modal">
-    <view class="alipayModal__modal-title">
-      <view>
-        <image class="alipayModal__modal-icon" src="{{alipay}}" mode="widthFix"></image>
+    <view class="alipayModal__header">
+      <view class="alipayModal__modal-title">
+        <view>
+          <image class="alipayModal__modal-icon" src="{{alipay}}" mode="widthFix"></image>
+        </view>
+        <text class="alipayModal__modal-header">支付宝支付</text>
       </view>
-      <text class="alipayModal__modal-header" >支付宝支付</text>
-    </view>
-    <view class=" alipayModal__modal-tips">复制链接 > 浏览器打开 > 支付宝支付服务费</view>
-    <view class="alipayModal__url">
-      <view class="font-600 buleTips font-size-32">{{payUrl}}</view>
-    </view>
-    <view class="flex-center alipayModal__modal-copybtn" bindtap="copyUrl">
-      <view>
-        <image class="alipayModal__modal-icon display-flex" src="{{copyIcon}}" mode="widthFix"></image>
+      <view class=" alipayModal__modal-tips">复制链接 > 浏览器打开 > 支付宝支付服务费</view>
+      <view class="alipayModal__url">
+        <view class="font-600 buleTips font-size-32">{{payUrl}}</view>
       </view>
-      <text class="whiteTips">复制链接</text>
+      <view class="flex-center alipayModal__modal-copybtn" bindtap="copyUrl">
+        <view>
+          <image class="alipayModal__modal-icon display-flex" src="{{copyIcon}}" mode="widthFix"></image>
+        </view>
+        <text class="whiteTips">复制链接</text>
+      </view>
     </view>
+
     <view class="alipayModal__modal-back">
       <image class="alipayModal__modal-list display-flex" src="{{progress}}" mode="widthFix"></image>
     </view>
-    <view class="alipayModal__modal-text">
+    <!-- <view class="alipayModal__modal-text">
       <view class="font-size-20 text-center">
         <view>复制服务费</view>
         <view>链接</view>
@@ -37,9 +40,10 @@
         <view>返回小程序核实</view>
         <view>支付结果</view>
       </view>
-    </view>
+    </view> -->
     <view bindtap="closeModal" class="modal__container-close">
       <image src="{{closeBtn}}" class="modal__container-closeBtn" mode="aspectFill"></image>
     </view>
   </view>
+
 </view>

@@ -80,7 +80,7 @@
             <view class="detail__topTips orangeTips orangeBack font-size-24 mg-bt-24" wx:if="{{item.reduction_reason}}">
               <view class="detail__topTips-icon">
                 <image src="{{info_max}}"></image>
-                <text>{{item.reduction_reason}}</text>
+                <view>{{item.reduction_reason}}</view>
               </view>
             </view>
             <view class="space-between">

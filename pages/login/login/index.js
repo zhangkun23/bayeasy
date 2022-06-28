@@ -63,7 +63,7 @@ Page({
     wxlogin(param).then(res => {
       console.log(res)
       if (res.ret) {
-        console.log(getApp().globalData.openid)
+        console.log(res.data.openid)
         // getApp().globalData.open_id = "olXtf49M8xkKY5Qu1ClC9RBBH-cg";
         wx.setStorageSync('openid', res.data.openid)
         wx.setStorageSync('token', res.data.access_token)
