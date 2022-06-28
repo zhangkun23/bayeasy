@@ -33,7 +33,7 @@ Component({
       // try {
       wx.openCustomerServiceChat({
         extInfo: {
-          url: 'https://work.weixin.qq.com/kfid/kfce422b23bb53f9f88' //客服ID
+          url: 'https://work.weixin.qq.com/kfid/kfce422b23bb53f9f88' //客服IgitD
         },
         corpId: 'ww27f8369976a0c9de', //企业微信ID
         success(res) {
