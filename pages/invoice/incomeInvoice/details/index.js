@@ -35,15 +35,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (!options.hasOwnProperty('currentID')) {
+    console.log(options)
+    if (!options.hasOwnProperty('id')) {
       return
     }
+    
 
     this.setData({
-      id: options.currentID,
+      id: options.id,
       hasOperate: app.globalData.operate,
     })
-    get_invoice_detail(options.currentID).then(res => {
+    get_invoice_detail(options.id).then(res => {
       var that = this
       if (res.ret) {
         if (res.data instanceof Object && res.data) {

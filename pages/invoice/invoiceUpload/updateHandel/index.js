@@ -199,7 +199,7 @@ Page({
                 let ImgArr = res.tempFiles;
                 if (that.setImgSize(ImgArr)) return;
                 if (res.tempFiles[0]) {
-                    const imgPath = res?.tempFiles[0].tempFilePath;
+                    const imgPath = res.tempFiles[0].tempFilePath;
                     console.log(imgPath)
                     that.setData({
                         ['form.file_url']: imgPath
