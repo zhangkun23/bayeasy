@@ -27,7 +27,9 @@ Page({
         invoiceIcon: app.globalData.imgPath + 'invoice/acquisitionCost/invoiceIcon.png',
         pdfUrl: '',
         invoiceImgUrl: '',
-        failReson: ''
+        failReson: '',
+        imgActiveUrl: '',
+        imgPreviewRotationShow: false,
     },
 
     /**
@@ -90,10 +92,20 @@ Page({
     goPdf() {
         openPdf(this.data.pdfUrl)
     },
-    previewImg: function (e) {
+    previewImg(e) {
+        console.log('减肥黄金时代更好')
         const src = e.currentTarget.dataset.src
-        wx.previewImage({
-            urls: [src],
+        // wx.previewImage({
+        //     urls: [src],
+        // })
+        this.setData({
+            imgActiveUrl: src,
+            imgPreviewRotationShow: true,
+        })
+    },
+    closeImgPreviewRotation() {
+        this.setData({
+            imgPreviewRotationShow: false
         })
     },
     handleTouchMove: function (e) {
