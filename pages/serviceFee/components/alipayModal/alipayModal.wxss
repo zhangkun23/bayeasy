@@ -10,11 +10,9 @@
   background: rgba(11, 29, 48, 0.3);
 }
 
-.alipayModal__header {
+.alipayModal__header { 
   padding: 48rpx 36rpx 10rpx;
 }
-
-
 .alipayModal__modal {
   position: relative;
   top: 26.4%;
