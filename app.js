@@ -13,7 +13,18 @@ App({
       get: function () {
         return this._name
       }
-    })
+    });
+    Object.defineProperty(obj, "closeModal", {
+      configurable: true,
+      enumerable: true,
+      set: function (value) {
+        this._name = value;
+        method(value);
+      },
+      get: function () {
+        return this._name
+      }
+    });
   },
   onLaunch() {
     const barTitileStatus = wx.getMenuButtonBoundingClientRect()
@@ -30,6 +41,7 @@ App({
     operate: false, //是否有运营人员
     todolistNum: 0, //待办数量
     page_size: 15,
+    closeModal:true,
   },
   /**
    * 登录接口保存信息在storage

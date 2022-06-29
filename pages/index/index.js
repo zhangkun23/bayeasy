@@ -81,6 +81,7 @@ Page({
                     textInfo: '完善个人信息',
                     contents: ["为便于贝易资为您提供更为完善的服务", "需要您先完成身份信息安全校验"]
                 })
+                // getApp().globalData.closeModal = true
                 return;
             }
 
@@ -91,13 +92,15 @@ Page({
     watchBack() {
         this.setData({
             dbNum: getApp().globalData.todolistNum,
-            token: wx.getStorageSync('token')
+            token: wx.getStorageSync('token'),
+            showModal:false , // 切换低栏关闭当前弹框
         })
     },
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        getApp().watch(this.watchBack)
         this.setData({
             pageShow: true
         })
@@ -148,7 +151,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        // this.setData({
+        //     showModal:false
+        // })
+        // 切换低栏监听关闭弹框回掉
+       
     },
 
     /**
@@ -162,17 +169,14 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        console.log(34423400)
-        this.setData({
-            showModal: false
-        })
+
     },
 
     /**

@@ -24,51 +24,83 @@ Page({
     billingRecordList: [],
     imgArr: [],
     imgPath: 'https://cs.bayeasy.cn/betaApi',
+    page_size:2,//每页展示的条数
+	  current_page: 1,//当前页数
+	  total:2//总页数
   },
 
+  /**
+   * 选中当前项目
+   * 1 每一项都选中 全选要勾选
+   * 2 每一项都没有选中 全选要取消
+   * 3 勾选活取消当前项目
+   * @param {*} event 
+   */
+  handelClick(event){
+    let item = event.currentTarget.dataset.item;
+    let index = event.currentTarget.dataset.index; 
+    item.checked = !item.checked;
+    let active =  this.data.billingRecordList;
+    active[index] = item;
+    
+    let num = 0;
+    let allStatus = false;
+    active.map(item=> {
+      if(item.checked) num++
+    })
+    // 所有都没有选中
+    if(num == active.length) {
+      allStatus = true
+    }else{
+      allStatus = false
+    }
+    this.setData({
+      billingRecordList:active,
+      isShowCheckedAll:allStatus
+    })
 
+  },
 
   // 收入开票记录列表
   getInvoiceRecord(time) {
     let params = {
       time: time,
-      page_size: 10
+      page_size: this.data.page_size,
+      page:this.data.current_page
     }
     let token = wx.getStorageSync('token');
     getInvoiceRecord(params).then(res => {
-      // let arr = [];
-      // console.log(res) 
-      if (res.ret) {
-        if (res.data.list !== null) {
-          let time = res.data.list[0].time.split('至');
+      if (res.ret && res.data.list.length ) {
+          let info = res.data.list;
+          let time = info[0].time.split('至');
           let date = time[0].split('-');
           let showtime = date[0] + '-' + date[1];
-          this.setData({
-            checkedMonth: showtime
+          info.map((item, index) => {
+            item.src = this.data.imgPath + '/invoice/show_invoice_image?id=' + item.id + '&token=' + token;
+            item.checkedItem = false;
           })
-          res.data.list.map((item, index) => {
-            item.index = index;
-            item.checked = false;
-            item.list.map((aItem, aIndex) => {
-              // arr.push(aItem)
-              aItem.src = this.data.imgPath + '/invoice/show_invoice_image?id=' + aItem.id + '&token=' + token;
-              aItem.checkedItem = false;
-              aItem.index = aIndex;
+          // 分页需要知道是否勾选全选
+          const list = this.data.billingRecordList.concat(info);
+          if(this.data.isShowCheckedAll){
+            list.map(item => {
+              return item.checked = true
             })
+          }
+          this.setData({
+            checkedMonth: showtime,
+            billingRecordList: list,
+            current_page:this.data.current_page,
+            total:res.data.total/this.data.page_size
           })
-        }
-        // if (arr.length / 10 !== 0) {
-        //   console.log(2222,arr.length / 10 !== 0)
-        // }
-        // console.log(arr)
+      }else{
         this.setData({
-          billingRecordList: res.data.list
+          billingRecordList: []
         })
       }
     })
 
   },
-  // 选择账期时间
+  // 选择账期时间 ---放弃
   checkedAllItem(event) {
     let value = event.currentTarget.dataset.row;
     let data = this.data.billingRecordList;
@@ -97,7 +129,7 @@ Page({
     this.updateAllStatus(data);
   },
 
-  // 单选某一item时 是否设置全选
+  // 单选某一item时 是否设置全选 ---放弃
   updateAllStatus(data) {
     let tempNum = 0;
     let size = data.length;
@@ -109,7 +141,7 @@ Page({
     })
   },
 
-  // 选中子项
+  // 选中子项 ---放弃
   changeItemChecked(event) {
     let parent = event.currentTarget.dataset.parent;
     const parentNum = parent.list.length; // 当前父亲 list有多个
@@ -159,15 +191,12 @@ Page({
       checkedMonth: event.detail.value,
     })
   },
-  // 全选
+  // 全选 ---放弃
   checkedAll() {
     let data = this.data.billingRecordList;
     let status = this.data.isShowCheckedAll;
     data.map(item => {
       item.checked = !status;
-      item.list.map(aItem => {
-        aItem.checkedItem = !status;
-      })
     })
     this.setData({
       billingRecordList: data,
@@ -181,32 +210,11 @@ Page({
     })
     utils.saveImgToAlbum(src)
   },
-  // 长按事件开始
-  // touchstart(e) {
-  //   console.log(2222, e)
-  //   this.setData({
-  //     touchstart: e.timeStamp
-  //   })
-  // },
-  // // 长按事件结束
-  // touchend(e) {
-  //   console.log(e)
-  //   let src = e.currentTarget.dataset.src 
-  //   this.setData({
-  //     touchend: e.timeStamp
-  //   })
-  //   if ((this.data.touchend - this.data.touchstart) >= 2000) {
-  //     /*长按两秒*/
-  //     utils.saveImgToAlbum(src)      //响应事件
-  //   }
-  // },
   gotoDownloadEmail() {
     let arrIds = [];
     let data = this.data.billingRecordList;
     data.map(item => {
-      item.list.map(item1 => {
-        if (item1.checkedItem) arrIds.push(item1.id)
-      })
+        if (item.checked) arrIds.push(item.id)
     })
 
     if (arrIds.length < 1) {
@@ -269,7 +277,19 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+console.log('上啦')
+    if(this.data.current_page < this.data.total ){//这里是为了当前页数大于小于总页数，否则会一直刷新
+      var current_page = this.data.current_page*1+1//上滑一次就加载下一页 在当前页数加一  就是加载下一页
+      this.setData({
+        current_page:this.data.current_page+1 //更新data重的页数
+      })
+      this.getInvoiceRecord('');
+    }else{
+      wx.showToast({
+        title: '暂无更多数据',//如果当前页数大于总页数则不会刷新并显示提示
+        icon: "none"
+      })
+    }
   },
 
   /**

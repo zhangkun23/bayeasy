@@ -162,7 +162,6 @@ Page({
           if (res.data.list) {
             arr = res.data.list
           }
-          // console.log(res.data)
           this.setData({
             deatilObj: res.data,
             taxList: arr,
