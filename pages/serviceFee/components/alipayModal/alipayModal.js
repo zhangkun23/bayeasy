@@ -11,7 +11,7 @@ Component({
   data: {
     alipay: tempPath + '/serviecFee/detail/alipay.png',
     copyIcon: tempPath + '/serviecFee/pay/copyBtn.png',
-    progress: tempPath + '/serviecFee/pay/progress.png',
+    progress: tempPath + '/serviecFee/pay/progress2.png',
     closeBtn: tempPath + "public/close-icon.png",
     // copyUrl: "https://cs.bayeasy.cn/api/mp",
   },

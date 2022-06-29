@@ -10,7 +10,9 @@
   background: rgba(11, 29, 48, 0.3);
 }
 
-
+.alipayModal__header { 
+  padding: 48rpx 36rpx 10rpx;
+}
 .alipayModal__modal {
   position: relative;
   top: 26.4%;
@@ -19,9 +21,12 @@
   margin: 0 55rpx;
   background: url('https://image.bayeasy.cn/images-datas/serviecFee/pay/modalBg.png') no-repeat;
   background-size: 100%;
-  padding: 48rpx 36rpx;
 }
-
+.alipayModal__modal-header {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #283E56;
+}
 .alipayModal__modal-title{
   margin-bottom: 24rpx;
   font-size: 28rpx;
@@ -53,6 +58,7 @@
   margin-bottom: 48rpx;
   color: #1D83F0;
   font-size: 32rpx;
+  font-weight: 600;
 }
 
 .alipayModal__modal-copybtn {
@@ -70,10 +76,7 @@
   color: #fff;
 }
 
-.alipayModal__modal-back {
-  margin-bottom: 16rpx;
-  margin-top: 24rpx;
-}
+
 .alipayModal__modal-list{
   width: 100%;
   height: 105rpx;
@@ -83,7 +86,7 @@
   display: flex;
   justify-content: space-between;
   color: #48617C;
-  margin-bottom: 56rpx;
+  margin-bottom: 52rpx;
   font-size: 20rpx;
   text-align: center;
 }

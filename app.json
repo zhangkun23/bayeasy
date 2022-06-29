@@ -67,7 +67,8 @@
     "pages/tax/businessAnnualReport/detail/detail",
     "pages/tax/businessAnnualReport/download/index",
     "pages/tax/businessAnnualReport/sendSucc/index",
-    "pages/personal/myEmail/index"
+    "pages/personal/myEmail/index",
+    "pages/serviceFee/components/unionPayModal/index"
   ],
   "tabBar": {
     "custom": true,

@@ -85,10 +85,9 @@ Component({
           showModal: false
         })
       } else {
-        // let open_id = "olXtf460cBzc5mW5rfjmxfRYvN68";
-        let open_id = getApp().globalData.openid;
+        let open_id = wx.getStorageSync('openid');
         let app_id = getApp().globalData.app_id;
-        if (!open_id) return;
+        console.log(open_id)
         // 提交预订单
         let params = {
           open_id, // 用户id,后端返回
@@ -126,12 +125,12 @@ Component({
                   url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money + '&orderno=' + that.data.orderno + '&id=' + that.data.ids,
                 })
               },
-              "fail": function (res) {
-                console.log(res)
-                wx.navigateTo({
-                  url: '/pages/serviceFee/paymentError/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money,
-                })
-              },
+              // "fail": function (res) {
+              // console.log(res)
+              // wx.navigateTo({
+              //   url: '/pages/serviceFee/paymentError/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money,
+              // })
+              // },
               "complete": function (res) {
                 console.log(res)
               }

@@ -34,7 +34,6 @@ App({
     operate: false, //是否有运营人员
     todolistNum: 0, //待办数量
     page_size: 15,
-    openid: "",   
     app_id: "wx8c15bc82c287b2b7",  // 本人的appid 
     // email: ""  
     // email: "123456789@qq.com"  

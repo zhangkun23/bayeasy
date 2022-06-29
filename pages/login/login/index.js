@@ -64,6 +64,7 @@ Page({
       // console.log(res)
       if (res.ret) {
         wx.setStorageSync('email', res.data.email)
+        wx.setStorageSync('openid', res.data.openid)
         wx.setStorageSync('token', res.data.access_token)
         wx.setStorageSync('mobile', res.data.mobile)
         wx.setStorageSync('idCard', res.data.identity_card)
