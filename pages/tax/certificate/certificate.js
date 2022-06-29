@@ -13,29 +13,27 @@ Page({
     ids: 0,
     title: '',
     returnType: '',
-    imgArr: []
+    imgActiveUrl: "",
+    imgArr: [],
+    imgPreviewRotationShow: false
   },
   previewImg(event) {
     let src = event.currentTarget.dataset.src;
-    wx.previewImage({
-      current: src,
-      urls: this.data.imgArr
+    // wx.previewImage({
+    //   current: src,
+    //   urls: this.data.imgArr
+    // })
+    this.setData({
+      imgActiveUrl: src,
+      imgPreviewRotationShow: true,
     })
   },
-  // 返回欠款详情页
-  backIndex() {
-    console.log(1111)
-    if(this.data.returnType == 'delinquentBill') {
-      wx.navigateTo({
-        url: '../billingDetail/billingDetail&type=delinquentBill',
-      })
-    } else if(this.data.returnType == 'repaymentBill') {
-      wx.navigateTo({
-        url: '../billingDetail/billingDetail&typs=repaymentBill',
-      })
-    }
-    
+  closeImgPreviewRotation(){
+    this.setData({
+      imgPreviewRotationShow: false
+    })
   },
+
   // 获取凭证记录
   getVoucherImg() {
     getVoucher(this.data.ids).then(res => {
@@ -47,11 +45,11 @@ Page({
     })
   },
   renderPage(value) {
-    if(value == 'delinquentBill') {
+    if (value == 'delinquentBill') {
       this.setData({
         title: '欠款凭证'
       })
-    } else if(value == 'repaymentBill') {
+    } else if (value == 'repaymentBill') {
       this.setData({
         title: '还款凭证'
       })

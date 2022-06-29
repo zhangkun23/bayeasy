@@ -1,6 +1,6 @@
 <!--pages/tax/certificate/certificate.wxml-->
 <view class="certificate bgColog">
-    <mp-navigation-bar ext-class="navigationBar" title="{{title}}" back="true" bindback="backIndex"></mp-navigation-bar>
+    <mp-navigation-bar ext-class="navigationBar" title="{{title}}"></mp-navigation-bar>
     <view class="detail__container">
         <!-- <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{returnType == 'delinquentBill'}}"> -->
         <view class="detail__topTips orangeTips orangeBack font-size-24">
@@ -13,4 +13,5 @@
             <image bindtap="previewImg" data-src="{{item}}" class="images" src="{{item}}"></image>
         </view>
     </view>
+    <imgPreviewRotation isShow="{{imgPreviewRotationShow}}" imgUrl="{{imgActiveUrl}}" bind:closeImgPreviewRotation="closeImgPreviewRotation"></imgPreviewRotation>
 </view>

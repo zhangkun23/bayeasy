@@ -61,18 +61,14 @@ Page({
   // 平台登录
   wxlogin(param) {
     wxlogin(param).then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.ret) {
-        getApp().globalData.openid = res.data.openid;
-        getApp().globalData.email = res.data.email;
-        // getApp().globalData.email = '123456789@qq.com';
-        console.log(getApp().globalData.openid)
-        // getApp().globalData.open_id = "olXtf49M8xkKY5Qu1ClC9RBBH-cg";
+        wx.setStorageSync('email', res.data.email)
         wx.setStorageSync('token', res.data.access_token)
         wx.setStorageSync('mobile', res.data.mobile)
         wx.setStorageSync('idCard', res.data.identity_card)
         this.getInfo();
-      } else{
+      } else {
         wx.showToast({
           title: res.message,
           icon: "none"

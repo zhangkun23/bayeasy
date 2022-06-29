@@ -101,7 +101,7 @@ Page({
         //     urls: [src],
         // })
         this.setData({
-            imgActiveUrl:src,
+            imgActiveUrl: src,
             imgPreviewRotationShow:true,
         })
     },
@@ -111,7 +111,7 @@ Page({
         return
     },
 
-    closeImgPreviewRotation:function(){
+    closeImgPreviewRotation: function(){
         this.setData({
             imgPreviewRotationShow:false,
         })

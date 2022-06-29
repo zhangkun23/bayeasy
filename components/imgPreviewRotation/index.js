@@ -15,9 +15,9 @@ Component({
             type: String,
             value: ''
         },
-        isDownLoad:{ //是否支持保存图片
-            type:Boolean,
-            value:false
+        isDownLoad: { //是否支持保存图片
+            type: Boolean,
+            value: false
         }
     },
 
@@ -25,17 +25,17 @@ Component({
      * 组件的初始数据
      */
     data: {
-        rotateIcon:rotateIcon,
+        rotateIcon: rotateIcon,
         transform: "",
         transformStatus: true,
         touch: {
             distance: 0, //两点直线距离
             scaleWidth: 100,
         },
-        touchesNum:0, //触屏个数
-        touchstart:0, //长按开始事件
-        touchend:0, //结束时间
-        timestart:0, //开始时间
+        touchesNum: 0, //触屏个数
+        touchstart: 0, //长按开始事件
+        touchend: 0, //结束时间
+        timestart: 0, //开始时间
 
     },
 
@@ -65,13 +65,14 @@ Component({
          * 2 双值点击记录 两点之间距离
          */
         touchStartHandle(e) {
+            console.log(e)
             this.setData({
-                touchesNum:e.touches.length
+                touchesNum: e.touches.length
             })
             if (e.touches.length == 1) {
                 var timestart = new Date().getTime();
                 this.setData({
-                    timestart:timestart,
+                    timestart: timestart,
                 })
                 return
             }
@@ -112,14 +113,14 @@ Component({
          * 1 兼容条件---》单指点击
          * 2 兼容条件---》触屏时间< 200
          */
-        touchEndHandle(e){
+        touchEndHandle(e) {
             if (this.data.touchesNum == 1) {
                 var timeEnd = new Date().getTime();
                 // time < 200 认定为单机事件
                 let time = parseInt(timeEnd) - parseInt(this.data.timestart);
-                if(time < 200){
+                if (time < 200) {
                     this.triggerEvent('closeImgPreviewRotation');
-                }else if(time> 500 && this.data.isDownLoad){
+                } else if (time > 500 && this.data.isDownLoad) {
                     utils.saveImgToAlbum(this.data.imgUrl)
                 }
             }
@@ -130,7 +131,7 @@ Component({
          * 兼容条件---》单指长按
          * 长按与touch事件冲突 展示不用
          */
-        longtap(){
+        longtap() {
             // var timeEnd = new Date().getTime();
             // let time = parseInt(timeEnd) - parseInt(this.data.timestart);
             // console.log("长按时间---"+time)

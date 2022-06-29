@@ -20,7 +20,7 @@ App({
     this.globalData.barTitileStatus = barTitileStatus
     // wx.setStorageSync('open_id','olXtf49M8xkKY5Qu1ClC9RBBH-cg')
 
-    wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guYmV0YS5jb3JwLmJheWVhc3kuY246MTE4ODBcL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTYyOTkxMjgsImV4cCI6MTcyODI5OTEyOCwibmJmIjoxNjU2Mjk5MTI4LCJqdGkiOiJiS0QwQ2FyUzhmcFZBUkxUIiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.apWFDUnbYqhPNFWu9UdbRVF8oGF26GatJlLnVkfBJmo')
+    wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guYmV0YS5jb3JwLmJheWVhc3kuY246MTE4ODBcL2dzaEFwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTYzODYwMjUsImV4cCI6MTcyODM4NjAyNSwibmJmIjoxNjU2Mzg2MDI1LCJqdGkiOiJScWxYY0ZzQ0h0MTI1REF6Iiwic3ViIjoxMiwicHJ2IjoiMDVkOTI0MWU2MzIzY2UzZTA5ZWM2MDFlOGNjNWEwNzhlNDg0ZjQ1MiJ9.vdc_u6k7IKNJuRJzdK73-lcil6nEQ1FOXVAkgFeu--8')
     // wx.setStorageSync('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9nc2guYmV0YS5pbnRlcm5hbC5iYXllYXN5LmNuOlwvZ3NoQXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY1MzM4NDYzNSwiZXhwIjoxNzI1Mzg0NjM1LCJuYmYiOjE2NTMzODQ2MzUsImp0aSI6InZaM3o0RUhCR01aT3c3bm8iLCJzdWIiOjE5LCJwcnYiOiIwNWQ5MjQxZTYzMjNjZTNlMDllYzYwMWU4Y2M1YTA3OGU0ODRmNDUyIn0.JkjSKv7W_BJey6dC2iGbRd1DOr6ZMGfljBB5J5muOVs')
   },
   globalData: {
@@ -37,7 +37,7 @@ App({
     openid: "",   
     app_id: "wx8c15bc82c287b2b7",  // 本人的appid 
     // email: ""  
-    email: "123456789@qq.com"  
+    // email: "123456789@qq.com"  
   },
   /**
    * 登录接口保存信息在storage

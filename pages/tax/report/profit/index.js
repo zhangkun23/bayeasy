@@ -22,6 +22,8 @@ Page({
         title: '利润表',
         endTime: '',
         showDate: '',
+        imgActiveUrl: '',
+        imgPreviewRotationShow: false,
         isShowModal: false,
         isShowSaveModal: false,
         isShowReport: false,
@@ -204,9 +206,18 @@ Page({
     // 图片放大
     previewImg: function (e) {
         const src = e.currentTarget.dataset.src;
-        wx.previewImage({
-            urls: [src],
+        // wx.previewImage({
+        //     urls: [src],
+        // })
+        this.setData({
+            imgPreviewRotationShow: true,
+            imgActiveUrl: src
         })
+    },
+    closeImgPreviewRotation() {
+        this.setData({
+            imgPreviewRotationShow: false
+        }) 
     },
     // 月报
     showMonth() {

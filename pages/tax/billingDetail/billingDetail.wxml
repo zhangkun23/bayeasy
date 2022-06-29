@@ -2,7 +2,7 @@
 <contactServiceLayout type="financialOperations">
 
 <view class="detail bgColog">
-  <mp-navigation-bar ext-class="navigationBar" title="{{title}}" bindback="backIndex"></mp-navigation-bar>
+  <mp-navigation-bar ext-class="navigationBar" title="{{title}}"></mp-navigation-bar>
   <scroll-view scroll-y="true" class="wrapper">
     <view class="detail__container">
       <view class="detail__layout">

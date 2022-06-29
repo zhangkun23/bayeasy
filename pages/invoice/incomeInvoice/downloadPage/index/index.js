@@ -110,7 +110,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let email = getApp().globalData.email;
+        let email = wx.getStorageSync('email');
         if (email) {
             this.setData({
                 inputValue: email,

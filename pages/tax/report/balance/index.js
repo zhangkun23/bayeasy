@@ -20,6 +20,8 @@ Page({
         isShowModal: false,
         isShowSaveModal: false,
         isShwoData: false,
+        imgPreviewRotationShow: false,
+        imgActiveUrl: '',
         reportFormObj: {},
         buttons: [{
                 text: '取消'
@@ -68,7 +70,6 @@ Page({
     // 获取商事主体创建时间
     getFullYears() {
         getQuarter().then(res => {
-            console.log(res)
             if (res.ret) {
                 let date = res.data[0].year + '-' + res.data[0].month
                 console.log(date)
@@ -157,7 +158,6 @@ Page({
             month
         })
         this.getReportContent();
-        console.log(this.data.checkedMonth)
 
     },
     // 保存图片
@@ -180,11 +180,20 @@ Page({
     // 图片放大
     previewImg: function (e) {
         const src = e.currentTarget.dataset.src;
-        wx.previewImage({
-            urls: [src],
+        // wx.previewImage({
+        //     urls: [src],
+        // })
+        this.setData({
+            imgPreviewRotationShow: true,
+            imgActiveUrl: src,
         })
     },
-    handleTouchMove: function(e){
-        return 
+    closeImgPreviewRotation() {
+        this.setData({
+            imgPreviewRotationShow: false
+        })
+    },
+    handleTouchMove: function (e) {
+        return
     }
 })

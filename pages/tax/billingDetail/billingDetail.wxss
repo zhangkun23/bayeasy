@@ -9,9 +9,7 @@
   flex: 1;
   height: 1rpx;
 }
-.detail__layout {
-  /* padding: 32rpx; */
-}
+
 .space-between {
   display: flex;
   justify-content: space-between;

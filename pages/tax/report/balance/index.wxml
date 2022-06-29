@@ -1,8 +1,8 @@
 <!--pages/tax/report/balance/index.wxml-->
 <contactServiceLayout type="financialOperations">
 
-<view class="balance bgColog" catchtouchmove="handleTouchMove">
-    <mp-navigation-bar ext-class="navigationBar" title="资产负债表"></mp-navigation-bar>
+    <view class="balance bgColog" catchtouchmove="handleTouchMove">
+        <mp-navigation-bar ext-class="navigationBar" title="资产负债表"></mp-navigation-bar>
         <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="changeDate">
             <view class="balance__date">
                 <view class="balance__date-year">{{checkedMonth}}</view>
@@ -11,56 +11,57 @@
                 </view>
             </view>
         </picker>
-    <scroll-view scroll-y="{{true}}" class="balance1">
+        <scroll-view scroll-y="{{true}}" class="balance1">
 
-        <view class="balance__center">
-            <view class="flex-center balance__center-header">
-                <view class="balance__center-back display-flex">
-                    <image class="balance__center-icon" src="{{date}}"></image>
+            <view class="balance__center">
+                <view class="flex-center balance__center-header">
+                    <view class="balance__center-back display-flex">
+                        <image class="balance__center-icon" src="{{date}}"></image>
+                    </view>
+                    <view class="balance__center-title whiteTips font-600">{{year}}年第{{month}}期</view>
                 </view>
-                <view class="balance__center-title whiteTips font-600">{{year}}年第{{month}}期</view>
-            </view>
-            <view class="whiteTips font-size-24 balance__center-list">
-                <view class="space-between">
-                    <text>编制单位</text>
-                    <text>{{reportFormObj.company_name || '--' }}</text>
-                </view>
-                <view class="space-between">
-                    <text>统一社会信用代码</text>
-                    <text>{{reportFormObj.tax_number || "--"}}</text>
-                </view>
-                <view class="space-between">
-                    <text>单位</text>
-                    <text>元</text>
-                </view>
-            </view>
-        </view>
-        <block wx:if="{{reportFormObj.image}}">
-            <view class="date__image" data-src="{{reportFormObj.image}}" bindtap="previewImg">
-                <view class="date__image-view">
-                    <image class="date__image-img" src="{{reportFormObj.image}}"></image>
+                <view class="whiteTips font-size-24 balance__center-list">
+                    <view class="space-between">
+                        <text>编制单位</text>
+                        <text>{{reportFormObj.company_name || '--' }}</text>
+                    </view>
+                    <view class="space-between">
+                        <text>统一社会信用代码</text>
+                        <text>{{reportFormObj.tax_number || "--"}}</text>
+                    </view>
+                    <view class="space-between">
+                        <text>单位</text>
+                        <text>元</text>
+                    </view>
                 </view>
             </view>
-            <view class="date__button whiteTips" bindtap="saveImg">
-                <view>保存图片</view>
-            </view>
+            <block wx:if="{{reportFormObj.image}}">
+                <view class="date__image" data-src="{{reportFormObj.image}}" bindtap="previewImg">
+                    <view class="date__image-view">
+                        <image class="date__image-img" src="{{reportFormObj.image}}"></image>
+                    </view>
+                </view>
+                <view class="date__button whiteTips" bindtap="saveImg">
+                    <view>保存图片</view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="date__image-empty">
+                    <view class="date__image-view2">
+                        <image class="date__image-img2" src="{{empty_bg_url}}"></image>
+                    </view>
+                    <view class="date__image-nodata font-size-24">暂无数据</view>
+                </view>
+                <view class="date__button whiteTips grayBack">
+                    <view>保存图片</view>
+                </view>
+            </block>
+        </scroll-view>
+        <block wx:if="{{isShowModal}}">
+            <mp-dialog show="{{isShowModal}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确定保存图片么？">
+                <view>资产负债表</view>
+            </mp-dialog>
         </block>
-        <block wx:else>
-            <view class="date__image-empty">
-                <view class="date__image-view2">
-                    <image class="date__image-img2" src="{{empty_bg_url}}"></image>
-                </view>
-                <view class="date__image-nodata font-size-24">暂无数据</view>
-            </view>
-            <view class="date__button whiteTips grayBack">
-                <view>保存图片</view>
-            </view>
-        </block>
-    </scroll-view>
-    <block wx:if="{{isShowModal}}">
-        <mp-dialog show="{{isShowModal}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" title="确定保存图片么？">
-            <view>资产负债表</view>
-        </mp-dialog>
-    </block>
-</view>
+        <imgPreviewRotation isShow="{{imgPreviewRotationShow}}" imgUrl="{{imgActiveUrl}}" bind:closeImgPreviewRotation="closeImgPreviewRotation"></imgPreviewRotation>
+    </view>
 </contactServiceLayout>
