@@ -16,9 +16,9 @@ module.exports = {
         let _url = `${baseUrl}${url}`;
         let token = wx.getStorageSync('token')
         return new Promise((resolve, reject) => {
-            wx.showLoading({
-                title: '正在加载',
-            });
+            // wx.showLoading({
+            //     title: '正在加载',
+            // });
             wx.request({
                 url: _url,
                 data: data,
