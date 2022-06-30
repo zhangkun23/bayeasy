@@ -114,7 +114,7 @@ Component({
                         let items = data.filter(item => {
                             return this.data.type == item.type
                         })[0];
-                        if (items.length !== 0) {
+                        if (items) {
                             if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist' || this.data.type == 'businessOperation') {
                                 wx.navigateTo({
                                     url: '/pages/contactOperate/index?label_name=' + items.label_name + '&wechat_img=' + items.wechat_img,
