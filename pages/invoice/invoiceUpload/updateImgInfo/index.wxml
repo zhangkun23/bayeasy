@@ -2,11 +2,17 @@
   <mp-navigation-bar ext-class="navBar" title="增值税发票查验" background="#1D83F0"></mp-navigation-bar>
   <view class="titleTop">
     <!-- 查验发票提示 -->
-    <view class="detail__topTips orangeTips orangeBack font-size-24">
+    <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{status ==0}}">
       <view class="detail__topTips-icon">
         <image class="infoIcon" src="{{info_max}}"></image>
-        <text wx:if="{{ errInfoNum == 0 }}">由于税务系统限制，当天开具的进项发票不支持查验，请您上传前核实开票日期进行提交！</text>
-        <text wx:elif="{{ errInfoNum !== 0 }}">存在异常数据，请优先处理</text>
+        <text wx:if="{{ errInfoNum==0 }}">由于税务系统限制，当天开具的进项发票不支持查验，请您上传前核实开票日期进行提交！</text>
+        <text wx:if="{{ errInfoNum !== 0 }}">存在异常数据，请优先处理</text>
+      </view>
+    </view>
+    <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{status == 1 && errInfoNum !== 0}}">
+      <view class="detail__topTips-icon" >
+        <image class="infoIcon" src="{{info_max}}"></image>
+        <text>存在异常数据，请优先处理</text>
       </view>
     </view>
     <!-- 提交完成阶段 错误提示 -->

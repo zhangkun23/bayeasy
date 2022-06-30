@@ -17,6 +17,7 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
+      getApp().watch( ()=> this.watchBack())
       var that = this;
       utils.getTabBarIndex(this, 4);
       // 获取运营
@@ -230,6 +231,12 @@ Component({
     }, ]
   },
   methods: {
+    // 切换低栏关闭当前弹框
+    watchBack() {
+      this.setData({
+          showModal: false
+      })
+    },
     // 是否提交过留言
     getFeedbackStatus() {
       feedbackStatus().then(res => {

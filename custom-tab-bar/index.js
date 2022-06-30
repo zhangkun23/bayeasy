@@ -45,6 +45,8 @@ Component({
   },
   methods: {
     switchTab(e) {
+      
+      getApp().globalData.closeModal = false
       const data = e.currentTarget.dataset
       const url = data.path
       this.setData({
