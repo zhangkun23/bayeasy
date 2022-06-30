@@ -1,19 +1,18 @@
-<!--pages/invoice/billingRecord/index/index.wxml-->
 <view class="billingRecord flex-column bgColog">
   <mp-navigation-bar title="收入开票记录" ext-class="navigationBar"></mp-navigation-bar>
-  <view class="billingRecord__container">
-    <view class="billingRecord__header display-flex">
-      <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="bindDateChange">
-        <view class="balance__date display-flex">
-          <view class="balance__date-year whiteTips">{{checkedMonth}}</view>
-          <view class="balance__date-iamge">
-            <image class="balance__date-icon" src="{{dropdown}}"></image>
-          </view>
+  <view class="billingRecord__header display-flex">
+    <picker mode="date" fields="month" start="{{startTime}}" end="{{endTime}}" value="{{checkedMonth}}" bindchange="bindDateChange">
+      <view class="balance__date display-flex">
+        <view class="balance__date-year whiteTips">{{checkedMonth}}</view>
+        <view class="balance__date-iamge">
+          <image class="balance__date-icon" src="{{dropdown}}"></image>
         </view>
-      </picker>
-    </view>
+      </view>
+    </picker>
+  </view>
 
-    <scroll-view class="wrapper" scroll-y="true"  >
+  <scroll-view class="wrapper" scroll-y="true"  style="height:{{windowHeight}}px" bindscrolltolower="loadMore">
+    <view class="billingRecord__container">
       <view class="billingRecord__List" wx:if="{{billingRecordList.length > 0}}">
         <view class="itemBox">
           <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item"  wx:for-index="bindex" wx:key="id">
@@ -38,8 +37,6 @@
           <view class="btn whiteTips" bindtap="gotoDownloadEmail">下载电子发票文件</view>
         </view>
       </view>
-
-
       <view wx:else>
         <view class="nothing__nodata">
           <image class="nothing__image" src="{{empty_bg_url}}"></image>
@@ -49,6 +46,6 @@
           <service class="securityCheck__footer-image" ></service>
         </view>
       </view>
-    </scroll-view>
-  </view>
+    </view>
+  </scroll-view>
 </view>

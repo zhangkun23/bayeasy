@@ -26,9 +26,22 @@ Page({
     imgPath: 'https://cs.bayeasy.cn/betaApi',
     page_size:2,//每页展示的条数
 	  current_page: 1,//当前页数
-	  total:2//总页数
+    total:0,//总页数
+    windowHeight:0, //屏幕高度
   },
-
+  loadMore(){
+    if(this.data.current_page < this.data.total ){//这里是为了当前页数大于小于总页数，否则会一直刷新
+      this.setData({
+        current_page:this.data.current_page+1 //更新data重的页数
+      })
+      this.getInvoiceRecord(this.data.checkedMonth);
+    }else{
+      wx.showToast({
+        title: '暂无更多数据',//如果当前页数大于总页数则不会刷新并显示提示
+        icon: "none"
+      })
+    }
+  },
   /**
    * 选中当前项目
    * 1 每一项都选中 全选要勾选
@@ -100,76 +113,6 @@ Page({
     })
 
   },
-  // 选择账期时间 ---放弃
-  checkedAllItem(event) {
-    let value = event.currentTarget.dataset.row;
-    let data = this.data.billingRecordList;
-    data.map(item => {
-      if (item.index == value.index) {
-        if (item.checked) {
-          item.checked = false
-          item.list.map(aItem => {
-            aItem.checkedItem = false;
-          })
-        } else {
-          item.checked = true
-          item.list.map(aItem => {
-            aItem.checkedItem = true;
-          })
-        }
-        // item.checked = !item.checked;
-        // item.list.map(aItem => {
-        //   aItem.checkedItem = !aItem.checkedItem;
-        // })
-      }
-    })
-    this.setData({
-      billingRecordList: data,
-    })
-    this.updateAllStatus(data);
-  },
-
-  // 单选某一item时 是否设置全选 ---放弃
-  updateAllStatus(data) {
-    let tempNum = 0;
-    let size = data.length;
-    data.map(item => {
-      if (item.checked) ++tempNum
-    })
-    this.setData({
-      isShowCheckedAll: tempNum == size
-    })
-  },
-
-  // 选中子项 ---放弃
-  changeItemChecked(event) {
-    let parent = event.currentTarget.dataset.parent;
-    const parentNum = parent.list.length; // 当前父亲 list有多个
-
-    let index = event.currentTarget.dataset.index;
-    let data = this.data.billingRecordList;
-    let activeNum = 0;
-
-    // 当前父亲 list 有多个已经被选中
-    data.map(item => {
-      if (item.index == parent.index) {
-        item.list.map(item1 => {
-          if (item1.index == index) {
-            item1.checkedItem = !item1.checkedItem;
-          }
-          if (item1.checkedItem) {
-            ++activeNum
-          }
-        })
-        activeNum == parentNum ? item.checked = true : item.checked = false;
-      }
-    })
-    this.setData({
-      billingRecordList: data,
-      checkedNum: activeNum
-    })
-    this.updateAllStatus(data);
-  },
   addZero(num) {
     return num < 10 ? '0' + num : num
   },
@@ -186,22 +129,12 @@ Page({
   },
   // 选择时间
   bindDateChange(event) {
-    this.getInvoiceRecord(event.detail.value)
     this.setData({
       checkedMonth: event.detail.value,
+      current_page:1,
+      billingRecordList:[]
     })
-  },
-  // 全选 ---放弃
-  checkedAll() {
-    let data = this.data.billingRecordList;
-    let status = this.data.isShowCheckedAll;
-    data.map(item => {
-      item.checked = !status;
-    })
-    this.setData({
-      billingRecordList: data,
-      isShowCheckedAll: !status
-    })
+    this.getInvoiceRecord(event.detail.value)
   },
   previewImg: function (e) {
     const src = e.currentTarget.dataset.src;
@@ -227,7 +160,6 @@ Page({
         url: '../../incomeInvoice/downloadPage/index/index?ids=' + arrIds,
       })
     }
-
   },
 
   /**
@@ -236,6 +168,16 @@ Page({
   onLoad(options) {
     this.getInvoiceRecord('');
     this.getDate();
+     //获取设备信息，获取屏幕的Height属性
+     let that = this;
+     wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.windowHeight)
+        that.setData({
+          windowHeight : res.windowHeight-400
+        })
+      }
+    })
   },
 
   /**
@@ -277,19 +219,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-console.log('上啦')
-    if(this.data.current_page < this.data.total ){//这里是为了当前页数大于小于总页数，否则会一直刷新
-      var current_page = this.data.current_page*1+1//上滑一次就加载下一页 在当前页数加一  就是加载下一页
-      this.setData({
-        current_page:this.data.current_page+1 //更新data重的页数
-      })
-      this.getInvoiceRecord('');
-    }else{
-      wx.showToast({
-        title: '暂无更多数据',//如果当前页数大于总页数则不会刷新并显示提示
-        icon: "none"
-      })
-    }
+
   },
 
   /**
