@@ -330,3 +330,10 @@
   z-index: 9000;
   opacity: 0;
 }
+
+
+.footer {
+  position: fixed;
+  bottom: 90rpx;
+  right: 11%;
+}

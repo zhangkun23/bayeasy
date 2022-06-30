@@ -10,7 +10,7 @@
       </view>
     </view>
     <view class="detail__topTips orangeTips orangeBack font-size-24" wx:if="{{status == 1 && errInfoNum !== 0}}">
-      <view class="detail__topTips-icon" >
+      <view class="detail__topTips-icon">
         <image class="infoIcon" src="{{info_max}}"></image>
         <text>存在异常数据，请优先处理</text>
       </view>
@@ -112,4 +112,12 @@
 </view>
 <!-- 提交错误提示 -->
 <updateImageInfo_errInfo errInfoShow="{{errInfoShow}}" errInfo="{{errInfo}}" bind:errInfoCloseOrShow="errInfoCloseOrShow" />
-<service class="servicePosition" wx:if="{{status == 2}}" contact="财税管家"></service>
+
+<view class="footer" wx:if="{{status == 2}}">
+  <view class="font-size-20 grayTips">
+    <text>如对提交完成的增值税发票有疑问，请联系您</text>
+    <text class="orangeTips">财税管家</text>
+    <text>咨询！</text>
+  </view>
+  <service type="financialOperations"></service>
+</view>
