@@ -54,7 +54,7 @@ Component({
 
   attached() {
     console.log(this.data.type)
-    // this.getOperateList()
+    // this.contactService()
   },
 
 
@@ -62,14 +62,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-
     // 联系客服
     contactService() {
-      console.log(this.data.type)
       operateList().then(res => {
         if (res.ret) {
-          console.log(res)
           if (res.data && res.data.length > 0) {
             let data = res.data;
             data.map(item => {
@@ -83,7 +79,7 @@ Component({
             })
             let items = data.filter(item => {
               return this.data.type == item.type
-            })
+            })[0]
             if(items.length !== 0) {
               if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist' || this.data.type == 'businessOperation') {
                 wx.navigateTo({
