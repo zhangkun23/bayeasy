@@ -11,7 +11,7 @@
     </view>
     <view class="promptSuccessPage__bottom">
       <view class="promptSuccessPage__bottom-text font-size-24">
-        <view>如您未收到邮件或发送的电子发票文件有疑问</view>
+        <view>如您未收到邮件或对发送的电子发票文件有疑问</view>
         <view>请联系<text class="orangeTips font-size-24">财税管家</text>咨询！</view>
       </view>
       <view class="promptSuccessPage__service">

@@ -24,7 +24,7 @@ Page({
     billingRecordList: [],
     imgArr: [],
     imgPath: 'https://cs.bayeasy.cn/betaApi',
-    page_size:2,//每页展示的条数
+    page_size:10,//每页展示的条数
 	  current_page: 1,//当前页数
     total:0,//总页数
     windowHeight:0, //屏幕高度
@@ -136,6 +136,20 @@ Page({
     })
     this.getInvoiceRecord(event.detail.value)
   },
+  /**
+   * 全选 反选
+   */
+  checkedAll() {
+    let data = this.data.billingRecordList;
+    let status = this.data.isShowCheckedAll;
+    data.map(item => {
+      item.checked = !status;
+    })
+    this.setData({
+      billingRecordList: data,
+      isShowCheckedAll: !status
+    })
+  },
   previewImg: function (e) {
     const src = e.currentTarget.dataset.src;
     wx.previewImage({
@@ -160,6 +174,7 @@ Page({
         url: '../../incomeInvoice/downloadPage/index/index?ids=' + arrIds,
       })
     }
+
   },
 
   /**
@@ -219,7 +234,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    
   },
 
   /**

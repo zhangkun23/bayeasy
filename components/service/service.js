@@ -30,7 +30,7 @@ Component({
                 this.setData({
                     title: "联系贝易资"
                 })
-                this.getOperateList();
+                // this.getOperateList();
             } else {
                 this.setData({
                     title: "在线客服"
@@ -41,7 +41,19 @@ Component({
     },
 
     attached() {
-        console.log(this.data.type,'客服')
+        // console.log(this.data.type,'客服')
+        let token = wx.getStorageSync('token') || '';
+        if (token) {
+            this.setData({
+                title: "联系贝易资"
+            })
+            // this.getOperateList();
+        } else {
+            this.setData({
+                title: "在线客服"
+            })
+
+        }
     },
 
     /**
@@ -56,15 +68,15 @@ Component({
      */
     methods: {
         handeClickOpenServe() {
-            // console.log(134234324234524)
-            // let token = wx.getStorageSync('token') || '';
-            // console.log(token)
-            // if (token) {
+            let token = wx.getStorageSync('token');
+            if (token) {
+                this.getOperateList();
+            } else {
                 this.setData({
                     showModal: true
                 })
-                console.log(this.data.showModal)
-            // }
+
+            }
             // if(this.data.title == '联系财税管家') {
             //     const operate = getApp().globalData.operate;
             //     if (operate) {
@@ -89,19 +101,39 @@ Component({
             operateList().then(res => {
                 if (res.ret) {
                     let data = res.data;
-                    data.map(item => {
-                        if (item.label_name == '财务运营') {
-                            item.type = 'financialOperations'
-                        } else if (item.label_name == '开票运营') {
-                            item.type = 'billingSpecialist'
-                        } else if (item.label_name == '商务运营') {
-                            item.type = 'businessOperation'
+                    if (data && data.length > 0) {
+                        data.map(item => {
+                            if (item.label_name == '财务运营') {
+                                item.type = 'financialOperations'
+                            } else if (item.label_name == '开票运营') {
+                                item.type = 'billingSpecialist'
+                            } else if (item.label_name == '商务运营') {
+                                item.type = 'businessOperation'
+                            }
+                        })
+                        let items = data.filter(item => {
+                            return this.data.type == item.type
+                        })[0];
+                        if (items.length !== 0) {
+                            if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist' || this.data.type == 'businessOperation') {
+                                wx.navigateTo({
+                                    url: '/pages/contactOperate/index?label_name=' + items.label_name + '&wechat_img=' + items.wechat_img,
+                                })
+                            } else {
+                                this.setData({
+                                    showModal: true
+                                })
+                            }
+                        } else {
+                            this.setData({
+                                showModal: true
+                            })
                         }
-                    })
-                    this.setData({
-                        serviceList: data
-                    })
-                    console.log(data, '在线客服')
+                    } else {
+                        this.setData({
+                            showModal: true
+                        })
+                    }
                 }
             })
         },
