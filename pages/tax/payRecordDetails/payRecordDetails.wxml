@@ -97,14 +97,33 @@
                 <text class="detail__content-title">缴款状态</text>
                 <text class="detail__content-text">{{item.pay_status}}</text>
               </view>
-              <view class="space-between mg-bp-24">
-                <text class="detail__content-title font-600">应补税额</text>
-                <text class="orangeTips">¥ {{item.should_pay_tax}}</text>
-              </view>
-              <view class="space-between mg-bp-24">
-                <text class="detail__content-title font-600">应退税额</text>
-                <text class="greennTips">¥ {{item.should_refund_tax}}</text>
-              </view>
+
+              <!-- 应补税额 应退税额 都是0要展示 -->
+              <block wx:if="{{ !item.should_pay_tax &&  !item.should_refund_tax }}">
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title font-600">应补税额</text>
+                    <text class="orangeTips font-600">¥ {{ '0.00'}}</text>
+                  </view>
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title font-600 ">应退税额</text>
+                    <text class="greennTips font-600">¥ {{'0.00'}}</text>
+                  </view>
+              </block>
+              <block wx:else>
+                <block wx:if="{{ item.should_pay_tax }}">
+                  <view class="space-between mg-bp-24">
+                      <text class="detail__content-title font-600">应补税额</text>
+                      <text class="orangeTips">¥ {{item.should_pay_tax}}</text>
+                  </view>
+                </block>
+                <block wx:if="{{ item.should_refund_tax }}">
+                  <view class="space-between mg-bp-24">
+                    <text class="detail__content-title font-600">应退税额</text>
+                    <text class="greennTips">¥ {{item.should_refund_tax}}</text>
+                  </view>
+                </block>
+              </block>
+
             </view>
           </view>
         </view>

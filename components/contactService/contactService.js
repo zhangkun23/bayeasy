@@ -54,7 +54,7 @@ Component({
 
   attached() {
     console.log(this.data.type)
-    // this.getOperateList()
+    // this.contactService()
   },
 
 
@@ -62,8 +62,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-
     // 联系客服
     contactService() {
       operateList().then(res => {
@@ -79,13 +77,20 @@ Component({
                 item.type = 'businessOperation'
               }
             })
-            let item = data.filter(item => {
-              return item.type == this.data.type
-            })
-            if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist') {
-              wx.navigateTo({
-                url: '../../pages/contactOperate/index.wxml?label_name=' + item.label_name + '&wechat_img=' + item.wechat_img,
-              })
+            let items = data.filter(item => {
+              return this.data.type == item.type
+            })[0];
+            console.log(items)
+            if(items) {
+              if (this.data.type == 'financialOperations' || this.data.type == 'billingSpecialist' || this.data.type == 'businessOperation') {
+                wx.navigateTo({
+                  url: '/pages/contactOperate/index?label_name=' + items.label_name + '&wechat_img=' + items.wechat_img,
+                })
+              } else {
+                this.setData({
+                  showModal: true
+                })
+              }
             } else {
               this.setData({
                 showModal: true

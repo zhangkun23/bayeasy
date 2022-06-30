@@ -13,7 +13,18 @@ App({
       get: function () {
         return this._name
       }
-    })
+    });
+    Object.defineProperty(obj, "closeModal", {
+      configurable: true,
+      enumerable: true,
+      set: function (value) {
+        this._name = value;
+        method(value);
+      },
+      get: function () {
+        return this._name
+      }
+    });
   },
   onLaunch() {
     const barTitileStatus = wx.getMenuButtonBoundingClientRect()
@@ -37,6 +48,9 @@ App({
     app_id: "wx8c15bc82c287b2b7",  // 本人的appid 
     // email: ""  
     // email: "123456789@qq.com"  
+    // open_id: 'olXtf460cBzc5mW5rfjmxfRYvN68', // 我的用户id  登录后返回在微信支付时使用
+    // open_id: 'olXtf49M8xkKY5Qu1ClC9RBBH-cg', // 用户id  登录后返回在微信支付时使用
+    closeModal:true,
   },
   /**
    * 登录接口保存信息在storage

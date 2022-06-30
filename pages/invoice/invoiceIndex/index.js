@@ -7,6 +7,7 @@ Component({
             utils.getTabBarIndex(this,1);
             const barTitileStatus = wx.getMenuButtonBoundingClientRect()
             this.setData({statusBarHeight: barTitileStatus.bottom + 32})
+            getApp().watch( ()=> this.watchBack())
         }
     },
     lifetimes: {
@@ -31,6 +32,12 @@ Component({
         contents:["为便于贝易资为您提供更为完善的服务", "需要您先完成身份信息安全校验"]
     },
     methods:{
+         // 切换低栏关闭当前弹框
+         watchBack() {
+            this.setData({
+                showModal: false
+            })
+        },
         handelClickUrl(e) {
             const url = e.currentTarget.dataset.url;
             if(!wx.getStorageSync('token')){

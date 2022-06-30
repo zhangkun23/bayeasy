@@ -1,29 +1,30 @@
 /* pages/invoice/billingRecord/index/index.wxss */
 .billingRecord {
-  height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: url('https://image.bayeasy.cn/images-datas/invoice/billingRecord/background.png') no-repeat;
   background-size: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navigationBar {
   color: #fff;
 }
-
-.billingRecord__container {
+.wrapper{
   flex: 1;
   height: 1rpx;
-  padding: 28rpx 32rpx;
-  overflow-y: auto;
+}
+
+.billingRecord__container {
+  padding: 0rpx 32rpx 28rpx;
 }
 
 .balance__date {
   margin-bottom: 10rpx;
-  /* margin-bottom: 108rpx; */
 }
 
 .balance__date-year {
-  /* color: #fff; */
   margin-right: 8rpx;
   font-size: 32rpx;
 }
@@ -34,21 +35,23 @@
 }
 
 .billingRecord__header {
-
-  margin-bottom: 23rpx;
+  padding: 0 32rpx;
 }
 
 .billingRecord__List-item {
-  padding: 32rpx;
-  margin-bottom: 32rpx;
   background: #FFFFFF;
   box-shadow: 0rpx 10rpx 30rpx 0px rgba(209, 213, 223, 0.6);
   border-radius: 28rpx;
+  padding-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
-
+.itemBox{
+  padding-bottom: 160rpx;
+}
 .billingRecord__item-header {
-  margin-bottom: 48rpx;
+  margin-bottom: 16rpx;
   align-items: center;
+  padding: 48rpx 32rpx 0rpx;
 }
 
 .billingRecord__item-title {
@@ -62,9 +65,11 @@
 }
 
 .billingRecord__imgGroup {
-  /* margin-top: 23rpx; */
-  margin-bottom: 32rpx;
-
+  display: flex;
+  align-items: center;
+}
+.itemBg{
+  background: #F3F8FC;
 }
 
 .billingRecord__imgGroup-con {
@@ -79,8 +84,9 @@
 }
 
 .billingRecord__imgGroup-right {
-  width: 566rpx;
-  height: 362rpx;
+  width: 100%;
+  height: 398rpx;
+  padding: 24rpx 32rpx;
 }
 
 .billingRecord__footer {

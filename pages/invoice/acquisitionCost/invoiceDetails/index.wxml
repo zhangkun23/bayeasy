@@ -83,11 +83,11 @@
                     <my-service></my-service>
                 </view>
             </view> -->
-                <view class="securityCheck__footer">
+                <!-- <view class="securityCheck__footer">
                     <view class="securityCheck__bottom">
                         <my-service class="securityCheck__footer-image"></my-service>
                     </view>
-                </view>
+                </view> -->
             </view>
             <imgPreviewRotation isShow="{{imgPreviewRotationShow}}" imgUrl="{{imgActiveUrl}}" bind:closeImgPreviewRotation="closeImgPreviewRotation"></imgPreviewRotation>
         </scroll-view>
