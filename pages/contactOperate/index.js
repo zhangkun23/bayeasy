@@ -25,18 +25,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, '个人中心联系客服')
-    if (options.wechat_img) {
-      this.setData({
-        qrcode_url: options.wechat_img,
-        isShowImg: true
-      })
-    } else {
-      this.setData({
-        isShowImg: false,
-        qrcode_url: ''
-      })
-    }
+    console.log(options)
+    let currentOperation = getApp().globalData.currentOperation;
+    currentOperation.map(item => {
+      if(item.label_name == options.label_name) {
+        this.setData({
+          qrcode_url: item.wechat_img
+        })
+      }
+    })
+    // if (options.wechat_img) {
+    //   this.setData({
+    //     qrcode_url: options.wechat_img,
+    //     isShowImg: true
+    //   })
+    // } else {
+    //   this.setData({
+    //     isShowImg: false,
+    //     qrcode_url: ''
+    //   })
+    // }
 
 
     // const that = this
