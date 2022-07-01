@@ -5,6 +5,21 @@ const {
     prod
 } = require('../http/env')
 
+const {
+    operateList
+} = require("../http/api/api_grzx")
+
+/**
+ * 查询运营人员列表
+ */
+const asgetOperateList = () => {
+    operateList().then(res => {
+        if (res.ret && res.data && res.data.length > 0) {
+            getApp().globalData.currentOperation = res.data;
+        }
+    })
+}
+
 if (!String.prototype.format) {
     String.prototype.format = function () {
         var args = arguments;
@@ -303,4 +318,5 @@ module.exports = {
     nullToEmptyString,
     jumpUrl,
     saveImgToAlbum,
+    asgetOperateList
 }

@@ -27,7 +27,7 @@
     </view>
     <view class="grayTips font-size-20  flex-rowcenter ss_service">
       <view class="flex-rowcenter">
-        <view>如对提交完成的增值税发票有疑问，请联系您</view>
+        <view>如对提交成功的申报税款信息有疑问，请联系</view>
         <view class="orangeTips">财税管家</view>
         <view>咨询！</view>
       </view>
