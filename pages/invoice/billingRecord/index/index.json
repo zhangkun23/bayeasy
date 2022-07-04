@@ -2,7 +2,8 @@
   "component": true,
   "usingComponents": {
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-    "service": "/components/service/service"
+    "service": "/components/service/service",
+    "imgPreviewRotation": "/components/imgPreviewRotation/index"
   },
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white"

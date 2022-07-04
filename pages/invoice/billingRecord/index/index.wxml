@@ -11,18 +11,18 @@
     </picker>
   </view>
 
-  <scroll-view class="wrapper" scroll-y="true"  style="height:{{windowHeight}}px" bindscrolltolower="loadMore">
+  <scroll-view class="wrapper" scroll-y="true" style="height:{{windowHeight}}px" bindscrolltolower="loadMore">
     <view class="billingRecord__container">
       <view class="billingRecord__List" wx:if="{{billingRecordList.length > 0}}">
         <view class="itemBox">
-          <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item"  wx:for-index="bindex" wx:key="id">
+          <view class="billingRecord__List-item" wx:for="{{billingRecordList}}" wx:for-item="item" wx:for-index="bindex" wx:key="id">
             <view class="display-flex billingRecord__item-header" data-item="{{item}}" data-index="{{bindex}}" bindtap="handelClick">
-              <view class="display-flex" data-row="{{item}}" >
+              <view class="display-flex" data-row="{{item}}">
                 <image class="billingRecord__imgGroup-left" src="{{!item.checked ? loginUnSelect : loginSelect}}" />
               </view>
-              <view class="billingRecord__item-title font-600"  >账期时间 {{item.time}}</view>
+              <view class="billingRecord__item-title font-600">账期时间 {{item.time}}</view>
             </view>
-            <view  class="{{ item.checked ? 'itemBg billingRecord__imgGroup' :  'billingRecord__imgGroup'}}" >
+            <view class="{{ item.checked ? 'itemBg billingRecord__imgGroup' :  'billingRecord__imgGroup'}}">
               <image class="billingRecord__imgGroup-right" bindtap="previewImg" data-src="{{item.src}}" src="{{item.src}}" />
             </view>
           </view>
@@ -43,9 +43,10 @@
           <view class="nothing__nodata-text font-size-24">暂无数据</view>
         </view>
         <view class="footer">
-          <service class="securityCheck__footer-image" ></service>
+          <service class="securityCheck__footer-image"></service>
         </view>
       </view>
     </view>
   </scroll-view>
+  <imgPreviewRotation isShow="{{imgPreviewRotationShow}}" imgUrl="{{imgActiveUrl}}" bind:closeImgPreviewRotation="closeImgPreviewRotation"></imgPreviewRotation>
 </view>

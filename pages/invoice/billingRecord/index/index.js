@@ -17,6 +17,8 @@ Page({
     empty_bg_url: imgpath + 'public/emptyBackGround.png',
     isShowList: false,
     isShowCheckedAll: false,
+    imgPreviewRotationShow: false,
+    imgActiveUrl: "",
     date: "",
     startTime: "2022-01",
     endTime: "",
@@ -152,10 +154,21 @@ Page({
   },
   previewImg: function (e) {
     const src = e.currentTarget.dataset.src;
-    wx.previewImage({
-      urls: [src],
+    this.setData({
+      imgPreviewRotationShow: true,
+      imgActiveUrl: src
     })
-    utils.saveImgToAlbum(src)
+    // wx.previewImage({
+    //   urls: [src],
+    // })
+    // utils.saveImgToAlbum(src)
+  },
+
+
+  closeImgPreviewRotation() {
+    this.setData({
+      imgPreviewRotationShow: false
+    })
   },
   gotoDownloadEmail() {
     let arrIds = [];
