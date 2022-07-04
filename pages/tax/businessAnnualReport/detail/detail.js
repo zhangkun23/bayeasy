@@ -3,7 +3,10 @@
 const tempPath = getApp().globalData.imgPath;
 const {
   annualReportInfo
-} = require('../../../../http/api/api_csbl')
+} = require('../../../../http/api/api_csbl');
+const {
+  openPdf
+} = require('../../../../utils/util')
 Page({
 
   /**
@@ -35,7 +38,6 @@ Page({
         url: '../download/index?ids=' + arr + '&currentId=' + this.data.currentId,
       })
     }
-
   },
 
   // 切换是否选中
@@ -95,14 +97,24 @@ Page({
         let reportfFle = res.data.report_file;
         reportfFle.map(item => {
           item.checked = false;
-          item.title = '2021年工商年度报告书1.pdf'
+          // item.title = '2021年工商年度报告书1.pdf'
         })
         this.setData({
           businessAnnualObj: res.data
         })
         console.log(this.data.businessAnnualObj)
+      } else {
+        wx.showToast({
+          title: res.message,
+          icon: 'none'
+        })
       }
     })
+  },
+  // 打开pdf文件
+  goEntrance(e) {
+    console.log(e)
+    openPdf(e.currentTarget.dataset.url)
   },
 
   /**

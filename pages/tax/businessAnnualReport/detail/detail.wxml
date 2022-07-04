@@ -32,7 +32,7 @@
           <view class="detail__checkicon">
             <image class="detail__itemPdf" src="{{pdf_icon}}"></image>
           </view>
-          <view class="font-size-28">{{item.title}}</view>
+          <view class="font-size-28" bindtap="goEntrance" data-url="{{item.url}}">{{item.name}}</view>
         </view>
 
       </view>
