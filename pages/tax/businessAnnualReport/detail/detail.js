@@ -102,7 +102,6 @@ Page({
         this.setData({
           businessAnnualObj: res.data
         })
-        console.log(this.data.businessAnnualObj)
       } else {
         wx.showToast({
           title: res.message,
@@ -113,7 +112,6 @@ Page({
   },
   // 打开pdf文件
   goEntrance(e) {
-    console.log(e)
     openPdf(e.currentTarget.dataset.url)
   },
 

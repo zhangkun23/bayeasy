@@ -17,7 +17,7 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
-      getApp().watch( ()=> this.watchBack())
+      getApp().watch(() => this.watchBack())
       var that = this;
       utils.getTabBarIndex(this, 4);
       // 获取运营
@@ -89,7 +89,36 @@ Component({
           })
         } else if (userStatus === 2) {
           console.log('用户状态为2，已关联')
-          _gate_info[0].url = '../../login/information/index'
+          _gate_info[0].url = '../../login/information/index';
+          const arr = [{
+                id: 1,
+                icon: icons_url.contact_operate,
+                url: '/pages/contactOperate/index',
+                text: '联系客服',
+                isShow: true
+              },
+              {
+                id: 2,
+                icon: icons_url.about_bayeasy,
+                url: '/pages/personal/aboutBayeasy/index',
+                text: '关于贝易资',
+                isShow: true
+              },
+              {
+                id: 3,
+                icon: icons_url.feed_back,
+                url: '/pages/faq/feedbackList/index',
+                text: '留言反馈',
+                isShow: true
+              },
+              {
+                id: 4,
+                icon: icons_url.feed_back,
+                url: '/pages/personal/myEmail/index',
+                text: '我的邮箱',
+                isShow: false
+              }
+            ];
           this.setData({
             token: token,
             login_status: 2,
@@ -97,7 +126,9 @@ Component({
             showCompleteInfo: false,
             showModal: false,
             gates_info: _gate_info,
+            entrances_info: arr
           })
+          return
         } else {
           this.setData({
             token: token,
@@ -173,25 +204,22 @@ Component({
         id: 1,
         icon: icons_url.contact_operate,
         url: '/pages/contactOperate/index',
-        text: '联系客服'
+        text: '联系客服',
+        isShow: true
       },
       {
         id: 2,
         icon: icons_url.about_bayeasy,
         url: '/pages/personal/aboutBayeasy/index',
-        text: '关于贝易资'
+        text: '关于贝易资',
+        isShow: true
       },
       {
         id: 3,
         icon: icons_url.feed_back,
         url: '/pages/faq/feedbackList/index',
-        text: '留言反馈'
-      },
-      {
-        id: 4,
-        icon: icons_url.feed_back,
-        url: '/pages/personal/myEmail/index',
-        text: '我的邮箱'
+        text: '留言反馈',
+        isShow: true
       },
     ],
     gates_info: [{
@@ -240,7 +268,7 @@ Component({
     // 切换低栏关闭当前弹框
     watchBack() {
       this.setData({
-          showModal: false
+        showModal: false
       })
     },
     // 是否提交过留言
@@ -278,7 +306,6 @@ Component({
       const userStatus = app.globalData.userStatus;
       let url = e.currentTarget.dataset.url;
       let isStatus = this.data.isStatus;
-
       if (url == '/pages/faq/feedbackList/index') {
         if (!this.data.token) {
           this.setData({
@@ -317,15 +344,15 @@ Component({
       // if (this.data.isOperate) {
       //   console.error("客户已有运营专员仍旧触发联系客服 ")
       // } else {
-        // wx.navigateTo({
-        //   url: '../../contactOperate/index',
-        // })
-        this.setData({
-          serviceModal: true
-        })
-        // wx.makePhoneCall({
-        //   phoneNumber: app.globalData.phoneNumber
-        // })
+      // wx.navigateTo({
+      //   url: '../../contactOperate/index',
+      // })
+      this.setData({
+        serviceModal: true
+      })
+      // wx.makePhoneCall({
+      //   phoneNumber: app.globalData.phoneNumber
+      // })
       // }
     },
     goGate(e) {

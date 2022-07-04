@@ -103,137 +103,137 @@ Page({
     // 获取运营人员列表
     contactService() {
         operateList().then(res => {
-                if (res.ret) {
-                    if (res.data && res.data.length > 0) {
-                        let data = res.data;
-                        data.map(item => {
-                            if (item.label_name == '财务运营') {
-                                item.type = 'financialOperations'
-                            } else if (item.label_name == '开票运营') {
-                                item.type = 'billingSpecialist'
-                            } else if (item.label_name == '商务运营') {
-                                item.type = 'businessOperation'
-                            }
-                        })
-                        // let items = data.filter(item => {
-                        //     return this.data.type == item.type
-                        // })[0];
+            if (res.ret) {
+                if (res.data && res.data.length > 0) {
+                    let data = res.data;
+                    data.map(item => {
+                        if (item.label_name == '财务运营') {
+                            item.type = 'financialOperations'
+                        } else if (item.label_name == '开票运营') {
+                            item.type = 'billingSpecialist'
+                        } else if (item.label_name == '商务运营') {
+                            item.type = 'businessOperation'
+                        }
+                    })
+                    // let items = data.filter(item => {
+                    //     return this.data.type == item.type
+                    // })[0];
 
-                        // if (data) {
-                        // if (items.type == 'financialOperations' || items.type == 'billingSpecialist' || items.type == 'businessOperation') {
-                        //     wx.navigateTo({
-                        //         url: '/pages/contactOperate/index?label_name=' + items.label_name + '&wechat_img=' + items.wechat_img,
-                        //     })
-                        // } else {
-                        getApp().globalData.currentOperation = data;
-                        // }
-                        // } else {
-                        getApp().globalData.showServiceModal = false;
+                    // if (data) {
+                    // if (items.type == 'financialOperations' || items.type == 'billingSpecialist' || items.type == 'businessOperation') {
+                    //     wx.navigateTo({
+                    //         url: '/pages/contactOperate/index?label_name=' + items.label_name + '&wechat_img=' + items.wechat_img,
+                    //     })
+                    // } else {
+                    getApp().globalData.currentOperation = data;
+                    // }
+                    // } else {
+                    getApp().globalData.showServiceModal = false;
                     // }
                 } else {
                     getApp().globalData.showServiceModal = false
                 }
             }
         })
-},
+    },
 
 
-/**
- * 生命周期函数--监听页面显示
- */
-onShow: function () {
-    getApp().watch(this.watchBack)
-    this.setData({
-        pageShow: true
-    })
-    utils.getTabBarIndex(this, 2);
-    if (wx.getStorageSync('token')) {
-        todolist().then(res => {
-            if (res.ret) {
-                getApp().globalData.todolistNum = res.data.nums;
-                this.setData({
-                    dbNum: res.data.nums,
-                    token: wx.getStorageSync('token')
-                })
-            }
-        })
-
-        /**
-         * 查询用户关联状态 /决定路由跳转地址
-         *  0 不为贝易资用户
-         *  1 为贝易资用户未关联信息
-         *  2 已关联
-         */
-        getUserStatus().then(res => {
-            if (res.ret) {
-                getApp().globalData.userStatus = res.data.status;
-                this.setData({
-                    userStatus: res.data.status
-                })
-                // getApp().globalData.userStatus = 0
-                // this.setData({
-                //   userStatus: 0
-                // })
-            }
-        })
-    } else {
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+        getApp().watch(this.watchBack)
         this.setData({
-            token: ''
+            pageShow: true
         })
+        utils.getTabBarIndex(this, 2);
+        if (wx.getStorageSync('token')) {
+            todolist().then(res => {
+                if (res.ret) {
+                    getApp().globalData.todolistNum = res.data.nums;
+                    this.setData({
+                        dbNum: res.data.nums,
+                        token: wx.getStorageSync('token')
+                    })
+                }
+            })
+
+            /**
+             * 查询用户关联状态 /决定路由跳转地址
+             *  0 不为贝易资用户
+             *  1 为贝易资用户未关联信息
+             *  2 已关联
+             */
+            getUserStatus().then(res => {
+                if (res.ret) {
+                    getApp().globalData.userStatus = res.data.status;
+                    this.setData({
+                        userStatus: res.data.status
+                    })
+                    // getApp().globalData.userStatus = 0
+                    // this.setData({
+                    //   userStatus: 0
+                    // })
+                }
+            })
+        } else {
+            this.setData({
+                token: ''
+            })
+        }
+        this.contactService()
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        // this.setData({
+        //     showModal:false
+        // })
+        // 切换低栏监听关闭弹框回掉
+
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
+
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+
+    },
+
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+
     }
-    this.contactService()
-},
-
-/**
- * 生命周期函数--监听页面加载
- */
-onLoad: function (options) {
-    // this.setData({
-    //     showModal:false
-    // })
-    // 切换低栏监听关闭弹框回掉
-
-},
-
-/**
- * 生命周期函数--监听页面初次渲染完成
- */
-onReady: function () {
-
-},
-
-/**
- * 生命周期函数--监听页面隐藏
- */
-onHide: function () {
-
-},
-
-/**
- * 生命周期函数--监听页面卸载
- */
-onUnload: function () {
-
-},
-
-/**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-onPullDownRefresh: function () {
-
-},
-
-/**
- * 页面上拉触底事件的处理函数
- */
-onReachBottom: function () {
-
-},
-
-/**
- * 用户点击右上角分享
- */
-onShareAppMessage: function () {
-
-}
 })

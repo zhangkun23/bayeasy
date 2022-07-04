@@ -93,7 +93,6 @@ Page({
    */
   onLoad: function (options) {
     let email = wx.getStorageSync('email');
-    console.log(email)
     if (email) {
       this.setData({
         inputValue: email
