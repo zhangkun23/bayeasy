@@ -72,7 +72,7 @@ Page({
         getQuarter().then(res => {
             if (res.ret) {
                 let date = res.data[0].year + '-' + res.data[0].month
-                console.log(date)
+                // console.log(date)
                 this.setData({
                     startTime: date,
                 })

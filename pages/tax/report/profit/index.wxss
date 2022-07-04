@@ -10,16 +10,19 @@
 .profit {
     background: url('https://image.bayeasy.cn/images-datas/report/profit_back.png') no-repeat;
     background-size: 100%;
-    padding: 32rpx;
     height: calc(100vh - 64rpx);
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
+.profit__wrapper {
+    padding: 32rpx;
+}
+
 .wrapper {
     flex: 1;
-    height: 1rpx;
+    /* height: 1rpx; */
 }
 
 .profit__btngroup {

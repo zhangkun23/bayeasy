@@ -52,13 +52,6 @@ Component({
     }
   },
 
-  attached() {
-    console.log(this.data.type)
-    // this.contactService()
-    console.log(getApp().globalData.currentOperationStatus)
-    console.log(getApp().globalData.showServiceModal)
-  },
-
 
   /**
    * 组件的方法列表

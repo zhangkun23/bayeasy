@@ -31,7 +31,7 @@
             <view class="sub-title">{{item.subTitle}}</view>
           </view>
           <view class="act-btn" data-tid="{{item.id}}" bindtap="goCheck">
-            <login-btn text="{{item.btnText}}" btnBgColor="#1D83F0" btnWidth="140rpx" btnHeight="60rpx" borderRadius="35rpx" btnBgColor="#1D83F0" fontSize="28rpx"></login-btn>
+            <login-btn text="{{item.btnText}}" btnBgColor="{{item.btnBgColor}}" btnWidth="140rpx" btnHeight="60rpx" borderRadius="35rpx" btnBgColor="#1D83F0" fontSize="28rpx"></login-btn>
           </view>
         </view>
       </view>
