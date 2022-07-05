@@ -10,7 +10,10 @@ Page({
     listOrangeIcon: tempPath + 'tax/businessAnnual/list_icon_orange.png',
     listBlueIcon: tempPath + 'tax/businessAnnual/list_icon_blue.png',
     empty_bg_url: tempPath + 'public/emptyBackGround.png',
-    list: []
+    list: [],
+    listBlueShow: '#C2DFFF',
+    listOrangeShow: '#EE7D00',
+
   },
 
   gotodetail(e) {

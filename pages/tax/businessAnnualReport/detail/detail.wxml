@@ -6,7 +6,7 @@
 
       <view class="detail__date ">
         <view class="flex-rowcenter">
-          <view>
+          <view class="align-center">
             <image class="detail__date-icon" src="{{sendByPost}}"></image>
           </view>
           <view class="detail__date-text font-size-28 font-600 whiteTips">报告年份</view>
@@ -14,13 +14,13 @@
         <view class="text-center whiteTips font-600 detail__date-year">{{businessAnnualObj.report_year}}</view>
       </view>
 
-      <view class="space-between font-size-24 whiteTips detail__year">
+      <view class="space-between font-size-28 whiteTips detail__year">
         <view>公示日期</view>
         <view>{{businessAnnualObj.publication_date}}</view>
       </view>
 
       <view class="detail__report mg-tp-32">
-        <view class="display-flex mg-bt-24">
+        <view class="align-center mg-bt-24">
           <view class="detail__report-border"></view>
           <view class="font-size-28 font-600 blackTips">工商年度报告书</view>
         </view>

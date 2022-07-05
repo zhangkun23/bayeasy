@@ -8,11 +8,11 @@
         <view class="display-flex businessAnnualReport__left">
           <view class="display-flex">
             <view class="businessAnnualReport__item-title">
-              <image class="businessAnnualReport__item-icon" src="{{item.report_notice == 0 ? listBlueIcon : listOrangeIcon}}"></image>
+              <image class="businessAnnualReport__item-icon" style="box-shadow: 0rpx 6rpx 11rpx 0rpx{{item.report_notice == 0 ? listBlueShow : listOrangeShow}}" src="{{item.report_notice == 0 ? listBlueIcon : listOrangeIcon}}"></image>
             </view>
             <view class="businessAnnualReport__item-text">
-              <view class="font-size-28 font-600">报告年份：{{item.report_year}}</view>
-              <view class="font-size-24 mg-tp-16">公示日期：{{item.publication_date}}</view>
+              <view class="font-size-32 font-600 businessAnnualReport__item-year">报告年份：{{item.report_year}}</view>
+              <view class="font-size-24 businessAnnualReport__item-date">公示日期：{{item.publication_date}}</view>
             </view>
           </view>
         </view>
