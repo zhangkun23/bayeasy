@@ -2,7 +2,8 @@ const {
     btoa
 } = require('./base64')
 const {
-    prod, pdfUrl
+    prod,
+    pdfUrl
 } = require('../http/env')
 
 const {
@@ -122,15 +123,13 @@ const saveImgToAlbum = (content) => {
         })
     })
 }
-// 打开pdf文件   
+
 /**
- * 
  * @param {*} url  默认传入url
  * @param {*} type 工商年报时会传type  当type有值时表示需要在域名和url之间拼接参数
  */
 const openPdf = (url, type) => {
-    let fileName
-    url = decodeURIComponent(url)
+    let fileName, filePath;
     if (url === 'service_agreement') {
         fileName = '平台服务协议'
     } else if (url === 'privacy_policy') {
@@ -138,7 +137,6 @@ const openPdf = (url, type) => {
     } else {
         fileName = url
     }
-
     const app = getApp()
     if (!url) {
         console.error("Wrong url passed to pdf : ", url)
@@ -154,14 +152,19 @@ const openPdf = (url, type) => {
             url = prod + url
         }
     }
-    console.log(url)
-    
+
     // 保存后的文件名
-    if (!fileName.endsWith('.pdf')) {
-        fileName = fileName + '.pdf'
+    if (type) {
+        let str = url.split('/')
+        fileName = str[str.length - 1]
+    } else {
+        if (!fileName.endsWith('.pdf')) {
+            fileName = fileName + '.pdf'
+        }
     }
+
     wx.downloadFile({
-        url: encodeURIComponent(url),
+        url: url,
         filePath: wx.env.USER_DATA_PATH + "/" + fileName,
         success: function (res) {
             if (res.statusCode === 200) { //成功

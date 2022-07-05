@@ -101,7 +101,6 @@ Page({
                         }
 
                         data = Object.assign(data, _data)
-                        console.log(data)
                         data.objectMultiShow = objectMultiArray.map((item, index) => {
                             // 回归
                             if (index > 0) {
@@ -110,7 +109,6 @@ Page({
                                 // 获取最长那条 
                                 let _iid = 0;
                                 let _longNum = null;
-                                console.log(objectMultiArray[index - 1])
                                 objectMultiArray[index - 1].map((item, index) => {
                                     if (!_longNum) {
                                         _iid = index
@@ -411,8 +409,7 @@ Page({
             }
             this.getDetails(param);
         } else {
-            if (this.data.type > 0) {
-                console.log(456)
+            // if (this.data.type > 0) {
                 // 获取默认数据进行初始化
                 let that = this;
                 const mydate = new Date()
@@ -443,7 +440,7 @@ Page({
                     endTime: _year + "-" + _month,
                     showDate: _year + "年第" + _month + "期",
                 })
-            }
+            // }
         }
     },
     handleTouchMove: function (e) {

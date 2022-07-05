@@ -17,7 +17,8 @@ Page({
     pdf_icon: tempPath + 'tax/businessAnnual/pdf_icon.png',
     loginSelect: tempPath + 'invoice/billingRecord/checked.png',
     loginUnSelect: tempPath + 'invoice/billingRecord/unchecked.png',
-    businessAnnualObj: {}
+    businessAnnualObj: {},
+    showLink: false
   },
   // 下载工商年报
   gotoDownloadReport() {
@@ -111,6 +112,11 @@ Page({
   },
   // 打开pdf文件
   goEntrance(e) {
+    console.log(e,'打开pdf')
+    // this.setData({
+    //   showLink: true,
+    //   link: 'http://gshapi.beta.corp.bayeasy.cn:11880/upload/' + e.currentTarget.dataset.url
+    // })
     openPdf(e.currentTarget.dataset.url, 'uploadPdf')
   },
 

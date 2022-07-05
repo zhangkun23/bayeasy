@@ -34,7 +34,6 @@
           </view>
           <view class="font-size-28" bindtap="goEntrance" data-url="{{item.url}}">{{item.name}}</view>
         </view>
-
       </view>
 
       <view class="billingRecord__footer display-flex">
@@ -47,6 +46,7 @@
         <view class="btn whiteTips" bindtap="gotoDownloadReport">下载工商年报</view>
       </view>
 
+      <!-- <web-view wx:if="{{showLink}}" src="{{link}}"></web-view> -->
     </view>
   </view>
 </contactServiceLayout>
