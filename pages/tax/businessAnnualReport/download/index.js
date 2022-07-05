@@ -95,7 +95,7 @@ Page({
         annualReportSendEmail(params).then(res => {
           if (res.ret) {
             wx.navigateTo({
-              url: '../sendSucc/index?type=' + this.data.type + '&currentID=' + this.data.currentID,
+              url: '../sendSucc/index?email=' + this.data.inputValue + '&downloadNum=' + this.data.downloadNum
             })
           } else {
             wx.showToast({

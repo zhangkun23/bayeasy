@@ -1,6 +1,8 @@
 // pages/personal/myEmail/index.js
 const tempPath = getApp().globalData.imgPath;
-
+const {
+  resetEmail
+} = require('../../../http/api/api')
 Page({
   /**
    * 页面的初始数据
@@ -44,7 +46,7 @@ Page({
         isValid: false,
       });
     } else {
-      this.verifyEmail(value);
+      this.verifyEmail(value)
     }
     this.setData({
       isShowIcon: false,
@@ -75,17 +77,45 @@ Page({
       this.setData({
         isValid: true,
         color: "#FF475A",
+        btnBackgroundColor: "#E6EEF7",
+        btnColor: "#ABBED2",
       });
     }
   },
 
+  // 修改邮箱
   updateEmail() {
-    let val = this.data.inputValue;
-    update(val).then((res) => {
+    this.onFocus()
+    this.setData({
+      disabled: false,
+      isShowUpdateEmail: false,
+      btnBackgroundColor: "#1D83F0",
+      btnColor: "#fff",
+      color: "#1D83F0",
+    })
+  },
+
+  // 确定保存
+  sureEmail() {
+    if (this.data.btnBackgroundColor == "#E6EEF7" && this.data.btnColor == "#ABBED2") {
+      return
+    }
+    resetEmail({
+      email: this.data.inputValue
+    }).then(res => {
       if (res.ret) {
-        wx.setStorageSync('email', val)
+        wx.showToast({
+          title: '已保存',
+          icon: "none"
+        })
+        this.setData({
+          isShowUpdateEmail: true,
+          disabled: true,
+          color: "#E6EEF7"
+        })
+        wx.setStorageSync('email', this.data.inputValue)
       }
-    });
+    })
   },
 
   /**
@@ -95,11 +125,13 @@ Page({
     let email = wx.getStorageSync('email');
     if (email) {
       this.setData({
-        inputValue: email
+        inputValue: email,
+        isShowUpdateEmail: true,
+        disabled: true
       })
     } else {
       this.setData({
-        inputValue: ''
+        inputValue: '',
       })
     }
   },

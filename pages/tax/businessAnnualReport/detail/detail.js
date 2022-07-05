@@ -97,7 +97,6 @@ Page({
         let reportfFle = res.data.report_file;
         reportfFle.map(item => {
           item.checked = false;
-          // item.title = '2021年工商年度报告书1.pdf'
         })
         this.setData({
           businessAnnualObj: res.data
@@ -112,7 +111,7 @@ Page({
   },
   // 打开pdf文件
   goEntrance(e) {
-    openPdf(e.currentTarget.dataset.url)
+    openPdf(e.currentTarget.dataset.url, 'uploadPdf')
   },
 
   /**

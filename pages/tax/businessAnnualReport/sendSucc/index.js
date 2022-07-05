@@ -8,8 +8,8 @@ Page({
    */
   data: {
     sentSuccessfully: tempPath + 'tax/businessAnnual/sentSuccessfully.png',
-    email: "1232343242@qq.com",
-    downloadNum: "1"
+    email: "",
+    downloadNum: ""
   },
 
   toList() {
