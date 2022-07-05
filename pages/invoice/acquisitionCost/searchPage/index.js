@@ -197,7 +197,6 @@ Page({
           })
         }
       } else {
-        console.log("无法获取后台数据: ", res)
         wx.showToast({
           title: '网络有问题哦！请稍后再试试！',
           icon: 'none',

@@ -123,7 +123,6 @@ Page({
         })
 
         let arr = this.data.updateImgOrPdfArr;
-        console.log(arr)
     },
 
     /**

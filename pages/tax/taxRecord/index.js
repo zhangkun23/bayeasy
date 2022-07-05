@@ -23,11 +23,9 @@ Page({
   },
   backIndex() {
     let pages = getCurrentPages();
-    console.log(pages)
     for (var i = 0; i < pages.length; i++) {
       let item = pages[i];
       if (item.route.indexOf('successfully') != -1) {
-        console.log('你是从---确认结果页面---来的啦')
         wx.navigateBack({
           delta: 2
         })

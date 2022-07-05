@@ -27,7 +27,6 @@ Page({
   },
   // 逻辑正确
   backTaxIndex() {
-    console.log(12)
     // if (this.data.returnType == 'todo') {
     //   wx.navigateTo({
     //     url: '../../todo/todo',

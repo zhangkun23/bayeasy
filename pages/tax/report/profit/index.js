@@ -362,8 +362,8 @@ Page({
         })
     },
     bindMultiPickerColumnChange: function (e) {
-        console.log(e, this.data.multiIndex)
-        console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+        // console.log(e, this.data.multiIndex)
+        // console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
         // 初始化数据
         var data = {
             objectMultiShow: this.data.objectMultiShow,

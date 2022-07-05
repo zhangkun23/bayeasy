@@ -57,7 +57,7 @@ Component({
                     data: _pureData,
                     encoding: 'base64',
                     success: res => {
-                        console.log("保存临时图片成功: ", res)
+                        // console.log("保存临时图片成功: ", res)
                         that.setData({
                             imgTempPath: wx.env.USER_DATA_PATH + '/tempBase64Png.png',
                         })
@@ -72,7 +72,7 @@ Component({
                     url: this.data.imgUrl,
                     success: res => {
                         if (res.statusCode === 200) {
-                            console.log("图片下载至临时文件夹成功")
+                            // console.log("图片下载至临时文件夹成功")
                             that.setData({
                                 imgTempPath: res.tempFilePath
                             })
@@ -89,11 +89,11 @@ Component({
             /* 分析要加水印的图片宽高 */
             let that = this
             if (path) {
-                console.log(path)
+                // console.log(path)
                 wx.getImageInfo({
                     src: path,
                     success: res => {
-                        console.log("获取图片信息成功:", res)
+                        // console.log("获取图片信息成功:", res)
                         const wmWidth = res.width * that.data.ratio
                         const wmHeight = res.height * that.data.ratio
                         that.setData({
@@ -192,30 +192,30 @@ Component({
             canvas.width = canvas_width * dpr
             canvas.height = canvas_height * dpr
             // 将要加水印的图片放入画板
-            console.log(this.data.imgTempPath)
+            // console.log(this.data.imgTempPath)
             // const url = this.data.imgTempPath
             const url = "https://image.bayeasy.cn/images-datas/report/dropdown_icon.png"
             const imgObj = canvas.createImage()
             imgObj.src = this.data.imgTempPath
             // imgObj.width = canvas_width
             // imgObj.height = canvas_height
-            console.log(imgObj)
+            // console.log(imgObj)
             imgObj.onload = function () {
-                console.log(imgObj)
+                // console.log(imgObj)
                 context.drawImage(imgObj, 0, 0)
             }
             let pattern
             const wmImgObj = canvas.createImage()
             const wmImgPath = this.data.wmTempPath
 
-            console.log(wmImgPath)
+            // console.log(wmImgPath)
             wmImgObj.src = wmImgPath
             wmImgObj.width = this.data.wmWidth;
             wmImgObj.height = this.data.wmHeight;
-            console.log(wmImgObj)
+            // console.log(wmImgObj)
             wmImgObj.onload = function () {
                 pattern = context.createPattern(wmImgObj, 'repeat')
-                console.log("pattern is ", pattern)
+                // console.log("pattern is ", pattern)
             }
             // 创建水印
             context.fillStyle = pattern

@@ -6,7 +6,8 @@
         case "develop": //开发预览版
             baseUrl = "https://cs.bayeasy.cn/betaApi";
             payUrl = "https://cs.bayeasy.cn/";
-            pdfUrl = "http://gshapi.beta.corp.bayeasy.cn:11880"
+            pdfUrl = "https://cs.bayeasy.cn/betaUpload/"
+            
             break;
         case 'trial': //体验版
             baseUrl = "https://cs.bayeasy.cn/betaApi";

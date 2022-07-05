@@ -44,7 +44,7 @@ Component({
      */
     methods: {
         rotationClick() {
-            console.log('旋转')
+            // console.log('旋转')
             let status = this.data.transformStatus;
             if (status) {
                 this.setData({
@@ -65,7 +65,7 @@ Component({
          * 2 双值点击记录 两点之间距离
          */
         touchStartHandle(e) {
-            console.log(e)
+            // console.log(e)
             this.setData({
                 touchesNum: e.touches.length
             })

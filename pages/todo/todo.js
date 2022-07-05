@@ -118,10 +118,10 @@ Page({
   },
   /* 按钮跳转 */
   goCheck: function (e) {
-    console.log(e)
+    // console.log(e)
     let tid = e.currentTarget.dataset.tid;
     const _todo_list = this.data.todo_lists.filter(e => e.id === tid)[0]
-    console.log(_todo_list)
+    // console.log(_todo_list)
     if ('ids' in _todo_list) {
       if (_todo_list['ids'].length > 1) {
         if (!('detailUrl' in _todo_list)) {
@@ -216,7 +216,6 @@ Page({
               delete _new_todo_lists[4]["ids"];
             }
           }
-          console.log(_todo_keys)
           // 支付费用
           // detailUrl: "/pages/serviceFee/details/index",
           if(_todo_keys.includes("service_charge")) {

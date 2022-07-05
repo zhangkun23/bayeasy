@@ -48,7 +48,7 @@ Page({
   },
   // 选中当前项
   checkedItemParent(event) {
-    console.log(event)
+    // console.log(event)
     let row = event.currentTarget.dataset.item
     let temp = this.data.taxList;
     this.setData({
@@ -75,7 +75,7 @@ Page({
   // 组件更新item状态和数据
   updateList(value) {
     // 
-    console.log("!", value)
+    // console.log("!", value)
     this.setData({
       taxList: value,
       showTaxList: false
@@ -152,7 +152,7 @@ Page({
 
   },
   bindPickerChange: function(e){
-      console.log(e.detail.value)
+      // console.log(e.detail.value)
       const _index = e.detail.value
       let _list = this.data.taxList
       _list.map(i=>{

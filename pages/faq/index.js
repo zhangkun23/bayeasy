@@ -31,7 +31,6 @@ Page({
   // 获取是否有留言记录
   getFeedbackStatus() {
     feedbackStatus().then(res => {
-      console.log(res)
       if (res.ret) {
         this.setData({
           isStatus: res.data.status
@@ -46,7 +45,6 @@ Page({
       page_size: 10
     }
     commonProblemList(params).then(res => {
-      console.log(res)
       if (res.ret) {
         this.setData({
           commonProblemList: res.data.list

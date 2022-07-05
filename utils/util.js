@@ -128,7 +128,7 @@ const saveImgToAlbum = (content) => {
  * @param {*} url  默认传入url
  * @param {*} type 工商年报时会传type  当type有值时表示需要在域名和url之间拼接参数
  */
-const openPdf = (url, type) => {
+const openPdf = (url) => {
     let fileName, filePath;
     if (url === 'service_agreement') {
         fileName = '平台服务协议'
@@ -146,23 +146,33 @@ const openPdf = (url, type) => {
     if (!url.endsWith('.pdf')) {
         url = app.globalData.pdfPath + url + '.pdf'
     } else {
-        if (type) {
-            url = pdfUrl + '/upload/' + url
-        } else {
-            url = prod + url
-        }
+        url = prod + url
     }
 
-    // 保存后的文件名
+    if (!fileName.endsWith('.pdf')) {
+        fileName = fileName + '.pdf'
+    }
+    downloadFile(url, fileName)
+};
+
+/**
+ * @param {*} url  默认传入url
+ * @param {*} type 工商年报时会传type  当type有值时表示需要在域名和url之间拼接参数
+ */
+
+const openBussinsPdf = (url, type) => {
+    let fileName, str;
     if (type) {
-        let str = url.split('/')
+        str = url.split('/')
+        url = pdfUrl + url
         fileName = str[str.length - 1]
     } else {
-        if (!fileName.endsWith('.pdf')) {
-            fileName = fileName + '.pdf'
-        }
+        url = prod + url
     }
+    downloadFile(url, fileName)
+};
 
+const downloadFile = (url, fileName) => {
     wx.downloadFile({
         url: url,
         filePath: wx.env.USER_DATA_PATH + "/" + fileName,
@@ -193,7 +203,7 @@ const openPdf = (url, type) => {
             console.log(res); //失败
         }
     })
-};
+}
 
 const arrayBufferToBase64Img = function (buffer) {
     var binary = '';
@@ -333,5 +343,6 @@ module.exports = {
     nullToEmptyString,
     jumpUrl,
     saveImgToAlbum,
-    asgetOperateList
+    asgetOperateList,
+    openBussinsPdf
 }

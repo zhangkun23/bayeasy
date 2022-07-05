@@ -26,7 +26,7 @@ Component({
 
   lifetimes:{
     attached() {
-      // console.log(this.taxList)
+      // // console.log(this.taxList)
     },
     
   },
@@ -40,7 +40,6 @@ Component({
     },
     //  选中当前项
     checkedChildItem(event) {
-      console.log(event)
       let row = event.currentTarget.dataset.item
       let temp = this.data.List;
       temp.map(item => {
@@ -54,7 +53,7 @@ Component({
       this.triggerEvent('updateList',temp)
     },
     onMyEvent(event) {
-      console.log(event)
+      // console.log(event)
     },
   }
 })

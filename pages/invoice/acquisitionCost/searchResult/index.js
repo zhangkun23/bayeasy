@@ -62,7 +62,6 @@ Page({
         }
     },
     handleSearchKey: function (event) {
-        console.log("input handler event")
         this.setData({
             searchKey: event.detail
         })

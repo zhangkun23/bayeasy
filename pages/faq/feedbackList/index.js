@@ -26,7 +26,6 @@ Page({
       page_size: 10
     }
     feedbackList(params).then(res => {
-      console.log(res)
       if(res.ret) {
         this.setData({
           feedbackList: res.data.list

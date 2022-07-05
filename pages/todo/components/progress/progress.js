@@ -59,7 +59,7 @@ Component({
     drawCircleBg: function (ctx_lists) {
       const canvas_width = ctx_lists[0].width
       const canvas_height = ctx_lists[0].height
-      console.log(ctx_lists)
+      // console.log(ctx_lists)
       const canvas = ctx_lists[0].node
       const dpr = this.data.dpr
       canvas.width = ctx_lists[0].width * dpr

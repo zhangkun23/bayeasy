@@ -29,8 +29,8 @@ Page({
     },
     isIosOrAndroid() {
         const res = wx.getSystemInfoSync() // 读取设备所有信息
-        console.log(res); // 打印获取的信息
-        console.log(res.platform); // 获取安卓或者iOS数据
+        // console.log(res); // 打印获取的信息
+        // console.log(res.platform); // 获取安卓或者iOS数据
         if (res.platform == "android") { // 判断
             this.setData({
                 isAndroid: 2
@@ -43,7 +43,6 @@ Page({
      */
     onLoad(options) {
         let currerntPage = getCurrentPages();
-        console.log(options, currerntPage)
         this.setData({
             type: options.type,
             currentID: options.currentID,

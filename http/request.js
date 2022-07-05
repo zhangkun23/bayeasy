@@ -43,8 +43,7 @@ module.exports = {
                 complete(res, err) {
                     wx.hideLoading({
                         complete: function (hide) {
-                            console.log("关闭loading成功: ", hide)
-
+                            // console.log("关闭loading成功: ", hide)
                             if (err) {
                                 wx.showToast({
                                     title: '网络有问题哦！请稍后再试试！',

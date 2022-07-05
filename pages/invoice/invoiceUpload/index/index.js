@@ -25,8 +25,8 @@ Page({
     },
 
     onLoad: function (options) {
-        console.log('222')
-        console.log(options)
+        // console.log('222')
+        // console.log(options)
     },
 
 })

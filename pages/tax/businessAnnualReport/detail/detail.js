@@ -5,8 +5,9 @@ const {
   annualReportInfo
 } = require('../../../../http/api/api_csbl');
 const {
-  openPdf
-} = require('../../../../utils/util')
+  openBussinsPdf
+} = require('../../../../utils/util');
+const { pdfUrl } = require('../../../../http/env')
 Page({
 
   /**
@@ -112,12 +113,12 @@ Page({
   },
   // 打开pdf文件
   goEntrance(e) {
-    console.log(e,'打开pdf')
+    let url = e.currentTarget.dataset.url
     // this.setData({
     //   showLink: true,
-    //   link: 'http://gshapi.beta.corp.bayeasy.cn:11880/upload/' + e.currentTarget.dataset.url
+    //   link: url
     // })
-    openPdf(e.currentTarget.dataset.url, 'uploadPdf')
+    openBussinsPdf(url, 'uploadPdf')
   },
 
   /**

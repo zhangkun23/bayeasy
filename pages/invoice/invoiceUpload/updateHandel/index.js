@@ -141,7 +141,7 @@ Page({
     // 设置发票类型
     bindPickerChange(e) {
         let category = this.data.activityArr[e.detail.value];
-        console.log(category)
+        // console.log(category)
         // 1 2 4 5 
         let id = category.id;
         // if(id == 1 || id == 2 || id == 4 || id == 5){
@@ -167,11 +167,11 @@ Page({
             itemList: ["从相册中选择", "拍照"],
             success: function (e) {
                 //album:相册 返回0  //camera拍照   返回1  
-                console.log(e)
+                // console.log(e)
                 e.cancel || (0 == e.tapIndex ? that.chooseWxImageShop("album") : 1 == e.tapIndex && that.chooseWxImageShop("camera"));
             },
             fail: function (res) {
-                console.log(res.errMsg)
+                // console.log(res.errMsg)
             }
         });
     },
@@ -196,12 +196,12 @@ Page({
             mediaType: ['image'],
             sourceType: [type],
             success: function (res) {
-                console.log(res)
+                // console.log(res)
                 let ImgArr = res.tempFiles;
                 if (that.setImgSize(ImgArr)) return;
                 if (res.tempFiles[0]) {
                     const imgPath = res.tempFiles[0].tempFilePath;
-                    console.log(imgPath)
+                    // console.log(imgPath)
                     that.setData({
                         ['form.file_url']: imgPath
                     })
@@ -212,10 +212,10 @@ Page({
                         name: 'link',
                         formData: {},
                         success: function (info) {
-                            console.log(info)
+                            // console.log(info)
                         },
                         fail: function (res) {
-                            console.log(res, '失败')
+                            // console.log(res, '失败')
                         }
                     })
 

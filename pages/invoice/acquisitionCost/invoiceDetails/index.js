@@ -46,7 +46,6 @@ Page({
                 let info = nullToEmptyString(res.data)
                 that.handleInfo(info)
             } else {
-                console.log("无法获取详情:", res)
                 wx.showToast({
                     title: '获取详情失败， 请稍后再试',
                     icon: 'none'
@@ -76,7 +75,7 @@ Page({
                 audit_faild_reason: info.audit_faild_reason,
                 failure_reason: info.failure_reason
             })
-            console.log("审核失败原因: ", __fail_reason)
+            // console.log("审核失败原因: ", __fail_reason)
         }
         this.setData({
             status: info.status,
@@ -93,7 +92,7 @@ Page({
         openPdf(this.data.pdfUrl)
     },
     previewImg(e) {
-        console.log('减肥黄金时代更好')
+        // console.log('减肥黄金时代更好')
         const src = e.currentTarget.dataset.src
         // wx.previewImage({
         //     urls: [src],
