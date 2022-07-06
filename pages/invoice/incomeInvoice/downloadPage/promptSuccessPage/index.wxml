@@ -18,6 +18,9 @@
         <text class="orangeTips">"{{email}}"</text>
         <text>邮箱查收下载文件!</text>
       </view>
+      <view class="text-center promptSuccessPage__box-btn" bindtap="backList">
+        <view class="bluebtn">返回电子发票</view>
+      </view>
     </view>
     <view class="promptSuccessPage__bottom">
       <view class="promptSuccessPage__bottom-text font-size-24">

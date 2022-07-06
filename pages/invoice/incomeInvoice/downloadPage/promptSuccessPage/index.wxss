@@ -19,6 +19,9 @@
 .promptSuccessPage__box-text {
   color: #283E56;
 }
+.promptSuccessPage__box-btn {
+  margin-top: 88rpx;
+}
 
 .promptSuccessPage__bottom {
   position: fixed;

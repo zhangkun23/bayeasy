@@ -37,6 +37,12 @@ Page({
             })
         }
     },
+    backList() {
+      wx.navigateTo({
+        url: '../../details/eInvoice/index?currentID=' + this.data.currentID,
+      })
+    },
+
 
     /**
      * 生命周期函数--监听页面加载
