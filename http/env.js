@@ -1,13 +1,11 @@
     const version = __wxConfig.envVersion;
     let baseUrl;
     let payUrl;
-    let pdfUrl;
+    let pdfUrl = "https://cs.bayeasy.cn/betaUpload/"
     switch (version) {
         case "develop": //开发预览版
             baseUrl = "https://cs.bayeasy.cn/betaApi";
             payUrl = "https://cs.bayeasy.cn/";
-            pdfUrl = "https://cs.bayeasy.cn/betaUpload/"
-            
             break;
         case 'trial': //体验版
             baseUrl = "https://cs.bayeasy.cn/betaApi";
