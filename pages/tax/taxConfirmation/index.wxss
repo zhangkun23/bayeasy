@@ -1,8 +1,7 @@
 /* pages/tax/taxConfirmation/index.wxss */
 
 .taxConfirmation {
-  padding: 32rpx;
-  height: calc(100% - 64rpx);
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -16,6 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  padding: 32rpx;
 }
 
 .taxConfirmation__btn {

@@ -15,8 +15,6 @@
 .wrapper {
   flex: 1;
   height: 1rpx;
-  padding: 32rpx;
-
 }
 
 .display-flex {
@@ -27,6 +25,7 @@
 .taxConfirmation__container {
   display: flex;
   flex-direction: column;
+  padding: 32rpx;
 }
 
 .taxConfirmation__header {
