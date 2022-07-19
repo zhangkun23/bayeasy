@@ -87,61 +87,79 @@ Component({
       } else {
         let open_id = wx.getStorageSync('openid');
         let app_id = getApp().globalData.app_id;
-        console.log(open_id)
+
         // 提交预订单
         let params = {
           open_id, // 用户id,后端返回
           order_no: that.data.orderno, // 订单号
           amount: that.data.money, // 金额
-          app_id
+          app_id,
         }
-        // 提交预支付订单
-        wechatPay(params).then(res => {
-          if (res.ret) {
-            let paymentarams = {
-              timeStamp: res.data.timeStamp,
-              nonceStr: res.data.nonceStr,
-              package: res.data.package,
-              signType: res.data.signType,
-              paySign: res.data.paySign,
-            }
-            // 调起微信支付控件
-            wx.requestPayment({
-              "timeStamp": paymentarams.timeStamp + '',
-              "nonceStr": paymentarams.nonceStr,
-              "package": paymentarams.package,
-              "signType": paymentarams.signType,
-              "paySign": paymentarams.paySign,
-              "success": function (res) {
-                let data = {
-                  title: that.data.title,
-                  btnText: that.data.btnText,
-                  showModal: false
-                }
-                that.triggerEvent("sendParent", data)
-
-                that.triggerEvent('closeBtn')
-                wx.navigateTo({
-                  url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money + '&orderno=' + that.data.orderno + '&id=' + that.data.ids,
-                })
+        if (params.open_id == "" || params.app_id == "") {
+          wx.showToast({
+            title: '参数错误，请重新登录',
+            icon: "none"
+          })
+          setTimeout(() => {
+            wx.clearStorage({
+              success: (res) => {
+                console.log("清理缓存成功")
               },
-              // "fail": function (res) {
-              // console.log(res)
-              // wx.navigateTo({
-              //   url: '/pages/serviceFee/paymentError/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money,
-              // })
-              // },
-              "complete": function (res) {
-                console.log(res)
+            })
+            wx.redirectTo({
+              url: '/pages/login/login/index',
+            })
+          }, 3000)
+          return true
+        } else {
+          // 提交预支付订单
+          wechatPay(params).then(res => {
+            if (res.ret) {
+              let paymentarams = {
+                timeStamp: res.data.timeStamp,
+                nonceStr: res.data.nonceStr,
+                package: res.data.package,
+                signType: res.data.signType,
+                paySign: res.data.paySign,
               }
-            })
-          } else {
-            wx.showToast({
-              title: res.message,
-              icon: "none"
-            })
-          }
-        })
+              // 调起微信支付控件
+              wx.requestPayment({
+                "timeStamp": paymentarams.timeStamp + '',
+                "nonceStr": paymentarams.nonceStr,
+                "package": paymentarams.package,
+                "signType": paymentarams.signType,
+                "paySign": paymentarams.paySign,
+                "success": function (res) {
+                  let data = {
+                    title: that.data.title,
+                    btnText: that.data.btnText,
+                    showModal: false
+                  }
+                  that.triggerEvent("sendParent", data)
+
+                  that.triggerEvent('closeBtn')
+                  wx.navigateTo({
+                    url: '/pages/serviceFee/paymentSuccessful/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money + '&orderno=' + that.data.orderno + '&id=' + that.data.ids,
+                  })
+                },
+                // "fail": function (res) {
+                // console.log(res)
+                // wx.navigateTo({
+                //   url: '/pages/serviceFee/paymentError/index?starttime=' + that.data.starttime + '&endtime=' + that.data.endtime + '&money=' + that.data.money,
+                // })
+                // },
+                "complete": function (res) {
+                  console.log(res)
+                }
+              })
+            } else {
+              wx.showToast({
+                title: res.message,
+                icon: "none"
+              })
+            }
+          })
+        }
       }
     },
 

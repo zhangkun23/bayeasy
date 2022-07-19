@@ -91,7 +91,7 @@ Page({
   getBankInfo() {
     getBankInfo().then(res => {
       if (res.ret) {
-        if (res.bank_type !== undefined && res.bank_account_name !== undefined && res.bank_account !== undefined) {
+        if (res.data.bank_type == undefined && res.data.bank_account_name == undefined && res.data.bank_account == undefined) {
           this.setData({
             isShowUnionPay: true
           })
