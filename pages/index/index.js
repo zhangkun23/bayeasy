@@ -176,12 +176,12 @@ Page({
                     // })
                 }
             })
+        this.contactService();
         } else {
             this.setData({
                 token: ''
             })
         }
-        this.contactService()
     },
 
     /**
