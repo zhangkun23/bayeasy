@@ -9,8 +9,10 @@ switch (version) {
     pdfUrl = "https://cs.bayeasy.cn/betaUpload/";
     break;
   case "trial": //体验版
-    baseUrl = "https://cs.bayeasy.cn/grayApi";
-    pdfUrl = "https://cs.bayeasy.cn/grayUpload/";
+    baseUrl = "https://cs.bayeasy.cn/betaApi";
+    pdfUrl = "https://cs.bayeasy.cn/betaUpload/";
+    // baseUrl = "https://cs.bayeasy.cn/grayApi";
+    // pdfUrl = "https://cs.bayeasy.cn/grayUpload/";
     break;
   case "release": //正式版
     baseUrl = "https://cs.bayeasy.cn/api";
