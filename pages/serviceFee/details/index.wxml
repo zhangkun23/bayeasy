@@ -101,6 +101,9 @@
               <text class="blackTips" wx:if="{{item.pay_type == 1}}">微信支付</text>
               <text class="blackTips" wx:if="{{item.pay_type == 2}}">支付宝支付</text>
               <text class="blackTips" wx:if="{{item.pay_type == 3}}">银行卡转账</text>
+              <text class="blackTips" wx:if="{{item.pay_type == 4}}">线下微信支付</text>
+              <text class="blackTips" wx:if="{{item.pay_type == 5}}">线下支付宝支付</text>
+              <text class="blackTips" wx:if="{{item.pay_type == 6}}">线下银行对公转帐支付</text>
               <text class="blackTips" wx:if="{{item.pay_type == null}}">-</text>
             </view>
             <view class="space-between mg-bt-24">
@@ -108,6 +111,10 @@
               <text class="blackTips">{{item.time || '-'}}</text>
             </view>
             <view class="space-between mg-bt-24">
+              <text class="grayTips">交易流水号</text>
+              <text class="blackTips">{{item.flow_no || '-' }}</text>
+            </view>
+            <view class="space-between mg-bt-24" wx:if="{{item.pay_type == 1 || item.pay_type == 2}}">
               <text class="grayTips">交易流水号</text>
               <text class="blackTips">{{item.flow_no || '-' }}</text>
             </view>
