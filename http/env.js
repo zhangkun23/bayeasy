@@ -4,8 +4,8 @@
     let pdfUrl;
     switch (version) {
         case "develop": //开发预览版
-            baseUrl = "https://cs.bayeasy.cn/betaApi";
-            payUrl = "https://cs.bayeasy.cn/";
+            baseUrl = "http://gshapi.beta.corp.bayeasy.cn:11880/api";
+            payUrl = "http://gshapi.beta.corp.bayeasy.cn:11880";
             pdfUrl = "http://gshapi.beta.corp.bayeasy.cn:11880"
             break;
         case 'trial': //体验版

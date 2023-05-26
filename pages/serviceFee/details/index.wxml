@@ -114,10 +114,6 @@
               <text class="grayTips">交易流水号</text>
               <text class="blackTips">{{item.flow_no || '-' }}</text>
             </view>
-            <view class="space-between mg-bt-24" wx:if="{{item.pay_type == 1 || item.pay_type == 2}}">
-              <text class="grayTips">交易流水号</text>
-              <text class="blackTips">{{item.flow_no || '-' }}</text>
-            </view>
             <view class="space-between">
               <text class="grayTips">支付金额</text>
               <text class="blackTips">￥ {{item.pay_money || '0.00'}}</text>
